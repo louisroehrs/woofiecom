@@ -30,7 +30,7 @@ every frequency step.  Many radios today use these knobs for volume
 controls.  
 
     <hr>
-    <address><a href="mailto:louisr@teletrex.com"></a></address>
+    <address><a href="https://linkedin.com/in/LouisRoehrslouisr@teletrex.com"></a></address>
 <!-- Created: Sun Mar 31 22:52:43 -0800 2002 -->
 <!-- hhmts start -->
 Last modified: Sun Mar 31 23:08:42 -0800 2002

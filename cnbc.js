@@ -58,7 +58,7 @@ else
 {CookieUser="Guest";}}}
 if(CookieUser.length>24)
 {x.innerHTML=CookieUser;var p=document.getElementById(parent);var t=p.style.top;p.style.top="25px";}else{x.innerHTML="Welcome, "+CookieUser;}}else{x.innerHTML="Welcome, Guest";}}
-function emailThis(){trackit();var et='mailto:?subject='+(pd_me.nw?'Newsweek.com%20on%20MSNBC':'CNBC.com')+'%20Article:%20'+pd_esc(pd_me.h)+'&body='+pd_esc(pd_me.h)+'%0D%0A'+pd_esc(pd_me.d)+'%0D%0Ahttp://'+location.host+'/id/'+pd_me.id+pd_me.su+'/from/ET/';if(pd_me.ep!='')et+='%0D%0A_____________________________%0D%0A'+pd_me.ep;location.href=et;}
+function emailThis(){trackit();var et='https://linkedin.com/in/LouisRoehrs?subject='+(pd_me.nw?'Newsweek.com%20on%20MSNBC':'CNBC.com')+'%20Article:%20'+pd_esc(pd_me.h)+'&body='+pd_esc(pd_me.h)+'%0D%0A'+pd_esc(pd_me.d)+'%0D%0Ahttp://'+location.host+'/id/'+pd_me.id+pd_me.su+'/from/ET/';if(pd_me.ep!='')et+='%0D%0A_____________________________%0D%0A'+pd_me.ep;location.href=et;}
 function setPermalink(){var pLink=document.getElementById("cnbc_permalink");pLink.innerHTML=location.href;}
 function buildTagSheets(id,target,taglist,size)
 {var oB=new UberSniff();if(oB.safari)
