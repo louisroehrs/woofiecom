@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+  <head>
+    <title>Slide menu</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+    <link rel="stylesheet" type="text/css" href="slidemenu.css">
+
+    <script type="text/javascript" src="jquery-1.3.1.min.js"></script>
+    <script type="text/javascript" src="slidemenu.js"></script>
+
+  </head>
+
+  <body class="norm">
+    <h1>Slide menu</h1>
+<div id="explanation">
+The slide menu content is defined in the html. 
+<ul>
+<li>The hasmore class indicates that there is a sub-menu.  This is indicated with &gt;&gt;</li>
+<li> The entire menu block will size to the longest menu so that the longest menu will fit and fill the menu area neatly.</li>
+<li>When a menu slides into place, the top entry indicates the current sub-menu and provides the navigation back up a level as indicated with (&lt;).</li>
+<li>A leaf entry has a link and will navigate to a new page when clicked.</li>
+<li>For IE6, the body class is modified by a javascript user agent sniffer for this example. Used for handling hover case, so no flashing would happen here. Normally, browser class would be set at the body tag to condition the page for the browser version.</li>
+</ul>
+</div>
+<div id="gennav">
+<ul id="top">
+<li class="genre">Select a Genre</li>
+<li class="hasmore">Action
+   <ul>
+   <li class="back">Action Movies</li>
+   <li class="hasmore">Action Comedy
+      <ul>
+      <li class="back">Action Comedies
+      <li><a href="genrepage.html?classiccomedy">Classics</a></li>
+      <li><a href="genrepage.html?cultcomedies">Cult</a></li>
+      </ul>
+   <li class="hasmore">Adventures
+      <ul>
+      <li class="back">Adventures</li>
+      <li><a href="genrepage.html?blockbusters">Blockbusters</a></li>
+      <li><a href="genrepage.html?martialarts">Martial Arts</a></li>
+      </ul>
+   </li>
+   <li><a href="genrepage.html?thrillers">Thrillers</a></li>
+
+   </ul>
+</li>
+<li class="hasmore">Comedy
+   <ul>
+   <li class="back">Comedies</li>
+   <li class="hasmore">TV
+      <ul>
+      <li class="back">TV</li>
+      <li><a href="genrepage.html?snl">SNL</a></li>
+      <li><a href="genrepage.html?letterman">Letterman</a></li>
+      </ul>
+   </li>
+   <li  class="hasmore">Comedy Movies
+      <ul>
+      <li class="back">Comedy Movies</li>
+      <li><a href="genrepage.html?slapstick">Slapstick</a></li>
+      <li><a href="genrepage.html?political comedy">Political</a></li>
+      <li><a href="genrepage.html?comedy documentary">Documentaries</a></li>
+      </ul>
+   </li>
+   </ul>
+</li>
+<li class="hasmore">Family
+   <ul>
+   <li class="back">Family</li>
+   <li class="hasmore">Children
+      <ul>
+      <li class="back">Children</li>
+      <li><a href="genrepage.html?babies">Babies</a></li>
+      <li><a href="genrepage.html?toddlers">Toddlers</a></li>
+      <li><a href="genrepage.html?kindergarten">Kindergarten</a></li>
+      <li><a href="genrepage.html?elementary">Elementary</a></li>
+
+      </ul>
+   </li>
+   <li  class="hasmore">Teen
+      <ul>
+      <li class="back">Teen</li>
+      <li><a href="genrepage.html?teendrama">Teen Drama</a></li>
+      <li><a href="genrepage.html?teencomedy">Teen Comedy</a></li>
+      <li><a href="genrepage.html?teencartoons">Teen Cartoons</a></li>
+      <li><a href="genrepage.html?teenschool">Teen School</a></li>
+      <li><a href="genrepage.html?teenedu">Teen Education</a></li>
+      <li><a href="genrepage.html?teenmusic">Teen Music</a></li>
+      </ul>
+   </li>
+   <li  class="hasmore">Disney
+      <ul>
+      <li class="back">Disney</li>
+      <li><a href="genrepage.html?disneyanimation">Animation</a></li>
+      <li><a href="genrepage.html?disneydrama">Drama</a></li>
+      <li><a href="genrepage.html?disneycomedy">Comedy</a></li>
+      </ul>
+   </li>
+   </ul>
+</li>
+</ul> 
+</div>
+
+    <hr>
+<P>
+    <address>Louis Roehrs</address>
+<!-- Created: Fri Feb 13 21:21:43 PST 2009 -->
+<!-- hhmts start -->
+Last modified: Tue Feb 17 15:54:50 PST 2009
+<!-- hhmts end -->
+</P>
+  </body>
+</html>

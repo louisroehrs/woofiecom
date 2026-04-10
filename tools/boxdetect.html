@@ -1,0 +1,113 @@
+<!-- This document was created with HomeSite 2.5 -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<HTML>
+<HEAD>
+	<TITLE>woofie's toolbox - webtv guidelines</TITLE>
+<SCRIPT Language=Javascript>
+	userAgent=" " + navigator.appName + " " + navigator.appVersion;
+
+	if (userAgent.indexOf("WebTV") > 0) {
+
+		if (userAgent.indexOf("Plus") >0 ) {
+	 		kBox = "Plus"
+		} else if (userAgent.indexOf("Terminal") >0 ) { 
+			kBox = "FCS" 
+		} else {
+			kBox= "otherWebTVBox"
+		}
+		
+	} else {
+		kBox = "nonWebTV"
+	}
+</SCRIPT>
+</HEAD>
+
+<BODY bgcolor=102030 fontsize=medium text=909090 link=a0a000 vlink=808000><BR>
+<CENTER>
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-7467616088319038";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_type = "text";
+//2007-08-23: woofie.com
+google_ad_channel = "2520990473";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_text = "000000";
+google_color_url = "0066CC";
+//-->
+</script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<H3>woofie's toolbox - web<FONT COLOR=#c0c000>tv</FONT> box detection</H3></CENTER>
+WebTV ships two different boxes currently.  For various reasons, you may wish to know which box
+the viewer is using to load different files, images, multimedia, etc.  The following code will 
+determine the box.  Put this code in between <B>&lt;head&gt;</B> and <B>&lt;/head&gt;</B>.
+<PRE>
+  &lt;SCRIPT Language=Javascript&gt;
+	
+  userAgent=navigator.appName + " " + navigator.appVersion;
+
+  if (userAgent.indexOf("WebTV") > 0) {
+
+    if (userAgent.indexOf("Plus") >0 ) {
+      kBox = "Plus"
+    } else if (userAgent.indexOf("Terminal") >0 ) { 
+      kBox = "FCS" 
+    } else {
+      kBox= "otherWebTVBox"
+    }
+		
+  } else {
+    kBox = "nonWebTV"
+  }
+  
+  &lt;/SCRIPT&gt;
+</PRE>
+
+Then where you want to have different features depending on the box type, use the following:
+<PRE>
+  &lt;SCRIPT Language=Javascript&gt;
+  
+  if (kBox=="FCS") {
+    document.write("You are using the WebTV Internet Terminal.");
+  } else if (kBox =="Plus") {
+    document.write("You are using the WebTV Plus Receiver.");
+  } else if (kBox =="otherWebTVBox" {
+    document.write("You are using some new WebTV box.");
+  } else if (kBox =="nonWebTV") {
+    document.write("You are not using a WebTV box.");
+  }
+  document.write("&lt;BR&gt;kBox = " + kBox);
+  				
+  &lt;/SCRIPT&gt;
+</PRE>
+The results of all this will generate the following.<BR><BR><UL>
+<B>
+
+<SCRIPT Language=Javascript>
+		if (kBox=="FCS") {
+			document.write("You are using the WebTV Internet Terminal.");
+		} else if (kBox =="Plus") {
+			document.write("You are using the WebTV Plus Receiver.");
+		} else if (kBox =="otherWebTVBox") {
+			document.write("You are using some new WebTV box.");
+		} else if (kBox =="nonWebTV") {
+			document.write("You are not using a WebTV box.");
+		}
+		document.write("<BR>kBox = " + kBox);			
+</SCRIPT>
+</B>
+</UL>
+<BR><BR><CENTER><hr width=50%><hr width=30%><BR></CENTER>
+
+</BODY>
+</HTML>

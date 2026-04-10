@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:iphoto="urn:iphoto:property" xmlns:iweb="http://www.apple.com/iweb" version="2.0">
+  <channel>
+    <title>Lucy and Sophia</title>
+    <link>http://www.woofie.com/mac/family/beach/Back_Home.html</link>
+    <description>A good day at the beach and a nice ride home (sleeping soundly) and here we are at the house ready for sleepytime.</description>
+    <item>
+      <title>DSC00123</title>
+      <link>http://www.woofie.com/mac/family/beach/Back_Home.html#0</link>
+      <guid isPermaLink="false">5f64fe67-d944-448f-8e68-cc1e778156b6</guid>
+      <enclosure url="http://www.woofie.com/mac/family/beach/Back_Home_files/Media/DSC00123/DSC00123.jpg" length="58234" type="image/jpeg"/>
+      <iphoto:thumbnail>http://www.woofie.com/mac/family/beach/Back_Home_files/Media/DSC00123/thumb.jpg</iphoto:thumbnail>
+      <iweb:micro>http://www.woofie.com/mac/family/beach/Back_Home_files/Media/DSC00123/micro.jpg</iweb:micro>
+      <iweb:richTitle>&lt;div style=&quot;padding: 0px; &quot; class=&quot;image_cluster_layout_style_default_External_176_26&quot;&gt;&lt;div class=&quot;image_cluster_layout_style_default&quot;&gt;&lt;p style=&quot;padding-bottom: 0pt; padding-top: 0pt; &quot; class=&quot;Caption&quot;&gt;DSC00123&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</iweb:richTitle>
+    </item>
+  </channel>
+</rss>

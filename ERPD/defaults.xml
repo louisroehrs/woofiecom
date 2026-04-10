@@ -1,0 +1,103 @@
+<Mojo-Config>
+  <!-- NOTE: Index numbers are ZERO-based!            -->
+  <!-- Config info for 1st vRPD (human-friendly form) -->
+  <vRPD name="mojo1-1.oamp.mp.agile.tv"
+        ipaddr="172.16.0.30/24"
+        sport="1024"
+        nc1500="172.16.0.5"
+        dport="58003"
+        idle_tx="False"
+        demodulator="0">
+      <!-- Define the Demodulator/Xilinx channel map for this vRPD -->
+      <channelizer index="0"
+                   rfi="0"
+	           nominal_power="25"
+                   fec_enable="Y"
+                   freq="8.096"></channelizer> <!-- 'logical' channel #0 (first) -->
+      <channelizer index="0"
+                   rfi="0"
+	           nominal_power="25"
+                   fec_enable="Y"
+                   freq="8.864"></channelizer> <!-- 'logical' channel #1 (second) -->
+      <channelizer index="0"
+                   rfi="0"
+	           nominal_power="25"
+                   fec_enable="Y"
+                   freq="9.248"></channelizer> <!-- 'logical' channel #2 (third) -->
+      <channelizer index="0"
+                   rfi="0"
+	           nominal_power="25"
+                   fec_enable="Y"
+                   freq="9.632"></channelizer> <!-- 'logical' channel #3 (fourth) -->
+      <channelizer index="0"
+                   rfi="0"
+	           nominal_power="25"
+                   fec_enable="Y"
+                   freq="10.016"></channelizer> <!-- 'logical' channel #4 (fifth) -->
+      <channelizer index="0"
+                   rfi="0"
+	           nominal_power="25"
+                   fec_enable="Y"
+                   freq="10.784"></channelizer> <!-- 'logical' channel #5 (sixth) -->
+  </vRPD>
+
+  <vRPD name="mojo1-2.oamp.mp.agile.tv"
+        ipaddr="172.16.0.31/24"
+        sport="1024"
+        nc1500="172.16.0.5"
+        dport="58004"
+        idle_tx="False"
+        demodulator="0">
+      <!-- Define the Demodulator/Xilinx channel map for this vRPD -->
+      <channelizer index="0"
+                   rfi="0"
+	           nominal_power="25"
+                   fec_enable="Y"
+                   freq="11.168"></channelizer> <!-- 'logical' channel #0 (first) -->
+      <channelizer index="0"
+                   rfi="0"
+	           nominal_power="25"
+                   fec_enable="Y"
+                   freq="11.552"></channelizer> <!-- 'logical' channel #1 (second) -->
+      <channelizer index="0"
+                   rfi="0"
+	           nominal_power="25"
+                   fec_enable="Y"
+                   freq="11.936"></channelizer> <!-- 'logical' channel #2 (third) -->
+      <channelizer index="0"
+                   rfi="0"
+	           nominal_power="25"
+                   fec_enable="Y"
+                   freq="12.320"></channelizer> <!-- 'logical' channel #3 (fourth) -->
+      <channelizer index="0"
+                   rfi="0"
+	           nominal_power="25"
+                   fec_enable="Y"
+                   freq="12.704"></channelizer> <!-- 'logical' channel #4 (fifth) -->
+      <channelizer index="0"
+                   rfi="0"
+	           nominal_power="25"
+                   fec_enable="Y"
+                   freq="13.088"></channelizer> <!-- 'logical' channel #5 (sixth) -->
+  </vRPD>
+
+  <!-- Configuration info for 1st demodulator thread instance (#0) -->
+  <demod  instance="0"
+  	  name="Demodulator #1"
+          rf_inputs="1"
+          channels="12">
+	 <channel rfi="0" min_power="1" freq="8.096"></channel>
+	 <channel rfi="0" min_power="1" freq="8.864"></channel>
+	 <channel rfi="0" min_power="1" freq="9.248"></channel>
+	 <channel rfi="0" min_power="1" freq="9.632"></channel>
+	 <channel rfi="0" min_power="1" freq="10.016"></channel>
+	 <channel rfi="0" min_power="1" freq="10.784"></channel>
+
+	 <channel rfi="0" min_power="1" freq="11.168"></channel>
+	 <channel rfi="0" min_power="1" freq="11.552"></channel>
+	 <channel rfi="0" min_power="1" freq="11.936"></channel>
+	 <channel rfi="0" min_power="1" freq="12.320"></channel>
+	 <channel rfi="0" min_power="1" freq="12.704"></channel>
+	 <channel rfi="0" min_power="1" freq="13.088"></channel>
+  </demod>
+</Mojo-Config>

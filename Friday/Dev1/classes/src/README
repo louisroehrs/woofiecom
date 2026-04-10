@@ -1,0 +1,50 @@
+Packages are no longer used.
+
+//##############################################################################
+//# APPLET: DynamicBillBoard                             version 1.15 - 1/31/96
+//#   Applet which displays an image on an HTML page.  The image changes to a
+//#   new image after a delay.  This change from one image to the next has
+//#   some kind of special effect associated with it.  
+//#
+//#   Feel free to use the classes of this applet for your own 
+//#   non-commercial pages.  I would appreciate it if you gave me some 
+//#   credit, but would understand if you did not have room on the page.
+//#
+//#   If you have commercial pages you would like to put this applet on, 
+//#   email me, maybe I will let you for free.  Or maybe you could hire 
+//#   me ;)
+//#
+//# USAGE NOTE:
+//#   The images this applet uses all must be the same size.  The size of the
+//#   applet must be the same size of these images.
+//#   
+//#   HTML tag:
+//#   <applet code="DynamicBillBoard" width="XXX" height="XXX">
+//#   <param name="delay" value="20000">
+//#   <param name="billboards" value="X">
+//#   <param name="bill0" value="XXX.gif,http://X.X.X/XXX.html">
+//#   <param name="bill1" value="XXX.gif,http://X.X.X/XXX.html">
+//#   <param name="bill2" value="XXX.gif,http://X.X.X/XXX.html">
+//#   <param name="bill3" value="XXX.gif,http://X.X.X/XXX.html">
+//#   <param name="transitions" value="6,ColumnTransition,XXX...">
+//#   </applet>
+//#
+//#   HTML tag NOTES
+//#     code - DynamicBillBoard is the name of this class
+//#     width - the width of the applet.  Must be the same size as the images
+//#     height - the height of the applet. Must be the same size as the images
+//#     delay - the time between images in milliseconds
+//#     billboards - the number of different BillBoards(images) that you will 
+//#               use
+//#     bill# - the image followed by the linking URL for a given BillBoard, 
+//#             starting with number 0.  The image and URL should be separated
+//#             by a comma, *NO SPACES*
+//#     bill#... - this parameter should appear 0 to one less then the value of
+//#             the "billboards" parameter.  Replace # with the BillBoards 
+//#             number
+//#     transitions - the number of classes that will be used as transitions,
+//#             followed by the names of these classes, separated by commas
+//#             *NO SPACES*
+//#             right now I have supplied 6 transitions.  Feel free to 
+//#             add your own.
+//##############################################################################

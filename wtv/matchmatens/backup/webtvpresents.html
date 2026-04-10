@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>WebTV MatchMate</title>
+	
+</head>
+<body bgcolor=000000 vspace=0 hspace=0>
+<bgsound src=../arcade/darkw242.mid LOOP=false>
+<display  nostatus noscroll>
+ 
+<center>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var userAgent=navigator.appName + " " + navigator.appVersion;
+var agentInfo=userAgent.substring(0, 5);
+
+var boxType = navigator.appVersion;
+
+var woofiebox = "box " + boxType;
+// alert(woofiebox);
+// alert(userAgent);
+
+if (userAgent.indexOf("Plus") >0 ) {
+ 
+ 	//WebTV FCS detected.
+  	document.write("<embed src=../arcade/Wtv.spl quality=high width=560 height=420 loop=false>"); 
+
+
+} else {   // "Terminal"
+  
+	//WebTV LC2 detected.
+	document.write("<embed src=../arcade/Cwtv.spl quality=high width=560 height=420 loop=false>");  
+
+
+}
+ -->
+</SCRIPT>
+</center>
+</body>
+</html>

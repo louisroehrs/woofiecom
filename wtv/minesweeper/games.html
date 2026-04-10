@@ -1,0 +1,165 @@
+<HTML>
+<HEAD>
+<TITLE>WebTV Arcade</TITLE>
+<SCRIPT LANGUAGE="JavaScript">
+var nGames=3;
+
+var dogShit=navigator.appVersion;
+
+if (dogShit.indexOf("WebTV") > 0) {
+	var left = dogShit.indexOf("OS") + 2;
+	if (left < 3 ) { left = dogShit.indexOf("TV") + 2; }
+
+	var right = dogShit.indexOf(")");
+	var webtvversiontxt = dogShit.substring(left,right);
+	var webtvversion = eval(webtvversiontxt);
+	if ((webtvversion > 1.4) && (webtvversion < 2.0)) nGames=2;
+	if ((webtvversion > 2.1) && (webtvversion < 3.0)) nGames=2;
+	
+}
+
+
+var bChangeImage = 2;
+var iOutstandingTriggers = 0;  
+var iButtonNum = 0;
+var aImageURLs = new Array( "ttlogo.gif","cwlogo.gif","mslogo.gif");
+
+var aAnchorURLs = new Array(
+	"wtv-explore2:/programming/trivia/navmap/index.html",
+	"wtv-explore2:/programming/crossword/navmap/index.html",
+	"wtv-explore2:/programming/minesweeper/webtvpresents.html");
+	
+var aTitles = new Array(
+	"Trivial Task",
+	"Crossword",
+	"Minesweeper");
+
+var iCurrImage= -1;
+var iOldImage= -1;
+var iFlipPeriod = 4000;
+
+function OnClick()  { 
+  	if (iCurrImage != -1)  { 
+  		window.location = aAnchorURLs[iCurrImage];
+ 	}
+}
+function loadImages()  { 
+	var aImages = new Array();
+	for (i=0; i < aImageURLs.length; i++)  { 
+ 	aImages[i] = new Image();
+		aImages[i].src = aImageURLs[i];
+	}
+	for (i=0; i < aImageURLs.length; i++)  { 
+  	if (!(aImages[i].complete))  { 
+			i=0;  // Try again if image is not loaded.
+		}
+	}
+}
+
+function flipImage()  { 
+	if (iOutstandingTriggers > 0)  { 
+		iOutstandingTriggers--;
+	}
+ 	if (bChangeImage == 1)  { 
+ 		iCurrImage = (iCurrImage + 1) % nGames;
+  	dispImage(iCurrImage);
+ 	triggerTimer();
+	}
+}
+
+function dispImage(iImage)  { 
+	document.rotator.src = aImageURLs[iImage];
+	iCurrImage = iImage;
+}
+
+function onMouseOverSelector(iButtonNum)  { 
+	bChangeImage = 0;
+	dispImage(iButtonNum);
+}
+
+function triggerTimer()  { 
+	if (iOutstandingTriggers == 0)  { 
+ 		window.setTimeout("flipImage()", iFlipPeriod);
+		iOutstandingTriggers++;
+  	}
+}
+
+function onMouseOutSelector(iButtonNum)  { 
+	bChangeImage = 1;
+	triggerTimer();
+}
+
+function onMouseOverImage()  { 
+	onMouseOverSelector(iCurrImage);
+}
+
+function onMouseOutImage()  { 
+	onMouseOutSelector(iCurrImage);
+}
+
+function startProg()  { 
+	loadImages();
+	flipImage();
+}
+
+function displayGameLinks() {
+	for (i=0; i < nGames; i++) {
+		document.write("<td align=center><a selected onMouseOver=onMouseOverSelector(");
+		document.write(i);
+		document.write(") onMouseOut=onMouseOutSelector(");
+		document.write(i);
+		document.write(") href='javascript:OnClick()'><FONT SIZE=4 color=b0b000><shadow><STRONG>");
+		document.write(aTitles[i]);
+		document.write("</STRONG></shadow></FONT></a></td>");
+	}
+}	
+	 
+
+</SCRIPT>
+
+</HEAD>
+
+<BODY marginwidth=0 marginheight=0 BGCOLOR="#274a64" background=arcadeGUI.gif !onload="startProg()"  link=b0b000 FONTSIZE=medium vspace=0 hspace=0>
+<display noscroll showwhencomplete>
+
+<CENTER>
+
+<table WIDTH=560 HEIGHT=90 border=0 CELLSPACING=0 CELLPADDING=0>
+	<tr>
+		<td width=12></td>
+		<td width=124 align=left><IMG SRC="/ROMCache/spacer.gif" WIDTH=6 HEIGHT=64 BORDER=0><a href="wtv-home:/home"><img src=/ROMCache/WebTVLogoJewel.gif width=84 height=64></a></td>
+		<TD WIDTH=424 HEIGHT=90 align=left valign=bottom><IMG SRC="arcadehead.gif" WIDTH=289 HEIGHT=79 BORDER=0></td>
+	</tr>
+</table>
+
+
+<table WIDTH=560 HEIGHT=161 border=0 CELLSPACING=0 CELLPADDING=0>
+	<tr><td height=2></td></tr>
+	<tr>
+		<TD WIDTH=560 HEIGHT=101 VALIGN=TOP align=center><a name=rotatoranchor
+onMouseOver="onMouseOverImage()"
+onMouseOut="onMouseOutImage()"
+><IMG SRC="ttlogo.gif" NAME="rotator" WIDTH=143 HEIGHT=101 BORDER=0
+ALT="Play"></A>
+	</tr>
+	<tr><td height=48></td></tr>
+</table>
+
+<table WIDTH=560 HEIGHT=30 border=0 CELLSPACING=0 CELLPADDING=0>
+	<tr><td width=35></td>
+	
+	<SCRIPT Language=Javascript>
+	displayGameLinks();
+	</SCRIPT>
+	<td width=35></td></tr>
+</table>
+<table WIDTH=560 border=0 CELLSPACING=0 CELLPADDING=0>
+	<tr><td height=32></td></tr>
+</table>
+<CENTER><insert ad width=394 height=71 template="insetad.tmpl"></CENTER>
+<table WIDTH=560 border=0 CELLSPACING=0 CELLPADDING=0>
+	<tr><td height=71 align=center></td></tr>
+	<tr><td height=10 align=center><IMG SRC="cwlogo.gif" WIDTH=1 HEIGHT=1 BORDER=0><IMG SRC="ttlogo.gif" WIDTH=1 HEIGHT=1 BORDER=0><IMG SRC="mslogo.gif" WIDTH=1 HEIGHT=1 BORDER=0></td></tr>
+</table>
+</BODY>
+</HTML>

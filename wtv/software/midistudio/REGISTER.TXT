@@ -1,0 +1,52 @@
+------------------------------------------------------------------------------
+                         REGISTER MIDI STUDIO
+------------------------------------------------------------------------------
+
+The Registration screen can be found by choosing the File / About 
+menu item and clicking the Registration button. The screen displays 
+information about registering and allows you to enter the registration 
+code. 
+
+Once MIDI Studio is registered, Sounds Great Software will send back 
+a registration code. Entering the registered user's name and the 
+registration code into the screen will complete the registration process. 
+The registered user's name will now appear in the about screen, and 
+there will be no delay on startup.
+
+The registration fee is $19.95. A .mid / .wav disk is available for 
+$5 at time of registration. It contains a number of good MIDI songs,
+mostly POP/Rock and sampled intstruments ( mostly percussion ) for
+use with MIDI Studio. The .mid / .wav disk is available separatly
+for $10.  
+
+Registration of MIDI Studio applies to upgrades of the product. There 
+will be no fees charged to registered users.
+
+
+You can register by sending payment to:
+
+              Sounds Great Software
+               2723 Morley Tr N.W.
+                Calgary, Alberta
+		 Canada T2M 4G8 
+
+OR 
+
+You can register directly through CompuServe GO SWREG.
+
+Type "GO SWREG" in CompuServe and follow the directions.
+
+Use the registration IDs for MIDI Studio 4.1 to register 4.2.
+The registration Code will work with any version, current and future.
+
+The Registration ID for MIDI Studio 4.1 is 7088.
+
+The Registration ID for MIDI Studio 4.1 with .mid /.wav disk
+   is 7089. The .mid /.wav disk will be sent by mail. You 
+   will be comtacted through CompServe mail for your address. 
+
+Your registration code can be sent back through CompuServe
+or by mail.
+
+
+

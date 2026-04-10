@@ -1,0 +1,9 @@
+<!--CREATEGAMEURLSTART-->http://ed.webtv.net/~tpark/new/crosswordtool/cgi/creategame.cgi<!--CREATEGAMEURLSTOP-->
+<!--CHANGECGIBASESTART-->http://ed.webtv.net/~tpark/new/crosswordtool/cgi/changegame.cgi<!--CHANGECGIBASESTOP-->
+<!--UPDATEGAMEURLSTART-->http://ed.webtv.net/~tpark/new/crosswordtool/cgi/updategame.cgi<!--UPDATEGAMEURLSTOP-->
+<!--DBURLSTART-->jdbc:msql://ed.webtv.net:1114/crossword<!--DBURLSTOP-->
+<!--OUTPUTDIRSTART-->/usr/local/etc/httpd/htdocs/tpark/public_html/crosswordpub/<!--OUTPUTDIRSTOP-->
+<!--EDITOREMAILSTART-->tpark<!--EDITOREMAILSTOP-->
+<!--MAILEDITORURLBASESTART-->http://ed.webtv.net/~tpark/new/crosswordtool/cgi/maileditor.cgi<!--MAILEDITORURLBASESTOP-->
+<!--MAILREVIEWTEAMURLBASESTART-->http://ed.webtv.net/~tpark/new/crosswordtool/cgi/mailreview.cgi<!--MAILREVIEWTEAMURLBASESTOP-->
+<!--GAMEURLBASESTART-->http://ed.webtv.net/~tpark/new/crosswordpub/<!--GAMEURLBASESTOP-->

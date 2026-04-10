@@ -1,0 +1,39 @@
+<html>
+
+<title>WebTV Space Race</title>
+<head>
+	<script language="JavaScript">
+
+	function Play(sound) {
+
+		if (sound == null) {  
+            return;
+		}
+		else {
+			sound.play(false);
+		}
+	}
+	</script>
+	
+</head>
+
+<bgsound src="sounds/archer.zip" eesrc="http://www.woofie.com/wtv/midi/webtv/sogrand.mid" loop=false>
+
+<body hspace=0 vspace=0 fontsize=medium valign=top  bgcolor=#000000 text=#cccccc credits="credits.html" noscroll >
+<SCRIPT Language=Javascript>
+var userAgent=navigator.appName + " " + navigator.appVersion;
+
+if (userAgent.indexOf("Plus") >0 ) {
+	document.write("<display noscroll nostatus showwhencomplete >");
+} else {   
+	document.write("<display noscroll showwhencomplete >");
+}
+</SCRIPT>
+
+	<basefont size=4>
+
+	<A HREF="enter.html"><embed src="flash/flyin2rings.zip" loop=false autostart=true name="video"></A>
+</body>
+	
+</html>
+<!-- onload='Play(document.video);' -->

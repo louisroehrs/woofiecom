@@ -1,0 +1,134 @@
+------------------------------------------------------------------------------
+                         LICENSE INFORMATION
+------------------------------------------------------------------------------
+
+                             MIDI Studio 
+                    Unregistered Shareware Version
+
+End-users of the unregistered versions of MIDI Studio, by Sounds Great 
+Software, are licensed to use this software on a trial basis for their 
+approval. If the user decides to keep and use this software, the user must 
+register the program by completing and sending an order form. 
+An order form included in orderfrm.txt.
+
+BBS Sysops: This program may be freely distributed over BBS systems. Any 
+and all modifications of files included in the package are prohibited. 
+Small additions to the product are acceptable.
+
+Vendors, BBS Sysops, Distributors, Computer Clubs and User Groups wishing to
+add the software product to their library may do so in accordance with the
+Distribution Restrictions listed below.
+
+Limited distribution License: As the exclusive copyright holder
+for this software, Sounds Great Software authorizes distribution only in
+accordance with the following restrictions.
+
+        - Vendors choosing to distribute this software must contact
+          Sounds Great Software.
+
+        - Vendors that have purchased REGISTERED versions of the
+          software will be the first to receive:
+
+			- UPDATES / NEW RELEASES
+			- NEW PRODUCT RELEASES
+
+        - This software product is defined as containing all the 
+          material listed in the "PACKING.TXT" file.
+          If any files listed in the "PACKING.TXT" file are 
+          missing, then this product is not complete and may not be
+	  distributed. Please contact us to obtain a complete product
+          suitable for distribution.
+
+        - Small additions to the product, such as the introductory or 
+          installation batch files used by many shareware disk vendors,
+          are acceptable.
+
+        - No price or other compensation may be charged for this software 
+          product. It must be clear that anything paid to the disk vendor
+	  covers distribution only. 
+
+        - The publisher's name, Sounds Great Software, must appear in all 
+	  ads and promotions including the name of the software product.
+
+
+ DISK SETS and CD-ROMs: 
+------------------------
+
+       - This software product CANNOT be sold as part of some other
+         inclusive product without a written agreement from
+         Sounds Great Software.
+
+       - Vendors who wish to distribute this software as part of a
+         collection must obtain perrmission from Sounds Great 
+         Software PRIOR TO BEGINNING SUCH A DISTRIBUTION. 
+
+       - This software product cannot be "rented" or "leased" to 
+         others.
+
+       - You may not list any of our products in advertisements, 
+         catalogs, or other literature which describes our products 
+         as "FREE SOFTWARE".  Shareware is "Try-Before-You-Buy" 
+         software, it is not free.  You may not list any of our 
+         products in advertisements, catalogs, or other literature 
+         which describes our products as "PUBLIC DOMAIN SOFTWARE". 
+         This is copyrighted material.  It is not, and never has 
+         been, in the public domain.
+
+       - Licensee shall not use, copy, rent, lease, sell, modify, 
+         recompile, disassemble, otherwise reverse engineer, or
+         transfer the licensed program except as provided in this
+         agreement.  Any such unauthorized use shall result in
+         immediate and automatic termination of this license in 
+         addition to other remedies available to Sounds Great 
+         Software at law.
+
+       - All rights not expressly granted here in are reserved to
+         Sounds Great Software.
+
+
+Feedback:
+--------------------------------
+
+We would appreciate copies of anything you print regarding this 
+software.  Please send us a copy of any reviews, articles, 
+catalog descriptions, or other information you print or distribute 
+regarding this software product. 
+
+                       Sounds Great Software
+                        2723 Morley Tr N.W.
+                         Calgary, Alberta
+			  Canada T2M 4G8 
+
+                      Compuserve ID: 74021,31
+
+LIMITED WARRANTY AND DISCLAIMER
+
+SOUNDS GREAT SOFTWARE WARRANTS THAT ITS DISKS ARE FREE FROM DEFECTS FOR 
+90 DAYS AND WILL REPLACE ANY DEFECTIVE DISKS WITHIN THAT TIME PERIOD 
+UPON RECEIPT OF SUCH DEFECTIVE DISKS, POSTAGE PREPAID.  SOUNDS GREAT 
+SOFTWARE FURTHER WARRANTS THAT THIS SOFTWARE WILL PERFORM SUBSTANTIALLY 
+IN ACCORDANCE WITH ANY WRITTEN GUARANTEES PUBLISHED BY SOUNDS GREAT 
+SOFTWARE.
+
+SOUNDS GREAT SOFTWARE DISCLAIMS ALL OTHER WARRANTIES RELATING TO THIS 
+SOFTWARE, WHETHER EXPRESS, IMPLIED, STATUTORY OR IN ANY COMMUNICATION 
+WITH YOU, AND SPECIFICALLY DISCLAIMS ANY IMPLIED WARRANTY OF 
+MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE OR USE. SOUNDS GREAT 
+SOFTWARE DOES NOT WARRANT THAT THE OPERATION OF THIS SOFTWARE WILL BE 
+UNINTERRUPTED OR ERROR-FREE.
+
+LIMITATION OF LIABILITY
+
+IN NO EVENT WILL SOUNDS GREAT SOFTWARE BE LIABLE FOR ANY DAMAGES, 
+INCLUDING LOSS OF DATA, LOST PROFITS, COST OF COVER OR OTHER SPECIAL, 
+INCIDENTAL, CONSEQUENTIAL OR INDIRECT DAMAGES ARISING FROM THE USE OR 
+ATTEMPTED USE OF THIS SOFTWARE OR ACCOMPANYING DOCUMENTATION, HOWEVER 
+CAUSED AND ON ANY THEORY OF LIABILITY.
+
+THIS LIMITATION WILL APPLY EVEN IF SOUNDS GREAT SOFTWARE HAS BEEN 
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  UNDER NO CIRCUMSTANCES 
+SHALL THE LIABILITY OF SOUNDS GREAT SOFTWARE EXCEED THE ACTUAL AMOUNT 
+PAID TO AND RECEIVED BY SOUNDS GREAT SOFTWARE IN CONNECTION WITH THE 
+PARTICULAR COPY OF THE SOFTWARE IN QUESTION.
+
+

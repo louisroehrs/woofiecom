@@ -1,0 +1,366 @@
+
+	<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+	<META NAME="author" Content="Louis Roehrs   Big Woofie Studios http://www.woofie.com">
+	<META NAME="reply-to" content="louiswoofie.com">
+	<META NAME="copyright" content="1997-1998 Louis Roehrs Big Woofie Studios http://www.woofie.com">
+	<META NAME="keywords" Content="beer, ski reports, movies, tahoe, alpine, squaw, colorado, snow report, books, extreme skiing, snow conditions, road conditions, weather report for the mountains"
+	<META NAME="description" CONTENT="Your winter sports destination for getting to Tahoe and having a blast with great beer selections!">
+	<META NAME="robots" content="index,follow">
+	<META NAME="revisit-after" content="15">
+
+<TITLE>Big Woofie Ski and Beer Report for Tahoe and Colorado</TITLE>
+</HEAD>
+
+
+<SCRIPT LANGUAGE="JavaScript">
+
+<!-- Beginning of JavaScript -
+
+chk = 'if (top.root == null) {top.location = "toc.html"} else {';
+
+function element(objName, name, location, modified)
+{
+  this.objName = objName;
+  this.open = false;
+  this.name = name;
+  this.icon = null;
+  this.location = location;
+  this.modified = modified; //new Date(modified)
+  this.attribute = null;
+  this.kid = null;
+  this.nextPeer = null;
+  this.parent = null;
+  this.addKid = addKid;
+  this.addPeer = addPeer;
+  this.draw = draw;
+  this.drawmain = drawmain;
+  this.drawmainkids = drawmainkids;
+  this.rcat = rcat;
+}
+
+
+
+
+    
+function addPeer(item)
+{
+  if (this.nextPeer != null) {
+    this.nextPeer.addPeer(item);
+  } else {
+    this.nextPeer = item;
+  }
+  item.parent = this.parent;
+}
+
+function addKid(item)
+{
+  if (this.kid != null)
+  {
+    this.kid.addPeer(item);
+  }
+  else
+  {
+    this.kid = item;
+  }
+  item.parent = this;
+}
+
+function open(item) {
+    if (root ==null) {
+      outline;
+    }
+    item.open = true;
+}
+
+function close (item) {
+    if (root ==null) {
+      outline;
+    }
+    item.open = false;
+}
+
+
+function draw()
+{
+  if (this.kid == null) {
+    print("\n<DT><IMG SRC='images/bul.gif' HEIGHT = 7 WIDTH = 14>");
+    if (this.location != null) {
+      print("<A HREF ='javascript:top.docdrawobj( \"" + this.objName + "\" ) ' >" + this.name + "</A>");
+         }
+      else {
+        print(this.name);
+        }
+    if (this.nextPeer != null) {
+      this.nextPeer.draw();
+      }    
+      else {
+        print("</DL>");
+        return;
+        }
+    }
+    else {
+      if (this.open) {
+        print("\n<DT><A HREF='javascript:" + chk + "top.close(top." + this.objName+ ");top.redraw()}'>");
+        print("<IMG SRC='images/minus.gif' HEIGHT = 10 WIDTH = 20 BORDER = 0></A>");
+        if (this.location != null) {
+          print("<A HREF ='javascript:top.docdrawobj( \"" + this.objName + "\" ) '>" + this.name + "</A> <DL>");
+          }
+          else {
+            print(this.name+"<DL>");
+            }
+        this.kid.draw()
+        if (this.nextPeer != null) {
+          this.nextPeer.draw();
+        }    
+        else {
+          print("</DL>");
+          }
+      }
+      else {
+        print("\n<DT><A HREF='javascript:" + chk + "top.open(top."+ this.objName + ");top.redraw()}'>");
+        print("<IMG SRC='images/plus.gif' HEIGHT = 10 WIDTH = 20 BORDER = 0></A>");
+        if (this.location != null) {
+          print("<A HREF ='javascript:top.docdrawobj( \""  + this.objName + "\" );"+chk+"top.open(top."+ this.objName + ");top.redraw()}'>" + this.name + "</A>");
+          }
+          else {
+            print(this.name);
+            }
+        if (this.nextPeer != null) {
+          this.nextPeer.draw();
+        }    
+        else {
+          print("</DL>");
+          }
+      }
+    }
+}
+
+function drawmain() {
+	top.right.document.open();
+  	top.right.document.clear();
+	printr("<body bgcolor=ffff77><CENTER><BR><BR><BR><table border=0><tr><td><h2>"+this.name+"</h2><Ul>\n");
+	if (this.kid == null) {
+    	return; 
+    } else {
+		this.kid.drawmainkids();
+	}
+	printr("</Ul></td></tr></table></CENTER></body>");
+	top.right.document.close();
+}
+
+function drawmainkids()
+{
+	if (this.location != null) {
+		printr("\n<A HREF=" + this.location + ">"+this.name+"</a><BR>");
+    	
+        } else {
+            printr(this.name+"<BR>");
+        }
+        if (this.nextPeer != null) {
+          	this.nextPeer.drawmainkids();
+        }    
+        else {
+          return;
+        }
+      
+   
+
+}
+    
+function print(text)
+{
+<!-- navigator.appVersion.lastIndexOf('Win') == -1 && navigator.appVersion.lastIndexOf('2.0') == -1 -->
+if (true) {
+  top.out.document.write(text);
+  }
+  else {
+    top.out.print(text);
+  }
+}
+
+function printr(text)
+{
+<!-- navigator.appVersion.lastIndexOf('Win') == -1 && navigator.appVersion.lastIndexOf('2.0') == -1 -->
+if (true) {
+  top.right.document.write(text);
+  }
+  else {
+    top.right.print(text);
+  }
+}
+
+function redraw()
+{
+<!-- navigator.appVersion.lastIndexOf('Win') == -1 && navigator.appVersion.lastIndexOf('2.0') == -1 -->
+
+if (true) {
+  top.out.document.open();
+  top.out.document.clear();
+  dr();
+  top.out.document.close();
+  }
+  else {
+     top.out.location = "winhack.html";
+    }
+}
+
+function docdrawoff(objName)
+{
+if (navigator.appVersion.lastIndexOf('Win') == -1 &&
+navigator.appVersion.lastIndexOf('2.0') == -1) {
+
+  top.right.document.bgColor='#ff0000';
+    }
+}
+
+function resolvecat(objName)
+{
+   // 	top.debug.document.open();
+    	return top.root.rcat(objName);
+}
+
+function rcat(objName) {
+
+  if (this.objName == objName) {
+   // 	top.debug.document.write("Returning:" +  this.name + "\n");
+    	return this;
+    }
+  else {
+
+    if (this.kid != null)  {
+   // 	top.debug.document.write("Entering Kid:" +  this.kid.name +"\n");
+    	if (null != (real = this.kid.rcat(objName))) {
+    	    return real ;
+    	}
+    }
+
+    if (this.nextPeer != null) {
+    //	top.debug.document.write("Entering Peer:" + this.nextPeer.name + "\n");
+    	return this.nextPeer.rcat(objName);
+    }
+    return null;
+  }
+}
+
+function docdrawobj(objName)
+{
+<!-- navigator.appVersion.lastIndexOf('Win') == -1 && navigator.appVersion.lastIndexOf('2.0') == -1-->
+	if (true) {
+		top.right.location = (resolvecat(objName)).location;
+   }
+}
+
+function ddo(obj)
+{
+
+    if (obj == null) {
+    	top.right.document.write("no objects\n");
+    }
+    if (obj.parent != null) {
+    	ddo(obj.parent);
+    }
+    top.right.document.write("<a HREF='javascript:top.addsubform( \"" +obj.objName + "\" )'><IMG SRC='images/addsub.gif' border=0 align=right></a> ");
+    top.right.document.write("<a HREF='javascript:top.addattrform( \"" +obj.objName + "\" )'><IMG SRC='images/addattr.gif' border=0 align=right></a> ");
+
+    top.right.document.write("<h1>" + obj.name + "</h1>\n");
+    if (obj.attribute != null) {
+    drawattr(obj);
+    }
+
+}
+
+function docdraw(objName)
+{
+<!-- navigator.appVersion.lastIndexOf('Win') == -1 &&navigator.appVersion.lastIndexOf('2.0') == -1 -->
+
+if (true) {
+
+  top.right.document.open();
+  top.right.document.clear();
+
+  top.right.document.write("<H1>" + objName + "</h1>\n");
+  top.right.document.close();
+  }
+  else {
+     top.right.location = "winhack.html";
+    }
+}
+
+
+function outline()
+{
+root = new element("root","Home", "main.html", "Sep 4 00:16");
+root.addPeer(news = new element("news", "News", "http://headlines.isyndicate.com/rcscript/?user=f7iha9s6&vfc=FF0022&dd=no&hbc=000080&ibc=ffffff&hfc=00ff00&ifc=0000ff&bc=000030&bgc=000030&hg=http://www.woofie.com/images/headlinenews.gif&burl=http://www.woofie.com&dt=Sports%20News&hfs=2&bfs=2&hff=arial,helvetica&iff=timesnewroman&ifs=2", "Sep 4, 00:14"));
+root.addPeer(report = new element("report", "Ski Report", "http://www.aminews.com/skireport/NorthernCalifornia.html", "Sep 4, 00:14"));
+root.addPeer(weat = new element("weat", "Weather",  "javascript:top.weat.drawmain();",  "Sep 400:16"));
+
+weat.addKid(new element("incoming",  "Incoming",  "http://www-atm.ucdavis.edu/~wxauto/fos/fpus/zones/CAZ072",  "Sep 4 00:16"));
+weat.addKid(new element("now", "Now",  "http://www-atm.ucdavis.edu/~wxauto/fos/fpus/FPUS75.KREV",  "Sep 4 00:16"));
+weat.addKid(new element("radar", "Radar", "http://www.woofie.com/sports/black.html?URL=http://208.194.150.49/weather/sfo/radar.wsi;rno;regrad", "Sep 9 15:21"));
+weat.addKid(new element("sat", "Satellite", "http://www.woofie.com/sports/black.html?URL=http://wxp.atms.purdue.edu/maps/satellite/sat_ir_enh_west.gif", "Sep 9 15:21"));
+
+root.addPeer(road = new element("road", "Roads",  "http://www.dot.ca.gov/hq/roadinfo/tahoe.htm",  "Sep 400:16"));
+road.addKid(new element("I80", "I-80",  "http://www.dot.ca.gov/hq/roadinfo/i80","Sep 4 00:16"));
+root.addPeer(area = new element("area", "Ski Areas",  "main.html",  "Sep 4 00:16"));
+area.addKid(new element("alpi",  "Alpine",  "http://www.skialpine.com",  "Sep 4 00:16"));
+area.addKid(new element("heav", "Heavenly",  "http://www.skiheavenly.com",  "Sep 4 00:16"));
+area.addKid(new element("rose", "Mt. Rose", "http://www.mtrose.com", "Sep 9 15:21"));
+area.addKid(new element("love", "Loveland", "http://www.skiloveland.com", "Sep 9 15:21"));
+area.addKid(new element("north", "Northstar", "http://www.skinorthstar.com/winter", "Sep 9 15:21"));
+area.addKid(new element("squaw", "Squaw Valley", "http://www.squaw.com", "Sep 9 15:21"));
+area.addKid(new element("vail", "Vail", "http://www.snow.com/vail", "Sep 9 15:21"));
+root.addPeer(cams = new element("cams", "Live Cams", "main.html", "Sep 4 00:17"));
+cams.addKid(new element("alpinecam", "Alpine (dead)",  "http://www.woofie.com/sports/black.html?URL=http://www.extremetahoe.com/mtncam/alpine_cam.jpg",  "Sep 4 00:16"));
+cams.addKid(new element("lakecam", "Lake Tahoe (dead)",  "http://www.woofie.com/sports/black.html?URL=http://incline.iwn.com/tahoe.jpg",  "Sep 4 00:16"));
+cams.addKid(new element("renocam", "Reno (yep!)",  "http://www.woofie.com/sports/black.html?URL=http://www.realtimeweather.com/capture/88.jpg",  "Sep 4 00:16"));
+cams.addKid(new element("donnercam", "Donner Pass (yep! it works)",  "http://www.woofie.com/sports/black.html?URL=http://donner.iwn.com/donner.jpg",  "Sep 4 00:16"));
+cams.addKid(new element("heavcam", "Heavenly (weenies, broke it)",  "http://www.woofie.com/sports/black.html?URL=http://www.rsn.com/cams/tahoe/QuickEdit/text_1/text_1/data/image/image_14774/data/image_14774_b.jpg",  "Sep 4 00:16"));
+cams.addKid(new element("lovelandcam", "Loveland (nope)",  "http://www.woofie.com/sports/black.html?file:/C|/AWork/AWebSites/Woofie/sports/black.html?URL=http://www.9news.com/camera/photos/eoc-camera4-030398-1657-f.JPG",  "Sep 4 00:16"));
+root.addPeer(beer = new element("beer", "Beverages", "javascript:top.beer.drawmain();", "Sep 4, 00:14"));
+beer.addKid(new element("celebrator", "Celebrator", "http://celebrator.com/", "Sep 4 00:14"));
+beer.addKid(new element("spaten", "Spaten", "http://www.spatenusa.com/", "Sep 4 00:14"));
+beer.addKid(new element("bwb", "Big Woofie Brew", "uc.html", "Sep 4 00:14"));
+
+root.addPeer(stuff = new element("stuff", "Skis and Movies", "javascript:top.stuff.drawmain();", "Sep 4, 00:14"));
+
+stuff.addKid(miller = new element("miller", "Warren Miller Movies", "http://www.amazon.com/exec/obidos/external-search?mode=dvdvhs&tag=bigwoofieenterata&keyword=warren+miller+ski", "Sep 4 00:14"));
+
+miller.addKid(new element("snow", "Snow Riders", "http://www.amazon.com/exec/obidos/ASIN/6305087377/bigwoofieenterta", "Sep 4 00:14"));
+miller.addKid(new element("free", "Free Riders", "http://www.amazon.com/exec/obidos/ASIN/6305210128/bigwoofieenterta", "Sep 4 00:14"));
+miller.addKid(new element("extreme", "Extreme Skiing", "http://www.amazon.com/exec/obidos/ASIN/6302572053/bigwoofieenterta", "Sep 4 00:14"));
+
+stuff.addKid(shopping = new element("shopping", "Compare Shop", "http://www.woofie.com/save", "Sep 4 00:14"));
+
+root.addPeer(about = new element("about", "About", "javascript:top.about.drawmain();", "Sep 4, 00:14"));
+about.addKid(new element("feedback", "Feedback", "mailto:", "Sep 4 00:14"));
+about.addKid(new element("bws","Big Woofie Studios","http://www.woofie.com","Nov 17 1998"));
+
+
+
+road.open = true;
+area.open = false;
+cams.open = false;
+}
+
+function dr()
+{
+  print("<body bgcolor=yellow><CENTER><A HREF='http://www.woofie.com' TARGET='_top'><IMG SRC='../images/redpawprint.gif' WIDTH='44' HEIGHT='30' BORDER='0' HSPACE='5'></A><BR><FONT color=red SIZE='-1'><B>Big Woofie Sports</B><BR></CENTER><dL>");
+  root.draw();
+  print("</dL></FONT>");
+  print('</body>');
+
+
+}
+
+// - End of JavaScript - -->
+
+</SCRIPT>
+
+<FRAMESET COLS="25%,75%,*">
+<FRAME NAME="out" SRC="blank.html" MARGINWIDTH="2" MARGINHEIGHT="2">
+<FRAME NAME="right" SRC="main.html" MARGINWIDTH="2" MARGINHEIGHT="2">
+<FRAME NAME="debug" SRC="home.html" MARGINWIDTH="2" MARGINHEIGHT="2">
+</FRAMESET>
+
+</HTML>

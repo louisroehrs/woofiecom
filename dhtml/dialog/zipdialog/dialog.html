@@ -1,0 +1,345 @@
+
+	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--last modified on Tuesday, November 10, 1998 11:40 PM -->
+<HTML>
+
+<HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+	<META NAME="author" Content="Louis Roehrs   Big Woofie Studios http://www.woofie.com">
+	<META NAME="copyright" content="1997-1998 Louis Roehrs Big Woofie Studios http://www.woofie.com">
+	<META NAME="keywords" Content="dhtml DHTML javascript user interface design interaction design web application dialog boxes developer java j2ee ejb GUI architecture ui architect consultant television web cool woofie Web site programming CGI Perl Flash Site Design Contractor SQL"
+	><META NAME="description" CONTENT="Leading developer of internet TV games, entertainment, and properties for companies large and small located in Silicon Valley.">
+	<META NAME="robots" content="index,follow">
+	<META NAME="revisit-after" content="15">
+
+	<TITLE>Big Woofie Studios</TITLE>
+
+<!-- JAVASCRIPT FOR WINDOW -->
+<script language="JavaScript">
+
+
+<!--
+// window globals
+var popupWin = null;
+
+// OPEN WINDOW
+// options for this window are:
+// resizable,toolbar,scrollbars,menubar
+
+function startWin(url, name) {
+  popupWin = window.open(url, name,'resizable,toolbar,scrollbars,menubar,width=640,height=480');
+
+
+// focus window (only for Navigator >= 3.0)
+if ( (navigator.appName != "Microsoft Internet Explorer") && (navigator.appVersion.substring(0,1) >= "3") )
+  popupWin.focus();
+}
+
+
+
+// -->
+
+
+</SCRIPT>
+<link rel="stylesheet" href="http://www.woofie.com/style.css" type="text/css">
+
+<link rel=stylesheet type=text/css href=dialog.css>
+
+</HEAD>
+
+<BODY TEXT="#000066" LINK="#0000FF" VLINK="#000099" ALINK="#FFFF00">
+
+<FORM ACTION="http://www.amazon.com/exec/obidos/external-search" METHOD="GET">
+<CENTER>
+<table width=96% cellspacing=5 cellpadding=0 border=0>
+
+
+
+<TR><TD colspan=2 align=center>
+
+
+</TD>
+</TR>
+
+</TABLE>
+<!-- begin title block -->
+<TABLE BORDER="0" CELLPADDING="4" CELLSPACING="7" WIDTH="98%" HEIGHT="35">
+
+<TR>
+   <TD COLSPAN="2"  class=title>
+     <TABLE BORDER="0" WIDTH="100%">
+       <TR>
+	  <TD WIDTH="10%" class=title> 
+             <IMG SRC="/images/redpawprint.gif" align=bottom WIDTH="33" HEIGHT="23" BORDER="0" HSPACE="7" ></td>
+          <TD class=title>Big Woofie Studios</TD>
+       </TR>
+     </TABLE> 
+   </TD> 
+</TR>
+<!-- end title block -->
+<TR>
+
+<!-- begin left column -->
+<TD valign=top class=column>
+
+
+  <TABLE BORDER="0" CELLSPACING="0" CELLPADDING=2 WIDTH="225">
+    <TR>
+	<TD class=panelheader VALIGN="TOP">&nbsp;<a href="/index.html">Home</a> > HTML Components
+	</TD>
+   </TR>
+   <TR>
+	<TD class="panelnav"><span class=highlight>Popup Windows and Dialogs</span><BR>
+
+<!--	<a href="designgoals.html" class=articlelink>Design Goals</a><BR>
+	<a href="asecondlook.html" class=articlelink>A Second Look: Without Looking</a><BR>-->
+        <BR>
+        </td>
+   </TR>		
+        <BR>
+        </td>
+   </TR>
+   <TR>
+	<TD class=column></TD>
+   </TR>
+   <TR>
+	<TD class=panelheader VALIGN="TOP">&nbsp;Show me!</TD>
+   </TR>
+   <TR>
+	<TD class="panelnav">Click these links to see demo.<BR>
+	<a href="javascript:document.body.popupWaitingDialog()">Centered. Content from URL</a><BR>
+        <a href="javascript:dialogx = document.body.createPopupFrame('pleasewait.html','center'); dialogx.show();">Centered. Content from file
+	.</a><BR>
+        <a href='javascript:dialogx = document.body.createPopupFrame("http://www.woofie.com","absolute",300,20,400,400);dialogx.setContent();'>Positioned absolutely</a><BR>
+
+        <a href='javascript:document.body.closeDialogs();'>Close dialog box.</a>
+	
+        <BR>
+        </td>
+   </TR>
+
+
+
+
+     </TABLE>
+<!-- end left column  table-->
+   </TD>
+<!-- begin right article column -->
+
+   <TD width=90% VALIGN="TOP" class=column>
+     <TABLE BORDER="0" CELLSPACING="0" WIDTH="100%">
+      <TR>
+	<TD class=panelheader>&nbsp;DHTML Popup Windows and Dialog Boxes</TD>
+      </TR>
+      <TR>
+	 <TD class=panelblack><blockquote><BR>
+
+
+	 Click the links to the left to see the example popup windows using
+
+	 IFRAMES, DHTML, HTML component architecture.
+
+	 <BR><BR>
+
+	 This page makes use of the HTML component architecture
+
+	 available in Microsoft IE browsers from version 4 onward to 
+
+	 create and display dialog boxes.  
+
+	 <P> The advantages of the HTML component architecture include
+
+	 being able to build custom controls without using unsecure
+
+	 and hard to maintain Active-X components and encapsulating
+
+	 the behavior of the control in a single, reusable file.
+<P>
+	 
+
+	 The description and behavior
+
+	 of the dialog boxes is completely encapsulated in a file called 
+
+	 dialog.htc.  This page links in a stylesheet called dialog.css.
+	  
+	 By simply including this stylesheet into a page, the dialog box 
+
+	 behavior is instantly available.  Any page that includes this .css 
+
+	 file will be able to make javascript calls to create and set the
+
+	 content of popup windows and dialog boxes.  These windows can 
+
+	 also be included in a menu bar to create individual menus and even
+
+	 context sensitive menus.  We will use this component to build menus 
+
+	 in a later article.
+
+	 
+
+	 The code for the links is as simple as:
+<P>
+	 <tt>
+
+         &lt;a href="javascript:dialogx = document.body.createPopupFrame('pleasewait.html','center'); dialogx.show();"&gt;Centered. Content from file&lt;/a&gt;
+
+	 </tt>
+</p>
+	 This example creates a popup window in the center of the window
+
+	 that calls it and fills it with the contents of the local html file
+
+	 as given.  The frame will automatically size itself to the content
+
+	 in the html file.
+<P>
+	 <tt>
+        &lt;a href='javascript:dialogx = document.body.createPopupFrame("http://www.woofie.com","absolute",200,20,400,400);dialogx.setContent();'&gt;Positioned absolutely&lt;/a&gt;&lt;BR&gt;	 
+</tt>
+
+</P>
+
+         This next example will create a popupframe and fill it with the
+
+	 contents returned from the URL.  Instead of 'centered', the positioning 
+
+	 parameter is 'absolute' causing the frame to be positioned at the 
+
+	 coordinates listed: top, left, width, height.  If width and height
+
+	 are not given, the frame will attempt to size itself.
+
+	 
+	 <P>
+
+	 Great!  How do I do this? 
+
+	 <P>
+
+	 Simple.  Download the zip file <a href="zipdialog/dialog.zip">dialog.zip</a> containing dialog stylesheet dialog.css,  the HTML component dialog.htc, and this page and put them in the same
+
+	 directory as your page.  You will note that the dialog.htc component
+
+	 behaviour is attached to the body style in dialog.css.  One can attach
+
+	 many behaviors to any style and those properties and methods in the
+
+	 component are readily available to any element with that style.  
+
+	 <P>
+
+	 Since these are components, separate elements using the same style 
+
+	 will
+
+	 each have their own <i>instance</i> of the component.  This is a very
+
+	 powerful property of HTML components.  Each component has its own 
+
+	 variables, known as properties, separate from every other component.
+
+	 This allows one to have many instances of the same component on a 
+
+	 page at one time without having to write code to keep track of them 
+
+	 all.  Each element is a separate object with its own properties.
+
+	 <P>
+
+	 One can add and change behaviors, properties, and methods of each
+
+	 element simply by assigning a different component file via 
+
+	 the <tt>behaviour-url:</tt> property in the style for that element.
+	 
+         <P> 
+
+	 A grid could be implemented with different editors
+
+	 (defined by components) attached to different columns.  One column
+
+	 could have a pulldown component editor on every cell. Another column
+
+	 could use a simple textentry area.  A third column could use
+
+	 a completely custom component you design.
+
+
+<P>
+	 The next article will build on this simple component.
+<P> 
+
+         I will also talk about custom graphing components that take
+
+	 advantage of scalable vector graphics now available in IE.
+	 
+	 
+	
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 <P>
+         </TD>
+      </TR>
+ 
+
+</TABLE>
+
+</TD>
+
+<!-- end left column -->
+
+   </TR>
+</table>
+<!-- end all tables -->
+<table width=96% cellspacing=1 cellpadding=3 border=0>
+<TR><TD align=center>
+
+<!-- BEGIN LINKEXCHANGE CODE --> 
+<center><iframe src="http://leader.linkexchange.com/1/X850508/showiframe?" width=468 height=60 marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0 scrolling=no>
+<a href="http://leader.linkexchange.com/1/X850508/clickle" target="_top"><img width=468 height=60 border=0 ismap alt="" src="http://leader.linkexchange.com/1/X850508/showle?"></a></iframe><br><a href="http://leader.linkexchange.com/1/X850508/clicklogo" target="_top"><img src="http://leader.linkexchange.com/1/X850508/showlogo?" width=468 height=16 border=0 ismap alt=""></a><br></center> 
+<!-- END LINKEXCHANGE CODE -->
+</TD></TR></table>
+</CENTER>
+
+</FORM>
+
+</BODY>
+
+</HTML>
+
+
+
+
+
+

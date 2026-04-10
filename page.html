@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Style-Type" content="text/css">
+<TITLE>Page Us</TITLE>
+<!---- JavaScript for counting characters ---->
+
+<SCRIPT type="text/javascript" LANGUAGE="javascript" src="hidden.js">
+</SCRIPT>
+
+<SCRIPT type="text/javascript" LANGUAGE="javascript">
+
+<!--
+
+function isEmpty(s) {   
+        return ((s == null) || (s.length == 0)) 
+}
+
+var defaultEmptyOK=false;
+var foo=false;
+
+function AddAll(input)
+{
+	input.elements["pin"].value= ph(input);
+	input.elements["debug"].value= input.elements["pin"].value;
+        var f1=input.elements["message"].value;
+        var len=f1.length;
+
+        if (isEmpty(input)) 
+                if (AddAll.arguments.length == 1) return defaultEmptyOK;
+                else return (AddAll.arguments[1] == true);
+
+        if (len > 110) {
+                alert("You have entered " 
+                + len 
+                + " characters. Please shorten your message to 110 characters or less.");
+                return false;
+        }
+
+        return true;
+}
+
+//-->
+</script>
+
+<link rel="stylesheet" href="http://www.woofie.com/style.css" type="text/css">
+</HEAD>
+<BODY bgcolor="#000000" leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
+
+<BR>
+            <table border=0 cellpadding=4 cellspacing=0 width="100%">
+
+              <tr valign="top"> 
+                <td width="2%" >&nbsp;</td>
+                <td width="94%" class=column> 
+                  <FORM NAME="form1" action="http://www.mobile.att.net/messagecenter/pagersend.cgi" method="get" onSubmit="return AddAll(this)">
+                    <INPUT TYPE=HIDDEN NAME=category VALUE=personal>
+                    <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH="100%">
+
+
+                      <TR> 
+                        <TD ALIGN="left" COLSPAN="2" class=column>
+                                
+                        </TD>
+                      </TR>
+                      <TR> 
+                        <TD ALIGN="left" COLSPAN="2" class=panelheader> 
+                         
+                                  Send a Message
+                                
+                        </TD>
+                      </TR>
+
+                    <INPUT TYPE="hidden" NAME="pin" SIZE="20" value="">
+  <INPUT TYPE="hidden" NAME="debug" SIZE="20" value="">
+                      <TR  > 
+                        <TD ALIGN="right" width="14%" class=paneldark>To<B class="blackBold">:</B>&nbsp;</TD>
+                        <TD ALIGN="left" width="86%" class=paneldark><IMG SRC="images/dot.gif" WIDTH=1 HEIGHT=5 ALT="" BORDER="0"><BR>
+                          <INPUT TYPE="radio" NAME="hey" SIZE="20" Value="Louis">Louis &nbsp;&nbsp; <INPUT TYPE="radio" NAME="hey" SIZE="20" Value="Shellie">Shellie
+                          <BR>
+                          <IMG SRC="images/dot.gif" WIDTH=1 HEIGHT=5 ALT="" BORDER="0"></TD>
+                      </TR>
+
+                      <TR  > 
+                        <TD ALIGN="right" width="14%" class=paneldark>From<B class="blackBold">:</B>&nbsp;</TD>
+                        <TD ALIGN="left" width="86%" class=paneldark><IMG SRC="images/dot.gif" WIDTH=1 HEIGHT=5 ALT="" BORDER="0"><BR>
+                          <INPUT TYPE="text" NAME="from" SIZE="20">
+                          <BR>
+                          <IMG SRC="images/dot.gif" WIDTH=1 HEIGHT=5 ALT="" BORDER="0"></TD>
+                      </TR>
+ 
+
+                      <TR BGCOLOR="#FFFFCC"> 
+                        <TD ALIGN="right" width="14%" class=paneldark><span class="blackBold">Subject</span><B><span class="blackBold">:</span></B><FONT FACE="arial,helvetica,sans-serif" SIZE="-1"><span class="blackBold">&nbsp;</span></FONT></TD>
+                        <TD ALIGN="left" width="86%" class=paneldark><IMG SRC="images/dot.gif" WIDTH=1 HEIGHT=5 ALT="" BORDER="0"><BR>
+                          <INPUT TYPE="text" NAME="subject" SIZE="25">
+                          <BR>
+                          <IMG SRC="images/dot.gif" WIDTH=1 HEIGHT=5 ALT="" BORDER="0"></TD>
+                      </TR>
+
+                     <TR BGCOLOR="#FFFFCC"> 
+                        <TD ALIGN="right" VALIGN="top" width="14%" class=paneldark>Message:</TD>
+                        <TD ALIGN="left" VALIGN="top" width="86%" class=paneldark>(110-character limit)</TD>
+                      </TR>
+
+                      <TR BGCOLOR="#FFFFCC"> 
+                        <TD ALIGN="right" width="14%" class=paneldark>&nbsp;</TD>
+                        <TD  ALIGN="left" width="86%" class=paneldark> 
+                          <TEXTAREA NAME="message" COLS="30" ROWS="3" WRAP=PHYSICAL onblur="this.form.sizebox.value=this.value.length"></TEXTAREA>
+                          &nbsp;&nbsp;</TD>
+                      </TR>
+
+                      <TR BGCOLOR="#FFFFCC"> 
+                        <TD ALIGN="right" width="14%" class=paneldark>&nbsp;</TD>
+                        <TD ALIGN="left" width="86%" class=paneldark><IMG SRC="images/dot.gif" WIDTH=1 HEIGHT=5 ALT="" BORDER="0"><BR>
+				Character Count&nbsp;&nbsp;&nbsp;<INPUT TYPE="text" SIZE="3" NAME="sizebox" VALUE=0 onFocus=this.blur()>
+                        </TD>
+                      </TR>
+
+
+                      <TR BGCOLOR="#FFFFCC"> 
+                        <TD ALIGN="right" width="14%" class=paneldark><IMG SRC="images/dot.gif" WIDTH=80 HEIGHT=1 ALT="" BORDER="0"></TD>
+                        <TD ALIGN="left" width="86%" class=paneldark> <IMG SRC="images/dot.gif" WIDTH=1 HEIGHT=5 ALT="" BORDER="0"><BR>
+                          <INPUT TYPE=IMAGE SRC="images/btn_send_message.gif" WIDTH=104 HEIGHT=15 BORDER="0" ALT="Send." onclick="AddAll(this)">
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="javascript:document.forms[0].reset()"><IMG SRC="images/btn_clear_entry_fields.gif" WIDTH=127 HEIGHT=15 ALT="Clear Entry Fields." BORDER="0"></A></TD>
+                      </TR>
+
+                      <TR> 
+                        <TD COLSPAN="2" VALIGN="top"  class=paneldark HEIGHT="1">&nbsp;</TD>
+                      </TR>
+                    </TABLE>
+                  </FORM>
+                </td>
+                <td width="4%" >&nbsp;</td>
+              </tr>
+
+            </table>
+            
+</BODY>
+</HTML>
+

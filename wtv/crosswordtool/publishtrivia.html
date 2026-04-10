@@ -1,0 +1,36 @@
+<html>
+
+  <title>
+    Trivia Game Publisher Builder
+  </title>
+
+  <body>
+    <form action="http://ed.webtv.net/~tpark/triviatool/cgi/publishquestions.cgi"
+          method="post">
+      <table>
+        <tr>
+          <td>
+            Category 
+          </td>
+          <td>
+            <select name="CATEGORY">
+              <option value="entertain">Entertainment</option>
+              <option value="sports">Sports</option>
+            </select>
+          </td>
+        </tr>    
+        <tr>
+          <td>
+            ID Numbers of the questions to use, in order of appearance. 
+          </td>
+          <td>
+            <input type=text name="IDS" value=""></input>
+          </td>
+        </tr> 
+      </table>
+      <P>
+      <input type=submit value="Publish Questions">
+    </form>
+  </body>
+
+</html>

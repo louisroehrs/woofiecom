@@ -1,0 +1,90 @@
+<html>
+
+<title>WebTV MatchMate</title>
+<head>
+<script language="JavaScript">
+
+function Redirect(sURL) {{
+  window.location=sURL;
+} 
+
+function GetSelection (thisControl) {{
+	return thisControl.options[thisControl.selectedIndex].text
+}
+
+function ToPage(pageName) {{
+	var player0 =AddPrefix(document.form1.player0.value)
+	var player1 =AddPrefix(document.form1.player1.value)
+	var player2 = ""
+	var mysearch = window.location.search
+	if (mysearch != null) {{
+		var modifier= ""
+		if (mysearch.charAt(0) != "?")
+			mysearch = "?"+ mysearch;   
+	}
+	else
+	{{
+		modifier = "?"
+		mysearch = ""
+	}
+	if ((pageName == "game.tmpl") && (player1 !="") && (player0 !="") )
+		pageName = "player1.tmpl"
+	location.href=pageName+mysearch+modifier+"player0=" + player0 + "&player1=" + player1 + "&player2=" + player2
+}
+
+
+</script>
+
+</head>
+<bgsound src="sounds/patadlla.mid" loop=true>
+<body fontsize=medium background=images/full_bg1.gif
+      valign=top  bgcolor=#009933 text=#cccccc transition=zoomout
+	  credits="credits.tmpl" vspace=0 hspace=0>
+	<display noscroll nosend showwhencomplete >
+
+
+	  <form name="form1" action="game.tmpl" rel=game.tmpl method=get>
+
+<table width=100% border=0 cellpadding=0 cellspacing=0 cellborder=0>
+	<tr>
+		<td absheight=384 abswidth=166 valign=top>
+			<IMG width=8 height=6 src=/ROMCache/Spacer.gif><BR>
+			<IMG width=6 height=80 src=/ROMCache/Spacer.gif><a href="wtv-home:/home"><IMG width=104 height=80 src=/ROMCache/WebTVLogoJewel.gif></a><BR>
+			<IMG width=8 height=20 src=/ROMCache/Spacer.gif><BR>
+			<center>
+			<IMG width=8 height=196 src=/ROMCache/Spacer.gif><BR>
+			<IMG width=8 height=7 src=/ROMCache/Spacer.gif><BR>
+ 			<IMG SRC="/ROMCache/Spacer.gif" WIDTH=160 HEIGHT=30 BORDER=0 ALT=""><BR>
+			<IMG width=8 height=7 src=/ROMCache/Spacer.gif><BR>
+
+			<A Selected HREF="index.tmpl"><IMG SRC="images/button_play.gif" WIDTH=139 HEIGHT=30 BORDER=0 ALT=""></A><BR>
+			</center>
+			</td>
+		<td abswidth=394 valign=top align=left>
+			<IMG width=8 height=58 src=/ROMCache/Spacer.gif><BR>
+			<IMG width=100 height=28 src=/ROMCache/Spacer.gif><IMG SRC="images/title_credits.gif" WIDTH=138 HEIGHT=28 BORDER=0><BR>
+			<TABLE border=0 cellpadding=0 cellspacing=0 cellborder=0>
+				<TR>
+				<TD absheight=223 abswidth=40></TD>
+				<TD abswidth=184><FONT SIZE=4 COLOR=#FFFFFF><STRONG><shadow>
+				<BR>     &nbsp;<BR>&nbsp;<BR>
+				Claire Doyle<BR>
+				Bob Kernen <BR>
+				Jan Koehler<BR>
+				Jason Krupat<BR>
+				Dave Misconish<BR>
+				Louis Roehrs<BR>&nbsp;<BR></shadow></STRONG>
+				</FONT></TD>
+				<TD abswidth=160 valign=top><IMG width=8 height=23 src=/ROMCache/Spacer.gif><BR><IMG SRC="images/chester_welcome.gif" WIDTH=158 HEIGHT=198 BORDER=0></TD>
+				</TR>
+			</TABLE>
+			<IMG width=4 height=4 src=/ROMCache/Spacer.gif><BR>
+			<TABLE border=0 cellpadding=0 cellspacing=0 cellborder=0><TR><TD HREF="http://www.woofie.com/webtvad.tmpl" insetselection><IMG SRC="http://www.woofie.com/images/bws.gif" WIDTH=394 HEIGHT=71 BORDER=0></TD></TR></TABLE>
+		</td>
+  </tr>
+		
+</table>
+ </form>
+	
+</body>
+</html>

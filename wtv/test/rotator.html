@@ -1,0 +1,81 @@
+<html>
+<body>
+
+<SCRIPT LANGAUGE="JavaScript">
+
+   var nImages=2;
+   var aImageURLs = new Array(
+		"http://www.mtbinfo.com/graphics/images/logo.gif",
+		"http://www.mtbinfo.com/graphics/TABS/tabs.gif"
+                             );
+
+   var aAnchorURLs = new Array(
+		"http://www.mtbinfo.com/",
+		"http://www.news.com/"
+                             );
+
+   var iCurrImage=0;
+   var iFlipPeriod=3000;
+
+   function OnClick() {
+  
+     window.location = aAnchorURLs[iCurrImage];
+ 
+   }
+
+   function flipImage() {
+
+      iCurrImage = (iCurrImage + 1) % nImages;
+      dispImage();
+      iTimeOutID = window.setTimeout("flipImage()", iFlipPeriod);
+
+   }
+
+   function dispImage(iImage) {
+
+      document.rotator.src = aImageURLs[iImage];
+
+   }
+
+   iTimeOutID = window.setTimeout("flipImage()", iFlipPeriod);
+ 
+   function onMouseOver(iButtonNum) {
+      
+      clearTimeOut(iTimeOutID);
+      iCurrImage = iButtonNum;
+      dispImage(iCurrImage)
+	
+   }
+
+   function onMouseOut(iButtonNum) {
+
+     flipImage();
+
+   }
+
+</SCRIPT>
+
+<a name=rotatoranchor href="javascript:OnClick()">
+<img width=40 height=40 src="image0.gif" 
+     name=rotator>
+</a>
+
+<a name=button0 onMouseOver="onMouseOver(0)" onMouseOut="onMouseOut(0)" href="javascript:OnClick()">
+<img width=40 height=40 src="button0.gif" 
+     name=rotator>
+</a>
+<a name=button1 onMouseOver="onMouseOver(1)" onMouseOut="onMouseOut(1)" href="javascript:OnClick()">
+<img width=40 height=40 src="button1.gif" 
+     name=rotator>
+</a>
+<a name=button2 onMouseOver="onMouseOver(2)" onMouseOut="onMouseOut(2)" href="javascript:OnClick()">
+<img width=40 height=40 src="button2.gif" 
+     name=rotator>
+</a>
+<a name=button3 onMouseOver="onMouseOver(3)" onMouseOut="onMouseOut(3)" href="javascript:OnClick()">
+<img width=40 height=40 src="button3.gif" 
+     name=rotator>
+</a>
+
+</body>
+</html>

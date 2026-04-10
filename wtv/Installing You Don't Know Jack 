@@ -1,0 +1,478 @@
+      Installing You Don't Know Jack on a WebTV Plus Internet Receiver
+
+Jack Palevich
+palevich@corp.webtv.net
+(650)614-8441
+
+Version 0.2
+ 
+This document is WebTV Confidential.
+
+Introduction
+
+This document explains how to install You Don't Know Jack on a WebTV Plus
+Internet receiver.
+
+This process is a little complicated. That's because You Don't Know Jack is
+not yet deployed on WebTV's service. The final public process will be much
+simpler.
+
+What you need:
+
+   * A WebTV Plus Internet receiver. This won't work with a regular WebTV
+     Classic Internet receiver. If you are not sure what kind of WebTV you
+     have, look on the back. If it has a video in port, it is a WebTV Plus
+   * A TV set.
+   * A normal phone line. (It's OK if you have to dial '9' first.)
+   * About two hours of time. (Fortunately, the box does not have to be
+     attended during the download -- you can go and do something else while
+     the software downloads.)
+
+Well, it's more complicated that I would like it, but I think if you follow
+these directions, you should make it through OK.
+
+What you will do:
+
+  1. Set up your WebTV Plus Internet receiver.
+  2. Find out what kind of application ROM it has
+  3. Get an Internal 2.1 application ROM:
+       1. Connect to the regular WebTV service. (5 minutes)
+       2. Log on to the regular service "WebTV Tricks" page. (2 minutes.)
+       3. Download an internal 2.1 application ROM. (20 minutes.)
+  4. Get an Internal 2.2 application ROM
+       1. Connect to the Daily service. (5 minutes)
+       2. Log on to the Daily service "WebTV Tricks" page. (2 minutes.)
+       3. Download an internal 2.2 application ROM (20 minutes)
+  5. Get the game software
+       1. Connect to the special Beta WebTV Games service. (5 minutes.)
+       2. Subscribe to "You Don't Know Jack" (2 minutes.)
+       3. Download the "You Don't Know Jack" software. (60 minutes).
+
+         For WebTV Employees: If your WebTV Plus is already
+         connected to the Daily service, you can start at step 4.
+         If you already have an internal application ROM, you can
+         start at step 5.
+
+Step 1: Setting up your WebTV Plus Internet receiver
+
+Read the manual that came with your WebTV Plus Internet receiver to learn
+how to set it up. It's a lot like a VCR -- except that it also has to hook
+into the phone line.
+
+Step 2: Identifying the currently installed application ROM
+
+The first step is to identify what kind of application ROM you currently
+have installed in your WebTV Plus box. This is easy to do by using the 411
+secret code:
+
+  1. Power off the WebTV Box.
+  2. Wait for the disk to quiet down. (That is, for the disk head to stop
+     seeking.) It is OK for the disk motor to still be spinning.
+  3. Type the secret code 411.
+  4. If you typed the code correctly, the boxes lights will flash for a
+     brief period of time.
+  5. If the box lights didn't flash, press the Option key, and then enter
+     the secret code again.
+  6. Press the Web power button.
+
+You should see a page titled "WebTV Technical Information". Look at the line
+that says "Client:"
+
+                          Here's what that means:
+                                      
+
+ Client                                      Meaning
+ 2.1 (Version 3063)  or any number less than
+ 3063                                        Production 2.1 application ROM
+ 2.1 (Internal, non-debug) (build 3063)
+ (Version 3063)                              Internal 2.1 application ROM
+ 2.2 Internal (Build 3356) or any number
+ greater than 3356                           Internal 2.2 application ROM
+
+In order to play "You Don't Know Jack", you must have an Internal 2.2
+application ROM. In order to get that, you have to have an internal 2.1 ROM.
+So, if you currently have a production 2.1 application ROM, you'll have to
+first get the
+
+Step 3: Get an Internal 2.1 application ROM
+
+Assuming that you have a regular WebTV Plus ROM, the first step is to get an
+internal 2.1 application ROM so that you can connect to
+
+Connecting to the regular WebTV service
+
+When you first turn on the WebTV box it will connect to the WebTV service.
+
+If the WebTV box has trouble connecting, check if you need to dial "9" to
+get to an outside line. If you do, then you will have to use the "Basic"
+phone settings to configure this feature.
+
+Once you have connected to WebTV, you will be presented with a short
+tutorial on how to use the remote control.
+
+After the tutorial, you will be asked to sign up for the service. There are
+several options, but basically you have to pay $20 per month.
+
+Once you have gone through the sign-up process, you will arrive at the "Web
+Home Page".
+ 
+
+Logging on to the WebTV Tricks page
+
+Once you have connected to the WebTV service, the next step is to log onto
+the WebTV Tricks page. This is a special page that is used by WebTV and its
+business partners.
+
+Do the following to log on to the WebTV Tricks page:
+
+  1. Go to the Web Home page on the service.
+  2. Press the GoTo button, which is located in the upper right-hand corner
+     of the WebTV keyboard.
+  3. A "Address:" dialog box will pop up. If it doesn't, make sure that
+     you're on the Web Home page, not the TV Home page.
+  4. Type backspace several times, to erase the "http://" that's already
+     typed into the box for you.
+  5. Type: wtv-tricks:tricks
+  6. Press "Return".
+  7. You will see a page asking for a password.
+       1. In order to access WebTV Tricks you need a password.
+       2. The password changes occasionally.
+       3. If you are a Bezerk or Jellyvision employee, call Jack Palevich
+          (650)614-8441 to get the current password.
+       4. Do not give out the password to anyone.
+  8. Typing the correct password will take you to a page that has a number
+     of links.
+
+Downloading an internal 2.1 application ROM
+
+Now that you are logged on to the WebTV Tricks page, you can download an
+internal application ROM. An internal application ROM is required for two
+reasons:
+
+  1. It has the ability to launch client-side games, such as You Don't Know
+     Jack.
+  2. It has the ability to connect to beta servers, such as the Beta Games
+     server.
+
+To download an internal application ROM, do the following:
+
+  1. Choose the link "Visit Big Willie's". Hit Enter to go to "Big Willie's
+     Flash ROM Download Center".
+  2. Choose the link "2.1 Internal, nondebug, app ROM needs boot 2039 (build
+     3063)".
+  3. Wait about 15 minutes. for the page to download.
+  4. You will see an "Updating complete" page.
+  5.
+     Press the Web Power button to turn off the WebTV Plus.
+
+Step 4: Getting an Internal 2.2 application ROM
+
+ The next step is to use the internal 2.1 application ROM to connect to the
+   "Daily" WebTV service. The Daily WebTV service is where you can get the
+                        latest 2.2 application ROMs.
+                                      
+
+                  Plan on updating your 2.2 application
+                  ROM at least once a week during the
+                  beta cycle.
+
+ 
+
+Connecting to the Daily WebTV service
+
+Once you have downloaded an internal 2.1 application ROM, you can configure
+your box to connect to the Daily WebTV service. This is an internal service
+that is used to test new software. You need to connect to it in order to
+download the games approm. You do this as follows:
+
+  1. Make sure the box is turned off, but still connected to the power.
+  2. While the box is turned off, type the following "secret code" on the
+     keyboard: 93288
+  3. If you did that right, the 3 LEDs will flash briefly. If the LEDs did
+     not flash, press the "Option" key, and then try again.
+  4. Once you have entered the secret code correctly, turn on the box by
+     pressing the "Web Power" button on the keyboard.
+  5. Instead of the normal "TV Home" page, you will see a "Connection
+     Configuration" page.
+       1. The defaults are correct for what we want to do. Don't change any
+          of the values.
+       2. Select the "Connect" button and press "Return".
+  6. Wait for a connection to the Daily WebTV service.
+
+Once you have connected to the Daily service, you will be asked to sign up
+for the service again. Type in "auto" for your first name to skip the
+sign-up process. You will receive a made-up name and address. You won't be
+billed for this second account. By the way, the "auto" short-cut is only
+available because you're running an internal application ROM and connected
+to an internal service.
+
+Logging on to the WebTV Tricks page
+
+Once you have connected to the Daily WebTV service, the next step is to log
+onto the Daily WebTV Tricks page. This is a special page that is used by
+WebTV and its business partners.
+
+Do the following to log on to the Daily WebTV Tricks page:
+
+  1. Go to the Web Home page on the service.
+  2. Press the GoTo button, which is located in the upper right-hand corner
+     of the WebTV keyboard.
+  3. A "Address:" dialog box will pop up. If it doesn't, make sure that
+     you're on the Web Home page, not the TV Home page.
+  4. Type backspace several times, to erase the "http://" that's already
+     typed into the box for you.
+  5. Type: wtv-tricks:tricks
+  6. Press "Return".
+  7. You will see a page asking for a password.
+       1. In order to access WebTV Tricks you need a password.
+       2. The password changes occasionally.
+       3. If you are a Bezerk or Jellyvision employee, call Jack Palevich
+          (650)614-8441 to get the current password.
+       4. Do not give out the password to anyone.
+  8. Typing the correct password will take you to a page that has a number
+     of links.
+
+Downloading an internal 2.2 application ROM
+
+Now that you are logged on to the Daily Service's WebTV Tricks page, you can
+download an internal 2.2 application ROM. An internal 2.2 application ROM is
+required for two reasons:
+
+  1. It has the ability to launch client-side games, such as You Don't Know
+     Jack.
+  2. It has the ability to connect to internal servers, such as the Beta
+     Games server.
+
+To download an internal 2.2 application ROM, do the following:
+
+  1. Choose the link "Visit Big Willie's". Hit Enter to go to "Big Willie's
+     Flash ROM Download Center".
+  2. Choose the pop-up menu "2.2 English (US) Builds..."
+  3. Choose the largest, top-most number. It should be 3355 or greater.
+  4. Choose the link "nondebug", in the "DAILY" row.
+  5. Wait about 15 minutes for the download to complete.
+  6. You will see a page titled "Updating complete".
+  7. Power off the WebTV box.
+
+Step 5: Getting the Game Software
+
+Now that we have an internal 2.2 application ROM, we can finally download
+and play the games. But, we need to connect to yet another service.
+
+Connecting to the Beta WebTV Games service
+
+Once you have downloaded an internal 2.2 application ROM, you can configure
+your box to connect to the Beta WebTV Games Service. You do this as follows:
+
+  1. Make sure the box is turned off, but still connected to the power.
+  2. While the box is turned off, type the following "secret code" on the
+     keyboard: 93288
+  3. If you did that right, the 3 LEDs will flash briefly. If the LEDs did
+     not flash, press the "Option" key, and then try again.
+       1. If it just doesn't seem to work, you may not have an internal ROM.
+          Try downloading an internal ROM again.
+  4. Once you have entered the secret code correctly, turn on the box by
+     pressing the "Web Power" button on the keyboard.
+  5. Instead of the normal "TV Home" page, you will see a "Connection Setup"
+     page.
+       1. Choose the radio button "Custom:".
+       2. Enter the Address: 172.17.64.127
+       3. Enter the port address 24315
+       4. Select the "Connect" button and press "Return".
+  6. Wait for a connection to the Beta WebTV Games service.
+       1. If you can't get connected, call Jack to make sure that the Beta
+          Games service is running OK.
+
+Once you have connected to the Beta WebTV Games service, you will be asked
+to sign up for the service again. Type in "auto" for your first name to skip
+the sign-up process. You will receive a made-up name and address. You won't
+be billed for this third account. By the way, the "auto" short-cut is only
+available because you're connected to an internal service.
+
+Once the sign-up process is complete you will be sent to the Web Home Page
+of the Beta WebTV Games service.
+
+In the future, each time you connect to the web you will be connected to the
+Beta WebTV Games service.
+
+Subscribing to You Don't Know Jack
+
+Once you are connected to the Web Home Page of the Beta WebTV Games service,
+you can subscribe to You Don't Know Jack.
+
+To subscribe, follow these steps:
+
+  1. Click on the "Using WebTV" link that's located on the left-hand-side of
+     the home page.
+  2. Click on the "Customize WebTV" link that's located 1/2 way down the
+     right-hand side of the Setup page.
+  3. Click on the "Games" link located half way down the right-hand column.
+       1. If you don't see a Games link, you are not connected to the Beta
+          Games WebTV Service. Go to the "Connecting to the Beta Games WebTV
+          Service" section.
+  4. Click on the "Enable Games" radio button.
+  5. Click on "Continue"
+  6. Enable the "You Don't Know Jack" checkbox.
+  7. If you want, you can click on the other game checkboxes too. You can
+     also return to this page later to add or remove games.
+  8. Click on "Continue"
+  9. Make sure that "Auto update" is enabled. (It should be, by default.)
+ 10. Click on "Continue".
+ 11. Retrieving Files. Wait about an hour to download the game software.
+
+It takes quite a while to download You Don't Know Jack. The exact time
+depends upon which software is already on your box. If you already have all
+the software on your box, it will take as little as 20 seconds to verify
+that everything's OK. If you have nothing on your box yet, it might take as
+much as an hour and a half.
+
+Once the software has been downloaded, you will see a status page that
+explains whether the process succeeded or failed.
+
+   * If you failed, press the "Home" key to return to the Web Home Page and
+     try subscribing to "You Don't Know Jack" again.
+   * If you succeeded, press Continue to go to the games page.
+   * Once you are on the games page, power off the WebTV Plus Box.
+
+                                      
+
+                  Warning: Some users are experiencing
+                  difficulty installing YDKJ. If you
+                  experience trouble, please let me know.
+
+ 
+
+Playing You Don't  Know Jack
+
+Once you've subscribed to games and downloaded the You Don't Know Jack
+software, a Games link will appear on the TV Home Page.  The Games link is
+located to the left of the TV window. If you don't see a Games link, go to
+the section "Subscribing to You Don't Know Jack".
+
+Select the Games link and press return to go to the Games page.
+
+The Games page shows which games you have installed. There should be a "You
+Don't Know Jack" link. Select it and press Return to start "You Don't Know
+Jack". The screen will go blank for about 20 seconds, and then it will go
+white as "You Don't Know Jack" begins.
+
+Quitting You Don't Know Jack
+
+Press the Esc key, and then the Q key, to quit playing "You Don't Know
+Jack". This will return you (after 20 seconds) to the TV Home Page.
+
+Turning off the WebTV Plus box
+
+Use the Power key (from the Web world or the TV Home Page)  to turn off the
+WebTV Plus box. While playing a game, Power will return you to the TV Home
+Page.
+
+Playing You Don't Know Jack again
+
+Once you've configured the box and played You Don't Know Jack once, the box
+should stay configured. Use the "Games" link off the TV Home Page to start
+playing "You Don't Know Jack".
+
+Troubleshooting
+
+   * If the box stops responding, wait a minute to see if it reboots by
+     itself. It has a hardware watchdog timer, so it should always restart.
+   * Once it restarts, wait 30 seconds, until the disk stops spinning. Then
+     press the Web Power button.
+   * If you get lost, contact Jack Palevich by phone or e-mail.
+
+Reporting bugs
+
+Report bugs by sending e-mail to palevich@corp.webtv.net. In addition, the
+box has the ability to semi-automatically log crashes.
+
+In order to automatically log a game crash, you must connect the the WebTV
+Web Home Page. Do this after the crash, but before you play another game.
+All you have to do is use the "Web Home" link from the TV Home Page, and log
+onto the service. Once you do that, you can return to the TV Home page and
+play some more games. The crash log is uploaded automatically when you
+connect to the service.
+
+Nightly Downloads
+
+If you leave the WebTV Box plugged in and connected to the phone line, and
+you have TV listing downloads enabled, your box will automatically call back
+to WebTV each night to see if there are any updates. However, currently this
+only works if you have TV Listings enabled. To check if you have TV listings
+enabled:
+
+  1. Go to the TV Home Page.
+  2. Click on Settings.
+  3. Click on Listings setup.
+  4. Follow the instructions.
+  5. Make sure that Auto retrieve is checked.
+
+If for some reason you can't leave the WebTV Plus box connected to the phone
+line, you can manually trigger a nightly download by doing the following:
+
+   * Make sure the box is connected to a phone line.
+   * Power off the box.
+   * Wait 30 seconds for the disk to stop spinning.
+   * Type in the secret code 1111.
+   * The box will automatically power on, go through a nightly download
+     cycle, and then power off again.
+
+                                      
+
+                  Please perform a manual Nightly
+                  Download cycle once a day, so that we
+                  can test out game logging, and make
+                  sure that you're running the latest
+                  version of the game software.
+
+Returning to the Production or Daily Service
+
+You Don't Know Jack testers should stay with the Beta games service. Other
+users will probably want to return to either the Regular or the Daily
+service. Once you have installed an offline game, you should be able to play
+it no matter which service you are connected to. The only requirement is
+that you must continue to use some flavor of Client 2.2 approm.
+
+To return to the Production service
+
+  1. Make sure the box is turned off, but still connected to the power.
+  2. While the box is turned off, type the following "secret code" on the
+     keyboard: 93288
+  3. If you did that right, the 3 LEDs will flash briefly. If the LEDs did
+     not flash, press the "Option" key, and then try again.
+  4. Once you have entered the secret code correctly, turn on the box by
+     pressing the "Web Power" button on the keyboard.
+  5. Instead of the normal "TV Home" page, you will see a "Connection
+     Configuration" page.
+       1. Select on the combo-popup menu that says "Daily".
+       2. Press Return.
+       3. Select the "Production" item.
+       4. Press Return.
+       5. Select the "Connect" button and press "Return".
+  6. Wait for a connection to the Production WebTV service.
+
+To return to the Daily service
+
+  1. Make sure the box is turned off, but still connected to the power.
+  2. While the box is turned off, type the following "secret code" on the
+     keyboard: 93288
+  3. If you did that right, the 3 LEDs will flash briefly. If the LEDs did
+     not flash, press the "Option" key, and then try again.
+  4. Once you have entered the secret code correctly, turn on the box by
+     pressing the "Web Power" button on the keyboard.
+  5. Instead of the normal "TV Home" page, you will see a "Connection
+     Configuration" page.
+       1. You don't have to select a service, since the default is to
+          connect to Daily.
+       2. Select the "Connect" button and press "Return".
+  6. Wait for a connection to the Daily WebTV service.
+
+Revision History
+
+This document has gone through the following revisions:
+
+0.2 - 4/22/98 - Added explanation of how to return to the daily or
+production services. Added short-cut for people who already have development
+ROMs on their boxes.
+
+0.1 - 4/14/98 - First Version.

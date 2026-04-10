@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta name="generator" content="HTML Tidy, see www.w3.org">
+        <meta http-equiv="Content-Type" content= "text/html; charset=iso-8859-1">
+        <title>Promptu ERPD</title>
+        <link rel="stylesheet" type="text/css" href="menus.css">
+        <link rel="stylesheet" type="text/css" href="e.css">
+
+        <script type="text/javascript" language="JavaScript">
+            // set up paths to php just so demo runs on woofie.com
+            // these are set to empty string for production.
+
+
+var phppath = "";
+var phpsuffix = "";
+        </script>
+
+
+    </head>
+
+    <body scroll=no>
+<!-- loading curtain, so user knows it is loading -->
+
+        <div id="loading-mask" style="width:100%;height:100%;background:#c3daf9;position:absolute;z-index:20000;left:0;top:0;">&#160;<img alt="" align="middle" src="images/promptu_logo.gif"></div>
+         <div id="loading">
+            <div class="loading-indicator"><img src="lib/ext/resources/images/default/grid/loading.gif" style="width:16px;height:16px;" align="absmiddle">&#160;Loading...</div>
+        </div>
+
+        <script type="text/javascript" src= "lib/ext/adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="lib/ext/ext-all-debug.js"></script>
+        <link rel="stylesheet" type="text/css" href= "lib/ext/resources/css/ext-all.css">
+        <script type="text/javascript" src="erpdui.js"></script>
+
+<!-- loading curtain, so user knows it is loading -->
+
+        <div id="header" class="x-layout-inactive-content">
+            <div id="headerlogo" "display:none">
+                <img alt="" align="middle" src="images/promptu_logo.gif">&nbsp;&nbsp;&nbsp;Enhanced Return Path
+                Demodulator
+            </div>
+        </div>
+        <div id="navpanel" class="x-layout-inactive-content">
+            <div id="navpanel-body" class="feed-list">
+            </div>
+        </div>
+        <div id="rightpanel" class= "x-layout-inactive-content feed-list">
+        </div>
+
+        <div id="vrpdspanel" class="x-layout-inactive-content">
+            <div id="vrpd-grid" class="x-layout-inactive-content">
+                <div id="vrpd-toolbar"></div>
+            </div>
+            <div id="vrpds"></div>
+            <div id="vrpdeditor-grid"></div>
+            <div id="add-vrpd" style="visibility:hidden;">
+                <img alt="tab-close" id="add-vrpd-close" src= "images/tab-close-on.gif">
+                <p id="add-title" class="active-msg">
+                    Please enter
+                    the URL for the feed:
+                </p>
+                <p id="invalid-vrpd">
+                    <img src="images/warning.gif" width="16" height="16" align="absmiddle" alt=""> The feed URL specified is not a valid RSS
+                    feed.
+                </p>
+                <p id="loading-vrpd">
+                    <img alt="" src= "images/wait.gif" width="18" height="18" align= "absmiddle"> Loading feed...
+                </p><input type="text" id="feed-url" name="feed-url" class="input-text"><input id="add-btn" type= "button" value="Add">
+                <br>
+                <span class="eg">e.g.
+                    http://www.jackslocum.com/yui/feed/</span>
+            </div>
+            <div id="addvrpd" class="x-layout-inactive-content">
+                <div id="addvrpd-toolbar"></div>
+                <div id="addvrpd-body"></div>
+            </div>
+
+        </div>
+        <div id="operations" class="x-layout-inactive-content">
+            <div id="ERPDtoolbar"></div>
+        </div>
+        <div id="system" class="x-layout-inactive-content"></div>
+        <div id="externalnetwork" class="x-layout-inactive-content"></div>
+        <div id="support" class="x-layout-inactive-content"></div>
+
+        <div id="channelsheader" class="x-layout-inactive-content">
+             <div id="RFInput">
+                 <b>RF Input:&nbsp;&nbsp;</b>
+                 <select id="ERPDPort-select" name="ERPDPort-select">
+                     <option>Board 1 Slot 1</option>
+                     <option>Board 1 Slot 2</option>
+                     <option>Board 2 Slot 1</option>
+                     <option>Board 2 Slot 2</option>
+                 </select>
+             </div>
+         </div>
+            <div id="channels-inner">
+                <div id="channels">
+                    <div id="vrpd-usage" class="x-layout-inactive-content">
+                        <div id="VRPDUsage">
+                            vRPD available ports<BR>
+                            <div class=vrpdvisual>
+                                <div class="vrpdvimage">
+                                    <img src=images/vrpd.gif height=44 width=166>
+                                </div>
+                                <div class="vrpdvnumber">
+                                    2
+                                </div>
+                                <div class="vrpdvport">
+                                    1 2 3 4 5 6
+                                </div>
+                                <img src=images/s.gif height=50 width=166>
+                            </div>
+                            <div class=vrpdvisual>
+                                <div class="vrpdvimage">
+                                    <img src=images/vrpd.gif>
+                                </div>
+                                <div class="vrpdvnumber">
+                                    23
+                                </div>
+                                <div class="vrpdvport">
+                                    1 2 3 
+                                    <font size=4>
+                                        4
+                                    </font>
+                                    5 6
+                                </div>
+                                <img src=images/s.gif height=50 width=166>
+                            </div>
+                        </div>
+                    </div><!-- you must define the select box here, as the custom editor for the 'vrpd' column will require it -->
+                    <div id="channelsgrid-panel">
+                        <select name="vrpd-select" id="vrpd-select" style="display: none;">
+                            <option value=".">.</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                            <option value="32">32</option>
+                        </select>
+                        <select name="port-select" id= "port-select" style="display: none;">
+                            <option value=" "></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                        <select name="perf-select" id= "perf-select" style="display: none;">
+                            <option value="1">Nominal</option>
+                            <option value="2">Noisy</option>
+                            <option value="3">High Performance</option>
+                        </select>
+                        <div id="channels-editor-grid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="status" class="x-layout-inactive-content">
+    <form id="updateForm" action="saveaction">
+    <input type="hidden" name="jsondata">
+    </form>
+
+            </div>
+
+
+            <div id="my-dlg"></div>
+
+
+            </body>
+        </html>

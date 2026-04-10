@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>ICTV Prism Operations Console</title>
+</head>
+
+<body  text='#000000' link='#0000FF' vlink='#000OFF' alink='#00ffff' BGCOLOR='#E0E0E0'>
+<img src='/ictv/images/LogoMedT.gif' align=right>
+<h1>ICTV Prism Operation Console</h1>
+<BR><BR>
+<FORM action='/cgi-bin/ictv/ops/select'>
+<table border=5>
+<tr>
+<td><B>Configure</B></td><td><B>Components</B></td>
+<tr>
+<td><B>
+<select name=configure>
+<option  value=list>Get Status Of
+<option  value=add>Add
+<option  value=list>Delete
+<option  value=list>Enable
+<option  value=list>Disable
+</select>
+</B></td>
+<td><B>
+<select name=equipment>
+  <option value=account>Account
+  <option value=baseswitch>Baseband Switch
+  <option value=chassis>Chassis
+  <option value=expgen>Experience Generator
+  <option value=fsa>FSA
+  <option value=fsachannel>FSA Channel
+  <option value=gateway>Gateway
+  <option value=hbx>Homebox
+  <option value=modulator>Modulator
+  <option value=session>Session
+  <option value=subscriber>Subscriber
+  <option value=system>System
+</select>
+</B></td><td>
+<B><input type=submit name=Doit value=doit></B></td>
+</table>
+</form>
+<hr>
+<h2>Results</h2>
+<hr>
+<address></address>
+<!-- hhmts start -->
+Last modified: Tue Jun 25 10:26:53 PDT 1996
+<!-- hhmts end -->
+</body> </html>

@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>Hbx Configuration</title>
+</head>
+
+<body  text='#000000' link='#0000FF' vlink='#000OFF' alink='#00ffff' BGCOLOR='#E0E0E0'>
+<img src='/ictv/images/ICTVBugMedT.gif' align=right>
+<h1>Add Hbx</h1>
+
+<hr>
+<table>
+
+<form name='form1' action='/cgi-bin/ictv/ops/hbx/add' method=post>
+<tr>
+<td align=right>Hbx Serial Number</td><td><input type=text name=hbx value=''><BR></td>
+</tr>
+<tr>
+<td align=right>Exp Gen Type</td><td><select name=expgentype>
+                  <option $selectPC value=PC>PC
+                  <option $selectAtari value=Atari>Atari</select></td>
+</tr>
+<tr>
+<td align=right>Account Number</td><td><input type=text name=account value=''></td>
+</tr>
+<tr>
+<td align=right>FSA</td><td><input type=text name=fsa value=''></td>
+</tr>
+</table>
+<p>
+<input type=submit name=button value=Add > <a href='/ictv/ops/hbx/main.html'>CANCEL</a>
+	
+</form>
+<hr>
+<address></address>
+<!-- hhmts start -->
+Last modified: Wed Jun 19 20:19:36 PDT 1996
+<!-- hhmts end -->
+</body> </html>
+

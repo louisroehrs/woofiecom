@@ -1,0 +1,393 @@
+<?php
+$configfile = "data.xml";
+$nchannels = 48;
+$defminpower = 1;
+$defnompower = 25;
+    
+$thisdemod = 0;
+$ndemods = 0;
+$currentTag = "";
+$currentAttribs = "";
+$nVRPDs = 0;
+$nRFis = 0;
+$netspresent = array();
+$netnames = array();
+$srcips = array();
+$srcports = array();
+$dstips = array();
+$dstports = array();
+$idletxs = array();
+$netdemods = array();
+$minpowers = array();
+$nompowers = array();
+$netchs = array();
+$fecs = array();
+$demodthreads = array();
+$demodchannels = array();  // Necessary?
+$thisdemod = -1;
+
+function startElement($parser, $name, $attribs)
+{
+  global $currentTag, $currentAttribs;
+  global $nVRPDs, $nRFis, $nchannels, $ndemods;
+  global $demodchannels, $demodthreads;
+  global $netspresent, $netnames, $srcips, $srcports, $dstips, $dstports, $idletxs, $netdemods;
+  global $netchs, $minpowers, $nompowers, $fecs;
+  global $thisdemod;
+
+  $currentTag = $name;
+  
+  $currentAttribs = $attribs;
+  switch ($name) {
+  case "vRPD":
+    $netspresent[$nVRPDs] = 1;
+    reset($attribs);
+    while (list($key, $value) = each($attribs)) {
+      switch($key) {
+      case "name":
+	$netnames[$nVRPDs] = $value;
+	break;
+      case "ipaddr":
+	$srcips[$nVRPDs] = $value;
+	break;
+      case "sport":
+	$srcports[$nVRPDs] = $value;
+	break;
+      case "nc1500":
+	$dstips[$nVRPDs] = $value;
+	break;
+      case "dport":
+	$dstports[$nVRPDs] = $value;
+	break;
+      case "idle_tx":
+	$idletxs[$nVRPDs] = ($value == "True") ? 1 : 0;
+	break;
+      case "demodulator":
+	$netdemods[$nVRPDs] = $value;
+	break;
+      }
+    }
+  case "channelizer":
+    reset($attribs);
+    while (list($key, $value) = each($attribs)) {
+      switch($key) {
+      case "rfi":
+	$rfix = $value;
+	break;
+      case "nominal_power":
+	$pwrx = $value;
+	break;
+      case "freq":
+	$rfch = mhz_to_ch($value);
+	break;
+      case "khz":
+	$rfch = khz_to_ch($value);
+	break;
+      case "fec_enable":
+	$fecx = $value;
+	break;
+      }
+      $nompowers[$rfix][$rfch] = $pwrx;
+      $netchs[$rfix][$rfch] = $nVRPDs;
+      $fecs[$rfix][$rfch] = $fecx;
+    }
+    break;
+  case "demod":
+    $demodpresent[$ndemods] = 1;
+    reset($attribs);
+    while (list($key, $value) = each($attribs)) {
+      switch($key) {
+      case "instance":
+	$thisdemod = $value;
+	if ($thisdemod + 1 > $ndemods) {
+	  $ndemods = $thisdemod + 1;
+	}
+	break;
+      case "channels":
+	$demodchannel = $value;
+	break;
+      case "rf_inputs":
+	$nRFis = $value;
+	break;
+      }
+    }
+    $demodchannels[$thisdemod] = $demodchannel;
+  case "channel":
+    reset($attribs);
+    while (list($key, $value) = each($attribs)) {
+      switch($key) {
+      case "rfi":
+	$rfix = $value;
+	break;
+      case "min_power":
+	$pwrx = $value;
+	break;
+      case "freq":
+	$rfch = mhz_to_ch($value);
+	break;
+      case "khz":
+	$rfch = khz_to_ch($value);
+	break;
+      }
+    }
+    $demodthreads[$rfix][$rfch] = $thisdemod;
+    $minpowers[$rfix][$rfch] = $pwrx;
+    break;
+  default:
+    break;
+  }
+}
+
+function endElement($parser, $name)
+{
+  global $nVRPDs;
+  global $currentTag;
+  switch ($name) {
+  case "vRPD":
+    $nVRPDs += 1;
+    break;
+  default:
+    break;
+  }
+  $currentTag = "";
+  $currentAttribs = "";
+}
+
+function characterData($parser, $data)
+{
+  global $currentTag;
+  switch ($currentTag) {
+  case "link":
+    echo("<a href=\"$data\">$data</a>\n");
+    break;
+  case "title":
+    echo("title : $data");
+    break;
+  default:
+    echo($data);
+    break;
+  }
+}
+
+function vars_to_js()
+{
+  global $nRFis, $nchannels, $nVRPDs;
+  global $srcips, $srcports, $dstips, $dstports, $idletxs;
+  global $netchs, $minpowers, $nompowers, $fecs;
+  global $defminpower, $defnompower;
+
+  for ($i=0; $i<$nVRPDs; $i++) {
+    echo "show_net_channel($i, \"{$srcips[$i]}\", {$srcports[$i]}, \"{$dstips[$i]}\", {$dstports[$i]}, {$idletxs[$i]});\n";
+  }
+  echo "initchannels($nRFis, $nchannels, $defminpower, $defnompower);";
+  for ($i=0; $i<$nRFis; $i++) {
+    for ($j=0; $j<$nchannels; $j++) {
+      if ( isset($netchs[$i][$j]) ) {
+	echo "setchannel($i, $j, {$netchs[$i][$j]}, '{$minpowers[$i][$j]}', '{$nompowers[$i][$j]}', '{$fecs[$i][$j]}');\n";
+      }
+    }
+  }
+}
+
+$xmlParser = xml_parser_create();
+  
+$caseFold = xml_parser_get_option($xmlParser,
+				  XML_OPTION_CASE_FOLDING);
+  
+$targetEncoding = xml_parser_get_option($xmlParser,
+					XML_OPTION_TARGET_ENCODING);
+
+if ($caseFold == 1) {
+  xml_parser_set_option($xmlParser, XML_OPTION_CASE_FOLDING, false);
+}
+
+xml_set_element_handler($xmlParser, "startElement", "endElement");
+xml_set_character_data_handler($xmlParser, "characterData");
+
+if (!($fp = fopen($configfile, "r"))) {
+  die("Cannot open XML data file: $configfile");
+}
+
+while ($data = fread($fp, 4096)) {
+  if (!xml_parse($xmlParser, $data, feof($fp))) {
+    die(sprintf("XML error: %s at line %d",
+		xml_error_string(xml_get_error_code($xmlParser)),
+		xml_get_current_line_number($xmlParser)));
+    xml_parser_free($xmlParser);
+  }
+}
+xml_parser_free($xmlParser);
+// for ($i=0; $i<$nVRPDs; $i++) {
+//   echo "Network Channel $i<br>";
+//   echo "  Source IP: {$srcips[$i]} port {$srcports[$i]}, NC-1500 IP: {$dstips[$i]} port {$dstports[$i]}, Idle TX: {$idletxs[$i]}<br>";
+//}
+function ch_to_khz($ch)
+{
+  return 8096 + $ch * 192;
+}
+function khz_to_ch($khz)
+{
+  return ($khz - 8096) / 192;
+}
+function ch_to_mhz($ch)
+{
+  return sprintf("%.3f", 8.096 + $ch * 0.192);
+}
+function mhz_to_ch($mhz)
+{
+  return khz_to_ch(round($mhz * 1000));
+}
+$indent = 0;
+$fd = 0;
+function indent()
+{
+  global $indent;
+  $indent = $indent + 2;
+}
+function outdent()
+{
+  global $indent;
+  $indent = $indent - 2;
+}
+function w($string)
+{
+  global $fd, $indent;
+  for ($i=0; $i<$indent; $i++) {
+    fwrite($fd, " ");
+  }
+  fwrite($fd, $string);
+  fwrite($fd, "\n");
+}
+function wn($string)
+{
+  global $fd, $indent;
+  for ($i=0; $i<$indent; $i++) {
+    fwrite($fd, " ");
+  }
+  fwrite($fd, $string);
+  fwrite($fd, " ");
+}
+function nw($string)
+{
+  global $fd;
+  fwrite($fd, $string);
+  fwrite($fd, "\n");
+}
+function attribute($name, $value)
+{
+  w("$name=\"$value\"");
+}
+function attributen($name, $value)
+{
+  global $fd;
+  fwrite($fd, "$name=\"$value\" ");
+}
+function xml_out($filename)
+{
+  global $indent;
+  global $fd;
+  global $nVRPDs, $nRFis, $nchannels, $ndemods;
+  global $demodchannels, $demodthreads;
+  global $netspresent, $netnames, $srcips, $srcports, $dstips, $dstports, $idletxs, $netdemods;
+  global $netchs, $minpowers, $nompowers, $fecs;
+  $n = 0;
+  $indent = 0;
+
+  $fd = fopen($filename, "wb");
+
+  w("<Mojo-Config>");
+
+  for ($i=0; $i<$nVRPDs; $i++) {
+    if ($netspresent[$i]) {
+      indent();
+      w("<vRPD");
+      indent();
+      attribute("name",        $netnames[$n]);
+      attribute("ipaddr",      $srcips[$n]);
+      attribute("sport",       $srcports[$n]);
+      attribute("nc1500",      $dstips[$n]);
+      attribute("dport",       $dstports[$n]);
+      attribute("idle_tx",     $idletxs[$n]);
+      attribute("demodulator", $netdemods[$n]);
+      w(">");
+      indent();
+      for ($rf=0; $rf<$nRFis; $rf++) {
+	for ($ch=0; $ch<$nchannels; $ch++) {
+	  if (isset($netchs[$rf][$ch]) && $netchs[$rf][$ch] == $i) {
+	    wn("<channelizer");
+	    attributen("rfi", $rf);
+	    attributen("nominal_power", $nompowers[$rf][$ch]);
+	    attributen("fec_enable", $fecs[$rf][$ch]);
+	    attributen("freq", ch_to_mhz($ch));
+	    nw("/>");
+	  }
+	}
+      }
+      outdent();
+      outdent();
+      w("</vRPD>");
+      outdent();
+      $n = $n + 1;
+    }
+  }
+
+  for ($i=0; $i<$ndemods; $i++) {
+    if (isset ($demodchannels[$i]) ) {
+      indent();
+      w("<demod");
+      indent();
+      attribute("instance", $i);
+      attribute("rf_inputs", $nRFis);
+      attribute("channels", $demodchannels[$i]);
+      w(">");
+      indent();
+      for ($rf=0; $rf<$nRFis; $rf++) {
+	for ($ch=0; $ch<$nchannels; $ch++) {
+	  if (isset($demodthreads[$rf][$ch]) && $demodthreads[$rf][$ch] == $i) {
+	    wn("<channel");
+	    attributen("rfi", $rf);
+	    attributen("min_power", $minpowers[$rf][$ch]);
+	    attributen("freq", ch_to_mhz($ch));
+	    nw("/>");
+	  }
+	}
+      }
+      outdent();
+      outdent();
+      w("</demod>");
+    }
+  }
+  outdent();
+  w("</Mojo-Config>");
+}
+function write_config() {
+  global $configfile;
+  xml_out($configfile);
+}
+
+function option($name, $sel)
+{
+  echo "<OPTION" . ($sel ? " SELECTED>" : ">") . $name;
+}
+
+function netch_selections($rfi, $ch)
+{
+  global $nVRPDs, $netchs;
+  echo "$rfi, $ch, {$netchs[$rfi][$ch]}, $nVRPDs";
+  if (isset($netchs[$rfi][$ch])) {
+    $nch = $netchs[$rfi][$ch];
+  } else {
+    $nch = -1;
+  }
+  option("-", $nch == -1);
+  for ($i=0; $i < $nVRPDs; $i++) {
+    option($i, $nch == $i);
+  }
+}
+function fec_selections($rfi, $ch)
+{
+  global $fecs;
+  option("Y", $fecs[$rfi][$ch] != "N");
+  option("N", $fecs[$rfi][$ch] == "N");
+}
+?>

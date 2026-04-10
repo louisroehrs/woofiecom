@@ -1,0 +1,18 @@
+<SCRIPT LANGAUGE="JavaScript">
+
+   dtSuperBowl = new Date(Date.UTC(98, 0, 25, 23, 00));
+   dtNow = new Date();
+
+   lDifference = dtSuperBowl.getTime() - dtNow.getTime();
+   lDays = Math.floor(lDifference / (1000 * 60 * 60 * 24));
+   lDifference = lDifference - lDays * 1000 * 60 * 60 * 24;
+   lHours = Math.floor(lDifference / (1000 * 60 * 60));
+   lDifference = lDifference - lHours * 1000 * 60 * 60;
+   lMinutes = Math.floor(lDifference / (1000 * 60));
+   lDifference = lDifference - lMinutes * 1000 * 60;
+   lSeconds = Math.floor(lDifference / 1000);
+ 
+   document.write(lDays+"d "+lHours+"h:"+lMinutes+"m:"+lSeconds+"s until the superbowl!");  
+   document.close();
+ 
+</SCRIPT>

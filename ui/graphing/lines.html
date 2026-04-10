@@ -1,0 +1,392 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+
+<html xmlns:v="urn:schemas-microsoft-com:vml">
+  <head>
+    <title>Lines!</title>
+<XML:NAMESPACE NS="urn:schemas-microsoft-com:vml" PREFIX="v"/>
+<STYLE>
+.disableHscroll{
+width:100%;overflow-x:hidden;overflow-y:scroll;
+}
+
+v\:* {
+ BEHAVIOR: url(#default#VML)
+}
+</STYLE>
+  </head>
+
+  <body>
+<font face="courier new"
+      size="6"><strong>
+<SCRIPT>
+
+// Spider Web Links- by Urs Dudli and Peter Gehrig (info@24fun.com) 
+// Website URL: http://www.24fun.com
+// Featured on Dynamic Drive -http://www.dynamicdrive.com
+
+// Minor modification by DD to disable horizontal scrollbar
+///////////////////////////////////////////////////////////////////////////
+// CONFIGURATION STARTS HERE
+///////////////////////////////////////////////////////////////////////////
+
+// the default color of the 8 spiderlines
+var defaultcolor="#555"
+
+// the width of the 8 spiderlines while highlighting textlinks (pixels)
+var lineweighthighlight=14
+
+// the width of the 8 spiderlines while NOT highlighting textlinks (pixels)
+var lineweightnormal=2
+
+///////////////////////////////////////////////////////////////////////////
+// CONFIGURATION ENDS HERE
+///////////////////////////////////////////////////////////////////////////
+
+var distancetomouse=0
+
+var mousepos_x=0
+var mousepos_x=0
+
+var marginleft=0
+var margintop=0
+var marginbottom=0
+var marginright=0
+
+var margincenterx
+var margincentery
+
+var mousepos_x=0
+var mousepos_x=0
+
+if (document.all&&window.print){
+    document.write('<div id="bodycontent" style="position:relative">')
+}
+
+function initiateanimation(){
+
+
+    marginbottom=document.body.clientHeight
+    marginright=document.body.clientWidth
+    margincenterx=Math.floor(marginright/2)
+    margincentery=Math.floor(marginbottom/2)
+    
+    rectangulartopleft.to=marginleft+","+margintop
+    rectangulartopright.to=marginright+","+margintop
+    rectangularbottomleft.to=marginleft+","+marginbottom
+    rectangularbottomright.to=marginright+","+marginbottom
+    
+    rectangulartop.to=margincenterx+","+margintop
+    rectangularright.to=marginright+","+margincentery
+    rectangularbottom.to=margincenterx+","+marginbottom
+    rectangularleft.to=marginleft+","+margincentery
+    
+    rectangulartopleft.strokecolor=defaultcolor
+    rectangulartopright.strokecolor=defaultcolor
+    rectangularbottomleft.strokecolor=defaultcolor
+    rectangularbottomright.strokecolor=defaultcolor
+    
+    rectangulartop.strokecolor=defaultcolor
+    rectangularright.strokecolor=defaultcolor
+    rectangularbottom.strokecolor=defaultcolor
+    rectangularleft.strokecolor=defaultcolor
+}
+
+function msover(thiscolorhighlight){
+    if(document.all&&window.print){
+
+        rectangulartopleft.strokecolor=thiscolorhighlight
+        rectangulartopright.strokecolor=thiscolorhighlight
+        rectangularbottomleft.strokecolor=thiscolorhighlight
+        rectangularbottomright.strokecolor=thiscolorhighlight
+    
+        rectangulartop.strokecolor=thiscolorhighlight
+        rectangularright.strokecolor=thiscolorhighlight
+        rectangularbottom.strokecolor=thiscolorhighlight
+        rectangularleft.strokecolor=thiscolorhighlight
+        
+        rectangulartopleft.strokeweight=lineweighthighlight
+        rectangulartopright.strokeweight=lineweighthighlight
+        rectangularbottomleft.strokeweight=lineweighthighlight
+        rectangularbottomright.strokeweight=lineweighthighlight
+    
+        rectangulartop.strokeweight=lineweighthighlight
+        rectangularright.strokeweight=lineweighthighlight
+        rectangularbottom.strokeweight=lineweighthighlight
+        rectangularleft.strokeweight=lineweighthighlight
+    }
+}
+
+function msout(){
+    if(document.all&&window.print){
+        rectangulartopleft.strokecolor=defaultcolor
+        rectangulartopright.strokecolor=defaultcolor
+        rectangularbottomleft.strokecolor=defaultcolor
+        rectangularbottomright.strokecolor=defaultcolor
+    
+        rectangulartop.strokecolor=defaultcolor
+        rectangularright.strokecolor=defaultcolor
+        rectangularbottom.strokecolor=defaultcolor
+        rectangularleft.strokecolor=defaultcolor
+        
+        rectangulartopleft.strokeweight=lineweightnormal
+        rectangulartopright.strokeweight=lineweightnormal
+        rectangularbottomleft.strokeweight=lineweightnormal
+        rectangularbottomright.strokeweight=lineweightnormal
+    
+        rectangulartop.strokeweight=lineweightnormal
+        rectangularright.strokeweight=lineweightnormal
+        rectangularbottom.strokeweight=lineweightnormal
+        rectangularleft.strokeweight=lineweightnormal      
+    }
+}
+
+
+function momouse(){
+    if(document.all&&window.print){
+
+        mousepos_x=document.body.scrollLeft+event.clientX
+        mousepos_y=document.body.scrollTop+event.clientY
+
+
+        rectangulartopleft.from=mousepos_x+","+mousepos_y
+        rectangulartopright.from=mousepos_x+","+mousepos_y
+        rectangularbottomleft.from=mousepos_x+","+mousepos_y
+        rectangularbottomright.from=mousepos_x+","+mousepos_y
+    
+        rectangulartop.from=mousepos_x+","+mousepos_y
+        rectangularright.from=mousepos_x+","+mousepos_y
+        rectangularbottom.from=mousepos_x+","+mousepos_y
+        rectangularleft.from=mousepos_x+","+mousepos_y
+     }
+}
+
+if(document.all&&window.print){
+    document.body.className="disableHscroll"
+    code="<v:line id=rectangulartopleft style='LEFT:0;POSITION:absolute;TOP:0;' strokeweight='"+lineweightnormal+"pt'></v:line>" 
+    code+="<v:line id=rectangulartopright style='LEFT:0;POSITION:absolute;TOP:0;' strokeweight='"+lineweightnormal+"pt'></v:line>" 
+    code+="<v:line id=rectangularbottomleft style='LEFT:0;POSITION:absolute;TOP:0;' strokeweight='"+lineweightnormal+"pt'></v:line>" 
+    code+="<v:line id=rectangularbottomright style='LEFT:0;POSITION:absolute;TOP:0;' strokeweight='"+lineweightnormal+"pt'></v:line>" 
+
+    code+="<v:line id=rectangulartop style='LEFT:0;POSITION:absolute;TOP:0;' strokeweight='"+lineweightnormal+"pt'></v:line>" 
+    code+="<v:line id=rectangularright style='LEFT:0;POSITION:absolute;TOP:0;' strokeweight='"+lineweightnormal+"pt'></v:line>" 
+    code+="<v:line id=rectangularbottom style='LEFT:0;POSITION:absolute;TOP:0;' strokeweight='"+lineweightnormal+"pt'></v:line>" 
+    code+="<v:line id=rectangularleft style='LEFT:0;POSITION:absolute;TOP:0;' strokeweight='"+lineweightnormal+"pt'></v:line>" 
+
+
+
+
+    document.body.insertAdjacentHTML("afterBegin",code)
+    document.onmousemove=momouse
+    window.onload=initiateanimation
+}
+</SCRIPT>
+
+
+<a href="javascript:history.back()" onMouseOver="msover('#FFEEEE')" onMouseOut="msout()">Home</a> > SVG line art
+
+    <h1>Mondrian Line Art Party!</h1>
+
+<v:oval id=piechart style='position:absolute;visibility:visible;top:200;left: 100;width:250;height:250;opacity:0.5;strokecolor:black; fill:true; fill-color:white; print:true; strokeweight:3pt; coordsize:1000 1000;'><v:shadow on=true opacity= "0.5" offset="10px,10px" Color = "grey"/>
+</v:oval>
+   <v:arc fillcolor=red
+   style="position:relative;top:10;left:10;width:200;height:200"
+   startangle="45" endangle="270">
+   </v:arc>
+
+   <v:oval 
+   fillcolor="green"
+   style="position:relative;top:1;left:1;width:50;height:50">
+   </v:oval>
+
+   <v:oval 
+   fillcolor="blue"
+   style="position:relative;top:1;left:1;width:50;height:50">
+   </v:oval>
+
+   <v:oval 
+   fillcolor="red"
+   style="position:relative;top:1;left:1;width:50;height:50">
+   </v:oval>
+
+Martini!
+<v:shape id=piechartarc 
+         style='position:absolute;visibility:visible;top:200;left: 100;width:250;height:250;opacity:0.5;strokecolor:black; fill:true; fill-color:white; print:true; strokeweight:3pt;'
+          coordsize="1000 1000"
+          coordorigin="0 0">
+        <v:path v="m 0,0 l 0,0 arcto -500, -500, 500, 500, -500, 0, 500, 500 l 0, 0 x e"/>
+        <v:shadow on=true opacity= "0.5" offset="10px,10px" Color = "grey"/>
+</v:shape>
+
+   <v:shape strokecolor="blue" strokeweight="5pt" 
+   coordorigin="0 0" coordsize="200 200"
+   style="top:1;left:1;width:50;height:50">
+   <v:path v="m 1,1 l 1,200, 200,200, 200,1 x e"/>
+   </v:shape>
+
+   <v:shape id="rect01" fillcolor="green"
+   coordorigin="0 0" coordsize="200 200"
+   strokecolor="red" strokeweight="2pt"
+   style="top:1;left:1;width:50;height:50">
+   <v:path id="myPath" v="m 1,1 l 1,200, 200,200, 200,1 x e"/>
+   </v:shape>
+
+<v:shape id=piechartarc2
+         style='position:absolute;visibility:visible;top:300;left:400;width:250;height:250;'
+		opacity="0.5" 
+		strokecolor="black" 
+		fill="true" 
+		fillcolor="white" 
+		print="true"
+		strokeweight="3pt"
+		coordsize="1000 1000"
+		coordorigin="0 0">
+        <v:path id=mypath v="m 0, 0 l 250, 0, 100, 100, 50, -500  x e"/>
+        <v:shadow on=true opacity= "0.5" offset="10px,10px" Color = "grey"/>
+</v:shape>
+
+
+
+<v:shape id=piechartarc3
+         style='position:absolute;visibility:visible;top:400;left:400;width:250;height:250;'
+		strokecolor="black" 
+		fill="true" 
+		fillcolor="white" 
+		print="true"
+		strokeweight="3pt"
+		coordsize="1000 1000"
+		opacity="0.23" 
+		coordorigin="0 0">
+        <v:path id=mypath v="m 0, 0 l 1000,1000,25,25,25,-25,-25,-25,-25,25,25,25 m 0 0 l 0,1000 1000,1000, 1000,0 0,0  x e"/>
+        <v:shadow on=true opacity= "0.5" offset="10px,10px" Color = "grey"/>
+</v:shape>
+<v:oval id=piechart style='position:absolute;visibility:visible;top:400;left: 400;width:250;height:250;opacity:0.5;strokecolor:black; fill:true; fill-color:white; print:true; strokeweight:3pt; coordsize:1000 1000;'><v:shadow on=true opacity= "0.5" offset="10px,10px" Color = "grey"/>
+ <v:fill opacity2="0.5" color="red"/>
+</v:oval>
+<v:shape id=piechartarc3
+         style='position:absolute;visibility:visible;top:400;left:400;width:250;height:250;'
+		strokecolor="blue" 
+		fill="true" 
+		fillcolor="black" 
+		print="true"
+		strokeweight="3pt"
+		coordsize="1000 1000"
+		opacity="0.23" 
+		coordorigin="0 0">
+
+
+        <v:path id=mypath v="m 500,500 l 0,0 arc 0,0,1000,1000 0,1000 1000,0 l 500,500  x e"/>
+        <v:shadow on=true opacity= "0.5" offset="10px,10px" Color = "grey"/>
+</v:shape>
+<BR>
+
+<v:oval id=piechart style='position:absolute;visibility:visible;top:600;left: 800;width:250;height:250;opacity:0.5;strokecolor:black; fill:true; fill-color:white; print:true; strokeweight:3pt; coordsize:1000 1000;'><v:shadow on=true opacity= "0.5" offset="10px,10px" Color = "grey"/>
+ <v:fill opacity2="0.5" color="red"/>
+</v:oval>
+<v:shape id=piechartarc3
+         style='position:absolute;visibility:visible;top:600;left:800;width:250;height:250;'
+		strokecolor="#ffff88" 
+		fill="true" 
+		fillcolor="#ffff88" 
+		print="true"
+		strokeweight="0pt"
+		coordsize="1000 1000"
+		opacity="0.23" 
+		coordorigin="0 0">
+
+        <v:path id=mypath4 v="m 500,500 l 300,300    x e"/>
+        <v:shadow on=true opacity= "0.5" offset="10px,10px" Color = "grey"/>
+</v:shape>
+
+
+
+<v:shape id=piechartarc3
+         style='position:absolute;visibility:visible;top:600;left:800;width:250;height:250;'
+		strokecolor="#8888ff" 
+		fill="true" 
+		fillcolor="#8888ff" 
+		print="true"
+		strokeweight="0pt"
+		coordsize="1000 1000"
+		opacity="0.23" 
+		coordorigin="0 0">
+
+        <v:path id=mypath1 v="m 500,500  x e"/>
+        <v:shadow on=true opacity= "0.5" offset="10px,10px" Color = "grey"/>
+</v:shape>
+
+<v:shape id=piechartarc3
+         style='position:absolute;visibility:visible;top:600;left:800;width:250;height:250;'
+		strokecolor="#ff8888" 
+		fill="true" 
+		fillcolor="#ff8888" 
+		print="true"
+		strokeweight="0pt"
+		coordsize="1000 1000"
+		opacity="0.23" 
+		coordorigin="0 0">
+
+        <v:path id=mypath2 v="m 500,500 x e"/>
+        <v:shadow on=false opacity= "0.5" offset="10px,10px" Color = "grey"/>
+</v:shape>
+
+<v:shape id=piechartarc3
+         style='position:absolute;visibility:visible;top:600;left:800;width:250;height:250;'
+		strokecolor="blue" 
+		fill="true" 
+		fillcolor="blue" 
+		print="true"
+		strokeweight="0pt"
+		coordsize="1000 1000"
+		opacity="0.23" 
+		coordorigin="0 0">
+
+        <v:path id=mypath3 v="m 500,500 x e"/>
+        <v:shadow on=false opacity= "0.5" offset="10px,10px" Color = "grey"/>
+</v:shape>
+<script language=javascript>
+
+var start = 0;
+var pi =3.1415296;
+
+function drawslice(percent) {
+   var path = "";
+   end = start + percent+0.0;
+   for (i=start;i <= end; i++) {
+      x = Math.floor((Math.sin(i*pi/50)*500)+500);
+      y = Math.floor((Math.cos(i*pi/50)*500)+500);
+      xs = x.toString();
+      ys = y.toString();
+      path +=  xs + ", " + ys + ", ";
+   }
+      document.writeln(path,"<BR>");
+   start = end;
+   return "m 500,500 l "+path+ " 500,500 x e";
+}
+
+document.all.mypath1.v = drawslice(37.0);
+document.all.mypath3.v = drawslice(28.0);
+document.all.mypath4.v = drawslice(20.1);
+document.all.mypath2.v = drawslice(15.0);
+document.writeln("mypath");
+document.writeln(document.all.mypath1.v);
+document.writeln("mypath");
+document.writeln(document.all.mypath2.v);
+document.writeln("mypath");
+document.writeln(document.all.mypath3.v);
+document.writeln("mypath");
+document.writeln(document.all.mypath4.v);
+
+//document.all.mypath1.v = "m 500,500 l 20,20 700,700 xe";
+//document.all.mypath2.v = "m 500,500 l -20,20 700,700 xe";
+//document.all.mypath3.v = "m 500,500 l 20,20 -700,700 xe";
+//document.all.mypath4.v = "m 500,500 l 20,20 700,-700 xe";
+</script>
+    <hr>
+    <address><a href="mailto:">louis.roehrs AT demandtec.com</a></address>
+<!-- Created: Wed Apr 17 20:44:51 PDT 2002 -->
+<!-- hhmts start -->
+Last modified: Thu Apr 18 03:34:46 PDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

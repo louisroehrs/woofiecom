@@ -1,0 +1,253 @@
+<HTML>
+
+<HEAD>
+<TITLE>Grammys - Functional Mockup, Javascript2</TITLE>
+
+<SCRIPT LANGUAGE="JavaScript">
+
+   var nImages=4;
+   var aImageURLs = new Array(
+		"graphics/rollingstone.jpg",
+		"graphics/sonicnet.jpg",
+		"graphics/eonline.jpg",
+		"graphics/musicblvd.jpg"
+                             );
+
+   var aAnchorURLs = new Array(
+						"electronica.html",
+						"electronica2.html",
+						"electronica3.html",
+						"electronica4.html"
+							  );
+
+   var iCurrImage    = -1;
+   var iOldImage     = -1;
+   var iFlipPeriod   = 2000;
+   var iTimeOutID    = 0;
+
+   function OnClick() {
+
+     window.location = aAnchorURLs[iCurrImage];
+
+   }
+
+   function loadImages() {
+
+      var aImages = new Array();
+
+	  for (i=0; i < 8; i++) {
+	     aImages[i] = new Image();
+	  }
+
+	  aImages[0].src = "graphics/but_rollingstone0.gif";
+	  aImages[1].src = "graphics/but_sonicnet0.gif";
+	  aImages[2].src = "graphics/but_eonline0.gif";
+	  aImages[3].src = "graphics/but_musicblvd0.gif";
+	  aImages[4].src = "graphics/but_rollingstone1.gif";
+	  aImages[5].src = "graphics/but_sonicnet1.gif";
+	  aImages[6].src = "graphics/but_eonline1.gif";
+	  aImages[7].src = "graphics/but_musicblvd1.gif";
+
+	  for (i=0; i < 8; i++) {
+	     if (!(aImages[i].complete)) {
+		   i=0;
+		 }
+	  }					// Spin until image loading is complete.
+
+
+   }
+
+   function flipImage() {
+	  
+      iCurrImage = (iCurrImage + 1) % nImages;
+      dispImage(iCurrImage);
+	  triggerTimer();
+
+   }
+
+   function dispImage(iImage) {
+
+      //alert("dispImage "+iOldImage+" "+iImage);
+						 
+	  if (eval(iOldImage) != -1) {
+	    if (eval(iOldImage) == 0) {
+		 // alert("b0 undo");
+		  document.button0.src = "graphics/but_rollingstone0.gif";
+		}
+	    if (eval(iOldImage) == 1) {
+		  document.button1.src = "graphics/but_sonicnet0.gif";
+		}
+	    if (eval(iOldImage) == 2) {
+		  document.button2.src = "graphics/but_eonline0.gif";
+		}
+		if (eval(iOldImage) == 3) {
+  	      document.button3.src = "graphics/but_musicblvd0.gif";
+		}
+	  }
+
+      document.rotator.src = aImageURLs[iImage];
+  	  iOldImage = iImage; 		
+
+      if (eval(iImage) == 0) {
+	    // alert("b0 do");
+  	    document.button0.src = "graphics/but_rollingstone1.gif";
+	  }
+	  if (eval(iImage) == 1) {
+	    document.button1.src = "graphics/but_sonicnet1.gif";
+	  }
+	  if (eval(iImage) == 2) {
+	    document.button2.src = "graphics/but_eonline1.gif";
+	  }
+	  if (eval(iImage) == 3) {
+  	    document.button3.src = "graphics/but_musicblvd1.gif";
+	  }
+
+	  iCurrImage = iImage;
+	  
+   }
+
+   function onMouseOverSelector(iButtonNum) {
+
+      dispImage(iButtonNum);
+	  cancelTimer();
+
+   }
+
+   function cancelTimer() {
+
+	 window.clearTimeout(iTimeOutID);
+	
+   }
+
+   function triggerTimer() {
+
+     iTimeOutID = window.setTimeout("flipImage()", iFlipPeriod);
+
+   }
+
+   function onMouseOutSelector(iButtonNum) {
+
+	 triggerTimer();
+	 
+   }
+
+   function onMouseOverImage() {
+    
+	 onMouseOverSelector(iCurrImage);
+
+   }
+
+   function onMouseOutImage() {
+
+	 triggerTimer();
+
+   }
+
+   function startProg() {
+
+	 loadImages();
+	 flipImage();
+
+   }
+
+</SCRIPT>
+
+</HEAD>
+<BODY BGCOLOR="#181818" onload="startProg()">
+<TABLE WIDTH=544 HEIGHT=370 BORDER=0 CELLSPACING=0 CELLPADDING=0>
+<TR>
+<TD WIDTH=544 HEIGHT=135>
+<TABLE WIDTH=544 BORDER=0 CELLSPACING=0 CELLPADDING=0>
+<TR>
+<TD WIDTH=166>
+<TABLE WIDTH=166 HEIGHT=70 BORDER=0 CELLSPACING=0 CELLPADDING=0>
+<TR>
+<TD WIDTH=166 HEIGHT=77>
+<TABLE WIDTH=166 BORDER=0 CELLSPACING=0 CELLPADDING=0>
+<TR>
+<TD WIDTH=88><A HREF="http://www.alvinleedesign.com/electronica3.html"><IMG
+SRC="graphics/webtv.jpg" WIDTH=88 HEIGHT=77 BORDER=0 ALT="WebTV
+Home"></A></TD>
+<TD WIDTH=78><IMG SRC="graphics/mast1.jpg" WIDTH=78 HEIGHT=77 BORDER=0
+ALT="Grammy Awards 98 masthead"></TD></TR>
+</TABLE>
+</TD></TR>
+<TR>
+<TD WIDTH=166 HEIGHT=29><A
+HREF="http://www.alvinleedesign.com/electronica3.html"><IMG
+SRC="graphics/mainmenu.jpg" WIDTH=166 HEIGHT=29 BORDER=0 ALT="Main
+Menu"></A></TD></TR>
+<TR>
+<TD WIDTH=166 HEIGHT=29><A
+HREF="http://www.alvinleedesign.com/electronica3.html"><IMG
+SRC="graphics/entertainment.jpg" WIDTH=166 HEIGHT=29 BORDER=0
+ALT="Entertainment"></A></TD></TR>
+</TABLE>
+</TD>
+<TD WIDTH=378><IMG SRC="graphics/mast2.jpg" WIDTH=378 HEIGHT=135 BORDER=0
+ALT="Grammy Awards 98 masthead"></TD></TR>
+</TABLE>
+</TD></TR>
+<TR>
+<TD WIDTH=544 HEIGHT=235><TABLE WIDTH=544 BORDER=0 CELLSPACING=0 CELLPADDING=0>
+<TR>
+<TD WIDTH=17></TD>
+<TD WIDTH=100><TABLE WIDTH=100 BORDER=0 CELLSPACING=0 CELLPADDING=0>
+<TR>
+<TD WIDTH=100 HEIGHT=43></TD></TR>
+<TR>
+<TD WIDTH=100 HEIGHT=192><A
+HREF="http://www.alvinleedesign.com/electronica3.html"><IMG
+SRC="graphics/sponsor.jpg" WIDTH=100 HEIGHT=180 BORDER=0
+ALT="Sponsors!"></A></TD></TR>
+</TABLE>
+</TD>
+<TD WIDTH=22></TD>
+<TD WIDTH=275><TABLE WIDTH=275 BORDER=0 CELLSPACING=0 CELLPADDING=0>
+<TR ALIGN=CENTER VALIGN=BOTTOM>
+<TD WIDTH=275><TABLE WIDTH=275 BORDER=0 CELLSPACING=0 CELLPADDING=0>
+<TR>
+<TD WIDTH=74 ALIGN=RIGHT><a onMouseOver="onMouseOverSelector(0)"
+onMouseOut="onMouseOutSelector(0)" href="javascript:OnClick()"><IMG
+SRC="graphics/but_rollingstone0.gif" NAME="button0" WIDTH=74 HEIGHT=43
+BORDER=0 ALT="Rolling Stone" ALIGN=BOTTOM></A></TD>
+<TD WIDTH=79 ALIGN=CENTER><a onMouseOver="onMouseOverSelector(1)"
+onMouseOut="onMouseOutSelector(1)" href="javascript:OnClick()"><IMG
+SRC="graphics/but_sonicnet0.gif" NAME="button1" WIDTH=79 HEIGHT=43 BORDER=0
+ALT="SonicNet" ALIGN=BOTTOM></A></TD>
+<TD WIDTH=62 ALIGN=CENTER><a onMouseOver="onMouseOverSelector(2)"
+onMouseOut="onMouseOutSelector(2)" href="javascript:OnClick()"><IMG
+SRC="graphics/but_eonline0.gif" NAME="button2" WIDTH=62 HEIGHT=43 BORDER=0
+ALT="E! Online" ALIGN=BOTTOM></A></TD>
+<TD WIDTH=60 ALIGN=LEFT><a onMouseOver="onMouseOverSelector(3)"
+onMouseOut="onMouseOutSelector(3)" href="javascript:OnClick()"><IMG
+SRC="graphics/but_musicblvd0.gif" NAME="button3" WIDTH=60 HEIGHT=43
+BORDER=0 ALT="Music Boulevard" ALIGN=BOTTOM></A></TD></TR>
+</TABLE>
+</TD></TR>
+<TR ALIGN=CENTER VALIGN=TOP>
+<TD WIDTH=275><a name=rotatoranchor onMouseOver="onMouseOverImage()" onMouseOut="onMouseOutImage()" href="javascript:OnClick()"><IMG
+SRC="graphics/rollingstone.jpg" NAME="rotator" WIDTH=275 HEIGHT=179
+BORDER=0 ALT="Grammys content" ALIGN=TOP></A></TD></TR>
+</TABLE>
+</TD>
+<TD WIDTH=12></TD>
+<TD WIDTH=100><TABLE WIDTH=100 BORDER=0 CELLSPACING=0 CELLPADDING=0 HEIGHT=245>
+<TR ALIGN=CENTER VALIGN=TOP>
+<TD WIDTH=100 HEIGHT=113><A
+HREF="http://www.alvinleedesign.com/electronica3.html"><IMG
+SRC="graphics/contest0.jpg" WIDTH=100 HEIGHT=110 BORDER=0 ALT="Contests!"
+ALIGN=TOP></A></TD></TR>
+<TR>
+<TD WIDTH=100 HEIGHT=122><A
+HREF="http://www.alvinleedesign.com/electronica3.html"><IMG
+SRC="graphics/games0.jpg" WIDTH=100 HEIGHT=110 BORDER=0 ALT="Games!"
+ALIGN=TOP></A></TD></TR>
+</TABLE>
+</TD>
+<TD WIDTH=18></TD></TR>
+</TABLE>
+</TD></TR>
+</TABLE>
+</BODY>
+</HTML>

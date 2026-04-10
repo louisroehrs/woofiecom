@@ -1,0 +1,123 @@
+<a name="add">
+<TABLE BORDER="0" CELLSPACING="0"  cellpadding=0 width=100% BGCOLOR="#eeeeee">
+	<TR>
+	<td colspan=3>
+<FORM ACTION="<fff ###command###>" METHOD="POST" ENCTYPE="application/x-www-form-urlencoded">
+<TABLE BORDER="0" CELLSPACING="0" cellpadding=0  width=100% BGCOLOR="#eeeeee">
+		<TD align=right><font face="arial,helvetica" size="-1"><small>Time&nbsp;&amp;&nbsp;Date&nbsp;</TD>
+		<TD colspan=2 align=left><small><SELECT NAME="hour">
+			<OPTION <FFF ###h1###>>1</OPTION>
+			<OPTION <FFF ###h2###>>2</OPTION>
+			<OPTION <FFF ###h3###>>3</OPTION>
+			<OPTION <FFF ###h4###>>4</OPTION>
+			<OPTION <FFF ###h5###>>5</OPTION>
+			<OPTION <FFF ###h6###>>6</OPTION>
+			<OPTION <FFF ###h7###>>7</OPTION>
+			<OPTION <FFF ###h8###>>8</OPTION>
+			<OPTION <FFF ###h9###>>9</OPTION>
+			<OPTION <FFF ###h10###>>10</OPTION>
+			<OPTION <FFF ###h11###>>11</OPTION>
+			<OPTION <FFF ###h12###>>12</OPTION>
+			</SELECT>
+ <FONT SIZE="4"><B>:</B></FONT><SELECT NAME="min">
+			<OPTION <FFF ###m00am###>>00 am</OPTION>
+			<OPTION <FFF ###m15am###>>15 am</OPTION>
+			<OPTION <FFF ###m30am###>>30 am</OPTION>
+			<OPTION <FFF ###m45am###>>45 am</OPTION>
+			<OPTION <FFF ###m00pm###>>00 pm</OPTION>
+			<OPTION <FFF ###m15pm###>>15 pm</OPTION>
+			<OPTION <FFF ###m30pm###>>30 pm</OPTION>
+			<OPTION <FFF ###m45pm###>>45 pm</OPTION>
+			</SELECT><BR>
+  			<SELECT NAME="month">
+			<OPTION >Month</OPTION>
+			<OPTION <FFF ###m1###> value=1>January</OPTION>
+			<OPTION <FFF ###m2###> value=2>February</OPTION>
+			<OPTION <FFF ###m3###> value=3>March</OPTION>
+			<OPTION <FFF ###m4###> value=4>April</OPTION>
+			<OPTION <FFF ###m5###> value=5>May</OPTION>
+			<OPTION <FFF ###m6###> value=6>June</OPTION>
+			<OPTION <FFF ###m7###> value=7>July</OPTION>
+			<OPTION <FFF ###m8###> value=8>August</OPTION>
+			<OPTION <FFF ###m9###> value=9>September</OPTION>
+			<OPTION <FFF ###m10###> value=10>October</OPTION>
+			<OPTION <FFF ###m11###> value=11>November</OPTION>
+			<OPTION <FFF ###m12###> value=12>December</OPTION>
+			</SELECT>
+			<SELECT NAME="day">
+			<OPTION>Day</OPTION>
+			<OPTION <FFF ###d1###>>1</OPTION>
+			<OPTION <FFF ###d2###>>2</OPTION>
+			<OPTION <FFF ###d3###>>3</OPTION>
+			<OPTION <FFF ###d4###>>4</OPTION>
+			<OPTION <FFF ###d5###>>5</OPTION>
+			<OPTION <FFF ###d6###>>6</OPTION>
+			<OPTION <FFF ###d7###>>7</OPTION>
+			<OPTION <FFF ###d8###>>8</OPTION>
+			<OPTION <FFF ###d9###>>9</OPTION>
+			<OPTION <FFF ###d10###>>10</OPTION>
+			<OPTION <FFF ###d11###>>11</OPTION>
+			<OPTION <FFF ###d12###>>12</OPTION>
+			<OPTION <FFF ###d13###>>13</OPTION>
+			<OPTION <FFF ###d14###>>14</OPTION>
+			<OPTION <FFF ###d15###>>15</OPTION>
+			<OPTION <FFF ###d16###>>16</OPTION>
+			<OPTION <FFF ###d17###>>17</OPTION>
+			<OPTION <FFF ###d18###>>18</OPTION>
+			<OPTION <FFF ###d19###>>19</OPTION>
+			<OPTION <FFF ###d20###>>20</OPTION>
+			<OPTION <FFF ###d21###>>21</OPTION>
+			<OPTION <FFF ###d22###>>22</OPTION>
+			<OPTION <FFF ###d23###>>23</OPTION>
+			<OPTION <FFF ###d24###>>24</OPTION>
+			<OPTION <FFF ###d25###>>25</OPTION>
+			<OPTION <FFF ###d26###>>26</OPTION>
+			<OPTION <FFF ###d27###>>27</OPTION>
+			<OPTION <FFF ###d28###>>28</OPTION>
+			<OPTION <FFF ###d29###>>29</OPTION>
+			<OPTION <FFF ###d30###>>30</OPTION>
+			<OPTION <FFF ###d31###>>31</OPTION>
+			</SELECT>
+			<SELECT NAME="year">
+			<OPTION>Year</OPTION>
+			<OPTION <FFF ###y1998###>>1998</OPTION>
+			<OPTION <FFF ###y1999###>>1999</OPTION>
+			<OPTION <FFF ###y2000###>>2000</OPTION>
+			<OPTION <FFF ###y2001###>>2001</OPTION>
+			<OPTION <FFF ###y2002###>>2002</OPTION>
+			<OPTION <FFF ###y2003###>>2003</OPTION>
+			<OPTION <FFF ###y2004###>>2004</OPTION>
+			<OPTION <FFF ###y2005###>>2005</OPTION>
+			</SELECT>
+		</TD>
+
+	</TR>
+	<TR>
+		<TD align=right><font face="arial,helvetica" size="-1"><small>Notify by&nbsp;</TD>
+		<TD  colspan=2><INPUT TYPE="CHECKBOX" NAME="notemethod" VALUE="email"><FONT SIZE="1" FACE="Arial, Helvetica">Sending Email  
+			</FONT><INPUT TYPE="CHECKBOX" NAME="notemethod" VALUE="loadpage"><FONT SIZE="1" FACE="Arial, Helvetica">Loading
+			Page  </FONT><INPUT TYPE="CHECKBOX" NAME="notemethod" VALUE="pager"><FONT SIZE="1" FACE="Arial, Helvetica">Page
+			Me </FONT><INPUT TYPE="CHECKBOX" NAME="notemethod" VALUE="cal"  CHECKED><FONT SIZE="1" FACE="Arial, Helvetica">Put
+			on Calendar </FONT></TD>
+	</TR>
+	<TR>
+		<TD ALIGN="RIGHT"><font face="arial,helvetica" size="-1"><small>URL&nbsp;</TD>
+		<TD  colspan=2><small><font face="arial,helvetica"><INPUT TYPE="TEXT" NAME="URL" SIZE="22" ffv=###evURL###><small>&nbsp;Link to webpage, chat, or map for your event.</TD>
+
+	</TR>
+	<TR>
+		<TD align=right><font face="arial,helvetica" size="-1"><small>Event&nbsp;</TD>
+		<TD colspan=2><small><font face="arial,helvetica" size="-1"><INPUT TYPE="TEXT" NAME="event" ffv=###evname### SIZE="40"></TD>
+
+	</TR>
+	<TR>
+		<TD align=right><font face="arial,helvetica" size="-1"><small>Description&nbsp;</TD>
+		<TD colspan=2><small><font face="arial,helvetica" size="-1"><TEXTAREA ROWS=4 COLS=40 NAME="desc" ffv=###evdesc### ></TEXTAREA></TD>
+
+	</TR>
+	<TR><FFF ###buttons###></TR>
+
+</table></form>
+</td>
+</tr>
+</table>

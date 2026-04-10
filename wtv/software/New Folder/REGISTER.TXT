@@ -1,0 +1,51 @@
+          
+
+Mail this form and a check/International postal money order to:
+
+    MochaSoft
+    Faksegade 13,1tv
+    2100 Copenhagen East
+    Denmark
+
+Products:
+
+Mocha W32 Telnet:
+  __ single user Licenses of $25 each    = ______
+  __ Unlimited Company licens of $250    = ______
+
+Danish Residents add 25% tax             + ______
+
+Total:                                     ______
+
+
+
+Wants to receive a receipt by surface mail (yes/no) : _____
+-----------------------------------------------------------------------
+
+ - If the Check is not drawn on a Danish bank add 70 US for
+   extra cost. 
+
+ - Using Danish Checks,  1US = 6.00 dkr
+
+License name: ___________________________________ (will be displayed
+                                                  in the help window)
+
+Name:________________________________________  Date:_______________
+
+Company:___________________________________________________________
+
+Contact Person: ___________________________________________________
+
+Address:___________________________________________________________
+
+City, State, Zip:__________________________________________________
+
+Country:___________________________________________________________
+
+Phone Number:______________________________________________________
+
+E-Mail Address:____________________________________________________
+
+
+If You want to speed up the order handling, send also this file via
+email to frydendal@mochasoft.dk

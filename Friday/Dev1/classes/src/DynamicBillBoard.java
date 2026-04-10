@@ -1,0 +1,421 @@
+//##############################################################################
+//# FILE: BillBoard.java
+//# VERSION: 1.15
+//# DATE: 1/31/96
+//# AUTHOR: Robert Temple (templer@db.erau.edu)
+//#
+//# Copyright (c) 1996 Robert Temple, All Rights Reserved.
+//##############################################################################
+
+import java.awt.*;
+import java.awt.image.ImageObserver;
+import java.net.URL;
+
+//##############################################################################
+//# CLASS: DynamicBillBoard
+//#   Applet which displays an image on an HTML page.  The image changes to a
+//#   new image after a delay.  This change from one image to the next has
+//#   some kind of special effect associated with it.  See the BillTransition
+//#   class for more information on these special effects.  Images can have
+//#   URLs associated with them.
+//#
+//# USAGE NOTE:
+//#   The images this applet uses all must be the same size.  The size of the
+//#   applet must be the same size of these images.
+//#   
+//#   HTML tag:
+//#   <applet code="DynamicBillBoard" width="XXX" height="XXX">
+//#   <param name="delay" value="20000">
+//#   <param name="billboards" value="X">
+//#   <param name="bill0" value="XXX.gif,http://X.X.X/XXX.html">
+//#   <param name="bill1" value="XXX.gif,http://X.X.X/XXX.html">
+//#   <param name="bill2" value="XXX.gif,http://X.X.X/XXX.html">
+//#   <param name="bill3" value="XXX.gif,http://X.X.X/XXX.html">
+//#   <param name="transitions" value="4,ColumnTransition,FadeTransition,TearTransition,SmashTransition">
+//#   </applet>
+//#
+//#   HTML tag NOTES
+//#     width - the width of the applet.  Must be the same size as the images
+//#     height - the height of the applet. Must be the same size as the images
+//#     delay - the time between images in milliseconds
+//#     billboards - the number of different BillBoards(images) that you will 
+//#               use
+//#     bill# - the image followed by the linking URL for a given BillBoard, 
+//#             starting with number 0.  The image and URL should be separated
+//#             by a comma, *NO SPACES*
+//#     bill#... - this parameter should appear 0 to one less then the value of
+//#             the "billboards" parameter.  Replace # with the BillBoards 
+//#             number
+//#     transitions - the number of classes that will be used as transitions,
+//#             followed by the names of these classes, separated by commas
+//#             *NO SPACES*
+//#     
+//# DESIGN NOTES:
+//#   FAST CONTENT:
+//#   Java Applets take much longer to get to downloaded and displayed then
+//#   most other things appearing on a HTML page under Netscape 2.0b4.  I
+//#   believe that most web surfers do not have the patience to wait for most
+//#   applets to load.  Because of this I attempted to make this applet load
+//#   and get content to the screen as fast as possible.
+//#   
+//#   To accomplish this, The applet does little processing before waiting for
+//#   the first image to be displayed on the screen.  This is unlike most other
+//#   Java applet.  Most load all images and classes before showing anything
+//#   but a gray box.  
+//#
+//#   Later, the applet loads other images and classes only as they are needed.  
+//#
+//#   EXCEPTIONS:
+//#   I really would like to put more exceptions in the code, but I did not
+//#   because I wanted the fastest possible loading of classes.  Hence the
+//#   smallest bytecode
+//#   
+//#   PUBLIC DATA MEMBERS:
+//#   A lot of data members are made public even though in good OO-programming
+//#   they should not be.  This is done for the same reason as above, bytecode
+//#   size.
+//#   
+//#   Making data members protected, and then creating a function that allows
+//#   read only access to this data increases the bytecode size.  Even when
+//#   the one line function is made final, and the code is compiled with
+//#   optimizations. :(
+//#
+//# COMPILATION NOTES:
+//#   Sometimes I had trouble recompiling some of the source code when other
+//#   class files had already been compiled.  delete all the *.class files,
+//#   and recompiling *.java is a work around for this.  email me if you
+//#   know why this is happening
+//##############################################################################
+//# VARIABLE: kicker
+//#   The main thread which drives the program
+//# VARIABLE: image
+//#   Current Image displayed on the screen
+//# VARIABLE: transition
+//#   points to the next transition that will execute to go from one BillBoard
+//#   to the next
+//# VARIABLE: current_billboard
+//#   Index into the billboards array of the current billboard shown on screen
+//# VARIABLE: next_billboard
+//#   Index into the billboards array of the next billboard to be shown on the
+//#   screen
+//# VARIABLE: number_of_billboards
+//#   The total number of different billboards
+//# VARIABLE: number_of_transition_types
+//#   The total number of different transitions
+//# VARIABLE: current_transition_type
+//#   Index into the transition_classes array of the current transition
+//# VARIABLE: next_billboard_time
+//#   The time the current transition is scheduled to fire
+//# VARIABLE: delay
+//#   The delay time from the completion of one transition to the next transtion
+//#   Delay is initially set to -1.  This is used to check to see if the 
+//#   finish init function has been called before.  It has if delay is 
+//#   not -1
+//# VARIABLE: mouse_inside_applet
+//#   Flag the keep track if the mouse is currently located inside the applet
+//# VARIABLE: billboards[]
+//#   Array which holds all of the billboards
+//# VARIABLE: transition_classes[]
+//#   Array of Strings which hold the names of the different transition classes
+//# METHOD: init
+//#   Initializes the applet.  Performs minimal work to get the applet to the
+//#   screen ASAP.  The next method, finishInit completes the initialization
+//# METHOD: finishInit
+//#   finishes the Initialization the applet
+//# METHOD: start
+//#   Called to start the execution of the applet.
+//# METHOD: stop
+//#   Called to stop the execution of the applet
+//# METHOD: mouseMove
+//#   Called When the mouse moves over the applet.  Displays the URL link in
+//#   the status bar.  Sets the mouse_inside_applet flag to true
+//# METHOD: mouseExit
+//#   Called When the mouse moves out of the applet.  Sets the
+//#   mouse_inside_applet flag to false
+//# METHOD: mouseUp
+//#   Called When the mouse button is released over the applet.  Goes to the
+//#   URL link
+//# METHOD: paint
+//#   Called when the applet needs to be painted.  Draws the image
+//# METHOD: update
+//#   Overrides super.update to prevent flicker
+//# METHOD: parseBillData
+//#   Gets the applet parameter info about the current_billboard, and creates
+//#   a new BillData object from this info.
+//# METHOD: run
+//#   the main execution method of the applet
+//##############################################################################
+public class DynamicBillBoard extends java.applet.Applet implements Runnable {
+
+  Thread kicker = null;
+  public Image image = null;
+  BillTransition transition = null;
+
+  public int current_billboard;
+  public int next_billboard;
+  int number_of_billboards;
+  int number_of_transition_types;
+  int current_transition_type;
+  long delay;
+  boolean mouse_inside_applet;
+  boolean mouse_down;
+
+  public BillData billboards[];
+  String transition_classes[];
+
+  public void init() {
+    //# Get the total number of billboards that the applet will use
+    String s = getParameter("billboards");
+    number_of_billboards = Integer.parseInt(s);
+
+    //# Create an array to store the Data for each billboard
+    billboards = new BillData[number_of_billboards];
+
+    //# Chose a random billboard to start with
+    current_billboard = next_billboard =
+              (int)(Math.random() * number_of_billboards);
+
+    //# create the BillData object for the first billboard
+    parseBillData();
+
+    delay = -1;
+  }
+
+  public void finishInit() {
+    //# Make sure this is only called once, otherwise, when
+    //# a user leaves our page, and comes back, this gets
+    //# called again, and it messes things up.
+    if(delay != -1) {
+      return;
+    }    
+
+    //# The delay between transitions in milliseconds
+    String s = getParameter("delay");
+    delay = Long.parseLong(s);
+
+    //# get the number of transition classes that will be used
+    s = getParameter("transitions");
+    int field_end = s.indexOf(",");
+    number_of_transition_types = Integer.parseInt(s.substring(0, field_end));
+
+    //# get the transition classes that will be used
+    transition_classes = new String[number_of_transition_types];
+    for(int t = 0; t < number_of_transition_types - 1; ++t) {
+      s = s.substring(field_end + 1);
+      field_end = s.indexOf(",");
+      transition_classes[t] = s.substring(0, field_end);
+    }
+    transition_classes[number_of_transition_types - 1] =
+              s.substring(field_end + 1);
+
+    //# initialize the pixel data for the first billboard
+    billboards[next_billboard].initPixels(size().width, size().height);
+
+    mouse_inside_applet = false;
+  }
+
+  public void start() {
+    if(kicker == null) {
+
+      //# initialize the static members of the BillTransition class
+      BillTransition.initClass(this);
+
+      //# there is not a next bill_board at this time...
+      next_billboard = current_billboard;
+      
+      //# need to set the current image
+      image = billboards[current_billboard].image;
+
+      //# make sure we start with a fresh transition 
+      transition = null;
+
+      kicker = new Thread(this);
+      kicker.start();
+    }
+  }
+
+  public void stop() {
+    if(kicker != null) {
+      kicker.stop();
+      kicker = null;
+    }
+  }
+
+  //# Used to be mouseEnter, but mouseMove works better for me
+  public boolean mouseMove(Event evt, int x, int y) {
+    //# show the URL link of the billboard if it is not null
+    if(billboards[current_billboard].link == null) {
+      return true;
+    }
+    mouse_inside_applet = true;
+    showStatus(billboards[current_billboard].link.toString());
+    return true;
+  }
+
+  public boolean mouseExit(Event evt, int x, int y) {
+    //# show the URL link of the billboard if it is not null
+    if(billboards[current_billboard].link == null) {
+      return true;
+    }
+    mouse_inside_applet = false;
+    showStatus("");
+    return true;
+  }
+
+  public boolean mouseUp(Event evt, int x, int y) {
+    //# go to the URL link of the billboard if it is not null
+    if(billboards[current_billboard].link == null) {
+      return false;
+    }
+
+    //# will stopping the thread now make a difference?
+    kicker.stop();
+
+    getAppletContext().showDocument(billboards[current_billboard].link);
+    return true;
+  }
+
+  public void paint(Graphics g) {
+    g.drawImage(image, 0, 0, this);
+  }
+
+  public void update(Graphics g) {
+    paint(g);
+  }
+
+  void parseBillData() {
+
+    //# get the parameter for the next_billboard info
+    String s = getParameter("bill" + next_billboard);
+    int field_end = s.indexOf(",");
+
+    //# get the billboard's image
+    Image new_image = getImage(getDocumentBase(), s.substring(0, field_end));
+
+    //# get the billboard's URL link
+    URL link;
+    try {
+      link = new URL(getDocumentBase(), s.substring(field_end + 1));
+    } catch (java.net.MalformedURLException e) {
+      link = null;
+    }
+
+    //# construct the new billboard
+    billboards[next_billboard] = new BillData(link, new_image);
+
+    if(image == null) {
+      image = new_image;
+    }
+    else {
+      prepareImage(new_image, this);
+      billboards[next_billboard].initPixels(size().width, size().height);
+    }
+  }
+
+  public void run() {
+    //# Get the first image to the screen ASAP
+    while((checkImage(image, this) & ImageObserver.ALLBITS) == 0) {
+      try {
+        Thread.sleep(600);
+      } catch (InterruptedException e) {}
+    }
+
+    //# do the rest of the initialization required
+    finishInit();
+
+    //# variable to hold the time of the next transition
+    long next_billboard_time;
+
+    while(Thread.currentThread() == kicker) {
+
+      //# Schedule the beginning of the next transition
+      next_billboard_time = System.currentTimeMillis() + delay;
+
+      //# Determine the next billboard to be shown
+      current_billboard = next_billboard;
+      if(++next_billboard >= number_of_billboards) {
+        next_billboard = 0;
+      }
+
+      //# Load the billboard if it has not yet been loaded
+      if(billboards[next_billboard] == null) {
+
+        parseBillData();
+        try {
+          Thread.sleep(100);
+        }  catch (InterruptedException e) {}
+      }
+
+      //# Randomly Determine the next transition we should use
+      //# Use a different one from the last one.
+      int transition_type;
+      do {
+        transition_type = (int)(Math.random() * number_of_transition_types);
+      } while(transition_type == current_transition_type);
+      current_transition_type = transition_type;
+
+      try {
+        transition = (BillTransition)Class.forName(transition_classes[
+                  current_transition_type]).newInstance();
+      }
+      catch(Exception e) {
+        //# NOTE: Was your class part of a package?  You might need 
+        //# "package_name.XXX"
+        e.printStackTrace();
+      }
+
+      //# show our link on the status bar again, incase someone else wrote 
+      //# over it
+      if(       mouse_inside_applet == true && 
+                billboards[current_billboard].link != null) { 
+
+        showStatus(billboards[current_billboard].link.toString());
+      }
+
+      //# get the current time and compare it against the next scheduled
+      //# transition time.  If it is not yet time for the transition, wait
+      //# whatever time is needed.
+      if(System.currentTimeMillis() < next_billboard_time) {
+        try {
+          Thread.sleep(next_billboard_time - System.currentTimeMillis());
+        } catch (InterruptedException e) {}
+      }
+
+      //# loop through each frame of the transition
+      for(int f = 0; f < transition.number_of_frames; ++f) {
+
+         //# show the next transition image
+        image = transition.frames[f];
+
+        //# immediately paint the new image
+        paint(getGraphics());
+ 
+        try {
+          Thread.sleep(transition.delay);
+          System.out.println(".");
+        } catch (InterruptedException e) {}
+      }
+      
+      //# the next billboard should be shown is its entirety
+      image = billboards[next_billboard].image;
+      
+      //# immediately paint the new image
+      paint(getGraphics());
+
+      //# if the mouse is currently is in the applet, show the new link
+      if(       mouse_inside_applet == true &&
+                billboards[next_billboard].link != null) {   
+      
+        showStatus(billboards[next_billboard].link.toString());   
+      }
+  
+      //# clean up resources from the completed transition
+      transition.clearFrames();
+      transition = null;
+
+      try {
+        Thread.sleep(100);
+      } catch (InterruptedException e) {}
+    }
+  }
+}

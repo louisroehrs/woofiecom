@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ <id>urn:iweb:0658D174-7EBB-46E9-8691-CBAFF00EDC3C</id>
+ <title>Page list Atom feed</title>
+ <updated>2010-01-26T23:51:09-08:00</updated>
+ <link rel="self" href="feed.xml"/>
+ <generator>iWeb</generator>
+ <author>
+  <name>iWeb</name>
+ </author>
+ <entry>
+  <id>urn:iweb:F90DF643-AB3F-46DD-A32A-5C042C35FCF3</id>
+  <title>Error 500</title>
+  <title xmlns="urn:iweb:">Error 500</title>
+  <in-navbar xmlns="urn:iweb:">F90DF643-AB3F-46DD-A32A-5C042C35FCF3</in-navbar>
+  <link rel="alternate" href="Error_500.html"/>
+  <updated>2010-01-26T23:51:09.001-08:00</updated>
+  <content>Error 500</content>
+ </entry>
+</feed>

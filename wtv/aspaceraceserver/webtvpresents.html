@@ -1,0 +1,20 @@
+<html>
+<head>
+<title>WebTV Space Race</title>
+
+</head>
+<bgsound src="../arcade/wtvspl2.mid" LOOP=false>
+<body bgcolor=000000 vspace=0 hspace=0 align=center>
+<display noscroll skipback nostatus showwhencomplete>
+<SCRIPT LANGUAGE="JavaScript">
+var userAgent = navigator.appName + " " + navigator.appVersion;
+
+if (userAgent.indexOf("Plus") > 0 ) {
+  	document.write("<embed src=\"../arcade/Wtv.spl\" quality=high width=560 height=420 loop=false>"); 
+} else {   
+	document.write("<embed src=\"../arcade/Cwtv.spl\" quality=high width=560 height=420 loop=false>"); 
+}
+</SCRIPT>
+</center>
+</body>
+</html>

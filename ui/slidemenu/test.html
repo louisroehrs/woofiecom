@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html style="margin:0;padding:0">
+  <head>
+    <title>Test Styles.</title>
+<style>
+.my { color:blue; border: 1px solid red}
+.my.stuff { color:green; letter-spacing: -1.2em; float:right}
+.stuff { color:red;}
+
+.box {background-color:yellow; width:212px;}
+.boxcorner {background-color:yellow;width:6px; float:left; padding:0;margin:0}
+.boxlcorner {background-color:yellow;width:6px; float:left;clear:both}
+.boxcenter {background-color:yellow;width:200px; float:left; }
+.boxcontent {background-color:yellow;width:200px; float:left;}
+.boxleft {background-color:yellow;width:6px; float:left}
+.boxright {background-color:yellow;width:6px; float:left}
+.leftside {float:left; margin:10px;}
+.rightside {float:left; margin:10px;}
+</style>
+  </head>
+
+  <body>
+    <h1>Test Styles.</h1>
+<p class="my stuff">my stuff</p> 
+<p class="stuff"> stuff</p>
+<p class="my"> my</p>
+<ul>
+<li class="my">my
+</ul>
+<div></div>
+
+<h2>Rounded box with divs</h2>
+
+<div class=leftside>
+<div class=box>
+<div class=boxtop><div class=boxlcorner><img src=btl.gif></div><div class=boxcenter>&nbsp;</div><div class=boxcorner><img src=btr.gif></div></div>
+
+<div class=box><div class=boxleft><img src=btl.gif></div><div class=boxcontent>lots of content jjgg kk asdf asdf asdf asdf sad fjasjdjj</div><div class=boxright><img src=btl.gif></div></div>
+
+<div class=box><div class=boxlcorner><img src=bbl.gif></div><div class=boxcenter>&nbsp;</div><div class=boxcorner><img src=bbr.gif></div></div>
+</div>
+
+</div class=leftside>
+<div class=rightside>
+
+<div class=box>
+<div class=boxtop><div class=boxcorner><img src=btl.gif></div><div class=boxcenter>&nbsp;</div><div class=boxcorner><img src=btr.gif></div></div>
+
+<div class=box><div class=boxleft><img src=btl.gif></div><div class=boxcontent>lots of content</div><div class=boxright><img src=btl.gif></div></div>
+
+<div class=box><div class=boxcorner><img src=bbl.gif></div><div class=boxcenter>&nbsp;</div><div class=boxcorner><img src=bbr.gif></div></div>
+</div>
+
+
+</div class=rightside>
+<div style="clear:both"></div>
+
+
+
+<h2>has layout</h2>
+
+<DIV ID="oWidthSet" STYLE="width:100%;border:1px solid red">
+	DIV element A has its width set to 100%.</DIV>
+
+<DIV ID="oNotSet" style="border:1px solid red">DIV element B is not positioned, 
+	and neither its height nor width is set.</DIV>
+
+<P>Which DIV element has layout?</P>
+
+<BUTTON onclick="alert(oWidthSet.currentStyle.hasLayout)">
+	DIV Element A</BUTTON>
+
+<BUTTON onclick="alert(oNotSet.currentStyle.hasLayout)">
+	DIV Element B</BUTTON>
+    <hr>
+    <address><a href="mailto:">Louis Roehrs</a></address>
+<!-- Created: Mon Feb  9 17:11:41 PST 2009 -->
+<!-- hhmts start -->
+Last modified: Mon Feb  9 17:25:12 PST 2009
+<!-- hhmts end -->
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!-- This document was created with HomeSite 2.5 -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<HTML>
+<HEAD>
+	<TITLE>woofie's toolbox - moving pages to webtv service</TITLE>
+
+<SCRIPT LANGUAGE=JavaScript>
+	function PlaySound(sound) {
+		if (sound == null) {  
+            return;
+		}
+		else {
+			sound.play(false);
+		}
+	}
+
+</SCRIPT>
+
+</HEAD>
+
+<BODY bgcolor=102030 fontsize=medium text=909090 link=a0a000 vlink=808000><BR>
+	<EMBED SRC="newbell3.mid" HIDDEN=TRUE CONTROLS=console
+	VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="bell"
+	MASTERSOUND>
+
+<CENTER><H3>woofie's toolbox - moving pages to webtv service</H3></CENTER>
+
+Moving files to the webtv service may prove to be a bit different than moving files to typical
+web servers.  If the files are .html files, then read <A HREF="jsinhtml.html">this</A>.  If you are 
+converting your files to .tmpl files, then the following may smooth the transition.  The webtv service
+will look for special tags and variables which it may confuse with javascript on your page.  For instance, 
+.tmpl file variables look like {variable-name}. Because of this, you will need to double all the open curly 
+brackets in your javascript to tell the service to ignore the open curly bracket.  Other tips follow below.
+
+There are key things to note:
+<UL>
+<LI>Open Curly Brackets:  Double ALL of these.  { becomes {{.
+<LI>Leave at least one space before and after all curly brackets.  Curly brackets against letters get interpreted as webtv server variables.
+<LI>Close Curly Brackets:  It might be good to double all of these as well.  To be tested.
+<li>Double-slash javascript comment indicator (//): Get rid of all javascript comments.
+<li>HTML comments:  &lt;!-- and --&gt; sometimes get interpreted differently.  In javascript, the -- part of the comment looks like a decrement operator '--' .  It's
+best to remove these as well.
+<li>Change .html file extensions to .tmpl in links where necessary.
+<li>Replace placeholder ads with the as insertion system of your choice.
+</ul>
+ 
+<BR><BR><CENTER><hr width=50%><hr width=30%><BR></CENTER>
+
+</BODY>
+</HTML>

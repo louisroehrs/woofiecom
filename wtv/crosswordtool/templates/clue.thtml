@@ -1,0 +1,4 @@
+  <TD>
+    <!--CLUENUMBER-->
+    <INPUT TYPE=TEXT NAME="<!--CLUENAME-->" VALUE="<!--CLUEVALUE-->">
+  </TD>

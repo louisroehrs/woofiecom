@@ -1,0 +1,170 @@
+<html>
+
+<title>WebTV MatchMate</title>
+<head>
+<script language="JavaScript">
+
+function getURLvar(Name) {
+	var search = Name + "=";
+	var incoming = window.location.search;
+	if (incoming.length > 0) { // if there are any search parameters
+		offset = incoming.indexOf(search);
+		if (offset != -1) { // if parameter exists 
+			offset += search.length ;
+			// set index of beginning of value
+			end = incoming.indexOf("&", offset) ;
+			// set index of end of cookie value
+			if (end == -1) 
+				end = incoming.length;
+			value = unescape(incoming.substring(offset, end));
+			if (value == "") {
+				return null;
+			} else {
+				return value;
+			}
+		}
+		else return null;
+	}
+	else return null;
+}
+
+function Redirect(sURL) {
+  window.location=sURL;
+} 
+
+function GetSelection (thisControl) {
+	return thisControl.options[thisControl.selectedIndex].text
+}
+
+function ToPage(pageName) {
+	var player0 =getURLvar("player0");
+	var player1 =getURLvar("player1");
+	var player2 = ""
+	var mysearch = window.location.search
+	if (mysearch != null) {
+		var modifier= ""
+		if (mysearch.charAt(0) != "?")
+			mysearch = "?"+ mysearch;   
+	}
+	else
+	{
+		modifier = "?"
+		mysearch = ""
+	}
+
+	if ((pageName == "game.html") && (player1 !="") && (player0 !="") )
+		pageName = "player1.html"
+	location.href=pageName+mysearch+modifier+"player0=" + player0 + "&player1=" + player1 + "&player2=" + player2
+}
+
+
+	p0s = getURLvar("p0score");
+	p1s = getURLvar("p1score");
+	
+	if (p0s > p1s) {
+		winner =  getURLvar("player0");
+		winnerchar =  getURLvar("p0pict");
+		winnerid=0;
+	} else {
+		winner =  getURLvar("player1");
+		winnerchar =  getURLvar("p1pict");
+		winnerid=1;
+	}
+	
+
+
+</script>
+
+</head>
+<bgsound src="sounds/windyule.mid" loop=true>
+<body marginheight=0 marginwidth=0 fontsize=medium background=images/full_bg1.gif
+      valign=top  bgcolor=#009933 text=#ffffff 
+	  credits="credits.html" vspace=0 hspace=0>
+	<display noscroll nosend>
+
+
+	  <form name="form1" action="game.html" rel=game.html method=get>
+
+<table width=100% border=0 cellpadding=0 cellspacing=0 cellborder=0>
+	<tr>
+		<td height=384 width=166 valign=top>
+			<IMG width=8 height=6 src=/ROMCache/Spacer.gif><BR>
+			<IMG width=6 height=80 src=/ROMCache/Spacer.gif><a href="wtv-home:/home"><IMG width=104 height=80 src=/ROMCache/WebTVLogoJewel.gif></a><BR>
+			<IMG width=8 height=45 src=/ROMCache/Spacer.gif><BR>
+	
+			</script>			
+			<table border=0 cellpadding=0 cellspacing=0 cellborder=0>
+				
+				<tr>
+				<td width=09></td>
+				<td height=11 colspan=3>
+				<IMG SRC="images/blink1_ani.gif" WIDTH=12 HEIGHT=11 BORDER=0><IMG SRC="images/blink2_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink3_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink1_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink2_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink3_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink1_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink2_ani.gif" WIDTH=12 HEIGHT=11 BORDER=0><IMG SRC="images/blink3_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink1_ani.gif" WIDTH=12 HEIGHT=11 BORDER=0><IMG SRC="images/blink2_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink3_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink1_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td width=11>
+					<IMG SRC="images/blink2_ani.gif" WIDTH=11 HEIGHT=12 BORDER=0><BR>
+					<IMG SRC="images/blink3_ani.gif" WIDTH=11 HEIGHT=12 BORDER=0><BR>
+					<IMG SRC="images/blink1_ani.gif" WIDTH=11 HEIGHT=12 BORDER=0><BR>
+					<IMG SRC="images/blink2_ani.gif" WIDTH=11 HEIGHT=12 BORDER=0><BR>
+					<IMG SRC="images/blink3_ani.gif" WIDTH=11 HEIGHT=12 BORDER=0><BR>
+					<IMG SRC="images/blink1_ani.gif" WIDTH=11 HEIGHT=12 BORDER=0><BR>
+					<IMG SRC="images/blink2_ani.gif" WIDTH=11 HEIGHT=12 BORDER=0><BR>					
+					
+					</td>
+					<script Language="Javascript">
+					document.write("<td height=83 width=125  background=\"images/player" + winnerid + "_bg_on.gif\" align=center valign=bottom><IMG SRC=" + winnerchar + " WIDTH=80 HEIGHT=80 BORDER=0></td>");
+					</script>
+					<td width=11>
+					<IMG SRC="images/blink1_ani.gif" WIDTH=11 HEIGHT=12 BORDER=0><BR>
+					<IMG SRC="images/blink3_ani.gif" WIDTH=11 HEIGHT=12 BORDER=0><BR>					
+					<IMG SRC="images/blink2_ani.gif" WIDTH=11 HEIGHT=12 BORDER=0><BR>					
+					<IMG SRC="images/blink1_ani.gif" WIDTH=11 HEIGHT=12 BORDER=0><BR>					
+					<IMG SRC="images/blink3_ani.gif" WIDTH=11 HEIGHT=12 BORDER=0><BR>					
+					<IMG SRC="images/blink2_ani.gif" WIDTH=11 HEIGHT=12 BORDER=0><BR>					
+					<IMG SRC="images/blink1_ani.gif" WIDTH=11 HEIGHT=12 BORDER=0><BR>					
+				
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td height=11 colspan=3>
+				<IMG SRC="images/blink1_ani.gif" WIDTH=12 HEIGHT=11 BORDER=0><IMG SRC="images/blink2_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink3_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink1_ani.gif" WIDTH=12 HEIGHT=11 BORDER=0><IMG SRC="images/blink2_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink3_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink1_ani.gif" WIDTH=12 HEIGHT=11 BORDER=0><IMG SRC="images/blink2_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink3_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink1_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink2_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink3_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink1_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0>
+					</td>
+				</tr>
+				
+			</table>
+			<script Language="Javascript">
+			document.write("<table border=0 cellpadding=0 cellspacing=0 cellborder=0>");
+			document.write("<tr><td width=11></td><td height=21 width=143 bgcolor=000000 align=center valign=bottom><FONT SIZE=2>"+winner + "</FONT></td></tr></table>");			
+
+			</script>			
+			<IMG width=8 height=45 src=/ROMCache/Spacer.gif><BR>
+			<center>
+			<IMG width=8 height=7 src=/ROMCache/Spacer.gif><BR>
+ 			<A selected HREF="javascript:ToPage('index.html')"><IMG SRC="images/button_play_again.gif" WIDTH=139 HEIGHT=30 BORDER=0 ALT=""></A><BR>
+			<IMG width=8 height=7 src=/ROMCache/Spacer.gif><BR>
+
+			<A HREF="wtv-home:/home"><IMG SRC="images/button_quit.gif" WIDTH=139 HEIGHT=30 BORDER=0 ALT=""></A><BR>
+						</center>
+			</td>
+			
+			
+		<td width=394 valign=top align=left>
+			<IMG width=8 height=58 src=/ROMCache/Spacer.gif><BR>
+			<IMG width=100 !height=34 height=27 src=/ROMCache/Spacer.gif><FONT SIZE="7" Color=ffff00><STRONG><blink><!marquee width=304>You Win!  WooHoo!</!marquee></blink></STRONG></FONT><BR>
+			<IMG width=8 height=13 src=/ROMCache/Spacer.gif><BR>
+			<center>
+			<IMG SRC="images/winner_ani.gif" WIDTH=169 HEIGHT=202 BORDER=0>
+			</center>
+			<IMG width=4 height=06 src=/ROMCache/Spacer.gif><BR>
+			<TABLE border=0 cellpadding=0 cellspacing=0 cellborder=0><TR><TD HREF="http://www.woofie.com/webtvad.html" insetselection><IMG SRC="http://www.woofie.com/images/bws.gif" WIDTH=394 HEIGHT=71 BORDER=0></TD></TR></TABLE>
+		</td>
+  </tr>
+		
+</table>
+ </form>
+	
+</body>
+</html>

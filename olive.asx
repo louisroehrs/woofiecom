@@ -1,0 +1,15 @@
+<asx version = "3.0" bannerbar="fixed">
+  	<title>Olive Interview</title>
+
+	<abstract>Olive Interview</abstract>
+  		<entry>
+			<title>Olive Interview</title>
+			<author>TuneInNow, Network Inc.</author>
+			<copyright>2000, TuneInNow Network, Inc.</copyright>
+			<banner href = "http://207.138.35.2/img/mstin.gif" />
+    		<ref href = "mms://207.138.35.2/interviews/Olive.asf"/>
+			<MoreInfo href="http://www.TuneInNow.net" banner = "http://207.138.35.2/img/mstin.gif" style="image"/>
+			<abstract>Olive</abstract>
+			
+  		</entry>
+</asx>

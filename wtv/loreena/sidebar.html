@@ -1,0 +1,67 @@
+<!-- This document was created with HomeSite 2.5 -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<HTML>
+<HEAD>
+	<TITLE>navbar</TITLE>
+</HEAD>
+<SCRIPT Language="JavaScript">
+
+function PassQueryToPage(pageName) {
+		var chosengame = getURLvar("game")
+		var mysearch = window.location.search
+//	alert (mysearch)
+		var modifier = "N"
+		if (mysearch != "") {
+			modifier= "&"
+			if (mysearch.charAt(0) != "?")
+				mysearch = "?"+ mysearch;    
+		}
+		else
+		{
+			modifier = "?"
+			mysearch = ""
+		} 
+		var bigwoofie = pageName +  mysearch  + modifier 
+		bigwoofie = bigwoofie + "URL=" + chosengame +"&"
+		
+		bigwoofie = bigwoofie +"the=end" 
+		window.location = bigwoofie
+	}
+</SCRIPT>
+
+<BODY !background=zzz.jpg hspace=0 vspace=0 valign=top bgcolor=#222244 text=#FFFFFF vlink=#c68c31 link=#c68c31 fontsize=medium>
+<display noscroll>
+<table cellpadding=0 cellspacing=0 border=0 width=100%>
+<tr><td colspan=2><a href="index.html"><IMG SRC="hat.gif" WIDTH=100 HEIGHT=53 BORDER=0></a><HR></td></tr>
+<TR>
+<td width=10 abswidth=10></TD>
+<td width=90 abswidth=90>
+
+<FONT SIZE="3" color="#ffff00"><a href="main.html" target=content>Home</a><BR>
+
+Weather<BR>
+&nbsp;&nbsp;<a href="http://www-atm.ucdavis.edu/~wxauto/fos/fpus/zones/CAZ072" target=content><FONT SIZE="2">Incoming</FONT></a><BR>
+&nbsp;&nbsp;<a href="http://www-atm.ucdavis.edu/~wxauto/fos/fpus/FPUS75.KREV" target=content><FONT SIZE="2">Now</FONT></a><BR>
+&nbsp;&nbsp;<a href="black.html?URL=http://208.194.150.49/weather/sfo/radar.wsi;rno;regrad" target=content><FONT SIZE="2">Radar</FONT></a><BR>
+&nbsp;&nbsp;<a href="black.html?URL=http://wxp.atms.purdue.edu/maps/satellite/sat_ir_enh_west.gif" target=content><FONT SIZE="2">Satellite</FONT></a><BR>
+<a href="http://www.dot.ca.gov/hq/roadinfo/tahoe.htm" target=content>Roads</a><BR>
+&nbsp;&nbsp;<a href="http://www.dot.ca.gov/hq/roadinfo/i80" target=content><FONT SIZE="2">I-80</FONT></a><BR>
+<a href="uc.html" target="content">Ski Areas</a><BR>
+<a href="uc.html" target="content">Photos</a><BR>
+<a href="stuff.html" target="content">Stuff</a><BR>
+<a href="black.html?URL=http://www.extremetahoe.com/mtncam/alpine_cam.jpg" target="content">Cams</a><BR>
+<a href="http://celebrator.com/" target="content"><FONT SIZE="2">Celebrator</FONT></a><BR>
+<a href="http://www.spatenusa.com/" target="content"><FONT SIZE="2">Spaten</FONT></a><BR>
+</td></tr>
+
+
+<tr><td colspan=2><HR width=100%></td></tr>
+<tr>
+<td width=10 abswidth=5></TD>
+<td width=90 abswidth=90>
+<FONT SIZE="2"><BR>Big Woofie Studios</FONT><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>&nbsp;
+</td></tr></table>
+
+</BODY>
+</HTML>

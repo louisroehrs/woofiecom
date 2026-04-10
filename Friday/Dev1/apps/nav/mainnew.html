@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<TITLE>Interactive Television</TITLE>
+
+<script>
+function listingfordate()
+{
+var listingname = "http://www.tv1.com/previewlistings/static/usp";
+var today = new Date();
+var weekday = today.getDay() * 2;
+var hours = today.getHours()
+var minutes = today.getMinutes()
+if (hours>23) {weekday++; }
+hours = Math.round(hours/3);
+
+var daynames = "sumotuwethfrsasuxxxx";
+var hournames = "182100030609121518210003xxxx";
+listingname = listingname + daynames.substring(weekday,weekday+2) + "g" ;
+listingname = listingname + hournames.substring(hours*2,hours*2+2) + ".html";
+return listingname;
+}
+function settvguide()
+{
+mylink=document.links[4];
+mylink.href=listingfordate();
+}
+
+</script>
+</head>
+
+<BODY BGCOLOR="#a0a0a0" TEXT="#F0F0F0" LINK="#d0d000" VLINK="#d0d000" ALINK = "#404080" background="/ictv/images/puffyclouds.gif" >
+ 
+<!-- background="/ictv/images/sdfbay1.6BN.gif" -->
+<UL>
+
+<img src="/ictv/images/ICTVBugMedT.gif" align=right>
+<FONT COLOR = "#ffffff">
+  <B><I>Click on the words below to see <BR>
+  what your TV can do for you!</I></B></FONT>
+<BR>
+<BR>
+<TABLE BORDER=0 cellpadding = 5>
+<TR>
+<TD> </TD>
+
+<TD> <!--<A HREF="/ictv/html/educate.html"> <IMG SRC="/ictv/images/Education.gif"  WIDTH=200 HEIGHT=56 border=0></A>--></TD>
+<TD> <a href="http://www.hyperion.com/ba/sfbay.html"><IMG SRC = "/ictv/images/CityGuide.gif" BORDER=0></A></TD>
+  <!--<TD><a href="http://www.hyperion.com/ba/sfbay.html"><IMG SRC = "/ictv/images/CityGuide.gif" BORDER=0></FONT></B></A></TD>-->
+  
+									
+</TR>
+<TR>
+<TD></TD>
+
+<TD> <!--<A HREF="/ictv/html/email.html"> <IMG SRC="/ictv/images/Email.gif"  WIDTH=200 HEIGHT=56 BORDER=0></A>--></TD> 									
+<TD> <center><A HREF="/cgi-bin/ictv/apps/games/gamesstart?1"><IMG SRC="/ictv/images/games.gif" BORDER = 0></A></center></TD> 
+
+</TR> 
+<TR>
+<TD></TD>
+<TD> <!--<A HREF="/ictv/html/tvguide.html" name="tv1"><IMG SRC="/ictv/images/TV1Guide.gif"  BORDER=0></A>--></TD> 
+
+<TD>  <A HREF="http://www.yahoo.com"> <IMG SRC="/ictv/images/Internet.gif" border=0 align=right></A></TD> 
+
+
+</TR>
+<TR>
+<TD><IMG SRC="/ictv/images/1x1clear.GIF"  WIDTH=20 HEIGHT=5 BORDER = 0></TD>
+<TD> <IMG SRC="/ictv/images/1x1clear.GIF"  WIDTH=5 HEIGHT=5 BORDER = 0></TD>
+         
+<TD> <IMG SRC="/ictv/images/1x1clear.GIF"  WIDTH=400 HEIGHT=5 BORDER = 0></TD>
+</TR>
+</TABLE>
+
+<!--  <EMBED SRC="/ictv/movies/adstrip.dcr" WIDTH=496 HEIGHT=60> -->
+<!--<EMBED SRC="/ictv/movies/snd.dcr"  WIDTH=2 HEIGHT=2 TEXTFOCUS=NEVER align=bottom> -->
+
+  <!-- </body> -->
+ <!-- </html> -->
+
+
+

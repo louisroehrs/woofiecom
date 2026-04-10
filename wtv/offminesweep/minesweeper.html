@@ -1,0 +1,703 @@
+<html>
+<title>
+  WebTV MineSweeper
+</title>
+
+<body background="images/BACK.JPG" bgcolor=191919 text=668866 
+      hspace=0>
+<bgsound src="sounds/var6.mid" LOOP=TRUE>
+   <display>
+      <script language="JavaScript">
+ 
+        kWidth  = 12;
+        kHeight = 12;
+        kOtherFormElements = 1;
+
+        kDifficulty = 0.1;  // Probability of a space being a bomb.
+
+	LoadImages();
+  	    
+	iLevelOn  = 1;
+	  
+	abCellCleared = new Array(kHeight);
+	bUncovering = "true";        
+
+	InitLevel();
+				
+	function ClearCleared() {
+
+	  for (var y=0; y < kHeight; y++) {
+  	     abCellCleared[y] = new Array(kWidth);
+             for (var x=0; x < kWidth; x++) {
+   		abCellCleared[y][x] = "f";
+	     }
+	  }
+
+        }
+
+	function InitLevel() {
+
+	  sGameState="newlevel";
+
+ 	  kDifficulty = eval(1.1*kDifficulty);  // Probability of a space being a bomb.
+
+          CreatePuzzle(); 
+          CreateBombMap();
+	  if (iLevelOn > 1) {
+            HideMap();
+	    UpdateLevel();
+          }
+
+	  iMinutesLeft = 4;
+    	  iSecondsLeft = 00;
+	  
+          ClearCleared();
+
+	  sGameState="preplay";
+	
+        }
+
+	function StartLevel() {
+
+	  sGameState="inplay";
+          window.setTimeout("CallbackTimeLeft()", 5000);
+
+        }
+
+        function CreateCell(x,y) {
+
+          if (Math.random() < kDifficulty) {
+            return("b");
+          } else {
+            return("-");
+          }
+
+        }
+
+        function CreatePuzzle() {
+
+	  var x = 0;
+	  var y = 0;
+
+          puzzle = "";
+          for (y=0; y < kHeight; y++) {
+             for (x=0; x < kWidth; x++) {
+                puzzle += CreateCell(x,y); 
+             }
+          }
+
+        }
+
+	function InBounds(x,y) {
+
+		  if (eval(x) < 0 || eval(x) >= eval(kWidth) || eval(y) < 0 || eval(y) >= eval(kHeight)) {
+                   // alert("OOB x:"+x+" y:"+y);
+ 	            return ("false");
+		  }
+
+		  return("true");
+		}
+
+	function TestCell(x,y) {
+
+		  if (InBounds(x,y) == "false")
+            return ("false");
+
+          if (GetCell(x,y) == "b")
+            return ("true"); 
+
+		  return("false");
+
+        } 
+
+        function HideMap() {
+
+	  var x = 0;
+	  var y = 0;
+
+          for (y=0; y < kHeight; y++) {
+             for (x=0; x < kWidth; x++) {
+   	        document.images[eval(x+y*kHeight+kOtherFormElements)].src 
+                  = "images/hidden.gif";
+             }
+          }
+
+        }
+
+	
+
+ 	function PlaySound(sound) {
+
+          if (sound == null) {  
+            return;
+          } else {
+            sound.play(false);
+          }
+
+        }
+		function CountAdjacentBombs(x,y) {
+         
+		   var xm1 = 0;
+		   var xp1 = 0;
+		   var ym1 = 0;
+		   var yp1 = 0;
+
+		   var bombcount = 0;
+
+		   xm1 = eval(eval(x)-1);
+		   xp1 = eval(eval(x)+1);
+		   ym1 = eval(eval(y)-1);
+		   yp1 = eval(eval(y)+1);
+
+		   if (TestCell(xm1, ym1) == "true") {
+             bombcount++;
+		   }
+
+		   if (TestCell(x,ym1) == "true")
+             bombcount++;
+
+           if (TestCell(xp1,ym1) == "true")
+             bombcount++;
+
+           if (TestCell(xp1,y) == "true")
+             bombcount++;
+			
+           if (TestCell(xp1,yp1) == "true")
+             bombcount++;
+
+           if (TestCell(x,yp1) == "true")
+             bombcount++;
+
+           if (TestCell(xm1,yp1) == "true")
+             bombcount++;
+
+           if (TestCell(xm1,y) == "true")
+             bombcount++;
+
+//           alert("bombcount: "+x+","+y+": "+bombcount);
+		   		   
+		   return (bombcount);
+
+		}
+
+        function CreateBombMap() {
+
+	  var x=0;
+          var y=0;
+
+          bombmap = "";
+
+ 	  //alert("puzzle2: "+puzzle);
+ 
+          for (y=0; y < kHeight; y++) {
+             for (x=0; x < kWidth; x++) {
+
+		        if (GetCell(x,y) == "b") {
+                
+				  bombmap += "b";
+				
+				} else {
+	
+		          bombmap += "" + CountAdjacentBombs(x,y);
+				}
+             }
+          }
+
+        } 
+
+        function CheckSelection(x,y) {          
+
+           if (GetCell(x,y) == "b")
+             return("boom");
+           else
+             return("ok");	     
+        }
+
+		function SetCleared(x,y) {
+
+          abCellCleared[y][x] = "t";
+
+		}
+
+		function IsCleared(x,y) {
+
+          return(abCellCleared[y][x]);
+
+		}
+
+        function RevealCell(x,y) {
+
+	  document.images[eval(x+y*kHeight+kOtherFormElements)].src 
+               = "images/"+GetBombMap(x,y)+".gif";
+
+          SetCleared(x,y);
+
+
+        }
+
+        function FlagCell(x,y) {
+
+	  document.images[eval(x+y*kHeight+kOtherFormElements)].src 
+               = "images/flagcell.gif";
+
+        }
+
+        function GetCell(x, y) {
+         
+  	   return (puzzle.substring(x+y*kWidth, x+y*kWidth+1));
+
+        }
+
+        function GetBombMap(x, y) {
+         
+  	   return (bombmap.substring(x+y*kWidth, x+y*kWidth+1));
+
+        }
+
+
+        function RevealMap(x,y) {
+
+	  var x=0;
+	  var y=0;
+
+          for (y=0; y < kHeight; y++) {
+             for (x=0; x < kWidth; x++) {
+                RevealCell(x,y);               
+             }
+          }
+
+        }
+
+	function HandleSelectArea (x,y) {
+
+          if (bUncovering == "true") {
+	    SelectArea(x,y);
+	  } else {
+	    FlagCell(x,y);
+	  }
+
+          if (sGameState == "inplay" && CheckForWin() == "t") {
+	    PlaySound(document.applause);
+	    iLevelOn++;       
+            InitLevel();
+          }
+
+        }
+
+        function SelectArea (x,y) {
+	  
+          var xm1 = 0;
+          var xp1 = 0;
+          var ym1 = 0;
+          var yp1 = 0;
+
+          if (sGameState != "inplay")
+            return;
+
+		  if (IsCleared(x,y) == "t")
+		    return;
+          
+	
+	      RevealCell(x,y);
+	    
+		  if (GetCell(x,y) == "b") {
+	    	    //PlaySound(document.laugh);	
+		    PlaySound(document.door);	
+            	
+            	   // alert("SORRY!  THATS A BOMB!!"+x+","+y);
+            	    RevealMap();
+	            sGameState = "lost";
+		    UpdateGameState();
+			
+		    return;
+	          } 
+		  
+		  if (GetBombMap(x,y) == "0") {
+
+   	        xm1 = eval(eval(x)-1);
+	        xp1 = eval(eval(x)+1);
+	        ym1 = eval(eval(y)-1);
+	        yp1 = eval(eval(y)+1);
+
+	        if (InBounds(xm1, ym1) == "true") {
+                   SelectArea(xm1, ym1);
+	        }
+
+		    if (InBounds(x,ym1) == "true") {
+                SelectArea(x, ym1);
+		    } 
+
+            if (InBounds(xp1,ym1) == "true") {
+              SelectArea(xp1, ym1);
+		    }
+
+            if (InBounds(xp1,y) == "true") {
+              SelectArea(xp1,y);
+		    }
+			
+            if (InBounds(xp1,yp1) == "true") {
+              SelectArea(xp1,yp1);
+		    }
+
+            if (InBounds(x,yp1) == "true") {
+              SelectArea(x,yp1);
+		    }
+
+            if (InBounds(xm1,yp1) == "true") {
+              SelectArea(xm1,yp1);
+		    }
+
+            if (InBounds(xm1,y) == "true") {
+              SelectArea(xm1,y);
+		    }
+
+
+		  }	
+
+        }
+
+        function CheckForWin() {
+
+          var x=0;
+          var y=0;
+
+          for (y=0; y < kHeight; y++) {
+  	     for (x=0; x < kWidth; x++) {
+
+		var ic = IsCleared(x,y);
+	 	var gc = GetCell(x,y);
+   		if ( ic == "f" && gc != "b") {
+                  return("f");
+                }
+	     }
+	  }
+
+          return("t");
+
+        }
+
+        function SolvePuzzle() { 
+
+       	   RevealMap();
+
+        }
+        
+        function NewPuzzle() {
+		  
+    	
+	    }	
+
+		function UpdateGameState(sGameState) {
+
+		  document.gamestate.src="images/"+sGameState+".gif";
+
+		}
+		
+		function Restart() {
+
+		  location.reload();
+
+		}
+
+		function DecrementTimeLeft(iSeconds) {
+
+          if (sGameState != "inplay")
+            return ("false");
+
+          iSecondsLeft = eval(eval(iSecondsLeft) - eval(iSeconds));
+		  if (iSecondsLeft < 0) {
+
+            iMinutesLeft = eval(eval(iMinutesLeft) - 1);
+
+			if (iMinutesLeft < 0) {
+            
+			  iMinutesLeft = 0;
+			  iSecondsLeft = 0;	
+			  sGameState = "lost";
+  		     	  UpdateGameState(sGameState);	 
+ 			  RevealMap();
+			  PlaySound(document.door);
+			  return("false");
+	             	  
+			} else {
+              
+			  iSecondsLeft = eval(eval(iSecondsLeft) + 60);
+        
+			}
+
+		  }
+
+          UpdateTimeLeft();
+	      return("true");
+
+		}
+
+		function CallbackTimeLeft() {
+
+          if (DecrementTimeLeft(5) == "true") {  
+  	        window.setTimeout("CallbackTimeLeft()", 5000);
+	      } 
+
+		}
+
+		function LoadImages() {
+
+		  image0 = new Image();
+          image0.src = "images/t0.gif";
+
+		  image1 = new Image();
+          image1.src = "images/t1.gif";
+
+	      image2 = new Image();
+          image2.src = "images/t2.gif";
+
+		  image3 = new Image();
+          image3.src = "images/t3.gif";
+
+		  image4 = new Image();
+          image4.src = "images/t4.gif";
+
+		  image5 = new Image();
+          image5.src = "images/t5.gif";
+
+	      image6 = new Image();
+          image6.src = "images/t6.gif";
+
+		  image7 = new Image();
+          image7.src = "images/t7.gif";
+
+	      image8 = new Image();
+          image8.src = "images/t8.gif";
+
+		  image9 = new Image();
+          image9.src = "images/t9.gif";
+
+		  imagedetectoroff = new Image();
+          imagedetectoroff.src = "images/detectoroff.gif";
+
+		  imageflagon = new Image();
+          imageflagon.src = "images/flagon.gif";
+
+  
+        }
+
+		function UpdateLevel() {
+
+          if (eval(iLevelOn) >= 10) {
+            document.tlevel.src = "images/t"+GetDigit(iLevelOn, 2)+".gif";         
+	      } else {
+		    document.tlevel.src = "/ROMCache/spacer.gif";
+		  }
+		           
+	      document.olevel.src = "images/t"+GetDigit(iLevelOn, 1)+".gif";         
+
+		}
+
+		function UpdateTimeLeft() {
+
+		  document.tenstime.src = "images/t"+GetDigit(iSecondsLeft,0)+".gif";
+		  document.onestime.src = "images/t"+GetDigit(iSecondsLeft,1)+".gif";
+	      document.minutes.src = "images/t"+iMinutesLeft+".gif";
+		
+		}
+
+        function GetDigit(iNumber, iDigit) {
+
+          iNumber = "" + iNumber;  // Convert to "String" if it isn't already...
+
+          while (iNumber.length < 2) {
+            iNumber = "0" + iNumber;
+          }
+
+		  return(iNumber.charAt(iDigit));
+
+		}
+
+
+        function RenderCell(x, y) { 
+
+          document.write("<td abswidth=20 absheight=20 bgcolor=666666 align=center valign=bottom>");
+          document.write("  <a href=\"javascript:HandleSelectArea("+x+","+y+")\"><img src=images/hidden.gif></a>");
+          document.write("</td>");
+
+        }
+
+        function RenderRow(y) {
+
+          document.write("<tr>");
+
+          for (x=0; x < kWidth; x++) {
+             RenderCell(x,y);
+          }
+
+          document.write("</tr>");
+
+        }
+
+        function RenderPuzzle() {
+         
+          document.write("<table border=0 cellspacing=3 cellpadding=0 bgcolor=222222>");
+
+          for (y=0; y < kHeight; y++) {
+             RenderRow(y);
+          }
+
+          document.write("</table>");
+
+        }
+
+	function SelectBeginDone() {
+
+          if (sGameState == "preplay") {
+            StartLevel();
+	    document.begindone.src="images/done.gif";
+          } else {
+	    window.location = "wtv-games:/";
+          }                     
+
+        }
+
+	function SelectFlag() {
+
+          document.flag.src = "images/flagon.gif";
+          document.detector.src = "images/detectoroff.gif";
+          bUncovering = "false";
+
+        }
+
+	function SelectDetector() {
+
+          document.flag.src = "images/flagoff.gif";
+          document.detector.src = "images/detectoron.gif";
+          bUncovering = "true";
+
+        }
+       
+      </script>
+
+      <EMBED SRC="sounds/door.MP2" HIDDEN=TRUE CONTROLS=console
+       VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="door"
+       MASTERSOUND>
+
+      <EMBED SRC="sounds/laugh.MP2" HIDDEN=TRUE CONTROLS=console
+       VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="laugh"
+       MASTERSOUND> 
+
+      <EMBED SRC="sounds/applause.MP2" HIDDEN=TRUE CONTROLS=console
+       VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="applause"
+       MASTERSOUND>
+
+      <table cellpadding=0 cellspacing=0 border=0 width=100% valign=top>
+            <tr>
+              
+	      <td abswidth=174 align=center>
+                  <img src="images/LOGO.GIF">
+              </td>
+
+			  <td abswidth=370 rowspan=4 valign=top align=center>	
+			    <center>	         
+ 		        <SCRIPT LANGAUGE="Javascript">
+		          RenderPuzzle();
+		        </SCRIPT>
+
+				</center>
+			  </td>
+			               
+		    </tr>
+
+   			<tr> <!-- LevelOn -->
+              		  <td>	
+			    <center>
+			    <table border=0 cellspacing=0 cellpadding=0>
+			    <tr>
+			      <td align=right valign=center>
+				  <font size=5 color=#E6E6E6>
+			    	      <b>Level</b>
+			    	  </font>
+			      </td>
+			      <td align=left valign=center>
+			        <img border=0 width=13 height=26 src="/ROMCache/spacer.gif" name="tlevel">
+			        <img border=0 width=13 height=26 src="/ROMCache/spacer.gif" name="olevel">
+			      </td>
+			    </tr>
+			    </table>
+			    </center>
+			  </td> 
+			</tr>
+			
+			<tr>
+			   <td>
+			   <center>
+			   <table cellspacing=0 cellpadding=0 border=0>
+			     <tr>
+			       <td>
+				  <img width=26 height=53 src="images/t4.gif" name="minutes">
+				  <img width=14 height=53 src="images/COLON.GIF" name="Colon">
+				  <img width=26 height=53 src="images/t0.gif" name="tenstime">
+				  <img width=26 height=53 src="images/t0.gif" name="onestime">
+			       </td>
+			     </tr>
+			   </table>
+				  			   
+			   </center>
+               </td>
+			</tr>
+
+		    <tr> <!-- Control Buttons -->
+
+			  <td>
+			  <font color=ffaa44>
+                   
+              <table border=0 width=100% cellspacing=0 cellpadding=0>
+				<tr>
+				  <td>
+				    <A HREF="javascript:SelectDetector()">
+				    	<img name="detector" src="images/detectoron.gif">
+				    </a>
+ 				  </td>
+				  <td>
+				    <A HREF="javascript:SelectFlag()">
+				    	<img name="flag" src="images/flagoff.gif">
+				    </a>
+ 				  </td>
+				</tr>
+				<tr>
+				  <td>
+		    		   <A name="restart" HREF="javascript:Restart()">
+		       		     <IMG SRC="images/playagain.gif">
+                    		   </A>			   
+				  </td>
+				  <td>
+				    <A HREF="javascript:SelectBeginDone()">
+				    	<img name="begindone" src="images/begin.gif">
+				    </a>
+ 				  </td>
+				</tr>
+			  </table>
+
+			
+              </font>
+            
+			  </td>
+			</tr>
+			
+			<tr>
+			  <td colspan=2>
+     			     <center>
+		               <img src="/ROMCache/spacer.gif" border=1 name="gamestate" width=468 height=60>
+			     </center>
+			  </td>
+			</tr>
+               		      
+        </table>
+    
+	<script language="Javascript">
+
+       UpdateLevel();
+   	   window.setTimeout("CallbackTimeLeft()", 5000);  
+
+	</script>
+
+</body>
+</html>
+

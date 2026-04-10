@@ -1,0 +1,99 @@
+<html>
+<title>
+  WebTV MineSweeper
+</title>
+<!--
+<bgsound src="sounds/var8.mid" LOOP=TRUE> 
+-->
+<body background="BACK.JPG" bgcolor=191919 text=#E6E6E6 hspace=0>
+
+   <display>
+
+      <table cellpadding=0 cellspacing=0 border=0 width=100% valign=top>
+            <tr>
+              
+	      <td abswidth=179 align=center>
+                  <img src="minelogo.gif">
+              </td>
+
+	      <td abswidth=365 rowspan=4 valign=top align=center>
+		<font size=5>How to Play</font>
+
+  		<font size=3 color=#E6E6E6>
+		
+ 		<table>
+         	  <tr><td valign=top><li></td><td>Numbers indicate how many adjacent squares have mines in them.  For example, revealing a "2" means that there are mines in two adjacent squares.</td></tr>
+         	  <tr><td valign=top><li></td><td>In order to save you time, selecting a cell with a 0 will automatically reveal all other adjacent squares.</td></tr>
+	       	  <tr><td valign=top><li></td><td>There are five levels in this game. Each level contains more mines than the previous one.</td></tr>
+ 	 	  <tr><td valign=top><li></td><td>You have four minutes per level.</td></tr>
+                </table>  
+	
+ 		</font>
+
+   	      </td>
+			               
+		    </tr>
+
+   			<tr> <!-- LevelOn -->
+              		  <td>	
+			    
+			  </td> 
+			</tr>
+			
+			<tr>
+			   <td>
+			   
+               </td>
+			</tr>
+
+		    <tr> <!-- Control Buttons -->
+
+			  <td>
+			  <font color=ffaa44>
+                   
+              <table border=0 width=100%>
+				<tr>
+				  <td colspan=2>
+    				    <center>
+		    		    <A HREF="ms4.htm">
+		       		      <IMG SRC="PLAY.GIF">
+                    		    </A>
+				    </center>			   
+				  </td>
+				</tr>
+			  </table>
+
+			
+              </font>
+            
+			  </td>
+			</tr>
+			<tr>
+			  <td colspan=2>
+     			     <center>
+		               <img src="/ROMCache/Spacer.gif" border=0 width=468 height=8>
+			     </center>
+			  </td>
+			</tr>
+
+			<tr>
+			  <td colspan=2>
+     			     <center>
+		               <img src="/ROMCache/spacer.gif" border=1 name="gamestate" width=468 height=60>
+			     </center>
+			  </td>
+			</tr>
+               		      
+        </table>
+    </form>
+
+	<script language="Javascript">
+
+       UpdateLevel();
+   	   window.setTimeout("CallbackTimeLeft()", 5000);  
+
+	</script>
+
+</body>
+</html>
+

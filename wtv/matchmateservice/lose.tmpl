@@ -1,0 +1,122 @@
+<html>
+
+<title>WebTV MatchMate</title>
+<head>
+<script language="JavaScript">
+
+	function getURLvar(Name) {{
+		var search = Name + "=";
+		var incoming = window.location.search;
+		if (incoming.length > 0) {{ 
+			offset = incoming.indexOf(search);
+			if (offset != -1) {{  
+				offset += search.length;
+				end = incoming.indexOf("&", offset);
+				if (end == -1) 
+					end = incoming.length;
+				value = unescape(incoming.substring(offset, end));
+				if (value == "") {{
+					return null;
+				} else {{
+					return value;
+				}
+			}
+			else return null;
+		}
+		else return null;
+	}
+	
+	
+function Redirect(sURL) {{
+  window.location=sURL;
+} 
+
+function GetSelection (thisControl) {{
+	return thisControl.options[thisControl.selectedIndex].text
+}
+
+function ToPage(pageName) {{
+	var player0 =AddPrefix(document.form1.player0.value)
+	var player1 =AddPrefix(document.form1.player1.value)
+	var player2 = ""
+	var mysearch = window.location.search
+	if (mysearch != null) {{
+		var modifier= ""
+		if (mysearch.charAt(0) != "?")
+			mysearch = "?"+ mysearch;   
+	}
+	else
+	{{
+		modifier = "?"
+		mysearch = ""
+	}
+	if ((pageName == "game.tmpl") && (player1 !="") && (player0 !="") )
+		pageName = "player1.tmpl"
+	location.href=pageName+mysearch+modifier+"player0=" + player0 + "&player1=" + player1 + "&player2=" + player2
+}
+
+
+</script>
+
+</head>
+<bgsound src="sounds/patadlla.mid" loop=true>
+<body fontsize=medium background=images/full_bg1.gif
+      valign=top  bgcolor=#009933 text=#000000 transition=zoomout
+	  credits="credits.tmpl" vspace=0 hspace=0>
+	<display noscroll nosend showwhencomplete >
+
+
+	  <form name="form1" action="game.tmpl" rel=game.tmpl method=get>
+
+<table width=100% border=0 cellpadding=0 cellspacing=0 cellborder=0>
+	<tr>
+		<td absheight=384 abswidth=166 valign=top>
+			<IMG width=8 height=6 src=/ROMCache/Spacer.gif><BR>
+			<IMG width=6 height=80 src=/ROMCache/Spacer.gif><a href="wtv-home:/home"><IMG width=104 height=80 src=/ROMCache/WebTVLogoJewel.gif></a><BR>
+			<IMG width=8 height=186 src=/ROMCache/Spacer.gif><BR>
+<!-- 			<IMG width=14 height=24 src=/ROMCache/Spacer.gif align=absmiddle><FONT SIZE=4 COLOR="#FFFFFF"><STRONG><shadow>Player One</shadow></STRONG></FONT><SUB>&nbsp;</SUB><BR>
+			<IMG width=14 height=30 src=/ROMCache/Spacer.gif><FONT SIZE=4 COLOR="#FFFF20"><input usestyle type=text bgcolor=000000 name=player0 size=10 autocaps border=10 maxlength=10 selected><br></FONT>
+			<IMG width=8 height=18 src=/ROMCache/Spacer.gif><BR>
+			<IMG width=14 height=24 src=/ROMCache/Spacer.gif align=absmiddle><FONT SIZE=4 COLOR="#FFFFFF"><STRONG><shadow>Player Two</shadow></STRONG></FONT><SUB>&nbsp;</SUB><BR>
+			<IMG width=14 height=30 src=/ROMCache/Spacer.gif><FONT SIZE=4 COLOR="#FFFF20"><input usestyle type=text bgcolor=000000 name=player1 size=10 autocaps border=4 maxlength=10><br></FONT>	  -->
+			<center>
+			<IMG width=8 height=37 src=/ROMCache/Spacer.gif><BR>
+ 			<A selected HREF="index.tmpl"><IMG SRC="images/button_play_again.gif" WIDTH=139 HEIGHT=30 BORDER=0 ALT=""></A><BR>
+			<IMG width=8 height=7 src=/ROMCache/Spacer.gif><BR>
+
+			<A HREF="wtv-home:/home"><IMG SRC="images/button_quit.gif" WIDTH=139 HEIGHT=30 BORDER=0 ALT=""></A><BR>
+						</center>
+			</td>
+		<td abswidth=394 valign=top align=left>
+			<IMG width=8 height=58 src=/ROMCache/Spacer.gif><BR>
+			<IMG width=100 height=27 src=/ROMCache/Spacer.gif><IMG SRC="images/title_you_lose.gif" WIDTH=187 HEIGHT=27 BORDER=0><BR>
+			<IMG width=8 height=20 src=/ROMCache/Spacer.gif><BR>
+
+			<TABLE border=0 cellpadding=0 cellspacing=0 cellborder=0>
+				<TR>
+				<TD absheight=180 abswidth=40></TD>
+				<TD abswidth=184>
+					<TABLE border=0 cellpadding=0 cellspacing=0 cellborder=0>
+						<TR>
+						<TD absheight=119 abswidth=172 background=images/bubble.gif align=center><STRONG>
+
+						<script language="JavaScript">
+							document.write("<B>You found " + getURLvar("score") + " matches.</B>");
+						</script>
+							</STRONG></TD>
+						</TR>
+					</TABLE>
+				</TD>
+				<TD abswidth=160 valign=bottom align=left><IMG SRC="images/lose_ani.gif" WIDTH=136 HEIGHT=143 BORDER=0></TD>
+				</TR>
+			</TABLE>
+			<IMG width=4 height=28 src=/ROMCache/Spacer.gif><BR>
+			<TABLE border=0 cellpadding=0 cellspacing=0 cellborder=0><TR><TD HREF="http://www.woofie.com/webtvad.tmpl" insetselection><IMG SRC="http://www.woofie.com/images/bws.gif" WIDTH=394 HEIGHT=71 BORDER=0></TD></TR></TABLE>
+		</td>
+  </tr>
+		
+</table>
+ </form>
+	
+</body>
+</html>

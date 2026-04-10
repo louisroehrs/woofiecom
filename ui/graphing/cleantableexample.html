@@ -1,0 +1,371 @@
+
+	
+<html>
+  <head>
+    <title>Clean Table</title>
+<style>
+
+legend, h1 {
+   font-family: arial;
+}
+
+.splash {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    background-color:33f;
+    color: black;
+}
+
+.mytable {
+    margin: 10px 10px 10px 10px;
+    font-family: arial;
+
+}
+
+.leftside {
+    background-color:888;
+    width: 5ex;
+    float:left;
+}
+
+.outerviewport {
+    position:relative;
+    left:-3px;
+    margin: 0px 0px 0px 0px;    
+    overflow: hidden;
+    width:100px;
+
+}
+
+.viewport {     
+    position:relative;
+    left:-3px;
+    margin: 0px 0px 0px 0px;    
+    overflow: scroll;
+    width:500px;
+    height:24ex;
+}
+
+#main {
+    position:relative;
+    margin: 0px 0px 0px 0px;    
+    background-color:888;
+    width:2200;
+
+}
+
+.cell {
+    padding: 0px 5px 0px 5px;
+    background-color: fff;
+    line-height: 2.5ex;
+    text-align:center;
+    margin: 1px 1px 1px 0px;    
+    z-index: 15;
+    white-space: nowrap;
+}
+
+.inputbox {
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    background-color: ccf;
+    font-size : 100%;
+    text-align: center;
+    border: 0;
+    line-height: 2.2ex;
+    align:center;
+}
+
+.lcell {
+    font-family: arial;
+    font-weight: bold;
+    margin: 1px 1px 1px 1px;    
+    background-color: ccc;
+    line-height: 2.5ex;
+    text-align: right;
+    padding: 0px 5px 0px 5px;
+    z-index:20;
+    min-width: 3ex;
+}
+
+.lhcell {
+    position:relative;
+    font-family: arial;
+    font-weight: bold;
+    margin: 1px 1px 1px 1px;    
+    background-color: ccc;
+    line-height: 2.5ex;
+    text-align: right;
+    padding: 0px 5px 0px 5px;
+    z-index: 50;
+    min-width: 3ex;
+}
+
+.hcell {
+    position: relative;
+    font-family: arial;
+    font-weight: bold;
+    margin: 1px 1px 1px 0px;    
+    background-color: ccc;
+    line-height: 2.5ex;
+    text-align: center;
+    left: 0px;
+    padding: 0px 5px 0px 5px;
+    z-index: 30;
+    wrap:none;
+    min-width: 3ex;
+
+}
+
+.hpack { 
+    position: relative;
+    top : 0px;
+}
+
+.bug { 
+    position: relative;
+    left: -1600px;
+}
+
+.column { 
+    background-color:888;
+    float:left;
+    width:200px;
+}
+
+</style>
+  </head>
+
+  <body bgcolor=green text=white>
+    <h1>Clean Table</h1>
+
+<div class="splash">
+
+<div class="mytable">
+
+<div class="leftside">
+<div id="lhcell" class="lhcell">.</div>
+
+<div id="hpack" class="hpack">
+<div class="lcell">ha</div>
+<div class="lcell">hb</div>
+<div class="lcell">hc</div>
+<div class="lcell">hd</div>
+<div class="lcell">he</div>
+<div class="lcell">hf</div>
+<div class="lcell">hg</div>
+            </div>
+                </div>
+
+<div id="viewport" class="viewport">
+<div id="main" class="main" onclick="beginedit()">
+
+<div class="column">
+<div id="hcell1" class="hcell">ha</div>
+<div id="hpack1" class="hpack">
+<div class="cell">a1</div>
+<div class="cell">b1</div>
+<div class="cell">c1</div>
+<div class="cell">d1</div>
+<div class="cell">edit med 1.0</div>
+<div class="cell">d1</div>
+<div class="cell">d1</div>
+             </div>
+                   </div>
+<div class="column">
+<div id="hcell2" class="hcell">ha</div>
+<div id="hpack2" class="hpack">
+<div class="cell">a2</div>
+<div class="cell">b2</div>
+<div class="cell">c2dfsfd</div>
+<div class="cell">I</div>
+<div class="cell">d1</div>
+<div class="cell">d1</div>
+<div class="cell">d1</div>
+             </div>
+                   </div>
+
+<div class="column">
+<div id="hcell3" class="hcell">ha</div>
+<div id="hpack3" class="hpack">
+<div class="cell">a3</div>
+<div class="cell">Love</div>
+<div class="cell">c3</div>
+<div class="cell">d3</div>
+<div class="cell">d1</div>
+<div class="cell">d1</div>
+<div class="cell">d1</div>
+             </div>
+                   </div>
+
+<div class="column"  style="width:600px">
+<div id="hcell4" class="hcell">ha</div>
+<div id="hpack4" class="hpack">
+<div class="cell">a3</div>
+<div class="cell">I love my beautiful Shellie.  She is the best!</div>
+<div class="cell">c3</div>
+<div class="cell">d3</div>
+<div class="cell">d1</div>
+<div class="cell">You!</div>
+<div class="cell">d1</div>
+             </div>
+                   </div>
+
+                            </div>
+         </div> 
+</div>
+<div><BR><BR><BR>
+<div style="float:left"><input type=button value="<"
+onclick='incx()'></div><div align=right><input type=button value=">" onclick='decx()'></div></div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div><div style="float:left"><input type=button value="/\"
+onclick='decy()'></div><div><input type=button value="\/"
+onclick='incy()'></div></div>
+
+<BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+<fieldset>
+<legend>Scroll controls</LEGEND>
+&nbsp;<input name=x type=text onchange='setx(this.value)'>
+&nbsp;<input name=y type=text onchange='sety(this.value)'><BR>
+</fieldset>
+<fieldset>
+<legend>Edit cell test</LEGEND>
+&nbsp;<input name=cellchanger type=text onchange='clickedBox.innerHTML=this.value;'>&nbsp;<input name=cellname type=text >
+</fieldset>
+
+<fieldset>
+<legend>Document Keypress Events</LEGEND>
+&nbsp;<input name=eventname type=text>&nbsp;<input name=eventkeycode type=text>
+</fieldset>
+
+
+<fieldset>
+<legend>Column Width</LEGEND>
+&nbsp;<input name=columnwidth type=text onchange="hpack1.style.poswidth=this.value">
+</fieldset>
+<script>
+
+var clickedBox = null;
+var selectedBox = null;
+var selectedValue = null;
+
+function beginedit(me) {
+  myobj = event.srcElement;
+
+  if ( "cell" == myobj.className ) {  // make sure this is
+    unselect();
+    clickedBox= myobj;
+    selectedBox = clickedBox;
+
+    selectedBox.style.backgroundColor = '0000ff';
+    selectedValue = selectedBox.innerHTML;
+
+    selectedBox.innerHTML = "<input name=inputbox class='inputbox' value='"+selectedBox.innerHTML + "' onblur='unselect(this)'>";
+
+
+    document.all.inputbox.focus();
+    document.all.cellchanger.value = selectedBox.innerHTML;
+    document.all.cellname.value = selectedBox;
+  }
+}
+
+
+function doc_onkeypress() {
+  document.all.eventkeycode.value = event.keyCode;
+  document.all.eventname.value = event.VBInformation;
+}
+  
+//  switch (keypress) {
+   
+function unselect(me) {
+  // me is the new event, so ignore.
+  if (selectedBox != null) {
+      selectedBox.style.backgroundColor='ffffff';
+      selectedBox.innerHTML = document.all.inputbox.value;
+      selectedBox=null;
+      setmain();
+  } 
+  a=2;
+}
+
+document.onkeypress = doc_onkeypress;
+
+function compute() {
+}
+    
+</script>
+
+<script>
+
+var x=0;
+var y=0;
+
+function incx() {
+   if (x<0) x+=2;
+   setx(x);
+}
+
+function incy() {
+   if (y<0) y+=2;
+   sety(y);
+}
+
+function decx() {
+   x-=2;
+   setx(x);
+}
+
+function decy() {
+   y-=2;
+   sety(y);
+}
+
+function setx(x) {
+   hpack1.style.left = x;
+   hpack2.style.left = x;
+   hpack3.style.left = x;
+   hpack4.style.left = x;
+   hcell1.style.left = x;
+   hcell2.style.left = x;
+   hcell3.style.left = x;
+   hcell4.style.left = x;
+}
+
+function sety(x) {
+   hpack1.style.top = x;
+   hpack2.style.top = x;
+   hpack3.style.top = x;
+   hpack4.style.top = x;
+   hpack.style.top = x;
+}
+
+function setmain () {
+//   main.style.width = 500.0+ hpack4.style.posWidth +hpack3.style.posWidth+hpack2.style.posWidth +hpack1.style.posWidth;
+
+   main.style.width = 1200+ hpack4.style.posWidth + hpack3.style.posWidth +hpack2.style.posWidth + hpack1.style.posWidth;
+
+  
+//   main.style.width = 3*(0.0 + hpack1.style.right + hpack2.style.right + hpack3.style.right + hpack4.style.right);
+   main.style.height= 0.0 + hpack4.style.height + hpack3.style.height + hpack2.style.height + hpack1.style.height;
+}
+ 
+
+</script>
+
+    <hr>
+
+    <address><a href="mailto:"></a></address>
+<!-- Created: Fri Apr  5 21:58:29 -0800 2002 -->
+<!-- hhmts start -->
+Last modified: Mon Apr  8 17:51:15 PDT 2002
+<!-- hhmts end -->
+  </body>
+<script>
+setmain();
+</script>
+</html>

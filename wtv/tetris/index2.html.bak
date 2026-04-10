@@ -1,0 +1,285 @@
+<html>
+
+<title>WebTV MakeAMatch</title>
+
+<body background=back.jpg
+      valign=top  bgcolor=#009933 text=#FFFFFF credits="http://www.woofie.com">
+
+<script language="JavaScript">
+<SCRIPT Language="JavaScript">
+	mam = new game("mam")
+	
+	function getURLvar(Name) {
+		var search = Name + "="
+		var incoming = window.location.search
+		if (incoming.length > 0) { // if there are any search parameters
+			offset = incoming.indexOf(search) 
+			if (offset != -1) { // if parameter exists 
+				offset += search.length 
+				// set index of beginning of value
+				end = incoming.indexOf("&", offset) 
+				// set index of end of cookie value
+				if (end == -1) 
+					end = incoming.length
+				value = unescape(incoming.substring(offset, end))
+				if (value == "") {
+					return null
+				} else {
+					return value
+				}
+			}
+			else return null
+		}
+		else return null
+	}
+	
+// GAME Object  new game(theme elements)
+	function game(name) {
+	
+		this.name = name
+		this.players = new Array ()
+		this.addplayer = AddPlayer
+		this.renderSidebar = RenderSidebar
+		this.setup = SetupGame
+		this.onePlayerScoreboard = OnePlayerScoreboard
+		this.multiPlayerScoreboard = MultiPlayerScoreboard
+		
+		this.setup()		
+
+	}
+		
+// GAME Methods
+
+	function SetupGame() {  // called when GAME object constructed...
+
+	// LOAD Players
+		Aplayer = getURLvar ("player0")
+		if ( Aplayer != null) {
+			this.addplayer(Aplayer)
+			this.players[0].score = getURLvar ("p0score")
+		}
+		else {
+			this.addplayer("You")
+			this.players[0].score = getURLvar ("p0score")
+		}
+		Aplayer = getURLvar ("player1")
+		if (Aplayer != null) {
+				this.addplayer(Aplayer)
+				this.players[1].score = getURLvar ("p1score")
+
+		}
+		Aplayer = getURLvar ("player2")
+		if ( Aplayer != null) {
+				this.addplayer(Aplayer)
+				this.players[2].score = getURLvar ("p2score")
+
+		}
+		
+	}
+			
+	function AddPlayer(name) {
+		qty =this.players.length
+		this.players[qty] = new Player(name, qty)
+	}
+
+	function RenderSidebar() {
+		document.write("<center>");
+		if (this.players.length == 1) {
+
+			this.onePlayerScoreboard() 
+		}
+		else {
+			this.multiPlayerScoreboard()
+		}
+		document.write("</center>");
+
+	}
+
+	function OnePlayerScoreboard() {
+	
+		document.write("<br><img src=images/spacer.gif width=12 height=5><BR>");
+		document.write("&nbsp;&nbsp;&nbsp;<FONT COLOR=996666 SIZE=+2><STRONG>");
+		document.write(this.players[0].name + "</STRONG></FONT>&nbsp;&nbsp;&nbsp;");
+		document.write("<FONT COLOR=996666 SIZE=+2><STRONG>");
+		document.write(this.players[0].score);
+		document.write("</STRONG></FONT><BR><BR>&nbsp;");
+	}
+	
+	function MultiPlayerScoreboard() {
+		document.write("<br><img src=images/spacer.gif width=12 height=5><BR>");
+		document.write("<TABLE>");
+		for (i=0; i< this.players.length; i++) {	
+			document.write("<TR>");
+			document.write("<TD align=right valign=top><FONT color=996666 SIZE=+3><STRONG>"+this.players[i].name + "</STRONG></FONT>&nbsp;&nbsp;&nbsp;</TD>");
+			document.write("<TD align=left valign=top><FONT color=996666 SIZE=+3><STRONG>"+ this.players[i].score + " </STRONG></FONT><BR>&nbsp;</TD></TR>");
+		}
+			
+		document.write("</TABLE>");
+		document.write("<br><BR>");
+	}	
+
+// PLAYER Object
+
+	function Player(name, id) {
+		this.name = name
+		this.score = 0
+		this.id = id
+	// methods
+		this.addpoints = Paddpoint
+		this.updatescore = Pupdatescore
+	}
+
+// PLAYER methods
+
+	function Paddpoint(points) {
+		this.score += points;
+		this.updatescore()
+	}
+
+	function Pupdatescore() {
+		document.scoreboard["player"+	this.id+"score"].value = this.score
+	}
+
+
+
+function SetCookie (name, value)
+{
+   var argv = SetCookie.arguments;
+   var argc = SetCookie.arguments.length;
+   var expires = (argc > 2) ? argv[2] : null;
+   var path = (argc > 3) ? argv[3] : null;
+   var domain = (argc > 4) ? argv[4] : null;
+   var secure = (argc > 5) ? argv[5] : false;
+   document.cookie = name + "=" + escape (value) +
+         ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
+         ((path == null) ? "" : ("; path=" + path)) +
+         ((domain == null) ? "" : ("; domain=" + domain)) +
+         ((secure == true) ? "; secure" : "");
+}
+
+function GetCookieVal (offset)
+{
+   var endstr = document.cookie.indexOf (";", offset);
+   if (endstr == -1)
+      endstr = document.cookie.length;
+   return unescape(document.cookie.substring(offset, endstr));
+}
+
+function GetCookie (name)
+{
+   var arg = name + "=";
+   var alen = arg.length;
+   var clen = document.cookie.length;
+   var i = 0;
+
+   while (i < clen) {
+      var j = i + alen;
+      if (document.cookie.substring(i, j) == arg)
+         return GetCookieVal (j);
+
+      i = document.cookie.indexOf(" ", i) + 1;
+      if (i == 0)
+         break;
+   }
+   return null;
+}
+
+function AddToAccum (sCookieName, sPoints) {
+
+  var expdate = new Date ();
+  expdate.setTime (expdate.getTime() + (24 * 60 * 60 * 1000));
+
+  var sAccum = GetCookie(sCookieName);
+
+  if (sAccum == null) {
+    sAccum = eval(sPoints);
+  } else { 
+    sAccum = eval(sAccum) + eval(sPoints); 
+  }
+
+  SetCookie (sCookieName, sAccum, expdate, "/");
+
+}
+
+function SetCookieMacro (sCookieName, sValue) {
+
+  var expdate = new Date ();
+  expdate.setTime (expdate.getTime() + (7 * 24 * 60 * 60 * 1000));
+
+  SetCookie (sCookieName, sValue, expdate, "/");
+
+}
+
+function Redirect(sURL) {
+  window.location=sURL;
+} 
+
+</script>
+
+<table width=100%>
+   
+  <tr>
+    <td abswidth=180 valign=top> <!-- left column -->
+      <a href=""><IMG width=104 height=87 src=/ROMCache/WebTVLogoJewel.gif></a><BR>
+	  <IMG width=180 height=40 src=images/spacer.gif>
+	  <form action="game.html" method=get>
+		<table width=100%>
+
+			<tr>
+				<td align=left>Players:<BR> 
+				<input type="radio" name="players" value="1" checked>1&nbsp;
+				<input type="radio" name="players" value="2">2&nbsp;
+				<input type="radio" name="players" value="3">3
+				</td>
+			</tr>
+			<tr>
+				<td><BR>
+					<CENTER><input type="submit" value="PLAY" selected></CENTER>
+				</td>
+			</tr>
+			<tr>
+				<td align=left><BR>Rows
+				<select name="rows">
+					<option>4
+					<option selected>5
+					<option>6
+					<option>7
+					<option>8
+				</select><BR>
+				Cols&nbsp;
+				<select name="cols">
+					<option>4
+					<option selected>5
+					<option>6
+					<option>7
+					<option>8
+				</select>
+				</td>
+			</tr>	
+
+		</table>
+		</form>
+    </td>
+	<td> <!-- instructions column -->
+		<IMG width=10 height=30 src=images/spacer.gif><BR>
+		<CENTER><font size=+4>Make A Match</FONT></CENTER><BR>
+		<CENTER><font size=+2>
+		How to Play
+		</font></CENTER>
+		<P>
+		<P>
+		<UL>
+		<LI>The goal is to clear the board by uncovering pairs of images.  The key is to 
+		remember where the images are as you uncover them.  Uncover matching sets by clicking on
+		the squares in the grid.  In single player mode, get a higher score by clearing the board faster.
+		In multiplayer mode, the player that makes the most matches wins.<BR><BR>
+		<LI>		 
+		<a href="index2.html">More Instructions</a>
+		  		
+		 </tr>
+	</td>
+  </tr>
+
+</table>
+  
+</html>

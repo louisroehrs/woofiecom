@@ -1,0 +1,442 @@
+
+<html>
+  <head>
+    <title>Clean Table</title>
+<style>
+
+legend, h1 {
+   font-family: arial;
+}
+
+.splash {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    background-color:ff3;
+    color: black;
+   width:500px;
+}
+
+.mytable {
+    margin: 10px 10px 10px 10px;
+    font-family: arial;
+    background-color:888;
+    width:100%;
+}
+
+.leftside {
+    width: 5ex;
+    float:left;
+}
+
+.outerviewport {
+    position:relative;
+    left:-3px;
+    margin: 0px 0px 0px 0px;    
+    overflow: hidden;
+    width:100px;
+    height:1600px;
+}
+
+
+
+#main {
+    position:relative;
+    margin: 0px 0px 0px 0px;    
+    background-color:888;
+
+}
+
+.cell {
+    padding: 0px 0px 0px 0px;
+    background-color: fff;
+    line-height: 2.5ex;
+    text-align:center;
+    margin: 1px 1px 1px 0px;    
+    z-index: 15;
+    float:left;
+    width:100px
+}
+
+.ecell {
+    padding: 0px 0px 0px 0px;
+    line-height: 2.5ex;
+    text-align:center;
+    margin: 1px 1px 1px 0px;    
+    z-index: 15;
+    float:none;
+    width:1px
+}
+
+.inputbox {
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    background-color: ddf;
+    font-size : 100%;
+    text-align: center;
+    border: 0;
+    line-height: 2.2ex;
+    width: 95%;
+}
+
+.lcell {
+    font-family: arial;
+    font-weight: bold;
+    margin: 1px 1px 1px 1px;    
+    background-color: ccc;
+    line-height: 2.5ex;
+    text-align: right;
+    padding: 0px 5px 0px 5px;
+    z-index:20;
+    width: 50px;
+    float:left;
+    clear:left;
+}
+
+.lhcell {
+    position:relative;
+    font-family: arial;
+    font-weight: bold;
+    margin: 1px 1px 1px 1px;    
+    background-color: ccc;
+    line-height: 2.5ex;
+    text-align: right;
+    padding: 0px 5px 0px 5px;
+    z-index: 50;
+    width: 50;
+    float: left;
+}
+
+.hcell {
+    position: relative;
+    font-family: arial;
+    font-weight: bold;
+    margin: 1px 1px 1px 0px;    
+    background-color: ccc;
+    line-height: 2.5ex;
+    text-align: center;
+    left: 0px;
+    padding: 0px 2px 0px 2px;
+    z-index: 30;
+    width: 100px;
+    float:left;
+}
+
+.corner {
+    float:left;
+}
+
+
+.leftviewport {     
+    position:relative;
+    left:-3px;
+    margin: 0px 0px 0px 0px;    
+    overflow: hidden;
+    width:50px;
+}
+.rowviewport { 
+
+   overflow: scroll;
+   overflow-clip: rect(0px,400px,40px,0px);
+}
+
+.headerviewport { 
+
+}
+
+.row,.row1,.row2,.row3,.row4,.row5 { 
+   padding: 0px 0px 0px 0px;
+}
+
+
+.hrow { 
+    position: relative;
+    top : 0px;
+    width: 710px;
+
+}
+
+.rowdata {
+    width: 710px;
+}
+
+</style>
+  </head>
+
+  <body bgcolor=666699 text=white>
+    <h1>Clean Table</h1>
+
+<div class="splash">
+<div class="mytable" onclick="beginedit()">
+
+<div class="headerrow">
+   <div class="cornerviewport">
+      <div id="corner" class="lhcell">.</div>
+   </div>
+
+   <div class="headerviewport">
+      <div id="hrow" class="hrow">
+        <div class="hcell">ha</div>
+        <div class="hcell">hb</div>
+        <div class="hcell">hc</div>
+        <div class="hcell">hd</div>
+        <div class="hcell">he</div>
+        <div class="hcell">hf</div>
+        <div class="hcell">hg</div>
+        <div class="ecell"></div>
+
+      </div>
+   </div>
+</div>
+
+<div class="row">
+   <div class="leftrowviewport">
+      <div id="lcell1" class="lcell">ra</div>
+   </div>
+
+   <div class="rowviewport">
+      <div id="row1" class="rowdata">
+        <div class="cell">ra</div>
+        <div class="cell">a1</div>
+        <div class="cell">a2fdfd df dfdf df dfdfd f</div>
+        <div class="cell">a3</div>
+        <div class="cell">a4</div>
+        <div class="cell">a5</div>
+        <div class="cell">a6</div>
+        <div class="ecell"></div>
+      </div>
+   </div>
+</div>
+
+
+<div class="row">
+   <div class="leftrowviewport">
+      <div id="lcell2" class="lcell">rb</div>
+   </div>
+
+   <div class="rowviewport">
+      <div id="row2" class="rowdata">
+        <div class="cell">rb</div>
+        <div class="cell">b1</div>
+        <div class="cell">b2</div>
+        <div class="cell">b3</div>
+        <div class="cell">b4</div>
+        <div class="cell">b5</div>
+        <div class="cell">b6</div>
+        <div class="ecell"></div>
+      </div>
+   </div>
+</div>
+
+
+<div class="row">
+   <div class="leftrowviewport">
+      <div id="lcell3" class="lcell">rc</div>
+   </div>
+
+   <div class="rowviewport">
+      <div id="row3" class="rowdata">
+        <div class="cell">rc</div>
+        <div class="cell">c1</div>
+        <div class="cell">c2</div>
+        <div class="cell">c3</div>
+        <div class="cell">c4</div>
+        <div class="cell">c5</div>
+        <div class="cell">c6</div>
+        <div class="ecell"></div>
+      </div>
+   </div>
+</div>
+
+
+<div class="row">
+   <div class="leftrowviewport">
+      <div id="lcell4" class="lcell">rd</div>
+   </div>
+
+   <div class="rowviewport">
+      <div id="row4" class="rowdata">
+        <div class="cell">rd</div>
+        <div class="cell">d1</div>
+        <div class="cell">d2</div>
+        <div class="cell">d3</div>
+        <div class="cell">d4</div>
+        <div class="cell">d5</div>
+        <div class="cell">d6</div>
+        <div class="ecell"></div>
+      </div>
+   </div>
+</div>
+
+
+<div class="row">
+   <div class="leftrowviewport">
+      <div id="lcell5" class="lcell">re</div>
+   </div>
+
+   <div class="rowviewport">
+      <div id="row5" class="rowdata">
+        <div class="cell">re</div>
+        <div class="cell">e1</div>
+        <div class="cell">e2</div>
+        <div class="cell">e3</div>
+        <div class="cell">e4</div>
+        <div class="cell">e5</div>
+        <div class="cell">e6</div>
+        <div class="ecell"></div>
+      </div>
+   </div>
+</div>
+
+         </div> 
+</div>
+<div><BR><BR><BR>
+<div style="float:left"><input type=button value="<"
+onclick='incx()'></div><div align=right><input type=button value=">" onclick='decx()'></div></div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div><div style="float:left"><input type=button value="/\"
+onclick='decy()'></div><div><input type=button value="\/"
+onclick='incy()'></div></div>
+
+<BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+<fieldset>
+<legend>Scroll controls</LEGEND>
+&nbsp;<input name=x type=text onchange='setx(this.value)'>
+&nbsp;<input name=y type=text onchange='sety(this.value)'><BR>
+</fieldset>
+<fieldset>
+<legend>Edit cell test</LEGEND>
+&nbsp;<input name=cellchanger type=text onchange='clickedBox.innerHTML=this.value;'>&nbsp;<input name=cellname type=text >
+</fieldset>
+
+<fieldset>
+<legend>Document Keypress Events</LEGEND>
+&nbsp;<input name=eventname type=text>&nbsp;<input name=eventkeycode type=text>
+</fieldset>
+
+
+<fieldset>
+<legend>Column Width</LEGEND>
+&nbsp;<input name=columnwidth type=text onchange="hpack1.style.poswidth=this.value">
+</fieldset>
+<script>
+
+var clickedBox = null;
+var selectedBox = null;
+var selectedValue = null;
+
+function beginedit(me) {
+  myobj = event.srcElement;
+
+  if ( "cell" == myobj.className ) {  // make sure this is
+    unselect();
+    clickedBox= myobj;
+    selectedBox = clickedBox;
+
+    selectedBox.style.backgroundColor = '0000ff';
+    selectedValue = selectedBox.innerHTML;
+
+    selectedBox.innerHTML = "<input name=inputbox class='inputbox' value='"+selectedBox.innerHTML + "' onblur='unselect(this)'>";
+
+    document.all.inputbox.focus();
+    document.all.cellchanger.value = selectedBox.innerHTML;
+    document.all.cellname.value = selectedBox;
+  }
+}
+
+
+function doc_onkeypress() {
+  document.all.eventkeycode.value = event.keyCode;
+  document.all.eventname.value = event.VBInformation;
+}
+  
+//  switch (keypress) {
+   
+function unselect(me) {
+  // me is the new event, so ignore.
+  if (selectedBox != null) {
+      selectedBox.style.backgroundColor='ffffff';
+      selectedBox.innerHTML = document.all.inputbox.value;
+      selectedBox=null;
+      setmain();
+  } 
+  a=2;
+}
+
+document.onkeypress = doc_onkeypress;
+
+</script>
+
+<script>
+
+var x=0;
+var y=0;
+
+function incx() {
+   if (x<0) x+=2;
+   setx(x);
+}
+
+function incy() {
+   if (y<0) y+=2;
+   sety(y);
+}
+
+function decx() {
+   x-=2;
+   setx(x);
+}
+
+function decy() {
+   y-=2;
+   sety(y);
+}
+
+function setx(x) {
+   row1.style.left = x;
+   row2.style.left = x;
+   row3.style.left = x;
+   row4.style.left = x;
+   row5.style.left = x;
+   hrow.style.left = x;
+
+}
+
+function sety(x) {
+   row1.style.top = x;
+   row2.style.top = x;
+   row3.style.top = x;
+   row4.style.top = x;
+
+}
+
+function setmain () {
+//   main.style.width = 500.0+ hpack4.style.posWidth +hpack3.style.posWidth+hpack2.style.posWidth +hpack1.style.posWidth;
+
+//   main.style.width = 500+ hpack4.style.posWidth + hpack3.style.posWidth +hpack2.style.posWidth + hpack1.style.posWidth;
+
+  
+//   main.style.width = 3*(0.0 + hpack1.style.right + hpack2.style.right + hpack3.style.right + hpack4.style.right);
+//   main.style.height= 0.0 + hpack4.style.height + hpack3.style.height + hpack2.style.height + hpack1.style.height;
+}
+ 
+
+</script>
+
+    <hr>
+
+    <address><a href="mailto:"></a></address>
+<!-- Created: Fri Apr  5 21:58:29 -0800 2002 -->
+<!-- hhmts start -->
+Last modified: Sun Apr  7 23:10:56 -0700 2002
+<!-- hhmts end -->
+  </body>
+<script>
+setmain();
+</script>
+</html>

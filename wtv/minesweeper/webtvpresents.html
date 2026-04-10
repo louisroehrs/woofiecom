@@ -1,0 +1,25 @@
+<html>
+<head>
+<title>WebTV Minesweeper</title>
+
+</head>
+<body bgcolor=000000 vspace=0 hspace=0>
+<bgsound src=../arcade/wtvspl2.mid LOOP=false>
+
+
+ 
+<center>
+<SCRIPT LANGUAGE="JavaScript">
+
+var userAgent=navigator.appName + " " + navigator.appVersion;
+
+if (userAgent.indexOf("Plus") >0 ) {
+  	document.write("<display nostatus noscroll><embed src=../arcade/Wtv.spl quality=high width=560 height=420 loop=false>"); 
+} else {   
+	document.write("<display noscroll><embed src=../arcade/Cwtv.spl quality=high width=560 height=420 loop=false>"); 
+}
+
+</SCRIPT>
+</center>
+</body>
+</html>

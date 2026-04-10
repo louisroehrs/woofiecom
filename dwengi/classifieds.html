@@ -1,0 +1,408 @@
+<HTML><HEAD>
+<TITLE>Classification Tool</TITLE>
+</HEAD>
+
+
+<SCRIPT LANGUAGE="JavaScript">
+
+<!-- Beginning of JavaScript -
+
+chk = 'if (top.root == null) {top.location = "toc.html"} else {';
+
+function element(objName, name, location, modified)
+{
+  this.objName = objName;
+  this.open = false;
+  this.name = name;
+  this.icon = null;
+  this.location = location;
+  this.modified = modified; //new Date(modified)
+  this.attribute = null;
+  this.kid = null;
+  this.nextPeer = null;
+  this.parent = null;
+  this.addKid = addKid;
+  this.addPeer = addPeer;
+  this.draw = draw;
+  this.drawmain = drawmain;
+  this.drawmainkids = drawmainkids;
+  this.rcat = rcat;
+  this.addattr = addattribute;
+}
+
+function attribute(objName, name, uiType, valType)
+{
+    this.objName = objName;
+    this.name = name;
+    this.attribute = null;
+    this.uiType = uiType;
+    this.valType = valType;
+    this.draw = rdrawattr;
+    this.addattr = addattribute;
+}
+
+
+function addattribute(item)
+{
+  if (this.attribute != null)
+  {
+    this.attribute.addattr(item);
+  }
+  else
+  {
+    this.attribute = item;
+  }
+
+}
+
+//  EVERYTHING TO ADD AN ATTRIBUTE
+
+function addattrform(objName) {
+    top.right.document.open();
+    top.right.document.write("Add attribute to " + resolvecat(objName).name);
+    top.right.document.write("<FORM name=form1 >Name: <INPUT TYPE=TEXT NAME=name1><BR>");
+    top.right.document.write("GUI: <INPUT TYPE=TEXT NAME=gui><BR>");
+    top.right.document.write("Type: <INPUT TYPE=TEXT NAME=type><BR>");
+    top.right.document.write("<A HREF='javascript:top.submitattr(\"" + objName + "\")' >ADD</A>");
+    top.right.document.close();
+}
+
+function submitattr(objName) {
+    
+    category = resolvecat(objName);
+    category.addattr( new attribute(top.right.document.form1.name1.value, top.right.document.form1.name1.value, top.right.document.form1.gui.value, top.right.document.form1.type.value));
+    top.docdrawobj(objName);    
+
+    }
+
+// end 
+
+function drawattr(element) 
+{
+   top.right.document.write("<FORM><DL>");
+   element.attribute.draw();
+   top.right.document.write("</DL></FORM>");
+}
+
+function rdrawattr() 
+{   
+
+    top.right.document.write("<B>" +  this.name + "</B><BR>");
+    top.right.document.write("GUI: " +  this.uiType +"<BR>");
+    top.right.document.write("Type:" +  this.valType + "<BR>");
+
+    if (this.attribute != null) {
+    	this.attribute.draw();
+    }
+}
+
+
+    
+function addPeer(item)
+{
+  if (this.nextPeer != null)
+  {
+    this.nextPeer.addPeer(item);
+  }
+  else
+  {
+    this.nextPeer = item;
+  }
+  item.parent = this.parent;
+}
+
+function addKid(item)
+{
+  if (this.kid != null)
+  {
+    this.kid.addPeer(item);
+  }
+  else
+  {
+    this.kid = item;
+  }
+  item.parent = this;
+}
+
+function open(item) {
+    if (root ==null) {
+      outline;
+    }
+    item.open = true;
+}
+
+function close (item) {
+    if (root ==null) {
+      outline;
+    }
+    item.open = false;
+}
+
+
+function draw()
+{
+  if (this.kid == null) {
+    print("\n<DT><IMG SRC='images/bul.gif' HEIGHT = 10 WIDTH = 20>");
+    if (this.location != null) {
+      print("<A HREF ='javascript:top.docdrawobj( \"" + this.objName + "\" ) ' >" + this.name + "</A>");
+         }
+      else {
+        print(this.name);
+        }
+    if (this.nextPeer != null) {
+      this.nextPeer.draw();
+      }    
+      else {
+        print("</DL>");
+        return;
+        }
+    }
+    else {
+      if (this.open) {
+        print("\n<DT><A HREF='javascript:" + chk + "top.close(top." + this.objName+ ");top.redraw()}'>");
+        print("<IMG SRC='images/minus.gif' HEIGHT = 15 WIDTH = 30 BORDER = 0></A>");
+        if (this.location != null) {
+          print("<A HREF ='javascript:top.docdrawobj( \"" + this.objName + "\" ) '>" + this.name + "</A> <DL>");
+          }
+          else {
+            print(this.name+"<DL>");
+            }
+        this.kid.draw()
+        if (this.nextPeer != null) {
+          this.nextPeer.draw();
+        }    
+        else {
+          print("</DL>");
+          }
+      }
+      else {
+        print("\n<DT><A HREF='javascript:" + chk + "top.open(top."+ this.objName + ");top.redraw()}'>");
+        print("<IMG SRC='images/plus.gif' HEIGHT = 15 WIDTH = 30 BORDER = 0></A>");
+        if (this.location != null) {
+          print("<A HREF ='javascript:top.docdrawobj( \""  + this.objName + "\" );"+chk+"top.open(top."+ this.objName + ");top.redraw()}'>" + this.name + "</A>");
+          }
+          else {
+            print(this.name);
+            }
+        if (this.nextPeer != null) {
+          this.nextPeer.draw();
+        }    
+        else {
+          print("</DL>");
+          }
+      }
+    }
+}
+
+function drawmain() {
+	top.right.document.open();
+  	top.right.document.clear();
+	printr("<h2>"+this.name+"</h2><Ul>\n");
+	if (this.kid == null) {
+    	return; 
+    } else {
+		this.kid.drawmainkids();
+	}
+	printr("</Ul>");
+	top.right.document.close();
+}
+
+function drawmainkids()
+{
+	if (this.location != null) {
+		printr("\n<A HREF=" + this.location + ">"+this.name+"</a><BR>");
+    	
+        } else {
+            printr(this.name+"<BR>");
+        }
+        if (this.nextPeer != null) {
+          	this.nextPeer.drawmainkids();
+        }    
+        else {
+          return;
+        }
+      
+   
+
+}
+    
+function print(text)
+{
+<!-- navigator.appVersion.lastIndexOf('Win') == -1 && navigator.appVersion.lastIndexOf('2.0') == -1 -->
+if (true) {
+  top.out.document.write(text);
+  }
+  else {
+    top.out.print(text);
+  }
+}
+
+function printr(text)
+{
+<!-- navigator.appVersion.lastIndexOf('Win') == -1 && navigator.appVersion.lastIndexOf('2.0') == -1 -->
+if (true) {
+  top.right.document.write(text);
+  }
+  else {
+    top.right.print(text);
+  }
+}
+
+function redraw()
+{
+<!-- navigator.appVersion.lastIndexOf('Win') == -1 && navigator.appVersion.lastIndexOf('2.0') == -1 -->
+
+if (true) {
+  top.out.document.open();
+  top.out.document.clear();
+  dr();
+  top.out.document.close();
+  }
+  else {
+     top.out.location = "winhack.html";
+    }
+}
+
+function docdrawoff(objName)
+{
+if (navigator.appVersion.lastIndexOf('Win') == -1 &&
+navigator.appVersion.lastIndexOf('2.0') == -1) {
+
+  top.right.document.bgColor='#ff0000';
+    }
+}
+
+function resolvecat(objName)
+{
+   // 	top.debug.document.open();
+    	return top.root.rcat(objName);
+}
+
+function rcat(objName) {
+
+  if (this.objName == objName) {
+   // 	top.debug.document.write("Returning:" +  this.name + "\n");
+    	return this;
+    }
+  else {
+
+    if (this.kid != null)  {
+   // 	top.debug.document.write("Entering Kid:" +  this.kid.name +"\n");
+    	if (null != (real = this.kid.rcat(objName))) {
+    	    return real ;
+    	}
+    }
+
+    if (this.nextPeer != null) {
+    //	top.debug.document.write("Entering Peer:" + this.nextPeer.name + "\n");
+    	return this.nextPeer.rcat(objName);
+    }
+    return null;
+  }
+}
+
+function docdrawobj(objName)
+{
+<!-- navigator.appVersion.lastIndexOf('Win') == -1 && navigator.appVersion.lastIndexOf('2.0') == -1-->
+	if (true) {
+		top.right.location = (resolvecat(objName)).location;
+   }
+}
+
+function ddo(obj)
+{
+
+    if (obj == null) {
+    	top.right.document.write("no objects\n");
+    }
+    if (obj.parent != null) {
+    	ddo(obj.parent);
+    }
+    top.right.document.write("<a HREF='javascript:top.addsubform( \"" +obj.objName + "\" )'><IMG SRC='images/addsub.gif' border=0 align=right></a> ");
+    top.right.document.write("<a HREF='javascript:top.addattrform( \"" +obj.objName + "\" )'><IMG SRC='images/addattr.gif' border=0 align=right></a> ");
+
+    top.right.document.write("<h1>" + obj.name + "</h1>\n");
+    if (obj.attribute != null) {
+    drawattr(obj);
+    }
+
+}
+
+function docdraw(objName)
+{
+<!-- navigator.appVersion.lastIndexOf('Win') == -1 &&navigator.appVersion.lastIndexOf('2.0') == -1 -->
+
+if (true) {
+
+  top.right.document.open();
+  top.right.document.clear();
+
+  top.right.document.write("<H1>" + objName + "</h1>\n");
+  top.right.document.close();
+  }
+  else {
+     top.right.location = "winhack.html";
+    }
+}
+
+
+function outline()
+{
+root = new element("root","Home", "main.html", "Sep 4 00:16");
+root.addPeer(weat = new element("weat", "Weather",  "javascript:top.weat.drawmain();",  "Sep 4 00:16"));
+weat.addKid(new element("incoming",  "Incoming",  "http://www-atm.ucdavis.edu/~wxauto/fos/fpus/zones/CAZ072",  "Sep 4 00:16"));
+weat.addKid(new element("now", "Now",  "http://www-atm.ucdavis.edu/~wxauto/fos/fpus/FPUS75.KREV",  "Sep 4 00:16"));
+weat.addKid(new element("radar", "Radar", "http://www.mtrose.com/mtrose.htm", "Sep 9 15:21"));
+weat.addKid(new element("sat", "Satellite", "http://www.woofie.com/sports/black.html?URL=http://wxp.atms.purdue.edu/maps/satellite/sat_ir_enh_west.gif", "Sep 9 15:21"));
+
+root.addPeer(road = new element("road", "Roads",  "http://www.dot.ca.gov/hq/roadinfo/tahoe.htm",  "Sep 400:16"));
+road.addKid(new element("I80", "I-80",  "http://www.dot.ca.gov/hq/roadinfo/i80","Sep 4 00:16"));
+root.addPeer(area = new element("area", "Ski Areas",  "main.html",  "Sep 4 00:16"));
+area.addKid(new element("alpi",  "Alpine",  "http://www.skialpine.com",  "Sep 4 00:16"));
+area.addKid(new element("heav", "Heavenly",  "http://www.skiheavenly.com",  "Sep 4 00:16"));
+area.addKid(new element("rose", "Mt. Rose", "http://www.mtrose.com/mtrose.htm", "Sep 9 15:21"));
+area.addKid(new element("love", "Loveland", "http://www.skiloveland.com", "Sep 9 15:21"));
+area.addKid(new element("north", "Northstar", "http://www.skinorthstar.com/winter", "Sep 9 15:21"));
+area.addKid(new element("squaw", "Squaw Valley", "http://www.squaw.com", "Sep 9 15:21"));
+area.addKid(new element("vail", "Vail", "http://www.snow.com/vail", "Sep 9 15:21"));
+root.addPeer(cams = new element("cams", "Live Cams", "main.html", "Sep 4 00:17"));
+cams.addKid(new element("alpinecam", "Alpine",  "http://www.woofie.com/sports/black.html?URL=http://www.extremetahoe.com/mtncam/alpine_cam.jpg",  "Sep 4 00:16"));
+cams.addKid(new element("lakecam", "Lake Tahoe",  "http://www.woofie.com/sports/black.html?URL=http://incline.iwn.com/tahoe.jpg",  "Sep 4 00:16"));
+cams.addKid(new element("renocam", "Reno",  "http://www.woofie.com/sports/black.html?URL=http://www.realtimeweather.com/capture/88.jpg",  "Sep 4 00:16"));
+cams.addKid(new element("donnercam", "Donner Pass",  "http://www.woofie.com/sports/black.html?URL=http://donner.iwn.com/donner.jpg",  "Sep 4 00:16"));
+cams.addKid(new element("heavcam", "Heavenly",  "http://www.woofie.com/sports/black.html?URL=http://www.rsn.com/cams/tahoe/QuickEdit/text_1/text_1/data/image/image_14774/data/image_14774_b.jpg",  "Sep 4 00:16"));
+cams.addKid(new element("lovelandcam", "Loveland",  "http://www.woofie.com/sports/black.html?file:/C|/AWork/AWebSites/Woofie/sports/black.html?URL=http://www.9news.com/camera/photos/eoc-camera4-030398-1657-f.JPG",  "Sep 4 00:16"));
+root.addPeer(beer = new element("beer", "Beverages", "javascript:top.beer.drawmain();", "Sep 4, 00:14"));
+beer.addKid(new element("celebrator", "Celebrator", "http://celebrator.com/", "Sep 4 00:14"));
+beer.addKid(new element("spaten", "Spaten", "http://www.spatenusa.com/", "Sep 4 00:14"));
+
+//root.addattr(new attribute("make", "Make", "text","string"));
+//root.addattr(new attribute("model", "Model", "text","string"));
+//root.addattr(new attribute("year", "Year", "text","string"));
+
+//auto.addattr(new attribute("doors", "Doors", "radio","numeric"));
+//auto.addattr(new attribute("AC", "AC", "checkbox","binary"));
+//auto.addattr(new attribute("radio", "Radio", "radio","enum"));
+
+road.open = true;
+area.open = false;
+cams.open = false;
+}
+
+function dr()
+{
+  print("<DL>");
+  root.draw();
+}
+
+// - End of JavaScript - -->
+
+</SCRIPT>
+
+<FRAMESET COLS="20%,80%,*">
+<FRAME NAME="out" SRC="blank.html" MARGINWIDTH="2" MARGINHEIGHT="2">
+<FRAME NAME="right" SRC="home.html" MARGINWIDTH="2" MARGINHEIGHT="2">
+<FRAME NAME="debug" SRC="home.html" MARGINWIDTH="2" MARGINHEIGHT="2">
+</FRAMESET>
+
+</HTML>

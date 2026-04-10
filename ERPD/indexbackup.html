@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta name="generator" content="HTML Tidy, see www.w3.org">
+        <meta http-equiv="Content-Type" content= "text/html; charset=iso-8859-1">
+        <title>Promptu ERPD</title>
+        <link rel="stylesheet" type="text/css" href= "lib/ext/resources/css/ext-all.css">
+        <link rel="stylesheet" type="text/css" href="menus.css">
+        <script type="text/javascript" src= "lib/ext/adapter/ext/ext-base.js">
+        </script>
+        <script type="text/javascript" src="lib/ext/ext-all-debug.js">
+        </script>
+        <script type="text/javascript" language="JavaScript">
+      // set up paths to php just so demo runs on woofie.com
+	  // these are set to empty string for production.
+        var phppath="tmp/";
+		var phpsuffix = ".html";
+        </script>        
+		<script type="text/javascript" src="erpdui.js">
+        </script>
+        <script type="text/javascript" src="states.js">
+        </script>
+
+        <style type="text/css">
+            .blist .x-btn-text {
+                background-image: url(images/list-items.gif)
+            }
+            
+            .bmenu .x-btn-text {
+                background-image: url(images/menu-show.gif)
+            }
+            
+            .menu-title {
+                background: #ebeadb url(lib/ext/resources/images/aero/grid/grid-hrow.gif) repeat-x;
+                border-bottom: 1px solid #99bbe8;
+                color: #15428b;
+                font: bold 10px tahoma, arial, verdana, sans-serif;
+                display: block;
+                padding: 3px;
+            }
+            
+            #headerlogo {
+                padding: 5px;
+                font: 100% Arial bold
+            }
+            
+            #RFInput {
+                padding: 5px;
+                background-color: #ddeeff;
+                font-family: Arial
+            }
+            
+            #support {
+                padding: 10px;
+                background-color: #ddeeff;
+                font-family: Arial
+            }
+        </style>
+    </head>
+    <body>
+        <div id="header" class="x-layout-inactive-content">
+            <div id="headerlogo">
+                <img alt="" align="middle" src= "images/promptu_logo.gif">&nbsp;&nbsp;&nbsp;Enhanced Return Path
+                Demodulator
+            </div>
+        </div>
+        <div id="navpanel" class="x-layout-inactive-content">
+            <div id="navpanel-body" class="feed-list">
+            </div>
+        </div>
+        <div id="suggested" class= "x-layout-inactive-content feed-list">
+        </div>
+        <div id="main" class="x-layout-inactive-content">
+            <div id="vRPD-grid" class="x-layout-inactive-content">
+                <div id="vRPD-tb">
+                </div>
+            </div>
+            <div id="add-feed" style="visibility:hidden;">
+                <img alt="tab-close" id="add-feed-close" src= "images/tab-close-on.gif">
+                <p id="add-title" class="active-msg">
+                    Please enter
+                    the URL for the feed:
+                </p>
+                <p id="invalid-feed">
+                    <img src="images/warning.gif" width="16" height="16" align="absmiddle" alt= ""> The feed URL specified is not a valid RSS
+                    feed.
+                </p>
+                <p id="loading-feed">
+                    <img alt="" src= "images/wait.gif" width="18" height="18" align= "absmiddle"> Loading feed...
+                </p><input type="text" id="feed-url" name="feed-url" class="input-text"><input id="add-btn" type= "button" value="Add">
+                <br>
+                <span class="eg">e.g.
+                    http://www.jackslocum.com/yui/feed/</span>
+            </div>
+        </div>
+        <div id="operations">
+            <div id="ERPDtoolbar">
+            </div>
+        </div>
+		
+	    <div id ="system">
+            <div id="systemtoolbar">
+        </div>
+		
+	    <div id="externalnetwork">
+            <div id="externalnetworktoolbar">
+        </div>
+        </div>
+        <div id="support"  class="x-layout-inactive-content">
+            <br>
+            <br>
+            <p>
+                For customer support, please contact promptu Field 
+                Operations at <a href= "mailto:fieldops@promptu.com">fieldops@promptu.com</a>
+                or call (866)380-1785.
+            </p>
+            <br>
+            <br>
+            <p>
+                For information about this system, please read the<a href="ERPDOpsManual.pdf">ERPD Operations
+                    Manual.</a>
+            </p>
+            <br>
+            <br>
+            <p>
+                For more information about promptu, please go to <a href="promptu.com">promptu.com</a>.
+            </p>
+        </div>
+
+        <div id="channelsheader"  class="x-layout-inactive-content">
+            <div id="RFInput">
+                <b>RF Input:&nbsp;&nbsp;</b>
+                <select id="ERPDPort-select" name="ERPDPort-select">
+                    <option>Board 1 Slot 1</option>
+                    <option>Board 1 Slot 2</option>
+                    <option>Board 2 Slot 1</option>
+                    <option>Board 2 Slot 2</option>
+                </select>
+            </div>
+        </div>
+        <div id="channels-inner">
+            <div id="channels">
+                <!-- you must define the select box here, as the custom editor for the 'vrpd' column will require it -->
+                <div id="channelsgrid-panel">
+                    <select name="vrpd-select" id="vrpd-select" style="display: none;">
+                        <option value=".">.</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                        <option value="32">32</option>
+                    </select>
+                    <select name="port-select" id= "port-select" style="display: none;">
+                        <option value=" "></option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                    <div id="channels-editor-grid">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="preview" class="x-layout-inactive-content">
+            <div id="preview-tb">
+            </div>
+            <div id="preview-body">
+            </div>
+        </div>
+        <div id="status" class="x-layout-inactive-content">
+            Status
+        </div>
+        <div id="add-feed" style="visibility:hidden;">
+            <img alt="tab-close" id="add-feed-close" src= "images/tab-close-on.gif">
+            <p id="add-title" class="active-msg">
+                Please enter the
+                URL for the feed:
+            </p>
+            <p id="invalid-feed">
+                <img src="images/warning.gif" width="16" height="16" align="absmiddle" alt=""> The
+                feed URL specified is not a valid RSS feed.
+            </p>
+            <p id="loading-feed">
+                <img alt="" src="images/wait.gif" width="18" height="18" align="absmiddle"> Loading
+                feed...
+            </p><input type="text" id="feed-url" name="feed-url" class= "input-text"><input id="add-btn" type="button" value= "Add">
+            <br>
+            <span class="eg">e.g.
+                http://www.jackslocum.com/yui/feed/</span>
+        </div>
+				<div id="my-dlg"></div>
+        <!--        <div id="loading-mask" style="width:100%;height:100%;background:#c3daf9;position:absolute;z-index:20000;left:0;top:0;">&#160;</div>
+        <div id="loading">
+        <div class="loading-indicator"><img src="resources/images/default/grid/loading.gif" style="width:16px;height:16px;" align="absmiddle">&#160;Loading...</div>
+        </div>
+        <div id="container">
+        <div id="toolbar"></div>
+        <div id=layout"></div>
+        </div>
+        -->
+    </body>
+</html>

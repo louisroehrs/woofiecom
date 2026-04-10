@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+<html>
+  <head>
+
+    <title>Rounded Corner.html</title>
+<style>
+.h {height:3px;}
+.h div { height:0px;width:1px;margin:2px 0 0 0;float:left;}
+.h div + div {height:2px;width:2px;margin:1px 0 0 0;background-color:green}
+.h div + div + div {height:3px;width:800px;margin:0px 0 0 0;}
+.h div + div + div + div {height:2px;width:2px;margin:1px 0 0 0;clear:right}
+.c { clear:both; height:40;width:806px; padding:0 300 0 30;background-color:green}
+
+.f {height:3px;}
+.f div { height:1px;width:1px;float:left;}
+.f div + div {height:2px;width:2px;background-color:green}
+.f div + div + div {height:3px;width:800px;}
+.f div + div + div + div {height:2px;width:2px;background-color:green;clear:right}
+
+
+.star SPAN {color:black;}
+.star SPAN:hover { color:white}
+
+</style>
+  </head>
+
+  <body>
+
+    <h1>Corners</h1>
+
+<div class=h><div></div><div></div><div></div><div></div></div>
+<div class=c><div>  Here is my happy place</div>
+<div>StarBar</div>
+<div>
+<span class=star>
+<span>[1]<span>[2]<span>[3]<span>[4]<span>[5]</span></span></span></span></span>
+</span>
+</div>
+</div>
+<div class=f>
+<div></div><div></div><div></div><div></div>
+</div>
+
+
+<h2>Other things</h2>
+<li>rounded corners -- box model.  Should be: If the padding changes, overall width should stay the same, stuff on the inside has less room.  
+W3 did is if the padding increases, the box gets wider and to compensate, one must reduce the width.
+With strict mode, padding just doesn't work, to sort of fix this.
+<li>star bar
+
+<li>sprites
+<style>
+.sprite { width:16;height:16;overflow:hidden;xbackground-image: url(New-1.png);background-position:fixed; background-repeat: no-repeat}
+.set1 {background-image: url(New-1.png)}
+.img1 {background-position: 0 0 }
+.img2 {background-position: -16px 0px }
+.img3 {background-position: -32px 0px }
+.img4 {background-position: -48px 0px }
+
+</style>
+
+
+<span class='sprite set1'><img src='b.gif' width=16 height=16></span>
+<span class='sprite set1 img1'><img src='b.gif' width=16 height=16></span>1
+<span class='sprite set1 img2'><img src='b.gif' width=16 height=16></span>2
+
+<span class='sprite set1 img3'><img src='b.gif' width=16 height=16></span>3
+<span class='sprite set1 img4'><img src='b.gif' width=16 height=16></span>4
+
+
+<li> descenders
+<style>
+.spannie { background-color:yellow}
+</style>
+<span class='spannie'>gjpqst</span>
+<div class='spannie'>gjpqst</div>
+<li>js closures
+<li id=blah>
+<li id=dude>
+<script language=JavaScript>
+var c="blah";
+var g;
+
+function givemeafunction(a,b) {
+  lc = c;
+
+  cc= function (blah) {
+   elementId = document.getElementById(lc);
+   elementId.innerHTML = lc+a+b+blah;
+  };
+
+ return cc;
+}
+v=givemeafunction(4,5);
+
+v(2,3);
+c="dude";
+x=givemeafunction(4,8);
+c="blah";
+x(8,12);
+alert(x);
+v(400,400);
+alert(v);
+</script>
+
+<li>ajax
+<li>show mra
+<li>no transitional doctypes...
+<li>box model.  width includes padding and border or not.This doctype, width does not count padding.
+    <hr>
+    <address><a href="mailto:">Louis Roehrs</a></address>
+<!-- Created: Thu Feb  5 22:53:05 PST 2009 -->
+<!-- hhmts start -->
+Last modified: Mon Feb  9 19:31:52 PST 2009
+<!-- hhmts end -->
+  </body>
+</html>

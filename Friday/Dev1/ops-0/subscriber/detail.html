@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>Subscriber Configuration</title>
+</head>
+
+<body  text='#000000' link='#0000FF' vlink='#000OFF' alink='#00ffff' BGCOLOR='#E0E0E0'>
+<img src='/ictv/images/ICTVBugMedT.gif' align=right>
+<h1>Subscriber Detail</h1>
+
+<hr>
+
+<form name='form1' action='/cgi-bin/ictv/ops/sub/add' method=get>
+<table>
+
+<tr>
+<td align=right>User Name</td><td><input type=text name=username value=''></td>
+</tr>
+<tr>
+<td align=right>Password</td><td><input type=text name=password value=''></td>
+</tr>
+<tr>
+<td align=right>Account Number</td><td><input type=text name=account value=''></td>
+</tr>
+<tr>
+<td align=right>Sub Number</td><td>$value</td>
+</tr>
+<tr>
+<td align=right>Status</td><td>$enabled</td>
+</tr>
+
+
+
+</table>
+<p>
+<input type=submit name=button value=Delete >
+<input type=submit name=button value=Enable >
+<input type=submit name=button value=Disable >
+<hr>
+<a href='/ictv/ops/subscriber/list.html'>DONE</a>
+</form>
+<hr>
+<address></address>
+<!-- hhmts start -->
+Last modified: Wed Jun 19 19:56:21 PDT 1996
+<!-- hhmts end -->
+</body> </html>
+
+

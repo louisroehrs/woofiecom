@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:iphoto="urn:iphoto:property" xmlns:iweb="http://www.apple.com/iweb" version="2.0">
+  <channel>
+    <title>My Photos</title>
+    <link>http://www.woofie.com/mac/babies/babies/Photos.html</link>
+    <description>Lorem ipsum dolor sit amet, ligula nulla pre tium, rhoncus temporeret at ametplac premtiu erat fermentum, enim integer ad vestib. Lorem ipsum dolor sit amet, ligul nulla pretium. </description>
+    <item>
+      <title>DSC00773</title>
+      <link>http://www.woofie.com/mac/babies/babies/Photos.html#0</link>
+      <guid isPermaLink="false">f087b574-907f-4fbf-b285-a8cba71a455f</guid>
+      <enclosure url="http://www.woofie.com/mac/babies/babies/Photos_files/Media/DSC00773/DSC00773.jpg" length="88239" type="image/jpeg"/>
+      <iphoto:thumbnail>http://www.woofie.com/mac/babies/babies/Photos_files/Media/DSC00773/thumb.jpg</iphoto:thumbnail>
+      <iweb:micro>http://www.woofie.com/mac/babies/babies/Photos_files/Media/DSC00773/micro.jpg</iweb:micro>
+      <iweb:richTitle>&lt;div style=&quot;padding: 0px; &quot; class=&quot;image_cluster_layout_style_default_External_176_26&quot;&gt;&lt;div class=&quot;image_cluster_layout_style_default&quot;&gt;&lt;p style=&quot;padding-bottom: 0pt; padding-top: 0pt; &quot; class=&quot;Caption&quot;&gt;DSC00773&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</iweb:richTitle>
+    </item>
+    <item>
+      <title>DSC00748</title>
+      <link>http://www.woofie.com/mac/babies/babies/Photos.html#1</link>
+      <guid isPermaLink="false">24cb0dbe-704d-4922-b380-0f6d28cb4073</guid>
+      <enclosure url="http://www.woofie.com/mac/babies/babies/Photos_files/Media/DSC00748/DSC00748.jpg" length="111066" type="image/jpeg"/>
+      <iphoto:thumbnail>http://www.woofie.com/mac/babies/babies/Photos_files/Media/DSC00748/thumb.jpg</iphoto:thumbnail>
+      <iweb:micro>http://www.woofie.com/mac/babies/babies/Photos_files/Media/DSC00748/micro.jpg</iweb:micro>
+      <iweb:richTitle>&lt;div style=&quot;padding: 0px; &quot; class=&quot;image_cluster_layout_style_default_External_176_26&quot;&gt;&lt;div class=&quot;image_cluster_layout_style_default&quot;&gt;&lt;p style=&quot;padding-bottom: 0pt; padding-top: 0pt; &quot; class=&quot;Caption&quot;&gt;DSC00748&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</iweb:richTitle>
+    </item>
+    <item>
+      <title>DSC00757</title>
+      <link>http://www.woofie.com/mac/babies/babies/Photos.html#2</link>
+      <guid isPermaLink="false">1d0b70e5-9ac6-44a6-a6b7-9d885eca1d8d</guid>
+      <enclosure url="http://www.woofie.com/mac/babies/babies/Photos_files/Media/DSC00757/DSC00757.jpg" length="111543" type="image/jpeg"/>
+      <iphoto:thumbnail>http://www.woofie.com/mac/babies/babies/Photos_files/Media/DSC00757/thumb.jpg</iphoto:thumbnail>
+      <iweb:micro>http://www.woofie.com/mac/babies/babies/Photos_files/Media/DSC00757/micro.jpg</iweb:micro>
+      <iweb:richTitle>&lt;div style=&quot;padding: 0px; &quot; class=&quot;image_cluster_layout_style_default_External_176_26&quot;&gt;&lt;div class=&quot;image_cluster_layout_style_default&quot;&gt;&lt;p style=&quot;padding-bottom: 0pt; padding-top: 0pt; &quot; class=&quot;Caption&quot;&gt;DSC00757&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</iweb:richTitle>
+    </item>
+  </channel>
+</rss>

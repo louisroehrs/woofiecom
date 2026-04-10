@@ -1,0 +1,639 @@
+<html>
+<head>
+<title>Building game...</title>
+
+<script language="JavaScript">
+
+		status = "Building game..."
+        kWidth  = 12;
+        kHeight = 12;
+        kOtherFormElements = 14;
+
+
+		kTotalBombs = 0;
+		kUncovered = 0;
+
+        kDifficulty = getURLvar("diff"); 
+		kLevelName = getURLvar("level");
+		LoadImages();
+  
+		iLevelOn  = 1;
+	  
+		bUncovering = "true";        
+
+		InitLevel();
+
+ 		userAgent=navigator.appName + " " + navigator.appVersion;
+		
+		kSafeSpaces = (kWidth * kHeight) - kTotalBombs;
+
+	if (userAgent.indexOf("Plus") >0 ) {
+ 		kBox = "Plus";
+	} else {  
+		kBox = "FCS";
+	}
+
+	function UpdateTimeLeft() {
+
+		document.tenstime.src = "images/t"+GetDigit(iSecondsLeft,0)+".gif";
+		document.onestime.src = "images/t"+GetDigit(iSecondsLeft,1)+".gif";
+		document.minutes.src = "images/t"+iMinutesLeft+".gif";
+	}
+
+	function InitLevel() {
+
+		sGameState = "newlevel";
+		kDifficulty = 1.1*kDifficulty;  
+		CreatePuzzle(); 
+		CreateBombMap();
+		iMinutesLeft = 5;
+		iSecondsLeft = 00;
+		sGameState="preplay";
+	}
+
+	function StartLevel() {
+
+		sGameState="inplay";
+		window.setTimeout("CallbackTimeLeft()", 5000);
+	}
+
+	function CreateCell(x,y) {
+		if (Math.random() < kDifficulty) {
+ 			return("b");
+		} else {
+			return("-");
+		}
+
+	}
+
+	function CreatePuzzle() {
+
+		var x = 0;
+		var y = 0;
+
+		puzzle = "";
+		for (y=0; y < kHeight; y++) {
+			for (x=0; x < kWidth; x++) {
+				puzzle += CreateCell(x,y); 
+			}
+		}
+	}
+
+	function InBounds(x,y) {
+
+		if ((x < 0) || (x >= kWidth) || (y < 0) || (y >= kHeight)) {
+			
+			return ("false");
+		}
+		return("true");
+	}
+
+	function TestCell(x,y) {
+
+		if (InBounds(x,y) == "false")
+			return ("false");
+
+		if (GetCell(x,y) == "b")
+            return ("true"); 
+
+		return("false");
+	} 
+
+	function HideMap() {
+
+		var x = 0;
+		var y = 0;
+		for (y=0; y < kHeight; y++) {
+			for (x=0; x < kWidth; x++) {
+				document.images[namexy(x,y)].src = "images/hidden.gif";
+			}
+		}
+
+	}
+
+ 	function PlaySound(sound) {
+
+		if (sound == null) {  
+			return;
+		} else {
+			window.location = "sounds/" + sound;
+		}
+	}
+	
+	function CountAdjacentBombs(x,y) {
+         
+	   var xm1 = 0;
+	   var xp1 = 0;
+	   var ym1 = 0;
+	   var yp1 = 0;
+
+	   var bombcount = 0;
+
+	   xm1 = x-1;
+	   xp1 = x+1;
+	   ym1 = y-1;
+	   yp1 = y+1;
+
+	   if (TestCell(xm1, ym1) == "true") {
+			bombcount++;
+	   }
+
+	   if (TestCell(x,ym1) == "true")
+             bombcount++;
+
+		if (TestCell(xp1,ym1) == "true")
+			bombcount++;
+
+		if (TestCell(xp1,y) == "true")
+			bombcount++;
+
+		if (TestCell(xp1,yp1) == "true")
+			bombcount++;
+
+		if (TestCell(x,yp1) == "true")
+			bombcount++;
+
+		if (TestCell(xm1,yp1) == "true")
+			bombcount++;
+
+		if (TestCell(xm1,y) == "true")
+			bombcount++;
+
+	   		   
+	   return (bombcount);
+
+	}
+
+	function CreateBombMap() {
+
+		var x=0;
+		var y=0;
+
+		bombmap = "";
+
+		for (y=0; y < kHeight; y++) {
+			for (x=0; x < kWidth; x++) {
+
+				if (GetCell(x,y) == "b") {
+
+					bombmap += "b";
+					kTotalBombs += 1;
+					
+				} else {
+	
+					bombmap = bombmap  + CountAdjacentBombs(x,y);
+				}
+             }
+		}
+
+	} 
+
+	function CheckSelection(x,y) {          
+
+		if (GetCell(x,y) == "b")
+             return("boom");
+		else
+             return("ok");	     
+	}
+
+	function SetCleared(x,y) {
+		if (IsCleared(x,y) == false) {
+		kUncovered += 1;
+		}
+	}
+
+	function IsCleared(x,y) {
+		return(document.images[namexy(x,y)].src != "images/hidden.gif");
+	}
+
+
+	function namexy(x,y) {
+		return( x + "x" + y);
+	}
+		
+    function RevealCell(x,y) {
+		SetCleared(x,y);
+		document.images[namexy(x,y)].src = "images/"+GetBombMap(x,y)+".gif";
+
+	}
+
+	function FlagCell(x,y) {
+
+		if (IsCleared(x,y) == false) {
+		    var sCoverImage = document.images[namexy(x,y)].src; 
+			if (sCoverImage == "images/hidden.gif") {
+				document.images[namexy(x,y)].src = "images/flagcell.gif";
+            } else {
+				document.images[namexy(x,y)].src= "images/hidden.gif";
+            }
+
+		}
+
+	}
+
+	function GetCell(x,y) {
+		var start = x+y*kWidth
+		var end = x+y*kWidth+1
+		var stgg = puzzle.substring(start,end)
+		return (stgg)
+	}
+
+	function GetBombMap(x, y) {
+  	   return (bombmap.substring(x+y*kWidth, x+y*kWidth+1));
+	}
+
+
+     function RevealMap(x,y) {
+
+		var x=0;
+		var y=0;
+
+		for (y=0; y < kHeight; y++) {
+			for (x=0; x < kWidth; x++) {
+				RevealCell(x,y);               
+			}
+		}
+
+	}
+
+	function HandleSelectArea (x,y) {
+		woofie = "select area " + x+ "x"+y;
+		if (sGameState == "preplay") {
+			StartLevel();
+		}
+		SelectArea(x,y);
+		
+		if ((sGameState == "inplay") && (CheckForWin() == "t")) {
+			PlaySound("applause.MP2");
+			window.setTimeout("window.location='win.html';",5000)
+		}
+    }
+
+	function Reveal9(x,y) {
+		
+		xm1 = x-1;
+		xp1 = x+1;
+		ym1 = y-1;
+		yp1 = y+1;
+
+		if (InBounds(xm1, ym1) == "true") {
+				RevealCell(xm1, ym1);
+		}
+
+		if (InBounds(x,ym1) == "true") {
+				RevealCell(x, ym1);
+		} 
+
+		if (InBounds(xp1,ym1) == "true") {
+				RevealCell(xp1, ym1);
+		}
+
+		if (InBounds(xp1,y) == "true") {
+				RevealCell(xp1,y);
+		}
+			
+		if (InBounds(xp1,yp1) == "true") {
+				RevealCell(xp1,yp1);
+		}
+
+		if (InBounds(x,yp1) == "true") {
+				RevealCell(x,yp1);
+		}
+
+		if (InBounds(xm1,yp1) == "true") {
+				RevealCell(xm1,yp1);
+		}
+		
+		if (InBounds(xm1,y) == "true") {
+				RevealCell(xm1,y);
+		}	
+			
+	}
+
+     function SelectArea (x,y) {
+
+		var xm1 = 0;
+		var xp1 = 0;
+		var ym1 = 0;
+		var yp1 = 0;
+
+		if (sGameState != "inplay")
+			return;
+
+		if ( IsCleared(x,y) == true) {
+			return;
+		}
+
+		RevealCell(x,y);
+
+		if (GetCell(x,y) == "b") {
+
+			PlaySound("door.MP2");	
+			RevealMap();
+			sGameState = "lost";
+		    return;
+		} 
+
+		if ((GetBombMap(x,y) != "0")) {
+			return;
+		}
+		
+		if (kBox=="FCS") {
+			Reveal9(x,y);
+			return;
+		}
+		
+		xm1 = x-1;
+		xp1 = x+1;
+		ym1 = y-1;
+		yp1 = y+1;
+
+		if (InBounds(xm1, ym1) == "true") {
+			SelectArea(xm1, ym1);
+		}
+
+		if (InBounds(x,ym1) == "true") {
+			SelectArea(x, ym1);
+		} 
+
+		if (InBounds(xp1,ym1) == "true") {
+			SelectArea(xp1, ym1);
+		}
+
+		if (InBounds(xp1,y) == "true") {
+			SelectArea(xp1,y);
+		}
+			
+		if (InBounds(xp1,yp1) == "true") {
+			SelectArea(xp1,yp1);
+		}
+
+		if (InBounds(x,yp1) == "true") {
+			SelectArea(x,yp1);
+		}
+
+		if (InBounds(xm1,yp1) == "true") {
+			SelectArea(xm1,yp1);
+		}
+		
+		if (InBounds(xm1,y) == "true") {
+			SelectArea(xm1,y);
+		}	
+			
+	}
+
+	function CheckForWin() {
+		if (kSafeSpaces  == kUncovered) {
+			return("t");
+		}
+		return("f");
+	}
+	
+	function SolvePuzzle() { 
+		RevealMap();
+	}
+        
+	function Restart() {
+		location.reload();
+	}
+
+	function DecrementTimeLeft(iSeconds) {
+
+		if (sGameState != "inplay") {
+			return ("false");
+		}
+		iSecondsLeft = iSecondsLeft- iSeconds;
+		if (iSecondsLeft < 0) {
+
+			iMinutesLeft = iMinutesLeft - 1;
+
+			if (iMinutesLeft < 0) {
+            
+				iMinutesLeft = 0;
+				iSecondsLeft = 0;	
+				sGameState = "lost";
+				window.location = "lose.html";
+ 				RevealMap();
+				PlaySound("door.MP2");
+				return("false");
+			} else {
+              
+				iSecondsLeft = iSecondsLeft + 60;
+        
+			}
+
+		}
+
+		UpdateTimeLeft();
+		return("true");
+
+	}
+
+	function CallbackTimeLeft() {
+
+ 		if (DecrementTimeLeft(5) == "true") {  
+			window.setTimeout("CallbackTimeLeft()", 5000);
+		} 
+
+	}
+
+	function LoadImages() {
+
+		image0 = new Image();
+		image0.src = "images/t0.gif";
+
+		image1 = new Image();
+		image1.src = "images/t1.gif";
+
+		image2 = new Image();
+		image2.src = "images/t2.gif";
+
+		image3 = new Image();
+		image3.src = "images/t3.gif";
+
+		image4 = new Image();
+		image4.src = "images/t4.gif";
+
+		image5 = new Image();
+		image5.src = "images/t5.gif";
+
+		image6 = new Image();
+ 		image6.src = "images/t6.gif";
+
+		image7 = new Image();
+		image7.src = "images/t7.gif";
+
+		image8 = new Image();
+		image8.src = "images/t8.gif";
+
+		image9 = new Image();
+		image9.src = "images/t9.gif";
+
+		imagedetectoroff = new Image();
+		imagedetectoroff.src = "images/switchsweep.jpg";
+
+		imageflagon = new Image();
+		imageflagon.src = "images/switchmark.jpg";
+
+		imagequit = new Image();
+		imagequit.src = "images/QUIT.GIF";
+		  
+		imagequit = new Image();
+		imagequit.src = "images/b.gif";
+		
+		imagewaitover = new Image();
+		imagewaitover.src = "images/waitoff.gif";
+	
+
+	}
+
+
+
+	function GetDigit(iNumber, iDigit) {
+
+		iNumber = "" + iNumber;  
+
+		while (iNumber.length < 2) {
+			iNumber = "0" + iNumber;
+		}
+	
+		return(iNumber.charAt(iDigit));
+
+	}
+
+	function RenderCell(x, y) { 
+		bg = GetBombMap(x,y);
+		if (bg=="b") { bg ="hiddenbg";  }
+		document.write("<td abswidth=20 absheight=20 bgcolor=666666 align=center valign=bottom background=images/"+bg+".gif>");
+		document.write("<a href='javascript:HandleSelectArea("+x+","+y+")'>");
+		document.write("<img name=" + namexy(x,y) +" src=images/hidden.gif></a>");
+		document.write("</td>");
+	}
+
+	function RenderRow(y) {
+		var x=0;
+		document.write("<tr>");
+
+		for (x=0; x < kWidth; x++) {
+			RenderCell(x,y);
+		}
+
+		document.write("</tr>");
+	}
+
+	function RenderPuzzle() {
+		var y=0;
+		document.write("<table border=0 cellspacing=3 cellpadding=0 bgcolor=222222>");
+
+		for (y=0; y < kHeight; y++) {
+			RenderRow(y);
+		}
+		document.write("</table>");
+	}
+
+	function SelectMode() {
+
+		if (bUncovering == "false") {
+			document.detector.src = "images/switchsweep.jpg";
+			bUncovering = "true";
+		} else {
+			document.detector.src = "images/switchmark.jpg";
+			bUncovering = "false";
+		}
+	}
+
+     function getURLvar(Name) {
+
+		var search = Name + "=";
+		var incoming = window.location.search;
+		if (incoming.length > 0) { 
+			offset = incoming.indexOf(search) 
+			if (offset != -1) { 
+				offset += search.length;
+				
+				end = incoming.indexOf("&", offset);
+				
+				if (end == -1) 
+					end = incoming.length;
+				value = unescape(incoming.substring(offset, end));
+				if (value == "") {
+					return null;
+				} else {
+					return value;
+				}
+			}
+			else return null;
+		}
+		else return null;
+	}
+
+	</script>
+
+
+</head>
+<body fontsize=medium background="images/BACK.JPG" bgcolor=191919 text=668866 hspace=0 vspace=0>
+<bgsound src="sounds/var6.mid" LOOP=TRUE>
+   <display noscroll>
+
+      <EMBED SRC="sounds/door.MP2" HIDDEN=TRUE 
+       LOOP=FALSE AUTOSTART=FALSE NAME="door">
+
+      <EMBED SRC="sounds/laugh.MP2" HIDDEN=TRUE CONTROLS=console
+       VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="laugh"> 
+
+      <EMBED SRC="sounds/applause.MP2" HIDDEN=TRUE CONTROLS=console
+       VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="applause">
+
+      <table cellpadding=0 cellspacing=0 border=0 width=100% valign=top>
+        <tr>
+	      <td abswidth=162 absheight=384 valign=top>
+			<IMG width=8 height=6 src=/ROMCache/Spacer.gif><BR>
+			<IMG width=6 height=80 src=/ROMCache/Spacer.gif><a href="wtv-home:/home"><IMG width=20 height=80 src=/ROMCache/Spacer.gif><IMG width=104 height=80 src=/ROMCache/WebTVLogoJewel.gif><IMG width=28 height=80 src=/ROMCache/Spacer.gif></a>
+		  <center>
+  			<IMG width=6 height=111 src=/ROMCache/Spacer.gif><A HREF="index.html"><IMG width=4 height=111 src=/ROMCache/Spacer.gif><IMG SRC="images/LOGO.GIF" name="staybaddopg" WIDTH=137 HEIGHT=111 BORDER=0><IMG width=11 height=111 src=/ROMCache/Spacer.gif></A><BR>
+
+		</center>	
+         <center><IMG src="/ROMCache/spacer.gif" height=8 width=5>	<BR>
+		<font size=6 color=#E6E6E6><b><a nocolor href="play.html"><SCRIPT Language=JavaScript>document.write(kLevelName);</SCRIPT></a></b></font><BR>
+	   <IMG src="/ROMCache/spacer.gif" height=8 width=5><BR>
+		  <img width=24 height=45 src="images/t5.gif" name="minutes"><img width=14 height=45 src="images/COLON.GIF" name="Colon"><img width=24 height=45 src="images/t0.gif" name="tenstime"><img width=24 height=45 src="images/t0.gif" name="onestime"><BR> 
+		<IMG src="/ROMCache/spacer.gif" height=8 width=5><BR>
+		<A name="restart" HREF=""><IMG SRC="images/0217_ms_playagain.gif" WIDTH=142 HEIGHT=36 BORDER=0></A><BR>
+		  <IMG SRC="/ROMCache/spacer.gif" name="detector" width=10 height=7><BR>
+		  <A HREF="wtv-home:/home"><IMG SRC="images/0207_ms_quit.gif" WIDTH=142 HEIGHT=36 BORDER=0></a>
+		  </center></td>
+	<td abswidth=4></td>
+	  <td abswidth=394 valign=top align=center>	
+		<img src="/ROMCache/spacer.gif" border=0 width=5 height=13><br>
+	
+	  	         
+ 		<SCRIPT LANGUAGE="Javascript">
+          RenderPuzzle();
+		  status = "WebTV MineSweeper";
+		document.images["detector"].src = imagewaitover.src;
+		  
+        </SCRIPT><BR>
+		<img src="/ROMCache/spacer.gif" border=0 width=5 height=20><br>
+
+			<table cellpadding=0 cellspacing=0 border=0 href="http://www.woofie.com/webtvad.html" abswidth=394 absheight=71 insetselection nocolor>
+ 				<tr>
+					<td>
+	 					<img src="http://www.woofie.com/images/bws.gif" height=71 width=394>
+					</td>
+				</tr>
+			</table>
+
+<!-- 		<INSERT AD template="insetad.html" width=394 HEIGHT=71> -->
+	  </td>
+	               
+    </tr>
+
+        </table>
+    
+	<script language="Javascript">
+   	   window.setTimeout("CallbackTimeLeft()", 5000);  
+	</script>
+
+</body>
+</html>
+

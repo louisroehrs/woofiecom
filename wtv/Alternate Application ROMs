@@ -1,0 +1,219 @@
+       Alternate Application ROMs for the WebTV Plus Internet Receiver
+
+                                Jack Palevich
+
+                            WebTV Networks, Inc.
+
+                             WebTV Confidential
+
+                                   Draft 1
+
+Introduction
+
+With the Client 2.2 release, the WebTV Plus Internet receiver has the
+ability to run any number of alternate application ROMs. These ROMs are
+downloaded from the WebTV Service and installed on the WebTV Plus hard disk.
+When the user requests the application, the application is quickly loaded
+from the hard disk. When the user is finished using the application, the
+regular WebTV application  is restored.
+
+Alternate application ROMs are ideal for offline games and other
+applications (like word processors) that cannot easily be implemented as
+web-based applications.
+
+Features and Limitations
+
+Alternate Application ROMs have these benefits:
+
+   * They have full access to the WebTV Plus Internet receiver's hardware
+     and software, including the RAM, the graphics and the hard disk.
+   * They can be written in any combination of HTML, JavaScript, C, C++, or
+     MIPS assembly language.
+   * The application can have up to about 1Mb of code. (But note that MIPS
+     code is not as compact as x86 code. MIPS code is roughly twice as bulky
+     as x86 code.)
+   * The application can use about 2.5Mb of RAM.
+   * Potentially any feature of the WebTV software can be replaced,
+     extended, or modified to support the needs of the application.
+
+The limitations are:
+
+   * Because each application is implemented as its own ROM image, the
+     application's minimum size is 4Mb. (Fortunately, application ROMs
+     compress fairly well, because they contain lots of machine language
+     instructions.)  It takes about 20 minutes to download an application.
+   * Developing an application requires that the developer have access to
+     the WebTV Client source code.
+   * Applications can only be installed via the WebTV service. It is not
+     possible for a third-party to sell their application ROMs directly to a
+     WebTV customer.
+   * Because the box reboots when an application launches, the application
+     runs off-line. This has the following effects:
+        o The application does not have access to the network.
+        o Because there is no log-on, the application does not know which
+          user is using it.
+   * All polling behavior is suspended while the application runs. (Polling
+     resumes automatically when the application terminates.) This includes:
+        o TV reminders
+        o TV recordings
+        o Data Download
+        o EPG (TV listings) download
+        o MessageWatch
+   * In order to provide space for the application to run, the TV experience
+     is disabled while the application runs.
+   * Should WebTV ever switch to a new operating system, the alternate
+     application ROMs would have to be recompiled.
+   * Should WebTV ever switch to a different kind of hardware, the alternate
+     application ROMs would have to be recompiled.
+
+While these are fairly strict limitations, the technique is powerful enough
+for:
+
+   * Off-line games like Doom and You Don't Know Jack.
+   * Off-line applications, such as word processors.
+
+Developing Alternate Application ROMs
+
+Alternate application ROMs are developed the same way that the WebTV Client
+application rom is. Alternate application ROMs can therefore take advantage
+of all of the documentation, tools, and knowledge that has been developed at
+WebTV for creating the WebTV Client application rom. The general approach is
+to develop using the native platform tools and a WebTV Plus simulator. Once
+the application is working, the same source code can be compiled to produce
+an application rom which is downloaded into a WebTV Plus box for testing.
+
+The following development environments can be used:
+
+   * Macintosh PowerPC with 32Mb of RAM, 1Gb of disk and CodeWarrior.
+     (Simulator only.)
+   * Solaris unix. (Simulator and ROM compiling.)
+   * Linux with 64Mb of RAM, 2Gb of disk, gnu tools, (All features
+     supported.)
+   * Windows 95/98/NT with 96Mb of RAM, 4Gb of disk, Visual C++ 5.0, gnu
+     tools. (All features supported.)
+
+To develop your application ROM:
+
+   * Verify that you can build the regular application ROM.
+   * Pick a unique C preprocessor symbol for your application.
+   * Create a subdirectory for your application source files.
+   * Add your source files to the subdirectory.
+   * Add your source files to the project. (This is done differently on each
+     platform.)
+   * Make sure that your source files are not compiled as part of the
+     regular client.
+   * In order to provide enough ROM space for your application, undefine
+     parts of the application ROM. To get an idea of what can be removed,
+     open the file client/Makefile.defines and search for the word DOOM.
+   * Compile your code and debug it, as much as possible, using the
+     simulator.
+   * Create an application ROM and debug it using the regular tools (squirt,
+     par, etc.) for your platform.
+
+UI Guidelines for Alternate Application ROMs
+
+Alternate Application ROMs should adhere to the following UI guidelines:
+
+   * Unlike the main Client ROM, alternate application ROMs should not have
+     a power-off state. They should launch into their UI immediately upon
+     launching, rather than waiting for the user to press the Power button.
+   * If the user presses the Power button, the aarom should quit, and reboot
+     back into the main application ROM. It is OK to ask the user if they
+     want to save their state.
+   * As much as possible, adhere to the standard WebTV UI guidelines.
+
+Making your application ROM available for installation on WebTV boxes.
+
+Once you have your application ROM ready to distribute to end-users, you
+will need to solve several problems:
+
+   * Inform the user that the application is available.
+   * Allow the user to request the application.
+   * Deliver the application to the user.
+   * Allow the user to run the application.
+
+The solution to each of these problems is domain-specific, and beyond the
+scope of this document. Check out the You Don't Know Jack Engineering
+Specification for a solution that's correct for games.
+
+The Boota Client Function
+
+The boota client function has been added to the Client 2.2 release to enable
+the creation and running of alternate applications. This client function has
+the following syntax:
+
+     To create an approm the syntax is:
+     clientfunction:boota?partition=partition&offset=offset&action=create&size=size&source=source.
+
+     To run an approm the syntax is:
+     clientfunction:boota?partition=partition&offset=offset&args=args&size=size&source=source.
+     Running an approm tries to be robust: If the partition does not
+     exist, or if it does not contain the correct information, it is
+     created on the fly. This makes the action=create version of the
+     boota client function somewhat redundant. However, the
+     action=create version is still useful, because it forces the
+     approm to be written, whether or not it appears to be valid.
+
+        Parameter     [used by run or create] Description
+        partition     [both] Names the alternate appROM 's boot
+                      partition. Required.
+        offset        [both] Offset in bytes from the start of the
+                      alternate appROM's boot partition to the
+                      code. Defaults to 0. Use this to store more
+                      than one app rom in the same boot partition.
+                      Since there is a limited number of top-level
+                      partitions (about 30), this may be useful to
+                      allow a large number of application ROMs to
+                      be installed at the same time. Optional.
+        args          [run] Argument string to be passed to the
+                      alternate appROM. Optional.
+        action        [create] Used to indicate which function to
+                      perform. If the parameter is present, its
+                      value must be 'create'. If this parameter is
+                      present, and the value is 'create', then the
+                      client function will install the alternate
+                      application ROM. If the parameter is missing,
+                      then the client function is going launch an
+                      already-installed application ROM. Required
+                      for create.
+        size          [both] Size of the partition to create, in
+                      bytes. This value will be rounded down to the
+                      nearest megabyte. If the partition already
+                      exists, and it is too small, it will be
+                      deleted, and a new larger partition will be
+                      created. Required.
+        source        [both] The URL of the approm.o image to
+                      install. This must be a file://Disk/ URL.
+                      Required.
+        onfail        [run] The URL to go to if the approm cannot
+                      be run. This must be a file:://Disk/ URL.
+                      Optional.
+
+Typically the boota?action=create client function is called at the end of a
+group download.
+
+Typically the normal boota client function is called from the HREF of a
+link, or the target of a button. See the offline games pages for examples.
+
+If any of the parameters are are invalid, the boota client function goes to
+the onfail URL, if one is supplied. (For debug builds of the client a
+diagnostic message is printed out to the debug console.)
+
+Appendix A: WebTV Plus features for Game Developers
+
+The following features are available for game development:
+
+   * The complete source for the WebTV port of the game Doom.
+   * For normal games, there is a 512 x 384 x 8-bit-per-pixel
+     double-buffered graphics mode.
+   * For more adventurous developers, there is a 2D sprite engine with
+     hardware rotation and scaling, and 16 bits-per-pixel YUYV graphics.
+   * The IR keyboard can have any 4 keys down at once, and has both key down
+     and key up events.
+   * The audio hardware and software allows real-time 16-bit, 44-kHz, stereo
+     mixing.
+   * VFAT file system. (30Mb of read/write disk space available.)
+   * Game logs and crash logs allow valuable information to be collected
+     from beta-testers and end-users.
+
+ 

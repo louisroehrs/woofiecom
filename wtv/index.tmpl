@@ -1,0 +1,103 @@
+<html>
+<title>
+  WebTV MineSweeper
+</title>
+<!--
+<bgsound src="sounds/var8.mid" LOOP=TRUE> 
+-->
+<body background="images/BACK.JPG" bgcolor=191919 text=#E6E6E6 hspace=0>
+
+   <display>
+
+      <table cellpadding=0 cellspacing=0 border=0 width=100% valign=top>
+            <tr>
+              
+	      <td abswidth=179 align=center>
+                  <img src="images/LOGO.GIF">
+              </td>
+
+	      <td abswidth=365 rowspan=4 valign=top align=center>
+		<font size=5>How to Play</font>
+
+  		<font size=3 color=#E6E6E6>
+		
+ 		<table>
+         	  <tr><td valign=top><li></td><td>The object of the game is to uncover all the squares in the minesweeper grid which don't contain mines.</td></tr>
+         	  <tr><td valign=top><li></td><td>Uncover squares by clicking on them.</td></tr>
+	       	  <tr><td valign=top><li></td><td>Squares contain either a number (0-8) or a mine.</td></tr>
+ 	 	  <tr><td valign=top><li></td><td>If you click on a square with a mine below it the entire playing field is revealed and the game is over.</td></tr>
+ 	 	  <tr><td valign=top><li></td><td>If you reveal a number the game continues.</td></tr>
+                </table>  
+	
+ 		</font>
+
+   	      </td>
+			               
+		    </tr>
+
+   			<tr> <!-- LevelOn -->
+              		  <td>	
+			    
+			  </td> 
+			</tr>
+			
+			<tr>
+			   <td>
+			   
+               </td>
+			</tr>
+
+		    <tr> <!-- Control Buttons -->
+
+			  <td>
+			  <font color=ffaa44>
+                   
+              <table border=0 width=100%>
+				<tr>
+				  <td colspan=2>
+				    <center>
+				    <A HREF="index2.tmpl">
+		       		      <IMG SRC="images/PLAY.GIF">
+                    		    </A>
+		    		    <A HREF="minesweeper.html">
+		       		      <IMG SRC="images/PLAY.GIF">
+                    		    </A>
+				    </center>			   
+				  </td>
+				</tr>
+			  </table>
+
+			
+              </font>
+            
+			  </td>
+			</tr>
+			<tr>
+			  <td colspan=2>
+     			     <center>
+		               <img src="/ROMCache/Spacer.gif" border=0 width=468 height=8>
+			     </center>
+			  </td>
+			</tr>
+
+			<tr>
+			  <td colspan=2>
+     			     <center>
+					 <INSERT AD WIDTH=394 HEIGHT=71>
+			     </center>
+			  </td>
+			</tr>
+               		      
+        </table>
+    </form>
+
+	<script language="Javascript">
+
+       UpdateLevel();
+   	   window.setTimeout("CallbackTimeLeft()", 5000);  
+
+	</script>
+
+</body>
+</html>
+

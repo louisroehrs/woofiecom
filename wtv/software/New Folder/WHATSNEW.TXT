@@ -1,0 +1,281 @@
+                     WS_FTP - Version 4.04 - 96.08.21
+                   Windows Sockets FTP Client Application
+                            by John A. Junod
+                  Copyright (C) 1992-1996 by Ipswitch, Inc.
+                            All rights reserved.
+
+DESCRIPTION:
+============
+
+   This application is a standard File Transfer Protocol (FTP) client
+   application for Windows Sockets.  The user interface for this FTP
+   client is designed with the novice FTP user in mind.  Usage should
+   be obvious.  For more information on FTP please refer to the many
+   different NETNEWS groups or one of the recent books on the Internet.
+   WS_FTP32 is the 32 bit version of WS_FTP for Windows NT, Windows 95
+   and Windows 3.x with Win32s.
+
+   You can not run WS_FTP32 or WS_FTP95 with 16 bit Trumpet stack on
+   Windows 95!!! WS_FTP32 and WS_FTP95 require a 32 bit network stack
+   on a 32 bit operating system!
+   (hint: get the 32 bit version of Trumpet if you want to run Trumpet)
+
+   There are multiple versions of WS_FTP. These are included in the 
+   ZIP file with an INSTALL program.
+
+   WS_FTP.exe (FTPPRO.exe) is designed to operate in a 16 bit environment
+                but will work in any Windows environment.
+
+   WS_FTP32.exe (FTP32PRO.exe) is designed to operate in a 32 bit
+                environment as provided in Windows 3.x with Win32s,
+                Windows 95, Windows NT and OS/2.
+
+   WS_FTP95.exe (FTP95PRO.exe) is designed to operate in 32 bit multi-
+                threaded environment as provided by Windows 95 and
+                Windows NT.  Usage under Win32s is not blocked but some
+                features like remote edit may not work properly.
+
+   For information about the free WS_FTP Limited Edition distribution
+   program please visit www.ipswitch.com or send email to
+   info@ipswitch.com or call (617) 676-5700.
+
+   For information about distributing WS_FTP Professional please
+   contact Ipswitch at info@ipswitch.com or call (617) 676-5700.
+
+   For information about WS_FTP Professional, see the WS_FTP
+   Limited Edition About box, or visit www.ipswitch.com.
+
+WHATS NEW
+=========
+
+   96.08.21 - 4.04
+      all versions
+      - added HellSoft Novell host type
+      - updated MAC Peter Server host type
+      - updated IBM PC TCP/IP host type
+      - command line changes
+      - splash screen doesn't appear until winsock initialized
+      ws_ftp95.exe / ftp95pro.exe
+      - sort buttons above windows, adjustable columns
+
+   96.07.24 - 4.03 (only Pro released)
+      all versions
+      - command line changes
+
+   96.06.23 - 4.02 (only Pro released)
+      all verisons
+      - command line changes.
+        - destination can be a directory (must end with a
+          slash)
+        - source can contain wildcards of * or ? in the
+          basename (destination must be specified and must
+          be a directory ending with a slash)
+        - corrected upload transfer file names
+      - transfer changes to alleviate upload problems on some
+        network stacks
+      ws_ftp95.exe
+      - directory info is displayed in dir listings for some
+        types of remote systems and always on local system.
+      - directory entries can be included in sorts
+
+   96.05.22 - 4.01
+      all versions
+      - corrected transfer timeouts
+      - corrected program options radio button grouping
+      - corrected TANDEM file seperator
+      - corrected hidden directory display problem
+      - corrected retry routine
+      pro
+      - modified reget procedure to handle system reboots and reget
+
+   96.05.13 - 4.00
+   (4 window version)
+      all versions (16 and 32, le and pro)
+      - multiple file rename
+      - improved error messages, prompts
+      - command line argument changes!!!!  (see end of file)
+      - right mouse popup menu changes (unique menus in listboxes)
+      - added chmod to remote listbox popup menus
+      - added move to listbox popup menus
+      - help file updated
+      ws_ftp pro, ws_ftp32 pro
+      - implemented drag and drop between windows
+      - implemented auto reget of aborted transfers on reconnection
+      - multi-file command line arguments
+      - new pro options dialog
+   (2 window version)
+      ws_ftp95 le and pro
+      - eliminated rmdir buttons, fixed button spacing
+      - internal changes in window handling
+      - corrected keyboard interaction in listboxes
+      - improved external app TO ws_ftp drag and drop processing
+      - correction of remote to localname conversion on prompted
+        transfer
+      - added auto link processing (UNIX hosts only!)
+      - saves sort options
+      - correction of file view applications to use registry
+      - multiple file view capability (mulitple file names)
+      - command line argument changes!!!!  (see end of file)
+      - right mouse popup menu changes (unique menus in listboxes)
+      - added edit option to remote listbox popup menu
+      - added chmod to remote listbox popup menus
+      - added move to listbox popup menus
+      - help file updated
+      ws_ftp95 pro
+      - implemented drag and drop between windows + drag move
+      - implemented auto reget of aborted transfers on reconnection
+      - multi-file command line arguments
+      - new pro options dialog
+      - retain file times on remote to local transfers for popular host types
+      - overwrite prompt processing for newer or same files
+      - directory transfer updates (don't xfer same or older files)
+
+   96.04.27
+      ws_ftp and ws_ftp32
+      - correction of prompt on ChgDir button
+      - correction of initial load of saved filemasks
+      ws_ftp32
+      - correction of remote to localname conversion on prompted
+        transfer
+
+   96.04.22
+      correction of abort process
+      improvement of IBM VM routines
+      addition of license dialog
+      WSFTP32A - stablized, corrected dir xfers
+
+   96.03.23
+      correction of directory transfer problems
+      addition of one time (each version) popup of license information
+      correction for Directories in IBM_VM with CMS file system
+
+   96.02.19
+      new host type of MAC VersaTerm
+      sort order on ".."
+
+   96.02.15
+      correction for fd_set in winsock.h  (crash problem??)
+      correction for dates in piper
+
+   95.12.29 (ws_ftp32 only)        QUESTION IS:  2 windows or 4 windows?
+      support for QVT/40
+      addition of -quiet command line arg (non positional)
+
+   95.12.20 (ws_ftp32 only)        SHOULD I CONTINUE NEW WINDOW STYLE?
+      local window redraw change
+      transfer meter for nt
+      icon background corrected
+      date fix for midnight to 1 am.
+
+   95.11.30 (ws_ftp32 only)
+      fixed double click to change directories
+      fixed sort of directory names
+      listbox spacing font correction
+      removal file duplication bug
+      cleanup of local listbox window after resize
+      force lower works on dir names during bulk xfer to remote host
+      New windows
+      Multiple renames, rename dialog filled with old name
+      Directory renames
+      Corrected Change Directory bug
+
+   95.11.12
+      Added session option - extension conversion on transfer (also
+        added the extension conversion dialog)
+      Added session option - force lower case on upload
+      Changed hot key for password in connect dialog from w to d
+      Added Delete-All option
+      Fixed adding .html when .htm (or other similar cases) in
+        the extensions dialog
+      Fixed clipping of ;### in file retrieval for VMS (ws_ftp32)
+      Fixed bug if session name starts with space
+      Fixed bug if filename starts with percent (%)
+      Fixed support for FTP Software server 3.0
+
+   95.10.31
+      Abort changes
+      Misc improvements
+
+   95.08.26
+      Fixed bug that caused empty local directory window
+
+   95.08.24
+      Added Local and Remote File Mask in Advanced Connect Dialog
+      Added Comment in Connect Dialog (use arrow keys to change profiles!)
+      Added TGV Windows MultiNet support
+
+   95.08.19
+      Added support for PCNFS Pro (no autodetect as I need a server to hit)
+      Added WAV file support.  Change the WAV files if you don't
+        like them.  New sound options added to Session Options
+      Added CTRL + transfer_buttons toggles state of "Prompt for Destination
+        Name" for the current transfer.
+      Added program option to set rate display to Bytes or bits per second
+
+   95.07.30
+      Added support for NetWare 4.1 FTP servers
+
+   95.07.08
+      (16) upload transfer close change
+      (16) disk caching correction
+
+   95.07.05
+      (32) better write caching on receive of file
+      correction for case check on directory caching
+      clear abort flag on new connect
+      (32) directory transfers
+         16 bit version does NOT transfer directories!
+      BULL correction
+
+   95.06.28
+      Full support for Serv-U host type (spaces, case, format)
+      Full support for WFTPD host type (spaces, case, format)
+      Full support for MS Windows-NT host type (spaces, case, format)
+      Full support for standard UNIX host type (spaces, case, format)
+      Fixed format of local directory
+      Removed recent status line update change
+      Added support for URLs that point to a directory instead of
+        a file (starts ws_ftp in that directory)
+      (32) Fixed save window location restore of internal window sizing
+      (32) Busy check on change dir from dropdown list
+      (32) Fixed drop down directory history on alternate screen
+
+   95.06.18
+      Added Mbps to transfer speeds
+      Fixed bug in > 19MB file transfer percentage
+      Preserve case on 95/NT when local name contains at least
+        one lower case letter (otherwise converts to lower)
+      Support for spaces in names on Microsoft Windows NT
+        remote server (MS style or UNIX style listing)
+      File info displayed in status area if old style windows
+        and show full directory info.  Local is on top, remote
+        is on the bottom.  (IS THIS USEFUL??)
+
+   95.06.11
+      Removed L8 and added Auto to main screen
+      Slight movement of windows
+      Auto Update on file transfer to remote fixed
+      (32) Drop down directory history changer on main screen
+
+COMMAND LINE ARGUMENTS
+----------------------
+
+ws_ftp  [args] ftp://hostname|profile/pathname/  <- start in this directory
+ws_ftp  [args] ftp://hostname|profile/pathname/filename
+               [local:/pathname[/filename]]
+ws_ftp  [args] hostname|local:/pathname/filename
+               [hostname|local:/pathname/filename]
+ws_ftp  [args] -ask                              <- prompts for command line
+
+[args] = -i Inifile      (must come before all other args)
+         -p Profile      (must come before all other args except -i)
+         -u Userid
+         -w passWord
+         -c aCcount
+         -ascii
+         -binary
+         -quiet
+         -s hostname|local/pathname/filename      (Source)
+         -d hostname|local/pathname/filename      (Dest)
+         -m filename_of_file_containing_args   (pro only)
+

@@ -1,0 +1,720 @@
+<html>
+<head>
+<META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">
+
+<title>Building Game...</title>
+
+<script language="JavaScript">
+
+	function Cell(objName, game, possible, position, contents, part, x,y, cellWidth, cellHeight)  {{ 
+		if (objName == "")  {{ 
+			objName = "Cell" + x + "at" + y
+		}
+		this.objName = objName
+		this.possible = possible
+		this.nexthop = null
+		this.prevhop = null
+		this.arrow = LoadImage("images/face" + contents +  ".gif");
+		this.covered = 1
+		this.game = game
+		this.contents = contents
+		this.part = LoadImage("images/part" + part + ".gif");
+		this.parthigh = LoadImage("images/part" + part + "glow.gif"); 
+		this.lightgreen = LoadImage("images/green.gif");
+		this.lightred = LoadImage("images/red.gif");
+		this.position = position
+		this.x = x
+		this.y = y
+		this.cellWidth = cellWidth
+		this.cellHeight = cellHeight
+		this.matched = false
+	// methods
+		this.cover = Cover
+		this.uncover = Uncover
+		this.matches = Matches
+		this.select = SelectCell
+		this.render = RenderCell
+		
+		this.lastMove = LastMove
+		this.unhighlight = UnhighlightLastMove
+		this.properMove = ProperMove
+	}
+
+
+
+
+	function LastMove ()  {{ 
+
+		var prev = this.game.previousCell
+		if (prev != null)  {{  prev.unhighlight();}
+		
+		var lastmove = 1;
+		var i=0
+		if (this.contents == "u")  {{ 
+			for (i=this.y; i>=0; i--)  {{ 
+				if (this.game.board.cells[i][this.x].covered==1)  {{ 
+					lastmove=0;
+					document.images[this.game.board.cells[i][this.x].objName].src= this.game.board.cells[i][this.x].parthigh.src;
+				}
+			}
+		}
+		
+		if ((this.contents == "d" ) && lastmove)  {{ 
+			for (i=this.y; i< this.game.board.kHeight; i++)  {{ 
+				if (this.game.board.cells[i][this.x].covered==1)  {{ 
+					lastmove=0;
+					document.images[this.game.board.cells[i][this.x].objName].src =this.game.board.cells[i][this.x].parthigh.src;
+
+				}
+			}
+		}
+		
+		if ((this.contents == "l")  && lastmove)  {{ 
+			for (i=this.x; i>=0; i--)  {{ 
+				if (this.game.board.cells[this.y][i].covered==1)  {{ 
+					lastmove=0;
+					document.images[this.game.board.cells[this.y][i].objName].src =this.game.board.cells[this.y][i].parthigh.src;
+				}
+			}
+		}
+		
+		if ((this.contents == "r")  && lastmove)  {{ 
+			for (i=this.x; i<this.game.board.kWidth; i++)  {{ 
+				if (this.game.board.cells[this.y][i].covered==1)  {{ 
+					lastmove=0;
+					document.images[this.game.board.cells[this.y][i].objName].src =this.game.board.cells[this.y][i].parthigh.src;
+				}
+			}
+		}
+			
+		return lastmove;
+	}
+	
+	function UnhighlightLastMove ()  {{ 
+		var i=0
+
+		var lastmove=1
+		if (this.contents == "u")  {{ 
+			for (i=this.y; i>=0; i--)  {{ 
+				if (this.game.board.cells[i][this.x].covered==1)  {{ 
+					lastmove=0;
+					document.images[this.game.board.cells[i][this.x].objName].src= this.game.board.cells[i][this.x].part.src;
+				}
+			}
+		}
+		
+		if ((this.contents == "d" )&& lastmove)  {{ 
+			for (i=this.y; i< this.game.board.kHeight; i++)  {{ 
+				if (this.game.board.cells[i][this.x].covered==1)  {{ 
+					lastmove=0;
+					document.images[this.game.board.cells[i][this.x].objName].src =this.game.board.cells[i][this.x].part.src;
+
+				}
+			}
+		}
+		
+		if ((this.contents == "l" )&& lastmove)  {{ 
+			for (i=this.x; i>=0; i--)  {{ 
+				if (this.game.board.cells[this.y][i].covered==1)  {{ 
+					lastmove=0;
+					document.images[this.game.board.cells[this.y][i].objName].src =this.game.board.cells[this.y][i].part.src;
+				}
+			}
+		}
+		
+		if ((this.contents == "r") && lastmove)  {{ 		
+			for (i=this.x; i<this.game.board.kWidth; i++)  {{ 
+				if (this.game.board.cells[this.y][i].covered==1)  {{ 
+					lastmove=0;
+					document.images[this.game.board.cells[this.y][i].objName].src =this.game.board.cells[this.y][i].part.src;
+				}
+			}
+		}
+			
+	}
+
+
+	function ProperMove ()  {{ 
+	
+		prev = this.game.previousCell
+		
+		if ((prev == null) && (this.x==0) && (this.y ==0)) return 1	  // Upper right square on first move is OK.
+		if (prev == null) return 0   // Any other square on first move is not valid.
+		
+		if ((prev.contents == "u") && (this.y < prev.y) && (this.x==prev.x)) return 1
+		if ((prev.contents == "d") && (this.y > prev.y) && (this.x==prev.x)) return 1
+		if ((prev.contents == "l") && (this.x < prev.x) && (this.y==prev.y)) return 1
+		if ((prev.contents == "r") && (this.x > prev.x) && (this.y==prev.y)) return 1
+		
+		return 0
+	
+	}
+		
+		
+		
+	function Uncover()  {{ 
+		this.covered = 0;
+		document.images[this.objName].src = this.arrow.src; 
+		var ship = "s" + this.position;
+		document.images[ship].src=this.lightgreen.src;
+
+	}
+
+	function Cover()  {{ 
+		this.covered = 1
+		document.images[this.objName].src = this.part.src
+		var ship = "s" + this.position
+		document.images[ship].src =this.lightred.src;
+
+	}
+	
+	function RenderCell()  {{  
+		document.write("<td background=images/qtrtoneflat.gif><a selected insetselection href='javascript:mam.board.cells["+ this.y + "][" + this.x + "].select();'><img src='images/spacer.gif' border=0 name='" + this.objName + "' width="+ this.cellWidth+" height=" + this.cellHeight + "></a>");
+		document.write("</td>");
+	}
+
+
+
+	function SelectCell()  {{ 
+		
+		if (this.game.state != "inplay")
+			return;
+
+		window.status= "WebTV Space Race";
+		if (!this.covered) 
+			return;
+			
+		if (!this.properMove()) 
+			return;
+	
+		this.uncover();
+
+		if ((this.x == this.game.board.kWidth-1) && (this.y == this.game.board.kHeight-1))  {{ 
+			if (this.game.board.cleared())  {{ 
+				window.status = "You win!";
+				this.game.win();
+			}
+			else  {{ 
+
+				window.location = "http://ed.webtv.net/~tpark/new/spacerace/tryagain.zip";
+			}
+			return;
+		}
+		if (this.lastMove())  {{ 
+			window.location = "http://ed.webtv.net/~tpark/new/spacerace/tryagain.zip";
+		} 
+		this.game.previousCell = this;
+		return;
+		
+	}		
+
+	
+	
+	function Matches(other)  {{ 
+		return( this.contents == other.contents ) 
+	}
+
+
+
+	function game(name, kWidth, kHeight, cellWidth, cellHeight, iSecondsLeft)  {{ 
+	
+		this.name = name
+
+		this.imageNames = asImageNames
+		this.board = new gameboard(this, kWidth, kHeight, cellWidth, cellHeight)
+		this.previousCell = null
+		this.secondCell = null
+		this.blockClicks = 0
+		this.waitmatchflip = 1
+		this.pointsSelected = 0;
+		this.state = "inplay";
+		this.BadMatchID = 0;
+		this.needToCoverBadMatch= 0;
+		this.matched = 0;
+		this.messages = new Array("", "", "","");
+		this.messageno = 0
+
+		
+		this.displaystatus = null
+		this.start = StartGame
+		this.coverunmatched = CallbackNoMatch
+		this.win = Win
+		this.nextMessage = NextMessage		
+	}
+		
+
+	function NextMessage()  {{ 
+		if (this.messageno >= this.messages.length)  {{  this.messageno=0}
+		return this.messages[this.messageno++]
+	}
+		
+	function Restart()  {{ 
+		mam.board.clear();
+		window.status="WebTV Space Race";
+		document.images["Cell0at0"].src = mam.board.cells[0][0].parthigh.src;
+
+	}
+	
+			
+	function Win()  {{ 
+		window.location = "http://ed.webtv.net/~tpark/new/spacerace/applause.mp2";
+		wincommand = "flyout.tmpl";
+		window.setTimeout(NextPage(),8000);
+		window.location = "http://ed.webtv.net/~tpark/new/spacerace/applause.mp2";
+
+	}
+
+	function Lose()  {{ 
+		mam.state = "lost";
+		mam.blockClicks = 1;
+		window.location = "dieonplanet.tmpl";
+		
+	}
+	
+	
+	function NextPage()  {{ 
+		window.location = wincommand;
+	}
+
+	function LoadImage(imageFileName)  {{ 
+		
+		newImage = new Image()
+		newImage.src = imageFileName
+		return newImage
+				
+	}
+
+	
+				
+	function StartGame()  {{   // Called when game board is rendered.
+
+		this.board.clear()
+	}
+	
+	
+	function gameboard (game, kWidth, kHeight, cellWidth, cellHeight)  {{ 
+		this.kWidth = kWidth;
+		this.kHeight = kHeight;
+		this.cells = new Array(kHeight);
+		this.render = RenderGameBoard;
+		this.game = game;
+		this.clear = ClearGameBoard;
+		this.cleared = GameBoardCleared;
+		var part=0;
+		if (kWidth == 4)  {{ 
+			possible = new Array("dr","dr","ldr", "ld",
+								 "dr","uldr","uldr", "uld",
+								 "udr","uldr","uldr", "uld",
+								 "ur", "ulr" ,"ulr", "e" )
+
+			mazes = new Array( 	"ddrlrdulrldlrllr",
+								"ddrdruuddluurrur",
+								"dddldurlrrduurlr",
+								"ddddrurudrldrrur",
+								"rrdddlrudullrrrr",
+								"ddrddrudrudlrllr",
+								"drrddulddrulrulr",
+								"ddrlrduldlrdruur",
+								"ddrdruudrdduulur",
+								"drddrurudldlrulr",
+								"rdrddludrdulrlur",
+								"drlddrudduldrrur",
+								"drdddurududlrurr",
+								"rrdlrdldrrruurlr",
+								"drlddldlruldrrur",
+								"ddrlrdulrrldrrlr",
+								"rdllrrlddrllrrlr",
+								"drddrdrudludrulr",
+								"dddddruurdruuuur",
+								"rrddrudludllrrlr",
+								"ddrddruldurlrrur",
+								"rdlldrduulrurulr",
+								"drdlrrduulrururr",
+								"drdldllurruururr",
+								"drddrdrudludruur",
+								"rdlddlulrdrdurur",
+								"drddrdldruulurlr",
+								"drdlrdlduuulrrlr",
+								"dddddruduururulr",
+								"rrdddlrddullruur",
+								"ddddduldrlrurrur",
+								"rdddrludrdluurlr",
+								"rddldrllrurdrlur",
+								"dddlrdrdruuuulrr",
+								"drldrludrudlrllr",
+								"rddldrlldrdlrurr",
+								"drrdddlldururrur",
+								"drldrdudrdudurlr",
+								"dddlrrrdruduurlr",
+								"dddlrlrdruluurlr",
+								"drldrduludrurlur",
+								"rrlddrllrdrdrlur",
+								"ddrdrduldldlrulr",
+								"rdrddrldrlddruur",
+								"ddllrddurdlurlrr",
+								"rdrddludrdudurur",
+								"rddlrlddruddullr",
+								"rddddruldrlurrrr",
+								"rddlrrdddrluuurr"
+								 );
+		} else 
+		if (kWidth == 3)  {{ 
+			possible = new Array("dr","dr", "ld",
+								 "dr","uldr", "uld",
+								 "udr","uldr", "uld",
+								 "ur", "ulr" , "e" );
+								 
+			mazes = new Array(  "rdlrrdulr",
+								"drdrdduur",
+								"drddudrur",
+								"drddudrur",
+								"rrdrdlrlr",
+								"rdldrlrrr");
+								
+			part=7;
+			
+		} 
+		
+		xx = Math.random() * mazes.length;
+		xy = Math.floor(xx);
+
+		dirs = mazes[xy];					
+
+
+
+		for (i=0; i < kHeight; i++)  {{ 
+			this.cells[i] = new Array(kWidth)
+			for (j=0; j < kWidth; j++)  {{ 
+		
+				contents = dirs.charAt(i*kWidth+j)
+				this.cells[i][j] = new Cell("", game, possible[i*kWidth+j], i*kWidth+j, contents, part, j,i, cellWidth, cellHeight)
+				part++;
+		   }
+		}
+		
+	}
+	
+	function GameBoardCleared()  {{ 
+		
+		for (i=0; i < this.kHeight; i++)  {{ 
+			for (j=0; j < this.kWidth; j++)  {{ 
+				if (this.cells[i][j].covered) return 0
+			}
+		}
+		return 1
+	}
+	
+	function RenderGameBoard()  {{ 
+		if (debug) alert("gameboard render");
+		document.write("<table border=0  cellspacing=4 cellpadding=0>");
+		
+		for (i=0; i < this.kHeight; i++)  {{ 
+			document.write("<tr>")
+			if (i == 0)  {{ 
+				document.write("<td rowspan=" + this.kHeight + " valign=top width=15 align=center><font size=-7>S<BR>T<BR>A<BR>R<BR>T</FONT></td>");
+			}
+			for (j=0; j < this.kWidth; j++)  {{ 
+				this.cells[i][j].render()
+			}
+			
+			if (i == 0)  {{ 
+				document.write("<td valign=bottom rowspan=" + this.kHeight + "  width=15 align=center><font size=-7>F<BR>I<BR>N<BR>I<BR>S<BR>H</FONT></td>");
+			}
+			document.write("</tr>")
+		}
+		document.write("</table><BR>");
+		if (debug) alert("gameboard done");
+	}
+
+	function ClearGameBoard()  {{ 
+		for (i=0; i < this.kHeight; i++)  {{ 
+			for (j=0; j < this.kWidth; j++)  {{ 
+				this.cells[i][j].cover();
+		   }
+		}
+		if (this.kHeight == 3)  {{ 
+			var ship = "s0";
+			for (i=10; i < 16; i++)  {{ 
+				ship = "s" + i;
+				document.images[ship].src="images/green.gif";
+			}
+		}
+
+		this.game.previousCell = null;
+
+	}
+	
+	function CallbackNoMatch()  {{ 
+		if (this.needToCoverBadMatch ==1)  {{ 
+		
+
+			this.needToCoverBadMatch = 0;
+			clearTimeout(this.BadMatchID)
+			this.BadMatchTimeoutID = 0
+			this.blockClicks = 0;
+			this.firstCell.cover();
+			this.secondCell.cover();
+			this.nextPlayer();
+		}
+	}
+	
+
+	function GetDigit(iNumber, iDigit)  {{ 
+
+		iNumber = "" + iNumber;  // Convert to "String" if it isn't already...
+
+		while (iNumber.length < 2)  {{ 
+			iNumber = "0" + iNumber;
+		}
+		return(iNumber.charAt(iDigit));
+	}
+
+	
+	function Quit()  {{ 
+		if (debug) alert("Quit");
+	}
+
+	function PlaySound(sound)  {{ 
+
+		window.location=sound;
+	}
+
+	function splitString(mystring, delimiter)  {{ 
+		var woofie = new Array()
+		var index = 0;
+		woofie[index] =""
+		for (i=0; i<mystring.length; i++)  {{ 
+			achar = mystring.charAt(i)
+			if ( achar == delimiter)  {{ 
+				index++
+				woofie[index] =""
+				}
+			else
+				woofie[index] += achar
+		}
+
+		return woofie
+	}
+
+
+	function getURLvar(Name)  {{ 
+		var search = Name + "="
+		var incoming = window.location.search
+		if (incoming.length > 0)  {{ 
+			offset = incoming.indexOf(search) 
+			if (offset != -1)  {{ 
+				offset += search.length 
+		
+				end = incoming.indexOf("&", offset) 
+		
+				if (end == -1) 
+					end = incoming.length
+				value = unescape(incoming.substring(offset, end))
+				if (value == "")  {{ 
+					return null
+				} else  {{ 
+					return value
+				}
+			}
+			else return null
+		}
+		else return null
+	}
+	
+	
+	
+		asImageNames = new Array("right","left","up","down","right","left","up","down","right","left","up","down");
+	
+		imageTileSuffix = "gif"
+		kWidth  = 4;
+		kHeight = 4;
+		cellWidth = 70;
+		cellHeight = 70
+		iSecondsLeft = 360;
+
+		debug=0;
+		if (debug) alert("In Top!");
+		slammergif = "images/bluecover.gif"
+		var wincommand = "empty"
+		
+		Acols = getURLvar("size")
+		Arows = getURLvar("size")
+		Awoofie = getURLvar ("woofie")
+		
+		if (Awoofie != null)  {{ 
+			if (Awoofie == "yes")  {{  window.location = "http://www.woofie.com/webtvmatchmate.tmpl" }
+			}
+		if (debug) alert("Acols " + Acols +"Arows " + Arows + "Awidth" + Awidth + "Aheight " + Aheight );
+	
+		if (Acols != null)
+			kWidth = Acols;
+		if (Arows != null) 
+			kHeight = Arows;
+			
+		if (debug) alert("kWidth " + kWidth +"kHieght " + "cellWidth" + cellWidth + "cellHeight " + cellHeight );
+	
+
+		
+		mam = new game("mam", kWidth, kHeight, cellWidth, cellHeight, iSecondsLeft)
+			
+	
+	</script>
+</head>
+<bgsound src="http://www.woofie.com/wtv/midi/webtv/Pundit.mid" name="bgsound" loop=true>
+<body fontsize=medium background="images/backgrounddark.jpg" bgcolor=#1b2851 text=#eeeeee valign=top marginwidth=0 marginheight=0 hspace=0 vspace=0 credits="credits.tmpl">
+<display noscroll showwhencomplete skipback>
+
+
+<TABLE WIDTH=560 border=0 cellpadding=0 cellspacing=0>
+	<tr>
+		<td height=384 bgcolor=#1b2851 width=110 valign=top>
+			<IMG width=8 height=6 src=images/spacer.gif><BR>
+			<IMG width=7 height=64 src=images/spacer.gif><a href="wtv-home:/home"><IMG width=7 height=5 border=0 src=images/spacer.gif><IMG width=84 height=64 src=/ROMCache/WebTVLogoJewel.gif><IMG width=7 height=5 border=0 src=images/spacer.gif></a><BR>
+			
+			<CENTER>
+			<IMG SRC="images/rule.gif" WIDTH=110 HEIGHT=5 BORDER=0><BR>
+			<A HREF="indexframes.tmpl" target=_top><IMG SRC="images/spaceracelogo.gif" WIDTH=100 HEIGHT=81 BORDER=0></A><BR>
+			<IMG SRC="images/rule.gif" WIDTH=110 HEIGHT=5 BORDER=0><BR>
+			<A HREF="javascript:Restart();"><IMG SRC="images/tryagainbutton.gif" WIDTH=98 HEIGHT=20 BORDER=0></A><BR>
+			<IMG SRC="images/rule.gif" WIDTH=110 HEIGHT=5 BORDER=0><BR>
+			<IMG width=30 height=20 border=0 src=images/spacer.gif><BR>
+			<IMG SRC="images/rule.gif" WIDTH=110 HEIGHT=5 BORDER=0><BR>
+			<A HREF="wtv-home:/home"><IMG width=26 height=20 border=0 src=images/spacer.gif><IMG SRC="images/quitbutton.gif" WIDTH=46 HEIGHT=20 BORDER=0><IMG width=28 height=20 border=0 src=images/spacer.gif></a><BR>
+
+			<IMG SRC="images/rule.gif" WIDTH=110 HEIGHT=5 BORDER=0><BR>
+
+			<TABLE background=images/lightgrid.jpg cellpadding=0 cellspacing=0 border=0 width=74 align=center valign=top>
+				<TR>
+				 <TD height=12 width=12></TD>
+				 <TD width=12></TD>
+				 <TD width=11></TD>
+				 <TD width=12></TD>
+				 <TD width=12></TD>
+				</TR>
+				<TR>
+				 <TD></TD>
+				 <TD height=15></TD>
+				 <TD align=center><IMG SRC="images/red.gif" name=s1 WIDTH=10 HEIGHT=10 BORDER=0 colspan=2></TD>
+	
+				 <TD></TD>
+				 <TD></TD>
+				 
+				</TR>
+				<TR>
+				 <TD></TD>
+				 <TD align=right height=15><IMG SRC="images/red.gif" name=s0 WIDTH=10 HEIGHT=10 BORDER=0></TD>
+				 <TD></TD>
+				 <TD><IMG SRC="images/red.gif" name=s2 WIDTH=10 HEIGHT=10 BORDER=0></TD>
+				 <TD></TD>
+				 
+				</TR>
+				<TR>
+				 
+				 <TD height=15></TD>
+				 <TD></TD>
+				 <TD></TD>
+				 <TD></TD>
+				 <TD></TD>
+				</TR>
+				<TR>
+												 
+				 <TD height=15></TD>
+				 <TD><IMG SRC="images/red.gif" name=s3 WIDTH=10 HEIGHT=10 BORDER=0></TD>
+				 <TD></TD>
+				 <TD><IMG SRC="images/red.gif" name=s4 WIDTH=10 HEIGHT=10 BORDER=0></TD>
+				 <TD></TD>
+				</TR>
+				<TR>
+				 <TD></TD>
+				 <TD height=15><IMG SRC="images/red.gif" name=s5 WIDTH=10 HEIGHT=10 BORDER=0></TD>
+				 
+				 <TD><IMG SRC="images/red.gif" name=s6 WIDTH=10 HEIGHT=10 BORDER=0></TD>
+				 <TD><IMG SRC="images/red.gif" name=s7 WIDTH=10 HEIGHT=10 BORDER=0></TD>
+				 <TD></TD>
+				</TR>
+				<TR>
+			
+				 <TD height=15></TD>
+				 <TD><IMG SRC="images/red.gif" name=s8 WIDTH=10 HEIGHT=10 BORDER=0></TD>
+				 <TD></TD>
+				 <TD><IMG SRC="images/red.gif" name=s9 WIDTH=10 HEIGHT=10 BORDER=0></TD>
+				 <TD></TD>
+				</TR>
+				<TR>
+				 <TD></TD>
+				 <TD height=15><IMG SRC="images/red.gif" name=s10 WIDTH=10 HEIGHT=10 BORDER=0></TD>
+				 <TD></TD>
+				 <TD align=center><IMG SRC="images/red.gif" name=s11 WIDTH=10 HEIGHT=10 BORDER=0></TD>
+				 <TD></TD>
+				 
+				</TR>
+				<TR>
+				 <TD></TD>
+				 <TD align=left height=15><IMG SRC="images/red.gif" name=s12 WIDTH=10 HEIGHT=10 BORDER=0></TD>
+				 <TD></TD>
+				 <TD align=right><IMG SRC="images/red.gif" name=s13 WIDTH=10 HEIGHT=10 BORDER=0></TD>
+				 <TD></TD>
+				 
+				</TR>
+				<TR>
+				 <TD></TD>
+				 <TD height=15><IMG SRC="images/red.gif" name=s14 WIDTH=10 HEIGHT=10 BORDER=0></TD>
+				 <TD></TD>
+				 <TD align=right><IMG SRC="images/red.gif" name=s15 WIDTH=10 HEIGHT=10 BORDER=0></TD>
+				 <TD></TD>
+				 
+				</TR>
+
+			</TABLE>
+						
+		</TD>
+
+		<TD eebgcolor=101010 eetransparency=75 width=450>
+			<table cellpadding=0 cellspacing=0 border=0 width=450  valign=top>
+				<tr>
+					<td width=1 bgcolor=0d1428></td>
+					<td width=90 align=right><!-- <IMG SRC="images/o2.gif" WIDTH=30 HEIGHT=28 BORDER=0> --><img src="images/spacer.gif" width=21 height=31><br>
+					<TABLE cellpadding=0 cellspacing=0 border=0 valign=top><TR><td align=center><FONT SIZE=-7 color=8080ff>O<BR>X<BR>Y<BR>G<BR>E<BR>N<BR><BR>R<BR>E<BR>M<BR>A<BR>I<BR>N<BR>I<BR>N<BR>G</FONT></td><TD width=3></TD><TD><EMBED SRC="http://www.woofie.com/wtv/aspacerace/flash/oxytank2act.spl" WIDTH=32 HEIGHT=257 BORDER=0><IMG SRC="images/spacer.gif" WIDTH=08 HEIGHT=5 BORDER=0><IMG SRC="images/o2grid.gif" WIDTH=13 HEIGHT=243 BORDER=0></TD></TR></TABLE>
+					<BR><IMG SRC="images/spacer.gif" WIDTH=13 HEIGHT=1 BORDER=0></td>
+					<td width=360 height=311 align=center>
+						<img src="images/spacer.gif" width=1 height=5><BR>				       
+				    	   
+							<SCRIPT Language="JavaScript">
+							mam.board.render();
+							</SCRIPT>
+					</td>	       
+			    </tr>
+				<tr>
+					<td colspan=3 bgcolor=0d1428 height=2 width=100%></td>
+				</tr>
+				<tr>
+					<td colspan=3 width=100% bgcolor=1b2851 align=center><INSERT AD template=insetad.tmpl width=394 height=71></td>
+				</tr>
+					 
+			</table>
+	</TD>
+	</TR>
+</TABLE>
+<BR><BR><BR><BR><BR><BR>
+	<EMBED SRC="http://ed.webtv.net/~tpark/new/spacerace/tryagain.zip" HIDDEN=TRUE CONTROLS=console
+	VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="buzzer"
+	MASTERSOUND> 
+	<EMBED SRC="http://ed.webtv.net/~tpark/new/spacerace/applause.mp2" HIDDEN=TRUE CONTROLS=console
+	VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="applause"
+	MASTERSOUND>
+	<IMG SRC="images/part0glow.gif" WIDTH=1 HEIGHT=1 BORDER=0><IMG SRC="images/part10.gif" WIDTH=1 HEIGHT=1 BORDER=0><IMG SRC="images/part11glow.gif" WIDTH=1 HEIGHT=1 BORDER=0>
+<IMG SRC="images/part12glow.gif" WIDTH=1 HEIGHT=1 BORDER=0><IMG SRC="images/part13glow.gif" WIDTH=1 HEIGHT=1 BORDER=0><IMG SRC="images/part14glow.gif" WIDTH=1 HEIGHT=1 BORDER=0>
+<IMG SRC="images/part15glow.gif" WIDTH=1 HEIGHT=1 BORDER=0><IMG SRC="images/part1glow.gif" WIDTH=1 HEIGHT=1 BORDER=0><IMG SRC="images/part2glow.gif" WIDTH=1 HEIGHT=1 BORDER=0>
+<IMG SRC="images/part3glow.gif" WIDTH=1 HEIGHT=1 BORDER=0><IMG SRC="images/part4glow.gif" WIDTH=1 HEIGHT=1 BORDER=0>
+<IMG SRC="images/part9glow.gif" WIDTH=1 HEIGHT=1 BORDER=0><IMG SRC="images/part8glow.gif" WIDTH=1 HEIGHT=1 BORDER=0><IMG SRC="images/part7glow.gif" WIDTH=1 HEIGHT=1 BORDER=0><IMG SRC="images/part6glow.gif" WIDTH=1 HEIGHT=1 BORDER=0><IMG SRC="images/part5glow.gif" WIDTH=1 HEIGHT=1 BORDER=0>
+
+<SCRIPT>
+	mam.start();
+	window.status="WebTV Space Race";
+	document.images["Cell0at0"].src = mam.board.cells[0][0].parthigh.src;
+
+
+</SCRIPT>
+
+</body>
+</html>

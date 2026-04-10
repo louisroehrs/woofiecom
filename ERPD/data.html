@@ -1,0 +1,53 @@
+&lt;Mojo-Config&gt;<BR>
+  &lt;vRPD<BR>
+    name="mojo1-1.oamp.mp.agile.tv"<BR>
+    ipaddr="172.16.0.30/24"<BR>
+    sport="1024"<BR>
+    nc1500="172.16.0.5"<BR>
+    dport="58003"<BR>
+    idle_tx="0"<BR>
+    demodulator="0"<BR>
+    &gt;<BR>
+      &lt;channelizer rfi="0" nominal_power="25" fec_enable="Y" freq="8.864" /&gt;<BR>
+      &lt;channelizer rfi="0" nominal_power="25" fec_enable="Y" freq="9.248" /&gt;<BR>
+      &lt;channelizer rfi="0" nominal_power="25" fec_enable="Y" freq="10.016" /&gt;<BR>
+      &lt;channelizer rfi="0" nominal_power="25" fec_enable="Y" freq="10.784" /&gt;<BR>
+  &lt;/vRPD&gt;<BR>
+  &lt;vRPD<BR>
+    name="mojo1-2.oamp.mp.agile.tv"<BR>
+    ipaddr="172.16.0.31/24"<BR>
+    sport="1024"<BR>
+    nc1500="172.16.0.5"<BR>
+    dport="58004"<BR>
+    idle_tx="0"<BR>
+    demodulator="0"<BR>
+    &gt;<BR>
+      &lt;channelizer rfi="0" nominal_power="25" fec_enable="Y" freq="8.096" /&gt;<BR>
+      &lt;channelizer rfi="0" nominal_power="25" fec_enable="Y" freq="8.480" /&gt;<BR>
+      &lt;channelizer rfi="0" nominal_power="25" fec_enable="Y" freq="9.632" /&gt;<BR>
+      &lt;channelizer rfi="0" nominal_power="25" fec_enable="Y" freq="11.168" /&gt;<BR>
+      &lt;channelizer rfi="0" nominal_power="25" fec_enable="Y" freq="11.552" /&gt;<BR>
+      &lt;channelizer rfi="0" nominal_power="25" fec_enable="Y" freq="11.936" /&gt;<BR>
+  &lt;/vRPD&gt;<BR>
+  &lt;demod<BR>
+    instance="0"<BR>
+    rf_inputs="1"<BR>
+    channels="12"<BR>
+    &gt;<BR>
+      &lt;channel rfi="0" min_power="23" freq="8.096" /&gt;<BR>
+      &lt;channel rfi="0" min_power="1" freq="8.288" /&gt;<BR>
+      &lt;channel rfi="0" min_power="1" freq="8.480" /&gt;<BR>
+      &lt;channel rfi="0" min_power="1" freq="8.864" /&gt;<BR>
+      &lt;channel rfi="0" min_power="1" freq="9.248" /&gt;<BR>
+      &lt;channel rfi="0" min_power="1" freq="9.632" /&gt;<BR>
+      &lt;channel rfi="0" min_power="1" freq="10.016" /&gt;<BR>
+      &lt;channel rfi="0" min_power="1" freq="10.784" /&gt;<BR>
+      &lt;channel rfi="0" min_power="1" freq="11.168" /&gt;<BR>
+      &lt;channel rfi="0" min_power="1" freq="11.552" /&gt;<BR>
+      &lt;channel rfi="0" min_power="1" freq="11.936" /&gt;<BR>
+      &lt;channel rfi="0" min_power="1" freq="12.320" /&gt;<BR>
+      &lt;channel rfi="0" min_power="1" freq="12.704" /&gt;<BR>
+      &lt;channel rfi="0" min_power="1" freq="13.088" /&gt;<BR>
+  &lt;/demod&gt;<BR>
+&lt;/Mojo-Config&gt;<BR>
+         

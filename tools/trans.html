@@ -1,0 +1,123 @@
+<!-- This document was created with HomeSite 2.5 -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<HTML>
+<HEAD>
+	<TITLE>woofie's toolbox - webtv transparency</TITLE>
+</HEAD>
+
+<BODY bgcolor=102030 fontsize=medium text=909090 link=a0a000 vlink=808000><BR>
+<CENTER>
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-7467616088319038";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_type = "text";
+//2007-08-23: woofie.com
+google_ad_channel = "2520990473";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_text = "000000";
+google_color_url = "0066CC";
+//-->
+</script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<H3>woofie's toolbox - transparencies</H3></CENTER>
+On WebTV, you can control mixing of various layers of images, table cell background colors,
+table cell background images, and page backgrounds by using the <B>transparency</B> attribute.
+This attribute accepts a value from 0 to 100 indicating how transparent that layer should be.
+<B>transparency=100</B> means that the image or object is completely transparent and invisible.
+<B>transparency=0</B> means that the image or object is opaque and nothing below it is visible.
+Transparency is an attribute of images &lt;img&gt;, tables &lt;table&gt;, table rows &lt;tr&gt;, table cells &lt;td&gt;.<BR><BR>
+
+Note: the following is properly viewed only on WebTV.<BR><BR>
+
+These images are all actually the same image.  We added the <B>transparency</B> attribute 
+to the img tag and set it to 25, 50, 75, and 100, and placed them in table cells that have
+the background color set to black.  Transparency=100 results in a black square.<BR><BR>
+<center>
+<table>
+	<tr>
+		<td bgcolor=000000 abswidth=150>
+		<IMG SRC="doggies.jpg" transparency=0 WIDTH=150 HEIGHT=108 BORDER=0><BR>
+		transparency=0
+		</td>
+		<td bgcolor=000000 abswidth=150>
+		<IMG SRC="doggies.jpg" transparency=25 WIDTH=150 HEIGHT=108 BORDER=0><BR>
+		transparency=25
+		</td>
+	</tr>
+		<tr>
+		<td bgcolor=000000 abswidth=150>
+		<IMG SRC="doggies.jpg" transparency=50 WIDTH=150 HEIGHT=108 BORDER=0><BR>
+		transparency=50
+		</td>
+		<td bgcolor=000000 abswidth=150>
+		<IMG SRC="doggies.jpg" transparency=75 WIDTH=150 HEIGHT=108 BORDER=0><BR>
+		transparency=75
+		</td>
+	</tr>
+</table>
+</center><BR><BR>
+Here, we set the transparencies all at 25 and set the table background colors as shown.
+One could also place images as table backgrounds and composite the images.  The table cell
+transparencies can also be set, allowing one to composite many (I think unlimited) layers
+by nesting tables inside table cells.  This is an area for experimentation and left to the reader
+to play.  Note this could be used to create effects and minimize download time by reusing images.<BR><BR>
+<center>
+<table cellpadding=0 cellspacing=5 bgcolor=000000 border=0>
+	<tr>
+		<td bgcolor=000000 colspan=2 abswidth=150>
+		<IMG SRC="doggies.jpg" transparency=25 WIDTH=150 HEIGHT=108 BORDER=0><BR>
+		</td>
+		<td bgcolor=ff0000 colspan=2 abswidth=150>
+		<IMG SRC="doggies.jpg" transparency=25 WIDTH=150 HEIGHT=108 BORDER=0><BR>
+		</td>
+		<td bgcolor=00ff00 colspan=2 abswidth=150>
+		<IMG SRC="doggies.jpg" transparency=25 WIDTH=150 HEIGHT=108 BORDER=0><BR>
+		</td>
+	</tr>
+	<tr>	
+		<td bgcolor=000000 abswidth=130>bgcolor=000000</td>
+		<td bgcolor=000000 abswidth=15>&nbsp;</td>
+		<td bgcolor=000000 abswidth=130>bgcolor=ff0000</td>
+		<td bgcolor=ff0000 abswidth=15>&nbsp;</td>
+		<td bgcolor=000000 abswidth=130>bgcolor=00ff00</td>
+		<td bgcolor=00ff00 abswidth=15>&nbsp;</td>
+	
+	</tr>
+	
+		<tr>
+		<td bgcolor=0000ff colspan=2>
+		<IMG SRC="doggies.jpg" transparency=25 WIDTH=150 HEIGHT=108 BORDER=0><BR>
+		</td>
+		<td bgcolor=ffff00 colspan=2>
+		<IMG SRC="doggies.jpg" transparency=25 WIDTH=150 HEIGHT=108 BORDER=0><BR>
+		</td>
+		<td bgcolor=ffffff colspan=2>
+		<IMG SRC="doggies.jpg" transparency=25 WIDTH=150 HEIGHT=108 BORDER=0><BR>
+		</td>
+	</tr>
+	<tr>	
+		<td bgcolor=000000>bgcolor=0000ff</td>
+		<td bgcolor=0000ff>&nbsp;</td>
+		
+		<td bgcolor=000000>bgcolor=ffff00</td>
+		<td bgcolor=ffff00>&nbsp;</td>
+			
+		<td bgcolor=000000>bgcolor=ffffff</td>
+		<td bgcolor=ffffff>&nbsp;</td>	
+	</tr>
+</table>
+
+<BR><BR><CENTER><hr width=50%><hr width=30%><BR></CENTER>
+
+</BODY>
+</HTML>

@@ -1,0 +1,65 @@
+<!-- This document was created with HomeSite 2.5 -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<HTML>
+<HEAD>
+	<TITLE>woofie's toolbox - webtv guidelines</TITLE>
+</HEAD>
+
+<BODY bgcolor=102030 fontsize=medium text=909090 link=a0a000 vlink=808000><BR>
+<CENTER>
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-7467616088319038";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_type = "text";
+//2007-08-23: woofie.com
+google_ad_channel = "2520990473";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_text = "000000";
+google_color_url = "0066CC";
+//-->
+</script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<H3>woofie's toolbox - web<FONT COLOR=#c0c000>tv</FONT> requirements</H3></CENTER>
+<A name="#lockfontsize">
+<DL>
+	<DT><B>Screen size</B><DD>The full screen area of webtv is 560 pixels wide by 420 pixels high.  The
+	status bar at the bottom of the screen covers up the lower 36 pixels.  When displaying a web page, WebTV
+	will reserve 8 pixels on the left and right sides and 8 pixels on the top for displaying the selection box.
+	Thus, WebTV will fit pages into 544 pixels wide.<BR><BR>
+
+	<DT><B>Overriding screen size</B><DD>You can use the <B>hspace</B> and <B>vspace</B> attributes in the body to
+	override the defaults.  Ex: &lt;body vspace=0 hspace=0&gt;  The defaults are 8 pixels for both attributes.<BR><BR>
+
+	<DT><B>Controlling spacing</B><DD>Tables and spacer gifs are a great way to control spacing on webtv.
+	In table cell tags &lt;td&gt; use the attributes <B>abswidth</B> and <B>absheight</B> in addition to
+	width and height tags to ensure that table cells will stay that size on WebTV.  Of course, everything needs to fit in the 544 pixel width or WebTV will override and
+	squeeze your tables to fit on the TV screen.  For precise positioning, in the &lt;table&gt; tag, set <B>cellpadding=0</B>, <B>cellspacing=0</B>, and <B>border=0</B>.  Also note that
+	table cell widths will be the same across all the rows of a table, even if you specify different abswidth values for the same column in different rows.  If you use the <B>abswidth</B> tag, make sure all your content fits in the space or it will not show at all on WebTV.<BR><BR>
+
+	
+	<DT><B>Lock the font size</B><DD>In the <FONT SIZE="-1"><B>&lt;body&gt;</B></FONT> tag, add the attribute <FONT SIZE="-1"><B>fontsize=</B></FONT> and
+	set the value to one of <FONT SIZE="-1"><B>small</B>, <B>medium</B>, or <B>large</B></FONT>.
+	This attribute will make sure text doesn't grow to
+	big for the screen and push elements off the screen.
+	This is REQUIRED if you use the noscroll attribute listed next.<BR><BR>
+	Ex:&nbsp;&nbsp; <FONT SIZE="-1"><B>&lt;body fontsize=medium&gt;</B></FONT><BR><BR>
+	
+	<DT><B>Keep screen-sized pages from moving up.</B><DD>Add the tag <FONT SIZE="-1"><B>&lt;display noscroll&gt;</B></FONT> inside the body
+	of the document.  This will lock the page and keep it from scrolling.  If you do this,
+	make sure you <A HREF="#lockfontsize">lock the font size</A> to keep content from going off the screen.
+</DL>
+
+<BR><BR><CENTER><hr width=50%><hr width=30%><BR></CENTER>
+
+</BODY>
+</HTML>

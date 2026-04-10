@@ -1,0 +1,48 @@
+<!-- This document was created with HomeSite 2.5 -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<HTML>
+<HEAD>
+	<META NAME="Author" CONTENT="Louis F. Roehrs">
+
+	<TITLE>Software Registration Numbers</TITLE>
+</HEAD>
+
+<BODY>
+<h2>Homesite</h2>
+Louis Roehrs<BR>
+588025698720
+
+<h2>HTML Validator</h2>
+????<BR>
+???? seems to fetch previous...
+
+<h2>Gif Movie Gear</h2>
+Louis Roehars
+mvg20281286
+
+<h2>Cold Fusion</h2>
+????<BR>
+????
+
+<h2>Appletalk</h2>
+????<BR>
+????
+
+<h2>Windows</h2>
+30395-OEM-0006224-58782
+
+<h2>Macromedia Flash</h2>
+FLD200-07365-77071-34621
+
+<h2>Photoshop</h2>
+
+<h2>Note</h2>
+This software is licensed to Louis F. Roehrs ONLY.  This information is provided here as
+safe keeping in case the hard drive crashes and thousands of dollars are lost to replacing
+software.  All other use is strictly forbidden, oh, and my web server will know where to find
+you.   Yes, this could be a trap, so don't go here.
+
+
+</BODY>
+</HTML>

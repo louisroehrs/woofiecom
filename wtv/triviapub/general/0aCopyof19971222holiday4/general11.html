@@ -1,0 +1,204 @@
+<html>
+<head>
+<title>WebTV Trivial Task!</title>
+
+
+<script language="JavaScript">
+
+function SetCookie (name, value)
+{
+   var argv = SetCookie.arguments;
+   var argc = SetCookie.arguments.length;
+   var expires = (argc > 2) ? argv[2] : null;
+   var path = (argc > 3) ? argv[3] : null;
+   var domain = (argc > 4) ? argv[4] : null;
+   var secure = (argc > 5) ? argv[5] : false;
+   document.cookie = name + "=" + escape (value) +
+         ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
+         ((path == null) ? "" : ("; path=" + path)) +
+         ((domain == null) ? "" : ("; domain=" + domain)) +
+         ((secure == true) ? "; secure" : "");
+}
+function GetCookieVal (offset)
+{
+   var endstr = document.cookie.indexOf (";", offset);
+   if (endstr == -1)
+      endstr = document.cookie.length;
+   return unescape(document.cookie.substring(offset, endstr));
+}
+function GetCookie (name)
+{
+   var arg = name + "=";
+   var alen = arg.length;
+   var clen = document.cookie.length;
+   var i = 0;
+
+   while (i < clen) {
+      var j = i + alen;
+      if (document.cookie.substring(i, j) == arg)
+         return GetCookieVal (j);
+
+      i = document.cookie.indexOf(" ", i) + 1;
+      if (i == 0)
+         break;
+   }
+   return null;
+}
+function AddToAccum (sCookieName, sPoints) {
+
+  var expdate = new Date ();
+  expdate.setTime (expdate.getTime() + (24 * 60 * 60 * 1000));
+
+  var sAccum = GetCookie(sCookieName);
+
+  if (sAccum == null) {
+    sAccum = eval(sPoints);
+  } else { 
+    sAccum = eval(sAccum) + eval(sPoints); 
+  }
+  SetCookie (sCookieName, sAccum, expdate, "/");
+}
+function SetCookieMacro (sCookieName, sValue) {
+  var expdate = new Date ();
+  expdate.setTime (expdate.getTime() + (7 * 24 * 60 * 60 * 1000));
+  SetCookie (sCookieName, sValue, expdate, "/");
+}    
+function ComputeLevel(sUserPoints) {
+  var sPercentile = eval(sUserPoints)/eval(1000);
+  if (eval(sPercentile) == eval(1.0)) {
+    return("fame");
+  }
+  if (eval(sPercentile) >= eval(0.75)) {
+    return("star");
+  }
+  if (eval(sPercentile) > eval(0.55)) {
+    return("pro");
+  }
+  return("rookie");
+}
+function WriteBigGraphic(sUserPoints) {
+  var sGraphic = ComputeLevel(sUserPoints);
+  document.write("<IMG src=../../images/"+sGraphic+".gif>");
+}
+function DisplayHallOfFame() {
+  if (ComputeLevel(sUserPoints) == "fame") {
+    document.write("<font size=+1 color=#ED970E>");
+  } else {
+    document.write("<font size=+1 color=#FFFFFF>");
+  }
+  document.write("Hall of Famer: ");
+  document.write("A Perfect Score of 1000!   ");
+  document.write("</font>");
+}
+function DisplayRookie() {
+  if (ComputeLevel(sUserPoints) == "rookie") {
+    document.write("<font size=+1 color=#ED970E>");
+  } else {
+    document.write("<font size=+1 color=#FFFFFF>");
+  }
+  document.write("Rookie:");
+  document.write("Less than "+eval(0.55*1000)+" Points.   ");
+  document.write("</font>");
+}
+function DisplayPro() {
+  if (ComputeLevel(sUserPoints) == "pro") {
+    document.write("<font size=+1 color=#ED970E>");
+  } else {
+    document.write("<font size=+1 color=#FFFFFF>");
+  }
+  document.write("Pro: ");
+  document.write(eval(0.55*1000) + " - " + eval(0.75*1000)+" Points.   ");
+  document.write("</font>");
+}
+function DisplayAllStar() {
+  if (ComputeLevel(sUserPoints) == "star") {
+    document.write("<font size=+1 color=#ED970E>");
+  } else {
+    document.write("<font size=+1 color=#FFFFFF>");
+  }
+  document.write("All Star: ");
+  document.write(eval(0.75*1000) + " - " + eval(eval(1.00*1000)-1)+" Points.   ");
+  document.write("</font>");
+}
+function DisplayRanking() {
+  if (ComputeLevel(sUserPoints) == "rookie") {
+    document.write("<font size=+1>Keep on trying</font><P>");
+    document.write("<font size=+5>Rookie</font>");
+  } else if (ComputeLevel(sUserPoints) == "pro") {
+    document.write("<font size=+1>Shoot for the stars</font><P>");
+    document.write("<font size=+5>Pro</font>");
+  } else if (ComputeLevel(sUserPoints) == "fame") {
+    document.write("<font size=+1>A perfect score.  You are enshrined as a Trivial Task</font><P>");
+    document.write("<font size=+5>Hall of Famer</font>");
+  } else if (ComputeLevel(sUserPoints) == "star") {
+    document.write("<font size=+1>Tell all your friends.  You're an</font><P>");
+    document.write("<font size=+5>All-Star</font>");
+  }
+} 
+</script>
+</head>
+<bgsound src="../../sounds/triviarules.mid">
+<body fontsize=medium 
+   background=../../images/background.jpg 
+   valign=top bgcolor=#000000 text=#FFFFFF hspace=4 vspace=4>
+<display noscroll>
+<table width=100% border=0>
+   
+  <tr absheight=140>
+    <td valign=top abswidth=108 absheight=140 align=left valign=top><IMG width=104 height=80 src=/ROMCache/WebTVLogoJewel.gif>
+    </td>
+    <td abswidth=200 absheight=140> 
+      <IMG width=200 height=140 src=/ROMCache/Spacer.gif>
+    </td>
+	<td abswidth=225> <font size=6><!--ENTRANCE1START--><!--ENTRANCE1--><!--ENTRANCE1STOP--><br></font><font size=5><!--ENTRANCE2START--><!--ENTRANCE2--><!--ENTRANCE2STOP--></font>
+  </tr>
+  <tr>
+	<td valign=top align=left><img src=/ROMCache/spacer.gif width=10 !height=2 !height=92 height=145><BR><img src=/ROMCache/Spacer.gif width=2 height=36><a selected href="index.html"><IMG SRC="../../images/0202_tt_playagain.gif" WIDTH=93 HEIGHT=59 BORDER=0></a>
+    	</td>
+    <td colspan=2 valign=top>
+	<img src=/ROMCache/spacer.gif width=10 height=10><BR>
+	  
+<!-- 	  <SCRIPT LANGUAGE="JAVASCRIPT">
+	
+	    var sUserPoints = GetCookie("generalPOINTS");
+		if (eval(sUserPoints) == 1000) {
+		  document.write("<img src=\"../../images/ALLSTAR.GIF\">");
+        } else {
+		  document.write("<img src=\"../../images/TRYAGAIN.GIF\">");
+		}
+	  </SCRIPT> --><img src=/ROMCache/spacer.gif width=43 height=50>
+	  
+	  <embed src='../../flash/playagain.spl' width=330 height=50 loop=true><BR><BR>
+		  <center><font color=#ED970E size=+5>You scored
+		     <script langauge="Javascript">
+		 	   var sUserPoints = GetCookie("generalPOINTS");
+			   document.write(sUserPoints+" points!");
+			 </script>
+	  	   </font><BR><BR>
+		 <font size=3>Press Home to go back to the WebTV Network.</font>
+      </center>
+	</td>
+  </tr>
+<!--
+    <td colspan=2>
+	  <table width=100%>
+	  <SCRIPT LANGUAGE="Javascript">
+		var sUserPoints = GetCookie("generalPOINTS");
+		WriteBigGraphic(sUserPoints);
+	  </SCRIPT>
+      <br>
+	    <SCRIPT LANGAUGE="JAVASCRIPT">
+		   var sUserPoints = GetCookie("generalPOINTS");
+		   DisplayHallOfFame(sUserPoints);
+		   DisplayAllStar(sUserPoints);
+	  	   DisplayPro(sUserPoints);
+		   DisplayRookie(sUserPoints);
+        </SCRIPT>
+      <P>
+	  <P>
+      </table>
+   </td>
+-->
+</table>
+  
+</html>

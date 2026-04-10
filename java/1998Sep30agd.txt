@@ -1,0 +1,6 @@
+5items
+{8:30;Dentist;Y}
+{9;Meet with Yahoo;Y}
+{12:00;Lunch with Geoff}
+{3:00;Call Accountant;Y}
+{7:00;Carmen;N}

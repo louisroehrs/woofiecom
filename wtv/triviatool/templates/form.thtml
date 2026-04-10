@@ -1,0 +1,47 @@
+<html>
+
+  <title>
+     Trivia Question Creation
+  </title>
+
+  <body>
+
+     <form action="<!--FORMACTION-->" method="post">
+
+     <input type=hidden name="CATEGORY" value="<!--CATEGORY-->">
+     <input type=hidden name="GAMENAME" value="<!--GAMENAME-->">
+     <input type=hidden name="QNUMTOTAL" value="<!--QNUMTOTAL-->">
+
+     <table width=100%>
+       <tr>
+         <td colspan=2>
+           Entrance Page Customization
+         </td>
+       </tr>
+       <tr>
+         <td>
+           First Line 
+         </td>
+         <td>
+           <input type=text name="ENTRANCE1" value="<!--ENTRANCE1-->">
+         </td>
+       </tr>
+       <tr>
+         <td>
+           Second Line
+         </td>
+         <td>
+           <input type=text name="ENTRANCE2" value="<!--ENTRANCE2-->">
+         </td>
+       </tr>  
+     </table>
+
+     <!--BODY-->
+ 
+     <input type=submit value="Submit Questions">
+
+     </form>
+ 
+  </body>
+
+</html>

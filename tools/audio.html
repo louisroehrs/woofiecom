@@ -1,0 +1,74 @@
+<!-- This document was created with HomeSite 2.5 -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<HTML>
+<HEAD>
+	<TITLE>woofie's toolbox - audio</TITLE>
+
+<SCRIPT LANGUAGE=JavaScript>
+	function PlaySound(sound) {
+		if (sound == null) {  
+            return;
+		}
+		else {
+			sound.play(false);
+		}
+	}
+
+</SCRIPT>
+
+</HEAD>
+<BODY bgcolor=102030 fontsize=medium text=909090 link=a0a000 vlink=808000 onLoad=PlaySound(document.bell)><BR>
+
+	<EMBED SRC="newbell3.mid" HIDDEN=TRUE CONTROLS=console
+	VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="bell"
+	MASTERSOUND>
+
+<CENTER><H3>woofie's toolbox - audio</H3></CENTER>
+To control when audio plays and stops, embed the audio as below and using the following
+calls to play it.  Put the following tag in the <BODY></BODY> section.
+Name the sound using the <B>name</B> attribute and call it 
+
+<PRE>
+<UL>
+&lt;EMBED SRC="../../sounds/applause.MP2" HIDDEN=TRUE CONTROLS=console 
+ VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="boink"&gt;
+ </UL>
+</PRE>
+And put the function in and call it
+<PRE>
+<UL>
+&lt;SCRIPT LANGUAGE=JavaScript&gt;
+	function PlaySound(sound) {
+		if (sound == null) {  
+			return;
+		}
+		else {
+			sound.play(false);
+		}
+	}
+
+
+PlaySound(document.boink);
+&lt;/SCRIPT&gt;
+</UL>
+</PRE>
+To play a sound when the page is done loading, add the onLoad attribute to the &lt;BODY&gt; 
+tag as follows.
+<PRE>
+<UL>
+onLoad=PlaySound(document.boink);
+</UL>
+</PRE>
+You can add a sound to link by adding the onClick attribute to the &lt;a href&gt; tag.
+<BR><BR>
+<a href="javascript:PlaySound(document.bell);">Game show chime</a>
+<BR><BR>
+View source of this document to see how the game show chime is controlled, both when
+the page is loaded and when you click the link above.
+
+
+<BR><BR><CENTER><hr width=50%><hr width=30%><BR></CENTER>
+
+</BODY>
+</HTML>

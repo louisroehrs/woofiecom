@@ -1,0 +1,22 @@
+1/31/96 v1.15
+
+There are no packages anymore.  This should make it easier for others
+to set up their own DynamicBillBoard because they no longer need
+a BillBoard directory.
+
+1/28/96 v1.13
+
+FadeTransition does not work for image of greater then 64k pixels.  Made
+an alternative class LargeImageFadeTransition for these images.
+
+Added the new transition: RotateTransition class.
+
+1/23/96 v1.10
+
+Seems to be a problem with Netscape2.0b6 added a workaround until
+I can figure out what is wrong.
+
+v1.09
+
+Found a bug that stops the images from being updated when running 
+multiple instances of this applet.  Should be fixed.

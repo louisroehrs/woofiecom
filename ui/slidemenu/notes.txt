@@ -1,0 +1,42 @@
+ie 6.  Set a user-agent ua-ie-6 class in elements needing special treatment.
+
+    does not support sprites.  hover changes background color.
+    no padding in strict, no min-height.  Use height instead.
+    IE 6 divs pushed out by contained images, not in ie7, nor firefox
+    Firefox/Safari. emtpy divs collapse.
+
+
+Events:
+
+Firefox inline only bubbles up.  Firefox does up to down to up. IE down to up.
+Can't send event object to inline.
+
+Three stages of event:  capture mode, target, propagating.
+
+
+    As of Microsoft Internet Explorer 6, when the !DOCTYPE declaration specifies strict standards compliance, inline elements ignore the width property and the height property. By setting the width property and the height property, you cannot cause the element to have layout.
+
+    By setting the contentEditable property to true, you can cause an element to have layout.
+
+    The following elements always have layout: BODY, IMG, INPUT, TABLE and TD.
+
+Example
+
+    The following example shows how to use the hasLayout property to determine whether an object has layout.
+    Copy Code
+
+    <DIV ID="oWidthSet" STYLE="width:100%">
+    	DIV element A has its width set to 100%.</DIV>
+
+    <DIV ID="oNotSet">DIV element B is not positioned, 
+    	and neither its height nor width is set.</DIV>
+
+    <P>Which DIV element has layout?</P>
+
+    <BUTTON onclick="alert(oWidthSet.currentStyle.hasLayout)">
+    	DIV Element A</BUTTON>
+
+    <BUTTON onclick="alert(oNotSet.currentStyle.hasLayout)">
+    	DIV Element B</BUTTON>
+
+    This feature requires Microsoft Internet Explorer 5.5 or later. Click the following icon to install the latest version. Then reload this page to view the sample. 

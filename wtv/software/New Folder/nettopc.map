@@ -1,0 +1,5 @@
+#map file for data from net (host) to pc (mocha telnet)
+# is a comment
+# example
+# host-value -> pc-value
+# 49 52

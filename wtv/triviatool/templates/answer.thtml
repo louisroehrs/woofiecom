@@ -1,0 +1,12 @@
+  <tr>
+    <td>
+      Answer #<!--ANSWERNUM-->
+    </td>
+    <td>
+      <input type=radio <!--ANSWERCORRECT--> name="corranswer<!--QNUM-->" value="<!--ANSWERNUM-->">
+    </td>
+    <td>
+      <input type=text name="answer<!--ANSWERNUM--><!--QNUM-->1" value="<!--ANSWERVAL1-->">
+      <input type=text name="answer<!--ANSWERNUM--><!--QNUM-->2" value="<!--ANSWERVAL2-->">
+    </td>
+  </tr>   

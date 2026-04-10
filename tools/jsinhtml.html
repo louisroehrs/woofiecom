@@ -1,0 +1,80 @@
+<!-- This document was created with HomeSite 2.5 -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<HTML>
+<HEAD>
+	<TITLE>woofie's toolbox - javascript</TITLE>
+
+<SCRIPT LANGUAGE=JavaScript>
+	function PlaySound(sound) {
+		if (sound == null) {  
+            return;
+		}
+		else {
+			sound.play(false);
+		}
+	}
+
+</SCRIPT>
+
+</HEAD>
+
+<BODY bgcolor=102030 fontsize=medium text=909090 link=a0a000 vlink=808000><BR>
+	<EMBED SRC="newbell3.mid" HIDDEN=TRUE CONTROLS=console
+	VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="bell"
+	MASTERSOUND>
+
+<CENTER>
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-7467616088319038";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_type = "text";
+//2007-08-23: woofie.com
+google_ad_channel = "2520990473";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_text = "000000";
+google_color_url = "0066CC";
+//-->
+</script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<H3>woofie's toolbox - javascript for webtv</H3></CENTER>
+
+<!-- Go <A HREF="jsonwebtvservice.html">here</A> to read about javascript issues for .tmpl on the webtv service. -->
+
+There are key things to note:
+<UL>
+<li>Do not go more than 15 levels deep on if...then statements.  This includes going into
+other subroutines and in recursive subroutine calls.
+<li>Using the &lt;display hideoptions&gt; tag on the WebTV Internet Terminal will shut off Javascript for that page.
+<li>Semicolons;  WebTV, as a subsidiary of Microsoft, has redefined Javascript to JScript.  That means you will need to end every line of code with a semicolon.  The Javascript specification says this is not necessary.  However, this is a Microsoft environment, so standards aren't...
+
+<li>Negative Numbers;  WebTV javascript does not work with negative numbers.  For values that may be negative, wrap the value or variable with eval().  Even the basic assignment: x = -1; makes x a string containing "-1".
+<li>window.setTimeout;  WebTV's version returns useless, untypeable info.  lasttimeout = setTimeout("FlipLast()",5000);  alert(lasttimeout); breaks javascript.  So, I'm not sure how one would use clearTimeout(lasttimeout) on the system...
+<li>One should get rid of the WebTV only tags since they are phased out and ignored anyway.
+
+</ul>
+ 
+Below are some tips to create desired effects.
+<H4>How to get the box to load all images on the next page before displaying that page.</H4>
+On pages where images are loaded dynamically, such as in games like WebTV Minesweeper, the goal 
+is to have all the images loaded before the page displays so that the user is not waiting
+during the game for blank areas to fill in.  To make sure all the images are loaded before hand,
+explicitly load the images using javascript.  You can do this by making a subroutine to load the images
+as shown below.  You need only to load images that aren't already called for in &lt;img&gt;  
+
+Add a line of code to set one of the images
+on the page to the last image 
+<BR><BR><CENTER><hr width=50%><hr width=30%><BR></CENTER>
+
+
+</BODY>
+</HTML>

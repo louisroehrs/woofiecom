@@ -1,0 +1,741 @@
+/* Navigation styles common to all pages on this site. */
+
+html,body {
+
+	margin: 0; padding: 0;
+
+	font-family: arial, helvetica, sans-serif;
+
+	line-height: 130%;
+
+	font-size: 80%;
+
+	background: #ebebeb;
+}
+
+body, #heading {
+	background-color: #ebebeb;
+	color: black;
+	margin: 0;	/* No margins... */
+	padding: 0;
+}
+
+/* Image map logic modeled after http://www.cssplay.co.uk/articles/imagemap/index.html */
+#imap, #imap2, #imap3, #imap4, #imap5, #imap6, #imap7, #between1, #between2, 
+	#cpichosen, #cpipopup, #segmentselect, #segmentselected,
+	#retrieve, #imap8, #imap9, #imap9a, #imap10, #imap12, #imap13,
+	#imap14, #imap15, #imap16, #imap17, #imap18,
+	#imap18a, #imap19, #imap20 {
+	display: block;
+	position: relative;
+	margin: 0;
+	padding: 0;
+}
+
+#imap {
+	width: 999px;
+	height: 138px;
+	background:url(img/page1Top.jpg) no-repeat;
+}
+
+#imap2 {
+	width: 1014px;
+	height: 597px;
+	background:url(img/Page2.JPG) no-repeat;
+}
+
+#imap3 {
+	width: 1017px;
+	height: 225px;
+	background:url(img/Page3Top.JPG) no-repeat;
+}
+
+#imap4 {
+	width: 1016px;
+	height: 626px;
+	background: url(img/page4.jpg) no-repeat;
+}
+
+#imap5 {
+	width: 1016px;
+	height: 596px;
+	background: url(img/Page5.jpg) no-repeat;
+}
+
+#between1 {
+	width: 1017px;
+	height: 597px;
+	background: url(img/ChooseCPI1.jpg) no-repeat;
+}
+
+#between2 {
+	width: 1016px;
+	height: 596px;
+	background: url(img/ChooseCPI2.jpg) no-repeat;
+}
+
+#cpichosen {
+	width: 1016px;
+	height: 596px;
+	background: url(img/ChooseCPI3.jpg) no-repeat;
+}
+
+#cpipopup {
+	width: 1016px;
+	height: 596px;
+	background: url(img/ChooseCPI4.jpg) no-repeat;
+}
+
+#segmentselect {
+	width: 1016px;
+	height: 596px;
+	background: url(img/ChooseCPI5.jpg) no-repeat;
+}
+
+#segmentselected {
+	width: 1016px;
+	height: 596px;
+	background: url(img/ChooseCPI6.jpg) no-repeat;
+}
+
+#retrieve {
+	width: 1016px;
+	height: 598px;
+	background: url(img/optimize_screen.jpg) no-repeat;
+}
+
+
+#imap6 {
+	width: 1017px;
+	height: 597px;
+	background: url(img/page6.jpg) no-repeat;
+}
+
+#imap7 {
+	width: 1016px;
+	height: 627px;
+	background: url(img/page7.jpg) no-repeat;
+}
+
+#imap8 {
+	width: 1016px;
+	height: 221px;
+	background: url(img/resultstopmenu.jpg) no-repeat;
+}
+
+
+
+#imap9 {
+	width: 1016px;
+	height: 626px;
+	background: url(img/scenario_compare_selection.jpg) no-repeat;
+}
+
+#imap9a {
+	width: 1016px;
+	height: 626px;
+	background: url(img/scenario_compare_popup.jpg) no-repeat;
+}
+
+#imap10 {
+	width: 1016px;
+	height: 192px;
+	background: url(img/comp_results_topmenu.jpg) no-repeat;
+}
+
+#imap12, #imap16, #imap18 {
+	width: 1016px;
+	height: 597px;
+	background: url(img/promotion.jpg) no-repeat;
+}
+
+#imap18a {
+	width: 1016px;
+	height: 597px;
+	background: url(img/promotion_first_highlighted.jpg) no-repeat;
+}
+
+
+
+#imap13 {
+	width: 1016px;
+	height: 626px;
+	background: url(img/promo_manager.jpg) no-repeat;
+}
+
+#imap14 {
+	width: 1016px;
+	height: 597px;
+	background: url(img/products.jpg) no-repeat;
+}
+
+#imap15 {
+	width: 1016px;
+	height: 626px;
+	background: url(img/addproducts.jpg) no-repeat;
+}
+
+#imap17 {
+	width: 1016px;
+	height: 177px;
+	background: url(img/promo_details_top.jpg) no-repeat;
+}
+
+#imap19 {
+	width: 1016px;
+	height: 626px;
+	background: url(img/promos_highlighted.jpg) no-repeat;
+}
+
+#imap20 {
+	width: 1016px;
+	height: 214px;
+	background: url(img/promos_results_top.jpg) no-repeat;
+}
+
+
+
+/* Place the <dd>s in the correct absolute position.	*/
+#imap dd, #imap2 dd, #imap3 dd, 
+	#imap4 dd, #imap5 dd, #imap6 dd, #imap7 dd,
+	#between1 dd, #between2 dd, #cpichosen dd,
+	#cpipopup dd, #segmentselect dd, #segmentselected dd,
+	 #retrieve dd,
+	#imap8 dd, #imap9 dd, #imap9a dd, #imap10 dd, 
+	#imap12 dd, #imap13 dd, #imap14 dd,
+	#imap15 dd, #imap16 dd, #imap17 dd, #imap18 dd,
+	#imap18a dd, #imap19 dd,
+	#imap20 dd {
+	position: absolute;
+	padding: 0;
+	margin: 0;
+}
+
+#imap #price {
+	left: 212px;
+	top: 49px;
+	z-index: 20;
+}
+
+#imap2 #editable {
+	left: 11px;
+	top: 200px;
+	z-index: 20; 
+}
+
+#imap3 #rules {
+	left: 93px;
+	top: 204px;
+	z-index: 20;
+}
+
+#imap4 #newrule {
+	left: 456px;
+	top: 237px;
+	z-index: 20;
+}
+
+#imap5 #must_be_between {
+	left: 314px;
+	top: 385px;
+	z-index: 20;
+}
+
+#between1 #between1dropdown {
+	left: 358px;
+	top: 387px;
+	z-index: 20;
+}
+
+#between2 #between2dropdown {
+	left: 359px;
+	top: 429px;
+	z-index: 20;
+}
+
+#cpichosen #popup {
+	left: 208px;
+	top: 385px;
+	z-index: 20;
+}
+
+#cpipopup #dropdown {
+	left: 240px;
+	top: 388px;
+	z-index: 20;
+}
+
+#segmentselect #budgetfamily {
+	left: 240px;
+	top: 418px;
+	z-index: 20;
+}
+
+#segmentselected #optimize {
+	left: 13px;
+	top: 168px;
+	z-index: 20;
+}
+
+#retrieve #retrieving {
+	left: 0px;
+	top: 0px;
+	z-index: 20;
+}
+
+#imap6 #scenarios {
+	left: 17px;
+	top: 69px;
+	z-index: 20;
+}
+
+#imap7 #optimized {
+	left: 11px;
+	top: 223px;
+	z-index: 20;
+}
+
+#imap8 #price, #imap10 #price {
+	left: 213px;
+	top: 47px;
+	z-index: 20;
+}
+
+#imap9 #optimized2 {
+	left: 11px;
+	top: 201px;
+	z-index: 20;
+}
+
+#imap9 #promotion {
+	left: 291px;
+	top: 50px;
+	z-index: 20;
+}
+
+#imap9a #scencomp {
+	left: 679px;
+	top: 221px;
+	z-index: 20;
+}
+
+#imap12 #superbowl {
+	left: 10px;
+	top: 266px;
+	z-index: 20;
+}
+
+#imap16 #superbowl, #imap18 #superbowls1 {
+	left: 11px;
+	top: 245px;
+	z-index: 20;
+}
+
+#imap18a #superbowls {
+	left: 11px;
+	top: 310px;
+	z-index: 20;
+}
+
+#imap13 #products {
+	left: 91px;
+	top: 158px;
+	z-index: 20;
+}
+
+#imap14 #addproducts {
+	left: 33px;
+	top: 210px;
+	z-index: 20;
+}
+
+#imap15 #cancel {
+	left: 941px;
+	top: 583px;
+	z-index: 20;
+}
+
+#imap17 #promomgr, #imap20 #promomgr {
+	left: 8px;
+	top: 75px;
+	z-index: 20;
+}
+
+#imap19 #compare {
+	left: 682px;
+	top: 305px;
+	z-index: 20;
+}
+
+/* Style the <dd><a> links physical size and the background image for the hover. */
+#imap a#pricelink {
+	display: block;
+	width: 54px;
+	height: 16px;
+	background: transparent url(img/PriceHover.JPG) -100px -100px no-repeat;
+	text-decoration: none;
+	z-index: 20;
+}
+
+#imap2 a#editablelink {
+	display: block;
+	width: 995px;
+	height: 21px;
+	background: transparent url(img/EditableHover.JPG) -100px -100px no-repeat;
+	z-index: 20;
+}
+
+#imap3 a#ruleslink {
+	display: block;
+	width: 37px;
+	height: 14px;
+	background: transparent url(img/ActiveRulesTab.JPG) -100px -100px no-repeat;
+	z-index: 20;
+}
+
+#imap4 a#newrulelink {
+	display: block;
+	width: 66px;
+	height: 19px;
+	background: transparent url(img/newrule_hover.jpg) -100px -100px no-repeat;
+	z-index: 20; 
+}
+
+#imap5 a#betweenlink {
+	display: block;
+	width: 101px;
+	height: 18px;
+	background: transparent url(img/MustBeBetween.jpg) -100px -100px no-repeat;
+	z-index: 20;
+}
+
+#between1 a#between1link {
+	display: block;
+	width: 169px;
+	height: 18px;
+	background: transparent url(img/MustBeBetweenDropdown.jpg) -100px -100px no-repeat;
+	z-index: 20;
+}
+
+#between2 a#between2link {
+	display: block;
+	width: 167px;
+	height: 24px;
+	background: transparent url(img/MustBeAtLeastBelow.jpg) -100px -100px no-repeat;
+	z-index: 20;
+}
+
+#cpichosen #popuplink {
+	display: block;
+	width: 102px;
+	height: 18px;
+	background: transparent url(img/choose_cpi_hover_link.jpg) -100px -100px no-repeat;
+	z-index: 20;
+}
+
+#cpipopup #dropdownlink {
+	display: block;
+	width: 230px;
+	height: 19px;
+	background: transparent url(img/cpi_dropdown_hover.jpg) -100px -100px no-repeat;
+	z-index: 20;
+}
+
+#segmentselect a#budgetfamilylink {
+	display: block;
+	width: 230px;
+	height: 14px;
+	background: transparent url(img/budget_family_select.jpg) -100px -100px no-repeat;
+	z-index: 20;
+}
+
+#segmentselected a#optimizelink {
+	display: block;
+	width: 61px;
+	height: 19px;
+	background: transparent url(img/Optimize.jpg) -100px -100px no-repeat;
+	z-index: 20;
+}
+
+
+#retrieve a#retrievinglink {
+	display: block;
+	width: 1016px;
+	height: 598px;
+/*	background: transparent url(img/optimize_screen.jpg) -100px -100px no-repeat;*/
+	z-index: 20;
+}
+
+#imap6 a#scenarioslink {
+	display: block;
+	width: 52px;
+	height: 16px;
+	background: transparent url(img/scenarios.jpg) -100px -100px no-repeat;
+	z-index: 20;
+}
+
+#imap7 a#optimizedlink {
+	display: block;
+	width: 994px;
+	height: 22px;
+	background: transparent url(img/highlighted_optimized.jpg) -100px -100px no-repeat;
+	z-index: 20;
+}
+
+#imap8 a#pricelink, #imap10 a#pricelink {
+	display: block;
+	width: 62px;
+	height: 18px;
+	background: transparent url(img/active_price_hover.jpg) -100px -100px no-repeat;
+	z-index: 20;
+}
+
+#imap9 a#optimized2link {
+	display: block;
+	width: 994px;
+	height: 44px;
+	background: transparent url(img/selected_scenarios.jpg) -100px -100px no-repeat;
+	z-index: 20;
+}
+
+#imap9 a#promotionlink {
+	display: block;
+	width: 80px;
+	height: 12px;
+	background: transparent url(img/promotion_hover.jpg) -100px -100px no-repeat;
+	z-index: 20;
+}
+
+#imap9a a#scencomplink {
+	display: block;
+	width: 188px;
+	height: 17px;
+	background: transparent url(img/scen_comp_summary_highlight.jpg)
+		-100px -100px no-repeat;
+	z-index: 20;
+}
+
+#imap12 a#superbowllink {
+	display: block;
+	width: 996px;
+	height: 23px;
+	background: transparent url(img/uncalc_superbowl_highlight.jpg) -100px -100px no-repeat;
+	z-index: 20;
+}
+
+#imap16 a#superbowllink {
+	display: block;
+	width: 994px;
+	height: 23px;
+	background: transparent url(img/calculated_superbowl_highlight.jpg)
+	 -100px -100px no-repeat;
+	z-index: 20;
+}
+
+#imap13 a#productslink {
+	display: block;
+	width: 54px;
+	height: 16px;
+	background: transparent url(img/products_hover.jpg) -100px -100px no-repeat;
+	z-index: 20;
+}
+
+#imap14 a#addproductslink {
+	display: block;
+	width: 98px;
+	height: 19px;
+	background: transparent url(img/addproducts_hover.jpg) -100px -100px no-repeat;
+	z-index: 20;
+}
+
+#imap15 a#cancellink {
+	display: block;
+	width: 49px;
+	height: 19px;
+	background: transparent url(img/cancel_hover.jpg) -100px -100px no-repeat;
+	z-index: 20;
+}
+
+#imap17 a#promomgrlink, #imap20 a#promomgrlink {
+	display: block;
+	width:111px;
+	height: 39px;
+	background: transparent url(img/promo_mgr_underline_hover.jpg) -100px -100px no-repeat;
+	z-index: 20;
+}
+
+#imap18 a#superbowls1link {
+	display: block;
+	width: 994px;
+	height: 89px;
+	background: transparent url(img/one_of_two_promos.jpg) -100px -100px 		no-repeat;
+	z-index: 20;
+}
+
+#imap18a a#superbowlslink {
+	display: block;
+	width: 994px;
+	height: 23px;
+	background: transparent url(img/promotion_second_highlighted.jpg) -100px 			-100px no-repeat;
+	z-index: 20;
+}
+
+#imap19 a#comparelink {
+	display: block;
+	width: 131px;
+	height: 17px;
+	background: transparent url(img/compare_promos_popup.jpg) -100px -100px no-repeat;
+	z-index: 20;
+}
+
+/* Style the span text so that it is not displayed. */
+#imap a span, #imap a:visited span, #imap2 a span, #imap2 a:visited span,
+	#imap3 a span, #imap3 a:visited span,
+	#imap4 a span, #imap4 a:visited span,
+	#imap5 a span, #imap5 a:visited span,
+	#between1 a span, #between1 a:visited span, 
+	#between2 a span, #between2 a:visited span,
+	#cpichosen a span, #cpichosen a:visited span,
+	#cpipopup a span, #cpipopup a:visited span,
+	#segmentselect a span, #segmentselect a:visited span,
+	#segmentselected a span, #segmentselected a:visited span,
+	#retrieve a span, #retrieve a:visited span,
+	#imap6 a span, #imap6 a:visited span,
+	#imap7 a span, #imap7 a:visited span,
+	#imap8 a span, #imap8 a:visited span,
+	#imap9 a span, #imap9 a:visited span,
+	#imap9a a span, #imap9a a:visited span,
+	#imap10 a span, #imap10 a:visited span,
+	#imap12 a span, #imap12 a:visited span,
+	#imap13 a span, #imap13 a:visited span,
+	#imap14 a span, #imap14 a:visited span,
+	#imap15 a span, #imap15 a:visited span,
+	#imap16 a span, #imap16 a:visited span,
+	#imap17 a span, #imap17 a:visited span,
+	#imap18 a span, #imap18 a:visited span,
+	#imap18a a span, #imap18a a:visited span,
+	#imap19 a span, #imap19 a:visited span, 
+	#imap20 a span, #imap20 a:visited span {
+	display: none;
+}
+
+/* Move the link background image to position 0 0 when hovered.	*/
+#imap a#pricelink:hover, #imap2 a#editablelink:hover, #imap3 a#ruleslink:hover,
+	#imap4 a#newrulelink:hover,
+	#imap5 a#betweenlink:hover, #between1 a#between1link:hover,
+	#between2 a#between2link:hover, 
+	#cpichosen a#popuplink:hover,
+	#cpipopup a#dropdownlink:hover,
+	#segmentselect a#budgetfamilylink:hover,
+	#segmentselected a#optimizelink:hover,
+	#retrive a#retrievinglink:hover,
+	#imap6 a#scenarioslink:hover,
+	#imap7 a#optimizedlink:hover,
+	#imap8 a#pricelink:hover,
+	#imap9 a#optimized2link:hover,
+	#imap9a a#scencomplink:hover,
+	#imap9 a#promotionlink:hover,
+	#imap10 a#pricelink:hover,
+	#imap12 a#superbowllink:hover,
+	#imap13 a#productslink:hover,
+	#imap14 a#addproductslink:hover,
+	#imap15 a#cancellink:hover,
+	#imap16 a#superbowllink:hover,
+	#imap17 a#promomgrlink:hover,
+	#imap18 a#superbowls1link:hover,
+	#imap18a a#superbowlslink:hover,
+	#imap19 a#comparelink:hover,
+	#imap20 a#promomgrlink {
+	background-position: 0 0;
+}
+
+/* Position "Save" button same distance from left edge of page as on original page. */
+.submit input {
+	margin-left: 175px;
+}
+
+/* Page containing forms formatting.	*/
+#formpage {
+	background-color: white;
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	left: 10px;
+	top: 223px;
+	height: 377px;
+	width: 996px;
+}
+
+iframe {
+	border: 1px solid #ebebeb;
+}
+
+/* Formatting for section containing iframe.	*/
+#iframe, #iframe10, #iframe20 {
+	background-color: white;
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	left: 10px;
+}
+
+#iframe {
+	top: 224px;
+	width: 998px;
+	height: 388px;
+}
+
+#iframe10 {
+	top: 192px;
+	width: 1001px;
+	height: 382px;
+}
+
+#iframe20 {
+	top: 212px;
+	width: 998px;
+	height: 400px;
+}
+
+
+#formpage img {
+	margin-left: 6px;
+	margin-top: -10px;
+}
+
+/* Formatting for select box.	*/
+#ruleselect {
+	font: 100%/120% Verdana;
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	left: 225px;
+	top: 237px;
+}
+
+#ruleselect option {
+	font: 100%/120% Verdana;
+	color: #333;
+}
+
+#segdropdown {
+	font: 100%/120% Verdana;
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	left: 39px;
+	top: 108px;
+	color: #333;
+}
+
+#savebutton {
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	left: 190px;
+	top: 585px;
+	width: 40px;
+	height: 19px;
+	background:url(img/savebutton.jpg) no-repeat;
+	z-index: 20;
+}

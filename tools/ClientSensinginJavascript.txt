@@ -1,0 +1,80 @@
+Client Sensing in Javascript
+
+The addition of Javascript to in the 1.2 release of the WebTV client platform gives you a powerful tool to 
+use in customizing your web site for your users.  Whereas before all the logic for your web applications 
+needed to be done in custom CGI on your web server, Javascript gives you the ability to push a great deal 
+of this logic out to the client.  One example of using Javascript to improve the user experience is the use of 
+client sensing to adjust the presentation of your website on different platforms.
+
+This client sensing example was in part motivated by a problem that one of our content partner sites, <a 
+href=“http://www.eonline.com/”>eonline</a>, had with a background image on their site.  In this case, <a 
+href=“http://www.eonline.com/”>eonline</a>.com wanted to have a background image that would provide 
+two or three columns of different colors for the overlaid text.  The problem is, aligning this background 
+image to the columns of text introduces platform dependencies, because the alignment depends on the size 
+of the rendered text and the size of the screen.  Especially for pages with background images that are built 
+for browsers with 640 pixels of width – the WebTV client handles these by scaling them down to 540 
+pixels to fit the display.
+
+One possible solution was to use table cells of the corresponding background color to simulate the same 
+effect.  However, this was ruled unfeasible because <a href=“http://www.eonline.com/”>eonline</a> 
+wanted the columns of color to extend up into the advertising region so that advertisements would look 
+more like a part of the content.  This content/ad melding has been shown by psychological studies to yield a 
+higher click rate.
+
+So instead, <a href=“http://www.eonline.com/”>eonline</a> and WebTV decided to take the tactic of 
+designing separate background images for the WebTV platform and desktop platforms.  Javascript would 
+then be used to sense the client and serve the correct background image.  Listing 1 below shows the actual 
+HTML used on <a href=“http://www.eonline.com/”>eonline’s</a> web site to accomplish this task.
+
+<NOSCRIPT>
+<body text="#000000" link="#0000FF" vlink="#6666cc"     
+background="/Images/Bg/bg.news_ix.gif">
+</NOSCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+var userAgent=navigator.appName + " " + navigator.appVersion;
+var agentInfo=userAgent.substring(0, 5);
+
+if (agentInfo == "WebTV") {
+ 
+ 	//WebTV detected.
+
+document.write("<body background=\"/Images/Bg/bg.news_ix.webtv.gif\"  text=\"#000000\" 
+link=\"#0000FF\" vlink=\"#6666cc\" bgcolor=\"#FFFFFF\">");  
+
+} else {
+  
+//Non-WebTV detected.
+
+  	document.write("<body background=\"/Images/Bg/bg.news_ix.gif\" text=\"#000000\" 
+	link=\"#0000FF\" vlink=\"#6666cc\" bgcolor=\"#FFFFFF\">"); 
+
+}
+
+//-->
+
+</SCRIPT> 
+
+Listing 1:  Client sensing HTML.
+
+The Javascript in this HTML code fragment uses the navigator object in Javascript that contains 
+information about the client being used to view this web page.  Using this object, we concatenate both the 
+appName property and the appVersion property together to get a complete view of the type and version of 
+the client.  In this case, we only care to differentiate WebTV clients and  non-WebTV clients, but this code 
+could be easily extended to accomplish increasingly fine differentiations, like switching based on the 
+particular WebTV client version in use.   (Hint:  You might have a need for this when the 2.0 client features 
+roll out, so keep this trick handy.)
+
+Having identified the client in use, the Javascript writes the <body> tag into the document with a different 
+background image depending on the type of client.  Viola -- problem solved!
+
+Well, not so fast – there is one other detail.  Since there are still clients out there that do not support 
+Javascript, the HTML code fragment includes a <NOSCRIPT> HTML code block with a default <body> 
+tag to use.
+
+Of course, once you’ve done the setup code, you can apply the if block anywhere in your HTML that you 
+need to refine your web page for a particular platform.  That’s the beauty of client sensing:   it is platform 
+refinement without penalty.

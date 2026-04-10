@@ -1,0 +1,112 @@
+
+.blist .x-btn-text {
+    background-image: url(images/list-items.gif)
+}
+
+.bmenu .x-btn-text {
+    background-image: url(images/menu-show.gif)
+}
+
+.menu-title {
+    background: #ebeadb url(lib/ext/resources/images/aero/grid/grid-hrow.gif) repeat-x;
+    border-bottom: 1px solid #99bbe8;
+    color: #15428b;
+    font: bold 10px tahoma, arial, verdana, sans-serif;
+    display: block;
+    padding: 3px;
+}
+
+#headerlogo {
+    padding: 5px;
+    font: 100% Arial bold
+}
+
+#RFInput {
+    padding: 5px;
+    background-color: #ddeeff;
+    font-family: Arial
+}
+
+.vrpdvisual {
+}
+.vrpdvimage {
+    position:absolute;
+	background-image: url('images/vrpd.gif') x-repeat:none;
+}
+
+.vrpdspace {
+    height:44;
+    width:166;
+}
+
+.vrpdvnumber { 
+    position:absolute;
+	float:left;
+	padding: 0ex 1ex 1ex .5ex;
+    font: 200%/120% Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+.vrpdvport { 
+    position:absolute;
+	padding: 0ex 2ex 1ex 7.2ex;
+	font: 100%/320% Verdana, Geneva, Arial, Helvetica, sans-serif;
+ }
+#vrpd-usage {
+    background-color: #ddeeff;
+}
+
+#VRPDUsage {
+    padding: 5px;
+    background-color: #ddeeff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#VRPDUsage TABLE {
+    text-align: right
+}
+
+#loading-mask, #support, #statistics, #operationsstatus, #externalnetworkstatus,#systemstatus{
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ddeeff;
+}
+
+#operationsstatus, #externalnetworkstatus,#systemstatus{
+    background-color: #ffffff;
+}
+
+#status { 
+    padding:2px;
+    font-family: 80%/100% Arial, Helvetica, sans-serif;
+    background-color: #ddeeff
+}
+
+.loading-indicator {
+    font-size:8pt;
+    background-image:url('../../resources/images/grid/loading.gif');
+    background-repeat: no-repeat;
+    background-position:top left;
+    padding-left:20px;
+	height:18px;
+	text-align:left
+}
+#loading{
+	position:absolute;
+	left:45%;
+	top:40%;
+	border:1px solid #6593cf;
+	padding:2px;
+	background:#c3daf9;
+	width:150px;
+	text-align:center;
+	z-index:20001;
+}
+#loading .loading-indicator{
+	border:1px solid #a3bad9;
+	background:white url(block-bg.gif) repeat-x;
+	color:#003366;
+	font:bold 13px tahoma,arial,helvetica;
+	padding:10px;
+	margin:0;
+}
+

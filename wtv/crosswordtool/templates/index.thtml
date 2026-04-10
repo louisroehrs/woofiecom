@@ -1,0 +1,36 @@
+<html>
+<body>
+<font size=+3>
+  Crossword Game Builder
+</font>
+
+<P>
+<font size=+0>
+You can:
+</font>
+<P>
+<font size=+2>
+<a href="http://ed.webtv.net/~tpark/new/crosswordtool/creategame.html">
+  Create a new Crossword Game
+</a>
+<P>
+<font size=+0>
+or
+</font>
+<P>
+Edit a previously entered game by choosing it from the list below: 
+<P>
+</font>
+
+<font size=+0>
+<table>
+<!--LIST-->
+</table>
+</font>
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,181 @@
+<HTML>
+<HEAD>
+<META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">
+
+	<TITLE>WebTV Arcade</TITLE>
+	
+	<SCRIPT Language="JavaScript">
+	var currentGame=0
+	
+	games = new Array("matchmate","spacerace","wordfind", "triviatask", "minesweeper", "crossword")
+	urls = new Array("http://www.woofie.com/liberate/matchmate/webtvpresents.html",
+					"http://www.woofie.com/liberate/aspacerace/webtvpresents.html",
+					"../wordfind/webtvpresents.html",
+					"../trivia/navmap/index.html",
+					"../minesweeper/webtvpresents.html",
+					"../crossword/navmap/index.html")
+					
+	logos = new Array()
+	
+	function Start() {
+		LoadImages()
+		document.images["game"].src = games[0] + ".gif"
+		document.myform.total.value = games.length
+		document.myform.current.value = 1
+	
+//		PlaySound(document.teen)
+	}
+	
+	function LoadImages() {
+		for (i=0; i< games.length; i++) {
+			woofie = new Image()
+			logos[i]= woofie
+			logos[i].src = games[i] + ".gif"
+			
+		}
+	}
+	
+  	function GoPlay() {
+		window.location= urls[currentGame]
+	}
+	
+	function ResumeBG() {
+		PauseSound(document.teen)
+	}
+	
+	function GoForward() {
+//		alert(1)
+//		PauseSound(document.teen)
+//		alert(1)
+		PlaySound(document.bell)
+//		alert(1)
+//		setTimeout("ResumeBG()", 3000)
+		currentGame++
+		if (currentGame >= games.length) currentGame=0
+		document.images["game"].src = games[currentGame] + ".gif"
+		document.select.rows[6].cells[2]= currentGame+1
+		document.myform.current.value = currentGame +1 
+//		setTimeout("GoForward()",3000)
+	}
+
+	function GoBackward() {
+		PlaySound(document.bell)
+		currentGame--
+		if (currentGame < 0 ) currentGame= games.length -1 
+		document.images["game"].src = games[currentGame] + ".gif"
+
+		document.myform.current.value = currentGame +1
+
+	}
+	
+
+	function PlaySound(sound) {
+
+		if (sound == null) {  
+            return;
+		}
+		else {
+			sound.play(false);
+		}
+	}
+	function PauseSound(sound) {
+
+		if (sound == null) {  
+            return;
+		}
+		else {
+			sound.pause();
+		}
+	}
+	</SCRIPT>
+
+
+</HEAD>
+<!-- <bgsound src="http://www.woofie.com/wtv/arcade/crazy.zip" autostart=true play=true loop=false> --> 
+
+<BODY background="webtvarcadesm.jpg" marginheight=0 marginwidth=0 hspace=0 vspace=0 text=cccc00 credits="http://www.woofie.com/webtv.html" onLoad="Start()" align=left fontsize=medium>
+
+<form name=myform>
+<TABLE name="select" ALIGN="LEFT" VALIGN="TOP" WIDTH="100%" border=0 cellpadding=0 cellspacing=0>
+<TR>
+	<TD height=85><IMG SRC="spacer.gif" WIDTH=10 HEIGHT=85 BORDER=0></TD>
+	<TD></TD>
+	<TD></TD>
+	<TD></TD>
+	<TD></TD>
+	<TD ></TD>
+	<TD></TD>
+	<TD></TD>
+	<TD></TD>
+</TR>
+<TR>
+	<TD height=163></TD>
+	<TD></TD>
+	<TD colspan=5 ALIGN="CENTER" VALIGN="MIDDLE"><A HREF="javascript:GoPlay()"><IMG SRC="spacer.gif" name="game" WIDTH=137 HEIGHT=111 BORDER=0></A></TD>
+	<TD></TD>
+	<TD></TD>
+</TR>
+<TR>
+	<TD height=22><IMG SRC="spacer.gif" WIDTH=1 HEIGHT=1 BORDER=0></TD>
+	<TD><IMG SRC="spacer.gif" WIDTH=1 HEIGHT=1 BORDER=0></TD>
+	<TD><IMG SRC="spacer.gif" WIDTH=1 HEIGHT=1 BORDER=0></TD>
+	<TD><IMG SRC="spacer.gif" WIDTH=1 HEIGHT=1 BORDER=0></TD>
+	<TD></TD>
+	<TD></TD>
+	<TD></TD>
+	<TD></TD>
+	<TD></TD>
+</TR>
+<TR>
+	<TD height=50 width=98><IMG SRC="spacer.gif" WIDTH=98 HEIGHT=55 BORDER=0></TD>
+	<TD width=71><A HREF='javascript:GoBackward()'><IMG SRC="spacer.gif" WIDTH=71 HEIGHT=55 BORDER=0></A></TD>
+	<TD width=28 ><IMG SRC="spacer.gif" WIDTH=28 HEIGHT=50 BORDER=0></TD>
+	<TD width=43  ALIGN="CENTER" VALIGN="MIDDLE"><FONT COLOR=cccc00 SIZE="4">1 <input noselect bgcolor=000000 type=text usestyle border=0 value=1 size=2 name=current> </FONT></TD>
+	<TD width=78 ><IMG SRC="spacer.gif" WIDTH=78 HEIGHT=20 BORDER=0></TD>
+	<TD width=41  ALIGN="CENTER" VALIGN="MIDDLE"><FONT ColoR=cccc00 SIZE="4"><input noselect bgcolor=000000 type=text usestyle border=0 value=1 size=2 name=total></FONT></TD>
+	<TD width=28 ><IMG SRC="spacer.gif" WIDTH=28 HEIGHT=50 BORDER=0></TD>
+	<TD width=72 ><A HREF='javascript:GoForward()'><IMG SRC="spacer.gif" WIDTH=72 HEIGHT=55 BORDER=0></A></TD>
+	<TD width=78></TD>
+
+</TR>
+<TR>
+	<TD height=48><IMG SRC="spacer.gif" WIDTH=1 HEIGHT=1 BORDER=0></TD>
+	<TD><IMG SRC="spacer.gif" WIDTH=1 HEIGHT=1 BORDER=0></TD>
+	<TD><IMG SRC="spacer.gif" WIDTH=1 HEIGHT=1 BORDER=0></TD>
+	<TD></TD>
+	<TD></TD>
+	<TD></TD>
+	<TD></TD>
+	<TD></TD>
+	<TD></TD>
+	
+		
+
+</TR>
+<TR>
+	<TD></TD>
+	<TD></TD>
+	<TD></TD>
+	<TD></TD>
+	<TD></TD>
+	<TD></TD>
+	<TD></TD>
+	<TD><IMG SRC="spacer.gif" WIDTH=1 HEIGHT=1 BORDER=0></TD>
+	<TD><IMG SRC="spacer.gif" WIDTH=1 HEIGHT=1 BORDER=0></TD>
+
+</TR> 
+</TABLE>
+</form>
+	<SCRIPT Language="JavaScript">
+		document.images["game"].src = games[currentGame] + ".gif"
+		document.myform.total.value = games.length
+		document.myform.current.value = 1
+
+	</SCRIPT>
+
+
+</BODY>
+</HTML>
+
+
+

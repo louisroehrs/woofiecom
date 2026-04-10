@@ -1,0 +1,113 @@
+<!-- WebTV Crossword 
+     Tim Park (tpark@corp.webtv.net)
+     v4 - 08/21/97
+     Copyright 1997, WebTV Networks -->
+
+<html>
+<title>
+  WebTV Crossword 
+</title>
+<bgsound src="sounds/jollygooba1.mid" LOOP=TRUE> 
+
+<body>
+
+   <display>
+   <form method="POST" name="crosswordform" action="<!--ACTIONURL-->">
+      <script language="JavaScript">
+
+	    sPuzzleName = "<!--FRIENDLYNAME-->";  
+
+
+        asPuzzle = "<!--ANSWERS-->";
+
+        kWidth  = <!--COLS-->;
+        kHeight = <!--ROWS-->;
+
+        kOtherFormElements = 0;
+	   
+	function GetCell(x,y) {
+	 
+          return (asPuzzle.charAt(y*kWidth+x));
+
+	}
+
+	function RenderCell(x, y) { 
+
+          var sCellValue;
+          if (GetCell(x,y) == "+") {
+            sCellValue = "";
+          } else {
+            sCellValue = GetCell(x,y);
+          } 
+           
+	  document.write("<td width=20 height=20 bgcolor=666666 align=center valign=bottom>");
+	    document.write("  <input type=text value=\""+sCellValue+"\" name=sel"+eval(x+y*kWidth)+" bgcolor=666666 maxlength=1 autocaps size=1 width=20 border=0 onChange=\"CaseSet(this)\">");
+	    document.write("</td>");
+
+	}
+
+	function RenderRow(y) {
+
+	  document.write("<tr><td align=center><font color=#FFFFFF>"+eval(y+1)+"</font></td>");
+
+	  var x=0;
+
+	  for (x=0; x < kWidth; x++) {
+	     RenderCell(x,y);
+	  }
+
+	  document.write("</tr>");
+
+	}
+
+	function RenderPuzzle() {
+	 
+	  document.write("<table border=0 cellspacing=3 cellpadding=0 bgcolor=222222>");
+
+          var x=0;
+          document.write("<tr><td>&nbsp;</td>");
+          for (x=0; x < kWidth; x++) {
+             document.write("<td align=center><font color=#FFFFFF>"+eval(x+1)+"</font></td>");  
+          }
+          document.write("</tr>");
+
+	  var y=0;
+	  for (y=0; y < kHeight; y++) {
+	     RenderRow(y);
+	  }
+
+	  document.write("</table>");
+
+	}
+
+ function CaseSet(j) {
+          for (var i = 0; i < j.value.length;  i++) {
+             var c = j.value.charAt(i);
+             if (c >= 'a' && c <= 'z') {
+               j.value = j.value.toUpperCase();
+             }
+          }
+        }
+      </script>
+
+      <center>             
+       <SCRIPT LANGAUGE="Javascript">
+	  RenderPuzzle();
+       </SCRIPT>
+      </center>
+
+      Across<br>
+      <!--ACROSSCLUES-->
+      Down<br>
+      <!--DOWNCLUES-->
+
+      <INPUT type=hidden name="CATEGORY" value="<!--CATEGORY-->">      	
+      <INPUT type=hidden name="NAME"     value="<!--NAME-->">      	
+      <INPUT type=hidden name="ROWS"     value="<!--ROWS-->">
+      <INPUT type=hidden name="COLS"     value="<!--COLS-->">
+
+      <INPUT type=submit value="Submit Game">
+       </form>
+
+</body>
+</html>

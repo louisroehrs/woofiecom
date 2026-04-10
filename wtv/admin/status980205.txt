@@ -1,0 +1,86 @@
+NAME: Louis Roehrs
+
+TITLE: Programming Software Engineer, Contract
+
+WEEK ENDING: 2/5/98
+
+ACCOMPLISHMENTS:
+
+Programming Support
+-------------------
+* Answered various questions about HTML and WebTV technology for producers.
+* Iterated importance of using certain HTML tags to prevent disappearing content.
+* Investigated printer bug.  
+* Starting to investigating Active Server Pages and Microsoft technologies for server applications such as polling, games, integrating real-time feeds into home page.
+
+Graphic Work Orders
+-------------------
+* Added search by work order number, enlarged fields.
+* Help bring up programming in new building.
+
+Crossword, Trivia, and Wordfinder Game Hierarchies
+--------------------------------------------------
+* Consulted with Bob, Kristen (Ad Sales), Jason, Lisa, Claire on ad placement for Oscars Games.
+* Moved pages to service, Crossword & Trivia will be staged on production by 2/16.
+* Re-Built final layout for each game.  
+* Incorporated new graphics and bullets for hierarchy pages.
+* Moved buttons to sidebar in wordfind, crossword, and trivia.
+* Republished movies game.
+* Consulted with Jason on remaining requirements to add ads to hierarchy pages.  
+* Accelerated downloads by centralizing graphics references.
+* Completed moving game selector demo "arcade" on service.
+
+Matchmate
+---------
+* Cleaned up two player picking page.
+
+SpaceRace
+---------
+* Added spaceship indicator panel and code.
+
+Tools
+-----
+* Started creating site with tools and tricks for building pages for WebTV.  Includes guidelines. a layout grid for tv window integration, and more.  N/C.
+* Site at http://www.woofie.com/tools/help.html.  
+
+Animations
+----------
+* Assisted Don with WebTV Presents flash animation.
+* Built framework for adding and replacing Flash animations gracefully for current and future games.
+* Wordfinder and spacerace now have complete intro sequences.
+
+ISSUES:
+
+Resources
+---------
+
+Dependencies
+------------ 
+Graphics for Spacerace are held up.  Claire working issue.
+
+Engineering    
+-----------
+* Need to find out the daily proper method for adding ads to pages.  
+* Current documentation of HTML, Javascript, and guidelines??  I've been writing my own as I learn the system. 
+
+Quality none
+-------
+
+Partner none
+-------
+
+SHOW STOPPERS: 
+
+* Space race graphics, see issues.
+
+1 MONTH PLAN:
+
+* Finish new game layouts and navigation.
+* Bring spacerace and matchmate development to production quality and ship.
+* We've added crossword, trivia, minesweeper, and wordfinder to this mix!
+
+6 MONTH PLAN:
+
+* Consider games and other applications/properties that create new and repeat viewership. 
+* Learn as much as I can about Active Server, ISPAI, and moving more advanced games onto the box.
+* Well, the Broncos did do it this year.

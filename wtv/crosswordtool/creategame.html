@@ -1,0 +1,55 @@
+<html>
+
+  <title>
+    Crossword Game Builder
+  </title>
+
+  <body>
+    <form action="http://ed.webtv.net/~tpark/crosswordtool/cgi/newgame.cgi"
+          method="get">
+      <table>
+        <tr>
+          <td>
+            Crossword Game Name  
+	      </td>
+          <td>
+            <input type=text name="NAME" value=""></input>
+          </td>
+        </tr> 
+        <tr>
+          <td>
+            Category 
+          </td>
+          <td>
+            <select name="CATEGORY">
+              <option value="general">General Knowledge</option>
+              <option value="test">Testing (Not Permenent!)</option>
+            </select>
+          </td>
+        </tr>    
+        <tr>
+          <td>
+            Number of Rows in puzzle?
+          </td>
+          <td>
+            <input type=text name="ROWS" value=""></input>
+          </td>
+        </tr> 
+        <tr>
+          <td>
+            Number of Columns in puzzle? 
+          </td>
+          <td>
+            <input type=text name="COLS" value=""></input>
+          </td>
+        </tr> 
+        <tr>
+          <td>
+            <input type=submit value="Enter Puzzle"></input>
+          </td>
+        </tr> 
+      </table>
+    </form>
+  </body>
+
+</html>

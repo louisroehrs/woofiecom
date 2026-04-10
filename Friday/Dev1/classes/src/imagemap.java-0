@@ -1,0 +1,326 @@
+/*
+ * mapzine (W) by Markus Baumeister 9'95 (baumeist@informatik.rwth-aachen.de)
+ * changed Johan van der Hoeven's "zine"-Applet, so that
+ * specifying unregular Pop-Up-Regions is easier.
+ */
+
+
+import Zine;
+import browser.Applet;    
+import awt.*;
+import java.io.StreamTokenizer;
+import java.io.InputStream;
+import java.io.FileInputStream;
+import java.util.Vector;
+import java.util.Enumeration; 
+import net.www.html.URL;
+
+class mapzineFrame
+{
+public Vector strvec;
+public URL link;
+    
+    public mapzineFrame()
+    {
+	strvec=new Vector();
+	link=null;
+    }
+}
+
+
+class mapzinePopUp extends zinePopUp
+{
+protected mapzineFrame mzfrm=null;
+
+    public mapzinePopUp(Font font)
+    {
+	super(font);
+    }
+
+    public boolean doLayout(Point where,Rect boundR, mapzineFrame mzf)
+    {
+	mzfrm=mzf;
+	zineFrame zf=new zineFrame();
+	zf.p=where;
+	zf.strvec=mzf.strvec;
+	return(super.doLayout(boundR, zf));
+    }
+
+}
+
+class mapzine extends Applet
+{
+
+    protected String dana = null;
+    protected String imgna = null;
+    protected Image  daimg;
+    protected DIBitmap selectImage;
+    protected int curentSelectColor=0;
+    protected int clickedColor=0;
+    Vector framevect;
+    mapzinePopUp pop=null;
+    Font font;
+    Rect clipR=null;
+    
+    
+    public void init()
+    {
+	String selImgname;
+
+	clipR=null;
+	pop=null;
+	
+        font = getFont("TimesRoman", Font.PLAIN, 12);
+	framevect= new Vector(); 
+	/* resize(200, 200); */
+        dana = getAttribute("dataurl");
+	getFrames();
+
+/*	System.out.println(dana); */
+	
+	
+	imgna = getAttribute("imgurl");
+/*	System.out.println(imgna); */
+	daimg= getImage(imgna);
+
+        selImgname= getAttribute("selimgurl");
+	URL selImageURL= new URL(documentURL ,selImgname);	
+/*	System.out.println(selImageURL); */
+        Object result=selImageURL.getContent();
+        if(result instanceof DIBitmap)
+	{
+	    selectImage=(DIBitmap)result;
+	}
+	else
+	{	
+	    System.out.println("Wrong name for Selection-Image");
+            daimg=null;
+	}
+/*	System.out.println(selectImage.getDIBitmap().raster);
+	System.out.println(selectImage.getDIBitmap().num_colors); */
+	
+
+	if(daimg!=null)
+	    resize(daimg.width,daimg.height);
+        else
+	{
+	    resize(10, 10);
+	    showStatus("The Applet is broken");
+	}
+	
+
+
+/*	clipR=new Rect(0,0,width,height);	*/
+  }
+
+  public void paint(Graphics g)
+  {
+      if(clipR!=null)
+      {
+	   g.clipRect(clipR.lX, clipR.tY, clipR.width(), clipR.height());
+	   clipR=null;
+      }
+      else
+      {
+          g.clearClip();	      
+      }
+      
+      
+      g.drawImage(daimg, 0, 0);
+
+      if(pop!=null)
+	  pop.Draw(g);      
+  }
+    
+  public void update(Graphics g)
+  {
+	paint(g);    
+  }
+    
+  public void mouseDown(int x, int y)
+  {
+      mouseMove(x,y);      
+      clickedColor=curentSelectColor; 
+/*      System.out.println(clickedColor); */
+  }
+
+  public void mouseUp(int x, int y)
+  {
+      mouseMove(x,y);      
+/*      System.out.println("Mouse Up");
+      System.out.println(curentSelectColor);
+      System.out.println(clickedColor); */
+      if(clickedColor==curentSelectColor && clickedColor>0)
+      {	      
+      mapzineFrame mz_frm=(mapzineFrame)(framevect.elementAt(clickedColor-1));
+	  if(mz_frm.link!=null)
+	      showDocument(mz_frm.link);	  
+      }
+      clickedColor=0;      
+  }
+    
+    
+  public void mouseEnter()
+  {
+     
+      if(daimg==null)
+	  showStatus("The Applet is broken");
+      else
+          getFocus();
+  }
+
+  public void mouseExit()
+  {	
+      if(pop!=null)
+      {
+	  curentSelectColor=0;
+	  clipR=pop.clipR;
+	  pop=null;
+	  repaint();
+      }
+  };
+
+  public void mouseDrag( int x, int y)
+  {
+	mouseMove(x,y);
+  }
+    
+    
+  public void mouseMove(int x, int y)
+  {
+  int colornumber=0;
+  int half_x=x/2;
+  int half_y=y/2;
+  
+      if(half_x<selectImage.width && half_y<selectImage.height)
+      {	  
+      short color=selectImage.raster[half_x+half_y*selectImage.width];
+      short red=selectImage.red[color];
+      short green=selectImage.green[color];
+          if(red<0)
+	      red=(short)((red&127)+128);      
+          if(green<0)
+              green=(short)((green&127)+128);
+
+/*          System.out.println(color);
+          System.out.println(green); */
+      
+      
+	  colornumber=((red&224)>>2)+((green&224)>>5);	  
+      }
+      else
+          colornumber=0;
+
+      if(colornumber!=curentSelectColor)
+      {
+/*	  System.out.println("New Color");
+	  System.out.println(colornumber);
+	  System.out.println(x);
+      	  System.out.println(y);
+*/	  
+	  
+	      
+          if(colornumber==0 || pop!=null)
+	  {
+	      if(pop!=null)
+	      {
+       		  clipR=pop.clipR;
+                  pop=null;
+		  showStatus("");		  
+		  repaint();
+	      }
+              curentSelectColor=0;	      
+          }
+          else if(colornumber<=framevect.size())
+          {
+	      mapzineFrame mz_frm=(mapzineFrame)(framevect.elementAt(colornumber-1));
+              pop=new mapzinePopUp(font);
+              Rect r=new Rect(0,0,width,height);
+	      Point p=new Point(x,y);
+	      pop.doLayout(p,r,mz_frm);
+              clipR=pop.clipR;
+	      curentSelectColor=colornumber;
+	      if(mz_frm.link!=null)
+	          showStatus("Go to: "+mz_frm.link.toExternalForm());
+	      repaint();
+          }
+	  else /* colornumber>framevect.size */
+	  {
+	      if(pop!=null)
+	      {
+       		  clipR=pop.clipR;
+                  pop=null;	          
+		  repaint();
+	      }
+              curentSelectColor=colornumber;	      
+	  }	  
+      }
+  }
+
+  protected void getFrames()
+  {
+  mapzineFrame mzfrm=null;
+  InputStream is=null;
+  boolean now_url=false;
+  
+ 
+      is = new URL(documentURL, dana).openStreamInteractively();
+  StreamTokenizer st = new StreamTokenizer(is);
+
+ 
+      st.eolIsSignificant = false;
+      st.commentChar('#');
+								
+							 	
+							 	
+  /* parse file --NOT very clean can be improved alot */    
+  int i=0;
+      while (st.ttype != StreamTokenizer.TT_EOF)
+      {
+          st.nextToken();
+          /* got a new frame: */
+          if(st.ttype == '{')
+          {  
+	      mzfrm= new mapzineFrame(); 
+	      i=0;
+	      continue;
+	  }
+									 
+	  if(st.ttype == '}')
+          {
+              framevect.addElement(mzfrm);  
+	      continue;
+	  }
+
+
+	  if(st.ttype == '<')
+	  {
+	      now_url=true;
+	      continue;
+	  }
+	  
+	  if(st.ttype == '>')
+	  {
+	      now_url=false;
+	      continue;
+	  }
+	  
+	  if(st.ttype=='"')
+	  {
+	      String tmp= st.sval;
+	      if(now_url)
+		  mzfrm.link=new URL(documentURL, tmp);
+	      else
+	          mzfrm.strvec.addElement(tmp);
+              continue;
+	  }
+
+      } 	/* while */
+
+  }	 /* end getFrames()	*/
+ 
+
+}
+
+
+

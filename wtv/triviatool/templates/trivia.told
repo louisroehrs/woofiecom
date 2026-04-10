@@ -1,0 +1,18 @@
+
+<!--#include file="header.inc"-->
+
+<!--#include file="cookie.js"-->
+<!--#include file="points.js"-->
+<!--#include file="render.js"-->
+
+var sDifficulty = 1;
+var sCategory = "<!--CATEGORY-->";
+var sCategoryQuestionNumber = <!--QUESTIONON-->; 
+var sCategoryQuestions = <!--QUESTIONSTOTAL-->; 
+var sQuestion = "<!--QUESTION-->";
+var asAnswers = new Array(<!--ANSWERARRAY-->); 
+var nNumAnswers = <!--NUMANSWERS-->;
+var sCorrectAnswer = <!--CORRECTANSWER-->;
+var sPointsPossible = <!--WORTH-->;
+
+<!--#include file="footer.inc"-->

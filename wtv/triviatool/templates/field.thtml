@@ -1,0 +1,36 @@
+<table border=1 width=100%>
+  <tr>
+    <td colspan=3>
+      <center><font size=+1>Question #<!--QNUM--></font></center>
+    </td>
+  </tr>
+  <tr>
+    <td colspan=2>
+      Question
+    </td>
+    <td>
+
+      <TEXTAREA NAME=question<!--QNUM--> ROWS=3 COLS=55><!--QUESTION--></TEXTAREA>
+      <input type=hidden name="id<!--QNUM-->" value="<!--ID-->">
+
+    </td>
+  </tr>
+  <!--ANSWERS-->
+  <tr>
+    <td colspan=2>
+      Source 
+    </td>
+    <td>
+      <input type=text name="source<!--QNUM-->" value="<!--SOURCE-->">
+    </td>
+  </tr>  
+  <tr>
+    <td colspan=2>
+      Question Worth 
+    </td>
+    <td>
+      <input type=text name="worth<!--QNUM-->" value="<!--WORTH-->">
+    </td>
+  </tr> 
+</table>
+<br>

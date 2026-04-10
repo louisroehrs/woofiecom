@@ -1,0 +1,87 @@
+<!-- This document was created with HomeSite 2.5 -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<HTML>
+<HEAD>
+	<TITLE>Big Woofie Sports</TITLE>
+
+<SCRIPT Language="JavaScript">
+	
+	function getURLvar(Name) {
+		var search = Name + "="
+		var incoming = window.location.search
+		if (incoming.length > 0) { // if there are any search parameters
+			offset = incoming.indexOf(search) 
+			if (offset != -1) { // if parameter exists 
+				offset += search.length 
+				// set index of beginning of value
+				end = incoming.indexOf("&", offset) 
+				// set index of end of cookie value
+				if (end == -1) 
+					end = incoming.length
+				value = unescape(incoming.substring(offset, end))
+				if (value == "") {
+					return null
+				} else {
+					return value
+				}
+			}
+			else return null
+		}
+		else return null
+	}
+
+
+function Redirect(sURL) {
+  window.location=sURL;
+} 
+function RedirectToGame() {
+ sURL=getURLvar("game")
+	gameURL = "" + sURL;
+	
+  window.location= gameURL;
+} 
+
+	</SCRIPT>
+</HEAD>
+<BODY !background=zzz.jpg hspace=0 vspace=0 valign=top bgcolor=#000000 text=#33ff66 vlink=#c68c31 link=#c68c31 fontsize=medium>
+<table><tr><td align=left>
+<!-- BEGIN LINKEXCHANGE CODE --> 
+<center><iframe src="http://leader.linkexchange.com/5/X850508/showiframe?" width=468 height=60 marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0 scrolling=no>
+<a href="http://leader.linkexchange.com/4/X850508/clickle" target="_top"><img width=468 height=60 border=0 ismap alt="" src="http://leader.linkexchange.com/4/X850508/showle?"></a></iframe><br><a href="http://leader.linkexchange.com/4/X850508/clicklogo" target="_top"><img src="http://leader.linkexchange.com/4/X850508/showlogo?" width=468 height=16 border=0 ismap alt=""></a><br></center>
+<!-- END LINKEXCHANGE CODE -->
+</td></tr></table>
+
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td absheight=374 abswidth=460 align=center valign=center>
+<SCRIPT Language="JavaScript">
+	woofie = getURLvar("URL");
+	//alert(woofie);
+	document.write("<IMG SRC='" + woofie + "' width=454 BORDER=0>");
+</SCRIPT>
+</td></tr>
+</table>
+
+<table><tr><td>
+<IMG SRC="http://service.bfast.com/bfast/serve/sportsite?siteid=296773&bfpage=bigsearchbox" BORDER="0" WIDTH="1" HEIGHT="1"><FORM ACTION="http://service.bfast.com/bfast/click/sportsite" ><INPUT TYPE="hidden" NAME="siteid" VALUE="296773" ><INPUT TYPE="hidden" NAME="bfpage" VALUE="bigsearchbox"><INPUT TYPE="hidden" NAME="url" VALUE="/cgi-bin/SSDsearch.cgi">
+						<TABLE BORDER=0 CELLPADDING=1 CELLSPACING=0 width=225>
+						<TR>
+						<TD BGCOLOR="#000000">
+						<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 width=225>
+						<TR>
+						<TD BGCOLOR="#fcca00" valign=top align=left><IMG SRC="http://images.fogdog.com/toolkit/images/2.gif" ALIGN=TOP WIDTH="292" HEIGHT="70" BORDER="0"><BR>
+						&nbsp;
+						<INPUT NAME="search" VALUE="" size=15>&nbsp;<INPUT ALIGN=ABSMIDDLE TYPE="image" SRC=" http://images.fogdog.com/toolkit/images/find_button.gif" BORDER=0
+						ALT="Find products" NAME="submit">
+						<BR>
+						<CENTER><IMG SRC=" http://images.fogdog.com/toolkit/images/find4.gif" ALIGN=TOP WIDTH="281" HEIGHT="10" BORDER="0" vspace=5></CENTER>
+						</TD>
+						</TR>
+						</TABLE>
+						</TD>
+						</TR>
+						</TABLE></FORM>
+</td></tr></table>
+
+</BODY>
+</HTML>

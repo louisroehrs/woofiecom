@@ -1,0 +1,1937 @@
+Content-type: text/html
+
+
+m_nRows:12 m_nCols:12
+m_sCategory:general m_sName:Tims
+In buildForm!
+<!-- WebTV Crossword 
+     Tim Park (tpark@corp.webtv.net)
+     v4 - 08/21/97
+     Copyright 1997, WebTV Networks -->
+
+<html>
+<title>
+  WebTV Crossword 
+</title>
+<bgsound src="sounds/jollygooba1.mid" LOOP=TRUE> 
+<body background="BACK.JPG" bgcolor=191919 text=668866 
+      hspace=0>
+
+   <display>
+   <form name="crosswordform" action="<!--ACTIONURL-->">
+      <script language="JavaScript">
+
+	    sPuzzleName = "";  
+
+        aasAcross = new Array( 
+                  <TABLE>
+  <TR>
+   <TD colspan=2>
+     Across Clues For Row 1
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY0X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY0X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY0X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY0X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY0X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY0X5" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Across Clues For Row 2
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY1X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY1X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY1X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY1X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY1X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY1X5" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Across Clues For Row 3
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY2X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY2X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY2X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY2X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY2X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY2X5" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Across Clues For Row 4
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY3X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY3X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY3X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY3X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY3X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY3X5" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Across Clues For Row 5
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY4X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY4X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY4X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY4X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY4X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY4X5" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Across Clues For Row 6
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY5X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY5X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY5X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY5X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY5X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY5X5" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Across Clues For Row 7
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY6X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY6X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY6X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY6X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY6X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY6X5" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Across Clues For Row 8
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY7X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY7X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY7X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY7X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY7X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY7X5" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Across Clues For Row 9
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY8X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY8X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY8X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY8X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY8X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY8X5" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Across Clues For Row 10
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY9X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY9X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY9X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY9X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY9X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY9X5" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Across Clues For Row 11
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY10X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY10X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY10X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY10X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY10X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY10X5" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Across Clues For Row 12
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY11X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY11X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY11X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY11X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY11X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY11X5" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+
+                   );
+
+        asPuzzle = "";
+
+        aasDown = new Array( 
+                  <TABLE>
+  <TR>
+   <TD colspan=2>
+     Down Clues For Column 1
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY0X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY1X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY2X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY3X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY4X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY5X0" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Down Clues For Column 2
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY0X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY1X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY2X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY3X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY4X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY5X1" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Down Clues For Column 3
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY0X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY1X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY2X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY3X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY4X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY5X2" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Down Clues For Column 4
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY0X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY1X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY2X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY3X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY4X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY5X3" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Down Clues For Column 5
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY0X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY1X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY2X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY3X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY4X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY5X4" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Down Clues For Column 6
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY0X5" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY1X5" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY2X5" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY3X5" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY4X5" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY5X5" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Down Clues For Column 7
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY0X6" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY1X6" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY2X6" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY3X6" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY4X6" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY5X6" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Down Clues For Column 8
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY0X7" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY1X7" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY2X7" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY3X7" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY4X7" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY5X7" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Down Clues For Column 9
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY0X8" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY1X8" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY2X8" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY3X8" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY4X8" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY5X8" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Down Clues For Column 10
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY0X9" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY1X9" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY2X9" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY3X9" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY4X9" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY5X9" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Down Clues For Column 11
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY0X10" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY1X10" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY2X10" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY3X10" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY4X10" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY5X10" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Down Clues For Column 12
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY0X11" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY1X11" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY2X11" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY3X11" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY4X11" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY5X11" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+
+                    );   
+      
+        kWidth  = 12;
+        kHeight = 12;
+
+        kOtherFormElements = 0;
+	   
+	function GetCell(x,y) {
+	 
+          return (asPuzzle.charAt(y*kWidth+x));
+
+	}
+
+	function RenderCell(x, y) { 
+
+	  if (GetCell(x,y) == '+') {
+	    document.write("<td width=20 bgcolor=000000 align=left valign=top>");
+	    document.write("  <img src=/ROMCache/Spacer.gif width=20 height=20>");
+	    document.write("  <input type=hidden name=sel"+eval(x+y*kWidth)+" value=\"+\">");
+	    document.write("</td>");
+	  } else {
+	    document.write("<td width=20 height=20 bgcolor=666666 align=center valign=bottom>");
+	    document.write("  <input type=text name=sel"+eval(x+y*kWidth)+" bgcolor=666666 maxlength=1 autocaps size=1 width=20 border=0 onChange=\"CaseSet(this)\">");
+	    document.write("</td>");
+	  }
+
+	}
+
+	function RenderRow(y) {
+
+	  document.write("<tr>");
+
+	  var x=0;
+
+	  for (x=0; x < kWidth; x++) {
+	     RenderCell(x,y);
+	  }
+
+	  document.write("</tr>");
+
+	}
+
+	function RenderPuzzle() {
+	 
+	  document.write("<table border=0 cellspacing=3 cellpadding=0 bgcolor=222222>");
+
+	  var y=0;
+
+	  for (y=0; y < kHeight; y++) {
+	     RenderRow(y);
+	  }
+
+	  document.write("</table>");
+
+	}
+
+ function CaseSet(j) {
+          for (var i = 0; i < j.value.length;  i++) {
+             var c = j.value.charAt(i);
+             if (c >= 'a' && c <= 'z') {
+               j.value = j.value.toUpperCase();
+             }
+          }
+        }
+      </script>
+
+      <center>             
+       <SCRIPT LANGAUGE="Javascript">
+	  RenderPuzzle();
+       </SCRIPT>
+      </center>
+
+      <TABLE>
+  <TR>
+   <TD colspan=2>
+     Across Clues For Row 1
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY0X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY0X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY0X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY0X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY0X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY0X5" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Across Clues For Row 2
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY1X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY1X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY1X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY1X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY1X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY1X5" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Across Clues For Row 3
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY2X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY2X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY2X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY2X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY2X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY2X5" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Across Clues For Row 4
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY3X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY3X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY3X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY3X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY3X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY3X5" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Across Clues For Row 5
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY4X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY4X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY4X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY4X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY4X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY4X5" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Across Clues For Row 6
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY5X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY5X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY5X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY5X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY5X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY5X5" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Across Clues For Row 7
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY6X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY6X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY6X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY6X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY6X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY6X5" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Across Clues For Row 8
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY7X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY7X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY7X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY7X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY7X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY7X5" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Across Clues For Row 9
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY8X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY8X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY8X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY8X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY8X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY8X5" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Across Clues For Row 10
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY9X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY9X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY9X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY9X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY9X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY9X5" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Across Clues For Row 11
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY10X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY10X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY10X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY10X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY10X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY10X5" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Across Clues For Row 12
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY11X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY11X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY11X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY11X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY11X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="ACROSSCLUEY11X5" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+
+      <TABLE>
+  <TR>
+   <TD colspan=2>
+     Down Clues For Column 1
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY0X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY1X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY2X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY3X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY4X0" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY5X0" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Down Clues For Column 2
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY0X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY1X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY2X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY3X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY4X1" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY5X1" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Down Clues For Column 3
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY0X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY1X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY2X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY3X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY4X2" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY5X2" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Down Clues For Column 4
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY0X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY1X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY2X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY3X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY4X3" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY5X3" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Down Clues For Column 5
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY0X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY1X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY2X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY3X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY4X4" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY5X4" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Down Clues For Column 6
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY0X5" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY1X5" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY2X5" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY3X5" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY4X5" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY5X5" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Down Clues For Column 7
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY0X6" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY1X6" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY2X6" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY3X6" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY4X6" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY5X6" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Down Clues For Column 8
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY0X7" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY1X7" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY2X7" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY3X7" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY4X7" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY5X7" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Down Clues For Column 9
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY0X8" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY1X8" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY2X8" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY3X8" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY4X8" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY5X8" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Down Clues For Column 10
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY0X9" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY1X9" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY2X9" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY3X9" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY4X9" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY5X9" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Down Clues For Column 11
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY0X10" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY1X10" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY2X10" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY3X10" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY4X10" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY5X10" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+<TABLE>
+  <TR>
+   <TD colspan=2>
+     Down Clues For Column 12
+   </TD>
+  </TR>
+  <TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY0X11" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY1X11" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY2X11" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY3X11" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY4X11" VALUE="">
+  </TD>
+</TR>
+<TR>
+  <TD>
+    <INPUT TYPE=TEXT NAME="DOWNCLUEY5X11" VALUE="">
+  </TD>
+</TR>
+
+</TABLE>
+
+      	
+       </form>
+
+</body>
+</html>
+

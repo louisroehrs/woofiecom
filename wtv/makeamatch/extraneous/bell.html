@@ -1,0 +1,43 @@
+<!-- This document was created with HomeSite 2.5 -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<HTML>
+<HEAD>
+	<TITLE>Untitled</TITLE>
+			<SCRIPT Language="JavaScript">
+
+	function getURLvar(Name) {
+		var search = Name + "="
+		var incoming = window.location.search
+		if (incoming.length > 0) { // if there are any search parameters
+			offset = incoming.indexOf(search) 
+			if (offset != -1) { // if parameter exists 
+				offset += search.length 
+				// set index of beginning of value
+				end = incoming.indexOf("&", offset) 
+				// set index of end of cookie value
+				if (end == -1) 
+					end = incoming.length
+				value = unescape(incoming.substring(offset, end))
+				if (value == "") {
+					return null
+				} else {
+					return value
+				}
+			}
+			else return null
+		}
+		else return null
+	}
+
+
+</SCRIPT>
+</HEAD>
+
+<SCRIPT Language="JavaScript">
+	document.write(getURLvar("HTML"));
+
+</SCRIPT>
+
+
+</HTML>

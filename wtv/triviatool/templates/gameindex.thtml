@@ -1,0 +1,1 @@
+<tr><td><!--NAME--></td><td><a href="<!--CGIURL-->changequestions.cgi?ENCODEDNAME=<!--ENCODEDNAME-->&CATEGORY=<!--CATEGORY-->">Modify</a></td><td> <a href="<!--PUBURL--><!--CATEGORY-->/<!--ENCODEDNAME-->/index.html">Display</a></td></tr>

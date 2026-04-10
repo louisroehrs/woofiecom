@@ -1,0 +1,531 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--last modified on Wednesday, November 11, 1998 03:35 AM -->
+<HTML>
+
+<HEAD>
+
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+	<META NAME="author" Content="Louis Roehrs   Big Woofie Studios http://www.woofie.com">
+	<META NAME="reply-to" content="louiswoofie.com">
+	<META NAME="copyright" content="1997-1998 Louis Roehrs Big Woofie Studios http://www.woofie.com">
+	<META NAME="keywords" Content="stocks business news quotes investment advice shippers package shipping and tracking"
+	<META NAME="description" CONTENT="Leading innovative business and investment site for people wanting to understand and profit from the markets.">
+	<META NAME="robots" content="index,follow">
+	<META NAME="revisit-after" content="15">
+	
+	<TITLE>Big Woofie Studios Business, News Headlines, and Quotes</TITLE>
+	
+	
+<SCRIPT Language=Javascript>
+function getQuote () {
+	var ticker = document.formq.symb.value;
+	var time = document.formq.time.selectedIndex;
+	time = document.formq.time.options[time].value;
+	var urlstring = "http://www.bigcharts.com/quickchart/quickchart.asp?sid=&o_symb=&symb="+ticker+"&time="+time;
+	window.open(urlstring,"quote");
+} 
+	function displayat(imagename, myvalue) {
+		tens =  ""+ Math.round((myvalue / 10)-.5);
+		tens = tens.substring(0,1);
+		document.images[imagename + "10"].src= "calc/dg" + tens + ".gif";
+		document.images[imagename + "1"].src= "calc/dg" + (myvalue % 10) + ".gif";
+		<!-- document.woof.debug.value = (myvalue/10) + "}}" + tens +"((" + today + " ))";	 -->
+	}
+
+	function tick(timerID) {
+		today = new Date();
+		hour = today.getHours();
+		day ='am'
+		if (hour > 12) {
+			hour -= 12
+			day='pm'
+			}
+		minute = today.getMinutes();
+		displayat("hours",hour,today);
+		displayat("mins",minute,today);
+		document.images["ampm"].src = "dg" + day +".gif"
+		timerID = setTimeout("tick()",1000)
+   		timerRunning = true
+
+		}
+	
+	function startclock(){
+	   // Make sure the clock is stopped
+   		stopclock()
+   		tick()
+		}
+
+
+	var timerID = null
+	var timerRunning = false
+	
+	function starttimer() {
+		timerID=setTimeout('tick(timerID)',5000)
+		}
+	
+	function stoptimer(){
+   		if(timerRunning)
+      		clearTimeout(timerID)
+   			timerRunning = false
+		}
+
+</script>
+</HEAD>
+
+<BODY  onload="tick();return true;" TEXT="#000066" BGCOLOR="#808080" LINK="#0000FF" VLINK="#000099" ALINK="#FFFF00">
+
+<CENTER>
+<table width=96% cellspacing=1 cellpadding=3 border=0>
+
+
+<TR><TD align=center BGCOLOR="#000066">
+<center>
+<script type="text/javascript"><!--
+google_ad_client = "pub-7467616088319038";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_type = "text";
+//2007-08-23: woofie.com
+google_ad_channel = "2520990473";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_text = "000000";
+google_color_url = "0066CC";
+//-->
+</script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+</TD><TD valign=bottom align=right BGCOLOR="#000066"><TABLE>
+<TR><TD ALIGN="CENTER"><IMG SRC="calc/1x1clear.gif" WIDTH=10 HEIGHT=3 BORDER=0 ALT=""><BR>
+<IMG SRC="calc/1x1clear.gif" WIDTH=10 HEIGHT=3 BORDER=0 ALT=""><IMG SRC="calc/dblank.gif" name="hours10" WIDTH=16 HEIGHT=21 BORDER=0 ALT=""><IMG SRC="calc/dblank.gif" name="hours1" WIDTH=16 HEIGHT=21 BORDER=0 ALT=""><IMG SRC="calc/dgc.gif" name="colon" WIDTH=9 HEIGHT=21 BORDER=0 ALT=""><IMG SRC="calc/dblank.gif" name="mins10" WIDTH=16 HEIGHT=21 BORDER=0 ALT=""><IMG SRC="calc/dblank.gif" name="mins1" WIDTH=16 HEIGHT=21 BORDER=0 ALT=""><IMG SRC="calc/dgam.gif" Name="ampm" WIDTH=16 HEIGHT=21 BORDER=0 ALT=""><IMG SRC="calc/1x1clear.gif" WIDTH=5 HEIGHT=3 BORDER=0 ALT="">
+</TR></TD></TABLE>
+</td>
+</TR>
+	
+<!-- 	<TR>
+		<TD align=center width=100% BGCOLOR="#000066">
+			<TABLE BORDER="0"> -->
+			<!-- 	<TR>
+					<TD align=center BGCOLOR="#000066"><A HREF="http://interactive.wsj.com/cgi-bin/wsjgate?source=aff1021woofie&URI=http://public.wsj.com/tour/trywsj.html"><IMG SRC="images/futures.gif" WIDTH=468 HEIGHT=60 BORDER=0></A></TD>
+				</TR> -->
+		<!-- 	</TABLE>
+		</TD>
+	</TR> -->
+</TABLE>
+
+<TABLE BORDER="0" CELLPADDING="2" CELLSPACING="7" WIDTH="98%" HEIGHT="35">
+	<TR>
+		<TD COLSPAN="2" BGCOLOR="#000066">
+			<TABLE BORDER="0" WIDTH="100%">
+				<TR> <TD align=center WIDTH="10%" BGCOLOR="#000066"><A HREF="index.html"><IMG SRC="images/redpawprint.gif" WIDTH="33" HEIGHT="23" BORDER="0" HSPACE="7"></A></TD>
+					<TD WIDTH="65%" BGCOLOR="#000066"><FONT SIZE="5" COLOR="#FF0000" FACE="Courier New"><B>Big Woofie Business Tools</B></FONT></TD>
+					<TD align=right WIDTH="25%" BGCOLOR="#000066"><FONT SIZE="5" COLOR="#FF0000" FACE="Courier New"><B>Think Big!</B></FONT></TD>
+				</TR>
+			</TABLE>
+		</TD>
+	</TR>
+
+	<TR>
+		<TD VALIGN="TOP" BGCOLOR="#000066">
+			<CENTER>
+			<P>
+			<TABLE BORDER="0" CELLSPACING="0" WIDTH="100%" BGCOLOR="#FFFFFF">
+				<TR>
+					<TD HEIGHT="16" BGCOLOR="#000066"><FONT SIZE="2" COLOR="#00FF00" FACE="Arial, Helvetica"><B>&nbsp;News</B></FONT></TD>
+				</TR>
+				<TR>
+					<TD HEIGHT="16" BGCOLOR="#000066" align="center">
+              <APPLET CODE="sevenAMNewsTicker.class" CODEBASE="http://www.7am.com/java" WIDTH=450 HEIGHT=15>
+              <PARAM NAME="channels" VALUE="+WORLDnews +USAnetnews +WORLDnetnews  +USAnews">
+              <PARAM NAME="target" VALUE="newspage">
+              </APPLET></TD>
+				</TR>				
+				<TR>
+					<TD BGCOLOR="#FFFFFF">
+						<CENTER>
+						
+						<TABLE BORDER="0" WIDTH="90%">
+							<TR>
+							
+								
+								<TD WIDTH="55%" VALIGN="TOP">
+<A HREF="http://headlines.isyndicate.com/rcscript/?user=f7iha9s6&vfc=FF0022&dd=no&hbc=000080&ibc=ffffff&hfc=00ff00&ifc=0000ff&bc=000030&bgc=000030&hg=http://www.woofie.com/images/headlinenews.gif&burl=http://www.woofie.com&dt=Sports%20News&hfs=2&bfs=2&hff=arial,helvetica&iff=timesnewroman&ifs=2"><small>Woofie Headline News - Here First!</small></a><BR>
+								<A HREF="http://my.yahoo.com"><FONT SIZE="2">My Yahoo<BR>
+									</FONT></A><A HREF="http://news.yahoo.com"><FONT SIZE="2">News@Yahoo</FONT></A></TD>
+								<TD WIDTH="55%" VALIGN="TOP"><A HREF="http://www.abcnews.com"><FONT SIZE="2">ABCNews</FONT></A><A HREF="http://news.yahoo.com"><FONT SIZE="2"><BR>
+									</FONT></A><A HREF="http://www.zdnet.com/zdnn"><FONT SIZE="2">ZDNet</FONT></A><A HREF="http://www.cnn.com"><FONT SIZE="2"><BR>
+									CNN</FONT></A></TD>
+							</TR>
+						</TABLE>
+
+						</CENTER>
+					</TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#000066"><FONT SIZE="2" COLOR="#00FF00" FACE="Arial, Helvetica"><B>&nbsp;Investing and Finance</B></FONT></TD>
+				</TR>
+				<TR>
+					<TD>
+						<CENTER>
+						<P>
+						<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH="89%">
+							<TR>
+								<TD WIDTH="33%" VALIGN="TOP"><A HREF="http://www.upside.com"><FONT SIZE="2">Upside</FONT></A><BR>
+									<A HREF="http://www.business20.com"><FONT SIZE="2">Business 2.0</FONT></A><BR>
+									<A HREF="http://www.fastcompany.com"><FONT SIZE="2">Fast Company</FONT></A><BR>
+									<A HREF="fool.yahoo.com"><FONT SIZE="2">Motley Fool</FONT></A></TD>
+								<TD WIDTH="2%">&nbsp;</TD>
+								<TD WIDTH="65%" VALIGN="TOP"><A HREF="http://www.wsj.com"><FONT SIZE="2">Wall Street Journal</FONT></A><BR>
+									<A HREF="http://www.investors.com/"><FONT SIZE="2">Investor's Business Daily</FONT></A><BR>
+									<A HREF="http://www.smartmoney.com"><FONT SIZE="2">Smart Money</FONT></A><BR><A HREF="http://quote.yahoo.com"><FONT SIZE="2">Yahoo Finance</FONT></A></TD>
+																	<!-- 	<SELECT NAME="Selection">
+									<OPTION SELECTED>Select Your Broker</OPTION>
+									<OPTION>Ameritrade </OPTION>
+									<OPTION>Discover</OPTION>
+									<OPTION>ETrade</OPTION>
+									<OPTION>Fidelity</OPTION>
+									</SELECT>
+ <A HREF="javascript:gotrade();"><FONT SIZE="1"><B>GO</B></FONT></A> -->
+							</TR>
+						</TABLE>
+
+</CENTER>
+					</TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#000066"><FONT SIZE="2" COLOR="#00FF00" FACE="Arial, Helvetica"><B>&nbsp;Banking</B></FONT></TD>
+				</TR>
+				<TR>
+					<TD>
+						<CENTER>
+						<P>
+						<TABLE BORDER="0" WIDTH="90%">
+							<TR>
+								<TD WIDTH="34%"><A HREF="http://www.bofa.com"><FONT SIZE="2">Bank of America</FONT></A></TD>
+								<TD WIDTH="66%"><A HREF="http://www.wellsfargo.com"><FONT SIZE="2">Wells Fargo Online</FONT></A></TD>
+							</TR>
+						</TABLE>
+
+</CENTER>
+					</TD>
+				</TR>
+<!-- <TR>
+					<TD HEIGHT="16" BGCOLOR="#000066"><FONT SIZE="2" COLOR="#00FF00" FACE="Arial, Helvetica"><B>&nbsp;Keep tracks!</B></FONT></TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#FFFFFF">
+						<UL>
+							<LI><FONT SIZE="2" COLOR="#0000FF" FACE="Times, Times New Roman">Your own online calendar</FONT>
+							<LI><FONT SIZE="2" COLOR="#0000FF" FACE="Times, Times New Roman">Publish your events on Dog Day!</FONT>
+							<LI><FONT SIZE="2" COLOR="#0000FF" FACE="Times, Times New Roman">Create your own start page</FONT>
+						</UL>
+					</TD>
+				</TR> -->
+																																																																																									<TR>
+					<TD HEIGHT="16" BGCOLOR="#000066"><FONT SIZE="2" COLOR="#00FF00" FACE="Arial, Helvetica"><B>&nbsp;Supplies Shopping</B></FONT></TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#FFFFFF">
+						<CENTER>
+						<P>
+						<TABLE BORDER="0" WIDTH="90%">
+							<tr>
+								<td colspan=2><A HREF="save/index.html"><small>Let woofie comparison shop for you!</A>&nbsp;
+							<TR>
+								<TD WIDTH="34%"><FONT SIZE="2">Software:<BR>
+									Books:</FONT><FONT SIZE="1"><BR>
+									</FONT><FONT SIZE="2">Hardware:</FONT></TD>
+								<TD WIDTH="66%"><A HREF="http://www.beyond.com/AF19040/business.htm"><FONT SIZE="2">Beyond.com</FONT></A><FONT SIZE="2"> &nbsp;&nbsp;&nbsp;</FONT><A
+									HREF="http://www.shareware.com"><FONT SIZE="2">Shareware</FONT></A><FONT SIZE="2"><BR>
+									</FONT><A HREF="http://www.amazon.com/exec/obidos/redirect-home/bigwoofieenterta"><FONT SIZE="2">Amazon.com<BR>
+									</FONT></A><A HREF="http://www.apple.com"><FONT SIZE="2">Apple</FONT></A><FONT SIZE="2"> &nbsp;&nbsp;&nbsp;</FONT><A
+									HREF="http://www.dell.com"><FONT SIZE="2">Dell</FONT></A><FONT SIZE="2"> &nbsp;&nbsp;&nbsp;</FONT><A HREF="http://www.compaq.com"><FONT
+									SIZE="2">Compaq</FONT></A></TD>
+							</TR>
+						</TABLE>
+
+</CENTER>
+					</TD>
+				</TR>
+				<TR>
+					<TD HEIGHT="16" BGCOLOR="#000066"><FONT SIZE="2" COLOR="#00FF00" FACE="Arial, Helvetica"><B>&nbsp; Topics</B></FONT></TD>
+				</TR>
+				<TR>
+					<TD>
+						<CENTER>
+						<P>
+						<TABLE BORDER="0" WIDTH="90%">
+						<TR>
+								<TD colspan=2 VALIGN="TOP">Clearly, this section will be updated soon.  In the meantime, check
+								the excellent selection of books from <a href="http://www.amazon.com/exec/obidos/external-search?mode=books&keyword=nolo+business&tag=bigwoofieenterta&Search=Search">
+Nolo Press</a><BR></td>
+
+							</TR>
+						</TABLE>
+
+</CENTER>
+					</TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#000066"><FONT SIZE="2" COLOR="#00FF00" FACE="Arial, Helvetica"><B>&nbsp;Clubs</B></FONT></TD>
+				</TR>
+				<TR>
+					<TD>
+						<CENTER>
+						<P>
+						<TABLE BORDER="0" WIDTH="90%">
+							<TR>
+								<TD WIDTH="90%" VALIGN="TOP"><A HREF="http://www.mitcnc.org"><FONT SIZE="2">MIT Club of Northern California</FONT></A><BR>
+									<A HREF="http://clubs.yahoo.com/Small_Business"><FONT SIZE="2">Small Business Clubs at Yahoo</FONT></A></TD>
+								<TD WIDTH="10%" VALIGN="TOP"></TD>
+							</TR>
+						</TABLE>
+
+</CENTER>
+					</TD>
+				</TR>
+<!--				<TR>
+					<TD BGCOLOR="#000066"><FONT SIZE="2" COLOR="#00FF00" FACE="Arial, Helvetica"><B>&nbsp;Shipping and Package Tracking</B></FONT></TD>
+				</TR>
+ 				<TR>
+					<TD BGCOLOR="#CCFFCC">
+						<CENTER>
+						<P>
+						<TABLE BORDER="0" CELLPADDING="4" CELLSPACING="0" WIDTH="100%" BGCOLOR="#FFFFFF">
+							<TR>
+								<TD WIDTH="39%" BGCOLOR="#666666"><FONT SIZE="1" COLOR="#FFFFFF" FACE="Arial, Helvetica"><B>Shipper</B></FONT></TD>
+								<TD WIDTH="33%" BGCOLOR="#666666"><FONT SIZE="1" COLOR="#FFFFFF" FACE="Arial, Helvetica"><B>Enter Waybill Number</B></FONT></TD>
+								<TD WIDTH="28%" BGCOLOR="#666666"><FONT SIZE="1" COLOR="#FFFFFF" FACE="Arial, Helvetica"><B>and Click</B></FONT></TD>
+							</TR>
+							<TR>
+								<TD WIDTH="39%" BGCOLOR="#FFFFFF"><A HREF="www.fedex.com/us"><FONT SIZE="2" FACE="Arial, Helvetica"><B>FedEx</B></FONT></A></TD>
+								<TD WIDTH="33%" BGCOLOR="#FFFFFF"><INPUT TYPE="TEXT" NAME="Field" SIZE="13"></TD>
+								<TD WIDTH="28%" BGCOLOR="#FFFFFF"><INPUT TYPE="SUBMIT" NAME="Submit" VALUE="Track package"></TD>
+							</TR>
+							<TR>
+								<TD WIDTH="39%" BGCOLOR="#CCCCFF"><A HREF="www.ups.com"><FONT SIZE="2" FACE="Arial, Helvetica"><B>UPS</B></FONT></A></TD>
+								<TD WIDTH="33%" BGCOLOR="#CCCCFF"><INPUT TYPE="TEXT" NAME="Field1" SIZE="13"></TD>
+								<TD WIDTH="28%" BGCOLOR="#CCCCFF"><INPUT TYPE="SUBMIT" NAME="Submit1" VALUE="Track package"></TD>
+							</TR>
+							<TR>
+								<TD WIDTH="39%"><A HREF="www.airborneexpress.com"><FONT SIZE="2" FACE="Arial, Helvetica"><B>Airborne Express</B></FONT></A></TD>
+								<TD WIDTH="33%"><INPUT TYPE="TEXT" NAME="Field1" SIZE="13"></TD>
+								<TD WIDTH="28%"><INPUT TYPE="SUBMIT" NAME="Submit1" VALUE="Track package"></TD>
+							</TR>
+							<TR>
+								<TD WIDTH="39%" BGCOLOR="#808080"><FONT SIZE="1" COLOR="#FFFBF0" FACE="Arial, Helvetica"><B>Post Office</B></FONT></TD>
+								<TD COLSPAN="2" BGCOLOR="#808080"><FONT SIZE="1" COLOR="#FFFBF0" FACE="Arial, Helvetica"><B>Electonic Postage</B></FONT></TD>
+							</TR>
+							<TR>
+								<TD WIDTH="39%"><A HREF="www.usps.gov"><FONT SIZE="2" FACE="Arial, Helvetica"><B>USPS</B></FONT></A></TD>
+								<TD COLSPAN="2"><A HREF="www.estamp.com"><FONT SIZE="2" FACE="Times, Times New Roman">EStamp<BR>
+									Stamp Master Internet Postage</FONT></A></TD>
+							</TR>
+						</TABLE>
+
+</CENTER>
+					</TD>
+				</TR> -->
+				<TR>
+					<TD BGCOLOR="#000066"><FONT SIZE="2">&nbsp;</FONT><FONT SIZE="2" COLOR="#00FF00" FACE="Arial, Helvetica"><B>Calculator</B></FONT></TD>
+				</TR>
+				<TR>
+					<TD>
+						<CENTER>
+						<P>
+						<TABLE BORDER="0" WIDTH="90%">
+							<TR>
+								<TD WIDTH="90%" VALIGN="TOP"><APPLET CODEBASE="http://www.primosoft.com/Applet/" CODE="Calc.class" WIDTH=241 HEIGHT=168></APPLET>
+</TD>
+								<TD WIDTH="10%" VALIGN="TOP"></TD>
+							</TR>
+						</TABLE>
+
+</CENTER>
+					</TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#000066"><FONT SIZE="2" COLOR="#00FF00" FACE="Arial, Helvetica"><B>&nbsp;Woofie.com</B></FONT></TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#FFFFFF">
+						<CENTER>
+						<P>
+						<TABLE BORDER="0" WIDTH="90%">
+							<TR>
+								<TD WIDTH="80%" VALIGN="TOP"><A HREF="about.html"><FONT SIZE="2" FACE="Times, Times New Roman">About Us</FONT></A><BR>
+									<A HREF="mailto:"><FONT SIZE="2" FACE="Times, Times New Roman">Write Us and Feedback</FONT></A><BR>
+									<A HREF="about.html"><FONT SIZE="2" FACE="Times, Times New Roman">Let us Build a Site For You!</FONT></A></TD>
+								<TD WIDTH="20%" VALIGN="TOP"></TD>
+							</TR>
+						</TABLE>
+
+</CENTER>
+					</TD>
+				</TR>
+			</TABLE>
+
+</CENTER>
+		</TD>
+		<TD  VALIGN="TOP" BGCOLOR="#000066">
+			<CENTER>
+			<P>
+			<TABLE  BORDER="0" CELLSPACING="0" WIDTH="225" BGCOLOR="#FFFFFF">
+
+				<TR>
+					<TD HEIGHT="16" VALIGN="TOP" BGCOLOR="#000066"><FONT SIZE="2" COLOR="#00FF00" FACE="Arial, Helvetica"><B>&nbsp;Information Center</B></FONT></TD>
+				</TR>
+				<TR>
+					<TD ALIGN="CENTER" BGCOLOR="#000000"><EMBED SRC="flash/CreatedForBusiness.swf" WIDTH="213" HEIGHT="160" ALIGN="BOTTOM" VSPACE="5" loop="true"></TD>
+				</TR>
+								<TR>
+					<TD HEIGHT="16" BGCOLOR="#000066"><FONT SIZE="2" COLOR="#00FF00" FACE="Arial, Helvetica"><B>&nbsp;Wall Street Journal</B></FONT></TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#000000">
+						<CENTER>
+						<P>
+
+
+						<TABLE BORDER="0" CELLPADDING="4" CELLSPACING="0" WIDTH="176" BGCOLOR="#000000">
+							<TR>
+								<TD>
+									<A HREF="http://interactive.wsj.com/cgi-bin/wsjgate?source=aff1021woofie&URI=http://public.wsj.com/tour/trywsj.html">
+ <IMG SRC=http://public.wsj.com/affiliates/vertical.gif></A>
+								
+								</TD>
+							</TR>
+						</TABLE>
+
+</CENTER>
+					</TD>
+				</TR>
+				
+
+				<TR>
+					<TD HEIGHT="16" VALIGN="TOP" BGCOLOR="#000066"><FONT SIZE="2" COLOR="#00FF00" FACE="Arial, Helvetica"><B>&nbsp;Quotes by BigCharts</B></FONT></TD>
+				</TR>
+				<TR>
+					<TD ALIGN="CENTER" BGCOLOR="#000000"><P>
+					<table BORDER="0" CELLSPACING="5" WIDTH="100%" BGCOLOR="#000066">
+						<tr><td>
+						<form name="formq" action="">  <CENTER>
+						<INPUT TYPE="text" NAME="symb" VALUE="indu" SIZE="12" MAXLENGTH="30">
+                                
+                                <SELECT NAME="time">
+                                <OPTION VALUE=1 SELECTED> 1-day
+								<OPTION VALUE=2> 2 days
+								<OPTION VALUE=3> 5 days
+								<OPTION VALUE=0> ----------
+								<OPTION VALUE=4> 1-month
+								<OPTION VALUE=5> 2 months
+								<OPTION VALUE=6> 3 months
+								<OPTION VALUE=7> 6 months
+								<OPTION VALUE=19> YTD
+								<OPTION VALUE=8> 1-year
+								<OPTION VALUE=9> 2 years
+								<OPTION VALUE=10> 3 years
+								<OPTION VALUE=11> 4 years
+								<OPTION VALUE=12> 5 years
+								<OPTION VALUE=13> 1-decade
+								<OPTION VALUE=20> All Data
+
+                                </SELECT>
+                              <A HREF="javascript:getQuote()"><FONT SIZE="-1">Get Chart</FONT></A></CENTER></form></td>
+						</tr>
+					</table>
+</P>
+					</TD>
+				</TR>
+				
+				<TR>
+					<TD HEIGHT="16" BGCOLOR="#000066"><FONT SIZE="2" COLOR="#00FF00" FACE="Arial, Helvetica"><B>&nbsp;Buy Books about Small Biz</B></FONT></TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#000000">
+						<CENTER>
+						<P>
+<FORM ACTION="http://www.amazon.com/exec/obidos/external-search" METHOD="GET">
+
+						<TABLE BORDER="0" CELLPADDING="4" CELLSPACING="0" WIDTH="176" BGCOLOR="#000000">
+							<TR>
+								<TD WIDTH="53%" ALIGN="CENTER" VALIGN="TOP">
+									<P ALIGN="CENTER"><A HREF="http://www.amazon.com/exec/obidos/redirect-home/bigwoofieenterta"><IMG SRC="images/40perc-bmm-swirl.gif"
+									WIDTH="100" HEIGHT="70" ALIGN="BOTTOM" BORDER="0"></A>
+								</TD>
+								<TD><INPUT TYPE="RADIO" NAME="mode" VALUE="books"  CHECKED><FONT COLOR="Yellow">Books </FONT><INPUT TYPE="RADIO" NAME="mode"
+									VALUE="music"><FONT COLOR="Yellow">Music</FONT></TD>
+							</TR>
+							<TR>
+								<TD ALIGN="CENTER" VALIGN="TOP" COLSPAN="2">
+									<CENTER>
+									<P><FONT COLOR="Yellow">Enter keywords...</FONT><BR>
+									<INPUT TYPE="TEXT" NAME="keyword" SIZE="20" VALUE="small business"><INPUT TYPE="HIDDEN" NAME="tag" SIZE="-1" VALUE="bigwoofieenterta"><BR>
+									<INPUT TYPE="SUBMIT" NAME="Search" VALUE="Search">
+</CENTER>
+								</TD>
+							</TR>
+						</TABLE>
+</FORM>
+</CENTER>
+					</TD>
+				</TR>
+				
+
+				
+			
+ 
+ 
+ 
+ 
+			</TABLE>
+
+</CENTER>
+		</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN="2" BGCOLOR="#000066">
+			<TABLE BORDER="0" cellpadding=2 cellspacing=0 WIDTH="100%">
+				
+				<TR>
+					<TD WIDTH="100%" cellpadding=0 cellspacing=0  VALIGN="TOP" BGCOLOR="#CCCCFF">
+						<P ALIGN="CENTER">
+<script type="text/javascript"><!--
+google_ad_client = "pub-7467616088319038";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_type = "text";
+//2007-08-23: woofie.com
+google_ad_channel = "2520990473";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_text = "000000";
+google_color_url = "0066CC";
+//-->
+</script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+					</TD>
+				</TR>
+			
+			</TABLE>
+		</TD>
+	</TR>
+</TABLE>
+</CENTER>
+<P>
+
+
+</BODY>
+
+</HTML>

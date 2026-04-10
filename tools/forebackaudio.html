@@ -1,0 +1,88 @@
+<!-- This document was created with HomeSite 2.5 -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<HTML>
+<HEAD>
+	<TITLE>woofie's toolbox - foreground & background audio</TITLE>
+
+<SCRIPT LANGUAGE=JavaScript>
+	function PlaySound(sound) {
+		if (sound == null) {  
+            return;
+		}
+		else {
+			sound.play(false);
+		}
+	}
+	function PauseSound(sound) {
+		if (sound == null) {  
+            return;
+		}
+		else {
+			sound.pause();
+		}
+	}
+	function ResumeSound(sound) {
+		if (sound == null) {  
+            return;
+		}
+		else {
+			sound.resume();
+		}
+	}
+	function IsPlaying(sound) {
+		if (sound == null) {  
+            return;
+		}
+		else {
+			return(sound.isPlaying());
+		}
+	}
+
+	function swapimage() {
+	
+		if (document.doggies.src == "doggies.jpg") {
+			document.doggies.src = "/ROMCache/spacer.gif";
+		} else {
+			document.doggies.src = "doggies.jpg";
+		}
+
+//		window.location="newbell3.mid";
+		alert(1);
+		PauseSound(document.var);
+				alert(2);
+		PlaySound(document.bell);
+				alert(3);
+		while (IsPlaying(document.bell)) {
+			alert("wating");
+		 }
+				alert(4);
+		ResumeSound(document.var);
+		alert(5);
+		status="woofie";
+	}
+</SCRIPT>
+
+</HEAD>
+<BODY bgcolor=102030 fontsize=medium text=909090 link=a0a000 vlink=808000><BR>
+<display nostatus>
+	<EMBED SRC="var7.mid" LOOP=FALSE AUTOSTART=FALSE NAME="var" HIDDEN=true>
+
+	<EMBED SRC="newbell3.mid" LOOP=FALSE AUTOSTART=FALSE NAME="bell" HIDDEN=true>
+<!-- <bgsound src=var7.mid name="bg" loop=true> -->
+<CENTER><H3>woofie's toolbox - foreground & background audio</H3></CENTER>
+To control when audio plays and stops, embed the audio as below and using the following
+calls to play it.  Put the following tag in the <BODY></BODY> section.
+Name the sound using the <B>name</B> attribute and call it <BR>
+
+
+<A HREF="javascript:swapimage();">Click here.</A><BR>
+<BR><IMG SRC="/ROMCache/spacer.gif" name="doggies" WIDTH=100 HEIGHT=72 BORDER=0>
+<BR><BR><CENTER><hr width=50%><hr width=30%><BR><IMG SRC="doggies.jpg" WIDTH=1 HEIGHT=1 BORDER=0></CENTER>
+<SCRIPT LANGUAGE=JavaScript>
+
+	PlaySound(document.var);
+	
+</SCRIPT>
+</BODY>
+</HTML>

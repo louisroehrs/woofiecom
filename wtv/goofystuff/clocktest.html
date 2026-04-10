@@ -1,0 +1,76 @@
+<!-- This document was created with HomeSite 2.5 -->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+
+
+<HTML>
+
+<HEAD>
+
+	<META NAME="Author" CONTENT="Louis F. Roehrs">
+
+<HEAD>
+<SCRIPT LANGUAGE="JavaScript">
+var timerID = null
+var timerRunning = false
+
+var months = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+var weekday = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+
+function stopclock(){
+   if(timerRunning)
+      clearTimeout(timerID)
+   timerRunning = false
+}
+function startclock(){
+   // Make sure the clock is stopped
+   stopclock()
+   showtime()
+}
+
+function showtime(){
+   var now = new Date()
+   var hours = now.getHours()
+   var minutes = now.getMinutes()
+   var seconds = now.getSeconds()
+   var timeValue = "" + ((hours > 12) ? hours - 12 : hours)
+   timeValue += ((minutes < 10) ? ":0" : ":") + minutes
+   timeValue += ((seconds < 10) ? ":0" : ":") + seconds
+   timeValue += (hours >= 12) ? " P.M." : " A.M."
+   timeValue = weekday[now.getDay()] + ", " + months[now.getMonth()] + " " + now.getDate() + ", 19" + now.getYear() + " " + timeValue
+   document.clock.face.value = timeValue 
+   timerID = setTimeout("showtime()",1000)
+   timerRunning = true
+}
+
+</SCRIPT>
+
+
+	<TITLE>Untitled</TITLE>
+
+</HEAD>
+
+<display nostatus  hideoptions transition=wipeup>
+
+<BODY bgcolor=black onLoad="startclock()" onUnload="stopclock()">
+
+<CENTER>
+
+<A HREF="transition.html" transition=wipeleft ><audioscope bgcolor=black height=350 width=500 rightoffset=50 rightcolor=red leftcolor=blue leftoffset=-50 border=0></A><BR><BR>
+
+<bgsound src= "kidstheme8.mid" ><STRONG>
+
+<FORM NAME="clock" >
+   <FONT SIZE=+2 COLOR="#00FFFF"><STRONG><INPUT TYPE="text" NAME="face" SIZE=40 border=0 usestyle bgcolor=#999999></STRONG></FONT>
+</FORM>
+
+
+</CENTER>
+
+
+
+</BODY>
+
+</HTML>
+

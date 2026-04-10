@@ -1,0 +1,9 @@
+You're spacecraft has crash landed. You are marooned and far away from home. Your mission is simple: Rebuild your craft (cue craft), ignite your rockets and leave this alien world before your oxygen runs out (cue O2)
+
+The parts of your ship have bee scattered across the landscape (cue pieces). You must collect all of the pieces in the correct sequence and then recover the rocket key or your craft will not function properly.  After recovering each piece your scanner will point you toward the next piece. However, your scanner was damaged in the crash so it will be unable to precisley pinpoint the location of the next piece in the sequence. You'll have to use your own logic, intuition and skill to accurately navigate your way to safety. 
+
+Do not panic if you make a wrong turn. Review your path and click "continue" (cue continue) on the display panel. Your spaceship will be dismantled, allowing you to try to reassemble it again in the correct order. 
+
+Good look star voyager.
+
+The Space Race has begun.

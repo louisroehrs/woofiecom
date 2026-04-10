@@ -1,0 +1,746 @@
+
+<html>
+<head>
+<META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">
+<META HTTP-EQUIV="Expires" CONTENT="Thu, Oct 9 ,1997 16:00:00 GMT"> 
+
+<title>MakeAMatch</title>
+
+	<script language="JavaScript">
+	
+
+	
+
+//  ************** Changable settings from HERE
+
+	var sGameDir = "matches/"
+	var asImageNames = new Array("0","1","2","3","4","5","6","7","8","9");
+		
+	var sGameTitle = "Numbers";
+
+	var kWidth  = 5 
+	var kHeight = 4
+	var cellWidth = 55
+	var cellHeight = 55
+// 270;
+	var iSecondsLeft = 240
+	var sCoverImageFile = "images/cover55.gif";
+
+// *************** To HERE (Don't mess with the rest!);
+	var debug=0;
+	if (debug) alert("In Top!");
+	
+	Acols = getURLvar("cols")
+	Arows = getURLvar("rows")
+	Awidth = getURLvar("width")
+	Aheight = getURLvar ("height")
+	Awoofie = getURLvar ("woofie")
+	if (debug) alert("assigned woofie!");
+	if (Awoofie != null) {
+		if (Awoofie == "yes") { window.location = "http://www.woofie.com/webtv.html" }
+		}
+	if (debug) alert("Acols " + Acols +"Arows " + Arows + "Awidth" + Awidth + "Aheight " + Aheight );
+
+	if (Acols != null)
+		kWidth = Acols;
+	if (Arows != null) 
+		kHeight = Arows;
+	if (Awidth != null ) 
+		cellWidth = Awidth;
+	if (Aheight != null )
+		cellHeight = Aheight;
+		
+	if (debug) alert("kWidth " + kWidth +"kHieght " + "cellWidth" + cellWidth + "cellHeight " + cellHeight );
+
+
+
+	puzzle = new Array("0","2","4","6","4","7","3","6","0","7","5","5","2","1","1","3","8","9","8","9","0","0","0","0","0","2","4","6","4","7","3","6","0","7","5","5","2","1","1","3","8","9","8","9","0","0","0","0","0","2","4","6","4","7","3","6","0","7","5","5","2","1","1","3","8","9","8","9","0","0","0","0","0","2","4","6","4","7","3","6","0","7","5","5","2","1","1","3","8","9","8","9","0","0","0","0","0","2","4","6","4","7","3","6","0","7","5","5","2","1","1","3","8","9","8","9","0","0","0","0","0","2","4","6","4","7","3","6","0","7","5","5","2","1","1","3","8","9","8","9","0","0","0","0","0","2","4","6","4","7","3","6","0","7","5","5","2","1","1","3","8","9","8","9","0","0","0","0","0","2","4","6","4","7","3","6","0","7","5","5","2","1","1","3","8","9","8","9","0","0","0","0","0");
+
+	
+//
+
+	var mam = new game("mam", sGameDir, sGameTitle, asImageNames, sCoverImageFile, kWidth, kHeight, cellWidth, cellHeight, iSecondsLeft)
+
+	var scores = new Array(0,0,0)
+	var dates = new Array("","","")
+
+	
+// OBJECTS
+// CELL Object
+
+	function Cell(objName, game, contents, x,y, cellWidth, cellHeight) {
+		if (objName == "") {
+			objName = "Cell" + x + "at" + y
+		}
+		this.objName = objName
+		this.contents = eval(contents)
+		this.covered = 1
+		this.game = game
+	
+		this.x = x
+		this.y = y
+		this.cellWidth = cellWidth
+		this.cellHeight = cellHeight
+		this.matched = false
+	// methods
+		this.cover = Cover
+		this.uncover = Uncover
+		this.matches = Matches
+		this.select = SelectCell
+		this.render = RenderCell
+	}
+
+// CELL methods  Keep pure except for SelectCell
+
+	function Uncover() {
+		document.images[this.objName].src =this.game.images[this.contents].src
+		this.covered = 0
+	}
+
+	function Cover() {
+		document.images[this.objName].src = this.game.coverImage.src
+		this.covered = 1
+	}
+	
+//   red #a52929 blue bgcolor=bgcolor=#595775
+	function RenderCell() {
+		document.write("<td background='images/cover55bg.gif'><a href='javascript:mam.board.cells["+ this.x + "][" + this.y + "].select();'><img src='" + this.game.spacerImage.src +"' border=0 name='" + this.objName + "' width="+ this.cellWidth+" height=" + this.cellHeight + "></a>");
+		document.write("</td>");
+	}
+
+	function SelectCell() {
+		
+	if (this.game.state != "inplay")
+		return;
+	
+		if  ((this.matched) || (!this.covered))
+			return;
+
+		if  ((this.game.blockClicks !=1) || (this.game.players.length ==1)) {
+															// wait till cells covered if two player
+
+				
+			if (this.game.pointsSelected == 1) {
+				this.uncover();
+				this.game.pointsSelected = 0;				// Selecting second cell
+
+				if ( this.matches(this.game.firstCell) ) {  // Check for a match
+					this.matched = true;					// Matched
+					this.game.firstCell.matched = true;
+					window.status="Found a Match!  Go again!"
+					PlaySound(document.bell);
+			
+					this.game.score();
+				}
+				else {										//Mis matched
+					this.game.blockClicks =1
+					this.game.secondCell = this
+					this.game.needToCoverBadMatch = 1;
+					this.game.BadMatchID = window.setTimeout(this.game.name + ".coverunmatched()", 4000);
+					window.status="Sorry, No Match Found..."
+					PlaySound(document.buzzer);
+				}
+			}
+			else {											//Selecting first cell 
+				if (this.game.players.length ==1) {
+					this.game.coverunmatched()		// cover any previously uncovered cells (one player mode only)
+				}
+				this.game.pointsSelected =1;
+				this.game.firstCell = this;
+				this.uncover();
+			}
+
+		}		
+	}
+	
+	function Matches(other) {
+		return( this.contents == other.contents ) 
+	}
+
+
+// GAME Object  new game(theme elements)
+	function game(name, sGameDir, sGameTitle, asImageNames, sCoverImageFile, kWidth, kHeight, cellWidth, cellHeight, iSecondsLeft) {
+	
+		this.name = name
+		this.title = sGameTitle
+		this.directory = sGameDir
+		this.imageNames = asImageNames
+		this.coverImage = LoadImage(sCoverImageFile)
+		this.spacerImage = LoadImage("images/spacer.gif")
+		this.images = LoadGameTiles(sGameDir,asImageNames)
+		this.players = new Array ()
+		this.currentPlayer = null
+		this.clock1 = null 
+		this.board = new gameboard(this, kWidth, kHeight, cellWidth, cellHeight)
+		this.firstCell = null
+		this.secondCell = null
+		this.blockClicks = 0
+		this.pointsSelected = 0;
+		this.state = "inplay";
+		this.BadMatchID = 0;
+		this.needToCoverBadMatch= 0;
+		this.matched = 0;
+		
+		// Methods
+		this.displaystatus = null
+		this.score = Score
+		this.addplayer = AddPlayer
+		this.start = StartGame
+		this.renderSidebar = RenderSidebar
+		this.setup = SetupGame
+		this.onePlayerScoreboard = OnePlayerScoreboard
+		this.multiPlayerScoreboard = MultiPlayerScoreboard
+		this.nextPlayer = NextPlayer
+		this.coverunmatched = CallbackNoMatch
+		this.win = Win
+		this.lose = Lose
+		
+		this.setup()		
+
+	}
+		
+// GAME Methods
+	function Restart() {
+			var today = new Date()
+	        var expires = new Date()
+			expires.setTime(today.getTime() + 60*60*24*365)
+			setCookie("reloaded","true",expires)
+
+		location.reload();
+	}
+	
+	function Win() {
+		PlaySound(document.applause)
+		var parameter = "win.html?"
+		for (i=0; i< this.players.length; i++) {	
+			parameter += "player"+ i + "=" + this.players[i].name+"&p" + i + "score=" + this.players[i].score + "&"
+		}
+		window.location = parameter
+	}
+
+	function Lose() {
+		PlaySound(document.ode)
+		window.location = "lose.html"
+	}
+
+	function SetupGame() {  // called when GAME object constructed...
+
+	// LOAD Players:  This takes care of any slots being filled.  3 only, 1 or 3, etc...
+	
+		Aplayer = getURLvar ("player0")
+		if ( Aplayer != null) {
+			this.addplayer(Aplayer)
+		}
+		Aplayer = getURLvar ("player1")
+		if (Aplayer != null) {
+				this.addplayer(Aplayer)
+		}
+		Aplayer = getURLvar ("player2")
+		if ( Aplayer != null) {
+				this.addplayer(Aplayer)
+		}
+		if (this.players.length == 0) {  // No slots filled, so add a player
+			this.addplayer("Match Maker")
+		}
+
+		this.currentPlayer= this.players[0]
+		
+	}
+	function LoadImage(imageFileName) {
+		// Load cover and spacer images.  Might help us with some WebTV bugs...
+		
+		newImage = new Image()
+		newImage.src = imageFileName
+		return newImage
+				
+	}
+
+	// LOAD game pieces
+	
+	function LoadGameTiles(imageroot, imageNames) {
+		var images= new Array()
+		for (i=0; i< imageNames.length; i++) {
+			newimage = new Image();
+			images[i] = newimage;
+			images[i].src = "images/spacer.gif"
+			images[i].src = imageroot + imageNames[i] + ".gif"
+		}
+		return images;
+	}
+			
+	function StartGame() {
+		if (this.players.length > 1) {
+		 document.images["player0go"].src="images/playergo.gif"
+		}
+		for (i=0; i< this.players.length; i++ ) {
+			this.players[i].updatescore()
+		}
+		name1 = this.currentPlayer.name
+		if (name1.indexOf("<") && name1.indexOf(">"))
+			window.status=  name1.substring(0, name1.indexOf("<")) + " " +name1.substring(name1.indexOf(">")+1,name1.length) +"'s Turn"
+
+	}
+	
+	function NextPlayer() {
+		if (this.players.length > 1) {
+			imagename = "player" + this.currentPlayer.id + "go"
+			document.images[imagename].src = "images/spacer.gif"
+			nextID = (this.currentPlayer.id + 1) % this.players.length
+			this.currentPlayer = this.players[nextID]
+			imagename = "player" + nextID + "go"
+			name1 = this.currentPlayer.name
+			window.status=  name1.substring(0, name1.indexOf("<")) + " " +name1.substring(name1.indexOf(">")+1,name1.length) +"'s Turn"
+			document.images[imagename].src = "images/playergo.gif"
+		}
+	}
+	
+	function Score(points) {
+		if (this.players.length != 1) {
+			this.currentPlayer.addpoints(1)
+		} else {
+			this.currentPlayer.setpoints(this.clock1.time)  //Single players score is time, last match sets it.
+		}
+		this.matched++;
+		if ( (this.matched *2) >= ((this.board.kWidth * this.board.kHeight) -1)) {
+			this.win();
+		}
+	}
+
+	function AddPlayer(name) {
+		qty =this.players.length
+		this.players[qty] = new Player(name, qty)
+	}
+
+	function RenderSidebar() {
+		if (this.players.length == 1) {
+			this.clock1 = new Clock(this, "clock1", -6, iSecondsLeft, "clock/")
+			this.onePlayerScoreboard() 
+		}
+		else {
+			this.multiPlayerScoreboard()
+		}
+	}
+
+	function OnePlayerScoreboard() {
+		document.write("<br><img src=images/spacer.gif width=12 height=15><BR>");
+
+//		document.write("<TABLE width='100%'>")
+//		this.players[0].render(40,0)
+//		document.write("</TABLE>");
+
+		this.clock1.render()
+		document.write("<BR><img src=images/spacer.gif width=12 height=20><BR>");
+
+		buttons()
+		document.write("<BR><img src=images/spacer.gif width=12 height=45><BR>");				       
+		DisplayBestTimes()
+
+	}
+	
+	function DisplayBestTimes () {
+//		document.write("["+document.cookie+"]");
+		mmcookie = getCookie("MakeAMatch")
+//		document.write(mmcookie);
+
+		if ((mmcookie == null) || (mmcookie == "")) {  // Build high score table for new customer
+			var buildCookie = "0;&nbsp;+0;&nbsp;+0;&nbsp;"  // start up the cookie
+			var today = new Date()
+		    var expires = new Date()
+			expires.setTime(today.getTime() + 60*60*24*365)
+			setCookie("MakeAMatch", buildCookie, expires)
+			mmcookie = getCookie("MakeAMatch")
+		}
+
+		if ((mmcookie != null) && (mmcookie !="")) {
+			var words = splitString(mmcookie,"+");
+			document.write("<table bgcolor=000000 gradcolor=333333 gradangle=270 transparency=75 border=0>");
+			document.write("<tr><td abswidth=150 gradcolor=553333 bgcolor=442222 gradangle=270 transparency=0 colspan=3><CENTER>Best Times</CENTER></TD></tr>");
+			var player = splitString(words[0],";")
+			if (!eval(player[0])) player[0]="&nbsp;"
+			document.write("<tr><td abswidth=30 ALIGN=RIGHT>1.</td><td ALIGN=RIGHT>" + player[1] + "</td><td ALIGN=RIGHT>" + player[0] + "</td></tr>");
+			player = splitString(words[1],";")
+			if (!eval(player[0])) player[0]="&nbsp;"
+			document.write("<tr><td ALIGN=RIGHT>2.</td><td ALIGN=RIGHT>" + player[1] + "</td><td ALIGN=RIGHT>" + player[0] + "</td></tr>");
+			player = splitString(words[2],";")
+			if (!eval(player[0])) player[0]="&nbsp;"
+			document.write("<tr><td ALIGN=RIGHT>3.</td><td ALIGN=RIGHT>" + player[1] + "</td><td ALIGN=RIGHT>" + player[0] + "</td></tr>");
+			document.write("</table>");
+		}
+	}
+	
+	function MultiPlayerScoreboard() {
+		document.write("<br><img src=images/spacer.gif width=12 height=25><BR>");
+		document.write("<shadow><TABLE width='100%' border=0>");
+		for (i=0; i< this.players.length; i++) {	
+			this.players[i].render(60,1)
+		}
+			
+		document.write("</TABLE></shadow>");
+		document.write("<br><BR>");
+
+		buttons()
+	}	
+
+
+
+
+// PLAYER Object
+
+	function Player(name, id) {
+		this.name = name
+		this.score = 0
+		this.id = id
+	// methods
+		this.addpoints = Paddpoints
+		this.setpoints = Psetpoints
+		this.updatescore = Pupdatescore
+		this.render = Prender
+		this.clearscore = Pclearscore
+	}
+
+// PLAYER methods
+
+	function Pclearscore() {
+		this.score=0
+		this.updatescore()
+	}
+		
+	function Paddpoints(points) {
+		this.score += points;
+		this.updatescore()
+	}
+	function Psetpoints(points) {
+		this.score = points;
+		this.updatescore()
+	}
+
+	function Pupdatescore() {
+		slot = "player"+	this.id+"score"
+		if (document.scoreboard != null)
+			if (document.scoreboard[slot] != null)  // Update only if slot exists...
+				document.scoreboard[slot].value = this.score
+	}
+
+	function Prender (myheight,indicator) { // Does need to be in its own table...Indicator is the Current Player Arrow
+		document.write("<tr>");
+		if (indicator) {
+			document.write("<TD valign=middle><img src=images/spacer.gif width=40 height=40 name=player" + this.id+ "go></TD>");
+		}
+		else document.write("<TD valign=middle><img src=images/spacer.gif width=5 height=40 name=player" + this.id+ "go></TD>");
+		document.write("<TD align=left valign=middle width=100%><FONT color=000000 SIZE=+2><STRONG>"+this.name + "</STRONG></FONT></TD>");
+		document.write("<TD align=left absheight=" + myheight + " valign=middle><FONT SIZE=+2><STRONG><input noselect type=text name=player"+this.id+"score value="+ this.score + " size=5 bgcolor=#595775 usestyle border=0></STRONG></FONT></TD></TR>");
+	}
+	
+// GAMEBOARD Object  new gameboard(size)
+	
+	function gameboard (game, kWidth, kHeight, cellWidth, cellHeight) {
+		this.kWidth = kWidth
+		this.kHeight = kHeight
+		this.cells = new Array(kHeight)
+		//methods
+		this.render = RenderGameBoard
+		this.game = game
+		this.clear = ClearGameBoard
+		
+		// initialize
+		for (i=0; i < kHeight; i++) {
+			this.cells[i] = new Array(kWidth)
+			for (j=0; j < kWidth; j++) {
+				content = puzzle[i*kWidth+j]
+				this.cells[i][j] = new Cell("", game, content, i,j, cellWidth, cellHeight)
+		   }
+		}
+	}
+	
+//	GAMEBOARD methods
+	
+	function RenderTitle() {
+		document.write("<font size='+5'>"+sGameTitle+"</font><BR>");
+	}
+	
+	function RenderGameBoard() {
+		if (debug) alert("gameboard render");
+	 // bgcolor=#222222 bgcolor=111111 bgcolor=005522 bgcolor=111111
+		document.write("<table border=0  cellspacing=10 cellpadding=0>");
+
+		for (i=0; i < this.kHeight; i++) {
+			document.write("<tr>")
+			for (j=0; j < this.kWidth; j++) {
+				this.cells[i][j].render()
+			}
+			document.write("</tr>")
+		}
+		document.write("</table>");
+		if (debug) alert("gameboard done");
+	}
+
+	function ClearGameBoard() {
+		for (i=0; i < this.kHeight; i++) {
+			for (j=0; j < this.kWidth; j++) {
+				this.cells[i][j].cover()
+		   }
+		}
+	}
+	
+// CALLBACKS
+	function CallbackNoMatch() {
+		if (this.needToCoverBadMatch ==1) {
+		
+	//	NO MORE LAYERS OF IF-THEN HERE!!  JUST DON'T DO IT!!!  WEBTV WILL DIE. NETSCAPE OK.
+
+			this.needToCoverBadMatch = 0;
+			clearTimeout(this.BadMatchID)
+			this.BadMatchTimeoutID = 0
+			this.blockClicks = 0;
+			this.firstCell.cover();
+			this.secondCell.cover();
+			this.nextPlayer();
+		}
+	}
+	
+	function buttons() {
+		document.write("<A name=restart HREF=javascript:Restart()><IMG SRC=images/restart.gif WIDTH=82 HEIGHT=40 BORDER=0></A>");
+	}
+
+	function RandomLetter() {
+		iLetterASCII = Math.round(Math.random()*25);
+			return(sLetterLookup.charAt(iLetterASCII));
+		}
+
+// CLOCK Object	 Countdown clock: All units in seconds
+	function Clock (game, name, startSeconds, stopSeconds,imageroot) {
+		this.game = game
+		this.name = name          // Image name is [name][1|10]min[digit] for HTML location.
+		this.time = startSeconds
+		this.stop = stopSeconds
+		this.imageroot = imageroot   // root of digit image filenames.  [imageroot][digit].gif  
+		this.interval = 1
+		this.images = LoadClockImages(imageroot)
+	   // methods
+		this.decrement = DecrementClock
+		this.increment = IncrementClock
+		this.update = UpdateClock
+		this.render = RenderClock
+		this.start = IncrementClock
+				
+	}
+	
+	
+// CLOCK methods
+
+	function UpdateClock() {
+		if ( this.time >= 0) {
+			var minutes = Math.round ((( this.time)/60)- .5);
+			var seconds = this.time % 60;
+			var tens =  Math.round((seconds / 10) -.5);
+			document.images[this.name + "10sec"].src = this.images[tens].src
+			document.images[this.name + "1mins"].src = this.images[minutes].src	
+			document.images[this.name + "1secs"].src = this.images[(seconds % 10)].src
+		}
+	}
+	
+	function DecrementClock() {
+	
+		this.time -= this.interval;
+		if (this.time < this.stop) {
+			this.time = this.stop
+			this.game.state = "lost"
+			this.game.blockClicks = 1;
+			this.game.lose();
+		}
+		else {
+			window.setTimeout( this.game.name + "." + this.name + ".decrement()", this.interval*1000);
+		}
+		this.update();
+
+	}
+	
+	function IncrementClock() {
+
+		this.time += this.interval;
+		if (this.time > this.stop) {
+			this.time = this.stop
+			this.game.state = "lost"
+			// document.explosion.play(false);	
+			this.game.blockClicks = 1;
+			Lose();
+		}
+		else {
+			ticker = this.interval * 1000;
+			window.setTimeout( this.game.name + "." + this.name + ".increment()", ticker);
+		}
+		this.update();
+	}
+
+	function RenderClock() {
+
+		document.write("<img width=25 height=53 src='" + this.imageroot + "0bg.gif' name='" + this.name + "1mins'>")
+		document.write("<img width=11 height=53 src='" + this.imageroot + "colon.gif' name=Colon>")
+		document.write("<img width=25 height=53 src='" + this.imageroot + "0bg.gif' name='" + this.name + "10sec'>")
+		document.write("<img width=25 height=53 src='" + this.imageroot + "0bg.gif' name='" + this.name + "1secs'>")
+		this.start()
+		
+	}
+
+	function LoadClockImages(imageroot) {
+		var images= new Array()
+		for (i=0; i< 10; i++) {
+			newimage = new Image();
+			images[i] = newimage;
+			images[i].src = imageroot + i + ".gif"
+		}
+		return images;
+	}
+
+	function GetDigit(iNumber, iDigit) {
+
+		iNumber = "" + iNumber;  // Convert to "String" if it isn't already...
+
+		while (iNumber.length < 2) {
+			iNumber = "0" + iNumber;
+		}
+		return(iNumber.charAt(iDigit));
+	}
+
+	<!-- Generic Game Functions -->
+
+	<!-- High scores are set on the win page. -->
+	
+	function Quit() {
+		if (debug) alert("Quit");
+	}
+
+	function PlaySound(sound) {
+
+		if (sound == null) {  
+            return;
+		}
+		else {
+			sound.play(false);
+		}
+	}
+
+	function setCookie(name, value, expire) {
+          document.cookie = name + "=" + escape(value)
+          + ((expire == null) ? "" : ("; expires=" + expire.toGMTString()))
+	}
+
+	function splitString(mystring, delimiter) {
+		var woofie = new Array()
+		var index = 0;
+		woofie[index] =""
+		for (i=0; i<mystring.length; i++) {
+			achar = mystring.charAt(i)
+			if ( achar == delimiter) {
+				index++
+				woofie[index] =""
+				}
+			else
+				woofie[index] += achar
+		}
+
+		return woofie
+	}
+
+	function getCookie(Name) {
+		var search = Name + "="
+		if (document.cookie.length > 0) { // if there are any cookies
+			offset = document.cookie.indexOf(search) 
+			if (offset != -1) { // if cookie exists 
+				offset += search.length 
+				// set index of beginning of value
+				end = document.cookie.indexOf(";", offset) 
+				// set index of end of cookie value
+				if (end == -1) 
+					end = document.cookie.length
+				return unescape(document.cookie.substring(offset, end))
+			}
+			return null
+		}
+		return null
+	}
+// *************** GET VARIABLES ****************
+
+	function getURLvar(Name) {
+		var search = Name + "="
+		var incoming = window.location.search
+		if (incoming.length > 0) { // if there are any search parameters
+			offset = incoming.indexOf(search) 
+			if (offset != -1) { // if parameter exists 
+				offset += search.length 
+				// set index of beginning of value
+				end = incoming.indexOf("&", offset) 
+				// set index of end of cookie value
+				if (end == -1) 
+					end = incoming.length
+				value = unescape(incoming.substring(offset, end))
+				if (value == "") {
+					return null
+				} else {
+					return value
+				}
+			}
+			else return null
+		}
+		else return null
+	}
+
+	</script>
+<!-- <BGSOUND SRC="sounds/kidstheme8.zip" AUTOSTART=TRUE LOOP=INFINITE> -->
+</head>
+
+<body background="back.jpg" bgcolor=#666666 text=#CC9999 valign=top hspace=0 transition=pushup
+credits="http://www.woofie.com/webtv.html" onLoad='mam.start();'>
+	<display noscroll yspeed=1>
+
+	<EMBED SRC="sounds/newbell3.mid" HIDDEN=TRUE CONTROLS=console
+	VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="bell"
+	MASTERSOUND>
+	<EMBED SRC="sounds/buzz.mid" HIDDEN=TRUE CONTROLS=console
+	VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="buzzer"
+	MASTERSOUND> 
+	<EMBED SRC="sounds/applause.mp2" HIDDEN=TRUE CONTROLS=console
+	VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="applause"
+	MASTERSOUND>
+
+	<form name="scoreboard">
+	<table abswidth=200 cellpadding=0 cellspacing=0 border=0 width="100%"  valign=top>
+		<tr>
+			<td valign=top abswidth=180>
+				<CENTER>
+				<FONT SIZE=+4 COLOR=222266>
+					<STRONG><shadow>Make A<BR>Match</shadow></STRONG>
+				</FONT>
+				
+				<SCRIPT Language="JavaScript">
+					mam.renderSidebar() ;
+				</SCRIPT><BR>
+				</CENTER>				
+			</td>
+<!-- abswidth=370  -->
+			<td  align=center absheight=350>
+				<img src="images/spacer.gif" width=12 height=5><BR>				       
+		    	<center> <FONT COLOR="#595775">           
+					<SCRIPT Language="JavaScript">
+					mam.board.render();
+					</SCRIPT></FONT>
+
+
+ 
+				</center><BR>
+				<img src="images/spacer.gif" width=12 height=1><BR>
+<!-- 				<TABLE  bgcolor=000000 border=0 cellpadding=5 cellspacing=5><tr><td> -->
+				<img src="images/bluecover.gif" name="ad" width=394 height=71>
+<!-- 				</td></tr></TABLE> -->
+			</td>
+				       
+	    </tr>
+			
+			      
+	</table>
+
+</form>  
+
+</body>
+
+</html>

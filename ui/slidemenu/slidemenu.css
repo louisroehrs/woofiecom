@@ -1,0 +1,67 @@
+
+body, div, ul, li { padding:0;margin:0;}
+
+#explanation { 
+   position:absolute;
+   left: 200px;
+   top:180px;
+   border: 1px solid #ccc;
+}
+
+#explanation ul {
+   padding:0 0 0 20px;
+}
+
+#gennav { 
+   position:absolute;
+   border: 1px solid #ccc;
+   top:180px;
+   left:10px;
+   width:150px;
+   height:150px;
+   padding:0; 
+   margin:0;
+   font: 10pt Arial;
+   overflow:hidden;
+   background-color:#f8f8f8;
+}
+
+#gennav li,#gennav ul { 
+   list-style:none;
+}
+
+#gennav .back {
+   background-image:url('arrow.gif');
+   font-weight:bold;
+}
+
+#gennav .hasmore {
+   background-image:url('hasmore.gif');
+}
+
+#gennav .back:hover, #gennav .hasmore:hover {
+   background-color:#ccc;
+}
+
+#gennav li {
+   height:20px;
+   border:1px solid #eee;
+   cursor: pointer;
+   padding:0 0 0 20px;
+}
+
+
+#gennav ul {
+   position:absolute;
+   top:0px;
+   left:150px;
+   width:150px;
+   display:none; 
+}
+
+#gennav #top {
+   left:0px;
+   padding:0;
+   display:block; 
+}
+

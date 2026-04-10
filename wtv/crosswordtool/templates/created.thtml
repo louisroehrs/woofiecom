@@ -1,0 +1,11 @@
+<HTML>
+<BODY>
+   <P>Note:  You may need to do a reload if WebTV has an old version 
+             in the cache.
+   <P>Note2: To link to this game, use the URL: <i><!--GAMEURLBASE--><!--CATEGORY-->/<!--FRIENDLYNAME-->.html</i>
+
+   <P><a href="<!--GAMEURLBASE--><!--CATEGORY-->/<!--FRIENDLYNAME-->.html">Go to the game</a>
+ <P><a href="<!--MAILEDITORURLBASE-->?CATEGORY=<!--CATEGORY-->&FRIENDLYNAME=<!--FRIENDLYNAME-->">Send 1st draft to Janice</a>
+   <P><a href="<!--MAILREVIEWTEAMURLBASE-->?CATEGORY=<!--CATEGORY-->&FRIENDLYNAME=<!--FRIENDLYNAME-->">Send 2nd draft to review team</a>  
+</BODY>
+</HTML>

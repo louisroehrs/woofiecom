@@ -1,0 +1,219 @@
+<html>
+<head>
+<title>Trivial Task!</title>
+<bgsound src="../../sounds/triviarules.mid">
+<script language="JavaScript">
+function SetCookie (name, value)
+{
+   var argv = SetCookie.arguments;
+   var argc = SetCookie.arguments.length;
+   var expires = (argc > 2) ? argv[2] : null;
+   var path = (argc > 3) ? argv[3] : null;
+   var domain = (argc > 4) ? argv[4] : null;
+   var secure = (argc > 5) ? argv[5] : false;
+   document.cookie = name + "=" + escape (value) +
+         ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
+         ((path == null) ? "" : ("; path=" + path)) +
+         ((domain == null) ? "" : ("; domain=" + domain)) +
+         ((secure == true) ? "; secure" : "");
+}
+function GetCookieVal (offset)
+{
+   var endstr = document.cookie.indexOf (";", offset);
+   if (endstr == -1)
+      endstr = document.cookie.length;
+   return unescape(document.cookie.substring(offset, endstr));
+}
+function GetCookie (name)
+{
+   var arg = name + "=";
+   var alen = arg.length;
+   var clen = document.cookie.length;
+   var i = 0;
+
+   while (i < clen) {
+      var j = i + alen;
+      if (document.cookie.substring(i, j) == arg)
+         return GetCookieVal (j);
+
+      i = document.cookie.indexOf(" ", i) + 1;
+      if (i == 0)
+         break;
+   }
+   return null;
+}
+function AddToAccum (sCookieName, sPoints) {
+
+  var expdate = new Date ();
+  expdate.setTime (expdate.getTime() + (24 * 60 * 60 * 1000));
+
+  var sAccum = GetCookie(sCookieName);
+
+  if (sAccum == null) {
+    sAccum = eval(sPoints);
+  } else { 
+    sAccum = eval(sAccum) + eval(sPoints); 
+  }
+  SetCookie (sCookieName, sAccum, expdate, "/");
+}
+function SetCookieMacro (sCookieName, sValue) {
+  var expdate = new Date ();
+  expdate.setTime (expdate.getTime() + (7 * 24 * 60 * 60 * 1000));
+  SetCookie (sCookieName, sValue, expdate, "/");
+}    
+function ComputeLevel(sUserPoints) {
+  var sPercentile = eval(sUserPoints)/eval(<!--PERFECTSCORE-->);
+  if (eval(sPercentile) == eval(1.0)) {
+    return("fame");
+  }
+  if (eval(sPercentile) >= eval(0.75)) {
+    return("star");
+  }
+  if (eval(sPercentile) > eval(0.55)) {
+    return("pro");
+  }
+  return("rookie");
+}
+function WriteBigGraphic(sUserPoints) {
+  var sGraphic = ComputeLevel(sUserPoints);
+  document.write("<IMG src=../../images/"+sGraphic+".gif>");
+}
+function DisplayHallOfFame() {
+  if (ComputeLevel(sUserPoints) == "fame") {
+    document.write("<font size=+1 color=#ED970E>");
+  } else {
+    document.write("<font size=+1 color=#FFFFFF>");
+  }
+  document.write("Hall of Famer: ");
+  document.write("A Perfect Score of <!--PERFECTSCORE-->!   ");
+  document.write("</font>");
+}
+function DisplayRookie() {
+  if (ComputeLevel(sUserPoints) == "rookie") {
+    document.write("<font size=+1 color=#ED970E>");
+  } else {
+    document.write("<font size=+1 color=#FFFFFF>");
+  }
+  document.write("Rookie:");
+  document.write("Less than "+eval(0.55*<!--PERFECTSCORE-->)+" Points.   ");
+  document.write("</font>");
+}
+function DisplayPro() {
+  if (ComputeLevel(sUserPoints) == "pro") {
+    document.write("<font size=+1 color=#ED970E>");
+  } else {
+    document.write("<font size=+1 color=#FFFFFF>");
+  }
+  document.write("Pro: ");
+  document.write(eval(0.55*<!--PERFECTSCORE-->) + " - " + eval(0.75*<!--PERFECTSCORE-->)+" Points.   ");
+  document.write("</font>");
+}
+function DisplayAllStar() {
+  if (ComputeLevel(sUserPoints) == "star") {
+    document.write("<font size=+1 color=#ED970E>");
+  } else {
+    document.write("<font size=+1 color=#FFFFFF>");
+  }
+  document.write("All Star: ");
+  document.write(eval(0.75*<!--PERFECTSCORE-->) + " - " + eval(eval(1.00*<!--PERFECTSCORE-->)-1)+" Points.   ");
+  document.write("</font>");
+}
+function DisplayRanking() {
+  if (ComputeLevel(sUserPoints) == "rookie") {
+    document.write("<font size=+1>Keep on trying</font><P>");
+    document.write("<font size=+5>Rookie</font>");
+  } else if (ComputeLevel(sUserPoints) == "pro") {
+    document.write("<font size=+1>Shoot for the stars</font><P>");
+    document.write("<font size=+5>Pro</font>");
+  } else if (ComputeLevel(sUserPoints) == "fame") {
+    document.write("<font size=+1>A perfect score.  You are enshrined as a Trivial Task</font><P>");
+    document.write("<font size=+5>Hall of Famer</font>");
+  } else if (ComputeLevel(sUserPoints) == "star") {
+    document.write("<font size=+1>Tell all your friends.  You're an</font><P>");
+    document.write("<font size=+5>All-Star</font>");
+  }
+} 
+</script>
+
+</head>
+<body 
+   valign=top hspace=0 bgcolor=#000000 text=#FFFFFF>
+
+<table cellspacing=0 cellpadding=0 width=100%>
+   
+  <tr>
+	<td>
+      <IMG src="/ROMCache/spacer.gif" width=40 height=30>
+    </td>
+  </tr>
+  <tr absheight=140>
+	<td abswidth=372>
+       <center>
+       <font color=#ED970E size=+5>
+		 You scored
+	     <script langauge="Javascript">
+	 	   var sUserPoints = GetCookie("<!--CATEGORY-->POINTS");
+		   document.write(sUserPoints+" points!<P>");
+		 </script>
+  	   </font>
+	   </center>          
+ 
+ 
+	</td>
+  </tr>
+  <tr>
+	<td>
+	  <center>
+	  <SCRIPT LANGAUGE="JAVASCRIPT">
+	
+	    var sUserPoints = GetCookie("<!--CATEGORY-->POINTS");
+		if (eval(sUserPoints) == <!--PERFECTSCORE-->) {
+		  document.write("<img src=\"../../images/ALLSTAR.GIF\">");
+        } else {
+		  document.write("<img src=\"../../images/TRYAGAIN.GIF\">");
+		}
+	  </SCRIPT>
+	  </center>
+    </td>
+  </tr>
+  <tr>
+	<td>
+	  <center>
+		 <font size=2>
+            Press Home to go back to the WebTV Network.<P>
+         </font>
+      </center>
+	</td>
+  </tr>
+  <tr>
+    <td abswidth=112>
+      <center>
+			 <a nocolor href="index.html">
+			   <img src="../../images/playagain.gif">
+			 </a>
+      </center>
+    </td>
+  </tr>
+<!--
+    <td colspan=2>
+	  <table width=100%>
+	  <SCRIPT LANGUAGE="Javascript">
+		var sUserPoints = GetCookie("<!--CATEGORY-->POINTS");
+		WriteBigGraphic(sUserPoints);
+	  </SCRIPT>
+      <br>
+	    <SCRIPT LANGAUGE="JAVASCRIPT">
+		   var sUserPoints = GetCookie("<!--CATEGORY-->POINTS");
+		   DisplayHallOfFame(sUserPoints);
+		   DisplayAllStar(sUserPoints);
+	  	   DisplayPro(sUserPoints);
+		   DisplayRookie(sUserPoints);
+        </SCRIPT>
+      <P>
+	  <P>
+      </table>
+   </td>
+-->
+</table>
+  
+</html>

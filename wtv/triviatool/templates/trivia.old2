@@ -1,0 +1,484 @@
+<html>
+
+<title>Trivial Task</title>
+
+<body background="../../images/background.jpg" bgcolor=#000000 text=#FFFFFF>
+
+<EMBED SRC="../../sounds/applause.MP2" HIDDEN=TRUE CONTROLS=console 
+ VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="right" 
+ MASTERSOUND>
+
+<EMBED SRC="../../sounds/buzzer.aif" HIDDEN=TRUE CONTROLS=console
+ VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="wrong"
+ MASTERSOUND>            
+
+<script language="JavaScript">
+
+function SetCookie (name, value)
+{
+   var argv = SetCookie.arguments;
+   var argc = SetCookie.arguments.length;
+   var expires = (argc > 2) ? argv[2] : null;
+   var path = (argc > 3) ? argv[3] : null;
+   var domain = (argc > 4) ? argv[4] : null;
+   var secure = (argc > 5) ? argv[5] : false;
+   document.cookie = name + "=" + escape (value) +
+         ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
+         ((path == null) ? "" : ("; path=" + path)) +
+         ((domain == null) ? "" : ("; domain=" + domain)) +
+         ((secure == true) ? "; secure" : "");
+}
+
+function GetCookieVal (offset)
+{
+   var endstr = document.cookie.indexOf (";", offset);
+   if (endstr == -1)
+      endstr = document.cookie.length;
+   return unescape(document.cookie.substring(offset, endstr));
+}
+
+function GetCookie (name)
+{
+   var arg = name + "=";
+   var alen = arg.length;
+   var clen = document.cookie.length;
+   var i = 0;
+
+   while (i < clen) {
+      var j = i + alen;
+      if (document.cookie.substring(i, j) == arg)
+         return GetCookieVal (j);
+
+      i = document.cookie.indexOf(" ", i) + 1;
+      if (i == 0)
+         break;
+   }
+   return null;
+}
+
+function AddToAccum (sCookieName, sPoints) {
+
+  var expdate = new Date ();
+  expdate.setTime (expdate.getTime() + (24 * 60 * 60 * 1000));
+
+  var sAccum = GetCookie(sCookieName);
+
+  // alert("b "+sCookieName+" "+sAccum);
+
+  if (sAccum == null) {
+    sAccum = eval(sPoints);
+  } else { 
+    sAccum = eval(sAccum) + eval(sPoints); 
+  }
+
+  // alert("a "+sCookieName+" "+sAccum);
+
+  SetCookie (sCookieName, sAccum, expdate, "/");
+
+  sAccum = GetCookie(sCookieName);
+
+  // alert("c "+sCookieName+" "+sAccum);
+
+  return (sAccum);
+
+}
+
+function SetCookieMacro (sCookieName, sValue) {
+
+  var expdate = new Date ();
+  expdate.setTime (expdate.getTime() + (7 * 24 * 60 * 60 * 1000));
+
+  SetCookie (sCookieName, sValue, expdate, "/");
+
+}   
+
+function PlayWrong() {
+
+  if (document.wrong == null) {
+//    alert("Please wait for a moment while the sound files load.");
+//    history.go(0);
+    return;
+  } else {
+    document.wrong.play(false);  
+  } 
+
+}
+
+function PlayRight() {
+
+  if (document.right == null) {
+//    alert("Please wait for a moment while the sound files load.");
+//    history.go(0);
+    return;
+  } else {
+    document.right.play(false);
+  }
+
+}
+
+function GetDigit(iScore, iDigit) {
+
+  while (iScore.length < 4) {
+    iScore = "0" + iScore;
+  }
+
+  //alert("before"+iScore+" "+iScore.length);
+  var sDigit = iScore.charAt(iDigit); 
+  //alert("after"+sDigit);
+  return(sDigit);
+ 
+} 
+
+function FormMessageImageURL(sMessage) {
+
+  if (sMessage != "spacer") {
+    return("../../images/"+sMessage+".gif");
+  } else {
+    return("/ROMCache/spacer.gif");
+  }
+}
+
+function FormDigitImageURL(iDigit) {
+
+  return("../../images/"+iDigit+".GIF");
+
+}
+
+function SetScoreImages(sUserScore) {
+
+  if (eval(sUserScore) < 0) {
+    document.scorem.src  = "../../images/minus.gif";  
+	sUserScoreMod = sUserScore.substring(1,sUserScore.length);
+  } else {
+    document.scorem.src  = "/ROMCache/spacer.gif";  
+	sUserScoreMod = sUserScore;
+  }
+
+  document.score0.src = FormDigitImageURL(GetDigit(sUserScoreMod, 0)); 
+  document.score1.src = FormDigitImageURL(GetDigit(sUserScoreMod, 1)); 
+  document.score2.src = FormDigitImageURL(GetDigit(sUserScoreMod, 2)); 
+  document.score3.src = FormDigitImageURL(GetDigit(sUserScoreMod, 3)); 
+
+} 
+
+function loadDigitImage(iDigit) {
+
+  var image = new Image();
+  image.src = FormDigitImageURL(iDigit);
+
+}
+
+function loadMessageImage(sMessage) {
+
+  var image = new Image();
+  image.src = FormMessageImageURL(sMessage);
+
+}
+
+function loadImages() {
+
+  loadDigitImage(0);
+  loadDigitImage(1);
+  loadDigitImage(2);
+  loadDigitImage(3);
+  loadDigitImage(4);
+  loadDigitImage(5);
+  loadDigitImage(6);
+  loadDigitImage(7);
+  loadDigitImage(8);
+  loadDigitImage(9);
+
+  loadMessageImage("sorry");
+  loadMessageImage("sorry");
+
+}
+
+function SetMessageImage(sWrongAnswer) {
+
+  if (sWrongAnswer == null) 
+    sWrongAnswer=GetCookie("WRONGANSWER");
+   
+  if (sWrongAnswer == "T") {
+    document.message.src = FormMessageImageURL("sorry"); 
+    SetCookieMacro("WRONGANSWER", "B");
+  } else if (sWrongAnswer == "F") {
+    document.message.src = FormMessageImageURL("right"); 
+    SetCookieMacro("WRONGANSWER", "B");
+  } else {
+    document.message.src = FormMessageImageURL("spacer"); 
+    SetCookieMacro("WRONGANSWER", "B");
+  }       
+
+}
+
+function CheckQuestionOn(sCategory, sCategoryQuestionNumber) {
+
+  var sQuestionOn = GetCookie(sCategory+"QON");
+  if (sQuestionOn == null) {
+    sQuestionOn = 1;
+    SetCookieMacro(sCategory+"QON", sQuestionOn);
+  }
+
+  if (eval(sQuestionOn) != eval(sCategoryQuestionNumber)) {
+    RedirectToQuestion(sCategory, sQuestionOn);
+  }
+
+}  
+
+function ReloadPage() {
+  window.location.reload();
+}
+
+function Redirect(sURL) {
+  window.location=sURL;
+}
+
+function RedirectToQuestion (sCategory, sQuestion) {
+  Redirect(sCategory+sQuestion+".html");
+}
+
+function RedirectToNextQuestion (sCategory, sCurrQuestion) {
+
+  var sNextQuestion = eval(eval(sCurrQuestion) + 1);
+  SetCookieMacro(sCategory+"QON", sNextQuestion); 
+
+  RedirectToQuestion(sCategory, sNextQuestion);
+
+}
+
+function CheckAndRedirect (sSubmittedAnswer, sCorrectAnswer, sCategory,
+			   sPointsPossible,  sCategoryQuestionOn) {
+
+  SetMessageImage("B");
+
+  if (eval(sSubmittedAnswer) == eval(sCorrectAnswer)) {
+
+    PlayRight();
+
+    var sUserScore = "" + AddToAccum(sCategory+"POINTS", sPointsPossible);
+    AddToAccum(sCategory+"RIGHT", "1");
+
+    SetCookieMacro("WRONGANSWER", "F");
+
+    SetScoreImages(sUserScore); 
+
+    RedirectToNextQuestion(sCategory, sCategoryQuestionOn);
+
+  } else {
+
+    PlayWrong();
+
+    var sWrongPts = eval(eval(-1)*eval(sPointsPossible));
+    var sUserScore = "" + AddToAccum(sCategory+"POINTS", sWrongPts);
+    //if (eval(sUserScore) < 0) {
+    //  sUserScore = "0";
+    //  SetCookieMacro(sCategory+"POINTS", sUserScore);
+    //}
+
+    SetCookieMacro("WRONGANSWER", "T");
+
+    SetScoreImages(sUserScore); 
+    SetMessageImage();
+
+  }
+
+//  alert("after Check UserScore: "+sUserScore);
+
+}
+
+function RenderQuestion(sQuestion, asAnswer, sNumAnswers, nCorrectAnswer, 
+                        sDifficulty, sUserPoints, sPointsPossible, sCategory,
+                        sCategoryQuestionNumber) {
+
+  var asNumbers = new Array("One", "Two",   "Three", "Four", "Five",
+                            "Six", "Seven", "Eight", "Nine", "Ten"); 
+  
+  loadImages();
+
+//  document.write("<form>");
+
+  document.write("<link href="+
+     sCategory+eval(eval(sCategoryQuestionNumber)+1)+".html rel=next>");
+
+//<!--MAIN TABLE-->
+
+document.write("<table cellpadding=0 cellspacing=0>");
+
+document.write("<tr absheight=200>");
+
+//<!-- WebTV Jewel Cell -->
+
+document.write("<td abswidth=115 absheight=120>");
+document.write("  <IMG width=104 height=87 src=file://ROMCache/WebTVLogoJewel.gif>");
+document.write("</td>");
+
+//<!-- TT Logo Spacer Cell -->
+
+document.write("<td colspan=2 abswidth=195 absheight=120>");
+document.write("  <IMG width=104 height=87 src=\"/ROMCache/Spacer.gif\" width= height=>");
+document.write("</td>");
+
+//  <!-- TT Question # and Worth -->
+
+document.write("<td abswidth=235 absheight=120 valign=top>");
+document.write("  <font color=#FFFFFF size=+2><br>");
+document.write("    Question "+asNumbers[eval(eval(sCategoryQuestionNumber)-1)]);
+document.write("  </font><br>");     
+document.write("  <font color=#ED970E size=+2>");
+document.write("    Worth: "+sPointsPossible);
+document.write("  </font>");     
+document.write("</td>");
+ 
+document.write("</tr>");
+
+document.write("<tr>");
+  
+//  <!-- Message Panel -->
+
+document.write("  <td rowspan=3 abswidth=108 align=left>"); 
+
+document.write("     <IMG src=\"/ROMCache/Spacer.gif\" name=message width=108 height=108>");
+
+document.write("  </td>");
+
+//  <!-- Question -->
+
+document.write("  <td colspan=3 absheight=85>");
+
+document.write("     <font size=+1>");
+document.write(sQuestion);
+document.write("     </font>");
+
+document.write("  </td>"); 
+document.write("</tr>");
+
+document.write("<tr>");
+document.write("   <td colspan=3 absheight=110>"); 
+
+// Answer Section Frame
+
+document.write("      <table cellpadding=0 cellspacing=0 width=100%>"); 
+document.write("        <tr>");
+
+      for (var i=1; i <= eval(sNumAnswers); i++) {
+ 
+document.write("         <td>");
+
+document.write("          <center><a nocolor>");
+
+document.write("           <table cellpadding=0 cellspacing=0 background=\"../../images/button.gif\""); 
+document.write("                  href=\"javascript:CheckAndRedirect("+i+",");
+document.write("                  "+sCorrectAnswer+", '"+sCategory+"',");
+document.write("                  "+sPointsPossible+", "+sCategoryQuestionNumber+")\" nocolor>"); 
+
+document.write("             <tr>");
+document.write("              <td abswidth=135 absheight=110>");
+document.write("                <center>");
+document.write("                  <font color=#FFFFFF>");
+document.write("                  <a href=\"javascript:CheckAndRedirect("+i+",");
+document.write("                  "+sCorrectAnswer+", '"+sCategory+"',");
+document.write("                  "+sPointsPossible+", "+sCategoryQuestionNumber+")\">"); 
+document.write(asAnswers[i-1]); 
+document.write("</a>");
+document.write("                 </a></font></a>");
+document.write("                </center>");
+document.write("              </td>");
+document.write("             </tr>");
+
+//<!--ANSWER-->
+document.write("           </table>");
+
+document.write("          </a></center>");
+
+
+// <!--ANSWER Table Frame Cell-->
+
+document.write("        </td>");
+
+      }    
+
+// <!--/ANSWER Table Frame -->
+
+document.write("      </table>");
+
+document.write("   </td>");
+document.write("</tr>");
+
+//SCORE&NEXT ROW
+
+document.write("<tr>");
+
+//SCORE CELL
+
+
+document.write("  <td align=left abswidth=137 valign=center align=right>");
+document.write("      <font size=+2 color=#FFFFFF>Score:</font>");
+document.write("  </td>");
+
+document.write("  <td valign=top abswidth=215>");
+document.write("<img width=33 height=53 src=/ROMCache/spacer.gif name=scorem>");
+document.write("<img width=33 height=53 src="+FormDigitImageURL(0)+" name=score0>");
+document.write("<img width=33 height=53 src="+FormDigitImageURL(0)+" name=score1>");
+document.write("<img width=33 height=53 src="+FormDigitImageURL(0)+" name=score2>");
+document.write("<img width=33 height=53 src="+FormDigitImageURL(0)+" name=score3>");
+document.write("  </td>");
+
+// NEXT ARROW
+
+document.write("  <td align=right abswidth=84>");
+document.write("  <a href=\"");
+document.write(sCategory+eval(eval(sCategoryQuestionNumber)+1)+".html\">");
+document.write("     <img width=84 height=51 src=\"../../images/arrow.gif\">");
+document.write("   </a>");
+document.write("  </td>");
+
+// /SCORE&NEXT 
+document.write("</tr>");
+
+// MAIN TABLE
+
+document.write("</table>");
+
+  var sUserScore = GetCookie("<!--CATEGORY-->POINTS");
+  if (sUserScore == null)
+    sUserScore = "0";
+
+  //alert("In Main");
+  SetScoreImages(sUserScore);
+  SetMessageImage();
+
+}
+
+var sDifficulty = 1;
+var sCategory = "<!--CATEGORY-->";
+var sCategoryQuestionNumber = <!--QUESTIONON-->; 
+var sCategoryQuestions      = <!--QUESTIONSTOTAL-->; 
+var sQuestion = "<!--QUESTION-->";   
+var asAnswers = new Array(<!--ANSWERARRAY-->); 
+var nNumAnswers = <!--NUMANSWERS-->;
+var sCorrectAnswer = <!--CORRECTANSWER-->;
+var sPointsPossible = <!--WORTH-->;
+
+CheckQuestionOn(sCategory, sCategoryQuestionNumber);
+
+var sUserPoints = GetCookie(sCategory+"POINTS");
+if (sUserPoints==null) {
+  sUserPoints=0;
+}
+
+RenderQuestion(sQuestion,
+               asAnswers,
+               nNumAnswers,
+               sCorrectAnswer,
+               sDifficulty,
+               sUserPoints,
+               sPointsPossible,
+               sCategory,
+               sCategoryQuestionNumber,
+               sCategoryQuestions);
+
+SetCookieMacro("CATEGORY", sCategory);   
+
+document.write("</body></html>");
+document.close();
+</script>

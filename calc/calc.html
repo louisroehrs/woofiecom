@@ -1,0 +1,161 @@
+<!-- This document was created with HomeSite 2.5 -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<HTML>
+<HEAD>
+
+<SCRIPT Language=Javascript>
+	
+	var total=0.0
+	var keyin=''
+	var decimal = 0
+	
+	function clickedold(buttonname) {
+		document.images['digit' + buttonname].src= 'd' + buttonname + '.gif'
+		}
+		
+	function clicked(buttonname) {
+		if (keyin.length ==0) 
+			cleardisplay();
+		
+		if (keyin.length <9 ) {
+			keyin = keyin+buttonname;
+			display(keyin)
+		}
+	}
+
+	function cleardisplay() {
+		for (i=8;i>0;i--) {
+			document.images['digit' + i].src = 'dblank.gif';
+			document.images['digitdot' + i].src = 'dnodot.gif'
+		}
+	}
+
+	function addme() {
+		total = total + parseFloat(keyin);
+		display(total);
+		keyin='';
+		decimal=0;
+	}
+	
+	function dot() {
+		if (decimal == 0) {
+			keyin=keyin + '.';
+			if (keyin == ".") {
+				cleardisplay();
+				keyin ="0.";
+				}
+			display(keyin);
+			decimal=1;
+		}
+	}
+	
+	function display(amount) {
+		totalstring = amount.toString();
+		c=0;
+		for (i=0; i<9 ;i++) {
+			nextchar= totalstring.substring(totalstring.length-c-1,totalstring.length-c);
+			c++;
+			if (c <= totalstring.length) {
+				if (nextchar == ".")  {
+					document.images['digitdot'+(i)].src= 'ddot.gif';
+						nextchar= totalstring.substring(totalstring.length-c-1,totalstring.length-c);
+						c++;
+				}
+				else {
+					document.images['digitdot'+(i)].src= 'dnodot.gif';
+				}
+			
+			document.images['digit' + (i)].src= 'd' + nextchar + '.gif';
+	
+			}
+		}
+	}
+	
+			
+	function displayat(imagename, myvalue) {
+		tens =  ""+ Math.round((myvalue / 10)-.5);
+		tens = tens.substring(0,1);
+		document.images[imagename + "10"].src= "dg" + tens + ".gif";
+		document.images[imagename + "1"].src= "dg" + (myvalue % 10) + ".gif";
+		<!-- document.woof.debug.value = (myvalue/10) + "}}" + tens +"((" + today + " ))";	 -->
+	}
+
+	function tick(timerID) {
+		today = new Date();
+		hour = today.getHours();
+		day ='am'
+		if (hour > 12) {
+			hour -= 12
+			day='pm'
+			}
+		minute = today.getMinutes();
+		displayat("hours",hour,today);
+		displayat("mins",minute,today);
+		document.images["ampm"].src = "dg" + day +".gif"
+		timerID = setTimeout("tick()",1000)
+   		timerRunning = true
+
+		}
+	
+	function startclock(){
+	   // Make sure the clock is stopped
+   		stopclock()
+   		tick()
+		}
+
+
+	var timerID = null
+	var timerRunning = false
+	
+	function startclock() {
+		timerID=setTimeout('tick(timerID)',5000)
+		}
+	
+	function stopclock(){
+   		if(timerRunning)
+      		clearTimeout(timerID)
+   			timerRunning = false
+		}
+
+</SCRIPT>
+
+	<META NAME="Author" CONTENT="Louis F. Roehrs">
+
+	<TITLE>SimpleCalc</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#000000" onload="tick();return true;">
+<CENTER>
+<BR><BR><BR><BR><BR>&nbsp;
+<TABLE BGCOLOR=#402040>
+<TR><TD ALIGN="CENTER"><IMG SRC="1x1clear.gif" WIDTH=10 HEIGHT=3 BORDER=0 ALT=""><BR>
+<IMG SRC="1x1clear.gif" WIDTH=10 HEIGHT=3 BORDER=0 ALT=""><IMG SRC="dblank.gif" name="hours10" WIDTH=32 HEIGHT=42 BORDER=0 ALT=""><IMG SRC="dblank.gif" name="hours1" WIDTH=32 HEIGHT=42 BORDER=0 ALT=""><IMG SRC="dgc.gif" name="colon" WIDTH=18 HEIGHT=42 BORDER=0 ALT=""><IMG SRC="dblank.gif" name="mins10" WIDTH=32 HEIGHT=42 BORDER=0 ALT=""><IMG SRC="dblank.gif" name="mins1" WIDTH=32 HEIGHT=42 BORDER=0 ALT=""><IMG SRC="dgam.gif" Name="ampm" WIDTH=32 HEIGHT=42 BORDER=0 ALT=""><IMG SRC="1x1clear.gif" WIDTH=5 HEIGHT=3 BORDER=0 ALT="">
+</TR></TD></TABLE><BR><BR><BR>&nbsp;
+<TABLE BGCOLOR=#402040><TR><TD ALIGN="CENTER"><IMG SRC="1x1clear.gif" WIDTH=10 HEIGHT=3 BORDER=0 ALT=""><BR>
+<IMG SRC="1x1clear.gif" WIDTH=3 HEIGHT=1 BORDER=0 ALT=""><IMG SRC="dnodot.gif" WIDTH=4 HEIGHT=25 BORDER=0 ALT=""><IMG SRC="dblank.gif" name="digit8" WIDTH=17 HEIGHT=25 BORDER=0 ALT=""><IMG SRC="dnodot.gif" name="digitdot8" WIDTH=4 HEIGHT=25 BORDER=0 ALT=""><IMG SRC="dblank.gif" name="digit7" WIDTH=17 HEIGHT=25 BORDER=0 ALT=""><IMG SRC="dnodot.gif" name="digitdot7" WIDTH=4 HEIGHT=25 BORDER=0 ALT=""><IMG SRC="dblank.gif" name="digit6" WIDTH=17 HEIGHT=25 BORDER=0 ALT=""><IMG SRC="dnodot.gif" name="digitdot6" WIDTH=4 HEIGHT=25 BORDER=0 ALT=""><IMG SRC="dblank.gif" name="digit5" WIDTH=17 HEIGHT=25 BORDER=0 ALT=""><IMG SRC="dnodot.gif" name="digitdot5" WIDTH=4 HEIGHT=25 BORDER=0 ALT=""><IMG SRC="dblank.gif" name="digit4" WIDTH=17 HEIGHT=25 BORDER=0 ALT=""><IMG SRC="dnodot.gif" name="digitdot4" WIDTH=4 HEIGHT=25 BORDER=0 ALT=""><IMG SRC="dblank.gif" name="digit3" WIDTH=17 HEIGHT=25 BORDER=0 ALT=""><IMG SRC="dnodot.gif" name="digitdot3" WIDTH=4 HEIGHT=25 BORDER=0 ALT=""><IMG SRC="dblank.gif" name="digit2" WIDTH=17 HEIGHT=25 BORDER=0 ALT=""><IMG SRC="dnodot.gif" name="digitdot2" WIDTH=4 HEIGHT=25 BORDER=0 ALT=""><IMG SRC="dblank.gif" name="digit1" WIDTH=17 HEIGHT=25 BORDER=0 ALT=""><IMG SRC="dnodot.gif" name="digitdot1" WIDTH=4 HEIGHT=25 BORDER=0 ALT=""><IMG SRC="d0.gif" name="digit0" WIDTH=17 HEIGHT=25 BORDER=0 ALT=""><IMG SRC="ddot.gif" name="digitdot0" WIDTH=4 HEIGHT=25 BORDER=0 ALT=""><IMG SRC="dnodot.gif" WIDTH=4 HEIGHT=25 BORDER=0 ALT="">
+
+<BR><BR>
+<A HREF="javascript:clicked(7);"><IMG SRC="7.gif" name="button7" WIDTH=25 HEIGHT=25 BORDER=0 HSPACE=1 VSPACE=1></A><A HREF="javascript:clicked(8);"><IMG SRC="8.gif" name="button8"   WIDTH=25 HEIGHT=25 BORDER=0 HSPACE=1 VSPACE=1></A><A HREF="javascript:clicked(9);"><IMG SRC="9.gif" name="button9" WIDTH=25 HEIGHT=25 BORDER=0 HSPACE=1 VSPACE=1></A><BR>
+<A HREF="javascript:clicked(4);"><IMG SRC="4.gif" name="button4" WIDTH=25 HEIGHT=25 BORDER=0 HSPACE=1 VSPACE=1></A><A HREF="javascript:clicked(5);"><IMG SRC="5.gif" name="button5"   WIDTH=25 HEIGHT=25 BORDER=0 HSPACE=1 VSPACE=1></A><A HREF="javascript:clicked(6);"><IMG SRC="6.gif" name="button6" WIDTH=25 HEIGHT=25 BORDER=0 HSPACE=1 VSPACE=1></A><BR>
+
+<A HREF="javascript:clicked(1);"><IMG SRC="1.gif" name="button1" WIDTH=25 HEIGHT=25 BORDER=0 HSPACE=1 VSPACE=1></A><A HREF="javascript:clicked(2);"><IMG SRC="2.gif" name="button2"   WIDTH=25 HEIGHT=25 BORDER=0 HSPACE=1 VSPACE=1></A><A HREF="javascript:clicked(3);"><IMG SRC="3.gif" name="button3" WIDTH=25 HEIGHT=25 BORDER=0 HSPACE=1 VSPACE=1></A><BR>
+<A HREF="javascript:clicked(0);"><IMG SRC="0.gif" name="button0" WIDTH=25 HEIGHT=25 BORDER=0 HSPACE=1 VSPACE=1></A><A HREF="javascript:dot();"><IMG SRC="dot.gif" name="buttondot" WIDTH=25 HEIGHT=25 BORDER=0 HSPACE=1 VSPACE=1></A><A HREF="javascript:addme();"><IMG SRC="plus.gif" name="buttonplus" WIDTH=25 HEIGHT=25 BORDER=0 HSPACE=1 VSPACE=1></A><BR>
+<BR><!-- <FONT FACE="Arial, Helvetica" COLOR="LightBlue"><STRONG>Look, No Java!  Runs on WebTV!<BR></STRONG> --></FONT>
+</TD></TR></TABLE>
+
+</CENTER>
+
+<BR><BR><BR><BR><BR><BR><IMG SRC="d0.gif" WIDTH=1 HEIGHT=1 BORDER=0><IMG SRC="d1.gif" WIDTH=1 HEIGHT=1 BORDER=0>
+<IMG SRC="d2.gif" WIDTH=1 HEIGHT=1 BORDER=0>
+<IMG SRC="d3.gif" WIDTH=1 HEIGHT=1 BORDER=0>
+<IMG SRC="d4.gif" WIDTH=1 HEIGHT=1 BORDER=0>
+<IMG SRC="d5.gif" WIDTH=1 HEIGHT=1 BORDER=0>
+<IMG SRC="d6.gif" WIDTH=1 HEIGHT=1 BORDER=0><IMG SRC="d9.gif" WIDTH=1 HEIGHT=1 BORDER=0>
+<IMG SRC="d7.gif" WIDTH=1 HEIGHT=1 BORDER=0><IMG SRC="d8.gif" WIDTH=1 HEIGHT=1 BORDER=0>
+<!-- <FORM name=woof>
+<INPUT type=text name=debug size=50>
+</form> -->
+
+</BODY>
+</HTML>

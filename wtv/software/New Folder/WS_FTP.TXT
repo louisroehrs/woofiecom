@@ -1,0 +1,169 @@
+          Windows Sockets FTP Client Application  -  WS_FTP 4.0
+                            by John A. Junod
+     Copyright (C) 1992-1996 by Ipswitch, Inc.  All rights reserved.
+
+ REDISTRIBUTION:
+ ===============
+   For information about the free WS_FTP Limited Edition distribution
+   program please visit www.ipswitch.com or send email to
+   info@ipswitch.com or call (617) 676-5700.
+
+   For information about distributing WS_FTP Professional please
+   contact Ipswitch at info@ipswitch.com or call (617) 676-5700.
+
+   For information about WS_FTP Professional, see the WS_FTP
+   Limited Edition About box, or visit www.ipswitch.com.
+
+ LICENSE
+ =======
+   Refer to your end user license agreement.
+
+   In the LE version, this appears in the About box of WS_FTP and
+   during installation.
+
+
+ DESCRIPTION:
+ ============
+   This application is a standard File Transfer Protocol (FTP) client
+   application for Windows Sockets.  The user interface for this FTP
+   client is designed with the novice FTP user in mind.  Usage should
+   be obvious.  For more information on FTP please refer to the many
+   different NETNEWS groups or one of the recent books on the Internet.
+
+   There are multiple versions of WS_FTP. These are all included in
+   the ZIP file with an INSTALL program.
+
+   WS_FTP.exe (FTPPRO.exe) is designed to operate in a 16 bit environment
+                but will work in any environment.
+
+   WS_FTP32.exe (FTP32PRO.exe) is designed to operate in a 32 bit
+                environment as provided in Windows 3.x with Win32s,
+                Windows 95, Windows NT and OS/2.
+
+   WS_FTP95.exe (FTP95PRO.exe) is designed to operate in 32 bit multi-
+                threaded environment as provided by Windows 95 and
+                Windows NT.  Usage under Win32s is not blocked but some
+                features like remote edit may not work properly.
+
+   If you have problems with WS_FTP32 under Win32s, please try
+   using the 16 bit version of WS_FTP.
+
+ REQUIREMENTS:
+ =============
+   WS_FTP requires you to have a properly installed WINSOCK.DLL
+   and requires Windows 3.1 or later.
+
+     If you don't have a WINSOCK.DLL, I'd suggest getting the
+     free one from Microsoft or the shareware Trumpet Winsock
+     from ftp.trumpet.com.au or buying a vendor supported one
+     from Ipswitch, Inc. or from FTP Software, Inc.
+
+   WS_FTP32 requires Windows NT, Windows 95 or Win32s 1.15 (or later)
+
+     Windows NT and Windows 95 come with a WINSOCK.DLL. If you
+     use a different vendors stack on these platforms you will
+     need to replace the WSOCK32.DLL that comes with the OS.
+
+   WS_FTP requires a 286 processor.
+
+   WS_FTP32 requires a 386 processor.
+
+   WS_FTP95 requires Windows 95 or Windows NT.
+
+ INSTALLATION:
+ =============
+   YOU MUST HAVE A PROPERLY INSTALLED WINSOCK.DLL FOR THIS APPLICATION
+   TO WORK.  REFER TO YOUR WINSOCK.DLL DOCUMENTATION FOR SETUP!!
+
+   1. Unzip the distribution file into a temporary directory.
+
+   2. Run INSTALL.
+
+
+ VALID COMMAND LINE OPTIONS:
+ ===========================
+   ws_ftp  [args] ftp://hostname|profile/pathname/  <- start in this dir
+   ws_ftp  [args] ftp://hostname|profile/pathname/filename
+                   [local:/pathname[/filename]]
+   ws_ftp  [args] hostname|local:/pathname/filename
+                 [hostname|local:/pathname/filename]
+   ws_ftp  [args] -ask                       <- prompts for command line
+
+   [args] = -i Inifile      (must come before all other args)
+            -p Profile      (must come before all other args except -i)
+            -u Userid
+            -w passWord
+            -c aCcount
+            -ascii
+            -binary
+            -quiet
+            -s hostname|local/pathname/filename      (Source)
+            -d hostname|local/pathname/filename      (Dest)
+            -m filename_of_file_containing_args   (pro only)
+
+ WHERE TO GET IT
+ ===============
+   (WS_FTP Limited Edition)
+     http://www.ipswitch.com/
+     http://www.csra.net/junodj/
+
+   (WS_FTP Professional)
+     Call Ipswitch at (617) 676-5700 or send a fax to (617) 676-5710
+     or send email to <info@ipswitch.com>.
+
+ SUPPORT
+ =======
+  No support is provided for WS_FTP Limited Edition.  You can receive
+  support by purchasing a copy of WS_FTP Professional from Ipswitch.
+
+  Bug reports and suggestions for improvement can be sent by e-mail
+  to support@ipswitch.com and/or junodj@csra.net.
+
+  Please send all distribution and commercial purchase requests
+  via e-mail to info@ipswitch.com or call (617) 676-5700.
+
+ BUG REPORTS, SUGGESTIONS, ETC...
+ ================================
+   If you connect to a host that WS_FTP doesn't recognize (i.e. listboxes
+   remain blank or are displayed incorrectly).
+
+   1. Try the different host types that are listed in the options dialog
+      box.  (the change takes affect immediately, you do not need to
+      change directories, etc..)
+
+   2. If you can't find one that displays the directory correctly, then:
+
+      a.  click on the LogWnd button and save the message log to a file
+      b.  click on the remote side DirInfo button and save the contents
+          to a different file.
+      c.  mail both files to "junodj@csra.net"
+
+   Send all bug reports, suggestions, etc to "junodj@csra.net"
+
+   If you like this program, let other people know about it!
+   Post your comments in comp.protocol.tcp-ip.ibmpc, alt.winsock and
+   in the windows groups on usenet and places like compuserve.  Let
+   people know about it!
+
+ KNOWN PROBLEMS
+ ==============
+   Many internet providers require you to use PASV mode in order
+     for WS_FTP to work properly.  If you always get "Dirlist
+     returned 0", try changing this setting under Advanced in the
+     Connect dialog or in Session Options.  This is NOT a true
+     problem in WS_FTP but is a requirement of your network
+     provider.
+
+   Some versions of the Trumpet Winsock DLL require you to use
+     PASV mode.  See the above note.
+
+   You MAY need to use PASV mode when using TIA. See the above note.
+
+   WS_FTP does not work properly under some versions of the SPRY
+     stack.  You need to contact SPRY to get an upgraded stack
+     that is Winsock compliant.
+
+   WS_FTP32 does not work properly when using the 16 bit version
+     of Chameleon or Trumpet Winsock on Windows NT or Windows 95.
+     You need to replace the WSOCK32.DLL provided by Microsoft
+     with one from the network stack vendor.

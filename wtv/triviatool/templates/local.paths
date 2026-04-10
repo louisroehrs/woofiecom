@@ -1,0 +1,4 @@
+<!--PUBPATHSTART-->/usr/local/etc/httpd/htdocs/tpark/public_html/triviapub/<!--PUBPATHSTOP-->
+<!--PUBURLSTART-->http://ed.webtv.net/~tpark/new/triviapub/<!--PUBURLSTOP-->
+<!--DBURLSTART-->jdbc:msql://ed.webtv.net:1114/trivia<!--DBURLSTOP-->
+<!--CGIURLSTART-->http://ed.webtv.net/~tpark/new/triviatool/cgi/<!--CGIURLSTOP-->

@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Please Wait.</title>
+<script>
+  function initialize() {
+
+       parent.document.body.updateContent(window.name.substring(6));
+  }
+</script>
+<link rel=stylesheet type=text/css href=dialog.css>
+<style>
+
+.body {
+    border-width: 0px;
+	border-style:  solid;
+    border-color:  #0c0 ;
+}
+</style>
+  </head>
+
+  <body class=body topmargin=0 leftmargin=0 onload='initialize();'>
+<table cellpadding=9 cellspacing=4 bgcolor=00cc00><tr><td bgcolor=white><font face='tahoma' size=4><B id=poppin>Please wait... I'm poppin' up some prices!</B></font><BR><img onclick="document.all.poppin.innerHTML='Hey, that tickles!! <BR>Hee hee hee...'" src='anim_doughboy.gif'><img src='loadgraphic.gif'></td></tr></table>
+  </body>
+
+</html>

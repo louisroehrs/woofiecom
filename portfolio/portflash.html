@@ -1,0 +1,100 @@
+<!-- This document was created with HomeSite 2.5 -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<HTML>
+<HEAD>
+	<TITLE>Big Woofie Sports</TITLE>
+
+<SCRIPT Language="JavaScript">
+	
+	function getURLvar(Name) {
+		var search = Name + "="
+		var incoming = window.location.search
+		if (incoming.length > 0) { // if there are any search parameters
+			offset = incoming.indexOf(search) 
+			if (offset != -1) { // if parameter exists 
+				offset += search.length 
+				// set index of beginning of value
+				end = incoming.indexOf("&", offset) 
+				// set index of end of cookie value
+				if (end == -1) 
+					end = incoming.length
+				value = unescape(incoming.substring(offset, end))
+				if (value == "") {
+					return null
+				} else {
+					return value
+				}
+			}
+			else return null
+		}
+		else return null
+	}
+
+
+function Redirect(sURL) {
+  window.location=sURL;
+} 
+function RedirectToGame() {
+ sURL=getURLvar("game")
+	gameURL = "" + sURL;
+	
+  window.location= gameURL;
+} 
+
+	</SCRIPT>
+</HEAD>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--last modified on Tuesday, November 10, 1998 11:40 PM -->
+
+
+<HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+	<META NAME="author" Content="Louis Roehrs   Big Woofie Studios http://www.woofie.com">
+	<META NAME="copyright" content="1997-1998 Louis Roehrs Big Woofie Studios http://www.woofie.com">
+	<META NAME="keywords" Content="shop books music CDs cds games developer webtv tv television web cool woofie Web site programming CGI Perl Flash Site Design Contractor SQL"
+	><META NAME="description" CONTENT="Leading developer of internet TV games, entertainment, and properties for companies large and small located in Silicon Valley.">
+	<META NAME="robots" content="index,follow">
+	<META NAME="revisit-after" content="15">
+
+	<TITLE>Big Woofie Studios Portfolio</TITLE>
+</HEAD>
+
+<BODY TEXT="#000066" BGCOLOR="#808080" LINK="#0000FF" VLINK="#000099" ALINK="#FFFF00">
+
+<TABLE BORDER="0" CELLPADDING="4" CELLSPACING="0" WIDTH="100%" HEIGHT="35">
+<tr>
+		<TD  VALIGN="TOP" BGCOLOR="#000066">
+			<CENTER>
+			<P>
+			<TABLE BORDER="0" CELLSPACING="0" WIDTH="100%" BGCOLOR="#FFFFFF">
+				<TR>
+					<TD HEIGHT="16" VALIGN="TOP" BGCOLOR="#000066"><FONT SIZE="2" COLOR="#00FF00" FACE="Arial, Helvetica"><B>&nbsp;
+<SCRIPT Language="JavaScript">
+	woofie = getURLvar("title");
+	document.write(woofie);
+</SCRIPT>
+</B></FONT></TD>
+				</TR>
+				<TR>
+					<TD ALIGN="CENTER" BGCOLOR="#000000">
+<SCRIPT Language="JavaScript">
+	woofie = getURLvar("URL");
+		myw = getURLvar("w");
+		myh = getURLvar("h");
+		
+	//alert(woofie);
+	document.write("<EMBED SRC='../" + woofie + "' WIDTH=" + myw + " HEIGHT=" + myh + " BORDER=0 ALIGN=BOTTOM VSPACE=5 loop=true></embed>");
+</SCRIPT>
+</TD>
+				</TR>
+			</TABLE>
+
+</CENTER>
+		</TD>
+	</TR>
+</table>
+
+</BODY>
+
+</HTML>

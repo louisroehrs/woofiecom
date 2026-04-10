@@ -1,0 +1,662 @@
+<HTML><HEAD>
+<TITLE>World-Wide Web Access Statistics</TITLE>
+</HEAD><BODY>
+<H1>World-Wide Web Access Statistics</H1>
+<EM>Last updated: Tue, 28 Sep 1999 08:38:26 (GMT -0700)</EM>
+<UL>
+<LI><A HREF="#Daily">Daily Transmission Statistics</A>
+<LI><A HREF="#Domain">Total Transfers by Client Domain</A>
+<LI><A HREF="#Subdomain">Total Transfers by Reversed Subdomain</A>
+<LI><A HREF="#Archive">Total Transfers from each Archive Section</A>
+<LI><A HREF="http:/www_stats/Aug.wwwstats.html">Previous Full Summary Period</A>
+</UL>
+<H2>Totals for Summary Period:  Sep  1 1999 to Sep 27 1999</H2>
+<PRE>
+Files Transmitted During Summary Period            3588
+Bytes Transmitted During Summary Period        25458352
+Average Files Transmitted Daily                     138
+Average Bytes Transmitted Daily                  979167
+</PRE>
+<HR>
+<H2><A NAME="Daily">Daily Transmission Statistics</A></H2>
+<PRE>
+%Reqs %Byte  Bytes Sent  Requests   Date
+----- ----- ------------ -------- |------------
+ 4.18  4.78      1216436      150 | Sep  1 1999
+ 3.57  3.97      1011540      128 | Sep  2 1999
+ 1.78  1.73       440155       64 | Sep  3 1999
+ 3.62  3.44       874652      130 | Sep  4 1999
+ 2.76  3.03       771989       99 | Sep  5 1999
+ 3.09  2.39       607698      111 | Sep  6 1999
+ 3.43  3.02       768066      123 | Sep  7 1999
+ 3.15  2.76       702991      113 | Sep  8 1999
+ 4.54  3.06       780197      163 | Sep  9 1999
+ 3.46  2.88       733213      124 | Sep 10 1999
+ 3.29  4.83      1229461      118 | Sep 11 1999
+ 3.71  3.84       977956      133 | Sep 12 1999
+ 4.40  6.87      1748167      158 | Sep 13 1999
+ 4.88  3.84       978301      175 | Sep 15 1999
+ 5.04  6.90      1756283      181 | Sep 16 1999
+ 8.03  4.71      1198221      288 | Sep 17 1999
+ 3.71  4.93      1256025      133 | Sep 18 1999
+ 2.37  1.37       347826       85 | Sep 19 1999
+ 3.18  3.63       923371      114 | Sep 20 1999
+ 3.71  3.80       966751      133 | Sep 21 1999
+ 4.82  4.71      1198678      173 | Sep 22 1999
+ 3.23  2.77       705600      116 | Sep 23 1999
+ 2.98  3.21       818289      107 | Sep 24 1999
+ 3.01  3.16       804979      108 | Sep 25 1999
+ 8.39  8.88      2261080      301 | Sep 26 1999
+ 1.67  1.49       380427       60 | Sep 27 1999
+</PRE>
+<HR>
+<H2><A NAME="Domain">Total Transfers by Client Domain</A></H2>
+<PRE>
+%Reqs %Byte  Bytes Sent  Requests   Domain
+----- ----- ------------ -------- |------------------------------------
+ 0.28  0.25        63198       10 | ar    Argentina
+ 0.20  0.19        47867        7 | at    Austria
+ 0.45  0.62       158349       16 | au    Australia
+ 0.45  0.72       182722       16 | be    Belgium
+ 0.36  1.04       264960       13 | bg    Bulgaria
+ 0.95  0.80       204431       34 | br    Brazil
+ 1.00  1.14       289955       36 | ca    Canada
+ 0.20  0.19        49402        7 | ch    Switzerland
+ 1.28  0.66       169287       46 | de    Germany
+ 0.28  0.28        70998       10 | dk    Denmark
+ 0.03  0.04         9656        1 | ec    Ecuador
+ 0.20  0.28        70810        7 | es    Spain
+ 0.64  0.84       212640       23 | fi    Finland
+ 0.47  0.35        90056       17 | fr    France
+ 0.47  0.44       112600       17 | gr    Greece
+ 0.20  0.19        49402        7 | hu    Hungary
+ 0.22  0.84       213068        8 | id    Indonesia
+ 1.25  1.09       277243       45 | it    Italy
+ 0.11  0.16        41533        4 | jp    Japan
+ 0.20  0.12        30654        7 | mx    Mexico
+ 0.20  0.16        39772        7 | my    Malaysia
+ 0.53  0.45       114929       19 | nl    Netherlands
+ 0.11  0.03         7700        4 | no    Norway
+ 0.70  1.14       291407       25 | pl    Poland
+ 0.20  0.19        49402        7 | pt    Portugal
+ 0.20  0.16        39772        7 | ru    Russian Federation
+ 0.39  0.36        91170       14 | se    Sweden
+ 0.17  0.34        87831        6 | sg    Singapore
+ 0.25  0.19        49598        9 | sk    Slovak Republic
+ 0.92  0.90       228304       33 | tr    Turkey
+ 0.50  0.79       201787       18 | uk    United Kingdom
+ 0.36  0.27        67983       13 | us    United States
+ 0.06  0.05        12438        2 | yu    Yugoslavia
+29.18 32.12      8178066     1047 | com   US Commercial
+ 2.81  2.16       549654      101 | edu   US Educational
+ 0.28  0.19        48532       10 | gov   US Government
+ 0.36  0.22        54840       13 | mil   US Military
+39.60 36.27      9232502     1421 | net   Network
+ 0.47  0.32        80293       17 | org   Non-Profit Organization
+13.49 13.45      3423541      484 | unresolved 
+</PRE>
+<HR>
+<H2><A NAME="Subdomain">Total Transfers by Reversed Subdomain</A></H2>
+<PRE>
+%Reqs %Byte  Bytes Sent  Requests   Reversed Subdomain
+----- ----- ------------ -------- |------------------------------------
+13.49 13.45      3423541      484 | Unresolved
+ 0.08  0.05        13796        3 | ar.net.arnet
+ 0.20  0.19        49402        7 | ar.net.cablenet
+ 0.20  0.19        47867        7 | at.teleweb
+ 0.17  0.19        48098        6 | au.com.alphalink
+ 0.14  0.38        96095        5 | au.net.netspace
+ 0.08  0.05        13796        3 | au.net.omen
+ 0.06  0.00          360        2 | au.net.tmns
+ 0.14  0.38        96095        5 | be.skynet.herentals
+ 0.20  0.22        56957        7 | be.telenet-ops
+ 0.11  0.12        29670        4 | be.uunet
+ 0.36  1.04       264960       13 | bg.uni-svishtov
+ 0.11  0.06        14366        4 | br.com.acessonet
+ 0.14  0.27        69140        5 | br.com.braznet
+ 0.31  0.20        51838       11 | br.com.bridge
+ 0.20  0.16        41827        7 | br.com.mtecnet
+ 0.08  0.05        13796        3 | br.com.openlink
+ 0.11  0.05        13464        4 | br.com.svn
+ 0.08  0.05        13796        3 | ca.ab.videotron
+ 0.11  0.12        30221        4 | ca.antarcti
+ 0.08  0.12        31655        3 | ca.bc.intergate
+ 0.06  0.09        23393        2 | ca.corel
+ 0.36  0.49       124081       13 | ca.nb.nbnet
+ 0.17  0.08        20675        6 | ca.netcom
+ 0.03  0.07        17409        1 | ca.ns.gov
+ 0.03  0.07        17409        1 | ca.pangea.ner
+ 0.03  0.04        10444        1 | ca.sympatico.lino
+ 0.06  0.00          872        2 | ca.uoguelph.net
+ 0.20  0.19        49402        7 | ch.unige
+ 0.06  0.04         9418        2 | com.accesscom.usr1
+ 0.03  0.02         4709        1 | com.accesscom.usr2
+ 0.03  0.00           98        1 | com.accesscom.usr3
+ 0.22  0.20        50309        8 | com.alaweb
+ 0.67  3.83       974919       24 | com.alexa
+ 0.50  0.26        65297       18 | com.aol.ipt
+ 5.49  3.79       965108      197 | com.aol.proxy
+ 0.28  0.18        46113       10 | com.atext
+ 0.03  0.03         7918        1 | com.awo
+ 0.61  0.55       140282       22 | com.bbn.saturn
+ 0.03  0.07        17409        1 | com.bbnp
+ 0.25  0.18        46935        9 | com.bellglobal.qc
+ 0.03  0.07        16564        1 | com.best.vip
+ 0.20  0.19        49402        7 | com.brinet
+ 0.06  0.05        12828        2 | com.ccnet
+ 0.20  0.19        49402        7 | com.ccsi
+ 0.03  0.13        31852        1 | com.cgi
+ 0.06  0.00          848        2 | com.continuumsi
+ 0.08  0.05        13796        3 | com.correa
+ 0.59  0.33        84861       21 | com.csw
+ 0.06  0.04         9613        2 | com.ctgusa
+ 0.06  0.00          848        2 | com.dec.pa-x
+ 0.14  0.15        39274        5 | com.dec.pa-x.av
+ 0.08  0.05        13796        3 | com.deuba.uk.srv
+ 0.20  0.26        65119        7 | com.directhit
+ 0.03  0.03         7576        1 | com.dowco
+ 0.08  0.05        13796        3 | com.dreamscape
+ 0.03  0.00          180        1 | com.e-softinc
+ 1.78  1.50       381990       64 | com.excite
+ 0.08  0.05        13796        3 | com.futureone.dialup.presc
+ 0.11  0.06        15389        4 | com.gifwizard
+ 0.17  0.15        38958        6 | com.groupaction
+ 0.28  0.30        76172       10 | com.gvtc
+ 0.08  0.05        13796        3 | com.harborside.lc0
+ 0.06  0.01         2297        2 | com.home.pa.wyn1
+ 0.03  0.01         2293        1 | com.home.ri.provd1
+ 0.08  0.05        13796        3 | com.home.wave.ab.5.253.65
+ 0.08  0.05        13796        3 | com.home.wave.ab.92.90.64
+ 0.03  0.04        10444        1 | com.home.wave.bc.rchmd1
+ 0.08  0.05        13796        3 | com.home.wave.bc.rct1
+ 0.20  0.28        70988        7 | com.home.wave.on.bloor1
+ 0.03  0.03         7918        1 | com.ibm.us.co
+ 0.20  0.19        49402        7 | com.ihot
+ 0.06  0.00          360        2 | com.imagiware
+ 0.17  0.11        27592        6 | com.inconnect.dsl
+ 0.33  0.29        72641       12 | com.infochan
+ 0.25  0.12        29708        9 | com.infoseek
+ 0.08  0.09        22408        3 | com.inktomi
+ 3.15  6.66      1695407      113 | com.inktomisearch
+ 0.31  0.21        52269       11 | com.intel.jf
+ 0.03  0.03         7576        1 | com.isyndicate
+ 0.08  0.05        13796        3 | com.kscable
+ 0.17  0.15        38958        6 | com.lenfest.starnet
+ 0.22  0.41       104108        8 | com.linkexchange
+ 0.08  0.05        13796        3 | com.linkny
+ 1.81  1.57       400167       65 | com.lycos.bos
+ 0.36  0.73       186819       13 | com.lycos.pgh.eng
+ 0.20  0.17        43667        7 | com.mindspring.dialup
+ 0.08  0.05        13796        3 | com.montana
+ 0.11  0.03         7700        4 | com.myhost
+ 0.08  0.10        24734        3 | com.nec.nj
+ 0.22  0.26        65263        8 | com.netcom.ix
+ 0.06  0.00          441        2 | com.netmechanic2
+ 0.06  0.07        18020        2 | com.netscape
+ 0.08  0.05        13796        3 | com.newbridge
+ 0.03  0.03         7576        1 | com.nfis
+ 1.95  0.55       139296       70 | com.northernlight
+ 0.17  0.21        53244        6 | com.nque
+ 0.11  0.04        10717        4 | com.oasis-systems
+ 0.03  0.08        20467        1 | com.pahrump
+ 0.06  0.02         5677        2 | com.primenet.cld
+ 0.08  0.05        13796        3 | com.quebectel.f2304
+ 0.17  0.15        38958        6 | com.rcn.dialup.nj.bkw.as5.s23
+ 0.17  0.15        38958        6 | com.rcn.dialup.va.nrf.tnt1.s229
+ 0.17  0.24        60897        6 | com.rcn.dialup.va.rcm.tnt6.s236
+ 0.25  0.43       108561        9 | com.rinconresearch
+ 0.64  1.76       447806       23 | com.royaume
+ 0.36  0.16        40360       13 | com.rr.cinci
+ 0.17  0.12        31458        6 | com.rr.hawaii
+ 0.06  0.04         9869        2 | com.rr.maine
+ 0.17  0.15        38958        6 | com.rr.san
+ 0.08  0.05        13796        3 | com.rr.stny
+ 0.86  0.07        16849       31 | com.rr.tampabay
+ 0.14  0.24        60686        5 | com.rr.twcny
+ 0.03  0.02         5252        1 | com.sbgnet
+ 0.03  0.07        17409        1 | com.seanet.dialup
+ 0.08  0.05        13796        3 | com.sftp
+ 0.20  0.22        56746        7 | com.sonda
+ 0.03  0.03         7576        1 | com.southwestern
+ 0.17  0.15        38958        6 | com.swfirm
+ 0.08  0.05        13796        3 | com.techline.ips.pm3net
+ 0.17  0.15        38958        6 | com.theriver.pm3-29
+ 0.20  0.53       134276        7 | com.tibcofinance
+ 0.08  0.05        13796        3 | com.transport
+ 0.14  0.08        21549        5 | com.udscorp
+ 0.08  0.05        13796        3 | com.viclink.digi02
+ 0.03  0.10        24756        1 | com.webmill
+ 0.84  1.19       303350       30 | com.yahoo
+ 0.67  0.29        74146       24 | de.arcor-ip
+ 0.11  0.09        22705        4 | de.baynet.forchheim
+ 0.06  0.00          848        2 | de.sbs
+ 0.28  0.23        58976       10 | de.t-ipconnect.dip0
+ 0.03  0.00          424        1 | de.uni-mainz.inter-i
+ 0.03  0.04        10444        1 | de.uni-marburg.geographie
+ 0.11  0.01         1744        4 | de.viaginterkom.ipdial.essen
+ 0.03  0.04        11114        1 | dk.au.imf
+ 0.08  0.08        20926        3 | dk.dsb
+ 0.17  0.15        38958        6 | dk.ku.hum.edb
+ 0.03  0.04         9656        1 | ec.net.impsat
+ 0.11  0.03         7700        4 | edu.alma.sac110
+ 0.03  0.03         8304        1 | edu.bu
+ 0.08  0.05        13796        3 | edu.cod
+ 0.11  0.15        38624        4 | edu.dartmouth
+ 0.08  0.05        13796        3 | edu.duke.tip
+ 0.08  0.01         2623        3 | edu.gatech.res
+ 0.20  0.19        49402        7 | edu.ksu.reshall
+ 0.08  0.05        13796        3 | edu.montana.gsl
+ 0.08  0.05        13796        3 | edu.montana.msu
+ 0.17  0.15        38958        6 | edu.mscfs
+ 0.20  0.19        49402        7 | edu.nymc
+ 0.36  0.17        42589       13 | edu.oberlin.con
+ 0.22  0.06        15400        8 | edu.pitt.net.rmt
+ 0.17  0.15        38958        6 | edu.psu.bd
+ 0.14  0.05        11749        5 | edu.rutgers
+ 0.17  0.15        38958        6 | edu.semo.hcb
+ 0.14  0.38        96095        5 | edu.ucsd
+ 0.03  0.00          426        1 | edu.udel
+ 0.08  0.05        13796        3 | edu.udel.student
+ 0.08  0.05        13796        3 | edu.umich.isr
+ 0.11  0.05        13894        4 | edu.umn.stu
+ 0.08  0.05        13796        3 | edu.upenn.resnet-student
+ 0.03  0.13        31852        1 | es.abaforum
+ 0.17  0.15        38958        6 | es.alcala
+ 0.08  0.05        13796        3 | fi.clinet.pp
+ 0.17  0.15        38958        6 | fi.inet
+ 0.39  0.63       159886       14 | fi.saunalahti.kakku
+ 0.14  0.05        12140        5 | fr.cybercable.paris-7
+ 0.17  0.15        38958        6 | fr.dassault-systemes
+ 0.17  0.15        38958        6 | fr.freesurf
+ 0.08  0.08        20033        3 | gov.nasa.jsc
+ 0.11  0.06        14703        4 | gov.ohio.mavca
+ 0.08  0.05        13796        3 | gov.sfwmd
+ 0.20  0.19        49402        7 | gr.compulink
+ 0.20  0.19        49402        7 | gr.hol
+ 0.08  0.05        13796        3 | gr.internet
+ 0.20  0.19        49402        7 | hu.iif
+ 0.22  0.84       213068        8 | id.net.centrin
+ 0.08  0.05        13796        3 | it.iol
+ 0.14  0.33        82987        5 | it.spin
+ 1.03  0.71       180460       37 | it.tin
+ 0.11  0.16        41533        4 | jp.ne.highway.hiroshima
+ 0.08  0.05        13796        3 | mil.af.kelly
+ 0.11  0.05        13452        4 | mil.af.ramstein
+ 0.08  0.05        13796        3 | mil.af.usafa
+ 0.08  0.05        13796        3 | mil.navy.nadepni
+ 0.20  0.12        30654        7 | mx.net.telmex
+ 0.20  0.16        39772        7 | my.jaring
+ 0.20  0.19        49402        7 | net.agt
+ 0.64  0.48       123442       23 | net.alta-vista.pa
+ 0.08  0.05        13796        3 | net.ameritech.il.chicago
+ 0.11  0.02         4681        4 | net.anv
+ 0.08  0.05        13796        3 | net.arq.el
+ 0.11  0.06        14703        4 | net.att.dial-access.az.phoenix-03-04rs
+ 0.08  0.05        13796        3 | net.att.dial-access.ca.palmdesert-01rs13-14rt
+ 0.75  0.40       101082       27 | net.att.dial-access.ca.sherman-oaks-06-07rs16rt
+ 0.06  0.01         2723        2 | net.bellsouth.asm
+ 0.08  0.05        13796        3 | net.bellsouth.ath
+ 0.08  0.05        13796        3 | net.bellsouth.sbg
+ 0.08  0.05        13796        3 | net.bellsouth.shv
+ 0.17  0.18        46620        6 | net.beotel
+ 0.20  0.19        49402        7 | net.bigsky
+ 0.03  0.18        46695        1 | net.bresnanlink
+ 0.20  0.19        49402        7 | net.catskill
+ 0.08  0.05        13796        3 | net.cdsnet.dip
+ 0.08  0.05        13796        3 | net.centuryinter.hd
+ 0.03  0.04        10444        1 | net.cmc.novato
+ 0.08  0.05        12261        3 | net.concentric.tac-wa
+ 0.22  0.23        59058        8 | net.corecomm.focal-chi
+ 0.11  0.06        14703        4 | net.cvc
+ 0.03  0.00          180        1 | net.cyberhouse
+ 0.08  0.05        13796        3 | net.dedalus
+ 3.32  0.55       140163      119 | net.dialsprint
+ 0.33  0.58       146965       12 | net.dstream.dialup
+ 0.25  0.20        50290        9 | net.earthlink.dialup.cvx12-bradley
+ 1.37  2.70       686143       49 | net.earthlink.dialup.cvx26-bradley
+ 0.08  0.05        13796        3 | net.earthlink.dialup.cvx9-bradley
+ 0.28  0.20        49696       10 | net.eznet.roc.tc5
+ 0.06  0.06        15152        2 | net.fiasj
+ 0.03  0.00          180        1 | net.fix.dialup.snlo
+ 0.08  0.05        13796        3 | net.flash.tus1.dialup.utc8
+ 0.08  0.01         2395        3 | net.fn
+ 0.78  0.25        64222       28 | net.foxinternet
+ 0.08  0.05        13796        3 | net.gbso
+ 0.64  1.92       488240       23 | net.gigabell.muenchen
+ 0.11  0.08        21372        4 | net.gis
+ 0.08  0.08        20528        3 | net.globalcenter
+ 0.20  0.19        49402        7 | net.grid.phnx
+ 0.11  0.06        14703        4 | net.grid.snfr
+ 0.03  0.07        17409        1 | net.hgo
+ 0.17  0.15        38958        6 | net.ibm.au.wa
+ 0.31  0.56       142959       11 | net.igs.renc
+ 0.20  0.17        43118        7 | net.infoave.gasotn.r03
+ 0.08  0.05        13796        3 | net.isn
+ 0.11  0.12        29282        4 | net.ite.b
+ 0.08  0.05        13796        3 | net.level3.denver1.222.6.245
+ 0.03  0.01         2929        1 | net.level3.newyork2.31.64.246
+ 0.17  0.12        29921        6 | net.matav.dial
+ 0.45  0.40       102156       16 | net.mediaone.ne
+ 0.20  0.19        49402        7 | net.moment
+ 0.03  0.03         8304        1 | net.mpoweredpc
+ 0.08  0.05        13796        3 | net.mts
+ 0.08  0.05        13796        3 | net.multiweb
+ 0.03  0.04        11114        1 | net.naples.pm3-2
+ 0.25  0.43       110632        9 | net.navix
+ 0.42  0.19        49367       15 | net.netflash
+ 0.03  0.04         9256        1 | net.newel
+ 0.14  0.00          490        5 | net.nlanr.cache
+ 0.03  0.04        11114        1 | net.ntx
+ 0.06  0.00          360        2 | net.nwnexus
+ 8.28  9.58      2439597      297 | net.pacbell.snfc21.dsl
+ 0.17  0.15        38958        6 | net.pacbell.sntc01
+ 0.25  0.53       134732        9 | net.prodigy.ykt
+ 0.14  0.05        13036        5 | net.psi.pub-ip.ga.albany5
+ 0.08  0.05        13796        3 | net.psi.pub-ip.in.indianapolis8
+ 0.11  0.06        14703        4 | net.psi.pub-ip.pa.philadelphia9
+ 0.20  0.19        49402        7 | net.psi.pub-ip.wv.charleston3
+ 0.03  0.03         7422        1 | net.rubis.ny
+ 0.17  0.01         2544        6 | net.scour
+ 0.20  0.19        49402        7 | net.siscom.day-oh.pm2
+ 0.11  0.03         7700        4 | net.snet
+ 0.25  0.24        59872        9 | net.snowcrest
+ 0.11  0.03         7700        4 | net.southwind
+ 0.50  0.63       159651       18 | net.splitrock
+ 0.17  0.15        38958        6 | net.t-dialin.dip
+ 0.08  0.05        13796        3 | net.theramp
+ 0.08  0.05        13796        3 | net.thezone
+ 0.17  0.56       142585        6 | net.uswest.slkc
+ 0.17  0.15        38958        6 | net.uswest.vncr
+ 0.08  0.05        13796        3 | net.uu.da.chi5.tnt14
+ 0.20  0.16        39772        7 | net.uu.da.det3.tnt19
+ 0.08  0.01         2623        3 | net.uu.da.ga.atlanta2.tnt1
+ 0.03  0.00          180        1 | net.uu.da.ind1.tnt2
+ 0.20  0.19        49402        7 | net.uu.da.nj.trenton.tnt3
+ 0.08  0.05        13796        3 | net.uu.da.nm.albuquerque.tnt4
+ 0.20  0.19        49402        7 | net.uu.da.ri.providence.tnt3
+ 0.08  0.05        13796        3 | net.vartec
+ 0.20  0.19        49402        7 | net.videotron.mc.mtl.35-200-24
+ 0.17  0.15        38958        6 | net.videotron.mc.mtl.44-200-24
+ 0.08  0.05        13796        3 | net.wayout
+ 1.48  1.30       331726       53 | net.webtv.paix.public
+ 8.14  7.39      1881564      292 | net.webtv.rwc.public
+ 2.81  1.08       275925      101 | net.wwire
+ 0.11  0.06        14703        4 | nl.demon
+ 0.20  0.19        49402        7 | nl.euronet.alk
+ 0.08  0.08        19521        3 | nl.itc
+ 0.08  0.05        13796        3 | nl.nccw
+ 0.06  0.07        17507        2 | nl.xs4all.dial
+ 0.11  0.03         7700        4 | no.multinett
+ 0.08  0.05        13796        3 | org.cableworks.cm
+ 0.08  0.05        13796        3 | org.carr
+ 0.11  0.03         7700        4 | org.hal-pc.dial-ip.70.130.180
+ 0.17  0.11        27592        6 | org.kp
+ 0.03  0.07        17409        1 | org.slonet.dialup.snlo
+ 0.14  0.33        82987        5 | pl.gliwice.polsl
+ 0.14  0.38        96095        5 | pl.ipartners
+ 0.08  0.05        13796        3 | pl.tpnet.ppp.bielsko
+ 0.08  0.05        13796        3 | pl.tpnet.ppp.siedlce
+ 0.25  0.33        84733        9 | pl.tpnet.ppp.tarnobrzeg
+ 0.20  0.19        49402        7 | pt.telepac
+ 0.20  0.16        39772        7 | ru.metrocom
+ 0.03  0.01         3598        1 | se.mh.dynamic
+ 0.03  0.04         9656        1 | se.skelleftea
+ 0.17  0.15        38958        6 | se.swipnet
+ 0.17  0.15        38958        6 | se.uu.its
+ 0.17  0.34        87831        6 | sg.com.singnet
+ 0.25  0.19        49598        9 | sk.pvt
+ 0.33  0.26        67318       12 | tr.com.netone
+ 0.17  0.15        38958        6 | tr.net.efes
+ 0.42  0.48       122028       15 | tr.net.prizma
+ 0.06  0.01         2297        2 | uk.ac.aston
+ 0.03  0.03         8304        1 | uk.ac.bris.cs
+ 0.03  0.01         2929        1 | uk.co.demon.www-cache
+ 0.03  0.00          180        1 | uk.co.netscapeonline
+ 0.20  0.19        49402        7 | uk.net.ipf.dialup
+ 0.17  0.54       138675        6 | uk.net.netline.dial
+ 0.20  0.19        49402        7 | us.ca.culver-city.ci
+ 0.11  0.03         7700        4 | us.co.k12.psd
+ 0.06  0.04        10881        2 | us.ny.state.health
+ 0.06  0.05        12438        2 | yu.ac.bg.etf
+</PRE>
+<HR>
+<H2><A NAME="Archive">Total Transfers from each Archive Section</A></H2>
+<PRE>
+%Reqs %Byte  Bytes Sent  Requests   Archive Section
+----- ----- ------------ -------- |------------------------------------
+ 0.06  3.31       842600        2 | /BryceStuff/Ballandaship.avi
+ 1.17  0.04         9241       42 | /ROMCache/Spacer.gif
+ 0.81  0.81       206449       29 | /ROMCache/WebTVLogoJewel.gif
+ 0.50  0.33        83656       18 | /about.html
+ 0.42  1.01       256200       15 | /business.html
+ 0.03  0.02         5418        1 | /calc/
+ 0.14  0.00         1115        5 | /calc/1x1clear.gif
+ 0.06  0.13        34076        2 | /calc/WS_FTP.LOG
+ 0.03  0.03         7249        1 | /calc/calc.html
+ 0.14  0.02         5055        5 | /calc/dblank.gif
+ 0.20  0.01         2254        7 | /calc/dg0.gif
+ 0.08  0.00          975        3 | /calc/dg1.gif
+ 0.06  0.00          650        2 | /calc/dg2.gif
+ 0.06  0.00          642        2 | /calc/dg3.gif
+ 0.06  0.00          644        2 | /calc/dg6.gif
+ 0.20  0.01         2289        7 | /calc/dg7.gif
+ 0.03  0.00          311        1 | /calc/dg8.gif
+ 0.03  0.00          321        1 | /calc/dg9.gif
+ 0.14  0.01         1335        5 | /calc/dgam.gif
+ 0.14  0.00         1165        5 | /calc/dgc.gif
+ 0.33  0.10        25321       12 | /doyle/
+ 0.03  0.11        27649        1 | /doyle/CoxMVBRL.gif
+ 0.03  0.12        29577        1 | /doyle/CoxMVCHL.gif
+ 0.03  0.09        22748        1 | /doyle/CoxMVPIL.gif
+ 0.03  0.07        17089        1 | /doyle/CoxMVSOL.gif
+ 0.03  0.03         7583        1 | /doyle/Design_Resume.html
+ 0.17  0.05        11593        6 | /doyle/Index.html
+ 0.06  0.10        26450        2 | /doyle/Me&Dad.gif
+ 0.06  0.37        93390        2 | /doyle/Millimeter.gif
+ 0.08  0.03         8480        3 | /doyle/My_Life.html
+ 0.14  0.06        14505        5 | /doyle/Online_Resume.html
+ 0.14  0.11        29194        5 | /doyle/Poems.html
+ 0.08  0.02         5624        3 | /doyle/Portfolio.html
+ 0.03  0.04         9796        1 | /doyle/Pub_list.html
+ 0.03  0.01         3512        1 | /doyle/Publications.html
+ 0.11  0.27        68933        4 | /doyle/Vish.gif
+ 0.06  0.02         5357        2 | /doyle/Writing_resume.html
+ 0.14  0.24        61597        5 | /doyle/anniversary.gif
+ 0.08  0.16        39964        3 | /doyle/bahamas.gif
+ 0.31  0.29        73832       11 | /doyle/banner.gif
+ 0.03  0.00          318        1 | /doyle/chrisweb.html
+ 0.11  0.13        33176        4 | /doyle/colorado.gif
+ 0.03  0.23        57662        1 | /doyle/condoview.gif
+ 0.14  0.06        14530        5 | /doyle/creative_spirit.gif
+ 0.31  0.11        29108       11 | /doyle/design.html
+ 1.17  1.25       318192       42 | /doyle/design_resume.html
+ 0.14  0.04        10160        5 | /doyle/designer_4_hire.gif
+ 0.03  0.13        32617        1 | /doyle/edgewood_park.gif
+ 0.33  0.11        27516       12 | /doyle/index.html
+ 0.08  0.00          976        3 | /doyle/local_hikes.html
+ 0.06  0.11        28528        2 | /doyle/me.gif
+ 0.11  0.73       186780        4 | /doyle/millimeter.gif
+ 0.14  0.06        15570        5 | /doyle/my_life.gif
+ 0.28  0.15        37619       10 | /doyle/my_life.html
+ 0.14  0.30        75475        5 | /doyle/pinnacles.gif
+ 0.08  0.06        14632        3 | /doyle/poems.html
+ 0.03  0.01         2756        1 | /doyle/portfolio.html
+ 0.03  0.01         2020        1 | /doyle/portfolio1.gif
+ 0.03  0.01         1916        1 | /doyle/portfolio2.gif
+ 0.03  0.01         1859        1 | /doyle/portfolio3.gif
+ 0.03  0.01         1433        1 | /doyle/portfolio4.gif
+ 0.03  0.14        35641        1 | /doyle/princeton_harbor.gif
+ 0.08  0.08        19134        3 | /doyle/pub1.html
+ 0.22  0.26        66432        8 | /doyle/pub2.html
+ 0.17  0.19        47508        6 | /doyle/pub3.html
+ 0.11  0.15        37024        4 | /doyle/pub4.html
+ 0.11  0.15        39156        4 | /doyle/pub_list.html
+ 0.17  0.07        17758        6 | /doyle/publications.html
+ 0.03  0.15        37945        1 | /doyle/pulgas_ridge.gif
+ 0.14  0.07        16860        5 | /doyle/talk_to_me.gif
+ 0.03  0.07        18508        1 | /doyle/uvas_canyon.gif
+ 0.14  0.08        20145        5 | /doyle/video_journals.gif
+ 0.03  0.14        36186        1 | /doyle/webspinner2.gif
+ 0.06  0.40       101808        2 | /doyle/woofie.gif
+ 0.17  0.12        31512        6 | /doyle/writing_resume.html
+ 0.20  0.93       236862        7 | /doyle/yosemite.gif
+ 0.03  0.01         1961        1 | /dwengi/pawprintcrop.gif
+ 0.03  0.04         9266        1 | /dwengi/peripherals.gif
+ 0.03  0.01         3065        1 | /dwengi/sidebarskiareas.html
+ 0.03  0.00          630        1 | /dwengi/uc.html
+ 0.11  0.02         5892        4 | /entertainment/
+ 0.06  0.05        13652        2 | /entertainment/../music/index.html
+ 0.03  0.06        14244        1 | /entertainment/../sports/index.html
+ 0.03  0.02         5156        1 | /entertainment/../wtv/kar/index.html
+ 0.06  0.03         6924        2 | /entertainment/bwsent.gif
+ 0.20  0.02         5057        7 | /entertainment/index.html
+ 0.03  0.02         3841        1 | /flash/
+ 0.03  0.03         8372        1 | /flash/CreatedBy.swf
+ 0.20  0.48       122934        7 | /flash/CreatedForBusiness.swf
+ 0.03  0.08        19124        1 | /flash/CreditRoll.fla
+ 0.06  0.03         8470        2 | /flash/CreditRoll.swf
+ 0.03  1.21       308916        1 | /flash/MatchMate.fla
+ 0.06  0.03         8470        2 | /flash/MatchMate.swf
+ 1.28  8.59      2187084       46 | /flash/bewithme.swf
+ 0.06  0.02         4799        2 | /flash/logo.swf
+ 0.03  0.03         7142        1 | /flash/logo2.swf
+ 2.84  1.00       254379      102 | /flash/logo3.swf
+ 0.08  0.01         1851        3 | /flirting/
+ 0.67  0.26        65032       24 | /flirting/books.html
+ 0.61  0.07        16882       22 | /games/acchr.html
+ 0.33  0.09        24132       12 | /images/110x40-w-IAW-logo.gif
+ 0.36  0.01         2899       13 | /images/1x1clear.GIF
+ 9.84  3.47       882738      353 | /images/40perc-bmm-swirl.gif
+ 0.14  0.12        29665        5 | /images/b_468x60_bev.gif
+ 0.36  0.09        22555       13 | /images/bk52.gif
+ 3.96  8.65      2203376      142 | /images/button.gif
+ 2.34  4.52      1151622       84 | /images/bwsshopanim2.gif
+ 0.22  0.12        31440        8 | /images/bwstitle.gif
+10.84  0.81       205210      389 | /images/redpawprint.gif
+ 0.39  0.61       155596       14 | /index.html
+ 0.17  0.10        25860        6 | /indexfr.html
+ 0.06  0.00          414        2 | /java/1998Sep26agd.txt
+ 0.14  0.01         1460        5 | /java/1998Sep30agd.txt
+ 0.06  0.07        17218        2 | /java/Applet1.class
+ 0.08  0.00          696        3 | /java/data.txt
+ 0.06  0.01         1500        2 | /java/symantec/beans/Beans.class
+ 0.06  0.00         1088        2 | /java/symantec/itools/awt/AlignStyle.class
+ 0.06  0.09        21768        2 | /java/symantec/itools/awt/BaseTabbedPanel.class
+ 0.06  0.00         1156        2 | /java/symantec/itools/awt/BevelStyle.class
+ 0.06  0.07        16584        2 | /java/symantec/itools/awt/BorderPanel.class
+ 0.06  0.05        12900        2 | /java/symantec/itools/awt/ButtonBase.class
+ 0.06  0.02         4226        2 | /java/symantec/itools/awt/Cell.class
+ 0.06  0.08        20290        2 | /java/symantec/itools/awt/ComboBox.class
+ 0.06  0.01         1866        2 | /java/symantec/itools/awt/CompareCells.class
+ 0.06  0.00          924        2 | /java/symantec/itools/awt/CompareFunc.class
+ 0.06  0.02         5752        2 | /java/symantec/itools/awt/DirectionButton.class
+ 0.06  0.01         1520        2 | /java/symantec/itools/awt/HorizontalSpinButtonPanel.class
+ 0.06  0.17        44274        2 | /java/symantec/itools/awt/ImageListBox.class
+ 0.06  0.01         2344        2 | /java/symantec/itools/awt/InfoTipManager.class
+ 0.06  0.01         3566        2 | /java/symantec/itools/awt/ListItem.class
+ 0.06  0.05        11950        2 | /java/symantec/itools/awt/Matrix.class
+ 0.06  0.02         4454        2 | /java/symantec/itools/awt/MatrixEnumeration.class
+ 0.06  0.13        33576        2 | /java/symantec/itools/awt/MultiList.class
+ 0.06  0.01         2114        2 | /java/symantec/itools/awt/NumericSpinner.class
+ 0.06  0.00         1062        2 | /java/symantec/itools/awt/Orientation.class
+ 0.06  0.02         4084        2 | /java/symantec/itools/awt/SpinButtonPanel.class
+ 0.06  0.03         8310        2 | /java/symantec/itools/awt/Spinner.class
+ 0.06  0.04        11262        2 | /java/symantec/itools/awt/TabPanel.class
+ 0.06  0.01         1518        2 | /java/symantec/itools/awt/VerticalSpinButtonPanel.class
+ 0.06  0.01         1294        2 | /java/symantec/itools/awt/shape/Circle.class
+ 0.06  0.01         2316        2 | /java/symantec/itools/awt/shape/Ellipse.class
+ 0.06  0.01         2778        2 | /java/symantec/itools/awt/shape/Shape.class
+ 0.06  0.06        16076        2 | /java/symantec/itools/awt/util/Calendar.class
+ 0.06  0.02         3938        2 | /java/symantec/itools/lang/Context.class
+ 0.06  0.01         2322        2 | /java/symantec/itools/lang/OS.class
+ 0.06  0.02         4782        2 | /java/symantec/itools/util/Timer.class
+ 0.03  0.00          648        1 | /java/woof0.htm
+ 0.06  0.01         1296        2 | /java/woofcalendar.htm
+ 3.40  4.03      1025514      122 | /music/
+ 0.03  0.00          907        1 | /music/../games/acchr.html
+ 0.06  0.10        24936        2 | /music/../save/index.html
+ 0.06  0.11        28488        2 | /music/../sports/index.html
+ 0.53  0.60       151813       19 | /music/altan.html
+ 0.61  0.72       184004       22 | /music/index.html
+ 7.13  9.77      2487928      256 | /music/loreenamckennitt.html
+ 0.50  0.05        13936       18 | /music/radio.html
+ 3.37  1.88       478705      121 | /music/reddrag1.gif
+ 3.29  1.75       446198      118 | /music/reddrag2.gif
+ 0.17  0.01         3110        6 | /page.html
+ 0.08  0.01         2240        3 | /pageerik.html
+ 0.08  0.01         1852        3 | /pagelouis.html
+ 0.03  0.07        17905        1 | /pager.gif
+ 0.22  0.10        24856        8 | /pawstop.gif
+ 0.20  0.88       222964        7 | /save/
+ 0.70  0.47       120839       25 | /save/bw.js
+ 0.89  3.30       839452       32 | /save/index.html
+ 0.06  0.02         4790        2 | /save/remote.html
+ 0.31  0.50       128392       11 | /sports/
+ 0.17  0.05        13984        6 | /sports/black.html
+ 0.14  0.00         1129        5 | /sports/blank.html
+ 0.11  0.30        77544        4 | /sports/doggies.jpg
+ 0.20  0.00         1271        7 | /sports/home.html
+ 0.08  0.00         1108        3 | /sports/images/bul.gif
+ 0.08  0.00          654        3 | /sports/images/minus.gif
+ 0.08  0.00          664        3 | /sports/images/plus.gif
+ 0.25  0.26        65986        9 | /sports/index.html
+ 0.28  0.02         6276       10 | /sports/main.html
+ 0.06  0.00         1242        2 | /tools/
+ 1.03  0.86       218192       37 | /tools/1565923928_m.gif
+ 0.25  0.40       100586        9 | /tools/15_WebTV.htm
+ 0.78  0.21        53315       28 | /tools/audio.html
+ 0.42  0.16        41190       15 | /tools/boxdetect.html
+ 0.45  0.23        57568       16 | /tools/codes.html
+ 0.36  0.91       232730       13 | /tools/doggies.jpg
+ 1.23  1.08       275546       44 | /tools/help.html
+ 0.25  0.04         9027        9 | /tools/indents.html
+ 0.25  0.02         4184        9 | /tools/index.html
+ 0.47  0.19        47923       17 | /tools/jsinhtml.html
+ 0.39  0.13        31850       14 | /tools/jsonwebtvservice.html
+ 1.03  0.05        12062       37 | /tools/newbell3.mid
+ 0.42  0.17        43935       15 | /tools/standards.html
+ 0.53  0.25        64570       19 | /tools/trans.html
+ 0.17  0.03         8844        6 | /tools/version.html
+ 0.08  0.09        23892        3 | /tools/woofiegridblack.gif
+ 0.22  0.01         3512        8 | /tools/woofiegridblack.html
+ 0.11  0.13        32408        4 | /tools/woofiegridwhite.gif
+ 0.17  0.01         2634        6 | /tools/woofiegridwhite.html
+ 0.14  0.06        16355        5 | /wtv/
+ 0.17  0.12        30936        6 | /wtv/kar/
+ 0.86  0.53       134710       31 | /wtv/kar/index.html
+ 0.17  0.07        17910        6 | /wtv/midi/
+ 0.03  0.41       104196        1 | /wtv/midi/Seal_crazy.mid
+ 0.03  0.29        73029        1 | /wtv/midi/africa.mid
+ 0.14  0.64       163135        5 | /wtv/midi/cocaine.kar
+ 0.14  0.23        58465        5 | /wtv/midi/eleanor.kar
+ 0.14  0.10        25155        5 | /wtv/midi/gilligan.kar
+ 0.11  0.43       109391        4 | /wtv/midi/golddust.kar
+ 0.03  0.20        50548        1 | /wtv/midi/goodbadugly.mid
+ 0.36  2.84       723788       13 | /wtv/midi/holiday.kar
+ 0.14  0.69       175370        5 | /wtv/midi/icantdan.kar
+ 0.03  0.03         6571        1 | /wtv/midi/money.mid
+ 0.28  2.13       542584       10 | /wtv/midi/moneyfor.kar
+ 0.14  0.77       195555        5 | /wtv/midi/oneofus.kar
+ 0.14  1.13       287330        5 | /wtv/midi/phantom.kar
+ 0.31  1.56       397998       11 | /wtv/midi/satisfac.kar
+ 0.45  3.47       884292       16 | /wtv/midi/stayaliv.kar
+ 0.11  0.95       241992        4 | /wtv/midi/sussudio.kar
+ 0.25  1.58       402532        9 | /wtv/midi/takeonme.kar
+ 0.03  0.08        19450        1 | /wtv/midi/talkheadontheriver.mid
+ 0.17  0.92       233854        6 | /wtv/midi/teenfm.kar
+ 0.11  0.45       114176        4 | /wtv/midi/thesign.kar
+ 0.03  0.04        10723        1 | /wtv/midi/webtv/
+ 0.03  0.00          824        1 | /wtv/midi/webtv/flyin.html
+ 0.03  0.01         2119        1 | /wtv/midi/xfiles.mid
+ 0.08  0.24        59952        3 | /wtv/midi/ysterday.kar
+ 0.39  0.02         5468       14 | All Icons (server)
+ 0.03  0.00          477        1 | Code 400 Bad Requests
+ 0.03  0.00          450        1 | Code 403 Forbidden Requests
+12.12  0.74       189643      435 | Code 404 Not Found Requests
+ 2.09  2.93       745996       75 | index.html
+</PRE>
+<HR>
+<ADDRESS>This summary was generated by 
+<A HREF="http://www.ics.uci.edu/WebSoft/wwwstat/">wwwstat-1.0</A>
+</ADDRESS>
+</BODY></HTML>

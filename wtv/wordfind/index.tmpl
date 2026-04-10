@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>WebTV Word Finder</title>
+<SCRIPT Language=JavaScript>
+
+	var entertainment = new Array(	"woofie3","Fakespeare","curious george");
+					
+	var sports = new Array ( "nba","QBs with big teeth","superbowl");
+		 
+	var news = new Array ( "lewinsky!","bill clinton gets tough","bill gates softens up");		 
+
+	var grabbag = new Array ( "horseshoes","sewing","horse sense");
+		 
+	var gamecount=28;
+
+	function PickGameAndGoTo(page) {{
+		a = Math.random() * gamecount;
+		a = Math.floor(a);
+		URL = page + "?game=games/" + a + ".tmpl";
+		window.location = URL;
+	}}
+	
+	function PickGameAndPlay() {{
+		a = Math.random() * gamecount;
+		a = Math.floor(a);
+		URL = "games/" + a + ".tmpl";
+		window.location = URL;
+	}
+
+
+</SCRIPT>
+</head>
+
+
+<body fontsize=medium background="images/back166.gif" bgcolor=464474 text=#FFFFFF valign=top hspace=0 vspace=0>
+   <display noscroll>
+      
+	  <table cellpadding=0 cellspacing=0 border=0 width=100%>
+	    <tr>
+	      
+		   <td width=166 height=384 bgcolor=53001b height=313 rowspan=2 align=center valign=top>
+			<IMG width=8 height=6 src=/ROMCache/Spacer.gif><BR>
+			<a href="wtv-home:/home"><IMG width=20 height=80 src=/ROMCache/Spacer.gif><IMG width=104 height=80 src=/ROMCache/WebTVLogoJewel.gif><IMG width=28 height=80 src=/ROMCache/Spacer.gif></a><BR>
+		 	<IMG width=8 height=7 src=/ROMCache/Spacer.gif><BR>
+  			<A HREF="index.tmpl"><IMG SRC="images/LOGO.GIF" WIDTH=150 HEIGHT=74 BORDER=0></A><BR>
+  			<img src="/ROMCache/Spacer.gif" border=0 width=12 height=155><BR>
+  			<img src="/ROMCache/Spacer.gif" border=0 width=12 height=24><BR>
+
+<!--      		<A HREF="javascript:PickGameAndGoTo('intro.tmpl');"><IMG SRC="images/rules2.gif" WIDTH=142 HEIGHT=24 BORDER=0></A><BR> -->
+			<img src="/ROMCache/Spacer.gif" border=0 width=12 height=7><BR>
+			<A selected HREF="javascript:PickGameAndPlay();"><IMG SRC="images/play2.gif" WIDTH=142 HEIGHT=24 BORDER=0></A>
+				    
+				     	  			
+	      </td>
+
+		  <td width=9 height=313 bgcolor=464664 gradcolor=2e2c4a gradangle=90></td>       
+			<td width=15 valign=middle bgcolor=2e2c4a></td>
+		  <td  valign=middle bgcolor=2e2c4a>
+		  <CENTER><FONT SIZE=6>Welcome to Word Finder!</FONT></CENTER><BR><BR><BR>    
+			    The object of this game is to find words hidden within the word finder grid.
+Words can be found horizontally, vertically, diagonally, backwards and
+forwards. To select a word, simply click on the word's first and last
+letters.<BR><BR>
+When you have found a correct word it will highlight in yellow. Incorrect
+words will not highlight.<BR><BR>
+Select 'Hint' to briefly highlight a letter within an unfound word. Select
+'Solve' to reveal the puzzle's solution.
+
+
+			</td>
+			<td width=15 valign=middle bgcolor=2e2c4a></td>
+			</tr>
+			<tr>
+			<td height=71 valign=top colspan=4 align=right>
+			<!-- 	<img src="images/COLON.GIF" width=374 height=71> -->
+			 <insert ad sponsor=GAMES width=394 height=71 template=insetad.tmpl> 
+			</td>
+		</tr>
+			      
+	</table>
+
+</body>
+</html>

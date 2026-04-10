@@ -1,0 +1,142 @@
+NAME: Louis Roehrs
+
+TITLE: Programming Software Engineer, Contract
+
+WEEK ENDING: 2/20/98
+
+ACCOMPLISHMENTS:
+
+Crossword,  Game Hierarchies
+--------------------------------------------------
+* Crossword hierarchies shipped and LIVE!!  WooHoo!!
+* Re-Built final layout for each game.
+
+Trivia
+------
+* Built ending Win and Lose animations and pages from Jan's graphics for Trivia.
+* Cleaned up and republished Trivia games.  Trivia shipped, will go live soon.
+* Re-Built final layout for each game.
+
+Wordfinder
+----------
+* Incorporated new graphics and bullets for Wordfind hierarchy pages.
+* Assembled webtv presents and wordfind title animations from Don
+* Go to wtv-explore2:/programming/wordfind/navmap/webtvpresents.html
+
+Minesweeper
+-----------
+* Minesweeper: built new rules pages, cleaned up layout, put in new graphics.  Go play,
+I want to see the first person to win the General or Major levels!!  
+* Cleaned up Minesweeper is completed!!  Nasty bug nailed on this game, finally!!
+* Go to wtv-explore2:/programming/minesweeper/navmap/webtvpresents.html
+* Assembled webtvpresents and minesweeper title animations from Don for Microsoft so that they can add sound.
+* Built ending Win and Lose animations and pages from Jan's graphics.
+* In for final review.
+
+Matchmate
+---------
+* Working with Dave on technical issues to help him create great illustrations.  Can't wait to get this game out.  It is so cute!  Start on this next week.
+
+SpaceRace
+---------
+* Starting to layout game and graphics from Don so that Claire's staff can create HTML able graphics.
+
+Tools
+-----
+* Added to Site at http://www.woofie.com/tools.  Pointed our HTMLers and primetime to it.  I only do this so that I have a place to save info as I learn it.  My notebook that I make public to others here.  
+
+Animations
+----------
+* Assisted Don with WebTV Presents flash animation.
+* Built framework for adding and replacing Flash animations gracefully for current and future games.
+
+ISSUES:
+
+Resources
+---------
+
+Dependencies
+------------ 
+Graphics for Spacerace are here!!  And they even look useful!!  We will need to build HTML usable graphics from the original art before we can incorprate them into the game.
+
+Engineering    
+-----------
+*  We are slammed against the image replacement wall in Javascript.
+*  I am making headway in finding out more about this box and the people behind it.
+*  I asked about other compression methods for flash and audio on the service.  I got good, consistent answers that, yes, this is possible and may help address the spinning wheel of filesizes.  I need to investigate to be sure things really work.
+*  Cookies on the service!!
+
+Quality 
+-------
+* We must make sure that our effort for linking to A+ TV quality sites doesn't exclude  B+ TV quality sites that are otherwise very useful sites, especially those with brand recognition.
+
+
+Partner issues
+-------
+* Yahoo is getting complaints from WebTV users that they can't play Yahoo's games.  Transcript follows.
+
+
+Subject: 
+             Yahoo! Games Bug
+        Date:20 Feb 1998 15:24:56 -0800
+       From: goq1stevecast@webtv.net (steve castaneda)
+    Reply-To:goq1stevecast@webtv.net, games-bugs@yahoo-inc.com
+ Organization:Yahoo! Inc.
+         To: games-bugs@yahoo-inc.com
+ Newsgroups: yahoo.mail.games-bugs, yahoo.mail.misc
+
+login: goq1
+
+browser: Don't Know
+
+os: Hearts
+
+details: ps to note...if i can't play off of my webtv...
+where can i 4 free...hope i can play on yahoo
+thank you....sc/98   i just want to play
+psps   can i use yahoo e-mail??? 
+
+---------------------------------------------------------------------------
+Login Name (From Cookie): goq1
+
+REMOTE_HOST: 207.79.35.229
+REMOTE_ADDR: 207.79.35.229
+HTTP_USER_AGENT: Mozilla/3.0 WebTV/1.2 (compatible; MSIE 2.0)
+HTTP_COOKIE: GET_LOCAL=last=us/91/91604.html&ver=1; M=dp=sum&lg=us&ic=1;
+ichat_cookie_chat1.yahoo.com_4001=0e0c19504e243f2720534503643f00396f515d02;
+Y=v=1&n=6efqc3kngek1k&l=6egr/6&p=m1k2pek40200; T=z=34ee0d1c; YOG=id=6egr
+
+(end of transcript)
+
+Programming Support
+-------------------
+* Answered various questions about HTML and WebTV technology for producers.
+* Iterated importance of using certain HTML tags to prevent disappearing content.
+* Investigated printer bug.  
+* Starting to investigating Active Server Pages and Microsoft technologies for server applications such as polling, games, integrating real-time feeds into home page.
+
+Graphic Work Orders
+-------------------
+* Help bring up programming in new building.
+
+
+SHOW STOPPERS: 
+
+1 WEEK PLAN:
+
+* Bust furry butt on remaining 2 games plus address QA concerns on previous 4.
+* Finish new game layouts and navigation.
+* Bring spacerace and matchmate development to production quality and ship.
+* We've added crossword, trivia, minesweeper, and wordfinder to this mix!
+
+1 MONTH PLAN:
+* Ski
+
+6 MONTH PLAN: ??
+
+* Consider games and other applications/properties that create new and repeat viewership. 
+* Learn as much as I can about Active Server, ISPAI, and moving more advanced games onto the box.
+* I found a good candidate that address area of market that is other wise unaddressed.  Will present.
+
+That's it, and Go for the Gold!
+

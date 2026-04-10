@@ -1,0 +1,31 @@
+<html>
+
+<title>Flash!</title>
+
+<head>
+
+
+<SCRIPT Language="JavaScript">
+
+
+	function PassQueryToPage(pageName) {
+		bigwoofie = pageName + "?" + window.location.search 
+		window.location = bigwoofie
+	}
+	function Callback() {
+		PassQueryToPage("game.html")
+	}
+//
+</script>
+
+</head>
+<body
+      valign=top  bgcolor=#009933 text=#cccccc transition=zoomout
+	  credits="http://www.woofie.com/webtvsr.html" noscroll
+	   onload="setTimeout('Callback()',5000)">
+	   <display nostatus nosend skipback>
+
+	<embed src="images/pingpongball.swf" play=true loop=false>
+
+</body>
+</html>

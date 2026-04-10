@@ -1,0 +1,36 @@
+WebTV Plus features for Game Developers
+
+With the release of Client 2.2 and Etude 1.1, it is possible for third party
+developers to create video games for the WebTV Plus Internet receiver. These
+games are implemented as Alternate Application ROMs.
+
+The WebTV game development model is similar to the console video game
+market. You must enter into a contractual agreement with WebTV Networks in
+order to deliver your game to WebTV customers. Terms and conditions vary.
+Currently there is no mechanism for billing customers for game usage.
+
+In order to develop a game for WebTV you need the following:
+
+   * A personal computer running Windows 95 / 98 / NT with 64Mb of RAM and
+     2Gb of hard disk.
+   * A signed NDA with WebTV.
+   * A WebTV Plus Internet receiver.
+   * A special parallel port cable to connect your WebTV Plus Internet
+     receiver to your PC.
+
+The following features are available for game development:
+
+   * The complete source for the WebTV port of the game Doom.
+   * For normal games, there is a 512 x 384 x 8-bit-per-pixel
+     double-buffered graphics mode.
+   * For more adventurous developers, there is a 2D sprite engine with
+     hardware rotation and scaling, and 16 bits-per-pixel YUYV graphics.
+   * The IR keyboard can have any 4 keys down at once, and has both key down
+     and key up events.
+   * The audio hardware and software allows real-time 16-bit, 44-kHz, stereo
+     mixing.
+   * There is a MS-DOS compatable VFAT file system with long file names. (Up
+     to 10 Mb of read-only, and 30Mb of read/write disk space available per
+     game.)
+   * Game logs and crash logs allow valuable information to be collected
+     from beta-testers and end-users.

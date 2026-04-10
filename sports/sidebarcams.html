@@ -1,0 +1,73 @@
+<!-- This document was created with HomeSite 2.5 -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<HTML>
+<HEAD>
+	<TITLE>navbar</TITLE>
+</HEAD>
+<SCRIPT Language="JavaScript">
+
+function PassQueryToPage(pageName) {
+		var chosengame = getURLvar("game")
+		var mysearch = window.location.search
+//	alert (mysearch)
+		var modifier = "N"
+		if (mysearch != "") {
+			modifier= "&"
+			if (mysearch.charAt(0) != "?")
+				mysearch = "?"+ mysearch;    
+		}
+		else
+		{
+			modifier = "?"
+			mysearch = ""
+		} 
+		var bigwoofie = pageName +  mysearch  + modifier 
+		bigwoofie = bigwoofie + "URL=" + chosengame +"&"
+		
+		bigwoofie = bigwoofie +"the=end" 
+		window.location = bigwoofie
+	}
+</SCRIPT>
+
+<BODY !background=zzz.jpg hspace=0 vspace=0 valign=top bgcolor=#404080 text=#FFFFFF vlink=#c68c31 link=#c68c31 fontsize=medium>
+
+<table cellpadding=0 cellspacing=0 border=0  bgcolor=#404080 gradcolor=#000010 gradangle=45 width=100%>
+<tr><td colspan=2 align=center valign=center absheight=63><a href="index.html" target="_top"><BR><BR><IMG SRC="pawprintcrop.gif" WIDTH=79 HEIGHT=62 BORDER=0></a><HR></td></tr>
+<TR>
+<td width=10 abswidth=10></TD>
+<td width=90 abswidth=90>
+
+<FONT SIZE="3" color="#ffff00"><a href="main.html" target=content>Home</a><BR>
+
+<A HREF="sidebarweather.html" target=navbar>Weather</A><BR>
+<a href="http://www.dot.ca.gov/hq/roadinfo/tahoe.htm" target=content>Roads</a><BR>
+&nbsp;&nbsp;<a href="http://www.dot.ca.gov/hq/roadinfo/i80" target=content><FONT SIZE="2">I-80</FONT></a><BR>
+<a href="sidebarskiareas.html" target="navbar">Ski Areas</a><BR>
+<a href="uc.html" target="content">Photos</a><BR>
+<a href="stuff.html" target="content">Stuff</a><BR>
+Cams<BR><FONT SIZE="2">
+&nbsp;&nbsp;<a href="black.html?URL=http://www.extremetahoe.com/mtncam/alpine_cam.jpg" target="content">Alpine</a><BR>
+&nbsp;&nbsp;<a href="black.html?URL=http://donner.iwn.com/donner.jpg" target="content">Donner</a><BR>
+&nbsp;&nbsp;<a href="black.html?URL=http://www.realtimeweather.com/capture/88.jpg" target="content">Reno</a><BR>
+&nbsp;&nbsp;<a href="black.html?URL=http://incline.iwn.com/tahoe.jpg" target="content">Lake Tahoe</a><BR>
+<!-- &nbsp;&nbsp;<a href="black.html?URL=http://207.124.103.109/nph-dtspush.cgi?camera=jpeg/northstar/cam0.%%08ld.rgb888.enc" target="content">Northstar</a><BR> -->
+&nbsp;&nbsp;<a href="black.html?URL=http://www.9news.com/camera/photos/eoc-camera4-030398-1657-f.JPG" target="content">Loveland</a><BR>
+&nbsp;&nbsp;<a href="black.html?URL=http://www.rsn.com/cams/tahoe/QuickEdit/text_1/text_1/data/image/image_14774/data/image_14774_b.jpg" target="content">Heavenly</a><BR>
+</FONT>
+
+<a href="http://celebrator.com/" target="content"><FONT SIZE="2">Celebrator</FONT></a><BR>
+<a href="http://www.spatenusa.com/" target="content"><FONT SIZE="2">Spaten</FONT></a><BR>
+</td></tr>
+
+
+<tr><td colspan=2><HR width=100%></td></tr>
+<tr>
+<td width=10 abswidth=5></TD>
+<td width=90 abswidth=90>
+<a href="http://www.woofie.com" target="content"><FONT SIZE="2"><BR>Big Woofie Studios</FONT></a><BR>
+<a href="http://www.woofie.com/entertainment/index.html" target="_top"><FONT SIZE="2"><BR>Entertainment</FONT></a><BR><BR><BR><BR><BR><BR>&nbsp;
+</td></tr></table>
+
+</BODY>
+</HTML>

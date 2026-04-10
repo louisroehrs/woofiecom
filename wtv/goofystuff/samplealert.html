@@ -1,0 +1,18 @@
+<!-- This document was created with HomeSite 2.5 -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<HTML>
+<HEAD>
+	<TITLE>Client Alert Boxes</TITLE>
+</HEAD>
+
+<BODY>
+Must be on the service for this to work!
+
+	<DEFINE alert_message="You are about to <b>unregister this box.</b><p>The next person to use this box will have to sign up.">
+	<DEFINE alert_buttonlabel1="Cancel">
+	<DEFINE alert_buttonlabel2="Unregister">
+	<a href="client:/showalert?message={%alert_message}&buttonLabel1={%alert_buttonlabel1}&buttonAction1=client:/donothing&buttonLabel2={%alert_buttonlabel2}&buttonAction2=client:/donothing">Won't Really Unregister This Box</a>
+
+</BODY>
+</HTML>

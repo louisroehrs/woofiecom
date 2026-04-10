@@ -1,0 +1,100 @@
+NAME: Louis Roehrs
+
+TITLE: Programming Software Engineer, Contract
+
+WEEK ENDING: 1/23/98
+
+ACCOMPLISHMENTS:
+
+Programming Support
+-------------------
+* Answered various questions about HTML and WebTV technology for producers.
+
+Graphic Work Orders
+-------------------
+* Added features to streamline usage.  Fewer waits, fewer searches required.  Much better functionality
+* Added persistent search list, printing, 
+* Built and released admin tool to allow self-configuration of pop-up lists, notices, user names, etc.
+* Updated openers to work with new network.  Required with every move.
+* Added "find my work orders" buttons for both submitters and receivers.
+
+Crossword, Trivia, and Wordfinder Game Hierarchies
+--------------------------------------------------
+* Built final layout for each game.  
+* Set consistent layout for all pages of all games,  the WebTV logo now stays in the same place, for instance.
+* Incorporated graphics and tweaked bullets for hierarchy pages.
+* Improved rules pages for crossword, trivia, wordfind.
+* Built new templates for trivia games with more aesthetic and legible layout.   Republished existing games to use new layout.
+* Moved pages to server and tested all links.
+* Standardized elements such as WebTV logo placement for more professional and robust look.  
+* Accelerated downloads by centralizing graphics references.
+
+Tools
+-----
+* Started creating  site with tools and tricks for building pages for WebTV.  Includes guidelines. a layout grid for tv window integration, and more.  N/C.
+* Distributed internal HTML specs to HTML builders in programming. 
+
+NATPE
+-----
+* Rebuilt pages for Giants demo for NATPE conference for Hillary.
+
+Trivia games
+------------
+* Built new template for trivia games.  Made text more readable from couch distances (this is 10.9 feet, according to Usability).  
+* Republished 15 games with new layout.
+* Standardized elements such as WebTV logo placement for more professional and robust look.
+
+Crossword games
+---------------
+* Adjusted template for crossword games.  Now, games look fine even
+if user chooses "large fonts" on his box.
+
+Animations
+----------
+* Assisting Don with WebTV Presents flash animation.  Should look real nice and be usable for games and elsewhere in the system.
+
+Matchmate
+---------
+* Reworking game flash animation for single player.
+
+SpaceRace
+---------
+* Added spaceship indicator panel and code.
+
+ISSUES:
+
+Resources
+---------
+Printing from PCs requires passwords, now that we are in new building...
+
+Dependencies
+------------ 
+Graphics for Spacerace are held in contract dispute.  Time to resolution unknown.
+
+Tools
+-----
+I've given up on Photoshop, I may steal a Mac when the time comes.
+
+Engineering none
+-----------
+
+Quality none
+-------
+
+Partner none
+-------
+
+SHOW STOPPERS: 
+
+* Space race graphics, see issues.
+
+1 MONTH PLAN:
+
+* Finish new game layouts and navigation.
+* Bring spacerace and matchmate development to production quality and ship.
+
+6 MONTH PLAN:
+
+* Consider games and other properties that create new and repeat viewership. 
+* Raiders-Broncos game, hah!   Go Broncos, they can do it this year!
+* Getting my attitude adjusted at holiday party, make embarassing scenes I regret later.

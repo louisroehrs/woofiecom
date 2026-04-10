@@ -1,0 +1,102 @@
+<Mojo-Config>
+  <vRPD
+    name="mojo1-1.oamp.mp.agile.tv"
+    ipaddr="172.16.0.30/24"
+    sport="1024"
+    nc1500="172.16.0.5"
+    dport="58003"
+    idle_tx="0"
+    demodulator="0"
+    >
+      <channelizer rfi="0" nominal_power="25" fec_enable="Y" freq="8.864" />
+      <channelizer rfi="0" nominal_power="25" fec_enable="Y" freq="9.248" />
+      <channelizer rfi="0" nominal_power="25" fec_enable="Y" freq="10.016" />
+      <channelizer rfi="0" nominal_power="25" fec_enable="Y" freq="10.784" />
+  </vRPD>
+  <vRPD
+    name="mojo1-2.oamp.mp.agile.tv"
+    ipaddr="172.16.0.31/24"
+    sport="1024"
+    nc1500="172.16.0.5"
+    dport="58004"
+    idle_tx="0"
+    demodulator="0"
+    >
+      <channelizer rfi="0" nominal_power="25" fec_enable="Y" freq="8.096" />
+      <channelizer rfi="0" nominal_power="25" fec_enable="Y" freq="8.480" />
+      <channelizer rfi="0" nominal_power="25" fec_enable="Y" freq="9.632" />
+      <channelizer rfi="0" nominal_power="25" fec_enable="Y" freq="11.168" />
+      <channelizer rfi="0" nominal_power="25" fec_enable="Y" freq="11.552" />
+      <channelizer rfi="0" nominal_power="25" fec_enable="Y" freq="11.936" />
+  </vRPD>
+  <vRPD
+    name="woofiewoofie"
+    ipaddr=""
+    sport="1024"
+    nc1500="234"
+    dport="234"
+    idle_tx="0"
+    demodulator="0"
+    >
+  </vRPD>
+  <vRPD
+    name="sdasdf"
+    ipaddr=""
+    sport="1024"
+    nc1500="234"
+    dport="23"
+    idle_tx="0"
+    demodulator="0"
+    >
+  </vRPD>
+  <vRPD
+    name="NUMBER5"
+    ipaddr=""
+    sport="1024"
+    nc1500="234243234"
+    dport="234"
+    idle_tx="0"
+    demodulator="0"
+    >
+  </vRPD>
+  <vRPD
+    name="number6"
+    ipaddr=""
+    sport="1024"
+    nc1500="234243"
+    dport="342"
+    idle_tx="0"
+    demodulator="0"
+    >
+  </vRPD>
+  <vRPD
+    name="asfsadfnumber 7"
+    ipaddr=""
+    sport="1024"
+    nc1500="2343244"
+    dport="2342"
+    idle_tx="0"
+    demodulator="0"
+    >
+  </vRPD>
+  <demod
+    instance="0"
+    rf_inputs="1"
+    channels="12"
+    >
+      <channel rfi="0" min_power="23" freq="8.096" />
+      <channel rfi="0" min_power="1" freq="8.288" />
+      <channel rfi="0" min_power="1" freq="8.480" />
+      <channel rfi="0" min_power="1" freq="8.864" />
+      <channel rfi="0" min_power="1" freq="9.248" />
+      <channel rfi="0" min_power="1" freq="9.632" />
+      <channel rfi="0" min_power="1" freq="10.016" />
+      <channel rfi="0" min_power="1" freq="10.784" />
+      <channel rfi="0" min_power="1" freq="11.168" />
+      <channel rfi="0" min_power="1" freq="11.552" />
+      <channel rfi="0" min_power="1" freq="11.936" />
+      <channel rfi="0" min_power="1" freq="12.320" />
+      <channel rfi="0" min_power="1" freq="12.704" />
+      <channel rfi="0" min_power="1" freq="13.088" />
+  </demod>
+</Mojo-Config>

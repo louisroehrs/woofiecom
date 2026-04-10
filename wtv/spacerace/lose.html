@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>WebTV Space Race</title>
+
+<SCRIPT Language="JavaScript">
+
+	function PlaySound(sound) {
+
+		if (sound == null) {  
+            return;
+		}
+		else {
+			sound.play(false);
+		}
+	}
+	
+	function PlayLoseTone() {
+		PlaySound(document.lose)
+		setTimeout("PlayKids()", 3000)
+	}
+	
+	function PlayKids() {
+		PlaySound(document.kids)
+	}
+
+</SCRIPT>
+
+</head>
+<body fontsize=medium 
+   valign=top hspace=0 bgcolor=#000000 text=#FFFFFF credits="http://www.woofie.com/webtvsr.html"
+   onLoad="PlayLoseTone()">
+	<display noscroll nosend skipback>
+
+	<EMBED SRC="sounds/losetone.mid" HIDDEN=TRUE CONTROLS=console
+	VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="lose"
+	MASTERSOUND>
+	<EMBED SRC="sounds/kidstheme8.mid" HIDDEN=TRUE CONTROLS=console
+	VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="kids"
+	MASTERSOUND>
+
+<table cellspacing=0 cellpadding=0 width=100%>
+   
+  <tr>
+	<td>
+      <IMG src="images/spacer.gif" width=40 height=30>
+    </td>
+  </tr>
+
+  <tr>
+	<td>
+	  <center>
+	    <img src="images/tryagain.gif">
+          </center>
+        </td>
+  </tr>
+  
+  <tr>
+    <td>
+      <center>
+
+	<a nocolor href="index.html">
+          <img src="images/playagain.gif">
+	</a>
+	
+ 	<a nocolor href="wtv-tricks:/home">
+          <img src="images/quit.gif">
+	</a>
+     
+      </center>
+    </td>
+  </tr>
+
+</table>
+  
+</html>

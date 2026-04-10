@@ -1,0 +1,344 @@
+<html>
+<head>
+
+<title>WebTV MatchMate</title>
+<SCRIPT Language="JavaScript">
+	mam = new game("mam")
+	
+	function getURLvar(Name) {
+		var search = Name + "="
+		var incoming = window.location.search
+		if (incoming.length > 0) { // if there are any search parameters
+			offset = incoming.indexOf(search) 
+			if (offset != -1) { // if parameter exists 
+				offset += search.length 
+				// set index of beginning of value
+				end = incoming.indexOf("&", offset) 
+				// set index of end of cookie value
+				if (end == -1) 
+					end = incoming.length
+				value = unescape(incoming.substring(offset, end))
+				if (value == "") {
+					return null
+				} else {
+					return value
+				}
+			}
+			else return null
+		}
+		else return null
+	}
+	
+	function StartUp() {
+		document.form1.playerpick.value = mam.players[0].name + ", Pick a player!"
+	}
+
+// GAME Object  new game(theme elements)
+	function game(name) {
+	
+		this.name = name
+		this.status = null
+		this.players = new Array ()
+		this.playerpicts = LoadPlayerPicts()
+		this.addplayer = AddPlayer
+		this.renderSidebar = RenderSidebar
+		this.setup = SetupGame
+		this.renderRules = RenderRules
+		this.singlePlayerRules = SinglePlayerRules
+		this.multiPlayerRules = MultiplayerRules
+		this.startRules = StartRules
+		this.renderPlayerPicts = RenderPlayerPicts
+		this.nextpage = PassQueryToPage
+		this.pickCharacter = PickCharacter
+	
+		this.setup()		
+
+	}
+		
+// GAME Methods
+
+	function RenderPlayerPicts() {
+	
+		document.write("	<table width=100%>");
+		document.write("			<tr>");
+		document.write("			<td><A 	HREF=\"javascript:mam.nextpage('player2.html','" + this.playerpicts[0]+"')\"><IMG SRC=" + 	this.playerpicts[0]+" WIDTH=62 HEIGHT=100 BORDER=0></A>");
+		document.write("			</td>");
+		document.write("			<td><A HREF=\"javascript:mam.nextpage('player2.html','" + 	this.playerpicts[1]+"')\"><IMG SRC="+ this.playerpicts[1]+" WIDTH=63 HEIGHT=100 BORDER=0></A>");
+		document.write("			</td>");
+		document.write("		</tr>");
+		document.write("		<tr>");
+		document.write("			<td><A HREF=\"javascript:mam.nextpage('player2.html','" + 	this.playerpicts[2]+"')\"><IMG SRC="+ this.playerpicts[2]+" WIDTH=63 HEIGHT=100 BORDER=0></A>");
+		document.write("			</td>");
+		document.write("			<td><A HREF=\"javascript:mam.nextpage('player2.html','" + 	this.playerpicts[3]+"')\"><IMG SRC="+ this.playerpicts[3]+" WIDTH=63 HEIGHT=100 BORDER=0></A>");
+		document.write("			</td>");
+		document.write("		</tr>");
+		document.write("	</table>");
+
+	}
+
+	function PickCharacter(imageName,loc) {
+
+		if (imageName == this.players[0].imageName) {
+			return
+		}
+		if (null != this.players[1].imageName) {
+			return
+		}
+	//	loc = (loc + 1) % 4
+		
+	//	linkloc = 3 + loc
+	//		alert (linkloc)
+	//	document.links[linkloc].select()
+		this.currentPlayer.setimage(imageName,loc)
+		next = this.currentPlayer.id +1
+		if ( next< this.players.length) {
+			this.currentPlayer = this.players[this.currentPlayer.id +1]
+			document.form1.playerpick.value = mam.players[this.currentPlayer.id].name + ", Pick a player!"
+		}
+		else {
+			 setTimeout("GoNextPage()",1000)
+		}
+	}		
+
+	function GoNextPage() {
+		 PassQueryToPage('game.html')
+	}
+	
+	function SetupGame() {  // called when GAME object constructed...
+
+	// LOAD Players
+		Aplayer = getURLvar ("player0")
+		if ( Aplayer != null) {
+			this.addplayer(unescape(Aplayer))
+		}
+		
+		else {
+			this.addplayer("You")
+		}
+
+		Aplayer = getURLvar ("player1")
+		if (Aplayer != null) {
+				this.addplayer(unescape(Aplayer))
+		}
+		
+		Aplayer = getURLvar ("player2")
+		if ( Aplayer != null) {
+				this.addplayer(unescape(Aplayer))
+		}
+
+		this.currentPlayer = this.players[0]
+	}
+	
+	function LoadPlayerPicts() {
+		var playerpicts = new Array("images/char4_betty.gif","images/char2_musicman.gif","images/char1_thug.gif","images/char3_wilma.gif"	);
+		return playerpicts;
+	}
+		
+	function AddPlayer(name) {
+		qty =this.players.length 
+		this.players[qty] = new Player(name, qty)
+	}
+
+	function RenderSidebar() {	
+		this.players[0].render();
+		document.write("<IMG width=8 height=2 src=/ROMCache/Spacer.gif><BR>");
+		this.players[1].render();
+	}	
+
+	function RenderRules() {
+		if (this.players.length == 1)
+			this.singlePlayerRules();
+		else
+			this.multiPlayerRules();
+	}
+		
+	function SinglePlayerRules() {
+
+		this.status = "MatchMate Single Player Rules";
+	
+
+		document.write("<FONT COLOR=e0e0e0>");
+		document.write("The goal is to clear the board in 4 minutes by uncovering pairs of images.");
+		document.write(" The key is to remember where the images are so that you can quickly find matching images.");
+		document.write("<BR><BR>");
+		document.write("Click on a square in the grid to reveal a shape or message.  Click on a second square");
+		document.write(" to complete the match. ");
+		document.write(" If a match is not made, click on two more squares to find");
+		document.write(" another match.  Continue until the board is cleared.");
+		document.write("<BR><BR>");
+		document.write("Then, unscramble the letters and enter the magic word.");
+		document.write("");
+		document.write("<BR><BR>");
+		document.write("Good Luck!");
+		document.write("</FONT>");
+	}
+	
+	function MultiplayerRules() {
+
+		this.status = "MatchMate Multiplayer Rules";
+	
+		document.write("<FONT COLOR=e0e0e0>");
+		document.write("The goal is to uncover more pairs of images than your opponents.");
+		document.write(" The key is to remember where the images are so that you can quickly find matching images.");
+		document.write("<BR><BR>");
+		document.write("Click on a square in the grid to reveal a shape or message.  Click on a second square");
+		document.write(" to complete the match.  If a match is made, try to find another pair.");
+		document.write(" If a match is not made, then the squares will be covered up and you can try to find");
+		document.write(" another match.  Continue until the board is cleared.");
+		document.write("<BR><BR>");
+		document.write("Good Luck!");
+		document.write("</FONT>");
+		}
+
+		function StartRules() {
+		//	window.status= this.players[0].name + ", pick one!";
+		}
+		
+// PLAYER Object
+
+	function Player(name, id) {
+		this.name = name;
+		this.score = 0;
+		this.id = id;
+		this.imageName = null;
+	// methods
+		this.addpoints = Paddpoint;
+		this.updatescore = Pupdatescore;
+		this.render = Prender;
+		this.setimage = Psetimage;
+	}
+
+// PLAYER methods
+
+	function Paddpoint(points) {
+		this.score += points;
+		this.updatescore();
+	}
+
+	function Pupdatescore() {
+		document.scoreboard["player"+	this.id+"score"].value = this.score;
+	}
+
+	function Prender() { // Does need to be in its own table...Indicator is the Current Player Arrow
+
+		document.write("<table border=0 cellpadding=0 cellspacing=0 cellborder=0>");
+		document.write("<tr><td abswidth=13></td><td abswidth=125 absheight=83 background=images/player" + this.id + "_bg_on.gif valign=bottom align=center><img src=/ROMCache/spacer.gif name=play" + this.id + "pict width=80 height=80></td></tr>");
+		document.write("<tr><td colspan=2 absheight=21 bgcolor=000000 align=center valign=bottom> "+this.name + "</td></tr></table><br>");
+	}
+	
+	function Psetimage (imageName,loc) {
+		loc = "pict" + loc;
+		this.imageName = imageName;
+		leftimage = "play" + this.id + "pict";
+		document.images[leftimage].src = this.imageName;
+		document.images[loc].src = "/RomCache/spacer.gif";
+	}
+	
+	function PassQueryToPage(pageName) {
+		var mysearch = window.location.search;
+		var modifier = "N";
+		if (mysearch != "") {
+			modifier= "&";
+			if (mysearch.charAt(0) != "?")
+				mysearch = "?"+ mysearch;    
+		}
+		else
+		{
+			modifier = "?"
+			mysearch = ""
+		}
+
+		var bigwoofie = pageName +  mysearch  + modifier ;
+		bigwoofie = bigwoofie + "player0pict=" + mam.players[0].imageName +"&player1pict=" + mam.players[1].imageName;
+		bigwoofie = bigwoofie +"&the=end" ;
+		window.location = bigwoofie;
+	}
+
+	function Redirect(sURL) {
+	  window.location=sURL;
+	} 
+
+</script>
+</head>
+ <BGSOUND SRC="sounds/susallem.mid" AUTOSTART=TRUE LOOP=INFINITE>
+
+<body fontsize=medium background=images/full_bg1.gif
+
+      valign=top  bgcolor=#009933 text=#FFFFFF credits="http://www.woofie.com/webtvmm.html"
+	  onload="mam.startRules()" vspace=0 hspace=0>
+	<display noscroll nosend>
+
+<form action="game.html" method=get name=form1>
+<table width=100% border=0 cellpadding=0 cellspacing=0 cellborder=0>
+	<tr>
+		<td absheight=384 abswidth=166 valign=top>
+			<IMG width=8 height=6 src=/ROMCache/Spacer.gif><BR>
+			<IMG width=6 height=80 src=/ROMCache/Spacer.gif><a href="wtv-home:/home"><IMG width=104 height=80 src=/ROMCache/WebTVLogoJewel.gif></a><BR>
+			<center>	<IMG width=8 height=6 src=/ROMCache/Spacer.gif><BR>
+		<SCRIPT Language="JavaScript">			
+			mam.renderSidebar();
+		</SCRIPT>
+						
+			<IMG width=8 height=7 src=/ROMCache/Spacer.gif><BR>
+ 			<A HREF="javascript:ToPage('game.html')"><IMG SRC="images/button_play_again.gif" WIDTH=139 HEIGHT=30 BORDER=0 ALT=""></A><BR>
+			<IMG width=8 height=7 src=/ROMCache/Spacer.gif><BR>
+
+			<A HREF="wtv-home:/home"><IMG SRC="images/button_quit.gif" WIDTH=139 HEIGHT=30 BORDER=0 ALT=""></A><BR>
+			</center>
+		</td>
+
+			
+		<td abswidth=394 valign=top align=left>
+			<IMG width=8 height=58 src=/ROMCache/Spacer.gif><BR>
+			<IMG width=100 !height=34 height=10 src=/ROMCache/Spacer.gif><FONT SIZE="3" Color=ffff00><STRONG><textarea name="playerpick" rows=1 cols=27 border=0 usestyle bgcolor=000000 noselect></textarea></STRONG></FONT><BR>
+			<IMG width=8 height=15 src=/ROMCache/Spacer.gif><BR>
+
+				
+ 		<table width=100% border=0 cellpadding=0 cellspacing=0 cellborder=0>
+			<tr>
+				<td abswidth=168 rowspan=4><IMG SRC="images/choose_ani.gif" WIDTH=168 HEIGHT=202 BORDER=0></td>
+				<td abswidth=10></td>
+				<td absheight=90 abswidth=90 bgcolor=#F27516>
+					<SCRIPT Language="JavaScript">
+						document.write("<A name='link0' HREF=\"javascript:mam.pickCharacter('" + mam.playerpicts[0]+"',0)\"><IMG SRC=" + 	mam.playerpicts[0]+" name='pict0' WIDTH=90 HEIGHT=90 BORDER=0></A>");
+					</SCRIPT> 
+				</td>
+				<td abswidth=10></td>
+				<td abswidth=90 bgcolor=#F3d00c>
+					<SCRIPT Language="JavaScript">
+						document.write("<A name='link1' HREF=\"javascript:mam.pickCharacter('" + mam.playerpicts[1]+"',1)\"><IMG SRC=" + 	mam.playerpicts[1]+" name='pict1' WIDTH=90 HEIGHT=90 BORDER=0></A>");
+					</SCRIPT> 
+				</td>
+						<td abswidth=10></td>
+			</tr>
+			<tr><td absheight=10></td><td></td><td></td><td></td><td></td></tr>
+  			<tr>
+				<td></td>
+				<td absheight=90 bgcolor=#F3d00c>
+					<SCRIPT Language="JavaScript">
+						document.write("<A name='link2' HREF=\"javascript:mam.pickCharacter('" + mam.playerpicts[2]+"',2)\"><IMG SRC=" + 	mam.playerpicts[2]+" name='pict2' WIDTH=90 HEIGHT=90 BORDER=0></A>");
+					</SCRIPT> 
+				</td>
+				<td></td>
+				<td bgcolor=#F27516>
+					<SCRIPT Language="JavaScript">
+						document.write("<A name='link3' HREF=\"javascript:mam.pickCharacter('" + mam.playerpicts[3]+"',3)\"><IMG SRC=" + 	mam.playerpicts[3]+" name='pict3' WIDTH=90 HEIGHT=90 BORDER=0></A>");
+					</SCRIPT>
+				</td>
+				<td abswidth=10></td>
+	  		</tr>
+			<tr><td absheight=12></td><td></td><td></td><td></td><td></td></tr>
+		</table>
+		<TABLE border=0 cellpadding=0 cellspacing=0 cellborder=0><TR><TD HREF="http://www.woofie.com/webtvad.html" insetselection><IMG SRC="http://www.woofie.com/images/bws.gif" WIDTH=394 HEIGHT=71 BORDER=0></TD></TR></TABLE>
+
+	</td>
+	</tr>
+
+</table>
+
+</form>
+	<SCRIPT Language="JavaScript">
+		StartUp();
+	</SCRIPT> 
+</body>
+</html>

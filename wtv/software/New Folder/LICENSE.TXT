@@ -1,0 +1,66 @@
+
+License Agreement for Mocha W32 Telnet
+======================================
+Please read the following terms and conditions before using this software.
+If there is any questions, do not hesitate to contact MochaSoft
+
+Demo version
+============
+It is possible to run Mocha W32 Telnet without a license key. This should only
+be done in a trial periode, and the program must not be part of any 
+production environment.
+
+Disclaimer of Warranty
+======================
+THIS SOFTWARE AND THE ACCOMPANYING FILES ARE SOLD "AS IS" AND
+WITHOUT WARRANTIES AS TO PERFORMANCE OF MERCHANTABILITY OR ANY
+OTHER WARRANTIES WHETHER EXPRESSED OR IMPLIED. 
+Because of the various hardware and software environments into 
+which Mocha W32 telnet may be put, NO WARRANTY OF FITNESS FOR A 
+PARTICULAR PURPOSE IS OFFERED.
+
+Good data processing procedure dictates that any program be
+thoroughly tested with non-critical data before relying on it.
+The user must assume the entire risk of using the program.  ANY
+LIABILITY OF THE SELLER WILL BE LIMITED EXCLUSIVELY TO PRODUCT
+REPLACEMENT OR REFUND OF PURCHASE PRICE.
+
+License system
+==============
+There are two different types of license.
+
+  - single user license, 25 USD.
+  - unlimited license for a single Company, 250 USD.
+
+For ordering information, please check www.mochasoft.dk, 
+or see file register.txt in this package.
+
+Evaluation and Registration
+===========================
+This is not free software.  You are hereby licensed to use this
+software for evaluation purposes without charge.
+
+How to register, please check www.mochasoft.dk for the latest information.
+
+Governing Law
+=============
+This agreement shall be governed by the laws in Denmark.
+
+Distribution
+============
+Provided that you verify that you are distributing the Shareware
+Version you are hereby licensed to make as many copies of the 
+Shareware version of this software and documentation as you wish; 
+give exact copies of the original Shareware version to anyone; 
+and distribute the Shareware version of the software and documentation 
+in its unmodified form via electronic means.  There is no charge for any
+of the above.
+
+You are specifically prohibited from charging, or requesting
+donations, for any such copies, however made; and from
+distributing the software and/or documentation with other products
+(commercial or otherwise) without prior written permission, with
+one exception:  Disk Vendors approved by the Association of
+Shareware Professionals are permitted to redistribute Mocha W32 Telnet,
+subject to the conditions in this license, without specific
+written permission.

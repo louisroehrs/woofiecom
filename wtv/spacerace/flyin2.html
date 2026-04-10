@@ -1,0 +1,32 @@
+<html>
+
+<title>WebTV Space Race</title>
+<head>
+	<script language="JavaScript">
+
+	function Play(sound) {
+
+		if (sound == null) {  
+            return;
+		}
+		else {
+			sound.play(false);
+		}
+	}
+	</script>
+	
+</head>
+
+<bgsound src="sounds/archer.zip" loop=false>
+
+<body hspace=0 vspace=0 fontsize=medium 
+      valign=top  bgcolor=#000000 text=#cccccc
+	  credits="http://www.woofie.com/webtvsr.html" noscroll >
+	<display noscroll nostatus yspeed=0 xspeed=0>
+	<basefont size=4>
+
+	<embed src="flash/flyin2rings.zip" loop=false autostart=true name="video">
+</body>
+	
+</html>
+<!-- onload='Play(document.video);' -->

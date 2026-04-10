@@ -1,0 +1,121 @@
+WS_FTP FAQ - Common problems and solutions
+
+1.  When I use WS_FTP to connect to xxxxxx, I get connected
+    ok, as well as logged in, but the list box for the remote
+    side remains blank.  In the status window the last thing
+    i see is "DoDirList returned 4".
+
+    Answer:  Change your MTU setting in your network stack
+    to 576.
+
+2.  When I use WS_FTP to connect to xxxxxx, I get connected
+    ok as well as logged in, but the list box for the remote
+    side remains blank or contains garbage.
+
+    Answer:  Go to Options -> Session Options and change the
+    host type.  Try "UNIX (standard)", "Sun Solaris", 
+    "WinQVT/Net", "Ipswitch" and THEN any other types that
+    may seem to be correct.
+
+3.  When I use WS_FTP to connect to "ftp.uwp.edu" the host
+    dialog boxes are not filled in correctly. 
+
+    Answer:  Set the host type to WinQVT/Net  ** OR ** start
+    your e-mail address with a hypen (-).  This is set in
+    the Options -> Program Options screen.
+
+4.  When I use WS_FTP32 to connect to a site, it gives me
+    a "write error" when attempting to retrieve the directory
+    listing.
+
+    ANSWER:  Open a DOS window and enter "set".  Then create
+    the directory specified by your TMP and TEMP environment
+    variables.
+
+5.  WS_FTP only returns NNNNN bytes of a file and can never
+    retrieve the whole file.
+
+    ANSWER:  Set your MTU in your program stack to 576.
+
+6.  WS_FTP does not always return a complete file and leaves
+    off from 50 to 512 bytes.
+
+    ANSWER:  Some network stacks do not properly handle data
+    packets that have the FIN flag set.  These stacks 
+    improperly return a length of zero to a blocking recv 
+    socket call and do not make all the data available to 
+    the application.  Contact your network stack provider
+    for an updated version of the network stack.
+
+7.  WS_FTP can only connect to the WS_FTP site and nothing
+    else or WS_FTP can't connect to anything.
+
+    ANSWER:  Configure your name server in your stack.  Talk
+    to your internet provider for the proper values for DNS.
+
+8.  WS_FTP32 won't run on Windows 95.
+
+    ANSWER:  Use the built in Microsoft TCP/IP stack that
+    comes with Windows 95 or get a 32 bit network stack from
+    your network stack provider.  You can NOT run a 32 bit 
+    network application on a 16 bit network stack on a 32 bit 
+    operating system.
+
+9.  How can I transfer directory structures?
+
+    ANSWER:  Use WS_FTP32 95.07.05 or later.   Simply select
+    the directory you want to transfer and click the transfer
+    arrow.
+
+10. How can I transfer multiple files?
+
+    ANSWER:  Use the CTRL key with the left mouse button and
+    select the files you want to transfer.  Then click the
+    proper transfer arrow.
+
+11. How can I transfer a file that contains special characters
+    or is hidden?
+
+    ANSWER:  Click the transfer arrow when NO file is selected
+    and you will be prompted for the file name to retrieve.
+
+12. Why don't you add the ability to retry a connection when
+    it is busy?
+
+    ANSWER:  It already has that ability.  Look for "retries"
+    in the Advanced Connect dialog.
+
+13. Why are files corrupted after transfer?
+
+    ANSWER:  Make sure you transfer TEXT files in Text mode
+    and MOST other files in BINARY mode.  If you still have
+    problems, verify that you have hardware flow control 
+    enabled on your modem.  If you have NetCom stack, turn
+    in a bug report to NetCom.  If you have Trumpet 2.1d,
+    update to 2.1f or drop back to 2.0b.
+
+14. How do I transfer files from the command line?
+
+    ANSWER: Please read the WS_FTP.TXT file that comes INSIDE
+    the ZIP file.  It contains the command line info.
+
+15. How can I change to a hidden directory?
+
+    ANSWER: Click the right mouse button and select "FTP 
+    Commands" and then select "CWD".  You can then manually
+    enter a directory name to get to.
+
+16. Where can I get the latest version?
+
+    http://www.csra.net/junodj/
+    http://www.ipswitch.com/
+
+MTU settings in the stack are the most common problems.  You
+probably need to talk to your internet provider to get the 
+proper setting (or read the excellent message from "Albert
+P. Belle Isle" <belleisl@ultranet.com>).  You can try 576
+as it seems to be a common proper value.  Another common
+value is 552.
+
+
+

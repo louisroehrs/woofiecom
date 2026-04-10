@@ -1,0 +1,76 @@
+<!-- This document was created with HomeSite 2.5 -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<HTML>
+<HEAD>
+	<TITLE>woofie's toolbox - client version</TITLE>
+
+<SCRIPT LANGUAGE=JavaScript>
+	function PlaySound(sound) {
+		if (sound == null) {  
+            return;
+		}
+		else {
+			sound.play(false);
+		}
+	}
+
+</SCRIPT>
+
+</HEAD>
+
+<BODY bgcolor=102030 fontsize=medium text=909090 link=a0a000 vlink=808000><BR>
+	<EMBED SRC="newbell3.mid" HIDDEN=TRUE CONTROLS=console
+	VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="bell"
+	MASTERSOUND>
+
+<CENTER>
+
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-7467616088319038";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_type = "text";
+//2007-08-23: woofie.com
+google_ad_channel = "2520990473";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_text = "000000";
+google_color_url = "0066CC";
+//-->
+</script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<H3>woofie's toolbox - client version</H3></CENTER>
+
+
+your box (or browser) reports the following software version:<BR><BR>
+<SCRIPT LANGUAGE="JavaScript">
+
+document.write("navigator.appName&nbsp;&nbsp; = "+ navigator.appName);  
+document.write("<BR>navigator.appVersion = "+ navigator.appVersion);  
+
+var userAgent = navigator.appVersion;
+if (userAgent.indexOf("WebTV") > 0){
+	var left = userAgent.indexOf("OS") + 2;
+	if (left < 3) { left = userAgent.indexOf("TV") + 2; }
+	
+	var right = userAgent.indexOf(")");
+	var webtvversion = userAgent.substring(left,right);
+	document.write("<BR>webtv version = " + webtvversion);
+}
+
+
+</SCRIPT> 
+
+<BR><BR><BR><BR><BR><BR><BR><BR>
+<BR><BR><CENTER><hr width=50%><hr width=30%><BR></CENTER>
+
+</BODY>
+</HTML>

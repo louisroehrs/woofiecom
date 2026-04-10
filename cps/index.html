@@ -1,0 +1,184 @@
+
+
+<HTML>
+  
+  <HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+    
+    <TITLE>Portfolio Manager</TITLE>
+    
+    <!-- JAVASCRIPT FOR WINDOW -->
+    <script language=JavaScript src=jquery-1.3.1.min.js></script>
+    <script language="JavaScript">
+      <!--
+      
+      function init ()  {
+
+      $("#left LI").click (function (event) {
+      $("#left LI").removeClass("selected").removeClass("over");
+      $(this).addClass("selected");
+      $("#preview").attr("src",$(this).attr("img"));
+      $("#left LI IMG").hide();
+      $(this).children("IMG").show();
+      }
+      );
+
+
+      $("#left LI").mouseover(function(event) {
+         if ($(this).is("LI")) {
+            $(this).addClass("over");
+         }
+         event.stopPropagation();
+      });
+
+      $("#left LI").mouseout(function(event) {
+         if ($(event.target).is("li")) {
+            $(event.target).removeClass("over");
+         }
+         event.stopPropagation();
+      });
+
+      // show first in list
+      $("#left LI:first").addClass("selected").children("IMG").show();
+      }
+      
+      $().ready(init);
+      // -->
+    </SCRIPT>
+    
+
+    <style>
+
+      BODY {
+      color:#000066;
+      background-color:#808080;
+      }
+
+      H3 {
+      font-size=12pt;
+      font-weight:bold;
+      color:#bbb;
+      font-family:arial,helvetica,sans-serif;
+      }
+
+      LI , UL{ 
+      color:000000;
+      font-family:arial,helvetica,sans-serif;
+      list-style:none;
+      white-space:nowrap;
+      padding:0;
+      margin:0;
+      }
+
+      UL { 
+      padding: 3 3 1 3;
+      cursor:pointer;
+      font-weight:bold;
+      }
+      LI { 
+      padding: 0 2 0 2;
+      font-size:.8em;
+      color:000033;
+      font-weight:normal;
+      }
+
+      .over { 
+      font-weight:normal;
+      color:ffffff;
+      background-color:#909090;
+      }
+
+      #left {
+      float:left;
+      }
+      #right { display:none }
+      IMG {
+      display:none;
+      top:15;
+      left:170;
+      position:absolute;
+      }
+      
+      #footer {
+      position:absolute;
+      bottom: 20;
+      right: 20;
+      }
+      .selected {
+      background-color:#555;
+      color:white;
+      }
+    </style>
+    
+  </HEAD>
+  
+  <BODY >
+    <H3>Design Preview</H3>
+<div id="footer">
+Copyright &copy; 2009 Teletrex Software Systems
+</div>
+
+    <div id="left">
+                    <UL>Portfolio
+                      <li>Home Page<img SRC="Dashboard.gif"></li>
+                      <li>Property Finder<img SRC="FinderFilter.gif"></li>
+                      <li>Single Property<img src=FinderDetail.gif></li>
+                    </UL>
+                    <ul>Maps
+                      <li>US Map<img src=FinderMapUS.gif></li>
+                      <li>SF Bay Area Map<img src=FinderMapSFBayArea.gif></li>
+                      <li>County Map<img src=FinderMapSantaClara.gif></li>
+                      <li>City Map<img src=FinderMapMilpitasRoads.gif></li>
+                      <li>Location Map<img src=FinderMapProperty.gif></li>
+                    </UL>
+                    <ul>Sorting by
+                      <li>Addresses<img src=ListAddressSort.gif></li>
+                      <li>Country<img src=ListCountrySort.gif></li>
+                      <li>Region Segment Surplus<img src=ListRegionSegmentSurplusSort.gif></li>
+                    </ul>
+                    <ul>Summaries
+                      <li>World Sq Foot<img src=StrategyTotalSqFootByRegion.gif></li>
+                      <li>America Annual Rent<img src=AnnualRentByCountryForAmerica.gif></li>
+                    </ul>
+                    <ul>Configuration
+                      <li>Configuration Sample<img src=RegionSegmentConfiguration.gif></li>
+                      <li>Add a new segment<img src=ConfigSegments.gif></li>
+
+                    </ul>
+</div>
+<div id="ad">
+            
+            <!-- BEGIN Google CODE --> 
+            
+            <center>
+              <!--  
+              <script type="text/javascript">
+              google_ad_client = "pub-7467616088319038";
+              google_ad_width = 728;
+              google_ad_height = 90;
+              google_ad_format = "728x90_as";
+              google_ad_type = "text";
+              //2007-08-23: woofie.com
+              google_ad_channel = "2520990473";
+              google_color_border = "FFFFFF";
+              google_color_bg = "FFFFFF";
+              google_color_link = "0000FF";
+              google_color_text = "000000";
+              google_color_url = "0066CC";
+              
+            </script>
+              <script type="text/javascript"
+              src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+            </script>
+              -->
+</div>
+<div id="console"></div>      
+  </BODY>
+  
+</HTML>
+
+
+
+
+
+

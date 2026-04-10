@@ -1,0 +1,369 @@
+<IMG SRC="../ROMCache/UsingWebTVBanner.gif" WIDTH=48 HEIGHT=249 BORDER=0><html>
+<head>
+<title>Welcome to the Dynamic HTML Zone</title>
+</head>
+
+<style>
+
+body {
+  background: #990000;
+  text: #FFFFFF;
+  link: #99CCFF;
+  vlink: #FFFFCC;
+}
+
+#adbanner {
+  position: absolute;
+  top: 3;
+  left: 60;
+}
+
+#blacksquare {
+  position: absolute;
+  top: 90;
+  left: 70;
+  visibility: hidden;
+}
+
+#bluesquare {
+  position: absolute;
+  top: 70;
+  left: 45;
+  visibility: hidden;
+}
+
+#logo {
+  position: absolute;
+  top: 325;
+  left: 330;
+  visibility: hidden;
+}
+
+#circle {
+  position: absolute;
+  top: 130;
+  left: 325;
+  visibility: hidden;
+}
+
+#thelinks{
+  position: absolute;
+  top: 130;
+  left: 85;
+  visibility: hidden;
+}
+
+#loading{
+  position: absolute;
+  top: 200;
+  left: 200;
+}
+
+#text{
+  position:absolute; 
+  top:410; 
+  left: 50;
+}
+
+#preload{
+  position:absolute;
+  visibility: hidden;
+}
+
+</style>
+
+
+<script language = JavaScript 1.1>
+
+
+
+master = new Array();     // names of each animation layer
+dx = new Array();         // horizontal speed of each layer
+dy = new Array();         // vertical speed of each layer
+
+var max_jump = 10;        // maximum distance of animation step
+var steps = 20;           // total number of animation frames
+var delay = 1;            // pause between animation frames
+
+
+function initSpeeds() {
+  for (var ctr = 0; ctr < master.length; ctr++) {
+    dx[ctr] = Math.ceil(Math.random() * max_jump);
+    if (Math.random() > .5) { 
+      dx[ctr] *= -1;
+    }
+    dy[ctr] = Math.ceil(Math.random() * max_jump);
+    if (Math.random() > .5) { 
+      dy[ctr] *= -1;
+    }
+  }
+}
+
+function MSinitPositions() {
+  for (var ctr = 0; ctr < master.length; ctr++) {
+    document.all.tags("div")[ctr].style.posLeft += (-steps * dx[ctr]);    
+    document.all.tags("div")[ctr].style.posTop += (-steps * dy[ctr]);
+    document.all.tags("div")[ctr].style.visibility = "visible";
+  }
+  loading.style.visibility = "hidden";
+}
+
+function NSinitPositions() {
+  for (var ctr = 0; ctr < master.length; ctr++) {
+    eval("document." + master[ctr] + ".left += (-steps * dx[ctr])");
+    eval("document." + master[ctr] + ".top += (-steps * dy[ctr])");
+    eval("document." + master[ctr] + ".visibility = 'visible'");
+  }
+  document.loading.visibility = "hidden";
+}
+
+function MSfixPositions() {
+    for (var ctr = 0; ctr < master.length; ctr++) {
+      document.all.tags("div")[ctr].style.posLeft += dx[ctr]
+      document.all.tags("div")[ctr].style.posTop += dy[ctr]
+    }
+
+    if (steps > 1) {
+      steps--;
+      setTimeout("MSfixPositions()", delay);
+    }
+}
+
+function NSfixPositions() {
+    for (var ctr = 0; ctr < master.length; ctr++) {
+    eval("document." + master[ctr] + ".left += dx[ctr]");
+    eval("document." + master[ctr] + ".top +=  dy[ctr]");
+    }
+
+    if (steps > 1) {
+      steps--;
+      setTimeout("NSfixPositions()", delay);
+    }
+}
+
+function runAnimation() {
+  initSpeeds();
+  if (window.navigator.userAgent.indexOf("MSIE") > 0) {
+    MSinitPositions();
+    MSfixPositions();
+  } else {
+     NSinitPositions();
+     NSfixPositions();
+  }
+}
+
+//MM_hiliteImg() courtesy of www.coolnote.com
+function MS_hiliteImg()  {
+  srcImgArray = new Array;  //used for reset
+  for (var i=0; i < (MM_hiliteImg.arguments.length-1); i+=2) {
+    theObj = MM_hiliteImg.arguments[i];
+    srcImgArray[i] = theObj;
+    newImgFile = MM_hiliteImg.arguments[i+1];
+    srcImgArray[i+1] = eval('document.'+theObj+'.src');
+    eval('document.'+theObj+'.src = "'+newImgFile+'"');
+  }
+  document.MM_hiliteImgSrcs = srcImgArray; //used for reset
+}
+
+function NS_hiliteImg()  {
+  document.oldObjectSrc = document.circle.document.images[0].src;
+  document.circle.document.images[0].src = MM_hiliteImg.arguments[1];
+  document.oldImgRef = document.thelinks.document.images[NS_hiliteImg.arguments[2]].name.toString();
+  document.oldImgFile = document.thelinks.document.images[NS_hiliteImg.arguments[2]].src;
+  document.thelinks.document.images[NS_hiliteImg.arguments[2]].src = NS_hiliteImg.arguments[3];
+}
+
+//MM_hiliteImgRestore() courtesy of www.coolnote.com
+function MS_hiliteImgRestore()  {
+  if (document.MM_hiliteImgSrcs != null) {
+    scrImgArray = document.MM_hiliteImgSrcs;
+    for (var i=0; i < (scrImgArray.length-1); i+=2) {
+      theObj = scrImgArray[i];
+      srcImgFile = scrImgArray[i+1];
+      eval('document.'  +  theObj  +  '.src = "'  +  srcImgFile  +  '"'); 
+   }
+  }
+}
+
+function NS_hiliteImgRestore()  {
+  document.circle.document.images[0].src = document.oldObjectSrc;
+  document.thelinks.document.images[document.oldImgRef].src = document.oldImgFile;
+}
+
+MM_hiliteImg = new Function();
+MM_hiliteImgRestore = new Function();
+
+if (window.navigator.userAgent.indexOf("MSIE") > 0) {
+  MM_hiliteImg = MS_hiliteImg;
+  MM_hiliteImgRestore = MS_hiliteImgRestore;
+} else {
+  MM_hiliteImg = NS_hiliteImg;
+  MM_hiliteImgRestore = NS_hiliteImgRestore;
+}
+
+//store each layer's name in a master array
+master[0] = "blacksquare";
+master[1] = "bluesquare";
+master[2] = "logo";
+master[3] = "thelinks";
+master[4] = "circle";
+master[5] = "adbanner";
+
+
+</script>
+
+  
+<body onload= "runAnimation()">
+
+<!-- adbanner-->
+<div id = adbanner>
+<!---begin adshow code-->
+<a target="dc_window" 
+href="http://ad.doubleclick.net/jump/www.macromedia.com/dhtmlzone/index.html">
+<img src="http://ad.doubleclick.net/ad/www.macromedia.com/dhtmlzone/index.html"
+height="60" width="468" ismap></a>
+<!---end adshow code-->
+</div>
+
+<!--the moving layers...each layer is positioned via the doc's style sheet-->
+<div  id = blacksquare><img src="images/blacksquare.gif" width="461" height="277"></div>
+<div  id = bluesquare><img src="images/bluesquare.gif"  width="480" height="321"></div>
+<div  id = logo><a href="http://www.macromedia.com/"><img src="images/logo.gif" width="165" height="54" border="0" alt="Click here to go to Macromedia.com"></a></div>
+
+<div id = circle>
+<img src="images/dhtml_c.gif" name="dhtml_circle" width="183" height="170" border="0" alt="Welcome to the Dynamic HTML Zone!">
+</div>
+
+<div id = thelinks>
+<table cellspacing = 0 cellpadding = 0>
+<tr><td>
+<A HREF="articles/index.html" onMouseOver="MM_hiliteImg('dhtml_circle','images/article_c.gif','articles','images/article0.gif')" onMouseOut="MM_hiliteImgRestore()">
+<img src="images/article1.gif" name="articles" width="227" height="26" border="0" alt=""></a>
+</td></tr>
+<tr><td>
+<A HREF="tutorials/index.html" onMouseOver="MM_hiliteImg('dhtml_circle','images/tutorial_c.gif','tutorial','images/tutorial0.gif')" onMouseOut="MM_hiliteImgRestore()">
+<img src="images/tutorial1.gif" name="tutorial" width="227" height="26" border="0" alt=""></a>
+</td></tr>
+<tr><td>
+<A HREF="resources/index.html" onMouseOver="MM_hiliteImg('dhtml_circle','images/resource_c.gif','resource','images/resource0.gif')" onMouseOut="MM_hiliteImgRestore()">
+<img src="images/resource1.gif" name="resource" width="227" height="26" border="0" alt=""></a>
+</td></tr>
+<tr><td>
+<A HREF="spotlight/index.html" onMouseOver="MM_hiliteImg('dhtml_circle','images/spotlight_c.gif','spotlight','images/spotlight0.gif')" onMouseOut="MM_hiliteImgRestore()">
+<img src="images/spotlight1.gif" name="spotlight" width="227" height="26" border="0" alt=""></a>
+</td></tr>
+<tr><td>
+<A HREF="discussion/index.html" onMouseOver="MM_hiliteImg('dhtml_circle','images/discuss_c.gif','discuss','images/discuss0.gif')" onMouseOut="MM_hiliteImgRestore()">
+<img src="images/discuss1.gif" name="discuss" width="227" height="26" border="0" alt=""></a>
+</td></tr>
+<tr><td>
+<A HREF="swdhtml/index.html" onMouseOver="MM_hiliteImg('dhtml_circle','images/shockwave_c.gif','shockwave','images/shockwave0.gif')" onMouseOut="MM_hiliteImgRestore()">
+<img src="images/shockwave1.gif" name="shockwave" width="227" height="26" border="0" alt=""></a>
+</td></tr>
+</table>
+</div>
+
+
+
+<!--this layer is only visible while the rest of the doc is loading-->
+<div id = loading>
+<font color = #ffffff size = +2>
+<font face="arial, helvetica, *">l o a d i n g . . .</font>
+</font>
+</div>
+
+<!--this layer preloads the layover images-->
+<div id = preload>
+<img src="images/article_c.gif" align="" width="183" height="170" border="0" alt="Articles">
+<img src="images/article0.gif" align="" width="227" height="26" border="0" alt="Articles">
+<img src="images/discuss_c.gif" align="" width="183" height="170" border="0" alt="Discussion Group">
+<img src="images/discuss0.gif" align="" width="227" height="26" border="0" alt="Discussion Group">
+<img src="images/resource_c.gif" align="" width="183" height="170" border="0" alt="Resources">
+<img src="images/resource0.gif" align="" width="227" height="26" border="0" alt="Resources">
+<img src="images/shockwave_c.gif" align="" width="183" height="170" border="0" alt="Shockwave in Dynamic HTML">
+<img src="images/shockwave0.gif" align="" width="227" height="26" border="0" alt="Shockwave in Dynamic HTML">
+<img src="images/spotlight_c.gif" align="" width="183" height="170" border="0" alt="Spotlight">
+<img src="images/spotlight0.gif" align="" width="227" height="26" border="0" alt="Spotlight">
+<img src="images/tutorial_c.gif" align="" width="183" height="170" border="0" alt="Tutorials">
+<img src="images/tutorial0.gif" align="" width="227" height="26" border="0" alt="Tutorials">
+
+</div>
+
+<div id = text>
+
+<!---begin dream ad code-->
+<a target="dc_window" 
+href="http://205.216.163.135/contests/macromedia/dream4">
+<img src="http://www.macromedia.com/ads/mm0142.gif"
+height="60" width="468"></a>
+<!---end dream ad code-->
+
+<table width="500">
+<tr>
+<td  valign="top">
+<font size="4"><font color="#ffffff" face="arial, helvetica, *">
+<b>Welcome to Macromedia's DHTML Zone!</b><br>
+We're excited about the potential Dynamic HTML brings to multimedia content
+on the Web, and have established this site to help designers create dynamic
+pages that can be delivered through both Netscape and Microsoft browsers.
+
+<p>
+
+As Microsoft and Netscape have different definitions of Dynamic HTML, creating
+these pages can be challenging. This site describes those differences, and
+techniques you can use to get your content to display successfully. Today,
+Shockwave participates as a full-fledged element of Dynamic HTML, and runs
+across older and newer browsers seamlessly. It's all in our
+<a href="swdhtml/index.html"><font color="#99ccff">Shockwave with DHTML</font></a> area.
+
+<p>
+
+We're also busily working on a new visual web site authoring tool 
+that will support Dynamic HTML, and are interested in
+any <a href="discussion/index.html"><font color="#99ccff">suggestions</font></a>
+you have or <a href="discussion/index.html"><font color="#99ccff">obstacles</font></a>
+you run into as you begin creating DHTML pages.  
+
+<p>
+
+Are you dreaming  of the freedom of HTML source editing & easy graphical
+control? 
+<a target="mm_window" href="http://205.216.163.135/contests/macromedia/dream4/"><font color="#99ccff">Tell us</font></a> 
+and you can win a digital camera! 
+</font>
+</td>
+</tr>
+</table>
+<p>
+
+<center>
+
+<br>
+
+<hr width=500 align=left noshade>
+
+<code>
+
+<a href="index.html" target="_top"><font color="#99ccff">home</font></a> |
+<a href="articles/index.html" target="_top"><font color="#99ccff">articles</font></a> |
+<a href="resources/index.html" target="_top"><font color="#99ccff">resources</font></a> |
+<a href="tutorials/index.html" target="_top"><font color="#99ccff">tutorials</font></a> |
+<a href="spotlight/index.html" target="_top"><font color="#99ccff">spotlight</font></a> |<br>
+<a href="discussion/index.html" target="_top"><font color="#99ccff">discussion group</font></a> |
+<a href="swdhtml/index.html" target="_top"><font color="#99ccff">shockwave with dhtml</font></a> |
+<a href="http://www.macromedia.com/" target="_top"><font color="#99ccff">macromedia</font></a> 
+
+<p>
+<font size=2><a href="http://www.macromedia.com/help/copyright.html">
+<font color="#99ccff">Copyright</font></a> &#169;1997 Macromedia&#174; Inc. All rights reserved. 
+<a href="http://www.macromedia.com/help/copyright.html"><font color="#99ccff">Disclaimer</font></a>.
+<br><a href="mailto:dhtmlzone@macromedia.com"><font color="#99ccff">dhtmlzone@macromedia.com</font></a>
+</code>
+</font>
+</center>
+<!--end footer-->
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,197 @@
+<html>
+
+<title>WebTV MatchMate</title>
+
+<head>
+
+
+<SCRIPT Language="JavaScript">
+
+	mam = new game("mam");
+
+	function woof(stuff) {{
+		alert(stuff);
+	}
+	
+     function getURLvar(Name) {{
+
+		var search = Name + "=";
+		var incoming = window.location.search;
+		if (incoming.length > 0) {{ 
+			offset = incoming.indexOf(search) 
+			if (offset != -1) {{ 
+				offset += search.length;
+				// set index of beginning of value
+				end = incoming.indexOf("&", offset);
+				// set index of end of cookie value
+				if (end == -1) 
+					end = incoming.length;
+				value = unescape(incoming.substring(offset, end));
+				if (value == "") {{
+					return null;
+				} else {{
+					return value;
+				}
+			}
+			else return null;
+		}
+		else return null;
+	}
+	
+// GAME Object  new game(theme elements)
+	function game(name) {{
+		this.name = name;
+		this.status = "WebTV MatchMate Rules";
+		this.players = new Array();
+		this.addplayer = AddPlayer;
+		this.renderSidebar = RenderSidebar;
+		this.setup = SetupGame;
+		this.startRules = StartRules;
+		this.setup();		
+	}
+		
+// GAME Methods
+
+	function SetupGame() {{  // called when GAME object constructed...
+
+	// LOAD Players
+		Aplayer = getURLvar ("player0");
+		if ( Aplayer != null) {{
+			this.addplayer(Aplayer);
+			this.players[0].score = getURLvar ("p0score");
+		}
+		else {{
+			this.addplayer("You");
+			this.players[0].score = getURLvar ("p0score");
+		}
+		Aplayer = getURLvar ("player1");
+		if (Aplayer != null) {{
+				this.addplayer(Aplayer);
+				this.players[1].score = getURLvar ("p1score");
+
+		}		
+	}
+			
+	function AddPlayer(name) {{
+		qty =this.players.length;
+		this.players[qty] = new Player(name, qty);
+	}
+	
+	function RenderSidebar() {{	
+		document.write("<IMG width=14 height=24 src=/ROMCache/Spacer.gif align=absmiddle><FONT SIZE=4 COLOR=#FFFFFF><STRONG><shadow>Player One</shadow></STRONG></FONT><SUB>&nbsp;</SUB><BR>");
+		this.players[0].render();
+
+		if (this.players.length == 2) {{
+			document.write("<IMG width=8 height=23 src=/ROMCache/Spacer.gif><BR>");
+			document.write("<IMG width=14 height=24 src=/ROMCache/Spacer.gif align=absmiddle><FONT SIZE=4 COLOR=#FFFFFF><STRONG><shadow>Player Two</shadow></STRONG></FONT><SUB>&nbsp;</SUB><BR>");			
+			this.players[1].render();
+		} else {{
+			document.write("<IMG width=8 height=72 src=/ROMCache/Spacer.gif><BR>");
+		}
+	}	
+	
+
+		function StartRules() {{
+			window.status= this.status;
+		}
+		
+// PLAYER Object
+
+	function Player(name, id) {{
+		this.name = name;
+		this.score = 0;
+		this.id = id;
+	// methods
+		this.addpoints = Paddpoint;
+		this.updatescore = Pupdatescore;
+		this.render = Prender;
+	}
+
+// PLAYER methods
+
+	function Paddpoint(points) {{
+		this.score += points;
+		this.updatescore();
+	}
+
+	function Pupdatescore() {{
+		document.scoreboard["player"+this.id+"score"].value = this.score;
+	}
+
+	function Prender() {{ 
+
+		document.write("<IMG width=14 height=3 src=/ROMCache/Spacer.gif><table  border=0 cellpadding=0 cellspacing=0 cellborder=0>");
+		document.write("<tr><td abswidth=14></td><td abswidth=138 absheight=22 bgcolor=000000 valign=bottom align=center><FONT SIZE=2> "+this.name + "</FONT></td></tr></table><br>");
+	}
+	
+	function PassQueryToPage(pageName) {{
+		if ((pageName == "game.tmpl") && (mam.players.length == 2) )
+			pageName = "player1.tmpl";
+		bigwoofie = pageName + "?" + window.location.search;
+		window.location = bigwoofie;
+	}
+
+	function Redirect(sURL) {{
+	  window.location=sURL;
+	} 
+
+</script>
+</head>
+ <BGSOUND SRC="sounds/susallem.mid" AUTOSTART=TRUE LOOP=INFINITE>
+
+<body fontsize=medium background=images/full_bg1.gif
+      valign=top bgcolor=#009933 text=#FFFFFF credits="credits.tmpl"
+	  onload="mam.startRules()"  vspace=0 hspace=0>
+	<display noscroll nosend showwhencomplete >
+
+
+
+<table width=100% border=0 cellpadding=0 cellspacing=0 cellborder=0>
+	<tr>
+		<td absheight=384 abswidth=166 valign=top>
+			<IMG width=8 height=6 src=/ROMCache/Spacer.gif><BR>
+			<IMG width=6 height=80 src=/ROMCache/Spacer.gif><a href="wtv-home:/home"><IMG width=104 height=80 src=/ROMCache/WebTVLogoJewel.gif></a><BR>
+			<IMG width=8 height=61 src=/ROMCache/Spacer.gif><BR>
+<SCRIPT Language="JavaScript">mam.renderSidebar();</SCRIPT>
+			<center>
+			<IMG width=8 height=34 src=/ROMCache/Spacer.gif><BR>
+			<IMG width=8 height=7 src=/ROMCache/Spacer.gif><BR>
+			<A selected HREF="javascript:PassQueryToPage('rules1.tmpl')"><IMG SRC="images/button_more_info.gif" WIDTH=139 HEIGHT=30 BORDER=0 ALT=""></A><BR>
+
+			<IMG width=8 height=7 src=/ROMCache/Spacer.gif><BR>
+ 			<A HREF="javascript:PassQueryToPage('game.tmpl')"><IMG SRC="images/button_play.gif" WIDTH=139 HEIGHT=30 BORDER=0 ALT=""></A><BR>
+
+
+			</center>
+		</td>
+		<td abswidth=394 valign=top align=left>
+			<TABLE border=0 cellpadding=0 cellspacing=0 cellborder=0>
+				<TR>
+				<TD absheight=141 abswidth=202 valign=top>
+					<IMG width=8 height=58 src=/ROMCache/Spacer.gif><BR>
+					<IMG width=100 height=27 src=/ROMCache/Spacer.gif><IMG SRC="images/title_rules.gif" WIDTH=102 HEIGHT=27 BORDER=0>
+				</TD>
+				<TD abswidth=70></TD>		
+				<TD abswidth=119>
+					<IMG SRC="images/chester_rules.gif" WIDTH=119 HEIGHT=141 BORDER=0>
+				</TD>
+				</TR>
+			</TABLE>
+			<TABLE border=0 cellpadding=0 cellspacing=0 cellborder=0>
+				<TR>
+				<TD absheight=172 abswidth=5></TD>
+				<TD abswidth=365><FONT SIZE=4 COLOR=#FFFFFF><STRONG><shadow><UL>
+				<LI>Match Mate is a concentration memory game.
+				<LI>After selecting 'Play' you will be taken to the medieval town of Mumples.
+				<LI>Hidden beneath Mumples are cats, rats, hats, hogs, dogs, frogs, pigs and shoes.</shadow></STRONG></FONT></TD>
+				<TD abswidth=20 valign=top></TD>
+				</TR>
+			</TABLE>
+			<TABLE border=0 cellpadding=0 cellspacing=0 cellborder=0><TR><TD HREF="http://www.woofie.com/webtvad.tmpl" insetselection><IMG SRC="http://www.woofie.com/images/bws.gif" WIDTH=394 HEIGHT=71 BORDER=0></TD></TR></TABLE>
+		</td>
+  </tr>
+
+</table>
+</body>
+</html>
+

@@ -1,0 +1,157 @@
+<!-- This document was created with HomeSite 2.5 -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<HTML>
+<HEAD>
+	<TITLE>Untitled</TITLE>
+</HEAD>
+
+<BODY>
+<PRE>
+
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;This is a test&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;xbody&gt;
+&lt;TABLE WIDTH="120" TABLE BGCOLOR="#000000" TEXT="#FFFFFF" LINK="#FFCC33"
+VLINK="#FFFFFF" ALINK="#FFFFFF" BORDER="0" CELLSPACING="0" CELLPADDING="0"&gt;
+&lt;TR&gt;&lt;TD WIDTH="100%"&gt;&lt;CENTER&gt;
+
+&lt;xscript LANGUAGE = "JavaScript"&gt;
+&lt;!--
+// Array Function
+function makeArray() {
+var args = makeArray.arguments;
+    for (var i = 0; i &lt; args.length; i++) {
+    this[i] = args[i];
+    }
+this.length = args.length;
+}
+// This array holds the descriptions and names of the pages.
+var pages = new makeArray("Click here and GO",
+                          "Clients",
+                          "Rates & Services",
+                          "Eye Candy",
+                          "Cool Links",
+					                     "Why a Website?",
+                          "Hot Links",
+                          "Request Form");
+// This array hold the URLs of the pages.
+var urls = new makeArray("",
+                         "http://www.webtonic.com/clients.html",
+                         "http://www.webtonic.com/rates.html",
+                         "http://www.webtonic.com/eye.html",
+                         "http://www.webtonic.com/cool.html",
+
+
+
+	"http://www.webtonic.com/why.html",
+                         "http://www.webtonic.com/hot.html",
+                         "http://www.webtonic.com/feedback.html");
+// This function determines which page is selected and goes to it.
+function goPage(form) {
+i = form.menu.selectedIndex;
+    if (i != 0) {
+    window.location.href = urls[i];
+    }
+}
+//--&gt;
+&lt;/SCRIPT&gt;
+&lt;FONT COLOR="#CCCCCC"&gt;&lt;B&gt;
+&lt;FONT FACE="Arial, Helvetica, Geneva" size=+1&gt;
+SEARCH THIS SITE!&lt;BR&gt;
+&lt;/FONT&gt;&lt;/B&gt;
+&lt;xscript LANGUAGE = "JavaScript"&gt;
+&lt;!--
+// The select menu will be displayed wherever you place this code.
+document.write('&lt;FORM&gt;&lt;SELECT NAME = "menu" onChange = "goPage(this.form)"&gt;');
+    for (var i = 0; i &lt; pages.length; i++) {
+    document.write('&lt;OPTION&gt;' + pages[i]);
+    }
+document.write('&lt;/SELECT&gt;&lt;/FORM&gt;');
+//--&gt;
+&lt;/SCRIPT&gt;
+&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+
+
+&lt;!-- end message --&gt;
+&lt;/form&gt;
+&lt;base href="http://mail.yahoo.com/"&gt;
+&lt;script language=javascript&gt;
+&lt;!--
+window.name='wmailMain';
+//--&gt;
+&lt;/script&gt;
+
+
+
+
+
+
+
+ &lt;HR size=1&gt; 
+
+
+
+
+ &lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;This is a test&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;xbody&gt;
+&lt;TABLE WIDTH="120" TABLE BGCOLOR="#000000" TEXT="#FFFFFF" LINK="#FFCC33"
+VLINK="#FFFFFF" ALINK="#FFFFFF" BORDER="0" CELLSPACING="0" CELLPADDING="0"
+HEIGHT="100"&gt;
+&lt;TR&gt;&lt;TD WIDTH="100%"&gt;&lt;CENTER&gt;&lt;FONT COLOR="#CCCCCC"&gt;&lt;B&gt;
+&lt;FONT FACE="Arial, Helvetica, Geneva" size=+1&gt;
+Where do you&lt;BR&gt; want to go?&lt;/FONT&gt;&lt;/B&gt;
+&lt;xscript="javascript"&gt;
+&lt;!--
+function msC0(form)
+{
+if (form.ComboBox0.selectedIndex == 0) location =
+"http://www.webtonic.com/clients.html";
+if (form.ComboBox0.selectedIndex == 1) location =
+"http://www.webtonic.com/rates.html";
+if (form.ComboBox0.selectedIndex == 2) location =
+"http://www.webtonic.com/eye.html";
+if (form.ComboBox0.selectedIndex == 3) location =
+"http://www.webtonic.com/cool.html";
+if (form.ComboBox0.selectedIndex == 4) location =
+"http://www.webtonic.com/why.html";
+if (form.ComboBox0.selectedIndex == 5) location =
+"http://www.webtonic.com/hot.html";
+if (form.ComboBox0.selectedIndex == 6) location =
+"http://www.webtonic.com/cool.html";
+if (form.ComboBox0.selectedIndex == 7) location =
+"http://www.webtonic.com/feedback.html";
+}
+//--&gt;
+&lt;/SCRIPT&gt;
+&lt;FORM&gt;
+&lt;SELECT NAME = "ComboBox0"&gt;
+&lt;OPTION&gt;Clients
+&lt;OPTION&gt;Rates & Services
+&lt;OPTION&gt;Eye Candy
+&lt;OPTION&gt;Cool Links
+&lt;OPTION&gt;Why a Website?
+&lt;OPTION&gt;Hot Links
+&lt;OPTION&gt;Request Form
+&lt;/SELECT&gt;&lt;BR&gt;
+&lt;INPUT TYPE="button" VALUE="Search this site" onClick="msC0(this.form)"
+&lt;/FORM&gt;&lt;BR&gt;
+&lt;BR&gt;&lt;/CENTER&gt;
+
+&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+
+&lt;/PRE&gt;
+
+</BODY>
+</HTML>

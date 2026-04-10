@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+  <head>
+    <title>Jquery</title>
+<script language=JavaScript src='jquery-1.3.1.min.js'></script>
+<script language=JavaScript>
+
+function woof(event) {
+   alert('#woof');
+}
+function bodyx(event) {
+   alert('body');
+}
+function table(event) {
+   alert('table');
+}
+function h1(event) {
+   alert('h1');
+}
+</script>
+  </head>
+
+  <body id=body xonclick="bodyx()">
+    <h1 id=h1 xonclick="h1()">Jquery</h1>
+<table id=table xonclick="table()"><tr><td>
+<div id="woof" xonclick='woof()'>woof</div>
+</td></tr></table>
+<script language=JavaScript>
+
+document.getElementById('body').addEventListener('click',bodyx,false);
+document.getElementById('woof').addEventListener('click',woof,true);
+document.getElementById('table').addEventListener('table',woof,true);
+
+function init() {
+      $("body").click(function(){alert("body")});
+      $("#woof").click(function(evt){alert("#woof");window.event.cancelBubble=true;evt.stopPropagation()});
+      $("h1").click(function(){alert(3)});
+}
+
+</script>
+    <hr>
+    <address><a href="mailto:">Louis Roehrs</a></address>
+<!-- Created: Wed Feb 11 04:48:36 PST 2009 -->
+<!-- hhmts start -->
+Last modified: Wed Feb 11 05:55:39 PST 2009
+<!-- hhmts end -->
+  </body>
+</html>

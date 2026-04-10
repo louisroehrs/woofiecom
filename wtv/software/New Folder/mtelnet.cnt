@@ -1,0 +1,20 @@
+:Base mtelnet.hlp
+1 Product
+2 Reference=option_reference
+1 Menus
+2 File menu=menu_file
+2 Edit menu=menu_edit
+2 View menu=menu_view
+2 Settings menu=menu_settings
+2 Help menu=menu_help
+1 How To
+2 Vt220 keyboard layout=option_VT220 
+2 Change keyboard mapping=option_keyboard
+2 Change character mapping=option_map
+2 Press F18 in an application=option_F18
+2 Use shift and ctrl with function keys in the Toolbar=option_toolbar
+2 Parameters to Mocha W32 Telnet=option_parameter
+2 Use different configurations=option_configurations
+2 Check for latest version=option_version
+2 Order Mocha W32 Telnet=option_order
+2 Technical support=option_support

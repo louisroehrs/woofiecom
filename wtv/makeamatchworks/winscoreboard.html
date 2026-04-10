@@ -1,0 +1,258 @@
+<html>
+<head>
+<title>WebTV MakeAMatch</title>
+<bgsound src="sounds/kidstheme8.mid"> 
+</head>
+
+<SCRIPT Language="JavaScript">
+	mam = new game("mam")
+	
+	mam = new game("mam")
+
+	function setCookie(name, value, expire) {
+          document.cookie = name + "=" + escape(value)
+          + ((expire == null) ? "" : ("; expires=" + expire.toGMTString()))
+	}
+	
+	function getCookie(Name) {
+		var search = Name + "="
+		if (document.cookie.length > 0) { // if there are any cookies
+			offset = document.cookie.indexOf(search) 
+			if (offset != -1) { // if cookie exists 
+				offset += search.length 
+				// set index of beginning of value
+				end = document.cookie.indexOf(";", offset) 
+				// set index of end of cookie value
+				if (end == -1) 
+					end = document.cookie.length
+				return unescape(document.cookie.substring(offset, end))
+			}
+		}
+	}
+	
+	function getURLvar(Name) {
+		var search = Name + "="
+		var incoming = window.location.search
+		if (incoming.length > 0) { // if there are any search parameters
+			offset = incoming.indexOf(search) 
+			if (offset != -1) { // if parameter exists 
+				offset += search.length 
+				// set index of beginning of value
+				end = incoming.indexOf("&", offset) 
+				// set index of end of cookie value
+				if (end == -1) 
+					end = incoming.length
+				value = unescape(incoming.substring(offset, end))
+				if (value == "") {
+					return null
+				} else {
+					return value
+				}
+			}
+			else return null
+		}
+		else return null
+	}
+	
+// GAME Object  new game(theme elements)
+	function game(name) {
+	
+		this.name = name
+		this.players = new Array ()
+		this.addplayer = AddPlayer
+		this.renderSidebar = RenderSidebar
+		this.setup = SetupGame
+		this.onePlayerScoreboard = MultiPlayerScoreboard
+		this.multiPlayerScoreboard = MultiPlayerScoreboard
+		this.setbestscore = ComputeBestTimesAndSet
+
+		this.setup()		
+
+	}
+		
+// GAME Methods
+
+	function SetupGame() {  // called when GAME object constructed...
+
+	// LOAD Players
+		Aplayer = getURLvar ("player0")
+		if ( Aplayer != null) {
+			this.addplayer(Aplayer)
+			this.players[0].score = getURLvar ("p0score")
+		}
+		else {
+			this.addplayer("You")
+			this.players[0].score = getURLvar ("p0score")
+		}
+		Aplayer = getURLvar ("player1")
+		if (Aplayer != null) {
+				this.addplayer(Aplayer)
+				this.players[1].score = getURLvar ("p1score")
+
+		}
+		Aplayer = getURLvar ("player2")
+		if ( Aplayer != null) {
+				this.addplayer(Aplayer)
+				this.players[2].score = getURLvar ("p2score")
+
+		}
+		
+	}
+			
+	function AddPlayer(name) {
+		qty =this.players.length
+		this.players[qty] = new Player(name, qty)
+	}
+
+	function RenderSidebar() {
+		document.write("<center>");
+		this.multiPlayerScoreboard()
+		
+		document.write("</center>");
+
+	}
+
+	function OnePlayerScoreboard() {
+	
+		document.write("<br><img src=images/spacer.gif width=12 height=5><BR>");
+		document.write("<TABLE border=0 bgcolor=000000 abswidth=250>")
+		this.players[0].render(40)
+		document.write("</TABLE>");
+	}
+	
+	function MultiPlayerScoreboard() {
+		document.write("");
+		document.write("<shadow><TABLE border=0 cellspacing=5 cellpadding=5 bgcolor=000000 abswidth=250>");
+		for (i=0; i< this.players.length; i++) {	
+			this.players[i].render(40)
+		}			
+		document.write("</TABLE></shadow>");
+	}	
+
+// PLAYER Object
+
+	function Player(name, id) {
+		this.name = name
+		this.score = 0
+		this.id = id
+	// methods
+		this.addpoints = Paddpoint
+		this.updatescore = Pupdatescore
+		this.render = Prender
+
+	}
+
+// PLAYER methods
+
+	function Paddpoint(points) {
+		this.score += points;
+		this.updatescore()
+	}
+
+	function Pupdatescore() {
+		document.scoreboard["player"+	this.id+"score"].value = this.score
+	}
+
+	function Prender (myheight) { // Does need to be in its own table...
+		document.write("<TR>");
+		document.write("<TD transparency=50 gradcolor=cc33cc gradangle=45 bgcolor=992299 abswidth=150 align=left valign=absmiddle><FONT color=996666 SIZE=+2><STRONG>"+this.name + "</STRONG></FONT></TD>");
+		document.write("<TD align=center   absheight=40 valign=absmiddle abswidth=60 transparency=40 gradcolor=cc33cc gradangle=45 bgcolor=992299><FONT color=996666 SIZE=+2><STRONG>"+ this.score + "</STRONG></FONT></TD></TR>");
+	}
+	
+	<!-- High score mechanism -->
+
+	function ComputeBestTimesAndSet () {  // compares current best times with new score only one new score
+		var scores = new Array()
+		var today = new Date()
+	    var expires = new Date()
+		expires.setTime(today.getTime() + 60*60*24*365)
+
+		var mmcookie = getCookie("MakeAMatch") // cookie in score1;name1+score2;name2+  format.
+
+		if (mmcookie != null) {
+			var scores = mmcookie.split("+");
+			alert(scores);
+			var playername= this.players[0].name.substring(this.players[0].name.indexOf(">")+1,this.players[0].name.length)
+			scores[scores.length]= this.players[0].score + ";" + playername
+			alert (scores)
+			scores.sort(compareFunction)
+			alert (scores)
+			buildCookie = scores[0] + "+" + scores[1] + "+" + scores[2]
+			alert(buildCookie);
+		}
+		else {
+			buildCookie = this.players[0].score + ";" + this.players[0].name + "+0;&nbsp;data1+0;&nbsp;data2"  // start up the cookie
+		}
+		setCookie("MakeAMatch", buildCookie, expires)
+	}
+	
+	function compareFunction(a,b) {  // sort function to sort score;player combinations.
+		ascore = eval(a.substring(0,a.indexOf(";")))
+		bscore = eval(b.substring(0,b.indexOf(";")))
+		return bscore-ascore;
+	}
+	
+
+
+</SCRIPT>
+<body valign=top hspace=0 bgcolor=#000000 text=#FFFFFF noscroll credits="http://www.woofie.com/webtv.html">
+
+	<SCRIPT Language="JavaScript">
+		mam.setbestscore()
+	</SCRIPT>
+
+<table cellspacing=0 cellpadding=0 width=100%>
+   
+  <tr>
+	<td colspan=2>
+      <IMG src="images/spacer.gif" width=40 height=1>
+    </td>
+  </tr>
+
+  <tr>
+	<td colspan=2>
+	  <center>
+	   <IMG SRC="images/allstar.gif" WIDTH=300 HEIGHT=150 BORDER=0>
+          </center>
+        </td>
+  </tr>
+  
+  <tr>
+    <td>
+      <center>
+	  <table bgcolor="#997700" cellpadding=0 cellspacing=0 border=5 VALIGN="TOP"><tr VALIGN="TOP">
+	<td  valign=top><FONT COLOR=000000 SIZE="+3"><STRONG>SCOREBOARD</STRONG></FONT><SCRIPT Language="JavaScript">
+		mam.renderSidebar()
+	</SCRIPT>
+	</td></tr></table>
+
+	</center>
+	</td>
+	<td><center>
+	<table bgcolor="#997700" cellpadding=0 cellspacing=0 border=5 VALIGN="TOP"><tr VALIGN="TOP">
+	<td  valign=top><FONT COLOR=000000 SIZE="+3"><STRONG>NOW WHAT?</STRONG></FONT>
+
+			<TABLE border=0 cellspacing=5 cellpadding=5 bgcolor=000000 abswidth=180>
+			<TR>
+			<TD transparency=50 gradcolor=cc33cc gradangle=45 bgcolor=992299 abswidth=150 align=left valign=absmiddle>
+		<CENTER><BR><BR>	<a nocolor href="index.html">
+		          <img src="images/playagain.gif">
+			</a><BR><BR><BR>
+		
+			<a nocolor href="wtv-tricks:/home">
+		          <img src="images/quit.gif">
+			</a><BR><BR></CENTER>
+			</TD>
+			</TR>
+			</TABLE>
+	</td></tr></table>
+
+	
+     
+     </center>
+    </td>
+  </tr>
+
+</table>
+  
+</html>

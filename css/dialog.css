@@ -1,0 +1,72 @@
+
+
+
+body 
+{
+    margin:0;
+    padding:0;
+    border-width:.5ex;
+    border-style:solid;
+    border-color:black;
+    overflow-y:auto;
+    overflow-x:hidden;
+    cursor:default;
+    font-family: verdana;
+    font-size:90%;
+    behavior:url(/htc/dialog.htc);
+
+}
+
+.examplepage
+{
+    margin:0;
+    padding:5px;
+    border-width:.5ex;
+    border-style:solid;
+    border-color:black;
+    overflow-y:auto;
+    overflow-x:hidden;
+	cursor:default;
+     font-family: verdana;
+    font-size:90%;
+    behavior:url(dialog.htc);
+   background-image:url("../images/bottomUPC.gif");
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-position : bottom right;
+    scrollbar-base-color:#721;
+    scrollbar-highlight-color:#966;
+    scrollbar-arrow-color:#CCAAAA;
+
+}
+.off {
+ 
+
+}
+
+.dialog
+{
+	left:20;
+	top:20;
+	width:10;
+	padding:0;
+	margin:0;
+	height:10;
+	border-style:none;
+	border-width:none;
+	font-size:80%;
+	display:none;
+	z-index: 1;
+}
+
+.shadow
+{
+	left:20;
+	top:20;
+	width:0ex;
+	height:0ex;
+	background-color:#0000ff;
+	FILTER: progid:DXImageTransform.Microsoft.Blur( PixelRadius=3,MakeShadow=true,ShadowOpacity=0.65);
+	display:none;
+}
+

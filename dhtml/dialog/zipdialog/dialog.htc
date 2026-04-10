@@ -1,0 +1,188 @@
+
+
+<PUBLIC:COMPONENT LIGHTWEIGHT >
+<PUBLIC:METHOD NAME="popupWaitingDialog" />
+<PUBLIC:METHOD NAME="createPopupFrame" />
+<PUBLIC:METHOD NAME="createPopupDiv" />
+<PUBLIC:METHOD NAME="updateContent" />
+<PUBLIC:METHOD NAME="getDialog" />
+<PUBLIC:METHOD NAME="closeDialogs" />
+
+<SCRIPT LANGUAGE="JScript">
+
+
+var dialogs = [];
+var dialogseq= -1;
+
+function updateContent(me) {
+	dialogs[me].setContent();
+	return;
+}
+
+
+function closeDialogs() {
+
+	for (i=0; i< dialogs.length; i++) {
+	        dialogs[i].hide();
+	}
+
+}
+
+function popupWaitingDialog() {
+//    dialogx = createPopupFrame("pleasewait.html","center");
+
+
+	dialogx = createPopupFrame("http://www.woofie.com","center",200,20,400,400);
+	dialogx.setContent();
+
+
+ //   dialogx = createPopupDiv("<table cellpadding=9 cellspacing=4 bgcolor=green><tr><td bgcolor=white><font face='tahoma' size=4><B id=poppin>Please wait... I'm poppin' up some prices!</B></font><BR><img onclick=\"document.all.poppin.innerHTML='Hey, that tickles!! <BR>Hee hee hee...'\" src='anim_doughboy.gif'><img src='loadgraphic.gif'></td></tr></table>","center");
+   
+	return;
+}
+
+function createPopupFrame(url,position,t,l,w,h) {
+
+	closeDialogs();
+	return new popupDialog("frame",url,position,t,l,w,h);
+}
+
+
+function createPopupDiv(content,position) {
+
+	closeDialogs();
+
+	var dia = new popupDialog("div",content,position);
+	dia.show();
+	return dia;
+}
+// overflow is one of none, clip, scroll 
+
+
+function popupDialog(type, content, position,t,l,w,h)
+{
+
+
+        dialogseq++;
+	this.name = "dialog" + dialogseq;
+	this.id = dialogseq;
+	this.isFrame = (type=="frame")? true :false;
+	url = (this.isFrame)? content :"";
+	this.t =t;
+	this.l =l;
+	this.w =w;
+	this.h =h;
+	/* displays content if no url or url="" is given */
+	this.position = position;
+
+	if (this.isFrame) { 
+		window.document.body.appendChild(window.document.createElement("<iframe id="+this.name + " name=" + this.name + " src='blank.html'></iframe>"));
+
+		this.popupframe = window.frames[this.name];
+		this.popup = window.document.all(this.name);
+		this.popupframe.location = url;
+
+	} else {                                            /* popup is div */
+		this.popup = window.document.createElement("div");
+		this.popup.innerHTML = content;        
+		window.document.body.appendChild(this.popup);
+	}
+
+
+	this.shadow = window.document.createElement("div");
+	window.document.body.appendChild(this.shadow);
+
+	this.popup.className 	= "dialog";
+	this.shadow.className 	= "shadow";
+
+	this.popup.style.display 	= "block";
+	this.shadow.style.display 	= "block";
+
+	this.popup.style.position	= "absolute";
+	this.shadow.style.position 	= "absolute";
+
+	this.popup.style.backgroundColor= "red";
+
+	this.setContent = function () {	
+
+	if (this.isFrame) {
+
+		this.popup.style.height = (typeof this.h == "undefined") ? this.getHeight(this.popupframe):this.h;
+		this.popup.style.width  = (typeof this.w == "undefined") ? this.getWidth(this.popupframe):this.w;
+
+	}
+
+	if (this.position == "mouse") {
+		this.popup.style.left	= window.document.body.getMouseX() - 15;  
+		this.popup.style.top	= window.document.body.getMouseY() - 15; 
+	} else 
+	if (this.position == "absolute") {
+		this.popup.style.left	= this.l;
+		this.popup.style.top	= this.t;
+
+
+        } else 	if (this.position == "center") {
+		this.popup.style.left	= Math.floor((window.document.body.offsetWidth-this.popup.offsetWidth)/2);
+		this.popup.style.top	= Math.floor((window.document.body.offsetHeight-this.popup.offsetHeight)/2);
+	}		
+
+	this.shadow.style.left		= this.popup.offsetLeft;
+	this.shadow.style.top		= this.popup.offsetTop;
+	this.shadow.style.height 	= this.popup.offsetHeight;
+	this.shadow.style.width     = this.popup.offsetWidth;
+
+	}		
+
+	this.getHeight = function (area) {
+		var tmpHeight = 0			// temp height variable to determine absolute height
+		var candidateHeight = 0
+		var areaElements = area.document.body.all	// all elements in the tree
+		for (var i = 0; i < areaElements.length; i++)
+		{
+			candidateHeight = areaElements[i].offsetHeight + areaElements[i].offsetTop 
+			if (candidateHeight > tmpHeight)
+			{	
+				tmpHeight = candidateHeight
+			}
+		}	
+		return tmpHeight;
+    }
+  
+    this.getWidth = function (area) {
+		var tmpWidth 	=	0			// temp height variable to determine absolute height
+		var areaElements = area.document.body.all	// all elements in the tree
+		for (var i = 0; i < areaElements.length; i++)
+		{
+			if (areaElements[i].offsetWidth > tmpWidth)
+			{	
+			tmpWidth = areaElements[i].offsetWidth + areaElements[i].offsetLeft 
+			}
+		}	
+		return tmpWidth
+	}	
+ 
+	this.show = function () {
+	if (!this.isFrame){ this.setContent();}
+    	this.popup.style.visibility  = "visible";
+	this.shadow.style.visibility = "visible";
+	}
+	this.hide = function () {
+
+
+		this.popup.style.visibility = "hidden";
+		this.shadow.style.visibility = "hidden";
+	}
+
+	dialogs[dialogseq] = this;
+
+	return this;
+}
+
+
+</script>
+</PUBLIC:COMPONENT>
+
+
+
+
+

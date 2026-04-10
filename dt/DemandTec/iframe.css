@@ -1,0 +1,196 @@
+/* Navigation styles for iframes within this site. */
+
+html,body {
+
+	margin: 0; padding: 0;
+
+	font-family: arial, helvetica, sans-serif;
+
+	line-height: 130%;
+
+	font-size: 80%;
+
+	background: white;
+}
+
+body, #heading {
+	background-color: white;
+	color: black;
+	margin: 0;	/* No margins... */
+	padding: 0;
+}
+
+/* Image map logic modeled after http://www.cssplay.co.uk/articles/imagemap/index.html */
+#results {
+	display: block;
+	position: relative;
+	margin: 0;
+	padding: 0;
+}
+
+#results {
+	width: 973px;
+	height: 1269px;
+	background: url(img/results_material.jpg) no-repeat;
+}
+
+/* Place the <dd>s in the correct absolute position.	*/
+#results dd {
+	position: absolute;
+	padding: 0;
+	margin: 0;
+}
+
+#results #line1 {
+	left: 9px;
+	top: 72px;
+	z-index: 20;
+}
+
+#results #line2 {
+	left: 9px;
+	top: 93px;
+	z-index: 20;
+}
+
+#results #line3 {
+	left: 9px;
+	top: 114px;
+	z-index: 20;
+}
+
+#results #line4 {
+	left: 9px;
+	top: 135px;
+	z-index: 20;
+}
+
+#results #line5 {
+	left: 9px;
+	top: 156px;
+	z-index: 20;
+}
+
+#results #line6 {
+	left: 9px;
+	top: 177px;
+	z-index: 20;
+}
+
+#results #line7 {
+	left: 9px;
+	top: 198px;
+	z-index: 20;
+}
+
+#results #line8 {
+	left: 9px;
+	top: 219px;
+	z-index: 20;
+}
+
+#results #line9 {
+	left: 9px;
+	top: 240px;
+	z-index: 20;
+}
+
+#results #line10 {
+	left: 9px;
+	top: 261px;
+	z-index: 20;
+}
+
+#results #line11 {
+	left: 9px;
+	top: 282px;
+	z-index: 20;
+}
+
+#results #line12 {
+	left: 9px;
+	top: 303px;
+	z-index: 20;
+}
+
+#results #line13 {
+	left: 9px;
+	top: 324px;
+	z-index: 20;
+}
+
+#results #line14 {
+	left: 9px;
+	top: 345px;
+	z-index: 20;
+}
+
+/* Style the <dd><a> links physical size and the background image for the hover. */
+#results a.highlighted {
+	display: block;
+	width: 961px;
+	height: 21px;
+	background: transparent url(img/highlighting.jpg) -100px -100px no-repeat;
+	text-decoration: none;
+	z-index: 20;
+/* Make translucent (not CSS standards compliant) -- from	*/
+/* http://dev.opera.com/articles/view/css-and-opacity-methods-for-creating-tr/: */
+	opacity: .5;
+	filter: alpha(opacity=50);
+}
+
+/* Style the span text so that it is not displayed. */
+#results a span, #results a:visited span {
+	display: none;
+}
+
+/* Move the link background image to position 0 0 when hovered.	*/
+#results a.highlighted:hover {
+	background-position: 0 0;
+}
+
+/* Style the table. */
+table {
+	font: 12px tahoma, Verdana, Arial, Helvetica, sans-serif;
+	width: 961px;
+	border: 1px solid #EEE;
+	border-top: 1px solid black;
+	margin: 9px;
+	padding: 2px;
+	color: #333;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+thead {
+	border: 1px solid black;
+	background: #E5E5ED;
+	margin: 0;
+	padding: 0;
+	text-align: right;
+}
+
+thead tr {
+	border: 1px solid black;
+	margin: 0;
+	padding: 0;
+}
+
+thead tr td {
+	border: 1px solid black;
+	margin: 0;
+	padding: 5px;
+}
+
+/*thead tr*/ td.left {
+	text-align: left;
+}
+
+tbody {
+	text-align: right;
+}
+
+.shaded {
+	background: #EEE;
+}
+

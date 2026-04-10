@@ -1,0 +1,361 @@
+
+<html>
+<head>
+<META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">
+
+<title>WebTV MatchMate</title>
+
+	<script language="JavaScript">
+	
+// OBJECTS
+// CELL Object
+
+	function Cell(objName, game, contents, x,y, cellWidth, cellHeight) {
+		if (objName == "") {
+			objName = "Cell" + x + "at" + y
+		}
+		this.objName = objName
+		this.contents = contents
+		this.covered = 1
+		this.game = game
+	
+		this.x = x
+		this.y = y
+		this.cellWidth = cellWidth
+		this.cellHeight = cellHeight
+		this.matched = false
+	// methods
+		this.cover = Cover
+		this.uncover = Uncover
+		this.matches = Matches
+		this.select = SelectCell
+		this.render = RenderCell
+		this.showback = ShowBack
+	}
+
+// CELL methods  Keep pure except for SelectCell
+
+	function Uncover() {
+		this.covered = 0
+		document.images[this.objName].src =this.game.images[this.contents].src
+
+	}
+
+	function Cover() {
+		this.covered = 1
+		document.images[this.objName].src = slammergif
+		document.images[this.objName].src = this.game.coverImage.src
+
+	}
+	
+//   red #a52929 blue bgcolor=bgcolor=#595775
+	function RenderCell() { //
+		document.write("<td  background ='images/cover55bg.gif'><a href='javascript:mam.board.cells["+ this.x + "][" + this.y + "].select();'><img src='images/spacer.gif' border=0 name='" + this.objName + "' width="+ this.cellWidth+" height=" + this.cellHeight + "></a>");
+		document.write("</td>");
+	}
+
+	function SelectCell() {
+		
+		if (this.game.state != "inplay")
+			return;
+	
+		if  ((this.matched) || (!this.covered) || (!this.game.waitmatchflip))
+			return;
+			
+		if ( this.game.players.length ==6) {
+			// new single player rules.  Click until you get matches.
+			if (this.game.pointsSelected == 0 ) {  // Picking first item.
+				this.uncover();
+				this.game.pointsSelected = 1
+				this.game.firstCell = this;
+				name1 =  this.game.currentPlayer.name
+				window.status= name1.substring(0, name1.indexOf("<")) + " " +name1.substring(name1.indexOf(">")+1,name1.length) +"'s Turn: Try to Match This!"
+			}
+			else {  // Picking next item
+				if ( this.matches(this.game.firstCell) ) {  // This item matched
+					this.uncover();
+					this.matched = true;
+					this.game.firstCell.matched = true;
+					this.game.secondCell= this
+					window.status="Found a Match! Go again! Pick First Item."
+					PlaySound(document.bell);
+					this.game.pointsSelected = 0;  // restart matching series.
+					this.game.score();
+					this.game.waitmatchflip = 0
+					setTimeout("FlipMatches()",3000)
+				}
+				else { 					// This item did not match, make it the first item...
+					this.game.firstCell.cover()
+					this.game.firstCell = this
+					this.uncover()
+					name1 =  this.game.currentPlayer.name
+					window.status= name1.substring(0, name1.indexOf("<")) + " " +name1.substring(name1.indexOf(">")+1,name1.length) +"'s Turn: Try to Match This!"
+				}
+			}
+		}
+		
+		if ( this.game.players.length ==1) {
+			// two tiles stay up. single player rules.
+			if (this.game.pointsSelected == 0 ) {  // Picking first item.
+				this.uncover();
+				this.game.pointsSelected = 1
+				this.game.firstCell = this;
+				name1 =  this.game.currentPlayer.name
+				window.status= name1.substring(0, name1.indexOf("<")) + " " +name1.substring(name1.indexOf(">")+1,name1.length) +"'s Turn: Try to Match This!"
+			}
+			else {  // Picking next item
+				if (this.game.secondCell != null)
+					this.game.thirdCell = this.game.secondCell 
+				if (this.game.firstCell != null) {
+					this.game.secondCell = this.game.firstCell
+					this.game.firstCell=this
+				}
+				if (this.game.thirdCell != null) 
+					this.game.thirdCell.cover()
+
+
+				if ( this.matches(this.game.secondCell) ) {  // This item matched
+					this.uncover();
+					this.matched = true;
+					this.game.secondCell.matched = true;
+					window.status="Found a Match! Go again! Pick First Item."
+					PlaySound(document.bell);
+					this.game.pointsSelected = 0;  // restart matching series.
+					this.game.score();
+					this.game.waitmatchflip = 0
+					setTimeout("FlipMatches()",3000)
+
+				}
+				else { 					// This item did not match, make it the first item...
+				
+					this.uncover()
+					name1 =  this.game.currentPlayer.name
+					window.status= name1.substring(0, name1.indexOf("<")) + " " +name1.substring(name1.indexOf(">")+1,name1.length) +"'s Turn: Try to Match This!"
+				}
+
+			}
+		} else {
+		
+	
+ // || (this.game.players.length ==1)
+		if  ((this.game.blockClicks !=1) ) {
+															// wait till cells covered if two player
+
+				
+			if (this.game.pointsSelected == 1) {
+				this.uncover();
+				this.game.pointsSelected = 0;				// Selecting second cell
+
+				if ( this.matches(this.game.firstCell) ) {  // Check for a match
+					this.matched = true;					// Matched
+					this.game.firstCell.matched = true;
+					this.game.secondCell= this
+					window.status="Found a Match! Go again! Pick First Item."
+					PlaySound(document.bell);
+			
+					this.game.score();
+					this.game.waitmatchflip = 0
+					setTimeout("FlipMatches()",3000)
+				
+				}
+				else {										//Mis matched
+					this.game.blockClicks =1
+					this.game.secondCell = this
+					this.game.needToCoverBadMatch = 1;
+					this.game.BadMatchID = window.setTimeout(this.game.name + ".coverunmatched()", 4000);
+					pickfirst =""
+					if (this.game.players.length == 1) picksecond=" Pick First Item."
+					window.status="Sorry, No Match Found..." + pickfirst
+					PlaySound(document.buzzer);
+				}
+			}
+			else {											//Selecting first cell 
+				if (this.game.players.length ==1) {
+					this.game.coverunmatched()		// cover any previously uncovered cells (one player mode only)
+				}
+				this.game.pointsSelected =1;
+				this.game.firstCell = this;
+				this.uncover();
+				name1 =  this.game.currentPlayer.name
+				window.status=  name1.substring(0, name1.indexOf("<")) + " " +name1.substring(name1.indexOf(">")+1,name1.length) +"'s Turn: Pick Second Item."
+
+			}
+
+		}		
+	}
+	}
+	function FlipMatches() {
+		mam.firstCell.showback()			// show message
+		mam.secondCell.showback()
+		mam.waitmatchflip = 1
+		mam.firstCell = null
+		mam.secondCell = null
+	}
+	
+	function Matches(other) {
+		return( this.contents == other.contents ) 
+	}
+
+	function ShowBack() {
+		var whitespace = "  :!.,<>@#$%^&*()!~`[]{}=1234567890\|'?/"
+		position = this.x * this.game.board.kWidth+ this.y 
+		if (position < this.game.puzzletext.length) {
+			character = this.game.puzzletext.charAt(position)
+		} else {
+			character = " "
+		}
+		
+		if (( whitespace.lastIndexOf(character) >=0) || (character == null)) character = "_"  // convert spaces...
+		document.images[this.objName].src = slammergif
+		document.images[this.objName].src  = alphapath + character +".gif"
+		
+	}
+		
+		
+// CLOCK Object	 Countdown clock: All units in seconds
+	function Clock (game, name, startSeconds, stopSeconds,imageroot) {
+		this.game = game
+		this.name = name          // Image name is [name][1|10]min[digit] for HTML location.
+		this.time = startSeconds
+		this.stop = stopSeconds
+		this.imageroot = imageroot   // root of digit image filenames.  [imageroot][digit].gif  
+		this.interval = 2
+		this.images = LoadClockImages(imageroot)
+	   // methods
+		this.decrement = DecrementClock
+		this.increment = IncrementClock
+		this.update = UpdateClock
+		this.render = RenderClock
+		this.start = IncrementClock
+				
+	}
+	
+	
+// CLOCK methods
+
+	function UpdateClock() {
+		if ( this.time >= 0) {
+			var minutes = Math.round ((( this.time)/60)- .5);
+			var seconds = this.time % 60;
+			var tens =  Math.round((seconds / 10) -.5);
+			document.images[this.name + "10sec"].src = this.images[tens].src
+			document.images[this.name + "1mins"].src = this.images[minutes].src	
+			document.images[this.name + "1secs"].src = this.images[(seconds % 10)].src
+		}
+	}
+	
+
+	function IncrementClock() {
+
+		this.time += this.interval;
+		if (this.time > this.stop) {
+			this.time = this.stop
+			this.game.state = "lost"
+			// document.explosion.play(false);	
+			this.game.blockClicks = 1;
+			Lose();
+		}
+		else {
+			ticker = this.interval * 1000;
+			window.setTimeout( this.game.name + "." + this.name + ".increment()", ticker);
+		}
+		this.update();
+	}
+
+	function RenderClock() {
+
+		document.write("<img width=25 height=53 src='" + this.imageroot + "0bg.gif' name='" + this.name + "1mins'>")
+		document.write("<img width=11 height=53 src='" + this.imageroot + "colon.gif' name=Colon>")
+		document.write("<img width=25 height=53 src='" + this.imageroot + "0bg.gif' name='" + this.name + "10sec'>")
+		document.write("<img width=25 height=53 src='" + this.imageroot + "0bg.gif' name='" + this.name + "1secs'>")
+		this.start()
+		
+	}
+	function DecrementClock() {
+	
+		this.time -= this.interval;
+		if (this.time < this.stop) {
+			this.time = this.stop
+			this.game.state = "lost"
+			this.game.blockClicks = 1;
+			this.game.lose();
+		}
+		else {
+			window.setTimeout( this.game.name + "." + this.name + ".decrement()", this.interval*1000);
+		}
+		this.update();
+
+	}
+	
+
+	function LoadClockImages(imageroot) {
+		var images= new Array()
+		for (i=0; i< 10; i++) {
+			newimage = new Image();
+			images[i] = newimage;
+			images[i].src = imageroot + i + ".gif"
+		}
+		return images;
+	}
+
+
+// GAME Object  new game(theme elements)
+	function game(name, sGameDir, sGameTitle, asImageNames, imageTileSuffix, sCoverImageFile, kWidth, kHeight, cellWidth, cellHeight, iSecondsLeft, sPuzzleText) {
+	
+		this.name = name
+		this.title = sGameTitle
+		this.puzzletext = sPuzzleText.toLowerCase()
+		this.directory = sGameDir
+		this.imageNames = asImageNames
+		this.coverImage = LoadImage(sCoverImageFile)
+		// this.spacerImage = LoadImage("images/spacer.gif")
+		this.images = LoadGameTiles(sGameDir,asImageNames, imageTileSuffix)
+		this.players = new Array ()
+		this.currentPlayer = null
+		this.clock1 = null 
+		this.board = new gameboard(this, kWidth, kHeight, cellWidth, cellHeight)
+		this.firstCell = null
+		this.secondCell = null
+		this.thirdCell = null
+		this.blockClicks = 0
+		this.waitmatchflip = 1
+		this.pointsSelected = 0;
+		this.state = "inplay";
+		this.BadMatchID = 0;
+		this.needToCoverBadMatch= 0;
+		this.matched = 0;
+
+		
+		// Methods
+		this.displaystatus = null
+		this.score = Score
+		this.addplayer = AddPlayer
+		this.start = StartGame
+		this.renderSidebar = RenderSidebar
+		this.setup = SetupGame
+		this.onePlayerScoreboard = OnePlayerScoreboard
+		this.multiPlayerScoreboard = MultiPlayerScoreboard
+		this.nextPlayer = NextPlayer
+		this.coverunmatched = CallbackNoMatch
+		this.win = Win
+		this.lose = Lose
+		
+		this.setup()		
+
+	}
+		
+// GAME Methods
+	function Restart() {
+			var today = new Date()
+	        var expires = new Date()
+			expires.setTime(today.getTime() + 60*60*24*365)
+			setCookie("reloaded","true",expires)
+
+		location.reload();
+	}
+	
+	function Win() {
+		PlaySound(document.applause)
+		var parameter = "win.html?"
+		for (i=0; i< this.players.length; i++) {	
+			parameter += "

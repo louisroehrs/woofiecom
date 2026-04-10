@@ -1,0 +1,640 @@
+<!-- ColorCenter(tm) Copyright (c) 1996 Bill Dortch, hIdaho Design.  All Rights Reserved. -->
+<html><head><title>ColorCenter</title></head>
+<script language=javascript>
+<!--
+
+// All code Copyright (c) 1996 Bill Dortch, hIdaho Design.  All Rights Reserved. 
+
+function Event (name) {
+  this.name = name;
+  this.length = 0;
+  this.funcs = 0;
+  this.func = new Object();
+  this.monitor = EventMonitor;
+  this.unmonitor = EventUnmonitor;
+  this.signal = EventSignal;
+  this.flush = EventFlush;
+}
+function EventMonitor (func) {
+  for (var i = 0; i < this.length; i++)
+    if (this.func[i] == null) {
+      this.func[i] = func;
+      break;
+    }
+  if (i >= this.length)
+    this.func[this.length++] = func;
+  this.funcs++;
+}
+function EventUnmonitor (func) {
+  for (var i = 0; i < this.length; i++)
+    if (this.func[i] == func) {
+      this.func[i] = null;
+      this.funcs--;
+    }
+}
+function EventSignal (p1,p2,p3) {
+  for (var i = 0; i < this.length; i++)
+    if (this.func[i] != null)
+      this.func[i](this,p1,p2,p3);
+}
+function EventFlush () {
+  for (var i = 0; i < this.length; i++)
+    this.func[i] = null;
+}
+function bstring () {
+  var argv = bstring.arguments;
+  var argc = argv.length;
+  this.elems = argc;
+  this.elem = new Object();
+  for (var i = 0; i < argc; i++)
+    this.elem[i] = argv[i];
+  this.append = bstringAppend;
+  this.del = bstringDelete;
+  this.buildString = bstringBuildString;
+  this.toString = bstringToString;
+}
+function bstringAppend () {
+  var argv = bstringAppend.arguments;
+  var argc = argv.length;
+  for (var i = 0; i < argc; i++)
+    this.elem[this.elems++] = argv[i];
+}
+function bstringDelete (n){
+  this.elems--;
+  for (var i=n; i < this.elems; i++)
+    this.elem[i] = this.elem[i+1];
+  this.elem[this.elems] = null;
+}
+function bstringBuildString (left,right) {
+  if (left == right)
+    return this.elem[left];
+  var mid = (left+right)>>1;
+  return this.buildString(left,mid) + this.buildString(mid+1,right);
+}
+function bstringToString () {
+  return this.buildString(0,this.elems-1);
+}
+function array () {
+  var argv = array.arguments;
+  var argc = argv.length;
+  for (var i=0; i < argc; i++)
+    this[i] = argv[i];
+  this.length = argc;
+}
+function image(w,h,src) {
+  this.w = w;
+  this.h = h;
+  this.src = src;
+  if (nav3) {
+    this.img = new Image(w,h);
+    this.img.src = src;
+  }
+}
+function Color (r,g,b) {
+  this.r = r;
+  this.g = g;
+  this.b = b;
+  this.toString = ColorString;  
+}
+function ColorString() {
+  return tohex(this.r)+tohex(this.g)+tohex(this.b);
+}
+function Texture(source,url,userdef) {
+  this.source = source;
+  this.url = url;
+  this.userdef = userdef;
+  if (source == "")
+    this.name = "No image";
+  else
+    this.name = source+": "+url.substring(url.lastIndexOf("/",url.length)+1,url.length);
+}
+function packTextures() {
+  var p = new bstring();
+  for (var i=0; i < textures.elems; i++)
+    if(textures.elem[i].userdef)
+      p.append(textures.elem[i].source,"=",textures.elem[i].url,";")
+  return ((p.elems>0)?p.toString():"");
+}
+function unpackTextures (str) {
+  var i=0,j=0;
+  while (i < str.length) {
+    j = str.indexOf("=",i);
+    var source = str.substring(i,j++);
+    i = str.indexOf (";",j);
+    var url = str.substring(j,i++);
+    textures.append(new Texture(source,url,true));
+  }  
+}
+function saveTextures () {
+  var t = packTextures();
+  SetCookie("textures",t,exp);
+}
+function restoreTextures () {
+  var t = GetCookie("textures");
+  if (t != null) unpackTextures(t);
+}
+function Site(type,name,url){this.type=type;this.name=name;this.url=url}
+function clean(item){if(!window.taint)return item;var temp=untaint(item);untaint();return temp}
+function fromstr(str,base){var cval,val=0;for(i=0;i<str.length;i++){var ch=str.charAt(i);if((cval=hexchars.indexOf(ch))>=0&&cval<base)val=(base*val)+cval}return val}
+function fromhex(str){return fromstr(str.toUpperCase(),16)&0xff}
+function fromdec(str){return fromstr(str,10)&0xff}
+function frompct(str){return Math.round(fromstr(str,10)*2.55)&0xff}
+function tohex(num){return hexchars.charAt((num>>4)&0xf)+hexchars.charAt(num&0xf)}
+function topct(num){return Math.round(num/2.55)}
+function frombase(str){return (numType==0)?fromhex(str):((numType==1)?fromdec(str):frompct(str))}
+function tobase(num){return ""+((numType==0)?tohex(num):((numType==1)?num:topct(num)))}
+function mm(msg){window.status=msg;return true}
+function xmm(n){return mm(textures.elem[n].name)}
+function areatag(d,c1,c2,c3,c4,mm,href){d.writeln('<area coords="',c1,',',c2,',',c3,',',c4,'" onmouseover="return cc.mm(\'',mm,'\')" onmouseout="return cc.mm(\'\')" href="javascript:',href,'">')}
+function SetCookie(name,value,expires){document.cookie=name+"="+escape(value)+((expires)?"; expires="+expires.toGMTString():"");}
+function getCookieVal(offset){var endstr=document.cookie.indexOf(";",offset);if(endstr==-1)endstr=document.cookie.length;return unescape(document.cookie.substring(offset,endstr));}
+function GetCookie(name){var arg=name+"=";var alen=arg.length;var clen=document.cookie.length;var i=0;while(i<clen){var j=i+alen;if(document.cookie.substring(i,j)==arg)return getCookieVal(j);i=document.cookie.indexOf(" ",i)+1;if(i==0)break;}return null;}
+function showHelp(helpID){alert("Sorry, help not available.")}
+
+var cc = self;
+with(navigator){
+ var nav3=((navver=appVersion.substring(0,2))=="3."||navver=="4.");
+ var ie3=(appVersion.indexOf("MSIE 3.")>=0||appVersion.indexOf("MSIE 4.")>=0);
+ var nav2win=(navver=="2."&&!ie3&&appVersion.indexOf("(Win")!=-1);
+ var java=(nav3&&javaEnabled());
+}
+var hexchars="0123456789ABCDEF";
+var exp=new Date();exp.setTime(exp.getTime()+31536000000);
+var sep=(ie3&&clean(location.protocol.charAt(0))=="f")?'\\':'/';
+var base=clean(location.protocol+"//"+location.host+location.pathname.substring(0,location.pathname.lastIndexOf(sep/*,location.pathname.length*/)+1));
+var basehref='<base href="'+base+'">\n';
+var stdhead='<html><head>'+basehref+'</head>\n';
+var stdscr='<script language=javascript>\nvar cc=parent.cc;\n';
+var stdload='\nfunction load(){} function unload(){}\n';
+var stdbody='<body onload="load()" onunload="unload()" bgcolor=#808080 text=#000000 link=#000000 alink=#000000 vlink=#000000>\n';
+var stdtab='<table width=100% height=100% border=0 cellpadding=0 cellspacing=0>\n';
+var stdtab2='<table border=0 width=100% cellpadding=0 cellspacing=0>\n';
+var stdrow='<td align=center valign=center>';
+var endscr='\n<\/script>\n';
+var endbody='\n</body></html>';
+var stdframe=' src="javascript:\'<body bgcolor=#808080>\'" marginwidth=0 marginheight=0 ';
+
+var evcolor = new Event ("color");
+var evcoltype = new Event ("colorType");
+var evnumtype = new Event ("numType");
+var evsite = new Event ("site");
+var evtexture = new Event("texture");
+
+var color=0;
+var numType=0;
+var site=0;
+var texture=0;
+var userhtml=null;
+var colors = new array(new Color(0xFF,0xFB,0xEC),new Color(0x00,0x00,0x00),new Color(0x00,0x00,0xFF),new Color(0xFF,0x20,0x20),new Color(0x80,0x00,0x20),new Color(-1,-1,-1));
+var colorTypes = new array("Background","Text","Link","Active","Visited","Texture");
+var numTypes = new array("Hex","Dec","Pct");
+var stxt="Texture: ",sgrp="Graphics: ",dsrc="Default";
+var sites = new array(
+ new Site("Home","",""),
+ new Site(stxt,"H's Backgrounds","http://www.whitenoise.com/champ/backgrounds/"),
+ new Site(stxt,"Julianne's Textures","http://www.sfsu.edu/~jtolson/textures/textures.htm"),
+ new Site(stxt,"KPT Archive","http://the-tech.mit.edu/KPT/bgs.html"),
+ new Site(stxt,"Netscape Backgrounds","http://home.netscape.com/assist/net_sites/bg/backgrounds.html"),
+ new Site(stxt,"Texture Land!","http://www.meat.com/textures/"),
+ new Site(sgrp,"Ball Boutique","http://www.octagamm.com/boutique/mainball.htm"),
+ new Site(sgrp,"Clip Art Connection","http://www.acy.digex.net/~infomart/clipart/"),
+ new Site(sgrp,"Icons and Images","http://www.iconbazaar.com/"),
+ new Site(sgrp,"Joe Burns' Icons","http://www.cs.bgsu.edu/~jburns/gifs.html"),
+ new Site(sgrp,"PixelSite","http://www.pixelsight.com:80/PS/pixelsite/pixelsite.html")
+);
+var textures = new bstring(
+ new Texture("","img/noimg.gif",false),
+ new Texture(dsrc,"/images/textures/paper/peach_paper.jpg",false),
+ new Texture(dsrc,"/images/textures/stucco/smgreen_stucco.jpg",false),
+ new Texture(dsrc,"/images/textures/weave/embossed_weave.jpg",false)
+);
+function setColor (r,g,b) {
+  if (color > 4) return;
+  var c = colors[color];
+  if (r >= 0) c.r = r;
+  if (g >= 0) c.g = g;
+  if (b >= 0) c.b = b;
+  evcolor.signal(c);
+}
+function changeColor (r,g,b) {
+  if (color > 4) return;
+  var c = colors[color];
+  if ((c.r += r) < 0) c.r = 0;
+  if (c.r > 255) c.r = 255;
+  if ((c.g += g) < 0) c.g = 0;
+  if (c.g > 255) c.g = 255;
+  if ((c.b += b) < 0) c.b = 0;
+  if (c.b > 255) c.b = 255;
+  evcolor.signal(c);
+}
+function getColor() {return color}
+
+function setNumType (n) {
+  numType = n;
+  evnumtype.signal(n,colors[color]);
+}
+function changeNumType (n) {
+  n += numType;
+  if (n > 2) n = 0;
+  else if (n < 0) n = 2;
+  setNumType(n);
+}
+function setColorType (n) {
+  if(n==color)return;
+  var old=color;
+  color=n;
+  if(n==5)
+    setloc("self.client.palette","parent.fPTexture");
+  else if (old==5)
+    setloc("self.client.palette","parent.fPPalette");
+  evcoltype.signal(n,colors[color]);
+}
+function changeColorType (n) {
+  n += color;
+  if (n > 5) n = 0;
+  else if (n < 0) n = 5;
+  setColorType(n);
+}
+function setSite (x,n) {
+  if (n == site) return;
+  var old = site;
+  site=n;
+  if (n == 0) {
+    setloc("self.htool","fPHTool");
+    setloc("self.client","fPFset");
+  }
+  else {
+    if(old==0)setTimeout('setloc("self.htool","fVHTool")',0);
+    seturl("self.client",sites[n].url);
+  }
+}
+evsite.monitor(setSite);
+
+function addTexture (url) {
+  var prot = url.substring(0,5);
+  prot = prot.toLowerCase();
+  if (prot != "http:" && prot != "file:") return;
+  textures.append(new Texture(sites[site].name,""+url,true));
+  saveTextures();
+}
+function delTexture (n) {
+  if (n < 4 || n >= textures.elems) return;
+  textures.del(n);
+  saveTextures();
+  if (texture >= n) {
+    texture--;
+    evtexture.signal(texture);
+  }
+}
+function setTexture (n) {
+  texture = n;
+  evtexture.signal(n);
+}
+//**
+var fHead=new bstring(stdhead,stdscr,endscr,
+'<body bgcolor=#000000 text=#FF00FF link=#000000 alink=#FF4020 vlink=#000000>',
+'<table width=100% height=100% border=0 cellpadding=0 cellspacing=0>',
+'<tr><td width=160 align=left valign=center><a href="http://www.hidaho.com/" target=_top onmouseover="return cc.mm(\'Visit hIdaho Design home page\')" onmouseout="return cc.mm(\'\')"><img src="img/hdblue.gif" width=149 height=25 border=0 alt="hIdaho Design"></a></td>',
+'<td align=center valign=center> <img name=logo src="img/cclogo1.gif" width=300 height=30 border=0 align=absmiddle><b><tt><small>TM</small></tt></b></td>',
+'<td width=150 align=right valign=center><table border=0 cellpadding=0 cellspacing=0>',
+'<tr><td valign=center><a href="javascript:cc.showHelp()" onmouseover="return cc.mm(\'Get help\')" onmouseout="return cc.mm(\'\')"><img src="img/help.gif" width=20 height=20 hspace=3 vspace=3 border=1 alt="Help"></a></td>',
+'<td valign=center><a href="mailto:feedback@hidaho.com?subject=ColorCenter" onmouseover="return cc.mm(\'Send comments to hIdaho Design\')" onmouseout="return cc.mm(\'\')"><img src="img/mail.gif" width=20 height=20 hspace=3 vspace=3 border=1 alt="Comments"></a></td></tr>',
+'</table></td></tr></table></body></html>');
+//**
+var pvdoc = null;
+var pvimg = new array(
+ new array(new image(22,42,"img/radj.gif"),new image(22,42,"img/gadj.gif"),new image(22,42,"img/badj.gif"),new image(22,42,"img/bwadj.gif")),
+ new array(new image(22,42,"img/radjup.gif"),new image(22,42,"img/gadjup.gif"),new image(22,42,"img/badjup.gif"),new image(22,42,"img/bwadjup.gif")),
+ new array(new image(22,42,"img/radjdn.gif"),new image(22,42,"img/gadjdn.gif"),new image(22,42,"img/badjdn.gif"),new image(22,42,"img/bwadjdn.gif"))
+);
+var pvincr = new array(32,4,-4,-32);
+var pvcols = new array("red","green","blue","brightness");
+var pvarea = new array(new array(0,0,19,7),new array(0,8,19,16),new array(0,23,19,31),new array(0,32,19,39));
+function pvmm(c,i){return ((i<2)?"Increase ":"Decrease ")+pvcols[c]+((i==0||i==3)?" a lot":" a little")}
+function pvgenmap(c,d) {
+ d.writeln('<map name=',pvcols[c],'>');
+ for(var i=0;i<4;i++)
+  areatag(d,pvarea[i][0],pvarea[i][1],pvarea[i][2],pvarea[i][3],pvmm(c,i),'cc.pvadj('+c+','+i+')');
+ d.writeln('</map>');
+}
+function pvgendoc() {
+ var d=pvdoc;
+ for(var i=0;i<4;i++)pvgenmap(i,d);
+ d.writeln('<div align=center><form name=f onsubmit="return false">');
+ for (i=0;i<3;i++)
+  d.writeln('<input name=',pvcols[i].charAt(0),
+  ' size=3 maxlength=3 onfocus=this.select() onchange=cc.pvchg(',i,',this)><br>',
+  '<img usemap=#',pvcols[i],' src=',pvimg[0][i].src,
+  ' width=',pvimg[0][i].w,' height=',pvimg[0][i].h,' vspace=1 border=0><br>');
+ d.writeln('<img usemap=#',pvcols[3],' src=',pvimg[0][3].src,
+ ' width=',pvimg[0][i].w,' height=',pvimg[0][i].h,' vspace=6 border=0><br>',
+ '<a href=javascript:cc.pvdel() onmouseover="return cc.pvdelmsg()" onmouseout="return cc.mm(\'\')">',
+ '<img src=img/delete.gif width=22 height=22 border=0 vspace=10></a></form></div>');
+}
+function pvinit(){
+  if(pvdoc==null)return;
+  if(color>4){var f=pvdoc.f;f.r.value="***";f.g.value="***";f.b.value="***";return}
+  pvset(null,colors[color]);
+}
+evnumtype.monitor(pvinit);
+evcoltype.monitor(pvinit);
+function pvset(x,c){
+  if(pvdoc==null)return;
+  var f=pvdoc.f;f.r.value=tobase(c.r);f.g.value=tobase(c.g);f.b.value=tobase(c.b);
+}
+evcolor.monitor(pvset);
+function pvchg(c,obj) {
+  if(color>4){obj.value="**";return}
+  var r=-1,g=-1,b=-1,val=frombase(clean(obj.value));
+  obj.value = tobase(val);
+  if(c==0)r=val;else if(c==1)g=val;else b=val;
+  setColor(r,g,b);
+}
+function pvadj(c,i){
+  if (nav3) {
+    pvdoc.images[c].src = pvimg[(i<2)?1:2][c].src;
+    setTimeout("if(pvdoc)pvdoc.images["+c+"].src=pvimg[0]["+c+"].src",50);
+  }
+  var r,g,b;
+  r=(c==0||c==3)?pvincr[i]:0;
+  g=(c==1||c==3)?pvincr[i]:0;
+  b=(c==2||c==3)?pvincr[i]:0;
+  changeColor(r,g,b);
+}
+function pvdel(){
+  if (color == 5)
+    delTexture(texture);
+}
+function pvdelmsg() {
+  return mm((color>4)?"Delete texture":"Disabled");
+}
+var fPVTool = new bstring(stdhead,stdbody,stdscr,
+ 'function unload(){cc.pvdoc=null}','function load(){}',
+ 'cc.pvdoc=document;','cc.pvgendoc();','cc.pvinit()',endscr,endbody);
+
+//**
+var pwin = null;
+var fPFset = new bstring(stdscr,
+'cc.pwin = self;','function unload(){cc.pwin=null}',
+'function load() {',
+' cc.setloc("pwin.pvtool","cc.fPVTool");',
+' cc.setloc("pwin.ptext","cc.fPText");',
+' if(cc.getColor()<5)cc.setloc("pwin.palette","cc.fPPalette");else cc.setloc("pwin.palette","cc.fPTexture");',
+'}',
+endscr,
+'<frameset onload="load()" onunload="unload()" frameborder=0 framespacing=0 border=0 cols="',((ie3)?'38':'46'),',*">',
+' <frame name=pvtool',stdframe,'scrolling=no noresize>',
+' <frameset frameborder=0 framespacing=0 border=0 rows="*,',((java)?'76':((ie3)?'50':'60')),'">',
+'  <frame name=ptext',stdframe,'>',
+'  <frame name=palette',stdframe,'scrolling=no>',
+' </frameset>',
+'</frameset>');
+//**
+var ptdoc = null;
+function amper (str) {return '&'+str+';'} // screwy NS 2.x workaround
+function getlt() {return amper('lt')}
+function getgt() {return amper('gt')}
+function ptgen() {
+  if(ptdoc==null)return;
+  var c = colors;
+  ptdoc.writeln('<body onunload="unload()" bgcolor=#',c[0],' text=#',c[1],' link=#',c[2],' alink=#',c[3],
+  '  vlink=#',c[4],(texture>0? ' background="'+textures.elem[texture].url+'"' : ''),'>',
+  '<img src=img/welcome.jpg width=119 height=116 border=0>',
+  '<font size=5>elcome to </font><font size=6><tt><b>ColorCenter!</b></tt></font>',
+  '<p><table align=right border=2 cellpadding=5 cellspacing=1 vspace=2 hspace=2>',
+  '<tr><td><font color=#',c[2],'><tt>Link <b>Link</b></tt></font></td></tr>',
+  '<tr><td><font color=#',c[3],'><tt>Active <b>Active</b></tt></font></td></tr>',
+  '<tr><td><font color=#',c[4],'><tt>Visited <b>Visited</b></tt></font></td></tr>',
+  '</table>',
+  'Choose colors from the palette below. Select Background, Text, Link, Active Link, ',
+  'Visited Link or Texture above to set the corresponding colors/textures. The current link colors ',
+  'are shown on the right.  The current BODY tag is shown below:</p>',
+  '<p align=center><small>',getlt(),'body bgcolor=#',c[0],' text=#',c[1],' link=#',c[2],' alink=#',c[3],
+  ' vlink=#',c[4],((texture>0)? ' background="'+textures.elem[texture].url+'"' : ''),getgt(),'</small></p>',
+  '<p>Visit texture and graphics sites by selecting them from the drop-down list above and clicking ',
+  'Go. While visiting a site, collect images by clicking the right mouse button (Mac users ',
+  'click and hold) and selecting "Copy this Image Location" from the pop-up menu.  Then ',
+  'click on the text entry box next to the Add button, and paste the image location there (Ctrl-v ',
+  'in Windows). Finally, click Add to add the image to your collection. (This is easier than ',
+  'it sounds!)  ColorCenter will remember your image selections and display them under ',
+  'Textures whenever you return.</p>',
+  '<p>This is a <b>beta</b> version of ColorCenter. Please ',
+  '<a href="mailto:feedback@hidaho.com?subject=ColorCenter beta">let me know</a> if you ',
+  'encounter any bugs or other problems.</p>',
+  '<hr size=1>',
+  '<p align=center><font color=#808080><small>Copyright &copy; 1996, hIdaho ',
+  'Design<br>All Rights Reserved</small></font></p></body></html>'
+  );
+}
+function ptrefresh(){
+  setloc("pwin.ptext","cc.fPText");
+}
+evcolor.monitor(ptrefresh);
+evtexture.monitor(ptrefresh);
+var fPText = new bstring(stdhead,stdscr,
+'cc.ptdoc=document;',
+'cc.ptgen();',
+'function unload(){cc.ptdoc=null}',
+endscr,endbody);
+//**
+var ppdoc=null;
+if (!java) {
+var rtab=new array(1,1,1,1,1,1,1,1,1,.75,.5,.25,0,0,0,0,0,0,0,0,0,.25,.5,.75);
+var gtab=new array(0,0,0,0,0,.25,.5,.75,1,1,1,1,1,1,1,1,1,.75,.5,.25,0,0,0,0);
+var btab=new array(1,.75,.5,.25,0,0,0,0,0,0,0,0,0,.25,.5,.75,1,1,1,1,1,1,1,1);
+var graytab=new array(255,224,192,160,128,96,64,0);
+var basetab=new array(224,160,96,32);
+}
+function ppparse(s){
+ var i=s.indexOf(",");
+ var x=Math.floor((parseFloat(s.substring(1,i))-2)/9);
+ var y=Math.floor((parseFloat(s.substring(i+1,s.length))-2)/9);
+ if(x<0||x>61||y<0||y>3)return;
+ pppick(x,y);
+}
+function pppick(x,y){
+ var r,g,b;
+ if(x<2){r=g=b=graytab[y+(x*4)]}
+ else if(x<50) {
+  if(x<26){x-=2;y=4-y}else{x-=26;y=8-y}y*=31.875;
+  r=Math.round(rtab[x]*y);
+  g=Math.round(gtab[x]*y);
+  b=Math.round(btab[x]*y);
+ }else{
+  x=(x-50)*2;y=basetab[y];
+  r=Math.round((rtab[x]*(255-y))+y);
+  g=Math.round((gtab[x]*(255-y))+y);
+  b=Math.round((btab[x]*(255-y))+y);
+ }
+ setColor(r,g,b);
+}
+function ppgenmap(d) {
+  d.writeln('<map name=palmap>');
+  for (var i=0;i<62;i++)
+    for (var j=0;j<4;j++)
+      areatag(d,i*9+2,j*9+2,i*9+10,j*9+10,"","cc.pppick("+i+","+j+")");
+  d.writeln('</map>');
+}
+if (java){
+var fPPalette = new bstring(stdhead,stdscr,stdload,endscr,stdbody,
+ '<div align=center>',
+ '<applet mayscript name=palette archive=ColorCenterPalette.zip code=hidaho.ccpalette.ColorCenterPalette.class width=512 height=68>',
+ '</applet>',endbody);
+}else if(ie3){
+var fPPalette = new bstring(stdhead,stdscr,
+ 'cc.ppgenmap(document);',stdload,endscr,stdbody,stdtab,stdrow,
+ '<img usemap=#palmap src=img/ccpal.gif width=561 height=39 border=0>',
+ '</td></tr></table>',endbody);
+}else{
+var fPEcho = new bstring(stdscr,
+ 'function load (){cc.ppparse(location.search)}','function unload(){}',
+ endscr,stdbody,'</body>');
+var fPPal = new bstring(stdhead,stdscr,stdload,endscr,stdbody,stdtab,stdrow,
+ '<a href="javascript:cc.fPEcho//" target=echo>',
+ '<img ismap  src=img/ccpal.gif width=561 height=39 border=0>',
+ '</a></td></tr></table>',endbody);
+var fPPalette = new bstring(stdhead,stdscr,
+ 'function load(){cc.setloc("pwin.palette.pal","cc.fPPal")}function unload(){}',endscr,
+ '<frameset rows="*,0" onload="load()" frameborder=0 framespacing=0 border=0>',
+ '<frame name=pal',stdframe,'scrolling=no>',
+ '<frame name=echo src="javascript:\'<script>var cc=parent.cc<\/script>\'" scrolling=no noresize>',
+ '</frameset></html>');
+}
+//**
+var pxdoc=null;
+function pxgen() {
+ if(pxdoc==null)return;
+ pxdoc.writeln('<div align=left><table height=100% border=0 cellpadding=0 cellspacing=0><tr>');
+ for(var i=0;i<textures.elems;i++)pxcell(i);
+ pxdoc.writeln('</tr></table></div>');
+}
+function pxcell(n) {
+ var t=textures.elem[n];
+ pxdoc.writeln('<td align=center valign=center><a href="javascript:cc.setTexture(',n,
+ ')" onmouseover="return cc.xmm(\'',n,'\')" onmouseout="return cc.mm(\'\')">',
+ '<img src="',t.url,'" width=32 height=32',(n==texture?' border=3':'vspace=3 hspace=3 border=0'),
+ '></a></td>');
+}
+function pxrefresh () {
+ setloc("pwin.palette","parent.fPTexture");
+}
+evtexture.monitor(pxrefresh);
+var fPTexture = new bstring(stdhead,'<body bgcolor=#808080 link=#0000FF>',stdscr,
+'cc.pxdoc=document;',
+'cc.pxgen();',
+'function load(){} function unload(){cc.pxdoc=null}',
+endscr,endbody);
+
+//**
+var phdoc = null;
+
+function phgendoc(d) {
+ if(nav2win){
+  d.writeln('<map name=num>');
+  areatag(d,0,0,10,9,"","cc.changeNumType(-1)");
+  areatag(d,0,10,10,19,"","cc.changeNumType(1)");
+  d.writeln('</map><map name=col>');
+  areatag(d,0,0,10,9,"","cc.changeColorType(-1)");
+  areatag(d,0,10,10,19,"","cc.changeColorType(1)");
+  d.writeln('</map>');
+ }
+ d.writeln('<form name=f>',stdtab,'<tr><td align=left>');
+ if(nav2win)d.writeln('<input name=num size=3 value="',numTypes[numType],'"><img usemap=#num src=img/spin.gif width=13 height=22 border=0 align=texttop><input name=col size=10 value="',colorTypes[color],'"><img usemap=#col src=img/spin.gif width=13 height=22 border=0 align=texttop>');
+ else{phgennums(d);phgencols(d)}
+ d.writeln('</td><td align=right>');
+ if(nav2win)d.writeln('<input type=button value=Go onclick="cc.evsite.signal(site)">');
+ phgensites(d);
+ d.writeln('</td></tr></table></form>');
+}
+function phgensites(d) {
+ d.writeln('<select onchange="setsite(this.selectedIndex)">');
+ for(var i=0;i<sites.length;i++)
+  d.writeln('<option',((i==site)?' selected':''),'>',sites[i].type,sites[i].name);
+ d.writeln('</select>');
+}
+function phgennums(d) {
+ d.writeln('<select name=num onchange="cc.setNumType(this.selectedIndex)">');
+ for(var i=0;i<numTypes.length;i++)
+  d.writeln('<option',((i==numType)?' selected':''),'>',numTypes[i]);
+ d.writeln('</select>'); 
+}
+function phgencols(d) {
+ d.writeln('<select name=col onchange="cc.setColorType(this.selectedIndex)">');
+ for(var i=0;i<colorTypes.length;i++)
+  d.writeln('<option',((i==color)?' selected':''),'>',colorTypes[i]);
+ d.writeln('</select>'); 
+}
+function phsetnum(x,n){
+ if(phdoc==null)return;
+ if(nav2win)phdoc.f.num.value=numTypes[n];
+ else phdoc.f.num.selectedIndex=n;
+}
+evnumtype.monitor(phsetnum);
+function phsetcol(x,n){
+ if(phdoc==null)return;
+ if(nav2win)phdoc.f.col.value=colorTypes[n];
+ else phdoc.f.col.selectedIndex=n;
+}
+evcoltype.monitor(phsetcol);
+
+var fPHTool = new bstring(stdhead,stdbody,stdscr,
+ 'cc.phdoc=document;',
+ 'function unload(){cc.phdoc=null}function load(){}',
+ ((nav2win)?'var site=0;function setsite(n){site=n}':
+ 'function setsite(n){cc.evsite.signal(n)}'),
+ 'cc.phgendoc(document);',
+ endscr,endbody);
+//**
+var vhdoc=null;
+function vhgendoc(d) {
+ if(vhdoc==null)return;
+ d.writeln('<form name=f>',stdtab,'<tr><td align=left>',
+ '<input type=button value=Back onclick=cc.client.history.go(-1)>',
+ '<input type=button value=Forward onclick=cc.client.history.go(1)>',
+ '<input type=button value=Add onclick=cc.addTexture(document.f.url.value);document.f.url.value="">',
+ '<input name=url value="" size=20>',
+ '</td><td align=right>');
+ if(nav2win)d.writeln('<input type=button value=Go onclick="cc.evsite.signal(site)">');
+ phgensites(d);
+ d.writeln('</td></tr></table></form>');
+}
+var fVHTool = new bstring(stdhead,stdbody,stdscr,
+ 'cc.vhdoc=document;',
+ 'function unload(){cc.vhdoc=null}function load(){}',
+ ((nav2win)?'var site=0;function setsite(n){site=n}':
+ 'function setsite(n){cc.evsite.signal(n)}'),
+ 'cc.vhgendoc(document);',
+ endscr,endbody);
+//**
+function setloc (fm,loc) {
+  if(nav3)eval(fm+'.location.replace("javascript:parent.'+loc+'")');
+  else if(ie3)eval(fm+'.location="javascript:parent.'+loc+'"');
+  else setTimeout(fm+'.location="javascript:parent.'+loc+'"',0);
+}
+function seturl (fm,url) {
+//  if(nav3)eval(fm+'.location.replace("'+url+'")'); // Wierd JS bug: new doc inherits onload/onunload
+  if(nav3)eval(fm+'.location="'+url+'"');
+  else if(ie3)eval(fm+'.location="'+url+'"');
+  else setTimeout(fm+'.location="'+url+'"',0);
+}
+function load() {
+  restoreTextures();
+  setloc("self.head","fHead");
+  setloc("self.htool","fPHTool");
+  setloc("self.client","fPFset");
+}
+
+document.write('<frameset onload="load()" rows="40,40,*" frameborder=0 framespacing=0 border=0>',
+'<frame name=head src="javascript:\'<body bgcolor=#000000>\'" marginwidth=0 marginheight=0 scrolling=no noresize>',
+'<frame name=htool',stdframe,'scrolling=no noresize>',
+'<frame name=client',stdframe,' noresize>',
+'</frameset>');
+// -->
+</script>
+<noframes>
+<h2 align=center>JavaScript required!</h2>
+<p>ColorCenter is written in JavaScript, and requires a JavaScript-capable browser.
+If your browser supports JavaScript, make sure it is enabled and try again.</p>
+<p>For best results, use Netscape 3.0 (or later) with both JavaScript <i>and</i> Java enabled.</p>
+</noframes>
+</html>

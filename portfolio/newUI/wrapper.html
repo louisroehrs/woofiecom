@@ -1,0 +1,379 @@
+<!-- This document was created with HomeSite v2.0 -->
+
+
+
+<HTML>
+
+<HEAD>
+
+	<TITLE>ICTV Home</TITLE>
+
+	
+
+<SCRIPT LANGUAGE="JavaScript">
+
+var emailWin = null;
+
+function startemail()
+  {
+    if (emailWin != null && !emailWin.closed)
+      {
+	emailWin.focus();
+      }
+    else
+      {
+	emailWin = window.open(location.protocol + "//" + location.host + "/cgi-bin/email/start-email", "ictvemail", "directories=yes,scrollbars=yes,resizable=yes,status=yes");
+      }
+    return false;
+  }
+
+ delay = 100;
+
+ adNum = 1;
+
+ adMax = 10;
+
+ stopads = 0;
+
+
+ imgList = new Array();
+
+ urlList = new Array();
+
+
+
+ imgList[1] = new Image();
+
+imgList[1].src = "ads/levis.gif"
+
+urlList[1] = new String();
+
+urlList[1].value = "http://www.levi.com/menu";
+
+
+
+imgList[2] = new Image();
+
+imgList[2].src = "ads/gift.jpg"
+
+urlList[2] = new String();
+
+urlList[2].value = "http://www.imall.com/stores/gift_certificates/";
+
+
+
+imgList[3] = new Image();
+
+imgList[3].src = "ads/cscafe.jpg"
+
+urlList[3] = new String();
+
+urlList[3].value = "http://www.cyber-state.com/";
+
+
+
+imgList[4] = new Image();
+
+imgList[4].src = "ads/dsc6.gif"
+
+urlList[4] = new String();
+
+urlList[4].value = "http://www.digcomputers.com/";
+
+
+
+imgList[5] = new Image();
+
+imgList[5].src = "ads/glblogo.gif"
+
+urlList[5] = new String();
+
+urlList[5].value = "http://www.goleta.com/";
+
+
+
+imgList[6] = new Image();
+
+imgList[6].src = "ads/homeApp.gif"
+
+urlList[6] = new String();
+
+urlList[6].value = "http://HomeAppliances.com/index.shtml";
+
+
+
+imgList[7] = new Image();
+
+imgList[7].src = "ads/yakabe.gif"
+
+urlList[7] = new String();
+
+urlList[7].value = "http://www.Yakabe.com/";
+
+
+
+imgList[8] = new Image();
+
+imgList[8].src = "ads/hotdog.jpg"
+
+urlList[8] = new String();
+
+urlList[8].value = "http://www.cocacola.com";
+
+
+
+imgList[9] = new Image();
+
+imgList[9].src = "ads/mclean.gif"
+
+urlList[9] = new String();
+
+urlList[9].value = "http://www.mcleans.com/";
+
+
+
+imgList[10] = new Image();
+
+imgList[10].src = "ads/futurelogo.gif"
+
+urlList[10] = new String();
+
+urlList[10].value = "http://www.futurebytes.com";
+
+
+
+;
+
+
+
+
+ function changeAd()
+
+   {
+
+     if (stopads == 0)
+       {
+         adNum = adNum + 1;
+
+         if (adNum > adMax)
+
+           adNum = 1;
+
+         document.adspace.src = imgList[adNum].src;
+
+         setTimeout('changeAd()', 3000);
+       }
+   }
+
+
+
+ function goodbye()
+   {
+     stopads = 1;
+   }
+
+ function followAd()
+   {
+     stopads = 1;
+     document.location=urlList[adNum].value;
+   }
+
+
+</SCRIPT>
+
+
+
+</HEAD>
+
+
+
+<BODY BGCOLOR="#595959" BACKGROUND="SBhomeMOD.JPG" TEXT="#C0C0C0" LINK="#C0C0C0" VLINK="#C0C0C0" onLoad="changeAd()">
+
+<TABLE BORDER=0 WIDTH="100%">
+
+<TR>
+
+	<TD VALIGN="Top" ALIGN="LEFT">
+
+<IMG SRC="spin.gif" WIDTH=112 HEIGHT=75 BORDER=0 ALT="">
+
+
+
+<TABLE BORDER="0" CELLPADDING="1">
+
+
+
+<TR>
+
+	<TD><a href="help/help.html"><B>Help</B></a></TD>
+
+</TR>
+
+<TR>
+
+	<TD><a href="/cgi-bin/ictv/ops/GetBookMark" target="_top"> <B>Bookmarks</B></a></TD>
+
+</TR>
+
+<TR>
+
+	<TD><A HREF="E-Mail" onClick='return startemail()'><B>E-Mail</B></A></TD>
+
+</TR>
+
+<TR>
+
+	<TD><a href="/cgi-bin/ictv/apps/utils/netPos"><B>Settings</B></a></TD>
+
+</TR>
+
+<TR>
+
+	<TD><a href="search.html"><B>Search</B></a></TD>
+
+</TR>
+
+
+
+<TR>
+
+	<TD><a href="http://www.oscars.org" target="_top"><B>Neat Site</B></a></TD>
+
+</TR>
+
+
+
+<TR>
+
+	<TD><a href="http://events.yahoo.com/" target="_top"><B>What's Live</B></a></TD>
+
+</TR>
+
+<TR>
+
+	<TD><a href="userLogout.html"><B>Logout</B></a></TD>
+
+</TR>
+
+
+
+</TABLE>
+
+<A HREF="http://www.yahoo.com"><IMG SRC="yahoo.gif" WIDTH=110 HEIGHT=28 BORDER=0 ALT=""></A>
+
+<EMBED SRC="bgmuse.mid" width=0 height=0 hidden=true>
+
+
+
+	
+
+	
+
+	</TD>
+
+	<TD ALIGN="Right">
+
+	
+
+	<IMG SRC="clear.gif" WIDTH=40 HEIGHT=70 BORDER=0 ALT="">
+
+<CENTER>
+
+<TABLE BORDER=0 CELLPADDING=1 CELLSPACING=1>
+
+<TR>
+
+	<TD><A HREF="city/wrapper.html" target="_top"><IMG SRC="sections/cg.GIF" WIDTH=160 HEIGHT=25 BORDER=0 ALT=""></A></TD>
+
+	
+
+	<TD><A HREF="Entertainment/wrapper.html" TARGET="_top"><IMG SRC="sections/ent.GIF" WIDTH=180 HEIGHT=25 BORDER=0 ALT=""></A></TD>
+
+</TR>
+
+<TR>
+
+	<TD><A HREF="Games/wrapper.html" target="_top"><IMG SRC="sections/gsme.GIF" WIDTH=160 HEIGHT=25 BORDER=0 ALT=""></A></TD>
+
+
+
+	<TD><A HREF="Home/wrapper.html" target="_top"><IMG SRC="sections/home.GIF" WIDTH=180 HEIGHT=25 BORDER=0 ALT=""></A></TD>
+
+</TR>
+
+<TR>
+
+	<TD><A HREF="http://www.yahooligans.com/" target="_top"><IMG SRC="sections/kid.GIF" WIDTH=160 HEIGHT=25 BORDER=0 ALT=""></A></TD>
+
+
+
+	<TD><A HREF="Lifestyle/wrapper.html" target="_top"><IMG SRC="sections/life.GIF" WIDTH=180 HEIGHT=25 BORDER=0 ALT=""></A></TD>
+
+</TR>
+
+<TR>
+
+	<TD><A HREF="Money/wrapper.html" target="_top"><IMG SRC="sections/money.GIF" WIDTH=160 HEIGHT=25 BORDER=0 ALT=""></A></TD>
+
+	
+
+	<TD><A HREF="News/wrapper.html" target="_top"><IMG SRC="sections/news.GIF" WIDTH=180 HEIGHT=25 BORDER=0 ALT=""></A></TD>
+
+</TR>
+
+<TR>
+
+	<TD><A HREF="Recreation/wrapper.html" target="_top"><IMG SRC="sections/rec.GIF" WIDTH=160 HEIGHT=25 BORDER=0 ALT=""></A></TD>
+
+	
+
+	<TD><A HREF="Reference/wrapper.html" target="_top"><IMG SRC="sections/ref.GIF" WIDTH=180 HEIGHT=25 BORDER=0 ALT=""></A></TD>
+
+</TR>
+
+<TR>
+
+	<TD><A HREF="Shopping/wrapper.html" target="_top"><IMG SRC="sections/shop.GIF" WIDTH=160 HEIGHT=25 BORDER=0 ALT=""></A></TD>
+
+	
+
+	<TD><A HREF="Sports/wrapper.html" target="_top"><IMG SRC="sections/sport.GIF" WIDTH=180 HEIGHT=25 BORDER=0 ALT=""></A></TD>
+
+</TR>
+
+<TR>
+
+	<TD><A HREF="TV/wrapper.html" TARGET="_top"><IMG SRC="sections/tv.GIF" WIDTH=160 HEIGHT=25 BORDER=0 ALT=""></A></TD>
+
+
+
+	<TD><A HREF="zine/wrapper.html" TARGET="_top"><IMG SRC="sections/zine.GIF" WIDTH=180 HEIGHT=25 BORDER=0 ALT=""></A></TD>
+
+</TR>
+
+</TABLE>
+
+
+
+<DIV ALIGN="center">
+
+<A HREF="javascript:followAd()" target="_top"><IMG NAME="adspace" border="0" SRC="blank.gif" ALIGN="center" HEIGHT=60 WIDTH=246></A></DIV>
+
+
+
+</CENTER>
+
+	
+
+	</TD>
+
+</TR>
+
+</TABLE>
+
+
+
+</BODY>
+
+</HTML>
+

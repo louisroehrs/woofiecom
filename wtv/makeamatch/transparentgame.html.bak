@@ -1,0 +1,462 @@
+<html>
+<head>
+
+<title>MakeAMatch</title>
+
+	<script language="JavaScript">
+	
+//  ************** Changable settings from HERE
+
+	var sGameDir = "clock/"
+	var asImageNames = new Array("0","1","2","3","4","5","6","7");
+		
+	var sGameTitle = "Numbers";
+
+	var kWidth  = 6;
+	var kHeight = 6;
+	var cellWidth = 50
+	var cellHeight = 50
+
+	var iTotalWords = 8;
+	var iSecondsLeft = 280;
+
+// *************** To HERE (Don't mess with the rest!);
+
+
+	puzzle = new Array("0","2","4","6","4","7","3","6","0","7","5","5","2","1","1","3","8","9","8","9","0","0","0","0","0","2","4","6","4","7","3","6","0","7","5","5","2","1","1","3","8","9","8","9","0","0","0","0","0","2","4","6","4","7","3","6","0","7","5","5","2","1","1","3","8","9","8","9","0","0","0","0","0","2","4","6","4","7","3","6","0","7","5","5","2","1","1","3","8","9","8","9","0","0","0","0","0","2","4","6","4","7","3","6","0","7","5","5","2","1","1","3","8","9","8","9","0","0","0","0","0","2","4","6","4","7","3","6","0","7","5","5","2","1","1","3","8","9","8","9","0","0","0","0","0","2","4","6","4","7","3","6","0","7","5","5","2","1","1","3","8","9","8","9","0","0","0","0","0","2","4","6","4","7","3","6","0","7","5","5","2","1","1","3","8","9","8","9","0","0","0","0","0");
+
+	mam = new game("mam", sGameDir, sGameTitle, asImageNames, kWidth, kHeight, cellWidth, cellHeight, iSecondsLeft)
+
+	var debug=0;
+	if (debug) alert("In Top!");
+
+	LoadImages();
+
+// OBJECTS
+
+// GAME Object  new game(theme elements)
+	function game(name, sGameDir, sGameTitle, asImageNames, kWidth, kHeight, cellWidth, cellHeight, iSecondsLeft) {
+	
+		this.name = name
+		this.title = sGameTitle
+		this.directory = sGameDir
+		this.imageNames = asImageNames
+
+		this.timeLimit = iSecondsLeft
+		this.players = new Array ()
+		this.currentPlayer = null
+		this.clock1 = new Clock(this, "clock1", iSecondsLeft, "clock/")
+		this.board = new gameboard(this, kWidth, kHeight, cellWidth, cellHeight)
+		this.firstCell = null
+		this.secondCell = null
+		this.blockClicks = 0
+		this.pointsSelected = 0;
+		this.state = "inplay";
+
+		             
+		// Methods
+		this.displaystatus = null
+		this.score = Score
+		this.addplayer = AddPlayer
+		
+		this.addplayer("woofie")
+		this.currentPlayer= this.players[0]
+		
+		this.clock1.start()
+		
+	}
+		
+// GAME Methods
+
+		function Score(points) {
+			this.currentPlayer.addpoints(points)
+		}
+
+		function AddPlayer(name) {
+			qty =this.players.length
+			this.players[qty] = new Player(name, qty)
+		}
+
+// CELL Object
+
+	function Cell(objName, game, contents, x,y, cellWidth, cellHeight) {
+		if (objName == "") {
+			objName = "Cell" + x + "at" + y
+		}
+		this.objName = objName
+		this.contents = contents
+		this.covered = true
+		this.game = game
+	
+		this.x = x
+		this.y = y
+		this.cellWidth = cellWidth
+		this.cellHeight = cellHeight
+		this.matched = false
+	// methods
+		this.cover = Cover
+		this.uncover = Uncover
+		this.matches = Matches
+		this.select = SelectCell
+		this.render = RenderCell
+	}
+
+// CELL methods  Keep pure except for SelectCell
+
+	function Uncover() {
+		document.images[this.objName].src = sGameDir + this.contents + ".gif";
+	}
+
+	function RenderCell() {
+		if (debug) alert("RenderCell");
+		document.write("<td><a href='javascript:mam.board.cells["+ this.x + "][" + this.y + "].select()'><img transparency=50 src='images/cover.gif' border=0 name='" + this.objName + "' width="+ this.cellWidth+" height=" + this.cellHeight + "></a>");
+		document.write("</td>");
+	}
+
+	function SelectCell() {
+		
+	//	if (this.game.gameState != "inplay")
+	//		return;
+	
+		if (this.matched) 
+			return;
+
+		if (this.game.blockClicks !=1) {			
+			this.uncover();
+				
+			if (this.game.pointsSelected == 1) {
+				this.game.pointsSelected = 0;
+				if ( this.matches(this.game.firstCell) ) {
+					this.matched = true;
+					this.game.firstCell.matched = true;
+					PlaySound(document.bell);
+					this.game.score(100);
+				}
+				else {
+					this.game.blockClicks =1
+					this.game.secondCell = this
+					window.setTimeout("CallbackNoMatch()", 2000);
+					PlaySound(document.buzzer);
+				}
+			}
+			else {
+				this.game.pointsSelected =1;
+				this.game.firstCell = this;
+			}
+		}		
+	}
+	
+	function Matches(other) {
+		if ( this.contents == other.contents ) {
+			return 1; 
+		}
+		else {
+			return 0;
+		}
+	}
+
+	function Cover() {
+		document.images[this.objName].src = "images/cover.gif";
+	}
+
+// PLAYER Object
+
+	function Player(name, id) {
+		this.name = name
+		this.score = 0
+		this.id = id
+	// methods
+		this.addpoints = Paddpoint
+		this.display = Pdisplay
+		this.updatescore = Pupdatescore
+	}
+
+// PLAYER methods
+
+	function Paddpoint(points) {
+		this.score += points;
+		this.updatescore()
+	}
+
+	function Pupdatescore() {
+		document.scoreboard["player"+	this.id+"score"].value = "Points: "+ this.score
+	}
+	
+	function Pdisplay () {
+		if (mode == multiple) {
+			document.write(this.name+"<BR>");
+		}
+		document.write("<textarea size=16  name='Player" + this.id + "score >Points: 0</textarea><BR>");
+	}
+
+// GAMEBOARD Object  new gameboard(size)
+	
+	function gameboard (game, kWidth, kHeight, cellWidth, cellHeight) {
+		this.kWidth = kWidth
+		this.kHeight = kHeight
+		this.cells = new Array(kHeight)
+		//methods
+		this.render = RenderGameBoard
+		this.game = game
+		
+		// initialize
+		for (i=0; i < kHeight; i++) {
+			this.cells[i] = new Array(kWidth)
+			for (j=0; j < kWidth; j++) {
+				woofie = puzzle[i+j*kWidth]
+				this.cells[i][j] = new Cell("", game, woofie, i,j, cellWidth, cellHeight)
+		   }
+		}
+	}
+	
+//	GAMEBOARD methods
+	
+	function RenderTitle() {
+		document.write("<font size='+5'>"+sGameTitle+"</font><BR>");
+	}
+	
+	function RenderGameBoard() {
+		if (debug) alert("gameboard render");
+	 
+		document.write("<table transparency=50 border=0 cellspacing=6 cellpadding=0 bgcolor=#222222>");
+
+		for (i=0; i < this.kHeight; i++) {
+			document.write("<tr>")
+			for (j=0; j < this.kWidth; j++) {
+				this.cells[i][j].render()
+			}
+			document.write("</tr>")
+		}
+		document.write("</table>");
+	}
+	
+// CALLBACKS
+	function CallbackNoMatch() {
+		mam.blockClicks = 0;
+		mam.firstCell.cover();
+		mam.secondCell.cover();
+	}
+	
+	function RandomLetter() {
+		iLetterASCII = Math.round(Math.random()*25);
+			return(sLetterLookup.charAt(iLetterASCII));
+		}
+	function LoadImages() {
+		LoadClockImages();
+	}
+
+
+// CLOCK Object	 Countdown clock: All units in seconds
+	function Clock (game, name, iSeconds,imageroot) {
+		this.game = game
+		this.name = name          // Image name is [name][1|10]min[digit] for HTML location.
+		this.time = iSeconds
+		this.imageroot = imageroot   // root of digit image filenames.  [imageroot][digit].gif  
+		this.interval = 5
+	   // methods
+		this.decrement = DecrementClock
+		this.update = UpdateClock
+		this.render = RenderClock
+		this.start = StartClock
+	}
+	
+	
+// CLOCK methods
+
+	function UpdateClock() {
+	
+		minutes = Math.round ((( this.time)/60)-.5);
+		seconds = this.time % 60;
+
+		tens =  ""+ Math.round((seconds / 10)-.5);
+		tensecs = tens.substring(0,1);
+		
+		document.images[this.name + "1mins"].src =  this.imageroot + minutes + ".gif"	
+		document.images[this.name + "10secs"].src = this.imageroot + tensecs + ".gif"
+		document.images[this.name + "1secs"].src = this.imageroot + (seconds % 10) + ".gif"
+	}
+	
+	function DecrementClock() {
+
+//		if (sGameState != "inplay")
+//			return ("false");
+
+		this.time -= this.interval;
+
+		if (this.time < 0) {
+			this.time = 0
+			this.game.state = "lost"
+			// document.explosion.play(false);	
+			this.game.blockClicks = 1;
+		}
+		else {
+			window.setTimeout( this.game.name + "." + this.name + ".decrement()", 5000);
+//			alert ((this.game.name + "." + this.name + ".decrement()"));
+		}
+		this.update();
+	}
+	
+	function RenderClock() {
+
+		document.write("<img width=33 height=53 src='" + this.imageroot + "0" + ".gif' name=" + this.name + "1mins>")
+		document.write("<img width=11 height=53 src='" + this.imageroot + "colon.gif' name=Colon>")
+		document.write("<img width=33 height=53 src='" + this.imageroot + "0" + ".gif' name=" + this.name + "10secs>")
+		document.write("<img width=33 height=53 src='" + this.imageroot + "0" + ".gif' name=" + this.name + "1secs>")
+		
+	}
+	
+	function StartClock() {
+		window.setTimeout(this.game.name + "." + this.name + ".decrement()", 5000);	
+	}
+	
+	function GetDigit(iNumber, iDigit) {
+
+		iNumber = "" + iNumber;  // Convert to "String" if it isn't already...
+
+		while (iNumber.length < 2) {
+			iNumber = "0" + iNumber;
+		}
+		return(iNumber.charAt(iDigit));
+	}
+
+	function LoadDigitImage(iDigit) {
+
+	  var image = new Image();
+	  image.src = "clock/" + iDigit+".gif";
+
+	}  
+
+	function LoadClockImages() {
+
+		image0 = new Image();
+		image0.src = "clock/0.gif";
+		
+		image1 = new Image();
+		image1.src = "clock/1.gif";
+		
+		image2 = new Image();
+		image2.src = "clock/2.gif";
+		
+		image3 = new Image();
+		image3.src = "clock/3.gif";
+		
+		image4 = new Image();
+		image4.src = "clock/4.gif";
+		
+		image5 = new Image();
+		image5.src = "clock/5.gif";
+		
+		image6 = new Image();
+		image6.src = "clock/6.gif";
+		
+		image7 = new Image();
+		image7.src = "clock/7.gif";
+		
+		image8 = new Image();
+		image8.src = "clock/8.gif";
+
+		image9 = new Image();
+		image9.src = "clock/9.gif";
+	}
+
+	<!-- Generic Game Functions -->
+	function Restart() {
+		location.reload();
+	}
+
+	function Quit() {
+		if (debug) alert("Quit");
+	}
+
+	function PlaySound(sound) {
+
+		if (sound == null) {  
+            return;
+		}
+		else {
+			sound.play(false);
+		}
+	}
+
+
+	</script>
+      
+<!--  -->
+
+</head>
+
+<body background="back.jpg" bgcolor=#666666 text=#CC9999 valign=top hspace=0 onload=''>
+	<display noscroll>
+
+	<EMBED SRC="sounds/bell.mp2" HIDDEN=TRUE CONTROLS=console
+	VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="bell"
+	MASTERSOUND>
+	<EMBED SRC="sounds/buzzer.aif" HIDDEN=TRUE CONTROLS=console
+	VOLUME=50 LOOP=FALSE AUTOSTART=FALSE NAME="buzzer"
+	MASTERSOUND>
+	<EMBED SRC="sounds/applause.MP2" HIDDEN=TRUE CONTROLS=console
+	VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="applause"
+	MASTERSOUND>
+
+ 
+	<form name="scoreboard">
+	<table abswidth=174 cellpadding=0 cellspacing=0 border=0 width="100%" valign=top>
+		<tr>
+			<td abswidth=180 align="center" VALIGN="TOP">
+				<FONT SIZE="+3" FACE="Arial, Helvetica" COLOR="#cc3333"><STRONG><shadow>Make A<BR>Match</shadow></STRONG></FONT>
+			<!-- 	<img src="images/LOGO.GIF"> -->
+	 			<br clear=left>
+	 			<br>
+				
+ <!-- 		<SCRIPT LANGUAGE="Javascript">
+				  	RenderTitle();
+					document.write(location.search);
+				</SCRIPT>  -->
+								
+				<FONT SIZE="+2" FACE="Arial, Helvetica">
+				<img src="/ROMCache/spacer.gif" width=12 height=5><STRONG>
+				<input type="text" name="player0score" size=10 value="Points: 0" bgcolor=#595775 usestyle border=0>
+					 </STRONG></FONT><BR><FONT COLOR=#595775>
+					 <SCRIPT Language="JavaScript">
+					 mam.clock1.render()
+					 </SCRIPT><BR></FONT>
+				<img src="/ROMCache/spacer.gif" width=12 height=5><textarea usestyle bgcolor=#595775 border=0 name="matchvalue" cols=12>100 points for each match</textarea><BR>
+
+				<A name="restart" HREF="javascript:Restart()"><IMG SRC="images/restart.gif" WIDTH=82 HEIGHT=40 BORDER=0></A><BR>
+						<img src="/ROMCache/spacer.gif" width=12 height=5><BR>				       
+
+				<table border=1>
+					<tr bgcolor=#000000 >
+						<td colspan=3>Your Best Scores</TD>
+					</tr>
+					<tr>
+						<td ALIGN="RIGHT">1.</td><td ALIGN="RIGHT">500</td><td ALIGN="RIGHT">10/9/97</td>	
+					</tr>
+					<tr>
+						<td ALIGN="RIGHT">2.</td><td ALIGN="RIGHT">350</td><td ALIGN="RIGHT">8/9/97</td>	
+					</tr>
+					<tr>
+						<td ALIGN="RIGHT">3.</td><td ALIGN="RIGHT">96</td><td ALIGN="RIGHT">7/19/97</td>	
+					</tr>
+				</table>
+			</td>
+
+			<td abswidth=370 valign=top align=center>
+				<img src="/ROMCache/spacer.gif" width=12 height=5><BR>				       
+		    	<center> <FONT COLOR="#595775">           
+					<SCRIPT Language="JavaScript">
+					mam.board.render();
+					</SCRIPT></FONT>
+				</center><BR>
+				<img src="/ROMCache/spacer.gif" width=12 height=1><BR>
+				<img src="/ROMCache/spacer.gif" name="ad" width=468 height=60>
+			</td>
+				       
+	    </tr>
+			
+			      
+	</table>
+</form>  
+
+</body>
+</html>

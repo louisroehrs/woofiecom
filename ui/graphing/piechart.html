@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>VML Charts -- Pie Charts!</title>
+<XML:NAMESPACE NS="urn:schemas-microsoft-com:vml" PREFIX="v"/>
+<STYLE>
+.disableHscroll{
+width:100%;overflow-x:hidden;overflow-y:scroll;
+}
+
+v\:* {
+ BEHAVIOR: url(#default#VML)
+}
+</STYLE>
+  </head>
+
+  <body>
+<font face="courier new"
+      size="6"><strong>
+    <h1><a href="javascript:history.back()">Home</a> > VML Charts!</h1></strong></font>
+This example shows how you can create charts with SVG and VML. Drawn while you wait by the client in antialiased beauty.  Enter four values and the chart will draw their relevance to the sum.
+<v:oval id=piechart style='position:absolute;visibility:visible;top:400;left: 200;width:250;height:250;opacity:0.5;strokecolor:black; fill:true; fill-color:white; print:true; strokeweight:3pt; coordsize:1000 1000;'><v:shadow on=true opacity= "0.5" offset="10px,10px" Color = "grey"/>
+ <v:fill opacity2="0.5" color="red"/>
+</v:oval>
+<v:shape id=piechartarc3
+         style='position:absolute;visibility:visible;top:400;left:200;width:250;height:250;'
+		strokecolor="#ffff88" 
+		fill="true" 
+		fillcolor="#ffff88" 
+		print="true"
+		strokeweight="0pt"
+		coordsize="1000 1000"
+		opacity="0.23" 
+		coordorigin="0 0">
+
+        <v:path id=mypath4 v="m 500,500 l 300,300    x e"/>
+        <v:shadow on=false opacity= "0.5" offset="10px,10px" Color = "grey"/>
+</v:shape>
+
+
+
+<v:shape id=piechartarc3
+         style='position:absolute;visibility:visible;top:400;left:200;width:250;height:250;'
+		strokecolor="#8888ff" 
+		fill="true" 
+		fillcolor="#8888ff" 
+		print="true"
+		strokeweight="0pt"
+		coordsize="1000 1000"
+		opacity="0.23" 
+		coordorigin="0 0">
+
+        <v:path id=mypath1 v="m 500,500  x e"/>
+        <v:shadow on=false opacity= "0.5" offset="10px,10px" Color = "grey"/>
+</v:shape>
+
+<v:shape id=piechartarc3
+         style='position:absolute;visibility:visible;top:400;left:200;width:250;height:250;'
+		strokecolor="#ff8888" 
+		fill="true" 
+		fillcolor="#ff8888" 
+		print="true"
+		strokeweight="0pt"
+		coordsize="1000 1000"
+		opacity="0.23" 
+		coordorigin="0 0">
+
+        <v:path id=mypath2 v="m 500,500 x e"/>
+        <v:shadow on=false opacity= "0.5" offset="10px,10px" Color = "grey"/>
+</v:shape>
+
+<v:shape id=piechartarc3
+         style='position:absolute;visibility:visible;top:400;left:200;width:250;height:250;'
+		strokecolor="blue" 
+		fill="true" 
+		fillcolor="blue" 
+		print="true"
+		strokeweight="0pt"
+		coordsize="1000 1000"
+		opacity="0.23" 
+		coordorigin="0 0">
+
+        <v:path id=mypath3 v="m 500,500 x e"/>
+        <v:shadow on=false opacity= "0.5" offset="10px,10px" Color = "grey"/>
+</v:shape>
+
+<form name=myform id=myform>
+<input type=text name=a value=37.0><BR>
+<input name=b  type=text value=28.0><BR>
+<input name=c  type=text value=20.0><BR>
+<input name=d  type=text value=15.0><BR>
+<input name=e  type=hidden size=80 value=15.0><BR>
+<input name=e  type=button value='chart!' onclick='javascript:drawpie()'><BR>
+
+</form>
+
+<script language=javascript>
+
+var start = 0;
+var pi =3.1415296;
+
+function drawslice(percent,stop) {
+   var path = "";
+   end = (stop=="1")? 100:start + percent+0.0;
+   for (i= start; i <= end; i++) {
+      x = Math.floor((Math.sin(i*pi/50)*500)+500);
+      y = Math.floor((Math.cos(i*pi/50)*500)+500);
+      xs = x.toString();
+      ys = y.toString();
+      path +=  xs + ", " + ys + ", ";
+   }
+//      document.writeln(path,"<BR>");
+   start = Math.floor(end) ;
+   return "m 500,500 l "+path+ " 500,500 x e";
+}
+function drawpie() {
+   start = 0;
+   a = document.all.myform.a.value *1.0;
+   b = document.all.myform.b.value *1.0;
+   c = document.all.myform.c.value *1.0;
+   d = document.all.myform.d.value *1.0;
+
+   sum = a + b + c + d;
+   document.all.myform.e.value = "a"+a +"b"+b +"c"+ c +"d"+d +"sum"+sum;
+   a =a*100/sum;
+   b =b*100/sum;
+   c =c*100/sum;
+   d =d*100/sum;
+
+   document.all.mypath1.v = drawslice(a);
+   document.all.mypath3.v = drawslice(b);
+   document.all.mypath4.v = drawslice(c);
+   document.all.mypath2.v = drawslice(d,1);
+}
+
+document.all.mypath1.v = drawslice(37.0);
+document.all.mypath3.v = drawslice(28.0);
+document.all.mypath4.v = drawslice(20.1);
+document.all.mypath2.v = drawslice(15.0);
+
+//document.writeln("mypath");
+//document.writeln(document.all.mypath1.v);
+//document.writeln("mypath");
+//document.writeln(document.all.mypath2.v);
+//document.writeln("mypath");
+//document.writeln(document.all.mypath3.v);
+//document.writeln("mypath");
+//document.writeln(document.all.mypath4.v);
+
+
+
+</script>
+<hr>
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-7467616088319038";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_type = "text";
+//2007-08-23: woofie.com
+google_ad_channel = "2520990473";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_text = "000000";
+google_color_url = "0066CC";
+//-->
+</script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+    <hr>
+    <address><a href="mailto:">louis.roehrs AT demandtec.com</a></address>
+<!-- Created: Wed Apr 17 20:44:51 PDT 2002 -->
+<!-- hhmts start -->
+Last modified: Thu Apr 18 03:32:40 PDT 2002
+<!-- hhmts end -->
+
+
+  </body>
+</html>

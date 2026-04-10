@@ -1,0 +1,10 @@
+<HTML>
+<BODY>
+   <P>Note:  You may need to do a reload if WebTV has an old version 
+             in the cache.
+   <P>Note2: To link to this game, put the URL: <!--TARGET--> in the scheduling
+tool.
+
+   <P><a href="<!--TARGET-->">Go to the game</a>
+</BODY>
+</HTML>

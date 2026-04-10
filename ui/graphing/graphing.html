@@ -1,0 +1,294 @@
+
+	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Javascript Dynamix Plotter Animation</title>
+
+<script language=Javascript>
+// Copyright 2001 Louis F. Roehrs  louisrATteletrex.com
+// Free to use and distribute as long as this notice is included
+// in all uses and derivatives of this software.
+// Thanks and enjoy!
+
+var NS=false;
+var IE=false;
+
+if (document.layers) NS =true;
+else if (document.all) IE = true;
+
+// Set viewable area.
+var startx = -3;
+var stopx = 0;
+
+var ytop= 5;
+var ybottom = -1;
+
+// Set pixel size of viewable area.
+var width=200;
+var height=200;
+var zoom = 1.0;
+
+// Set pixel offset of viewable area relative to the 
+// browser window.
+var postop = 100;
+var posleft = 20;
+
+var animate=0;
+
+var direction=1;
+var scoot=.08;
+
+// Define the intial function.
+// Any function definable in javascript allowed.
+var thefunction="Math.sin(x)";
+var whattodraw ="<img src=1x1clear.gif width=1 height=1>";
+
+
+function plotxy(pointd,x,y,zoom) {
+
+
+    if (NS) {
+         mypoint = eval("document.layers.point"+pointd);
+         if (y > 16000)  { y = 16000} // funky netscape bug...
+         if (y < -16000)  { y = -16000} // funky netscape bug...
+         mypoint.top = y; 
+         mypoint.left = x;
+    }
+    else  {
+        mypoint = eval("point"+pointd);
+        mypoint.style.left=x;
+        mypoint.style.top=y;
+
+    }
+
+}
+
+//        mypoint.innerHTML="<font color='#"+y+y+"'>"+y+"</span>";
+//        mypoint.innerHTML="<table border=0 cellpadding=0 cellspacing=0><tr><td bgcolor='#"+y+y+"' width="+Math.ceil(zoom)+" height="+Math.ceil(zoom) +"1></td></tr></table>";
+
+function plotcurve(xleft, xright, ytop, ybottom, top, left, width, height, thefunction, zoom) {
+
+    var stepx = (xright-xleft)/width*zoom;
+    var scalex= width/(xright-xleft)*zoom;
+    var scaley= height/(ybottom-ytop)*zoom;
+    var leftstart = left;
+    var graphstep = scalex*stepx;
+    var topheightzoom =top+height+ ybottom+1-ybottom*scaley/zoom;
+    var idcount = 0;
+
+    for (x=xleft; x<= xright; x+= stepx, idcount++, leftstart+=graphstep) {
+        var y =  eval (thefunction);
+        plotxy(idcount,leftstart, scaley*y +topheightzoom);
+
+    }
+}
+//scalex*(x-xleft)+left  calculated value of x, replaced with stepping.
+
+function doplot() {
+
+   var myframe;
+
+
+   plotcurve(startx, stopx, ytop, ybottom, postop,posleft, width, height, thefunction, zoom);
+
+   if (NS) myframe = document.layers.myframe;
+   if (IE) myframe = document.all.myframe;
+   moveto(myframe,posleft,postop);
+
+   if (direction==1 && posleft <400) {
+      startx +=.1;
+      stopx +=.1;
+      posleft += .1*zoom*(width)/(stopx-startx);
+   } else if (direction==1 && posleft >=400) {
+      startx -=.1;
+      stopx -=.1;
+      direction =0;
+      posleft -= .1*zoom*(width)/(stopx-startx);
+   } else if (direction==0 && posleft <20) {
+      startx +=.1;
+      stopx +=.1;
+      posleft += .1*zoom*(width)/(stopx-startx);
+      direction =1;
+   } else if (direction==0 && posleft >=20) {
+      startx -=scoot;
+      stopx -=scoot;
+      posleft -= scoot*zoom*(width)/(stopx-startx);
+   }
+
+   setTimeout("doplot()",10);
+}
+
+
+function moveto(obj,x,y) {
+    if (NS) obj.left = x;
+    else if (IE) obj.style.left=x;
+    if (NS)  obj.top = y;
+    else if (IE)  obj.style.top=y;
+
+    if (NS) obj.width= width*zoom;
+    else if (IE) obj.style.width=width*zoom;
+    if (NS)  obj.height = height*zoom;
+    else if (IE)  obj.style.height=height*zoom;
+}
+
+function drawlayers(start,stop,w, zoom) {
+    var step = (stop-start)/w;
+    var idcount = 0;
+    for (i=start; i<=(stop+step); i+= step, idcount++) {
+
+        document.writeln("<div id='point" + idcount + "' name='point"
+        + idcount +
+	"' bgcolor=ff00ff><table border=0 cellpadding=0 cellspacing=0><tr><td bgcolor=ddffdd width=" 
+	+Math.ceil(zoom)+
+	"height="+Math.ceil(zoom) +">" + whattodraw + 
+	"</td></tr></table></div>");
+
+    }
+}
+
+function drawborder(top,left,width,height, zoom) {
+    document.writeln("<div id='myframe'><table cellpadding=0 cellspacing=0><tr><td bgcolor=101010 width="+width*zoom+" height="+height*zoom +"></td></tr></table></div>");
+}
+
+
+
+function drawborderstyle(top,left,width,height) {
+
+    document.writeln("<STYLE>\n");
+    document.writeln("#myframe { position:absolute; top:"+top+";left:"+left+";}");
+
+    document.writeln("</STYLE>\n");
+}
+
+
+function drawstyles(start,stop,w) {
+    var step = (stop-start)/w;
+    var idcount = 0;
+    document.writeln("<STYLE>\n");
+    for (i=start; i<=(stop+step)+1; i+= step, idcount++) {
+       document.writeln("#point"+idcount+" { position:absolute;top:0; left:"+i+";}\n");
+    }
+    document.writeln("</STYLE>\n");
+
+}
+
+function zoomme (zoomby) {
+    zoom = zoomby;
+    for (i=0; i< (201); i++) { // 201 should be (stop-start)/width
+        if (NS) {
+            mypoint = eval("document.layers.point"+i)
+            mypoint.width= zoom+1; 
+            mypoint.height= zoom+1;
+
+        } else {
+            mypoint = eval("document.all.point"+i)
+            mypoint.style.width=zoom+1;
+            mypoint.style.height=zoom+1;
+        }
+    }
+
+}
+
+
+function startme() {
+   if (location.search.indexOf("whattoplot")>-1) {
+      thefunction = unescape(location.search.substring(location.search.indexOf("whattoplot")+11));
+      document.form1.whattoplot.value = thefunction;
+   }
+}
+
+
+
+
+drawstyles(startx,stopx, width);
+drawborderstyle(postop,posleft,width,height);
+
+
+</script>
+
+
+
+</head>
+
+  <body onload="startme();doplot()" text=cccccc bgcolor=#333333><font face=verdana,arial,helvetica>
+<table width=100%><tr><td><h2><a href="http://www.woofie.com/index.html">Home</a> > Javascript Dynamix Plotter Animation</h2></td><td align=right></td></tr></table>
+<hr>
+<font size=1>This demonstrates the power of modern day Javascript on both the
+Netscape and Internet Explorer browsers version 4.0 or greater.  The
+Netscape 4.0 version uses layers and the IE version uses DHTML.  
+<BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+<BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+<BR><BR><BR><BR>You can enter an equation to create a new plot of y as a  
+function of x using any javascript 
+expression.  Click on the example equations to plot them.
+Note: see the example below to avoid dividing by zero.  
+Each green dot can contain and display any html that can be put into
+a DIV or layer.  Currently, a single pixel clear gif is being used.
+A zoom function has also been implemented.  The entire graph is being rendered
+for every frame of visible movement.  Drawing a simple graph once is very quick.
+
+
+
+<script language=Javascript>
+//drawborder(postop,posleft,width,height,zoom);
+drawborder(postop,posleft,1,1,zoom);
+drawlayers(startx,stopx, width, zoom);
+
+
+</script>
+
+
+
+
+<hr>
+
+<form name=form1>
+Enter a function of x. Use Math functions of javascript when needed.<BR>
+<input type=text size=80 name="whattoplot" onchange="thefunction=this.value; posleft=10;startx=-1;stopx=1;">
+<input type=button value="Plot"><BR>
+<table cellpadding=3 width=550><tr><td bgcolor=#eeeeee valign=top><small><font color=333333><B>Functions</B></font><BR>
+<a href="graphing.html?whattoplot=Math.sin(x)">Math.sin(x)</a>&nbsp;&nbsp;&nbsp;<a
+href="graphing.html?whattoplot=(x==0)?1:1/Math.sin(x)">(x==0)?1:1/Math.sin(x)</a><BR><a
+href="graphing.html?whattoplot=Math.abs(Math.sin(x*6)/x)">Math.abs(Math.sin(x*6)/x)</a>&nbsp;&nbsp;&nbsp;<a
+href="graphing.html?whattoplot=Math.sin(x*12)/x*.4">Math.sin(x*12)/x*.4</a>
+</td><td></td>
+<td bgcolor=eeeeee valign=top><small><font color=333333><B>Zoom</B></font><BR><a href="javascript:zoomme(1);">1:1</a> <a href="javascript:zoomme(1.5)">1.5:1</a> <a href="javascript:zoomme(2);">2X</a>
+
+</td><td bgcolor=eeeeee valign=top ><small><font color=333333><B>Home</B></font><BR><a href="http://www.woofie.com">Home</a></td></tr></table>
+</form>
+<hr>
+<script type="text/javascript"><!--
+google_ad_client = "pub-7467616088319038";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_type = "text";
+//2007-08-23: woofie.com
+google_ad_channel = "2520990473";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_text = "000000";
+google_color_url = "0066CC";
+//-->
+</script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+    <hr>
+    <address><a href="mailto:">louisr AT teletrex.com</a></address>
+<!-- Created: Sat Feb  9 23:29:51 -0800 2002 -->
+<!-- hhmts start -->
+Last modified: Sun Mar 31 21:59:16 -0800 2002
+<!-- hhmts end -->	
+  </body>
+</html>
+
+
+
+
+
+
+

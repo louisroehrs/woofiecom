@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title></title>
+<script language=javascript>
+function focusonpassword()
+{
+document.form1.pincode.focus()
+document.form1.pincode.select()
+}
+
+function checkpassword()
+{
+  if (document.form1.pincode.value == "4567")
+  {
+     alert ("Please reeenter your secret code.")
+     focusonpassword()
+  }
+  else
+  {
+     location="/cgi-bin/ictv/apps/nav/ITVfrontpage"
+  }
+}
+</script>
+</head>
+
+
+<BODY BGCOLOR="#a0a0a0" TEXT="#F0F0F0" LINK="#d0d000" VLINK="#d0d000" ALINK = "#404080" background="/ictv/images/puffyclouds.gif" onLoad="focusonpassword()">
+ 
+<UL>
+
+<img src="/ictv/images/ICTVBugMedT.gif" align=right>
+<BR><BR><BR><BR>
+  <center>
+  <FONT COLOR = "#ffffff">
+  <B><I>Please enter your 4 digit secret code<BR>and press Enter. <BR></I></B>
+  </FONT>
+  </center>
+<BR>
+<BR>
+
+
+<!--
+  <center>
+  <form name='form1' action='/cgi-bin/ictv/apps/nav/password' method=post >
+  <input type=password name=pincode value="" size=4 >
+  <input type=button name=button value=Enter onCLick="checkpassword()">
+  <input type=hidden name=subid value=>
+  </form>
+  </center>
+
+  <script>
+    document.write("Cookies are:")
+  document.write(document.cookie)
+  </script>
+<h1></h1>
+
+
+
+
+<address></address>
+</body> </html>
+
+-->
+

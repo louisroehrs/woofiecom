@@ -1,0 +1,67 @@
+<html>
+
+  <title>
+    Trivia Game Builder
+  </title>
+
+  <body>
+    <form action="http://ed.webtv.net/~tpark/new/triviatool/cgi/createquestions.cgi" method="post">
+      <table>
+        <tr>
+          <td>
+            Category 
+          </td>
+          <td>
+            <select name="CATEGORY">
+              <option value="sports">Sports</option>
+              <option value="general">General Knowledge</option>
+              <option value="test">Testing (Not Permenent!)</option>
+            </select>
+          </td>
+        </tr>    
+        <tr>
+          <td>
+            Trivia Subject 
+          </td>
+          <td>
+            <input MAXLENGTH=10 type=text name="GAMENAME" value=""></input>
+          </td>
+        </tr> 
+<!--
+        <tr>
+          <td>
+            Owner's Email (w/o @corp.webtv.net) 
+          </td>
+          <td>
+            <input MAXLENGTH=10 type=text name="EMAIL" value=""></input>
+          </td>
+        </tr>  
+-->
+        <tr>
+          <td>
+            Publish Date
+          </td>
+          <td>
+            <input MAXLENGTH=2 type=text name="MONTH" width=3 value=""></input>/
+            <input MAXLENGTH=2 type=text name="DAY"  width=3 value=""></input>/
+            <input MAXLENGTH=4 type=text name="YEAR" width=3 value="1997"></input>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            How many questions?
+          </td>
+          <td>
+            <input type=text name="howmany" value=""></input>
+          </td>
+        </tr> 
+        <tr>
+          <td>
+            <input type=submit value="Continue"></input>
+          </td>
+        </tr> 
+      </table>
+    </form>
+  </body>
+
+</html>

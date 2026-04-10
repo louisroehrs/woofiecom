@@ -1,0 +1,947 @@
+                                   [Image]
+
+                             Content Programming
+                                 Style Guide
+
+                                First Edition
+
+                              October 28, 1997
+
+     -------------------------------------------------------------------
+
+                                  Foreword
+
+     The WebTV Style Guide is a dynamic, online-searchable, constantly
+     evolving supplement to the following stylebooks and writing
+     guides:
+
+   * For general usage: the Associated Press Stylebook and Libel Manual.
+   * Dictionary: Websterπs New World Dictionary, Third College Edition.
+   * For questions related to electronic publishing: Wired Style.
+   * For other essentials: The Elements of Style, by Strunk and White.
+
+     Acknowledgements
+
+     With gratitude to all my colleagues at WebTV for asking questions,
+     questioning answers and making the Style Guide live and grow.
+     Special thanks to Stacy Jolna and the senior programming staff and
+     to Dana Hauser, Garth Lewis, Jeff Miller and Shafath Syed.
+
+     Janice Berman, Senior Editor, Web TV Networks, Inc.
+
+     November 12, 1997
+
+     Please email feedback to styleguide@corp.webtv.net.
+
+     Table Of Contents
+
+   * WEBTV STYLE
+
+   * PARTS OF WEBTV
+     NAMES OF WEIGHTY OBJECTS
+     NAMES OF WEIGHTLESS OBJECTS
+
+   * AND NOW A WORD FROM OUR LAWYERS:
+     HOW TO WRITE ABOUT WEBTV NETWORKS, INC.
+
+   * RULES FOR TEASES AND LINK LANGUAGE
+
+   * PERSONALITY AND TONE GUIDELINES
+
+   * LEGAL GUIDELINES FOR GRAPHICS
+
+   * GRAPHICS
+     PANELS
+     ROTATION
+
+   * STYLE AND CONSISTENCY IN TIDBITS AND 20% TILES
+
+   * SPOTLIGHTS
+     SPOTLIGHT EXAMPLES
+
+   * COMMONLY USED HTML TAGS
+
+   * HOW TO WRITE GOOD
+
+   * STYLE GUIDE FAQS
+
+     ------------------------------------------------------------------
+
+     WebTV style
+
+     abbreviation: Make sure itπs in common use. For instance, the word
+     åcelebπ is puzzling to some viewers. Use åcelebrityπ or åstarπ
+     instead.
+
+     and more: This is definitely a case where (and) more is less. It
+     sounds as if we donπt know what else to say. Letπs avoid it.
+
+     capital letters: For improved readability, avoid using all-capital
+     letters for emphasis. Boldface important text instead.
+
+     check out this...: sample of hackneyed, pushy writing that is
+     unlikely to create interest among our viewers. Please avoid using
+     ≥check out≤ as well as the cliche ≥cool site.≤
+
+     client: The software installed in the WebTV Internet Terminal. Not
+     the viewer or the customer.
+
+     Club WebTV members: Not Club WebTV Members. Note that it is Club
+     WebTV, not ClubWebTV.
+
+     commas: Follow AP guidelines on serial commas.
+
+     contractions: Try to avoid contractions to increase scannability.
+
+     email: No hyphen. Note that it is not Email unless the word begins
+     a sentence.
+
+     exclamation points: Use them sparingly. Choose your words
+     carefully and let the words themselves exclaim.
+
+     etc.: Please avoid it.
+
+     Exploreπs categories: Explore Entertainment, not Entertainment
+     Home Page; Explore Kids, not Kids Home Page...
+
+     FAQs: Frequently asked questions. Like AM, PM, LA, DC and many
+     other commonly used acronyms, names and abbreviations, it takes no
+     periods.
+
+     home page: Two lower-case words. When referring to WebTV (version
+     2.1): Web Home and TV Home.
+
+     Internet, Net: "Net" is short for Internet (which is always
+     capitalized), so "Net" should also be capitalized. Donπt
+     capitalize netizen.
+
+     information: Not info.
+
+     italics: Avoid them wherever possible. They are less readable than
+     plain or bold text in the WebTV user interface.
+
+     message watch: Not messagewatch
+
+     Net: Short for Internet; therefore capitalized. But use
+
+     newsgroup: Not Newsgroup.
+
+     numbers: spell out whole numbers below 10, use numerals for 10 and
+     above.
+
+     ok: Not ≥okay≤
+
+     online: No hyphen.
+
+     paragraphs: No indents on paragraphs. But one return between each
+     paragraph.
+
+     periods: One space between periods and next word, not two. For a
+     cleaner look, avoid periods (points) wherever possible: US, USA,
+     AM, PM.
+
+     quotation marks: For a cleaner look within the limited space of
+     the WebTV matrix, avoid quotation marks wherever possible.
+
+     To set off the titles of plays, songs, books, TV shows, use upper
+     case as if in AP headline style: Does Your Chewing Gum Lose Its
+     Flavor on the Bedpost Overnight? Gone With the Wind, The Brady
+     Bunch, Allπs Well That Ends Well.
+
+     Use quotation marks when quoting somebody or to set off a
+     nickname. Within headlines, if quotation marks are necessary, use
+     single quotes, not double.
+
+     Caution: Donπt let a good quote slip by in the interest of
+     avoiding quotation marks. Good quotes enliven content.
+
+     select: Not click.
+
+     Spotlight: A well-researched Explore article incorporating related
+     pages embedded as links in the text.
+
+     Tidbit: The working name for clever packaging for aggregated
+     Explore content.
+
+     URL: An acronym for Uniform Resource Locator, it should be written
+     in all caps. For our viewers, although, the preferred term is Web
+     address.
+
+     viewers: Our customers are ≥viewers.≤ They are not surfers,
+     subscribers or users.
+
+     Web, World Wide Web, Web site: Web site is two words. The W in Web
+     and World Wide Web are always capitalized.
+
+     Web address: Term we use to direct our viewers to a Web page or
+     Web site. See also URL.
+
+     [back to Table of Contents]
+     ------------------------------------------------------------------
+
+     Parts of WebTV
+
+     Names of weighty objects
+
+     The little remote control that comes with the Internet Terminal is
+     called the remote control.
+
+     The hardware keyboard is called the remote keyboard.
+
+     The thing that has a screen is called a television or a TV.
+     The part that people stare at all day is a screen.
+
+     Names of weightless objects
+
+     The keyboard that appears at the bottom of the screen is called
+     'the keyboard on the screen'. Remember that most of the people
+     using the keyboard on the screen haven't used keyboards or
+     computer screens very much, so it helps them if you describe the
+     keyboard as 'the keyboard on the screen' rather than using funny
+     adjectives with the word keyboard.
+
+     Things that slide up from the bottom of the screen are called
+     panels. These include the options panel, the find panel, the info
+     panel the go-to panel, the save panel, and the send panel. The
+     keyboard is a panel too, but it's just called the keyboard or 'the
+     keyboard on the screen'.
+
+     [back to Table of Contents]
+     ------------------------------------------------------------------
+
+     And now a word from our lawyers: How to Write About WebTV
+     Networks, Inc.
+
+     WebTV: On first reference, "WebTV" should not be used without a
+     qualifier. The "WebTV Network≤ (the service), the "WebTV Internet
+     terminal" (the box) and "WebTV Networks, Inc." (the company) are
+     all correct and mean different things. You may use WebTV alone on
+     second reference, but not as a first reference to the company or
+     product.
+
+     Incorrect: WebTV includes a high-speed modem.
+     Correct: The WebTV Internet terminal includes a high-speed modem.
+
+     Following are approved names which weπll use across all marketing
+     communications when we refer to the respective hardware, services
+     and specific WebTV Plus features:
+
+     FCS Unit is called:
+     WebTVÆ Internet Terminal
+
+     LC2 Unit is called:
+     WebTVÆ Plus Receiver
+
+     FCS Service is called:
+     WebTV NetworkÅ
+     WebTV Network (Standard Service)
+
+     LC2 Service is called:
+     WebTVÆ Plus Network (Service)
+
+     Hardware and Service Together is called:
+     FCS: WebTVÆ System
+     LC2: WebTVÆ Plus System
+
+     Picture-in-Picture is called:
+     TV Window
+
+     Crossover is called:
+     TV Crossover Links
+
+     TV Start is called:
+     TV Home
+
+     WebTV Home Page is called:
+     Web Home
+
+     EPG is called:
+     TV Listings
+
+     These names are trademarked and need a "Å" or "Æ" at the first
+     occurrence on each page and whenever they are cited in larger
+     print than the main body of copy:
+
+     WebTVÆ VideoFlashÅ OpenISPÅ
+     WebTV NetworkÅ Around TownÅ One ThumbÅ
+     WebportÅ Message WatchÅ ExploreÅ
+     WebCreditÅ LineShareÅ Kid FriendlyÅ
+     WebPIPÅ TV Crossover LinksÅ
+
+     Also, SurfwatchÅ gets a TM, but we don't own it.
+
+     [back to Table of Contents]
+     ------------------------------------------------------------------
+
+     Rules for Teases and Link Language
+
+     Rule: Link language must be clear.
+     Writing copy for WebTV is unique because the process of
+     downloading pages places extra demands on viewersπ time. Having
+     invested that time, viewers are extremely unforgiving when obscure
+     language leads them to unpredictable destinations.
+
+     When writing for WebTV, then, clarity of language and
+     predictability of result are essential. Obscure or overly "cutesy"
+     copy discourages viewers from following links. When viewers follow
+     misleading links, they feel betrayed--as if theyπd been caught in
+     a ≥bait and switch≤ scam--and are less likely to follow other
+     links. In fact, they may not come back at all. Our viewers simply
+     don't like guessing games.
+
+     Rule: Every tile must contain at least one descriptive element
+     that cues the user to the linkπs purpose.
+     Successful "link language≤ gives viewers a clear sense of what to
+     expect. Every tile should contain at least one element (title,
+     logo, subhead or html text) that clearly communicates where the
+     viewer will be taken. This needn't be verbose. A few words
+     separated by commas can communicate the site's purpose ("puns,
+     puzzles, trivial pursuits"). In other cases, a logo ("TV Guide")
+     can sufficiently cue the viewer.
+
+     Rule: Links must live up to their promises.
+     A link on the Explore Main page might pose a question, ≥What's the
+     most livable city in the US?" If the link takes viewers to Explore
+     Money, with no indication where to go to find the promised
+     information, theyπll be left feeling frustrated and confused.
+     Instead, the link should lead the viewer directly to the page that
+     contains the promised information.
+
+     Rule: The promised destination should be visible at all times to
+     avoid user error. Never link to a rotating stack.
+     When a destination is hidden behind a rotating stack, unless
+     viewers are focusing on the stack at the precise moment the
+     corresponding tile appears, they have no idea where to go.
+
+     Rule: When promoting an Explore category, use a general tease, not
+     a specific Web site. The predominant graphic should reference the
+     category. For example, "Today in Explore Money.≤
+     Sometimes, teases are designed to take the user to a general
+     Explore category, as opposed to a specific site within that
+     category. When that is the goal, the tease should make that intent
+     clear. For example, a tease for the Entertainment category might
+     read ≥Whatπs hot in Entertainment!≤ across the top in a large-size
+     font, followed by a graphic or some html text from sites within
+     the category. The strong verbal and visual reference cues viewers
+     that they will be taken to the general category rather than to a
+     specific site.
+
+     Rule: We are in the information-delivery business. Wherever
+     possible, we should take the viewer directly to the information
+     promised.
+     Avoid teases that link to teases that link to teases. In one
+     example, a tease in the home page linked to a tile in a category
+     front page, which in turn linked to a Spotlight that linked to
+     other sites. The viewer had to navigate a maze to find the
+     promised information.
+
+     Rule: Writing must pass the clarity test. Before submitting your
+     copy, ask yourself:
+     1. Does the tease clearly describe where the link will lead?
+     2. Does this link lead directly to the destination promised?
+     3. Is there any way the text might be misconstrued?
+
+     * And The Mother Of All Rules: Avoid Putting Barriers Between
+     Users And Content.
+
+     [back to Table of Contents]
+     ------------------------------------------------------------------
+
+     Personality and Tone guidelines
+
+     What Weπre About at WebTV:
+
+     Above all, weπre clear
+
+     Weπre concise
+     We make every word count. Our content moves the way a well-written
+     TV comedy script does: If a word doesnπt move the action forward,
+     itπs out of here.
+
+     Weπre consistent
+     Our viewers know that they can rely on us to bring them same
+     high-quality experience every day.
+
+     Weπre personal
+     Weπre not preachy. Our tone is conversational, friendly and
+     casual, as if we were talking comfortably to viewers in their
+     living room. Remember, though, that we are invited guests and must
+     behave accordingly. No profanity. No rude surprises. Letπs keep
+     our feet off the coffee table.
+
+     Weπre kind
+     We avoid being flip, sarcastic or hipper-than-thou.
+
+     Weπre intelligent, but not stuffy
+     We don't talk down to our viewers (or over their heads). We don't
+     state the obvious or ask rhetorical questions. We know our stuff.
+     We have great information to pass along, and we do so in an
+     engaging way. We want our viewers to trust us for accurate, usable
+     information.
+
+     Weπre great company
+     Weπre the friend everyone wants to hang out with. We're fun, we're
+     adventuresome, but weπre not obscure, cutesy, wordy or terminally
+     perky.
+
+     åWeπ talk to åYouπ
+     We address the audience personally and directly. We interact with
+     the viewer in the first-person plural (we) to the second person
+     (you).
+
+     åWeπ are åYourπ guides. Weπre here to deliver our viewers to
+     interesting and entertaining content. That is the aim of every
+     word we write.
+
+     Weπre active
+     We write in the active voice. The passive voice is not used by us.
+
+     Weπre timely, topical and accurate
+     WebTV is a timely, topical resource that our viewers can trust.
+     Our facts and our links are checked and double-checked for
+     accuracy. Our spelling and grammar are correct. We are precise,
+     rather than vague. We build interest by knowing exact dates, exact
+     amounts and fascinating anecdotes.
+
+     Weπre energy-efficient
+     We don't waste our viewers' time. We enhance it.
+
+     We cross-reference
+     We cross-reference content whenever possible, bringing viewers
+     back to our own content in Explore.
+
+     Weπre TV-centric
+     We love TV. We enhance our viewers' television-watching
+     experiences by finding a TV connection whenever possible.
+
+     Weπre non-techie
+     We love the Web, email and all the new technologies, but we donπt
+     dwell on the technical details. We donπt want to know what went
+     into the sausage--just how good it tastes.
+
+     Weπre not childish
+     Weπre as excited as kids about our service, our content and our
+     partners and we want that excitement to be contagious. But we
+     don't use exclamation points or capital letters to puff up our
+     copy. We know that our quality will create its own excitement.
+
+     We love hitting our target audience
+     We write for WebTV viewers, tailoring our style and tone
+     accordingly for maximum usability. Our marketing aims at
+     25-to-49-year-olds, and our average viewer is a 42-year-old man.
+
+     [back to Table of Contents]
+     ------------------------------------------------------------------
+
+     Legal guidelines for graphics
+
+     Graphics includes logos, photographs, and illustrations. The
+     possible sources include a website, hard copy (to be scanned), and
+     a stock photo or graphics service.
+
+     Graphics can be downloaded and used from a website ONLY if the
+     website belongs to an Explore Partner. For more information about
+     how partner graphics can be used, refer to
+     http://webhost-1/partner/legal.htm. If a graphic from a
+     non-partner site is desired, we need written permission in order
+     to use the graphic, even if we are using that graphic to link to
+     their site. Hard copy falls under the same distinction as graphics
+     from a website. We can scan graphics only with permission,
+     preferably from materials provided by the website.
+
+     Any use of graphics from a website or related hard copy must link
+     directly to the website. The graphics cannot be used as
+     illustrations for other purposes, nor can they promote other areas
+     of the service. There cannot be any intermediate links; e.g.,
+     linking from the home page to Explore to the website. The graphic
+     from the website must be a link to the website; it cannot merely
+     be an illustration in an article that links to the website.
+
+     The use of stock photos varies according to the stock photo
+     source. There are two important distinctions to be aware of when
+     using stock photos (or stock illustrations, or clip art): whether
+     or not the photos are royalty-free, and whether the use of the
+     photos is editorial or promotional. The question of whether we are
+     editorial or promotional is still unsettled.
+
+     [Use of stock photos within Explore is editorial provided the link
+     goes directly to the website that is illustrated by the stock
+     photo. If the photo is used to promote WebTV's own pages, then it
+     is promotional content. For instance, if a photo on the Explore
+     main page uses a stock photo of the Taj Mahal, and that photo
+     links to a site about the Taj Mahal, that is editorial usage. If
+     the main page photo links to Explore Travel, and within Explore
+     Travel there is an article about the Taj Mahal, then it is
+     promotional use, because the photo was used to promote Explore
+     Travel, not the Taj Mahal site.]
+
+     **OR**
+
+     Use of stock photos within Explore is editorial.
+
+     The distinction between editorial and promotional usage is
+     important both for reasons of pricing and credit. If usage is
+     editorial, then it is not necessary to have a release for any
+     people depicted in the photos. However, it is necessary to credit
+     the photographer and/or the stock photo agency. With promotional
+     use, it is not necessary to credit the photographer or the agency.
+     However, it is necessary to obtain releases for any models or
+     celebrities depicted in the photos.
+
+     The distinction can be thought of like this: If Michael Jordan's
+     photo is in the Chicago Tribune, the Tribune does not pay Jordan
+     for the use of his likeness. However, they do credit AP or UPI or
+     whoever took the photo. On the other hand, if Michael Jordan has
+     his likeness on a box of Wheaties, he is paid for the use of his
+     image≠but the photographer does not get a credit on the box of
+     cereal.
+
+     The method for crediting photographers and agencies is still
+     unsettled. Currently we are putting the credit on the image, which
+     is what is commonly done in print and on the web. Because of
+     NTSC's low resolution, this credit is illegible. The other option
+     is to include a list of credits under the Setup menu. This would
+     need to be updated for each new photo (possibly daily). Some
+     photographers or agencies may consider this "burying" the credit
+     and find it an unacceptable solution.
+
+     The problem of credits and releases can be avoided entirely by
+     using royalty-free photos only. However, celebrity photos can only
+     be obtained through a release, or through a PR news service
+     available through Presslink. Each agency at Presslink has
+     different regulations; read the license and pricing information
+     for each agency before purchase.
+
+     Legal guidelines for site logos:
+
+     The site logos are treated differently than other graphics. In
+     this case, the producer submits a request to partnerships that
+     they want to use a site's logo in the subcategory level of Explore
+     (this assumes that they have already checked the Content database
+     and confirmed that we don't have an agreement with this site
+     already). Partnerships verifies that listing this site in Explore
+     will not jeopardize partnership or ad sales negotiations. If it
+     does, Partnerships alerts the producer that it is inadvisable to
+     list the site at this time. If there is no conflict, then
+     Partnerships sends a letter to the site requesting permission to
+     use the logo or other identifying graphics from the site (and also
+     requesting a photoshop or eps version of the graphic). The letter
+     is worded in such a way that a lack of reply on the site's part is
+     de facto permission for us to use the logo.
+
+     If there is no reply after seven working days, or if permission is
+     granted, Partnerships alerts the producer that it is OK to list
+     that site with its logo. The producer then alerts Design to create
+     the site icon. If permission is denied, the producer can either
+     display the site with a generic icon, or choose not to display the
+     site.
+
+     If the site logo is displayed and then notice is received that
+     permission to use the logo is denied, or a cease and desist order
+     is received, then the logo (and if necessary, the link itself) is
+     removed from the system.
+
+     [back to Table of Contents]
+     ------------------------------------------------------------------
+
+     Graphics
+
+     Panels
+
+        o Should clearly indicate what is selectable.
+        o Graphics must not span across 2 selectable items
+        o Should contain not more than one head and one subhead.
+        o Selectable text must be clearly separated from other text, set off
+          by bullets or paragraphing (return, no indent).
+        o Text must be either left-aligned or centered, never ragged.
+        o Should not use more than 2 fonts in any panel
+
+     Consistent color:
+
+        o All content in an explore rotating tile must have the same
+          background color.
+
+     Consistent shading:
+
+        o 60% tiles must have highlight along left edge and shadow across
+          top. 40% tiles must have shadows along top and left.
+        o 20% tiles must have shadows along left edge of both tiles and a
+          shadow across the top of the upper 20% tile.
+        o Ad tiles must have shadow along the top as far as the right edge
+          of the 60% tile.
+
+     Rotation
+
+        o Rotation must stop: If the selection is placed over any rotating
+          tile, the rotation must stop until the selection is moved.
+        o Teasers must not link to rotating content
+
+     [back to Table of Contents]
+     ------------------------------------------------------------------
+
+     Style and Consistency In Tidbits and 20% Tiles
+
+     Tidbits are concise, but thereπs still plenty of room for
+     cleverness. Every tidbit should be brief but powerful. Each link
+     should tell viewers exactly where theyπre going to go. Be clever
+     but be clear; be descriptive rather than vague or obscure.
+
+     Every tidbit should end with a period, a question mark, or a
+     close-quote mark.
+
+     Discuss
+
+     Is Dr. Kevorkian a criminal?
+     Mercy-killing at talk.euthanasia.
+
+     Writer.com
+     Where writers and wannabe writers can talk.
+
+     Beware of rhetorical questions or judgmental statements. We lead,
+     but we donπt editorialize.
+
+     avoid: First they cloned sheep, then monkeys. whoπs next?
+
+     Thatπs a Fact
+
+     Only seven women have ever been on the FBIπs 10 Most Wanted list.
+
+     Six out of 10 whites approve of interracial marriage--Gallup Poll
+
+     Thatπs a Fact should be written in simple, declarative sentences.
+     Cite the source if thereπs room.
+
+     Hear Here
+     Hear Here should be written in simple, declarative sentences. Make
+     sure the audio site works before you link to a page. WebTV
+     supports wave, au, aiff, mpeg2 layer 3 and real audio. We do not
+     support liquid audio.
+
+     Energy-fused techno and hard-hitting beats for your dancing feet
+     at needledrop.com
+
+     Says Who?
+     åThe hardest thing in the world to understand is the income
+     tax.π--Albert Einstein
+
+     Always put quote marks around the quote. The period at the end of
+     the sentence goes inside the quote mark. Put a long dash
+     (option-shift-dash) before the name of the person who said the
+     pithy remark. Put a space before and after the long dash. Links
+     from the quote should be intuitive; for instance, this one could
+     link to the IRS.
+
+     Did You Know?
+
+     You can investigate a mutual fund online.
+
+     These should be statements that tell viewers about interesting and
+     useful things they can do online.
+
+     Game Time
+
+     Trust no one until you've played the X-files X-test.
+
+     Game Time should be written as a one-line teaser leading viewers
+     to an online game. It can be a question or statement that clearly
+     explains what the game is and what they should expect.
+
+     [back to Table of Contents]
+     ------------------------------------------------------------------
+
+     Spotlights
+
+     Spotlights are a cornerstone of the WebTV experience. There are as
+     many different kinds of spotlights as there are kinds of
+     programming categories.
+
+     By pointing the viewer to a well-chosen series of links,
+     Spotlights educate. They entertain. They are mission-oriented --
+     they provide answers to a question, they solve a problem, they
+     entice viewers to explore further.
+
+     Spotlights are *not* written because thereπs a space that needs
+     filling. Spotlights are *not* simply a list of Web sites.
+     Spotlights are *not* exercises in flashy writing style and deep
+     thought.
+
+     Spotlights have the same reasons for being as a news story or
+     feature or column. Each Spotlight gives us a chance to share our
+     expertise in picking great Web sites and our enthusiasm for the
+     Web. Each Spotlight brings the viewer into contact with valuable
+     nuggets of knowledge, insight, wisdom or wit, or, if weπre lucky,
+     all of the above.
+
+     Each Spotlight, in short, tells viewers something they didnπt know
+     before. Each Spotlight is in itself a terrific WebTV experience
+     that makes the viewer want more.
+
+     Linking from Spotlights:
+     1. Link destination should be clear (for instance, ≥restaurants≤
+     instead of ≥places to noshππ).
+     2. A link shouldnπt wrap from one line to the next, because then
+     it will look like two links. Check to see how your links display.
+
+     Spotlight Examples
+
+     No. 1
+     Have you ever wondered what it would be like to take a boat ride
+     down the Seine? Well, this just may be the time to take a trip to
+     Paris! The Eiffel Tower. The Champs Elysees. The cafes. Ah, the
+     City of Light!
+
+     One of the main attractions in Paris is the Louvre. This beautiful
+     museum was built centuries ago. It houses thousands of works of
+     art by some of the world's most famous artists. Check out the Mona
+     Lisa, or the Venus de Milo.
+
+     The Parisian architecture is sure to delight. The boulevards and
+     cafes are famous the world over. The beautiful and elegant
+     restaurants are sure to be enjoyed by any and all.
+
+     It is said that the bread in France is, well, the best thing since
+     sliced bread! Have a baguette and see for yourself!
+
+     Some people say that the Parisians can't STAND Americans. We don't
+     know if there's real truth to this stereotype, but it might help
+     to take a few French lessons before embarking on your trip. As
+     quick as you can say, "bonjour!" you'll be conversing with the
+     natives!
+
+     What makes this a weak Spotlight?
+
+     Let's look at this sentence by sentence:
+
+     "Have you ever wondered what it would be like to take a boat ride
+     down the Seine?"
+     There's a good chance the reader might say: "Well, no, actually I
+     haven't. I think I'll stop reading this right now and find
+     something a little more exciting to read, like Mike's Freaky Home
+     Page." Question lead-ins are fine in some instances, but it's
+     tempting to use them too often.
+
+     Well, this just may be the time to take a trip to Paris!
+     "Oh really? Can I go? Goody, goody, goody. (Don't tell the reader
+     when might or might not be a good time for him/her to take a
+     trip.)
+
+     The Eiffel Tower. The Champs Elysees. The cafes. Ah, the City of
+     Light!
+     Cliche landmarks, followed by another cliche. With such mundane
+     observations, even an exclamation point wonπt entice viewers to
+     click.
+
+     One of the main attractions in Paris is the Louvre.
+     Even if some viewers don't know what the Louvre is, a sentence
+     like this isn't going to interest them in it.
+
+     This beautiful museum was built centuries ago.
+     Beautiful? How so? What does it look like? And how many centuries
+     ago? Two? Two hundred? Vagueness will drive viewers away in
+     droves.
+
+     It houses thousands of works of art by some of the world's most
+     famous artists.
+     How many thousands? Three thousand? 999,000? What "works of art"?
+     What famous artists? Again, too vague.
+
+     The Parisian architecture is sure to delight.
+     Are you guaranteeing this? And just who is it supposed to delight?
+     (And why? You're not even telling me what it looks like.)
+
+     The boulevards and cafes are famous the world over.
+     If theyπre so famous, why do we have to tell the reader they are?
+     "Famous" is a boring description. Say why they're famous.
+
+     The beautiful and elegant restaurants are sure to be enjoyed by
+     any and all.
+     No more guarantees, please. And that passive voice makes sentences
+     needlessly wordy and hard to read.
+
+     It is said that the bread in France is--well, the best thing since
+     sliced bread!
+     Passive voice (it is said), corn, a clichÈ and an aren't-I-clever
+     exclamation point at the end.
+
+     Have a baguette and see for yourself!
+     That exclamation point again. And linking from åbaguetteπ wonπt
+     tell viewers what experience theyπre in for.
+
+     Some people say that the Parisians can't STAND Americans.
+     Avoid capital letters. Here, it feels juvenile.
+
+     We don't know if there's real truth to this stereotype, but it
+     might help to take a few French lessons before embarking on your
+     trip.
+     If we donπt know, letπs not say it
+
+     As quick as you can say "bonjour!" you'll be conversing with the
+     natives!
+     Gee! Is that another WebTV guarantee? Who knew conversing in
+     French was so easy? Besides, the correct word is ≥quickly.≤
+
+     No. 2
+     Just in time for the summer tourist season, Air France has done
+     something almost unheard of at peak travel times: lower its
+     airfares from major US destinations to Paris. And the city by the
+     Seine is bracing for the annual onslaught of camera-toting
+     tourists.
+
+     One of the hottest tickets this summer is the Picasso exhibit at
+     the Grand Palais. This showing of the Spanish master's portraits,
+     which the French Ministry of Culture is calling "a major
+     retrospective," runs through the early part of 1998. So Picasso
+     fans who can't make it this summer can still tempt themselves with
+     images of Paris in the fall.
+
+     The Musee d'Orsay has mounted a show of Rodin's sculptures. And on
+     the other side of the Champs Elysees, the 300-year old Louvre is
+     gleaming after the recent refurbishment of its baroque exterior.
+
+     But of course there's more to see in Paris than the museums. The
+     Eiffel Tower is standing as tall as ever and the restaurants and
+     cafes are bustling. Hotels fill up fast, so book early.
+
+     A French lesson is always a good idea if you're heading over to
+     the land of the Gauls. For those who already speak the language,
+     Yahoo! France can keep you current with up-to-the-minute news and
+     weather.
+
+     Whether you're planning a trip to Paris--or just visiting
+     virtually--bon voyage.
+
+     Why this one is better:
+
+     Just in time for the summer tourist season, Air France ...
+     The opening sentence does two things: lets viewers know theyπre
+     about to get current, up-to-date information, and talks about
+     something compelling--saving money.
+
+     One of the hottest tickets this summer...
+     Again, we're giving readers current, hot information. We're
+     providing genuine news.
+
+     ...the 300-year-old Louvre is gleaming after the recent
+     refurbishment of its baroque exterior.
+     A few well-placed adjectives tell the reader more about the Louvre
+     than simply that it's "famous."
+
+     But of course there's more to see in Paris than the museums
+     This paragraphπs big plus is the link to hotels--a hands-on useful
+     site for people thinking about a trip to Paris.
+
+     A French lesson . . .
+     The reader is spared the naive promise of "conversing with the
+     natives."
+
+     [back to Table of Contents]
+     ------------------------------------------------------------------
+
+     Commonly Used HTML Tags
+
+     line break
+     <br>
+
+     paragraph
+     <p>
+
+     bold
+     <b>text</b>
+
+     italics
+     <i>text</i>
+
+     emdash
+     option-shift-hyphen
+
+     link
+     <a href=≥http://www.rad.com≤>link</a>
+
+     center
+     <center>text</center>
+     html symbols
+
+     emdash: &#151;
+     tm: &#153
+     r in circle &#174;
+     copyright: &#169;
+
+     [back to Table of Contents]
+     ------------------------------------------------------------------
+
+     How to Write Good
+
+     Here are several very important but often forgotten rules of
+     English:
+
+     1. Avoid Alliteration. Always.
+     2. Prepositions are not words to end sentences with.
+     3. Avoid clichÈs like the plague. (Theyπre old hat.)
+     4. Employ the vernacular.
+     5. Eschew ampersands & abbreviations, etc.
+     6. Parenthetical remarks (however relevant) are unnecessary.
+     7. It is wrong to ever split an infinitive.
+     8. Contractions arenπt necessary.
+     9. Foreign words and phrases are not apropos.
+     10. One should never generalize I hate quotations. Tell me what
+     you know.
+     11. Comparisons are as bad as clichÈs.
+     12. Donπt be redundant; donπt use more words than necessary; itπs
+     highly
+     superfluous.
+     13. Profanity sucks.
+     14. Be more or less specific.
+     15. Understatement is always best.
+     16. Exaggeration is a billion times worse than understatement.
+     17. Analogies in writing are like feathers on a snake.
+     18. The passive voice is to be avoided.
+     19. Go around the barn at high noon to avoid colloquialisms.
+     20. Even if a mixed metaphor sings, it should be derailed.
+     21 Who needs rhetorical questions?
+     22. While a transcendent vocabulary is laudable, one must
+     nevertheless keep
+     incessant surveillance against such loquacious, effusive, voluble
+     verbosity
+     that the calculated objective of communication becomes ensconced
+     in
+     obscurity.
+     23. In a sentence, the nouns has to match the verbs.
+     24. Don't use no double negatives.
+     25. In writing, few things are, so to speak, more infuriating,
+     than, say, commas,
+     at least when there are too many of them, or when they should be,
+     say,
+     semicolons.
+     26. Proofread you work, so you don't leave some out or forget to
+     finish.
+     27. Run-on sentences are really bad because the reader saturates
+     and what
+     you really should be doing is using commas and semicolons and even
+
+     periods to break the sentence up into more digestible chunks.
+     28. To have been using excessively complex verb constructions, to
+     have been
+     bopping the literary baloney.
+     29. A friend I spoken with recently told me he been forgetting his
+     helper verbs.
+
+     [back to Table of Contents]
+     ------------------------------------------------------------------
+
+     Style Guide FAQs
+
+     Q: Does one always refer to explore as "explore," or might one
+     also call it "the explore directory"? should one rather use "the
+     directory within explore"?
+     A: Call it Explore.
+
+     Q: Should all trademark names be followed by the TM mark?
+     A: In protecting WebTV trademarks, adhere to our corporate
+     guidelines. Other companiesπ trademark names should be printed as
+     they prefer them, but not with a tm appended.
+
+     Q: What's the angle on capitalizing, say "favorites"?
+     A: Our sections of the service, such as Favorites and Mail, should
+     be capitalized.
+
+     Please address questions to styleguide@corp.webtv.net

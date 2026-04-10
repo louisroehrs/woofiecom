@@ -1,0 +1,60 @@
+<!-- This document was created with HomeSite 2.5 -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<HTML>
+<HEAD>
+	<TITLE>The WebTV Tricks, Bugs, and Workarounds File</TITLE>
+</HEAD>
+
+<BODY>
+
+<H2>Image Replacement Problems</H2>
+<PRE>
+//  ********function SeriousLoad explanation...
+//	Big work around an image reload problem.  Things work fine the first time.
+//	When the game is reloaded, the image replacement problems in WebTV rear their big ugly heads
+//	and cause problems especially when using back or rentering the game.
+//  The trick is to *fully* load the game twice.
+//	The big drawback is that the download time doubles...WAHHHHH!
+//  Note that the Restart Button works with this as well. 	 -->
+
+
+	function SeriousLoad() {
+		if (getCookie("reloaded")!="true" ) {
+			var today = new Date()
+	        var expires = new Date()
+			expires.setTime(today.getTime() + 60*60*24*365)
+			setCookie("reloaded","true",expires)
+			window.status="Loading MakeAMatch..."
+			location.reload()
+		}
+		else {
+		    var today = new Date()
+	        var expires = new Date()
+			expires.setTime(today.getTime() + 60*60*24*365)
+			setCookie("reloaded","false",expires)
+		}
+	}
+	
+	At end of file I put this
+
+	&lt;SCRIPT Language="JavaScript"&gt;
+		SeriousLoad();
+	&lt;/SCRIPT&gt;
+
+	Another workaround that does not require reloading is called using
+	images at render time that you never use for replacement later.  If an
+	image is used to layout HTML (i.e. in background or img src tags), don't
+	even think of using it as the right hand of an object.src assignment.
+
+</PRE>
+
+<H2>Small, Rich 3D graphics.</H2><IMG hspace=6 align=left SRC="images/cover55.gif" WIDTH=55 HEIGHT=55 BORDER=0>
+By taking advantage of WebTV's smoothing of graphics with
+single pixel wide lines, you can make very small 3D graphics with
+using a small set of colors.  Look at the image below to see how
+the thick and thin lines render as a gradient on WebTV.  This graphic
+has a total of three colors.
+
+</BODY>
+</HTML>
