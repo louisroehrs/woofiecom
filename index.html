@@ -46,6 +46,117 @@ if ( (navigator.appName != "Microsoft Internet Explorer") && (navigator.appVersi
 <link rel="stylesheet" id="page" href="woofie.css" type="text/css">
 <script language=Javascript src="theme.js"></script>
 
+<style>
+/* Weird Al Modal */
+#weirdalBtn {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #cc0000 0%, #ff6600 50%, #ffcc00 100%);
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  font-weight: bold;
+  text-align: center;
+  border: 3px solid #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 3px #000;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+  animation: weirdalPulse 2.5s ease-in-out infinite;
+  box-sizing: border-box;
+  margin: 10px 0;
+}
+#weirdalBtn:hover {
+  background: linear-gradient(135deg, #ff6600 0%, #ffcc00 50%, #cc0000 100%);
+  transform: scale(1.02);
+}
+@keyframes weirdalPulse {
+  0%   { box-shadow: 0 4px 14px rgba(255,102,0,0.5); }
+  50%  { box-shadow: 0 4px 28px rgba(255,204,0,0.9); }
+  100% { box-shadow: 0 4px 14px rgba(255,102,0,0.5); }
+}
+
+/* Modal overlay */
+#weirdalOverlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.82);
+  z-index: 9999;
+  overflow-y: auto;
+}
+#weirdalModal {
+  background: #0a0a2e;
+  border: 3px solid #ffcc00;
+  border-radius: 10px;
+  max-width: 720px;
+  margin: 40px auto;
+  padding: 30px 34px 34px 34px;
+  position: relative;
+  color: #f0f0f0;
+  font-family: Arial, Helvetica, sans-serif;
+  box-shadow: 0 0 60px rgba(255,204,0,0.4);
+}
+#weirdalModal h2 {
+  color: #ffcc00;
+  font-size: 22px;
+  margin: 0 0 6px 0;
+  text-align: center;
+}
+#weirdalModal .subtitle {
+  color: #ff9900;
+  font-size: 13px;
+  text-align: center;
+  margin-bottom: 18px;
+  font-style: italic;
+}
+#weirdalModal p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #8de;
+  margin: 0 0 14px 0;
+}
+
+#weirdalModal .highlight2 {
+  color: #ffcc00;
+  font-weight: bold;
+  background-color: black;
+}
+
+#weirdalModal .video-wrap {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border: 2px solid #ffcc00;
+  border-radius: 6px;
+  margin: 20px 0 10px 0;
+}
+#weirdalModal .video-wrap iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+#weirdalClose {
+  position: absolute;
+  top: 12px; right: 16px;
+  background: #ffcc00;
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  width: 30px; height: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 30px;
+  text-align: center;
+}
+#weirdalClose:hover { background: #fff; }
+</style>
 
 </HEAD>
 
@@ -55,7 +166,6 @@ if ( (navigator.appName != "Microsoft Internet Explorer") && (navigator.appVersi
 
 
 
-<FORM ACTION="http://www.amazon.com/exec/obidos/external-search" METHOD="GET">
 <CENTER>
 <table width=96% cellspacing=5 cellpadding=0 border=0>
 
@@ -88,6 +198,17 @@ if ( (navigator.appName != "Microsoft Internet Explorer") && (navigator.appVersi
    </TD> 
 </TR>
 <!-- end title block -->
+
+<!-- Weird Al Yankovic story button -->
+<TR>
+  <TD COLSPAN="2" style="padding:6px 4px 2px 4px;">
+    <button id="weirdalBtn" onclick="document.getElementById('weirdalOverlay').style.display='block'">
+      &#127928; This Site Inspired Weird Al Yankovic's "White &amp; Nerdy" &mdash; Click to Find Out!
+    </button>
+  </TD>
+</TR>
+<!-- end Weird Al button -->
+
 <TR>
 <!-- begin right column -->
 
@@ -300,7 +421,8 @@ case study casestudy -->
       <td class=panelheader>&nbsp;Curl Up With a New Book Today</TD>
    </TR>
    <TR>
-      <TD BGCOLOR="#000000">
+     <TD BGCOLOR="#000000">
+       <FORM ACTION="http://www.amazon.com/exec/obidos/external-search" METHOD="GET">
 	<TABLE BORDER="0" CELLPADDING="4" CELLSPACING="0" WIDTH="176" BGCOLOR="#000000">
 	   <TR>
 		<TD WIDTH="53%" ALIGN="CENTER" VALIGN="TOP">
@@ -319,9 +441,11 @@ case study casestudy -->
                 </CENTER>
                 </TD>
    	 </TR>
-     </TABLE>
+  </TABLE>
+  </form>
      </TD>
-     </TR>
+   </TR>
+   
      </TABLE>
 <!-- end right column  table-->
    </TD>
@@ -357,9 +481,54 @@ google_color_url = "0066CC";
 </TD></TR></table>
 </CENTER>
 
-</FORM>
 <a href='javascript:setTheme("ttx");'>ttx</a> <a href='javascript:setTheme("woofie")'>woofie</a>
 
+<!-- Weird Al Yankovic Story Modal -->
+<div id="weirdalOverlay" onclick="if(event.target===this)this.style.display='none'">
+  <div id="weirdalModal">
+    <button id="weirdalClose" onclick="document.getElementById('weirdalOverlay').style.display='none'" title="Close">&times;</button>
+    <h2>&#127928; How Woofie.com Became Part of Music History</h2>
+    <div class="subtitle">The story of the little website that launched a hit song &mdash; the original influencer long before "influencer culture"</div>
+
+    <p>
+      In the early days of the web, <span class="highlight2">woofie.com</span> was already a standout &mdash; a Silicon Valley hub
+      for internet entertainment, WebTV games, and cutting-edge web development built by Louis Roehrs at
+      Big Woofie Studios. This was the era when having a great domain and dog-oriented website for web development and knowing how to build for the web
+      made you a genuine tastemaker. Influencers existed; they just hadn't invented the word yet.
+    </p>
+
+    <p>
+      Then the call came in. Apparently <span class="highlight2">Weird Al Yankovic's people reached out wanting to buy woofie.com.</span>
+      They saw the online trends developing and found the perfect target to mock.  A white, nerdy guy and his website showing he wrote HTML for all his friends.  They found the website makers online resume (safe to do back then and LinkedIn was non-existent) and went to town. The script was there, it just needed music and a  music video parody mocking this guy and his website,  Louis said no. Woofie.com wasn't for sale.
+    </p>
+
+    <p>
+      So they improvised. In the 2006 smash hit <span class="highlight2">"White &amp; Nerdy"</span> &mdash; a parody of
+      <a href="https://www.youtube.com/watch?v=CtwJvgPJ9xw" style="color:inherit;">Chamillionaire's "Ridin'"</a> that shot to <span class="highlight2">#9 on the Billboard Hot 100</span>, the highest ever
+      charted single for Weird Al at the time &mdash; the music video prominently features a website called
+      <span class="highlight2">foofie.com</span>, a direct nod to this website.
+    </p>
+
+    <p>
+      That's the woofie.com origin story: a Silicon Valley web pioneer who was building internet culture
+      before the platforms existed to describe it, inspiring one of the most beloved comedy music videos
+      of the 2000s &mdash; simply by building woofie.com back when domains were free.
+    </p>
+    <p>Can you guess which facts were the same and which were inferred from the resume?</p>
+    <div class="video-wrap">
+      <iframe
+        src="https://www.youtube.com/embed/N9qYF9DZPdw?si=E4k9JsTYZY7X2B2P"
+        title="Weird Al Yankovic - White &amp; Nerdy (Official Music Video)"
+        allowfullscreen
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+      </iframe>
+    </div>
+    <p style="text-align:center;font-size:12px;color:#999;margin-top:8px;">
+      Keep an eye out for foofie.com in the video &mdash; the domain that could have been woofie.com.
+    </p>
+  </div>
+</div>
+<!-- end Weird Al modal -->
 
 </BODY>
 
