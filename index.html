@@ -47,6 +47,20 @@ if ( (navigator.appName != "Microsoft Internet Explorer") && (navigator.appVersi
 <script language=Javascript src="theme.js"></script>
 
 <style>
+/* Weird Al button reveal wrapper */
+#weirdalBtnWrap {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.7s ease-in-out, opacity 0.7s ease-in-out, padding 0.7s ease-in-out;
+  padding: 0 4px;
+}
+#weirdalBtnWrap.revealed {
+  max-height: 80px;
+  opacity: 1;
+  padding: 6px 4px;
+}
+
 /* Weird Al Modal */
 #weirdalBtn {
   display: block;
@@ -66,7 +80,7 @@ if ( (navigator.appName != "Microsoft Internet Explorer") && (navigator.appVersi
   box-shadow: 0 4px 14px rgba(0,0,0,0.5);
   animation: weirdalPulse 2.5s ease-in-out infinite;
   box-sizing: border-box;
-  margin: 10px 0;
+  margin: 0;
 }
 #weirdalBtn:hover {
   background: linear-gradient(135deg, #ff6600 0%, #ffcc00 50%, #cc0000 100%);
@@ -201,10 +215,12 @@ if ( (navigator.appName != "Microsoft Internet Explorer") && (navigator.appVersi
 
 <!-- Weird Al Yankovic story button -->
 <TR>
-  <TD COLSPAN="2" style="padding:6px 4px 2px 4px;">
-    <button id="weirdalBtn" onclick="document.getElementById('weirdalOverlay').style.display='block'">
-      &#127928; This Site Inspired Weird Al Yankovic's "White &amp; Nerdy" &mdash; Click to Find Out!
-    </button>
+  <TD COLSPAN="2" style="padding:0;">
+    <div id="weirdalBtnWrap">
+      <button id="weirdalBtn" onclick="document.getElementById('weirdalOverlay').style.display='block'">
+        &#127928; This Site Inspired Weird Al Yankovic's "White &amp; Nerdy" &mdash; Click to Find Out!
+      </button>
+    </div>
   </TD>
 </TR>
 <!-- end Weird Al button -->
@@ -482,6 +498,12 @@ google_color_url = "0066CC";
 </CENTER>
 
 <a href='javascript:setTheme("ttx");'>ttx</a> <a href='javascript:setTheme("woofie")'>woofie</a>
+
+<script>
+setTimeout(function() {
+  document.getElementById('weirdalBtnWrap').classList.add('revealed');
+}, 5000);
+</script>
 
 <!-- Weird Al Yankovic Story Modal -->
 <div id="weirdalOverlay" onclick="if(event.target===this)this.style.display='none'">
