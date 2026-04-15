@@ -14,52 +14,104 @@
 What's New, Navigational links, Feature links, Quick Hits, and Picture Contest.  When registered user
 logs in, page will be personalized to show various info dependent on profile selection.">
 
+<style>
+  body {
+      background-color: white;
+  }
 
+  
+  #header {
+      position: relative;
+      top: 0px;
+      left: 0px;
+  }
+  #mainthing {
+      position: relative;
+  }
 
-<script language="JavaScript1.2">
+  #shakethis {
+      position: absolute;
+      top:0px;
+      left: 0px;
+      width:100%
+  }
+
+  #keepinplace {
+      position: absolute;
+      top:1000px;
+      left: 0px;
+      width:100%
+  }
+
+</style>
+
+<script language="JavaScript">
 	<!-- by Big Woofie http://www.woofie.com -->
 
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  var moves = [];
+  var moveidx = 0;
+  
+  function moveBy(x,y) {
+    moves.push([x*5,y*5]);
+  }
+
+  function scootIt(timestamp, id) {
+    console.log("id   " + id);
+    cawindow = document.getElementById(id);
+    const rect = cawindow.getBoundingClientRect();
+
+    cawindow.style.top = (moves[moveidx][1]) +"px";
+    cawindow.style.left = (moves[moveidx][0] ) +"px";
+    console.log("scoot" + moveidx + " " + rect.top + " " );
+    moveidx += 1;
+    if (moveidx < moves.length) {
+      requestAnimationFrame((timestamp) => scootIt(timestamp,id));
+    }
+  }
+
+  
 	function shake_xy(n) {
-	if (self.moveBy) {
 		for (i = 10; i > 0; i--) {
 			for (j = n; j > 0; j--) {
-			self.moveBy(0,i);
-			self.moveBy(i,0);
-			self.moveBy(0,-i);
-			self.moveBy(-i,0);
-		    }
-	      }
+		  	moveBy(0,j);
+  			moveBy(j,0);
+  			moveBy(0,-j);
+  			moveBy(-j,0);
+		  }
+	  }
 	 	for (j = 2; j > 0; j--) {
-		self.moveBy(0,i);
-		self.moveBy(i,0);
-		self.moveBy(0,-i);
-		self.moveBy(-i,0);
-	    }
+ 	 	 moveBy(0,j);
+ 		 moveBy(j,0);
+		 moveBy(0,-j);
+		 moveBy(-j,0);
+     
+	  }
+    requestAnimationFrame((timestamp) => scootIt(timestamp,"header"));
+    requestAnimationFrame((timestamp) => scootIt(timestamp,"shakethis"));
 
-	   }
-	setTimeout("powerdown()",2000);
+	  setTimeout("powerdown()",5000);
 	}
 
 	function shake_x(n) {
-	if (self.moveBy) {
 		for (i = 10; i > 0; i--) {
 			for (j = n; j > 0; j--) {
-			self.moveBy(i,0);
-			self.moveBy(-i,0);
+			moveBy(i,0);
+			moveBy(-i,0);
 		    }
 	      }
-	   }
 	}
 
 	function shake_y(n) {
-	if (self.moveBy) {
 		for (i = 10; i > 0; i--) {
 			for (j = n; j > 0; j--) {
-			self.moveBy(0,i);
-			self.moveBy(0,-i);
+			moveBy(0,i);
+			moveBy(0,-i);
 		    }
 	      }
-	   }
 	}
 
 	function powerdown() {
@@ -72,600 +124,1342 @@ logs in, page will be personalized to show various info dependent on profile sel
 		document.vlinkColor = "0000ff";
 		document.linkColor = "0000ff";
 		document.fgColor = "0000ff";
-		setTimeout("self.shake_xy(10)",5000);
+		setTimeout("shake_xy(10)",5000);
 	}
-	//-->
-</script>
-
-<script LANGUAGE="JavaScript"> 
-<!-- 
-style(); 
-
-//-->
 
 </script>
+
+
+<link rel="preload" href="https://www.ca.gov/fonts/CaGov.woff2" as="font" type="font/woff2" crossorigin="">
+
+
+<link rel="stylesheet" href="https://www.ca.gov/css/cagov-custom.min.css?vjan26a">
 
 <META content="MSHTML 5.00.2919.6307" name=GENERATOR></HEAD>
 <BODY bgColor=#ffffff leftMargin=0 topMargin=0 MARGINHEIGHT="0" 
 MARGINWIDTH="0" onLoad="powerup();"><A name="PageTop"></A><!-- OPEN PAGE TABLE FOR CENTERING -->
-<TABLE align="center" border="0" cellPadding="0" cellSpacing="0" width="100%">
-  <TBODY>
-  <TR>
-    <TD align="middle">
-   	  <!-- HEADER -->
-	  <!-- Include header file which starts and end with the tags <TABLE> and </TABLE> respectively -->
-	  
+<div id="gocago">
+<header id="header" class="global-header fixed">
+      <div id="skip-to-content">
+        <a href="#main-content">Skip to Main Content</a>
+      </div>
+      <!-- Utility header structural component -->
+<div class="utility-header d-print-none" data-nosnippet>
+  <div class="container">
+    <div class="flex-row">
+      <div class="social-media-links align-items-start">
+        <div class="official-collapsible-content">
+          <button
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseOficial"
+            aria-expanded="false"
+            aria-controls="collapseOficial"
+            class="btn-official mt-1 gray-900 color-black-hover">
+            <span class="underline">Official California website</span>
+            <span class="ca-gov-icon-caret-up" aria-hidden="true"></span>
+            <span class="ca-gov-icon-caret-down" aria-hidden="true"></span>
+          </button>
+          <div class="collapse" id="collapseOficial">
+            <div class="font-size-13 gray-900 p-y ps-1 pe-2">
+              <span class="bold"
+                >California government websites use .ca.gov </span
+              ><br />A .ca.gov website is part of California’s government.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="settings-links ms-auto align-items-start pt-2 line-height-1-6em">
+        <a
+          href="#googtrans(en|es)"
+          class="m-l-0 underline cursor-pointer"
+          lang="es"
+          hreflang="es"
+          translate="no"
+          rel="alternate"
+          >Español</a
+        >
+        <a
+          href="#googtrans(en|ko)"
+          lang="ko"
+          hreflang="ko"
+          translate="no"
+          rel="alternate"
+          class="underline cursor-pointer"
+          >한국어</a
+        >
 
-<!--InScriptLibNow file="functions_misc.jsp" -->
+        <a
+          href="#googtrans(en|tl)"
+          lang="tl"
+          hreflang="tl"
+          translate="no"
+          rel="alternate"
+          class="underline cursor-pointer"
+          >Tagalog</a
+        >
+        <a
+          href="#googtrans(en|vi)"
+          lang="vi"
+          hreflang="vi"
+          translate="no"
+          rel="alternate"
+          class="underline cursor-pointer"
+          >Tiếng Việt</a
+        >
+        <a
+          href="#googtrans(en|zh-TW)"
+          lang="zh-hant"
+          hreflang="zh-hant"
+          translate="no"
+          rel="alternate"
+          class="underline cursor-pointer"
+          >繁體中文</a
+        >
+        <a class="translate notranslate pos-rel top-minus-2" href="/translate/"
+          ><span class="ca-gov-icon-globe" aria-hidden="true"></span
+          ><span class="sr-only">Translate</span></a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Site header (branding) structural component -->
+<div class="section-default">
+  <div class="branding">
+    <div class="header-organization-banner">
+      <a href="/">
+        <div class="logo-assets">
+          <img
+            src="https://www.ca.gov/images/CAgov-logo.svg?v7F3A"
+            class="logo-img"
+            alt="CA.gov official logo" />
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+<!-- Mobile controls structural compoent -->
+<div class="mobile-controls">
+  <div class="mobile-control-group main-nav-icons">
+    <button
+      id="nav-icon3"
+      class="mobile-control toggle-menu"
+      aria-expanded="false"
+      aria-controls="navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span class="sr-only">Menu</span>
+    </button>
+  </div>
+</div>
+<div class="navigation-search full-width-nav container">
+        <div id="head-search" class="search-container featured-search">
+          <div class="d-block d-lg-none">
+            <a href="/" class="drawer-logo-link first-level-link">
+              <img
+                src="https://www.ca.gov/images/CAgov-logo.svg?v7F3A"
+                alt="CA.gov official logo"
+                class="drawer-logo mb-4" />
+            </a>
+          </div>
+<!-- Search structural component -->
+<div class="container">
+  <form id="Search" class="pos-rel" action="/search/">
+    <span class="sr-only" id="SearchInput">Custom Google Search</span>
+    <input
+      type="search"
+      name="q"
+      aria-labelledby="SearchInput"
+      placeholder="Search"
+      class="search-textfield" />
+    <button type="submit" class="gsc-search-button">
+      <span class="ca-gov-icon-search" aria-hidden="true"></span>
+      <span class="sr-only">Submit</span>
+    </button>
+    <div class="close-search-btn">
+      <button
+        class="close-search gsc-clear-button border-0 bg-transparent pos-rel"
+        type="reset">
+        <span class="sr-only">Close</span>
+      </button>
+    </div>
+  </form>
+</div>
+</div>
+        <!-- Site navigation structural component -->
+<nav
+  id="navigation"
+  class="main-navigation dropdown"
+  aria-label="Main navigation">
+  <ul id="nav_list" class="top-level-nav">
+    <li class="nav-item">
+      <a
+        class="first-level-link"
+        href="/services/">
+        Services
+      </a>
+    </li>
+    <li class="nav-item">
+      <a
+        class="first-level-link"
+        href="/departments/">
+        Departments
+      </a>
+    </li>
+    <li class="nav-item">
+      <a
+        class="first-level-link"
+        href="/about-california/">
+        About California
+      </a>
+    </li>
+    <li class="nav-item">
+      <a
+        class="first-level-link"
+        href="/support/">
+        Get help
+      </a>
+    </li>
+  </ul>
+</nav>
+</div>
+    </header>
+<!-- Main content -->
+<div id="mainthing">
+<div id="main-content" class="main-content">
+  <main class="main-primary" id="main">
+<div id="shakethis" class="header-banner hidden-print">
+  <div class="container" >
+    <div class="row">
+      <div class="col-lg-6 my-auto py-5">
+        <h1 class="color-white h2 mt-0 m-b-lg pe-lg-5">
+          Find government services and information
+        </h1>
 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" width="763">
-         <tbody>
-            <tr>
-               <td bgcolor="#990000" width="10">
-                  <img alt=" " border="0" height="20" src="http://www.ca.gov/portal/images/spacer.gif" width="10">
-               </td>
-               <td align="left" bgcolor="#990000">
-                  <p>
-                      <a class=whiteContent href="myca_homepage.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0">Home</a>&nbsp;&nbsp;&nbsp;<a class="whiteContent" href="myca_help.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&sFileName=Technical+Help">Help</a>&nbsp;&nbsp;&nbsp;<a class= "whiteContent" href="myca_sitemap.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0">SiteMap</a>&nbsp;&nbsp;&nbsp;<a class=whiteContent href="myca_reg_step1.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0">Register</a>&nbsp;&nbsp;&nbsp;<a class=whiteContent href="myca_login.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0">Login</a>&nbsp;&nbsp;&nbsp;
-                  </p>
-               </td>
-               <td align="right" bgcolor="#990000" class="whiteContent">
-                  Tuesday, April 17, 2001&nbsp;&nbsp;&nbsp;
-               </td>
-               <td bgcolor="#990000" width="10">
-                  <img alt=" " border="0" height="20" src="http://www.ca.gov/portal/images/spacer.gif" width="10">
-               </td>
-            </tr>
-            <!--<TR>
-                      <TD bgColor=#990000 colSpan=4></td><IMG alt=" " border="0" height="2" 
-                        src="http://www.ca.gov/portal/images/spacer.gif" 
-            width="2">
-			</TD>
-			</TR>-->
-         </tbody>
-      </table>
-     
-	  <!-- CALIFORNIA BANNER -->
-      <TABLE border="0" cellPadding="0" cellSpacing="0" width="763">
-        <TBODY>
-        <TR>
-          <TD align=right><IMG alt="Welcome to California, picture montage consisting of California grapes, cable car, PDA, San Diego skyline, Hollywood sign, and Monterey Cypress Tree" 
-		  border="0" height="54" src="http://www.ca.gov/portal/images/banner.jpg" 
-            width="763"></TD>
-			</TR>
-        <TR>
-          <TD bgColor="#ffffff"><IMG alt=" " border="0" height="2" 
-            src="http://www.ca.gov/portal/images/spacer.gif" 
-      width="2"></TD>
-	  </TR>
-	  </TBODY>
-	  </TABLE>
-	  <!-- END CALIFORNIA BANNER -->
+        <form class="pos-rel" action="/search/" role="search">
+          <span class="sr-only" id="ServiceSearch">Search for a service</span>
+          <div class="d-flex">
+            <input
+              type="search"
+              name="q"
+              placeholder="Search CA.gov"
+              aria-labelledby="ServiceSearch"
+              class="height-50 rounded-4 border-0 flex-grow-1 p-l webkit-appearance-none" />
+            <button
+              type="submit"
+              class="border-0 rounded-4 bg-white bg-gray-50-hover right-sm pos-rel width-50 webkit-appearance-none p-x-0">
+              <span
+                class="ca-gov-icon-search font-size-25 gray-900"
+                aria-hidden="true"></span>
+              <span class="sr-only">Submit</span>
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-6 m-0 p-0 my-auto">
+        <img
+          class="img-fluid d-none d-lg-block"
+          loading="lazy"
+          src="https://www.ca.gov/images/main-banner.svg"
+          style="aspect-ratio:604/440"
+          alt="A California beach at sunset showing rock formations on the sand." />
+      </div>
+    </div>
 
-	  <!-- END HEADER -->
-      <TABLE align="center" border="0" cellPadding="0" cellSpacing="0" width="763">
-        <TBODY>
-		
-		<!-- MIDDLE SECTION starts w/ <TR> -->
-        <TR>
-		  <!--LEFT HAND COLUMN starts w <TD> -->
-          <TD bgColor="#cccccc" vAlign="top" width="160">
-		    
-			<TABLE bgColor="#cccccc" border="0" cellPadding="0" cellSpacing="0" 
-            width="160">
-              <TBODY>
-              <TR>
-                <TD width="10"><IMG alt=" " border="0" height="10" 
-                  src="http://www.ca.gov/portal/images/spacer.gif" width="10"></TD>
-                <TD bgColor="#cccccc" vAlign="top" width="140">
-				  <!-- LEFT NAVIGATION -->
-                  <!-- Include Left Nav file which starts and end with the tags <TABLE> and </TABLE> respectively -->
-				  
+    <div class="row la-fires-container">
+      <div class="col-lg-7 m-t-sm">
+        <div
+          class="bg-transparent p-a-md m-b-lg brd-solid-2 border-white rounded">
+          <h2 class="lead font-weight-700 text-white m-t-0 m-b-0">
+            Get disaster help
+          </h2>
+          <p class="text-white m-t-md">
+            Get
+            <a
+              href="/topics/disaster-recovery/"
+              class="text-white color-s1-hover no-underline-hover"
+              >what you need to recover</a
+            >, like food, shelter, cash assistance, replacement documents, and
+            rebuilding help.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="keepinplace">
+<div  class="bg-p2-darkest section-primary">
+  <div class="container p-y-lg">
+    <h2 class="h3 mt-0">Popular services</h2>
+
+    <div class="d-flex gap-3 flex-wrap">
+      <h3 class="m-a-0">
+        <a
+          class="btn btn-outline-light btn-hover rounded-5"
+          href="/departments/220/services/1194/"
+          >Real ID/license</a
+        >
+      </h3>
+      <h3 class="m-a-0">
+        <a
+          class="btn btn-outline-light btn-hover rounded-5"
+          href="/departments/176/services/52/"
+          >Birth certificates</a
+        >
+      </h3>
+      <h3 class="m-a-0">
+        <a
+          class="btn btn-outline-light btn-hover rounded-5"
+          href="/departments/236/services/33/"
+          >Check your refund</a
+        >
+      </h3>
+      <h3 class="m-a-0">
+        <a
+          class="btn btn-outline-light btn-hover rounded-5"
+          href="/departments/193/services/15/"
+          >Traffic tickets</a
+        >
+      </h3>
+      <h3 class="m-a-0">
+        <a
+          class="btn btn-outline-light btn-hover rounded-5"
+          href="/departments/287/services/25/"
+          >Business license</a
+        >
+      </h3>
+      <h3 class="m-a-0">
+        <a
+          class="btn btn-outline-light btn-hover rounded-5"
+          href="/departments/287/services/26/"
+          >Seller’s permit</a
+        >
+      </h3>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2>Popular topics</h2>
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <a href="/topics/dmv-auto/" class="link-grid"
+        ><h3 class="m-a-0 lead bold">DMV/Auto</h3></a
+      >
+    </div>
+    <div class="col-md-4 mb-4">
+      <a href="/topics/personal-records/" class="link-grid"
+        ><h3 class="m-a-0 lead bold">Personal records</h3></a
+      >
+    </div>
+    <div class="col-md-4 mb-4">
+      <a href="/topics/businesses/" class="link-grid"
+        ><h3 class="m-a-0 lead bold">Businesses</h3></a
+      >
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <a href="/topics/jobs/" class="link-grid"
+        ><h3 class="m-a-0 lead bold">Jobs and unemployment</h3></a
+      >
+    </div>
+    <div class="col-md-4 mb-4">
+      <a href="/topics/assistance/" class="link-grid"
+        ><h3 class="m-a-0 lead bold">Social services</h3></a
+      >
+    </div>
+    <div class="col-md-4 mb-4">
+      <a href="/topics/taxes/" class="link-grid"
+        ><h3 class="m-a-0 lead bold">Taxes</h3></a
+      >
+    </div>
+  </div>
+  <div class="pt-2 p-b-lg">
+    <a
+      href="/topics/"
+      class="btn btn-primary btn-lg transform-scale-1_05--hover transition-0_3 p-x-md rounded-5"
+      >View all topics</a
+    >
+  </div>
+</div>
+
+<!-- CA Highlights-->
+<div class="container p-b-lg">
+  <h2>California highlights</h2>
+  <div class="row p-b-md">
+    <div class="col-md-4">
+      <article
+        class="pos-rel h-100 d-flex flex-column transform-scale-1_05--hover transition-0_3">
+        <figure
+          class="pos-rel border-0 pb-5 mb-5 pb-xl-5 mb-xl-4 pb-lg-5 mb-lg-4 pb-md-4 mb-md-4">
+          <img
+            src="https://www.ca.gov/images/highlight-1.webp"
+            loading="lazy"
+            class="img-fluid p-a pos-abs absolute-centered-x width-80pct square"
+            alt="A light skinned white man and woman look at photography displays at an exhibit at the SF MOMA." />
+        </figure>
+        <div
+          class="bg-white bg-gray-50-hover text-center p-t-xxl p-x-md p-b-md  brd-solid-1 brd-gray-200 rounded-10 h-100">
+          <h3 class="h4 m-b text-left">
+            <a
+              href="https://www.visitcalifornia.com/places-to-visit/"
+              class="link-before no-underline">
+              Places to visit</a
+            >
+          </h3>
+          <p class="m-b text-left gray-900">
+            Discover places to visit and learn about California's various
+            regions and lively cities.
+          </p>
+        </div>
+      </article>
+    </div>
+    <div class="col-md-4">
+      <article
+        class="pos-rel h-100 d-flex flex-column transform-scale-1_05--hover transition-0_3">
+        <figure
+          class="pos-rel border-0 pb-5 mb-5 pb-xl-5 mb-xl-4 pb-lg-5 mb-lg-4 pb-md-4 mb-md-4">
+          <img
+            src="https://www.ca.gov/images/highlight-2.webp"
+            loading="lazy"
+            class="img-fluid p-a pos-abs absolute-centered-x width-80pct square"
+            alt="Waves flow out from an enclave surrounded by rock formations at Julia Pfeiffer Beach in the daytime." />
+        </figure>
+        <div
+          class="bg-white bg-gray-50-hover text-center p-t-xxl p-x-md p-b-md  brd-solid-1 brd-gray-200 rounded-10 h-100">
+          <h3 class="h4 m-b text-left">
+            <a
+              href="https://www.parks.ca.gov/Find-a-Park"
+              class="link-before no-underline">
+              State parks</a
+            >
+          </h3>
+          <p class="m-b text-left gray-900">
+            Visit California's state parks. They offer diverse, natural,
+            cultural, and recreational resources.
+          </p>
+        </div>
+      </article>
+    </div>
+    <div class="col-md-4">
+      <article
+        class="pos-rel h-100 d-flex flex-column transform-scale-1_05--hover transition-0_3">
+        <figure
+          class="pos-rel border-0 pb-5 mb-5 pb-xl-5 mb-xl-4 pb-lg-5 mb-lg-4 pb-md-4 mb-md-4">
+          <img
+            src="https://www.ca.gov/images/highlight-3.webp"
+            loading="lazy"
+            class="img-fluid p-a pos-abs absolute-centered-x width-80pct square"
+            alt="A green tent surrounded by redwood trees is pitched at a campsite in Big Basin Redwoods State Park." />
+        </figure>
+        <div
+          class="bg-white bg-gray-50-hover text-center p-t-xxl p-x-md p-b-md  brd-solid-1 brd-gray-200 rounded-10 h-100">
+          <h3 class="h4 m-b text-left">
+            <a
+              href="https://www.reservecalifornia.com/"
+              class="link-before no-underline">
+              Camping reservations</a
+            >
+          </h3>
+          <p class="m-b text-left gray-900">
+            Book your next camping adventure. You can choose from 15,000
+            campsites across 279 parks.
+          </p>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div class="pt-4 p-b-lg">
+    <a
+      href="/about-california/"
+      class="btn btn-primary btn-lg transform-scale-1_05--hover transition-0_3 p-x-md rounded-5"
+      >Learn more about California</a
+    >
+  </div>
+</div>
+
+<div class="section-primary topo-lines">
+  <div class="container pt-4 p-b-md">
+    <h2>California by the numbers</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div
+          class="bg-primary text-center p-x-md p-a-md pos-rel h-100 rounded-4">
+          <p class="text-4rem m-b-0">
+            <span
+              class="scroll-counter"
+              data-counter-time="2000"
+              style="visibility: visible;"
+              >39</span
+            >
+          </p>
+          <p class="lead mt-0">million</p>
+          <p class="text-left">
+            California is home to nearly 40 million residents. One in four
+            Californians is born overseas.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div
+          class="bg-primary text-center p-x-md p-a-md pos-rel h-100 rounded-4">
+          <p class="text-4rem m-b-0">
+            <span
+              class="scroll-counter"
+              data-counter-time="1500"
+              style="visibility: visible;"
+              >15</span
+            >%
+          </p>
+          <p class="lead mt-0">of the US GDP</p>
+          <p class="text-left">
+            California contributes almost 15% to the US GDP. It is the world's
+            fifth-largest economy.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div
+          class="bg-primary text-center p-x-md p-a-md pos-rel h-100 rounded-4">
+          <p class="text-4rem m-b-0">
+            <span
+              class="scroll-counter"
+              data-counter-time="700"
+              style="visibility: visible;"
+              >9</span
+            >
+          </p>
+          <p class="lead mt-0">national parks</p>
+          <p class="text-left">
+            With the most national parks in the US, California also boasts 87
+            state parks and 63 state beaches.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container p-y-lg">
+  <div class="row">
+    <div class="col-md-7 m-b-md">
+      <div class="brd-solid-1 brd-gray-200 rounded-4 p-a">
+        <!-- News list -->
+        <h2 class="m-t">In the spotlight</h2><hr class="m-y-md" />
+        <h3 class="lead font-weight-700">
+          <a href="https://www.gov.ca.gov/2026/04/14/governor-newsom-announces-the-latest-digital-technology-at-the-dmv-to-fight-identity-fraud-and-reduce-wait-times/">Governor Newsom announces the latest digital technology at the DMV to fight identity fraud and reduce wait times</a>
+        </h3>
+        <p>April 14, 2026</p><hr class="m-y-md" />
+        <h3 class="lead font-weight-700">
+          <a href="https://www.gov.ca.gov/2026/04/13/governor-newsom-calls-on-trump-administration-to-remove-roadblocks-to-californias-expansion-of-essential-health-benefits-including-ivf/">Governor Newsom calls on Trump administration to remove roadblocks to California’s expansion of essential health benefits, including IVF</a>
+        </h3>
+        <p>April 13, 2026</p><hr class="m-y-md" />
+        <h3 class="lead font-weight-700">
+          <a href="https://www.gov.ca.gov/2026/04/13/lets-go-fishing-salmon-fishing-is-back-in-california-after-more-than-3-year-closure/">Let’s go fishing! Salmon fishing is back in California after more than 3-year closure</a>
+        </h3>
+        <p>April 13, 2026</p>
+
+        <hr class="m-y-md" />
+        <!-- End News list  -->
+
+        <p class="m-b-md">
+          <a href="https://www.gov.ca.gov/newsroom/">View all news</a>
+        </p>
+      </div>
+    </div>
+    <div class="col-md-5 m-b-md">
+      <!--Executive profile -->
+      <figure class="executive-profile">
+        <img
+          src="https://www.ca.gov/images/ca-for-all-logo.webp"
+          loading="lazy"
+          alt="California for All logo"
+          class="square" />
+        <div class="executive-profile-body">
+          <p>Governor</p>
+          <h3 class="executive-name">Gavin Newsom</h3>
+          <p>California</p>
+          <p>
+            <a href="https://www.gov.ca.gov"> Visit the Governor’s website </a>
+          </p>
+        </div>
+      </figure>
+      <!--Executive profile 2-->
+      <figure class="executive-profile m-t">
+        <img
+          src="https://www.ca.gov/images/ca-state-seal.webp"
+          loading="lazy"
+          alt="The great seal of the state of California"
+          class="square" />
+        <div class="executive-profile-body">
+          <p>Lieutenant Governor</p>
+          <h3 class="executive-name">Eleni Kounalakis</h3>
+          <p>California</p>
+          <p>
+            <a href="https://ltg.ca.gov/"> Visit the Lt. Governor’s website </a>
+          </p>
+        </div>
+      </figure>
+      <!--Executive profile 3-->
+      <figure class="executive-profile m-t">
+        <img
+          src="https://www.ca.gov/images/ca-gov-seal.webp"
+          loading="lazy"
+          alt="The Governor of Californiia seal"
+          class="square" />
+        <div class="executive-profile-body">
+          <h3 class="executive-name">Governor’s cabinet</h3>
+          <p>California</p>
+          <p>
+            <a href="https://www.gov.ca.gov/about/cabinet/">
+              Visit the Governor’s cabinet website</a
+            >
+          </p>
+        </div>
+      </figure>
+    </div>
+  </div>
+</div>
+</main>
+</div><!--Feedback-->
+<div class="section-understated d-print-none">
+  <div class="container py-4 pb-5">
+    <cagov-feedback
+      data-endpoint-url="https://feedback.innovation.ca.gov/sendfeedback">
+    </cagov-feedback>
+  </div>
+  <!-- End Section Feedback  -->
+</div>
+<aside class="p-b-md p-t-sm section-standout site-footer d-print-none">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div
+          class="h4 w-100 brd-bottom brd-highlight p-b"
+          role="heading"
+          aria-level="2">
+          About
+        </div>
+        <a
+          href="/about/about-this-website/"
+          class="d-block no-underline m-y font-size-16 color-white color-highlight-hover underline-hover">
+          About this website</a
+        >
+        <a
+          href="https://calcareers.ca.gov/"
+          rel="external"
+          class="d-block no-underline m-y font-size-16 color-white color-highlight-hover underline-hover"
+          >State careers</a
+        >
+        <a
+          href="https://data.ca.gov/"
+          rel="nofollow external"
+          class="d-block no-underline m-y font-size-16 color-white color-highlight-hover underline-hover"
+          >California data</a
+        >
+      </div>
+      <div class="col-md-3">
+        <div
+          class="h4 w-100 brd-bottom  brd-highlight p-b"
+          role="heading"
+          aria-level="2">
+          Support
+        </div>
+        <a
+          href="https://www.sco.ca.gov/ppsd_cpod.html"
+          rel="external"
+          class="d-block no-underline m-y font-size-16 color-white color-highlight-hover underline-hover">
+          State directory</a
+        >
+        <a
+          href="/support/technical-help/"
+          class="d-block no-underline m-y font-size-16 color-white color-highlight-hover underline-hover">
+          Technical help</a
+        >
+        <a
+          href="/contact/"
+          class="d-block no-underline m-y font-size-16 color-white color-highlight-hover underline-hover">
+          Contact<span class="sr-only"> information</span></a
+        >
+      </div>
+      <div class="col-md-3">
+        <div
+          class="h4 w-100 brd-bottom brd-highlight p-b"
+          role="heading"
+          aria-level="2">
+          Campaigns
+        </div>
+        <a
+          href="https://registertovote.ca.gov/"
+          rel="external"
+          class="d-block no-underline m-y font-size-16 color-white color-highlight-hover underline-hover">
+          Register to vote</a
+        >
+        <a
+          href="https://saveourwater.com/"
+          rel="external"
+          class="d-block no-underline m-y font-size-16 color-white color-highlight-hover underline-hover">
+          Save our water</a
+        >
+        <a
+          href="https://www.caiso.com/informed/Pages/Notifications/Default.aspx"
+          rel="external"
+          class="d-block no-underline m-y font-size-16 color-white color-highlight-hover underline-hover">
+          Flex alert</a
+        >
+      </div>
+      <div class="col-md-3">
+        <div
+          class="h4 w-100 brd-bottom brd-highlight p-b"
+          role="heading"
+          aria-level="2">
+          Alerts
+        </div>
+        <a
+          href="https://www.chp.ca.gov/news-alerts/alerts/amber-alert/"
+          rel="external"
+          class="d-block no-underline m-y font-size-16 color-white color-highlight-hover underline-hover">
+          Amber alert</a
+        >
+        <a
+          href="https://calalerts.org/"
+          rel="external"
+          class="d-block no-underline m-y font-size-16 color-white color-highlight-hover underline-hover">
+          Cal alerts</a
+        >
+        <a
+          href="https://myhazards.caloes.ca.gov/"
+          rel="external"
+          class="d-block no-underline m-y font-size-16 color-white color-highlight-hover underline-hover">
+          My hazards</a
+        >
+      </div>
+    </div>
+
+    <a
+      href="/website-accessibility-certification.html"
+      class="no-underline font-size-14 d-block m-t-md color-white color-highlight-hover underline-hover"
+      ><span class="ca-gov-icon-certificate" aria-hidden="true"></span>Website
+      Accessibility Certification</a
+    >
+  </div>
+</aside>
+<!-- Global Footer structural component -->
+<footer id="footer" class="global-footer">
+  <div class="container">
+    <div class="d-flex">
+      <a href="https://www.ca.gov" class="cagov-logo d-print-none">
+        <img
+          src="https://www.ca.gov/images/cagov-logo-flag-gradient.svg?v7F3A"
+          alt="CA.gov icon"
+          style="aspect-ratio:43/27"
+          loading="lazy" />
+      </a>
+      <ul class="footer-links d-print-none">
+        <li>
+          <a href="/legal/conditions-of-use/">Conditions of use</a>
+        </li>
+        <li>
+          <a href="/legal/privacy-policy/">Privacy policy</a>
+        </li>
+        <li>
+          <a href="/legal/accessibility/"> Accessibility</a>
+        </li>
+        <li>
+          <a href="/about/sitemap/">Sitemap</a>
+        </li>
+      </ul>
+
+      <p class="text-right copyright">
+        &copy;
+        <span id="thisyear">
+          <script>
+            document.getElementById('thisyear').appendChild(document.createTextNode(new Date().getFullYear()))
+          </script>
+        </span>
+        State of California
+      </p>
+    </div>
+  </div>
+  <button class="return-top">
+    <span class="sr-only">Back to top</span>
+  </button>
+</footer>~  </ul>
+</nav>
+</div>
+    </header>
+    <!-- Main content -->
+<div id="main-content" class="main-content">
+  <main class="main-primary" id="main">
+<div class="header-banner hidden-print">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 my-auto py-5">
+        <h1 class="color-white h2 mt-0 m-b-lg pe-lg-5">
+          Find government services and information
+        </h1>
+
+        <form class="pos-rel" action="/search/" role="search">
+          <span class="sr-only" id="ServiceSearch">Search for a service</span>
+          <div class="d-flex">
+            <input
+              type="search"
+              name="q"
+              placeholder="Search CA.gov"
+              aria-labelledby="ServiceSearch"
+              class="height-50 rounded-4 border-0 flex-grow-1 p-l webkit-appearance-none" />
+            <button
+              type="submit"
+              class="border-0 rounded-4 bg-white bg-gray-50-hover right-sm pos-rel width-50 webkit-appearance-none p-x-0">
+              <span
+                class="ca-gov-icon-search font-size-25 gray-900"
+                aria-hidden="true"></span>
+              <span class="sr-only">Submit</span>
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-6 m-0 p-0 my-auto">
+        <img
+          class="img-fluid d-none d-lg-block"
+          loading="lazy"
+          src="https://www.ca.gov/images/main-banner.svg"
+          style="aspect-ratio:604/440"
+          alt="A California beach at sunset showing rock formations on the sand." />
+      </div>
+    </div>
+
+    <div class="row la-fires-container">
+      <div class="col-lg-7 m-t-sm">
+        <div
+          class="bg-transparent p-a-md m-b-lg brd-solid-2 border-white rounded">
+          <h2 class="lead font-weight-700 text-white m-t-0 m-b-0">
+            Get disaster help
+          </h2>
+          <p class="text-white m-t-md">
+            Get
+            <a
+              href="/topics/disaster-recovery/"
+              class="text-white color-s1-hover no-underline-hover"
+              >what you need to recover</a
+            >, like food, shelter, cash assistance, replacement documents, and
+            rebuilding help.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bg-p2-darkest section-primary">
+  <div class="container p-y-lg">
+    <h2 class="h3 mt-0">Popular services</h2>
+
+    <div class="d-flex gap-3 flex-wrap">
+      <h3 class="m-a-0">
+        <a
+          class="btn btn-outline-light btn-hover rounded-5"
+          href="/departments/220/services/1194/"
+          >Real ID/license</a
+        >
+      </h3>
+      <h3 class="m-a-0">
+        <a
+          class="btn btn-outline-light btn-hover rounded-5"
+          href="/departments/176/services/52/"
+          >Birth certificates</a
+        >
+      </h3>
+      <h3 class="m-a-0">
+        <a
+          class="btn btn-outline-light btn-hover rounded-5"
+          href="/departments/236/services/33/"
+          >Check your refund</a
+        >
+      </h3>
+      <h3 class="m-a-0">
+        <a
+          class="btn btn-outline-light btn-hover rounded-5"
+          href="/departments/193/services/15/"
+          >Traffic tickets</a
+        >
+      </h3>
+      <h3 class="m-a-0">
+        <a
+          class="btn btn-outline-light btn-hover rounded-5"
+          href="/departments/287/services/25/"
+          >Business license</a
+        >
+      </h3>
+      <h3 class="m-a-0">
+        <a
+          class="btn btn-outline-light btn-hover rounded-5"
+          href="/departments/287/services/26/"
+          >Seller’s permit</a
+        >
+      </h3>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2>Popular topics</h2>
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <a href="/topics/dmv-auto/" class="link-grid"
+        ><h3 class="m-a-0 lead bold">DMV/Auto</h3></a
+      >
+    </div>
+    <div class="col-md-4 mb-4">
+      <a href="/topics/personal-records/" class="link-grid"
+        ><h3 class="m-a-0 lead bold">Personal records</h3></a
+      >
+    </div>
+    <div class="col-md-4 mb-4">
+      <a href="/topics/businesses/" class="link-grid"
+        ><h3 class="m-a-0 lead bold">Businesses</h3></a
+      >
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <a href="/topics/jobs/" class="link-grid"
+        ><h3 class="m-a-0 lead bold">Jobs and unemployment</h3></a
+      >
+    </div>
+    <div class="col-md-4 mb-4">
+      <a href="/topics/assistance/" class="link-grid"
+        ><h3 class="m-a-0 lead bold">Social services</h3></a
+      >
+    </div>
+    <div class="col-md-4 mb-4">
+      <a href="/topics/taxes/" class="link-grid"
+        ><h3 class="m-a-0 lead bold">Taxes</h3></a
+      >
+    </div>
+  </div>
+  <div class="pt-2 p-b-lg">
+    <a
+      href="/topics/"
+      class="btn btn-primary btn-lg transform-scale-1_05--hover transition-0_3 p-x-md rounded-5"
+      >View all topics</a
+    >
+  </div>
+</div>
+
+<!-- CA Highlights-->
+<div class="container p-b-lg">
+  <h2>California highlights</h2>
+  <div class="row p-b-md">
+    <div class="col-md-4">
+      <article
+        class="pos-rel h-100 d-flex flex-column transform-scale-1_05--hover transition-0_3">
+        <figure
+          class="pos-rel border-0 pb-5 mb-5 pb-xl-5 mb-xl-4 pb-lg-5 mb-lg-4 pb-md-4 mb-md-4">
+          <img
+            src="https://www.ca.gov/images/highlight-1.webp"
+            loading="lazy"
+            class="img-fluid p-a pos-abs absolute-centered-x width-80pct square"
+            alt="A light skinned white man and woman look at photography displays at an exhibit at the SF MOMA." />
+        </figure>
+        <div
+          class="bg-white bg-gray-50-hover text-center p-t-xxl p-x-md p-b-md  brd-solid-1 brd-gray-200 rounded-10 h-100">
+          <h3 class="h4 m-b text-left">
+            <a
+              href="https://www.visitcalifornia.com/places-to-visit/"
+              class="link-before no-underline">
+              Places to visit</a
+            >
+          </h3>
+          <p class="m-b text-left gray-900">
+            Discover places to visit and learn about California's various
+            regions and lively cities.
+          </p>
+        </div>
+      </article>
+    </div>
+    <div class="col-md-4">
+      <article
+        class="pos-rel h-100 d-flex flex-column transform-scale-1_05--hover transition-0_3">
+        <figure
+          class="pos-rel border-0 pb-5 mb-5 pb-xl-5 mb-xl-4 pb-lg-5 mb-lg-4 pb-md-4 mb-md-4">
+          <img
+            src="https://www.ca.gov/images/highlight-2.webp"
+            loading="lazy"
+            class="img-fluid p-a pos-abs absolute-centered-x width-80pct square"
+            alt="Waves flow out from an enclave surrounded by rock formations at Julia Pfeiffer Beach in the daytime." />
+        </figure>
+        <div
+          class="bg-white bg-gray-50-hover text-center p-t-xxl p-x-md p-b-md  brd-solid-1 brd-gray-200 rounded-10 h-100">
+          <h3 class="h4 m-b text-left">
+            <a
+              href="https://www.parks.ca.gov/Find-a-Park"
+              class="link-before no-underline">
+              State parks</a
+            >
+          </h3>
+          <p class="m-b text-left gray-900">
+            Visit California's state parks. They offer diverse, natural,
+            cultural, and recreational resources.
+          </p>
+        </div>
+      </article>
+    </div>
+    <div class="col-md-4">
+      <article
+        class="pos-rel h-100 d-flex flex-column transform-scale-1_05--hover transition-0_3">
+        <figure
+          class="pos-rel border-0 pb-5 mb-5 pb-xl-5 mb-xl-4 pb-lg-5 mb-lg-4 pb-md-4 mb-md-4">
+          <img
+            src="https://www.ca.gov/images/highlight-3.webp"
+            loading="lazy"
+            class="img-fluid p-a pos-abs absolute-centered-x width-80pct square"
+            alt="A green tent surrounded by redwood trees is pitched at a campsite in Big Basin Redwoods State Park." />
+        </figure>
+        <div
+          class="bg-white bg-gray-50-hover text-center p-t-xxl p-x-md p-b-md  brd-solid-1 brd-gray-200 rounded-10 h-100">
+          <h3 class="h4 m-b text-left">
+            <a
+              href="https://www.reservecalifornia.com/"
+              class="link-before no-underline">
+              Camping reservations</a
+            >
+          </h3>
+          <p class="m-b text-left gray-900">
+            Book your next camping adventure. You can choose from 15,000
+            campsites across 279 parks.
+          </p>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div class="pt-4 p-b-lg">
+    <a
+      href="/about-california/"
+      class="btn btn-primary btn-lg transform-scale-1_05--hover transition-0_3 p-x-md rounded-5"
+      >Learn more about California</a
+    >
+  </div>
+</div>
+
+<div class="section-primary topo-lines">
+  <div class="container pt-4 p-b-md">
+    <h2>California by the numbers</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div
+          class="bg-primary text-center p-x-md p-a-md pos-rel h-100 rounded-4">
+          <p class="text-4rem m-b-0">
+            <span
+              class="scroll-counter"
+              data-counter-time="2000"
+              style="visibility: visible;"
+              >39</span
+            >
+          </p>
+          <p class="lead mt-0">million</p>
+          <p class="text-left">
+            California is home to nearly 40 million residents. One in four
+            Californians is born overseas.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div
+          class="bg-primary text-center p-x-md p-a-md pos-rel h-100 rounded-4">
+          <p class="text-4rem m-b-0">
+            <span
+              class="scroll-counter"
+              data-counter-time="1500"
+              style="visibility: visible;"
+              >15</span
+            >%
+          </p>
+          <p class="lead mt-0">of the US GDP</p>
+          <p class="text-left">
+            California contributes almost 15% to the US GDP. It is the world's
+            fifth-largest economy.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div
+          class="bg-primary text-center p-x-md p-a-md pos-rel h-100 rounded-4">
+          <p class="text-4rem m-b-0">
+            <span
+              class="scroll-counter"
+              data-counter-time="700"
+              style="visibility: visible;"
+              >9</span
+            >
+          </p>
+          <p class="lead mt-0">national parks</p>
+          <p class="text-left">
+            With the most national parks in the US, California also boasts 87
+            state parks and 63 state beaches.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container p-y-lg">
+  <div class="row">
+    <div class="col-md-7 m-b-md">
+      <div class="brd-solid-1 brd-gray-200 rounded-4 p-a">
+        <!-- News list -->
+        <h2 class="m-t">In the spotlight</h2><hr class="m-y-md" />
+        <h3 class="lead font-weight-700">
+          <a href="https://www.gov.ca.gov/2026/04/14/governor-newsom-announces-the-latest-digital-technology-at-the-dmv-to-fight-identity-fraud-and-reduce-wait-times/">Governor Newsom announces the latest digital technology at the DMV to fight identity fraud and reduce wait times</a>
+        </h3>
+        <p>April 14, 2026</p><hr class="m-y-md" />
+        <h3 class="lead font-weight-700">
+          <a href="https://www.gov.ca.gov/2026/04/13/governor-newsom-calls-on-trump-administration-to-remove-roadblocks-to-californias-expansion-of-essential-health-benefits-including-ivf/">Governor Newsom calls on Trump administration to remove roadblocks to California’s expansion of essential health benefits, including IVF</a>
+        </h3>
+        <p>April 13, 2026</p><hr class="m-y-md" />
+        <h3 class="lead font-weight-700">
+          <a href="https://www.gov.ca.gov/2026/04/13/lets-go-fishing-salmon-fishing-is-back-in-california-after-more-than-3-year-closure/">Let’s go fishing! Salmon fishing is back in California after more than 3-year closure</a>
+        </h3>
+        <p>April 13, 2026</p>
+
+        <hr class="m-y-md" />
+        <!-- End News list  -->
+
+        <p class="m-b-md">
+          <a href="https://www.gov.ca.gov/newsroom/">View all news</a>
+        </p>
+      </div>
+    </div>
+    <div class="col-md-5 m-b-md">
+      <!--Executive profile -->
+      <figure class="executive-profile">
+        <img
+          src="https://www.ca.gov/images/ca-for-all-logo.webp"
+          loading="lazy"
+          alt="California for All logo"
+          class="square" />
+        <div class="executive-profile-body">
+          <p>Governor</p>
+          <h3 class="executive-name">Gavin Newsom</h3>
+          <p>California</p>
+          <p>
+            <a href="https://www.gov.ca.gov"> Visit the Governor’s website </a>
+          </p>
+        </div>
+      </figure>
+      <!--Executive profile 2-->
+      <figure class="executive-profile m-t">
+        <img
+          src="https://www.ca.gov/images/ca-state-seal.webp"
+          loading="lazy"
+          alt="The great seal of the state of California"
+          class="square" />
+        <div class="executive-profile-body">
+          <p>Lieutenant Governor</p>
+          <h3 class="executive-name">Eleni Kounalakis</h3>
+          <p>California</p>
+          <p>
+            <a href="https://ltg.ca.gov/"> Visit the Lt. Governor’s website </a>
+          </p>
+        </div>
+      </figure>
+      <!--Executive profile 3-->
+      <figure class="executive-profile m-t">
+        <img
+          src="https://www.ca.gov/images/ca-gov-seal.webp"
+          loading="lazy"
+          alt="The Governor of Californiia seal"
+          class="square" />
+        <div class="executive-profile-body">
+          <h3 class="executive-name">Governor’s cabinet</h3>
+          <p>California</p>
+          <p>
+            <a href="https://www.gov.ca.gov/about/cabinet/">
+              Visit the Governor’s cabinet website</a
+            >
+          </p>
+        </div>
+      </figure>
+    </div>
+  </div>
+</div>
+</main>
+</div><!--Feedback-->
+<div class="section-understated d-print-none">
+  <div class="container py-4 pb-5">
+    <cagov-feedback
+      data-endpoint-url="https://feedback.innovation.ca.gov/sendfeedback">
+    </cagov-feedback>
+  </div>
+  <!-- End Section Feedback  -->
+</div>
+<aside class="p-b-md p-t-sm section-standout site-footer d-print-none">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div
+          class="h4 w-100 brd-bottom brd-highlight p-b"
+          role="heading"
+          aria-level="2">
+          About
+        </div>
+        <a
+          href="/about/about-this-website/"
+          class="d-block no-underline m-y font-size-16 color-white color-highlight-hover underline-hover">
+          About this website</a
+        >
+        <a
+          href="https://calcareers.ca.gov/"
+          rel="external"
+          class="d-block no-underline m-y font-size-16 color-white color-highlight-hover underline-hover"
+          >State careers</a
+        >
+        <a
+          href="https://data.ca.gov/"
+          rel="nofollow external"
+          class="d-block no-underline m-y font-size-16 color-white color-highlight-hover underline-hover"
+          >California data</a
+        >
+      </div>
+      <div class="col-md-3">
+        <div
+          class="h4 w-100 brd-bottom  brd-highlight p-b"
+          role="heading"
+          aria-level="2">
+          Support
+        </div>
+        <a
+          href="https://www.sco.ca.gov/ppsd_cpod.html"
+          rel="external"
+          class="d-block no-underline m-y font-size-16 color-white color-highlight-hover underline-hover">
+          State directory</a
+        >
+        <a
+          href="/support/technical-help/"
+          class="d-block no-underline m-y font-size-16 color-white color-highlight-hover underline-hover">
+          Technical help</a
+        >
+        <a
+          href="/contact/"
+          class="d-block no-underline m-y font-size-16 color-white color-highlight-hover underline-hover">
+          Contact<span class="sr-only"> information</span></a
+        >
+      </div>
+      <div class="col-md-3">
+        <div
+          class="h4 w-100 brd-bottom brd-highlight p-b"
+          role="heading"
+          aria-level="2">
+          Campaigns
+        </div>
+        <a
+          href="https://registertovote.ca.gov/"
+          rel="external"
+          class="d-block no-underline m-y font-size-16 color-white color-highlight-hover underline-hover">
+          Register to vote</a
+        >
+        <a
+          href="https://saveourwater.com/"
+          rel="external"
+          class="d-block no-underline m-y font-size-16 color-white color-highlight-hover underline-hover">
+          Save our water</a
+        >
+        <a
+          href="https://www.caiso.com/informed/Pages/Notifications/Default.aspx"
+          rel="external"
+          class="d-block no-underline m-y font-size-16 color-white color-highlight-hover underline-hover">
+          Flex alert</a
+        >
+      </div>
+      <div class="col-md-3">
+        <div
+          class="h4 w-100 brd-bottom brd-highlight p-b"
+          role="heading"
+          aria-level="2">
+          Alerts
+        </div>
+        <a
+          href="https://www.chp.ca.gov/news-alerts/alerts/amber-alert/"
+          rel="external"
+          class="d-block no-underline m-y font-size-16 color-white color-highlight-hover underline-hover">
+          Amber alert</a
+        >
+        <a
+          href="https://calalerts.org/"
+          rel="external"
+          class="d-block no-underline m-y font-size-16 color-white color-highlight-hover underline-hover">
+          Cal alerts</a
+        >
+        <a
+          href="https://myhazards.caloes.ca.gov/"
+          rel="external"
+          class="d-block no-underline m-y font-size-16 color-white color-highlight-hover underline-hover">
+          My hazards</a
+        >
+      </div>
+    </div>
+
+    <a
+      href="/website-accessibility-certification.html"
+      class="no-underline font-size-14 d-block m-t-md color-white color-highlight-hover underline-hover"
+      ><span class="ca-gov-icon-certificate" aria-hidden="true"></span>Website
+      Accessibility Certification</a
+    >
+  </div>
+</aside>
+</div>
+<!-- Global Footer structural component -->
+<footer id="footer" class="global-footer">
+  <div class="container">
+    <div class="d-flex">
+      <a href="https://www.ca.gov" class="cagov-logo d-print-none">
+        <img
+          src="https://www.ca.gov/images/cagov-logo-flag-gradient.svg?v7F3A"
+          alt="CA.gov icon"
+          style="aspect-ratio:43/27"
+          loading="lazy" />
+      </a>
+      <ul class="footer-links d-print-none">
+        <li>
+          <a href="/legal/conditions-of-use/">Conditions of use</a>
+        </li>
+        <li>
+          <a href="/legal/privacy-policy/">Privacy policy</a>
+        </li>
+        <li>
+          <a href="/legal/accessibility/"> Accessibility</a>
+        </li>
+        <li>
+          <a href="/about/sitemap/">Sitemap</a>
+        </li>
+      </ul>
+
+      <p class="text-right copyright">
+        &copy;
+        <span id="thisyear">
+          <script>
+            document.getElementById('thisyear').appendChild(document.createTextNode(new Date().getFullYear()))
+          </script>
+        </span>
+        State of California
+      </p>
+    </div>
+  </div>
+  <button class="return-top">
+    <span class="sr-only">Back to top</span>
+  </button>
+</footer>
 
 
-			<TABLE bgColor="#cccccc" border="0" cellPadding="0" cellSpacing="0" 
-                  width="140">
-                    <TBODY>
-                    <TR><TD width=140><IMG alt=" " border=0 height=10 src="http://www.ca.gov/portal/images/spacer.gif" width=10></TD></TR><TR><TD vAlign=top width=140><A href="myca_leftnav_categories.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&sLeftNavCategoryPath=%2fNavigation%2fEducation+and+Training&sNavTitle=Education+and+Training" class="blueLink">Education and Training</A></TD></TR><TR><TD width=140><IMG alt=" " border=0 height=10 src="http://www.ca.gov/portal/images/spacer.gif" width=10></TD></TR><TR><TD vAlign=top width=140><A href="myca_leftnav_categories.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&sLeftNavCategoryPath=%2fNavigation%2fHealth+and+Safety&sNavTitle=Health+and+Safety" class="blueLink">Health and Safety</A></TD></TR><TR><TD width=140><IMG alt=" " border=0 height=10 src="http://www.ca.gov/portal/images/spacer.gif" width=10></TD></TR><TR><TD vAlign=top width=140><A href="myca_leftnav_categories.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&sLeftNavCategoryPath=%2fNavigation%2fBusiness&sNavTitle=Business" class="blueLink">Business</A></TD></TR><TR><TD width=140><IMG alt=" " border=0 height=10 src="http://www.ca.gov/portal/images/spacer.gif" width=10></TD></TR><TR><TD vAlign=top width=140><A href="myca_leftnav_categories.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&sLeftNavCategoryPath=%2fNavigation%2fConsumers+and+Families&sNavTitle=Consumers+and+Families" class="blueLink">Consumers and Families</A></TD></TR><TR><TD width=140><IMG alt=" " border=0 height=10 src="http://www.ca.gov/portal/images/spacer.gif" width=10></TD></TR><TR><TD vAlign=top width=140><A href="myca_leftnav_categories.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&sLeftNavCategoryPath=%2fNavigation%2fLabor+and+Employment&sNavTitle=Labor+and+Employment" class="blueLink">Labor and Employment</A></TD></TR><TR><TD width=140><IMG alt=" " border=0 height=10 src="http://www.ca.gov/portal/images/spacer.gif" width=10></TD></TR><TR><TD vAlign=top width=140><A href="myca_leftnav_categories.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&sLeftNavCategoryPath=%2fNavigation%2fTravel+and+Transportation&sNavTitle=Travel+and+Transportation" class="blueLink">Travel and Transportation</A></TD></TR><TR><TD width=140><IMG alt=" " border=0 height=10 src="http://www.ca.gov/portal/images/spacer.gif" width=10></TD></TR><TR><TD vAlign=top width=140><A href="myca_leftnav_categories.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&sLeftNavCategoryPath=%2fNavigation%2fHistory+and+Culture+of+California&sNavTitle=History+and+Culture+of+California" class="blueLink">History and Culture of California</A></TD></TR><TR><TD width=140><IMG alt=" " border=0 height=10 src="http://www.ca.gov/portal/images/spacer.gif" width=10></TD></TR><TR><TD vAlign=top width=140><A href="myca_leftnav_categories.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&sLeftNavCategoryPath=%2fNavigation%2fGovernment&sNavTitle=Government" class="blueLink">Government</A></TD></TR><TR><TD width=140><IMG alt=" " border=0 height=10 src="http://www.ca.gov/portal/images/spacer.gif" width=10></TD></TR><TR><TD vAlign=top width=140><A href="myca_leftnav_categories.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&sLeftNavCategoryPath=%2fNavigation%2fEnvironment+and+Natural+Resources&sNavTitle=Environment+and+Natural+Resources" class="blueLink">Environment and Natural Resources</A></TD></TR>
-					<TR>
-                      <TD width="140"><IMG alt=" " border="0" height="10" 
-                        src="http://www.ca.gov/portal/images/spacer.gif" width="10"></TD></TR>
-                    <TR>
-                      <TD width="140"><IMG alt=" " border="0" height="10" 
-                        src="http://www.ca.gov/portal/images/spacer.gif" width="10"></TD></TR>
-                    </TBODY>
-			</TABLE>
-			            
-				  <!-- END LEFT NAVIGATION -->
-			    </TD>
-			  </TR>
-			  </TBODY>
-			</TABLE>
-			
-			<!-- SPACER -->
-            <TABLE border="0" cellPadding="0" cellSpacing="0" width="160">
-              <TBODY>
-              <TR>
-                <TD bgColor="#ffffff" vAlign="top"><IMG alt=" " border="0" height="2" 
-                  src="http://www.ca.gov/portal/images/spacer.gif" 
-              width="2"></TD></TR></TBODY></TABLE>
-			<!-- END SPACER -->
-			
-			<!-- START PHOTO CONTEST -->
-            <!-- Include Pic Contest file which starts and end with the tags <TABLE> and </TABLE> respectively -->
-		    
-	  
-			<!-- START PHOTO CONTEST IMAGE -->  
-            <TABLE border="0" cellPadding="0" cellSpacing="0" width="160">
-              <TBODY>
-              <TR>
-                <TD bgColor="#ffffff" vAlign="top">			
-				<DIV class="myca_pic"><A HREF="/state/portal/myca_piccontest_fullpic.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&sPicDesc=thum_woman_miners"><IMG alt="Image of Women Miners, circa 1852" border=0 height=171 src="http://www.ca.gov/portal/images/links/thum_mining.woman.1852.jpg" width=160></A></DIV class="myca_pic">
-				</TD>
-			  </TR></TBODY></TABLE>
-			<!-- END PHOTO CONTEST IMAGE -->
-			
-			<!-- PHOTO CONTEST CONTENT -->
-            <TABLE bgColor="#cccccc" border="0" cellPadding="0" cellSpacing="0" 
-            width="160">
-              <TBODY>
-              <TR>
-                <TD width="10"><IMG alt=" " border="0" height="10" 
-                  src="http://www.ca.gov/portal/images/spacer.gif" width="10"></TD>
-                <TD vAlign="top">
-                  <TABLE bgColor="#cccccc" border="0" cellPadding="0" cellSpacing="0" 
-                  width="140" align="center">
-                    <TBODY>
-                    <TR>
-                      <TD width="10"><IMG alt=" " border="0" height="10" 
-                        src="http://www.ca.gov/portal/images/spacer.gif" 
-						width="10"></TD></TR>
-                    <TR>
-                      <TD bgColor="#cccccc" vAlign="top" width="120"> 
-                        <TABLE align="right" border="0" cellPadding="1" cellSpacing="0" 
-                        width="140">
-                          <TBODY>
-                          <TR><!--NEW TEXT SECTION-->
-                            <TD><FONT class="subtitle">California Snapshot</FONT><BR><BR> <FONT class="content">You are invited to take part in the California Snapshot photo contest celebrating California's rich cultural and geographic diversity. </FONT> <br><A class="blueContent" href="/state/portal/myca_htmldisplay.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&sCatTitle=Photo+Contest+Rules&iPicOID=12945&sFilePath=/portal/links/pc_rules.html&sObsContentType=LINK">Click here for details</A>. 
-							  </TD></TR></TBODY>
-						  </TABLE>
-						</TD>
-						</TR>
-                    <TR>
-                      <TD width="10"><IMG alt=" " border="0" height="10" 
-                        src="http://www.ca.gov/portal/images/spacer.gif" 
-                    width="10"></TD></TR></TBODY></TABLE></TD>
-                <TD width="10"><IMG alt=" " border="0" height="10" 
-                  src="http://www.ca.gov/portal/images/spacer.gif" 
-              width="10"></TD></TR></TBODY></TABLE>
-		    <!-- END PHOTO CONTEST CONTENT -->			  
-  
-		    <!-- END PHOTO CONTEST -->
-		  
-		  </TD>
-		  <!-- END LEFT HAND COLUMN -->
-		  
-		  <!-- COLUMN SPACER-->
-          <TD width="2"><IMG alt=" " border="0" height="2" 
-            src="http://www.ca.gov/portal/images/spacer.gif" width="2"></TD>
-		  <!--END COLUMN SPACER -->
-		  
-		  <!-- CENTER COLUMN FOR 3 COLUMN LAYOUT -->
-          <TD vAlign="top" width="420">
-		  	
-			
-		    <!-- ONLINE SERVICES -->
-            <!-- Include Online Services file which starts and end with the tags <TABLE> and </TABLE> respectively -->
-		    
-
-      <table border="0" cellpadding="0" cellspacing="0" width="420">
-         <tbody>
-            <tr>
-               <td valign="top" width="20">
-                  <img alt=" " border="0" height="50" src="http://www.ca.gov/portal/images/spacer.gif" width="20">
-               </td>
-               <td class="title" valign="center" width="380">
-                  Online Services
-               </td>
-               <td valign="top" width="20">
-                  <img alt=" " border="0" height="50" src="http://www.ca.gov/portal/images/spacer.gif" width="20">
-               </td>
-            </tr>
-         </tbody>
-      </table>
-      <table border="0" cellpadding="0" cellspacing="0" width="420">
-         <tbody>
-            <tr>
-               <td valign="top" width="10">
-                  <img alt=" " border="0" height="20" src="http://www.ca.gov/portal/images/spacer.gif" width="10">
-               </td>
-               <TD vAlign=top width=104><a href="myca_reg_step1.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0"><img src="http://www.ca.gov/portal/images/links/personalization.jpg" alt="My California - Click here to register " width="104" height="156" border="0"></a></TD>
-               <td valign="top" width="10">
-                  <img alt=" " border="0" height="20" src="http://www.ca.gov/portal/images/spacer.gif" width="10">
-               </td>
-               <td valign="top" width="276">
-                  <table border="0" width="276">
-                     <TR><TD><a class="content" href="myca_obslog.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&iObsOID=9234&sObsExtPath=http://www.ftb.ca.gov/refund/refund.asp&sObsContentType=LINK">Tax Refund Status</a></TD></TR><TR><TD><a class="content" href="myca_obslog.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&iObsOID=13929&sObsExtPath=https://eg.dmv.ca.gov/foAppt/Welcome.jsp&sObsContentType=LINK">DMV Appointments</a></TD></TR><TR><TD><a class="content" href="myca_obslog.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&iObsOID=9235&sObsExtPath=http://www.dmv.ca.gov/online/vrir/vr_top.htm&sObsContentType=LINK">Vehicle Registration</a></TD></TR><TR><TD><a class="content" href="myca_obslog.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&iObsOID=9418&sObsExtPath=http://www.lottery.ca.gov/&sObsContentType=LINK">State Lottery</a></TD></TR><TR><TD><a class="content" href="myca_obslog.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&iObsOID=9223&sObsExtPath=http://www.filmcafirst.ca.gov/FilmCa&sObsContentType=LINK">Film CA Reimbursement Application</a></TD></TR><TR><TD><a class="content" href="myca_obslog.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&iObsOID=9224&sObsExtPath=http://www.parks.ca.gov/travel/index.htm&sObsContentType=LINK">State Park Campsite Reservations</a></TD></TR><TR><TD><a class="content" href="myca_obslog.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&iObsOID=9226&sObsExtPath=http://www.heir.edd.ca.gov&sObsContentType=LINK">Household Employer Internet Reporting for Domestic Workers</a></TD></TR>
-                  </table>
-                  <!--red image link for "more..."--><A class="redlink" href="myca_onlineservicesdetail.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0"> 
-				  <img align="bottom" alt="Online Services" border="0" height="8" src= 
-                  "/portal/images/wedge.gif" width="7">&nbsp;more...</A>
-               </td>
-               <td valign="top" width="10">
-                  <img alt=" " border="0" height="20" src="http://www.ca.gov/portal/images/spacer.gif" width="10">
-               </td>
-            </tr>
-            <tr>
-               <td colspan="5" valign="top">
-                  <img alt=" " border="0" height="10" src="http://www.ca.gov/portal/images/spacer.gif" width="12">
-               </td>
-            </tr>
-         </tbody>
-      </table>
-      <table border="0" cellpadding="0" cellspacing="0" width="420">
-         <tbody>
-            <tr>
-               <td align="center" valign="top" width="420">
-                  <img src="http://www.ca.gov/portal/images/spacer.gif" width="13" height="2" border="0" alt=" "><a href="myca_obslog.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&iObsOID=13937&sObsExtPath=http://www.ebizcenter.ca.gov/eLicMain.html&sObsContentType=LINK"><img src="http://www.ca.gov/portal/images/links/online_nursing_license.jpg"alt="Go to Registered Nurses License Renewal" width="115" height="45" border="0"></a><img src="http://www.ca.gov/portal/images/spacer.gif" width="12" height="2" border="0" alt=" "><img src="http://www.ca.gov/portal/images/spacer.gif" width="13" height="2" border="0" alt=" "><a href="myca_obslog.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&iObsOID=13981&sObsExtPath=http://www.dot.ca.gov/hq/roadinfo/&sObsContentType=LINK"><img src="http://www.ca.gov/portal/images/links/online_road_cond.jpg"alt="Go to Check Road Conditions" width="115" height="45" border="0"></a><img src="http://www.ca.gov/portal/images/spacer.gif" width="12" height="2" border="0" alt=" "><img src="http://www.ca.gov/portal/images/spacer.gif" width="13" height="2" border="0" alt=" "><a href="myca_obslog.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&iObsOID=13982&sObsExtPath=https://app1.hcd.ca.gov/cgi-bin/casas/hcdweb/RPT_RT_RENEWAL_CONFIRM.show_parms&sObsContentType=LINK"><img src="http://www.ca.gov/portal/images/links/online_mobilehome_reg.jpg"alt="Go to Online Mobilehome Registration" width="115" height="45" border="0"></a><img src="http://www.ca.gov/portal/images/spacer.gif" width="12" height="2" border="0" alt=" "></td>
-            </tr>
-         </tbody>
-      </table>
-  
-
-  
-			<!-- END ONLINE SERVICES -->
-			
-			<!-- ROW SPACER -->
-            <TABLE border="0" cellPadding="0" cellSpacing="0" width="420">
-              <TBODY>
-              <TR>
-                <TD vAlign="top" width="420"><IMG alt=" " border="0" height="10" 
-                  src="http://www.ca.gov/portal/images/spacer.gif" 
-              width="10"></TD></TR></TBODY></TABLE>
-			<!-- END ROW SPACER -->
-			
-			<!-- YOUR NAVIGATIONAL LINKS -->
-			
-			<!-- ENDYOUR NAVIGATIONAL LINKS -->			
-			
-			<!-- WHAT'S NEW BAR -->
-            <TABLE border="0" cellPadding="0" cellSpacing="0" width="420">
-              <TBODY>
-              <TR>
-                <TD bgColor="#990000" vAlign="top"><IMG alt=" " border="0" height="2" 
-                  src="http://www.ca.gov/portal/images/spacer.gif" width="2"></TD></TR>
-              <TR>
-                <TD bgColor="#990000" class="header"><IMG alt=" " border="0" 
-                  height="10" src="http://www.ca.gov/portal/images/spacer.gif" 
-                  width="10">What's New<IMG alt=" " border="0" height="10" 
-                  src="http://www.ca.gov/portal/images/spacer.gif" width="10"></TD></TR>
-              <TR>
-                <TD bgColor="#990000" vAlign="top"><IMG alt=" " border="0" height="2" 
-                  src="http://www.ca.gov/portal/images/spacer.gif" 
-              width="2"></TD></TR></TBODY></TABLE>
-			<!-- END WHAT'S NEW BAR -->
-			
-			<!-- WHAT'S NEW CONTENT -->
-            <!-- Include What News file which starts and end with the tags <TABLE> and </TABLE> respectively -->
-		    
-
-			<TABLE border="0" cellPadding="0" cellSpacing="0" width="420">
-              <TBODY>
-              <TR><TD colSpan=5 vAlign=top><IMG alt=" " border=0 height=10 src="http://www.ca.gov/portal/images/spacer.gif" width=10></TD></TR><TR><TD vAlign=top width=10><IMG alt=" " border=0 height=20 src="http://www.ca.gov/portal/images/spacer.gif" width=10></TD><TD vAlign=top width=71><IMG alt="California Energy Commission" border=0 src="http://www.ca.gov/portal/images/ca_energy_comm.gif" width=71></TD><TD vAlign=top width=10><IMG alt=" " border=0 height=20 src="http://www.ca.gov/portal/images/spacer.gif" width=10></TD><TD vAlign=top width=300><TABLE border="0" width=319><TR><TD><SPAN class=subtitle>California's Energy Challenge</SPAN></TD></TR><TR><TD><SPAN class=content>California Energy Information Website - See Governor Davis' orders, press releases, and actions on electricity stabilization, conservation and generation.  See links to energy tips websites and links to energy facts, reports, and statistics.  </SPAN></TD></TR></TABLE><A class=redlink href="myca_obslog.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&iObsOID=12965&sObsExtPath=http://www.governor.ca.gov/state/govsite/gov_issues_details.jsp?sCatTitle%3dIssues%26sSubCat%3dENERGY&sObsContentType=LINK"><IMG align=bottom alt="California's Energy Challenge" border=0 height=8 src="http://www.ca.gov/portal/images/wedge.gif" width=7>&nbsp;more...</A></TD><TD vAlign=top width=10><IMG alt=" " border=0 height=20 src="http://www.ca.gov/portal/images/spacer.gif" width=10></TD></TR><TR><TD colSpan=5 vAlign=top><IMG alt=" " border=0 height=10 src="http://www.ca.gov/portal/images/spacer.gif" width=10></TD></TR><TR><TD vAlign=top width=10><IMG alt=" " border=0 height=20 src="http://www.ca.gov/portal/images/spacer.gif" width=10></TD><TD vAlign=top width=71><IMG alt="Best Practices - Business Conservation Strategies" border=0 src="http://www.ca.gov/portal/images/links/Sbest-practices.gif" width=71></TD><TD vAlign=top width=10><IMG alt=" " border=0 height=20 src="http://www.ca.gov/portal/images/spacer.gif" width=10></TD><TD vAlign=top width=300><TABLE border="0" width=319><TR><TD><SPAN class=subtitle>Energy Saving "Best Practices"</SPAN></TD></TR><TR><TD><SPAN class=content>The California Technology, Trade & Commerce Agency's web site features the energy conservation practices of some of California's most innovative businesses. See how the state's conservation leaders are meeting California's energy challenge.</SPAN></TD></TR></TABLE><A class=redlink href="myca_obslog.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&iObsOID=14141&sObsExtPath=http://commerce.ca.gov/index.html&sObsContentType=LINK"><IMG align=bottom alt="Best Practices - Business Conservation Strategies" border=0 height=8 src="http://www.ca.gov/portal/images/wedge.gif" width=7>&nbsp;more...</A></TD><TD vAlign=top width=10><IMG alt=" " border=0 height=20 src="http://www.ca.gov/portal/images/spacer.gif" width=10></TD></TR><TR><TD colSpan=5 vAlign=top><IMG alt=" " border=0 height=10 src="http://www.ca.gov/portal/images/spacer.gif" width=10></TD></TR><TR><TD vAlign=top width=10><IMG alt=" " border=0 height=20 src="http://www.ca.gov/portal/images/spacer.gif" width=10></TD><TD vAlign=top width=71><IMG alt="Department of Health Services logo" border=0 src="http://www.ca.gov/portal/images/dhsicon.gif" width=71></TD><TD vAlign=top width=10><IMG alt=" " border=0 height=20 src="http://www.ca.gov/portal/images/spacer.gif" width=10></TD><TD vAlign=top width=300><TABLE border="0" width=319><TR><TD><SPAN class=subtitle>Prescription Drug Discount Program for Medicare Recipients</SPAN></TD></TR><TR><TD><SPAN class=content>California Medicare patients need pay no more than Medi-Cal prices for prescription drugs. Find out how. Use the price calculator to look up the Medi-Cal price for the top 50 most requested drugs.</SPAN></TD></TR></TABLE><A class=redlink href="myca_obslog.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&iObsOID=14366&sObsExtPath=http://www.dhs.ca.gov/mcs/mcpd/mbb/contracting/sb393/index.htm&sObsContentType=LINK"><IMG align=bottom alt="Department of Health Services logo" border=0 height=8 src="http://www.ca.gov/portal/images/wedge.gif" width=7>&nbsp;more...</A></TD><TD vAlign=top width=10><IMG alt=" " border=0 height=20 src="http://www.ca.gov/portal/images/spacer.gif" width=10></TD></TR>
-			  </TBODY>
-			</TABLE>		              
-		    <!-- END WHAT'S NEW CONTENT -->
-			
-			<!-- START Do You Know and Weekly Quick Facts-->
-            <!-- Include What News file which starts and end with the tags <TABLE> and </TABLE> respectively -->
-		    
-
-		<!-- Do You Know / Weekly Quick Facts -->
-		<table width="420" cellspacing="0" cellpadding="0" align="center">
-			<TBODY>
-            <TR>
-                <TD colspan="3" vAlign="top"><IMG alt=" " border="0" height="10" 
-                  src="http://www.ca.gov/portal/images/spacer.gif" width="2"></TD>
-			</TR>
-  			
-			<TR>
-                <TD vAlign=top width="208">
-                  <TABLE border="0" cellPadding=0 cellSpacing=0 width="208">
-                    <TR>
-                      <TD bgColor=#990000 vAlign=top><IMG alt=" " 
-                        border=0 height=2 
-                        src="http://www.ca.gov/portal/images/spacer.gif" 
-                    width=1></TD></TR>
-                    <TR>
-                      <TD bgColor=#990000 class=header><IMG alt=" " 
-                        border=0 height=10 
-                        src="http://www.ca.gov/portal/images/spacer.gif" width=10>Do 
-                        you know?<IMG alt=" " border=0 height=10 
-                        src="http://www.ca.gov/portal/images/spacer.gif" 
-                        width=10><IMG 
-                        alt="New" border=0 height="12" width="31"
-                        src="http://www.ca.gov/portal/images/new.gif"></TD></TR>
-                    <TR>
-                      <TD bgColor=#990000 vAlign=top><IMG alt=" " 
-                        border=0 height=2 
-                        src="http://www.ca.gov/portal/images/spacer.gif" 
-                    width=1></TD></TR>
-				  </TABLE>
-				  <table width="208" border="0"cellspacing="0" cellpadding="0">					
-                    <TR>
-                      <TD width="10"><IMG alt=" " border=0 height=10 
-                        src="http://www.ca.gov/portal/images/spacer.gif"  width="10"></TD>
-					  <TD>
-							<FONT class="subtitle">How can I find out how my school is performing on the State's standardized tests?</FONT><BR> <FONT class="content">The California Department of Education posts the Academic Performance Index (API), a numeric index or score reflecting a school's performance. For more information see the Department of Education's API web site.</FONT><BR> <IMG align=bottom alt=' ' border=0 height=8 src='/portal/images/wedge.gif' width=7> <a class='content' href='myca_obslog.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&iObsOID=11940&sObsExtPath=http%3a%2f%2fwww.cde.ca.gov%2fpsaa%2fapi%2f&sObsContentType=FAQ'> API (Academic Performance Index) </a> <BR>
-						</TD>
-					</TR>
-                    <TR>
-                      <TD colSpan=2 width=10><IMG alt=" " border=0 height=10 
-                        src="http://www.ca.gov/portal/images/spacer.gif" 
-                    width=10></TD>
-					</TR>
-				  </TABLE>
-				</TD>
-				
-                <TD vAlign="top"><IMG alt=" " border="0" height="10" 
-                  src="http://www.ca.gov/portal/images/spacer.gif" width="2"></TD>
-
-				<TD vAlign=top width="208">  
-				  <table width="208" border="0" cellPadding="0" cellspacing="0" cellpadding="0">
-                    <TR>
-                      <TD bgColor=#990000 vAlign=top><IMG alt=" " 
-                        border=0 height=2 
-                        src="http://www.ca.gov/portal/images/spacer.gif" 
-                    width=1></TD></TR>
-                    <TR>
-                      <TD bgColor=#990000 class=header><IMG alt=" " 
-                        border=0 height=10 
-                        src="http://www.ca.gov/portal/images/spacer.gif" width=10>Weekly 
-						Fun Facts<IMG alt=" " border=0 height=10 
-                        src="http://www.ca.gov/portal/images/spacer.gif" 
-                        width=10><IMG 
-                        alt="New" border=0 height="12" width="31"
-                        src="http://www.ca.gov/portal/images/new.gif"></TD></TR>
-                    <TR>
-                      <TD bgColor=#990000 vAlign=top><IMG alt=" " 
-                        border=0 height=2 
-                        src="http://www.ca.gov/portal/images/spacer.gif" 
-                    width=1></TD></TR>
-				  </TABLE>
-				  <table width="208" border="0" cellspacing="0" cellpadding="0">
-                    <TR>
-                      <td width="10"><IMG alt=" " border=0 height=10 
-                        src="http://www.ca.gov/portal/images/spacer.gif" width="10"></td>
-					  <td>
-							<IMG align=bottom alt=" " border=0 height=8 src="http://www.ca.gov/portal/images/wedge.gif" width=7>&nbsp;<A class="content" href="myca_quickfactsdetail.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&sFilePath=%2fportal%2fquickfacts%2fcalifornia_education.html&sCatTitle=Education">Education </a> <BR><IMG align=bottom alt=" " border=0 height=8 src="http://www.ca.gov/portal/images/wedge.gif" width=7>&nbsp;<A class="content" href="myca_quickfactsdetail.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&sFilePath=%2fportal%2fquickfacts%2fcalifornia_gun_safety.html&sCatTitle=Gun+Safety">Gun Safety </a> <BR><IMG align=bottom alt=" " border=0 height=8 src="http://www.ca.gov/portal/images/wedge.gif" width=7>&nbsp;<A class="content" href="myca_quickfactsdetail.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&sFilePath=%2fportal%2fquickfacts%2fcalifornia_healthy.html&sCatTitle=Keeping+California+Healthy">Keeping California Healthy </a> <BR>
-					  </td>
-					</TR>
-                    <TR>
-                      <TD colSpan=2 width=10><IMG alt=" " border=0 height=10 
-                        src="http://www.ca.gov/portal/images/spacer.gif" 
-                    width=10></TD>
-					</TR>
-				  </TABLE>
-			    </TD>
-				
-			</TR>
-			</TBODY>			
-		</TABLE>
-		
-              
-		    <!-- END Do You Know and Weekly Quick Facts -->
-			
-		  </TD>
-		  <!-- END CENTER COLUMN FOR 3 COLUMN LAYOUT -->
-		  
-		  <!-- COLUMN SPACER -->
-          <TD width="2"><IMG alt=" " border="0" height="2" 
-            src="http://www.ca.gov/portal/images/spacer.gif" width="2"></TD>
-	      <!-- END COLUMN SPACER -->
-		  
-		  <!-- RIGHT HAND COLUMN -->
-          <TD bgColor="#cccccc" align="right" vAlign="top" width="179">
-		    
-			<!-- SEARCH BOX -->
-            <!-- Include Search file which starts and end with the tags <TABLE> and </TABLE> respectively -->
-            
-
-            
-            <TABLE border="0" cellPadding="0" cellSpacing="0" width="179">
-              <TBODY>
-			  <TR>
-                <TD bgColor="#990000" vAlign="top"><IMG alt=" " border="0" height="5" src="http://www.ca.gov/portal/images/spacer.gif" width="5"></TD>
-			  </TR>
-			  <!-- the input types and action URL was taken from the current CA site keep the *form* tags outside the *td* tags for proper formatting	-->
-				  
-              <TR>
-                
-                <TD align="center" width="179">
-				<form action="myca_search_results.jsp" method="post">
-				<input type=hidden name="BV_SessionID" value="">
-<input type=hidden name="BV_EngineID" value="halkjghmlkhbemfcfkmchcng.0">
-
-                  <TABLE bgColor="#990000" border="0" cellPadding="0" cellSpacing="0" width="179">
-                    <TBODY>
-                    <TR>
-                      <TD align="center">
-					  <INPUT TYPE="text" NAME="sSearchString" SIZE="10" MAXLENGTH="35">		  
-						<IMG alt=" " border="0" height="6" src="http://www.ca.gov/portal/images/spacer.gif" width="6"> 
-					  <INPUT border="0" name="submit" type="submit" value="Search"><BR>
-                      <A><a href="myca_howdoi.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0"><IMG alt="Most Frequently Asked Questions" border=0 height=17 src="http://www.ca.gov/portal/images/howdoi.gif" width=68></A><IMG alt=" " border=0 height=6 src="http://www.ca.gov/portal/images/spacer.gif" width=6><A><a href= "myca_search_adv.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0"><IMG alt="Advanced Search" border=0 height=17 src="http://www.ca.gov/portal/images/advansearch.gif" width=93></A>
-					  </TD>
-					</TR>
-					</TBODY>
-				  </TABLE>
-				</TD>
-				</Form>
-			  </TR>
-              </TBODY>
-			</TABLE>  
-			<!-- END SEARCH BOX -->
-			
-			<!-- SPACER -->
-            <TABLE border="0" cellPadding="0" cellSpacing="0" width="179">
-              <TBODY>
-              <TR>
-                <TD bgColor="#ffffff"><IMG alt=" " border="0" height="2" 
-                  src="http://www.ca.gov/portal/images/spacer.gif" 
-              width="2"></TD></TR></TBODY></TABLE>
-			<!-- END SPACER -->
-			
-			<!-- GOVERNOR'S PAGE LINK -->
-            <!-- Include Feature Pic which starts and end with the tags <TABLE> and </TABLE> respectively -->
-            
-
-            <TABLE border="0" cellPadding="0" cellSpacing="0" width="179">
-              <TBODY>
-              <TR>
-                <TD bgColor="#ffffff" align="center" vAlign="bottom" height="76">
-				<a href="http://www.governor.ca.gov/state/govsite/gov_homepage.jsp?a%3Da&BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0"><img src="http://www.ca.gov/portal/images/gov.jpg"	alt="Image of Gray Davis and link to his Home Page" width="179" height="76" border="0"></a>
-				</TD></TR></TBODY></TABLE>
-			<!-- END GOVERNOR'S PAGE LINK -->
-			 			
-			<!-- FEATURED LINKS -->
-            <!-- Include Feature Links which starts and end with the tags <TABLE> and </TABLE> respectively -->
-            
-
-			<TABLE border="0" cellPadding="0" cellSpacing="0" width="179">
-              <TBODY>
-			  <TR>
-              <TD bgColor="#cccccc" vAlign="top" width="10"><IMG alt=" " border="0" 
-                  height="10" src="http://www.ca.gov/portal/images/spacer.gif" 
-                width="10"></TD></TR> 
-              <TR>
-                <TD bgColor="#cccccc" vAlign="top">
-                  <TABLE border="0" cellPadding="0" cellSpacing="0" width="179">
-                    <TBODY>
-                    <TR>
-                      <TD bgColor="#cccccc" vAlign="top" width="10"><IMG alt=" " 
-                        border="0" height="10" 
-                        src="http://www.ca.gov/portal/images/spacer.gif" width="10"></TD>
-                      <TD vAlign="top" width="159">
-                        <UL class="blueIndent">
-                          <ADDRESS class="listBlueSubtitle">Featured 
-                          Links</ADDRESS>
-                          <li><A class="blueContent" href="myca_obslog.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&iObsOID=14289&sObsExtPath=http://video.dot.ca.gov/energy/&sObsContentType=LINK">Governor's April 5 Energy Address</A> <BR><li><A class="blueContent" href="myca_obslog.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&iObsOID=8003&sObsExtPath=http://literacynet.org/govfund/&sObsContentType=LINK">Governor's Book Fund</A> <BR><li><A class="blueContent" href="myca_obslog.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&iObsOID=8004&sObsExtPath=http://www.ftb.ca.gov/gsp/index.htm&sObsContentType=LINK">E-file Taxes and FAQs</A> <BR><li><A class="blueContent" href="myca_obslog.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&iObsOID=13466&sObsExtPath=http://www.dof.ca.gov/HTML/BUD_DOCS/Bud_link.htm&sObsContentType=LINK">2001-2002 Budget Announced</A> <BR><li><A class="blueContent" href="myca_obslog.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&iObsOID=13511&sObsExtPath=http://www.parks.ca.gov/central/bayarea/ansr228.htm&sObsContentType=LINK">Streaming Video of A�o Nuevo Seals</A> <BR><li><A class="blueContent" href="myca_obslog.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&iObsOID=8002&sObsExtPath=http://www.readcalifornia.org/flippers.html&sObsContentType=LINK">READ California Page Flippers</A> <BR><li><A class="blueContent" href="myca_obslog.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&iObsOID=14100&sObsExtPath=http://www.governor.ca.gov/state/govsite/gov_htmldisplay.jsp?sCatTitle%3dSpeeches%26sFilePath%3d%2fgovsite%2fselected_speeches%2f20010301_speech_wallstreetconference.html%26sTitle%3d2001&sObsContentType=LINK">Governor's Remarks to Wall Street</A> <BR>
-						   
-					    </UL></TD>
-						
-						
-                      <TD bgColor="#cccccc" vAlign="top" width="10"><IMG alt=" " 
-                        border="0" height="10" 
-                        src="http://www.ca.gov/portal/images/spacer.gif" 
-						width="10"></TD></TR>
-                    <TR>
-                      <TD bgColor="#cccccc" vAlign="top" width="10"><IMG alt=" " 
-                        border="0" height="10" 
-                        src="http://www.ca.gov/portal/images/spacer.gif" 
-                    width="10"></TD></TR></TBODY></TABLE></TD></TR>
-              <TR>
-                <TD bgColor="#ffffff"><IMG alt=" " border="0" height="2" 
-                  src="http://www.ca.gov/portal/images/spacer.gif" 
-              width="2"></TD></TR></TBODY></TABLE>  
-			<!-- END FEATURED LINKS-->
-			
-			<!-- HOT LINKS -->
-            <!-- Include Hot Links which starts and end with the tags <TABLE> and </TABLE> respectively -->
-            
-				
-            <TABLE border="0" cellPadding="0" cellSpacing="0" width="179">
-              <TBODY>
-              <TR>
-                <TD bgColor="#cccccc" vAlign="top" width="10"><IMG alt=" " border=0 
-                  height="10" src="http://www.ca.gov/portal/images/spacer.gif" 
-                width="10"></TD></TR>
-              <TR>
-                <TD bgColor="#cccccc" vAlign="top">
-                  <TABLE border="0" cellPadding="0" cellSpacing="0" width="179">
-                    <TBODY>
-                    <TR>
-                      <TD bgColor="#cccccc" vAlign="top" width="10"><IMG alt=" " 
-                        border=0 height="10" 
-                        src="http://www.ca.gov/portal/images/spacer.gif" width="10"></TD>
-                      <TD vAlign="top" width="159">
-                        <UL class=blueIndent>
-                          <ADDRESS class=listBlueSubtitle>Quick Hits
-						  </ADDRESS>
-						  <LI><a class="blueContent" href="myca_sites.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&sCatTitle=City+Sites">City Websites</a><IMG alt=" " border=0 height=10 
-                        src="http://www.ca.gov/portal/images/spacer.gif" width="10"><img
-                                        src="http://www.ca.gov/portal/images/new.gif" height="12" width="31" alt="NEW">
-						  <LI><a class="blueContent" href="myca_sites.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&sCatTitle=County+Sites">County Websites</a><IMG alt=" " border=0 height=10 
-                        src="http://www.ca.gov/portal/images/spacer.gif" width="10"><img
-                                        src="http://www.ca.gov/portal/images/new.gif" height="12" width="31" alt="NEW">						  
-						  <li><A class="blueContent" href="myca_obslog.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&iObsOID=9418&sObsExtPath=http://www.lottery.ca.gov/&sObsContentType=LINK">State Lottery</A> <BR><li><A class="blueContent" href="myca_obslog.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&iObsOID=12920&sObsExtPath=http://www.leginfo.ca.gov&sObsContentType=LINK">Legislation</A> <BR><li><A class="blueContent" href="myca_obslog.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&iObsOID=12763&sObsExtPath=http://www.ebizcenter.ca.gov/&sObsContentType=LINK">eBusiness Center</A> <BR><li><A class="blueContent" href="myca_obslog.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&iObsOID=9461&sObsExtPath=http://www.wrh.noaa.gov/wrhq/javaLinks/wrhqJava.html&sObsContentType=LINK">Local Weather</A> <BR><li><A class="blueContent" href="myca_obslog.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&iObsOID=9443&sObsExtPath=http://gocalif.ca.gov/calendar/&sObsContentType=LINK">California Calendar</A> <BR>
-						  <LI><a class="blueContent" href="myca_htmldisplay.jsp?sFilePath=%2fportal%2flinks%2fagency_index.html&sCatTitle=State+Agency+Index&BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0">State Agency Index</a>
-						  <LI><A href="myca_link_details.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&sContentPath=Quick+Hits%2fInternal+Quick+Hits&sCatTitle=Commuter+Links" class="blueContent" >Commuter Links</A> <br><LI><A href="myca_link_details.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&sContentPath=Quick+Hits%2fInternal+Quick+Hits&sCatTitle=Forms" class="blueContent" >Forms</A> <br><LI><A href="myca_link_details.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&sContentPath=Quick+Hits%2fInternal+Quick+Hits&sCatTitle=Licenses" class="blueContent" >Licenses</A> <br>
-						  <LI><a class="blueContent" href="myca_quickfacts.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0">California Facts</a>
-						  <LI><a class="blueContent" href="../govsite/gov_contacts.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0">E-mail the Governor</a>						  
-						  </UL></TD>
-                      <TD bgColor="#cccccc" vAlign="top" width="10"><IMG alt=" " 
-                        border=0 height="10" 
-                        src="http://www.ca.gov/portal/images/spacer.gif" 
-						width="10"></TD></TR>       
-                    <TR>
-                      <TD bgColor="#cccccc" vAlign="top" width="10"><IMG alt=" " 
-                        border=0 height="10" 
-                        src="http://www.ca.gov/portal/images/spacer.gif" 
-                        width="10"></TD>
-					</TR>
-					</TBODY>
-				  </TABLE>
-				</TD>
-			  </TR>
-			  </TBODY>
-			</TABLE>					  
-			<!-- END HOT LINKS -->
-				
-			</TD>
-			<!-- END RIGHT HAND COLUMN -->
-		</TR>
-		<!-- END MIDDLE CONTENT SECTION -->
-		
-		<!-- WEB ACCESSIBILITY CONTENT LINK -->
-		<TR>
-          <td colspan="5" align="center">
-		  	<BR>	
-			<A class="blueLink"
-            href="myca_htmldisplay.jsp?BV_SessionID=@&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&sFilePath=%2fportal%2flinks%2faccessibility.html&sCatTitle=Web+Content+Accessibility">Web Content
-			Accessibility</A> 
-		  </td>
-		</TR>				
-		<!-- END WEB ACCESSIBILITY CONTENT LINK -->
-		
-		<!-- FOOTER-->
-        <!-- Include Footer which starts and end with the tags <TABLE> and </TABLE> respectively -->
-        
-		<!-- BACK TO TOP -->
-        <TR>
-          <TD align="center" colSpan="5" height="20"><BR><A class="redlink" 
-            href="http:#PageTop">Back to Top of 
-            Page</A></TD></TR><!-- END BACK TO TOP -->
-
-		<TR>
-          <TD align="center" colSpan="5" height="20">
-		  	<BR>	
-			<A class="content" 
-            href="myca_footerdisplay.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&sFooterName=Conditions+of+Use">Conditions of 
-            Use</A> | <A class="content" 
-            href="myca_footerdisplay.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0&sFooterName=Privacy+Policy">Privacy 
-            Policy</A> | 
-			<a href="myca_feedback.jsp?BV_SessionID=&BV_EngineID=halkjghmlkhbemfcfkmchcng.0" class="content">E-mail Webmaster</a>
-		  </TD>
-		</TR>
-		<TR>
-          <TD align="center" colSpan="5" height="20"><SPAN class="content">� 2000 
-            State of California. Gray Davis, Governor. <BR><BR>
-			TM/2001 Hollywood Chamber of Commerce licensed by Global Icons, Los Angeles, CA 90034.  All Rights Reserved.
-			</SPAN>
-		  </TD>
-		</TR> 
-		<!-- END FOOTER -->
-	  	</TBODY>
-	  </TABLE>
-	</TD></TR></TBODY></TABLE>
+</div>
 	<!-- CLOSE PAGE TABLE FOR CENTERING -->
 </BODY></HTML>
 
