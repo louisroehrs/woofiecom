@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SVG Charts -- Pie Charts!</title>
+  <style>
+    body { font-family: "Courier New", monospace; }
+    svg { display: block; margin: 20px 0; }
+    .slice { cursor: default; }
+    .slice:hover { opacity: 0.8; }
+    label { display: inline-block; width: 120px; }
+    input[type=text] { width: 80px; margin: 4px 0; }
+    #legend { margin-top: 10px; font-size: 14px; }
+    .swatch { display: inline-block; width: 16px; height: 16px; vertical-align: middle; margin-right: 6px; border: 1px solid #555; }
+  </style>
+</head>
+<body>
+
+<h1><a href="javascript:history.back()">Home</a> &gt; SVG Charts!</h1>
+<p>This example shows how you can create charts with SVG. Drawn while you wait by the client. Enter four values and the chart will draw their relevance to the sum.</p>
+
+<form name="myform" id="myform">
+  <label>Value A:</label> <input type="text" name="a" value="37.0"><br>
+  <label>Value B:</label> <input type="text" name="b" value="28.0"><br>
+  <label>Value C:</label> <input type="text" name="c" value="20.0"><br>
+  <label>Value D:</label> <input type="text" name="d" value="15.0"><br>
+  <br>
+  <input type="button" value="chart!" onclick="drawpie()">
+</form>
+
+<svg id="piechart" width="320" height="320" viewBox="0 0 320 320">
+  <filter id="dropshadow">
+    <feDropShadow dx="4" dy="4" stdDeviation="4" flood-color="grey" flood-opacity="0.5"/>
+  </filter>
+  <g id="slices" filter="url(#dropshadow)"></g>
+</svg>
+
+<div id="legend"></div>
+
+<script>
+var COLORS = ["#ffff88", "#8888ff", "#ff8888", "#6699ff"];
+var LABELS = ["A", "B", "C", "D"];
+var cx = 160, cy = 160, r = 130;
+
+function polarToXY(angleDeg) {
+  var rad = (angleDeg - 90) * Math.PI / 180;
+  return {
+    x: cx + r * Math.cos(rad),
+    y: cy + r * Math.sin(rad)
+  };
+}
+
+function slicePath(startAngle, endAngle) {
+  // Handle full circle (100%) as a special case
+  if (endAngle - startAngle >= 359.9999) {
+    return "M " + cx + " " + (cy - r) +
+           " A " + r + " " + r + " 0 1 1 " +
+           (cx - 0.001) + " " + (cy - r) + " Z";
+  }
+  var p1 = polarToXY(startAngle);
+  var p2 = polarToXY(endAngle);
+  var largeArc = (endAngle - startAngle > 180) ? 1 : 0;
+  return "M " + cx + " " + cy +
+         " L " + p1.x.toFixed(3) + " " + p1.y.toFixed(3) +
+         " A " + r + " " + r + " 0 " + largeArc + " 1 " +
+         p2.x.toFixed(3) + " " + p2.y.toFixed(3) +
+         " Z";
+}
+
+function drawpie() {
+  var form = document.getElementById("myform");
+  var vals = [
+    parseFloat(form.a.value) || 0,
+    parseFloat(form.b.value) || 0,
+    parseFloat(form.c.value) || 0,
+    parseFloat(form.d.value) || 0
+  ];
+  var sum = vals.reduce(function(a, b) { return a + b; }, 0);
+  if (sum === 0) return;
+
+  var slicesG = document.getElementById("slices");
+  slicesG.innerHTML = "";
+
+  var legendDiv = document.getElementById("legend");
+  legendDiv.innerHTML = "";
+
+  var startAngle = 0;
+  for (var i = 0; i < 4; i++) {
+    var sweep = (vals[i] / sum) * 360;
+    var endAngle = startAngle + sweep;
+    var pct = ((vals[i] / sum) * 100).toFixed(1);
+
+    var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("class", "slice");
+    path.setAttribute("d", slicePath(startAngle, endAngle));
+    path.setAttribute("fill", COLORS[i]);
+    path.setAttribute("stroke", "#555");
+    path.setAttribute("stroke-width", "1");
+    slicesG.appendChild(path);
+
+    var entry = document.createElement("div");
+    entry.innerHTML = '<span class="swatch" style="background:' + COLORS[i] + '"></span>' +
+                      LABELS[i] + ': ' + vals[i] + ' (' + pct + '%)';
+    legendDiv.appendChild(entry);
+
+    startAngle = endAngle;
+  }
+}
+
+// Draw initial chart on load
+drawpie();
+</script>
+
+<hr>
+<address><a href="https://linkedin.com/in/LouisRoehrs">Big Woofie Studios</a></address>
+
+</body>
+</html>
