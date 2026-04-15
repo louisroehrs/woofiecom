@@ -7,7 +7,19 @@
 <bgsound src=../arcade/darkw242.mid LOOP=false>
 <display  nostatus skipback noscroll>
  
-<center>
+  <center>
+      <script src="../../ruffle/ruffle.js"></script>
+<script>
+window.RufflePlayer = window.RufflePlayer || {};
+    window.RufflePlayer.config = {
+    "autoplay": "on", 
+    "splashScreen": false, 
+    "unmuteOverlay":"hidden",
+};
+
+  </script>
+
+
 <SCRIPT LANGUAGE="JavaScript">
 
 var userAgent=navigator.appName + " " + navigator.appVersion;

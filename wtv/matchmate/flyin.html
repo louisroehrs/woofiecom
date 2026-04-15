@@ -1,12 +1,25 @@
 <html>
 <META HTTP-EQUIV="Refresh" CONTENT="8; URL=index.html">
 <head>
-<title>WebTV MatchMate</title>
-<SCRIPT LANGUAGE=Javascript>
-function Next() {
-	window.location = "index.html";
-}
-</SCRIPT>
+  <title>WebTV MatchMate</title>
+  <script src="../../ruffle/ruffle.js"></script>
+  <script>
+    window.RufflePlayer = window.RufflePlayer || {};
+    window.RufflePlayer.config = {
+    "autoplay": "on", 
+    "splashScreen": false, 
+    "unmuteOverlay":"hidden",
+    };
+
+  </script>
+
+
+  <SCRIPT LANGUAGE=Javascript>
+    function Next() {
+	    window.location = "index.html";
+    }
+
+  </SCRIPT>
 
 </head>
 <body fontsize=medium bgcolor=000000 vspace=0 hspace=0>

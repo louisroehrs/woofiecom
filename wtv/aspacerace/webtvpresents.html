@@ -1,10 +1,20 @@
 <html>
 <head>
 <title>WebTV Space Race</title>
+  <script src="../../ruffle/ruffle.js"></script>
+  <script>
+    window.RufflePlayer = window.RufflePlayer || {};
+    window.RufflePlayer.config = {
+    "autoplay": "on", 
+    "splashScreen": false, 
+    "unmuteOverlay":"hidden",
+    };
+
+  </script>
 
 </head>
 <bgsound src='../arcade/wtvspl2.mid' LOOP=false>
-<body bgcolor=000000 vspace=0 hspace=0 align=center>
+<body bgcolor=000000 vspace=0 hspace=0 align=center style="overflow:hidden">
 <display noscroll skipback nostatus showwhencomplete>
 <SCRIPT LANGUAGE="JavaScript">
 var userAgent = navigator.appName + " " + navigator.appVersion;

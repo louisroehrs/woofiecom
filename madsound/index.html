@@ -3,6 +3,17 @@
 <script src=std.js language=javascript></script>
 <script src=cnbc.js language=javascript></script>
 <script src=slf.js language=javascript></script>
+
+<script src="../ruffle/ruffle.js"></script>
+<script>
+window.RufflePlayer = window.RufflePlayer || {};
+    window.RufflePlayer.config = {
+    "autoplay": "on", 
+    "splashScreen": false, 
+    "unmuteOverlay":"hidden",
+};
+
+  </script>
 <style>
     body
     {
@@ -14,6 +25,6 @@
     }
 
 </style>
-<body border=0 marginwidth=0 marginheight=0><embed src=soundmachine.swf height=100% width=100%></embed> </body>
+<body border=0 marginwidth=0 marginheight=0><embed src=soundmachine.swf height=100% width=100% autoplay="on"></embed> </body>
 
 </html>
