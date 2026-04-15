@@ -20,7 +20,7 @@
 
 <!--
 // window globals
-var popupWin = null;
+var popupWin = false;
 
 // OPEN WINDOW
 // options for this window are:
@@ -35,8 +35,24 @@ if ( (navigator.appName != "Microsoft Internet Explorer") && (navigator.appVersi
   popupWin.focus();
 }
 
+  
+  function popupWaitingDialog(url,w,h,t,l) {
 
+    if (popupWin) {
+      popupWin.close()
+    }
+    // Calculate position
+    var left = l || (screen.width/2) - (w/2);
+    var top = t || (screen.height/2) - (h/2);
+    
+    // Open window
+    popupWin = window.open(url, "pleasewait", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+  }
 
+  function closePopup() {
+    popupWin.close()
+  }
+  
 // -->
 
 
@@ -107,12 +123,11 @@ if ( (navigator.appName != "Microsoft Internet Explorer") && (navigator.appVersi
    </TR>
    <TR>
 	<TD class="panelnav">Click these links to see demo.<BR>
-	<a href="javascript:document.body.popupWaitingDialog()">Centered. Content from URL</a><BR>
-        <a href="javascript:dialogx = document.body.createPopupFrame('pleasewait.html','center'); dialogx.show();">Centered. Content from file
-	.</a><BR>
-        <a href='javascript:dialogx = document.body.createPopupFrame("http://www.woofie.com","absolute",300,20,400,400);dialogx.setContent();'>Positioned absolutely</a><BR>
+    <a href="javascript:popupWaitingDialog('https://www.woofie.com',600,400)">Content from URL, Centered</a><BR>
+    <a href="javascript:popupWaitingDialog('pleasewait.html',403,265)">Content from file. Centered</a><BR>
+  <a href="javascript:popupWaitingDialog('pleasewait.html',403,265, 5,5);">Positioned absolutely, at top left.</a><BR>
 
-        <a href='javascript:document.body.closeDialogs();'>Close dialog box.</a>
+    <a href='javascript:closePopup();'>Close dialog box.</a>
 	
         <BR>
         </td>
