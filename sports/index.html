@@ -311,6 +311,8 @@ root.addPeer(road = new element("road", "Roads",  "https://tahoeroads.info/laket
 
 root.addPeer(area = new element("area", "Ski Areas",  "main.html",  "Sep 4 00:16"));
   area.addKid(new element("alpi",  "Alpine",  "http://en.wikipedia.org/wiki/Alpine_Meadows_(ski_resort)",  "Sep 4 00:16"));
+  area.addKid(new element("badger",  "Badger",  "https://www.nps.gov/places/000/badger-pass-ski-area.htm",  "Sep 4 00:16"));
+
   area.addKid(new element("bear",  "Bear Valley",  "https://www.bearvalley.com",  "Sep 4 00:16"));
   area.addKid(new element("heav", "Heavenly",  "http://www.skiheavenly.com",  "Sep 4 00:16"));
   area.addKid(new element("rose", "Mt. Rose", "http://www.skirose.com", "Sep 9 15:21"));
@@ -320,26 +322,27 @@ root.addPeer(area = new element("area", "Ski Areas",  "main.html",  "Sep 4 00:16
   area.addKid(new element("vail", "Vail", "http://www.vail.com", "Sep 9 15:21"));
   
 root.addPeer(cams = new element("cams", "Live Cams", "main.html", "Sep 4 00:17"));
-  cams.addKid(new element("alpinecam", "Alpine (dead)",  "http://www.woofie.com/sports/black.html?URL=http://www.extremetahoe.com/mtncam/alpine_cam.jpg",  "Sep 4 00:16"));
-  cams.addKid(new element("lakecam", "Lake Tahoe (dead)",  "http://www.woofie.com/sports/black.html?URL=http://incline.iwn.com/tahoe.jpg",  "Sep 4 00:16"));
-  cams.addKid(new element("renocam", "Reno (yep!)",  "http://www.woofie.com/sports/black.html?URL=http://www.realtimeweather.com/capture/88.jpg",  "Sep 4 00:16"));
-  cams.addKid(new element("donnercam", "Donner Pass (yep! it works)",  "http://www.woofie.com/sports/black.html?URL=http://donner.iwn.com/donner.jpg",  "Sep 4 00:16"));
-  cams.addKid(new element("heavcam", "Heavenly (weenies, broke it)",  "http://www.woofie.com/sports/black.html?URL=http://www.rsn.com/cams/tahoe/QuickEdit/text_1/text_1/data/image/image_14774/data/image_14774_b.jpg",  "Sep 4 00:16"));
-  cams.addKid(new element("lovelandcam", "Loveland (nope)",  "http://www.woofie.com/sports/black.html?file:/C|/AWork/AWebSites/Woofie/sports/black.html?URL=http://www.9news.com/camera/photos/eoc-camera4-030398-1657-f.JPG",  "Sep 4 00:16"));
-  root.addPeer(beer = new element("beer", "Beverages", "javascript:top.beer.drawmain();", "Sep 4, 00:14"));
-beer.addKid(new element("celebrator", "Celebrator", "http://celebrator.com/", "Sep 4 00:14"));
-beer.addKid(new element("spaten", "Spaten", "http://www.spatenusa.com/", "Sep 4 00:14"));
-beer.addKid(new element("bwb", "Big Woofie Brew", "uc.html", "Sep 4 00:14"));
+  cams.addKid(new element("alpinecam", "Alpine",  "https://www.palisadestahoe.com/mountain-information/webcams#tab=alpine",  "Sep 4 00:16"));
+  cams.addKid(new element("badgercam", "Badger Pass",  "https://www.nps.gov/media/webcam/view.htm?id=81B46503-1DD8-B71B-0BABF33689031F0B",  "Sep 4 00:16"));  cams.addKid(new element("squawcam", "Squaw",  "https://www.palisadestahoe.com/mountain-information/webcams#tab=palisades",  "Sep 4 00:16"));
+  cams.addKid(new element("lakecam", "Lake Tahoe",  "https://visitlaketahoe.com/things-to-do/lake-tahoe-webcams/",  "Sep 4 00:16"));
+  cams.addKid(new element("renocam", "Reno",  "https://www.reno.gov/how-do-i/watch-and-learn/reno-webcams",  "Sep 4 00:16"));
+  cams.addKid(new element("donnercam", "Donner Pass",  "https://cwwp2.dot.ca.gov/vm/loc/d3/hwy80atdonnersummit.htm",  "Sep 4 00:16"));
+  cams.addKid(new element("heavcam", "Heavenly",  "https://snowstash.com/usa/california/heavenly/snow-cams",  "Sep 4 00:16"));
+  cams.addKid(new element("lovelandcam", "Loveland",  "https://skiloveland.com/webcams/",  "Sep 4 00:16"));
 
-root.addPeer(stuff = new element("stuff", "Skis and Movies", "javascript:top.stuff.drawmain();", "Sep 4, 00:14"));
+root.addPeer(beer = new element("beer", "Beverages", "javascript:top.beer.drawmain();", "Sep 4, 00:14"));
+  beer.addKid(new element("celebrator", "Celebrator", "http://celebrator.com/", "Sep 4 00:14"));
+  beer.addKid(new element("spaten", "Spaten", "http://www.spatenusa.com/", "Sep 4 00:14"));
+  beer.addKid(new element("bwb", "Big Woofie Brew", "uc.html", "Sep 4 00:14"));
 
-stuff.addKid(miller = new element("miller", "Warren Miller Movies", "http://www.amazon.com/exec/obidos/external-search?mode=dvdvhs&tag=bigwoofieenterata&keyword=warren+miller+ski", "Sep 4 00:14"));
 
-miller.addKid(new element("snow", "Snow Riders", "http://www.amazon.com/exec/obidos/ASIN/6305087377/bigwoofieenterta", "Sep 4 00:14"));
-miller.addKid(new element("free", "Free Riders", "http://www.amazon.com/exec/obidos/ASIN/6305210128/bigwoofieenterta", "Sep 4 00:14"));
-miller.addKid(new element("extreme", "Extreme Skiing", "http://www.amazon.com/exec/obidos/ASIN/6302572053/bigwoofieenterta", "Sep 4 00:14"));
+root.addPeer(miller = new element("miller", "Warren Miller Movies", "https://warrenmiller.com", "Sep 4 00:14"));
 
-stuff.addKid(shopping = new element("shopping", "Compare Shop", "http://www.woofie.com/save", "Sep 4 00:14"));
+  miller.addKid(new element("snow", "Snow Riders", "https://warrenmiller.com/film-archive/snowriders", "Sep 4 00:14"));
+  miller.addKid(new element("free", "Free Riders", "https://warrenmiller.com/film-archive/freeriders", "Sep 4 00:14"));
+  miller.addKid(new element("extreme", "Extreme Winter", "https://warrenmiller.com/film-archive/extreme-winter", "Sep 4 00:14"));
+
+root.addPeer(shopping = new element("shopping", "Compare Shop", "http://www.woofie.com/save", "Sep 4 00:14"));
 
 root.addPeer(about = new element("about", "About", "javascript:top.about.drawmain();", "Sep 4, 00:14"));
 about.addKid(new element("feedback", "Feedback", "mailto:", "Sep 4 00:14"));
