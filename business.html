@@ -14,14 +14,12 @@
 	<META NAME="revisit-after" content="15">
 	
 	<TITLE>Big Woofie Studios Business, News Headlines, and Quotes</TITLE>
-	
+  <script src="ruffle/ruffle.js"></script>	
 	
 <SCRIPT Language=Javascript>
 function getQuote () {
 	var ticker = document.formq.symb.value;
-	var time = document.formq.time.selectedIndex;
-	time = document.formq.time.options[time].value;
-	var urlstring = "http://www.bigcharts.com/quickchart/quickchart.asp?sid=&o_symb=&symb="+ticker+"&time="+time;
+	var urlstring = "https://stockcharts.com/sc3/ui/?s="+ticker;
 	window.open(urlstring,"quote");
 } 
 	function displayat(imagename, myvalue) {
@@ -75,7 +73,7 @@ function getQuote () {
 <BODY  onload="tick();return true;" TEXT="#000066" BGCOLOR="#808080" LINK="#0000FF" VLINK="#000099" ALINK="#FFFF00">
 
 <CENTER>
-<table width=96% cellspacing=1 cellpadding=3 border=0>
+<table width=97% cellspacing=1 cellpadding=3 border=0>
 
 
 <TR><TD align=center BGCOLOR="#000066">
@@ -136,10 +134,10 @@ google_color_url = "0066CC";
 			<P>
 			<TABLE BORDER="0" CELLSPACING="0" WIDTH="100%" BGCOLOR="#FFFFFF">
 				<TR>
-					<TD HEIGHT="16" BGCOLOR="#000066"><FONT SIZE="2" COLOR="#00FF00" FACE="Arial, Helvetica"><B>&nbsp;News</B></FONT></TD>
+					<TD BGCOLOR="#000066"><FONT SIZE="2" COLOR="#00FF00" FACE="Arial, Helvetica"><B>&nbsp;News</B></FONT></TD>
 				</TR>
 				<TR>
-					<TD HEIGHT="16" BGCOLOR="#000066" align="center">
+					<xTD HEIGHT="16" BGCOLOR="#000066" align="center">
               <APPLET CODE="sevenAMNewsTicker.class" CODEBASE="http://www.7am.com/java" WIDTH=450 HEIGHT=15>
               <PARAM NAME="channels" VALUE="+WORLDnews +USAnetnews +WORLDnetnews  +USAnews">
               <PARAM NAME="target" VALUE="newspage">
@@ -154,7 +152,7 @@ google_color_url = "0066CC";
 							
 								
 								<TD WIDTH="55%" VALIGN="TOP">
-<A HREF="http://headlines.isyndicate.com/rcscript/?user=f7iha9s6&vfc=FF0022&dd=no&hbc=000080&ibc=ffffff&hfc=00ff00&ifc=0000ff&bc=000030&bgc=000030&hg=http://www.woofie.com/images/headlinenews.gif&burl=http://www.woofie.com&dt=Sports%20News&hfs=2&bfs=2&hff=arial,helvetica&iff=timesnewroman&ifs=2"><small>Woofie Headline News - Here First!</small></a><BR>
+<A HREF="https://news.search.yahoo.com/search;_ylt=Awr.xO2JId9pTwIAsQ9XNyoA;_ylu=Y29sbwNncTEEcG9zAzIEdnRpZAMEc2VjA3BpdnM-?p=woofie&fr2=piv-web&fr=yfp-t"><small>Woofie Headline News - Here First!</small></a><BR>
 								<A HREF="http://my.yahoo.com"><FONT SIZE="2">My Yahoo<BR>
 									</FONT></A><A HREF="http://news.yahoo.com"><FONT SIZE="2">News@Yahoo</FONT></A></TD>
 								<TD WIDTH="55%" VALIGN="TOP"><A HREF="http://www.abcnews.com"><FONT SIZE="2">ABCNews</FONT></A><A HREF="http://news.yahoo.com"><FONT SIZE="2"><BR>
@@ -178,7 +176,7 @@ google_color_url = "0066CC";
 								<TD WIDTH="33%" VALIGN="TOP"><A HREF="http://www.upside.com"><FONT SIZE="2">Upside</FONT></A><BR>
 									<A HREF="http://www.business20.com"><FONT SIZE="2">Business 2.0</FONT></A><BR>
 									<A HREF="http://www.fastcompany.com"><FONT SIZE="2">Fast Company</FONT></A><BR>
-									<A HREF="fool.yahoo.com"><FONT SIZE="2">Motley Fool</FONT></A></TD>
+									<A HREF="http://fool.yahoo.com"><FONT SIZE="2">Motley Fool</FONT></A></TD>
 								<TD WIDTH="2%">&nbsp;</TD>
 								<TD WIDTH="65%" VALIGN="TOP"><A HREF="http://www.wsj.com"><FONT SIZE="2">Wall Street Journal</FONT></A><BR>
 									<A HREF="http://www.investors.com/"><FONT SIZE="2">Investor's Business Daily</FONT></A><BR>
@@ -262,7 +260,7 @@ google_color_url = "0066CC";
 						<TABLE BORDER="0" WIDTH="90%">
 						<TR>
 								<TD colspan=2 VALIGN="TOP">Clearly, this section will be updated soon.  In the meantime, check
-								the excellent selection of books from <a href="http://www.amazon.com/exec/obidos/external-search?mode=books&keyword=nolo+business&tag=bigwoofieenterta&Search=Search">
+								the excellent selection of books from <a href="https://www.amazon.com/s?k=nolo&tag=bigwoofieenterta&Search=Search">
 Nolo Press</a><BR></td>
 
 							</TR>
@@ -381,7 +379,7 @@ Nolo Press</a><BR></td>
 					<TD HEIGHT="16" VALIGN="TOP" BGCOLOR="#000066"><FONT SIZE="2" COLOR="#00FF00" FACE="Arial, Helvetica"><B>&nbsp;Information Center</B></FONT></TD>
 				</TR>
 				<TR>
-					<TD ALIGN="CENTER" BGCOLOR="#000000"><EMBED SRC="flash/CreatedForBusiness.swf" WIDTH="213" HEIGHT="160" ALIGN="BOTTOM" VSPACE="5" loop="true"></TD>
+					<TD ALIGN="CENTER" BGCOLOR="#000000"><EMBED SRC="flash/CreatedForBusiness.swf" WIDTH="213" HEIGHT="160" ALIGN="BOTTOM" VSPACE="5" loop="true" autoplay="on"></TD>
 				</TR>
 								<TR>
 					<TD HEIGHT="16" BGCOLOR="#000066"><FONT SIZE="2" COLOR="#00FF00" FACE="Arial, Helvetica"><B>&nbsp;Wall Street Journal</B></FONT></TD>
@@ -395,8 +393,8 @@ Nolo Press</a><BR></td>
 						<TABLE BORDER="0" CELLPADDING="4" CELLSPACING="0" WIDTH="176" BGCOLOR="#000000">
 							<TR>
 								<TD>
-									<A HREF="http://interactive.wsj.com/cgi-bin/wsjgate?source=aff1021woofie&URI=http://public.wsj.com/tour/trywsj.html">
- <IMG SRC=http://public.wsj.com/affiliates/vertical.gif></A>
+									<A HREF="https://www.wsj.com/subscribe?source=aff1021woofie">
+ <IMG SRC=images/wsj.jpg></A>
 								
 								</TD>
 							</TR>
@@ -408,35 +406,16 @@ Nolo Press</a><BR></td>
 				
 
 				<TR>
-					<TD HEIGHT="16" VALIGN="TOP" BGCOLOR="#000066"><FONT SIZE="2" COLOR="#00FF00" FACE="Arial, Helvetica"><B>&nbsp;Quotes by BigCharts</B></FONT></TD>
+					<TD HEIGHT="16" VALIGN="TOP" BGCOLOR="#000066"><FONT SIZE="2" COLOR="#00FF00" FACE="Arial, Helvetica"><B>&nbsp;Quotes by StockCharts</B></FONT></TD>
 				</TR>
 				<TR>
 					<TD ALIGN="CENTER" BGCOLOR="#000000"><P>
 					<table BORDER="0" CELLSPACING="5" WIDTH="100%" BGCOLOR="#000066">
 						<tr><td>
 						<form name="formq" action="">  <CENTER>
-						<INPUT TYPE="text" NAME="symb" VALUE="indu" SIZE="12" MAXLENGTH="30">
-                                
-                                <SELECT NAME="time">
-                                <OPTION VALUE=1 SELECTED> 1-day
-								<OPTION VALUE=2> 2 days
-								<OPTION VALUE=3> 5 days
-								<OPTION VALUE=0> ----------
-								<OPTION VALUE=4> 1-month
-								<OPTION VALUE=5> 2 months
-								<OPTION VALUE=6> 3 months
-								<OPTION VALUE=7> 6 months
-								<OPTION VALUE=19> YTD
-								<OPTION VALUE=8> 1-year
-								<OPTION VALUE=9> 2 years
-								<OPTION VALUE=10> 3 years
-								<OPTION VALUE=11> 4 years
-								<OPTION VALUE=12> 5 years
-								<OPTION VALUE=13> 1-decade
-								<OPTION VALUE=20> All Data
-
-                                </SELECT>
-                              <A HREF="javascript:getQuote()"><FONT SIZE="-1">Get Chart</FONT></A></CENTER></form></td>
+						<INPUT TYPE="text" NAME="symb" VALUE="$indu" SIZE="12" MAXLENGTH="30">
+<br>
+                              <a HREF="javascript:getQuote()"><FONT SIZE="-1" color="white">Get Chart</FONT></a></CENTER></form></td>
 						</tr>
 					</table>
 </P>
@@ -450,12 +429,12 @@ Nolo Press</a><BR></td>
 					<TD BGCOLOR="#000000">
 						<CENTER>
 						<P>
-<FORM ACTION="http://www.amazon.com/exec/obidos/external-search" METHOD="GET">
+<FORM ACTION="https://www.amazon.com/s" METHOD="GET">
 
 						<TABLE BORDER="0" CELLPADDING="4" CELLSPACING="0" WIDTH="176" BGCOLOR="#000000">
 							<TR>
 								<TD WIDTH="53%" ALIGN="CENTER" VALIGN="TOP">
-									<P ALIGN="CENTER"><A HREF="http://www.amazon.com/exec/obidos/redirect-home/bigwoofieenterta"><IMG SRC="images/40perc-bmm-swirl.gif"
+									<P ALIGN="CENTER"><A HREF="https://www.amazon.com/s"><IMG SRC="images/40perc-bmm-swirl.gif"
 									WIDTH="100" HEIGHT="70" ALIGN="BOTTOM" BORDER="0"></A>
 								</TD>
 								<TD><INPUT TYPE="RADIO" NAME="mode" VALUE="books"  CHECKED><FONT COLOR="Yellow">Books </FONT><INPUT TYPE="RADIO" NAME="mode"
@@ -465,7 +444,7 @@ Nolo Press</a><BR></td>
 								<TD ALIGN="CENTER" VALIGN="TOP" COLSPAN="2">
 									<CENTER>
 									<P><FONT COLOR="Yellow">Enter keywords...</FONT><BR>
-									<INPUT TYPE="TEXT" NAME="keyword" SIZE="20" VALUE="small business"><INPUT TYPE="HIDDEN" NAME="tag" SIZE="-1" VALUE="bigwoofieenterta"><BR>
+									<INPUT TYPE="TEXT" NAME="k" SIZE="20" VALUE="small business"><INPUT TYPE="HIDDEN" NAME="tag" SIZE="-1" VALUE="bigwoofieenterta"><BR>
 									<INPUT TYPE="SUBMIT" NAME="Search" VALUE="Search">
 </CENTER>
 								</TD>
@@ -495,6 +474,7 @@ Nolo Press</a><BR></td>
 				<TR>
 					<TD WIDTH="100%" cellpadding=0 cellspacing=0  VALIGN="TOP" BGCOLOR="#CCCCFF">
 						<P ALIGN="CENTER">
+              <img src="pawstop.gif">              <img src="pawstop.gif">              <img src="pawstop.gif">
 <script type="text/javascript"><!--
 google_ad_client = "pub-7467616088319038";
 google_ad_width = 728;
