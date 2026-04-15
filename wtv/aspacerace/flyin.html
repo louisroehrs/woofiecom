@@ -2,6 +2,9 @@
 
   <head>
     <script src="../../ruffle/ruffle.js"></script>
+      <script src='https://cdn.jsdelivr.net/npm/@magenta/music@1.23.1/es6/music_vae.js'></script>
+      <script src='https://cdn.jsdelivr.net/npm/html-midi-player@1.5.0'/></script>
+
     <script>
       window.RufflePlayer = window.RufflePlayer || {};
       window.RufflePlayer.config = {
@@ -20,6 +23,8 @@
     
   </head>
   <bgsound src="http://www.woofie.com/wtv/midi/webtv/sogrand.mid" loop=1>
+   <midi-player src="../midi/webtv/sogrand.mid"  autoplay  style="display:block;" </midi-player>
+
     <body fontsize=medium bgcolor=000000 vspace=0 hspace=0 text=505050 style="overflow:hidden">
       <display noscroll showwhencomplete>
         <center>

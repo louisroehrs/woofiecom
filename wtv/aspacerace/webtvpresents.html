@@ -1,7 +1,9 @@
 <html>
 <head>
 <title>WebTV Space Race</title>
-  <script src="../../ruffle/ruffle.js"></script>
+<script src="../../ruffle/ruffle.js"></script>
+<script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.22.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.4.0"></script>
+
   <script>
     window.RufflePlayer = window.RufflePlayer || {};
     window.RufflePlayer.config = {
@@ -14,6 +16,13 @@
 
 </head>
 <bgsound src='../arcade/wtvspl2.mid' LOOP=false>
+ <midi-player
+    src="background.mid"
+    sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
+    autoplay
+    loop
+    style="display:none;">
+  </midi-player>
 <body bgcolor=000000 vspace=0 hspace=0 align=center style="overflow:hidden">
 <display noscroll skipback nostatus showwhencomplete>
 <SCRIPT LANGUAGE="JavaScript">
