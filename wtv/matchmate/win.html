@@ -2,6 +2,7 @@
 
 <title>WebTV MatchMate</title>
 <head>
+    <link rel="stylesheet" href="../wtvstyles.css">	
 <script language="JavaScript">
 
 function getURLvar(Name) {
@@ -87,7 +88,7 @@ function ToPage(pageName) {
 
 <table width=100% border=0 cellpadding=0 cellspacing=0 cellborder=0>
 	<tr>
-		<td absheight=384 abswidth=166 valign=top>
+		<td height=384 width=166 valign=top>
 			<IMG width=8 height=6 src=/ROMCache/Spacer.gif><BR>
 			<IMG width=6 height=80 src=/ROMCache/Spacer.gif><a href="wtv-home:/home"><IMG width=104 height=80 src=/ROMCache/WebTVLogoJewel.gif></a><BR>
 			<IMG width=8 height=45 src=/ROMCache/Spacer.gif><BR>
@@ -96,14 +97,14 @@ function ToPage(pageName) {
 			<table border=0 cellpadding=0 cellspacing=0 cellborder=0>
 				
 				<tr>
-				<td abswidth=09></td>
-				<td absheight=11 colspan=3>
+				<td width=09></td>
+				<td height=11 colspan=3>
 				<IMG SRC="images/blink1_ani.gif" WIDTH=12 HEIGHT=11 BORDER=0><IMG SRC="images/blink2_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink3_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink1_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink2_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink3_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink1_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink2_ani.gif" WIDTH=12 HEIGHT=11 BORDER=0><IMG SRC="images/blink3_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink1_ani.gif" WIDTH=12 HEIGHT=11 BORDER=0><IMG SRC="images/blink2_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink3_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink1_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0>
 					</td>
 				</tr>
 				<tr>
 					<td></td>
-					<td abswidth=11>
+					<td width=11>
 					<IMG SRC="images/blink2_ani.gif" WIDTH=11 HEIGHT=12 BORDER=0><BR>
 					<IMG SRC="images/blink3_ani.gif" WIDTH=11 HEIGHT=12 BORDER=0><BR>
 					<IMG SRC="images/blink1_ani.gif" WIDTH=11 HEIGHT=12 BORDER=0><BR>
@@ -114,9 +115,9 @@ function ToPage(pageName) {
 					
 					</td>
 					<script Language="Javascript">
-					document.write("<td absheight=83 abswidth=125  background=\"images/player" + winnerid + "_bg_on.gif\" align=center valign=bottom><IMG SRC=" + winnerchar + " WIDTH=80 HEIGHT=80 BORDER=0></td>");
+					document.write("<td height=83 width=125  background=\"images/player" + winnerid + "_bg_on.gif\" align=center valign=bottom><IMG SRC=" + winnerchar + " WIDTH=80 HEIGHT=80 BORDER=0></td>");
 					</script>
-					<td abswidth=11>
+					<td width=11>
 					<IMG SRC="images/blink1_ani.gif" WIDTH=11 HEIGHT=12 BORDER=0><BR>
 					<IMG SRC="images/blink3_ani.gif" WIDTH=11 HEIGHT=12 BORDER=0><BR>					
 					<IMG SRC="images/blink2_ani.gif" WIDTH=11 HEIGHT=12 BORDER=0><BR>					
@@ -129,7 +130,7 @@ function ToPage(pageName) {
 				</tr>
 				<tr>
 					<td></td>
-					<td absheight=11 colspan=3>
+					<td height=11 colspan=3>
 				<IMG SRC="images/blink1_ani.gif" WIDTH=12 HEIGHT=11 BORDER=0><IMG SRC="images/blink2_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink3_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink1_ani.gif" WIDTH=12 HEIGHT=11 BORDER=0><IMG SRC="images/blink2_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink3_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink1_ani.gif" WIDTH=12 HEIGHT=11 BORDER=0><IMG SRC="images/blink2_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink3_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink1_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink2_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink3_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0><IMG SRC="images/blink1_ani.gif" WIDTH=11 HEIGHT=11 BORDER=0>
 					</td>
 				</tr>
@@ -137,7 +138,7 @@ function ToPage(pageName) {
 			</table>
 			<script Language="Javascript">
 			document.write("<table border=0 cellpadding=0 cellspacing=0 cellborder=0>");
-			document.write("<tr><td abswidth=11></td><td absheight=21 abswidth=143 bgcolor=000000 align=center valign=bottom><FONT SIZE=2>"+winner + "</FONT></td></tr></table>");			
+			document.write("<tr><td width=11></td><td height=21 width=143 bgcolor=000000 align=center valign=bottom><FONT SIZE=2>"+winner + "</FONT></td></tr></table>");			
 
 			</script>			
 			<IMG width=8 height=45 src=/ROMCache/Spacer.gif><BR>
@@ -151,20 +152,24 @@ function ToPage(pageName) {
 			</td>
 			
 			
-		<td abswidth=394 valign=top align=left>
+		<td width=394 valign=top align=left>
 			<IMG width=8 height=58 src=/ROMCache/Spacer.gif><BR>
-			<IMG width=100 !height=34 height=27 src=/ROMCache/Spacer.gif><FONT SIZE="7" Color=ffff00><STRONG><blink><!marquee width=304>You Win!  WooHoo!</!marquee></blink></STRONG></FONT><BR>
+			<IMG width=100 !height=34 height=27 src=/ROMCache/Spacer.gif><FONT SIZE="5" Color=ffff00><STRONG><blink><!marquee width=304>You Win!  WooHoo!</!marquee></blink></STRONG></FONT><BR>
 			<IMG width=8 height=13 src=/ROMCache/Spacer.gif><BR>
 			<center>
 			<IMG SRC="images/winner_ani.gif" WIDTH=169 HEIGHT=202 BORDER=0>
 			</center>
-			<IMG width=4 height=06 src=/ROMCache/Spacer.gif><BR>
+			<IMG width=4 height=07 src=/ROMCache/Spacer.gif><BR>
 			<TABLE border=0 cellpadding=0 cellspacing=0 cellborder=0><TR><TD HREF="http://www.woofie.com/webtvad.html" insetselection><IMG SRC="http://www.woofie.com/images/bws.gif" WIDTH=394 HEIGHT=71 BORDER=0></TD></TR></TABLE>
 		</td>
   </tr>
 		
 </table>
  </form>
+  <footerborder></footerborder>
+  <footer>
+    <div class=footerstatus>WebTV MatchMate</div><div class=audiostatus><div class="audiogreen"></div></div>
+  </footer>
 	
 </body>
 </html>

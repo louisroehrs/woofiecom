@@ -29,8 +29,8 @@
 		this.y = y;
 		this.cellWidth = cellWidth;
 		this.cellHeight = cellHeight;
-		this.matched = false;
-		this.position = position;
+	  this.matched = false;
+  	this.position = position;
 		this.matchImage = LoadImage("matches/" + this.contents);  
 		this.coverimage = LoadImage("village/" + this.position + "_tile.gif");
 		
@@ -640,7 +640,7 @@
 	
 		sGameDir = "matches/";
 		
-		asImageNames = new Array("cat","dog","frog","hat","hog","pot","rats","shoe");
+		asImageNames = new Array("cat","dog","frog","hat","hog","pot","rat","shoe");
 	
 		sGameTitle = "Numbers";
 		imageTileSuffix = "jpg";
@@ -745,13 +745,13 @@ credits="credits.html" vspace=0 hspace=0>
 	
 	<tr> 
 		<td valign=top>	<CENTER>
-			<A HREF=""><IMG SRC="images/button_play_again.gif" WIDTH=139 HEIGHT=30 BORDER=0 ALT=""></A><BR>
-			<IMG width=8 height=7 src=/ROMCache/Spacer.gif><BR>
+<!--			<A HREF=""><IMG SRC="images/button_play_again.gif" WIDTH=139 HEIGHT=30 BORDER=0 ALT=""></A><BR> -->
+			<IMG width=8 height=2 src=/ROMCache/Spacer.gif><BR>
 			<A HREF="../arcade/arcade.html?wtv-home:/home" !HREF="javascript:mam.tie();"><IMG SRC="images/button_quit.gif" WIDTH=139 HEIGHT=30 BORDER=0 ALT=""></A><BR>
 
 			</CENTER>
 			</td>
-		<td colspan=2 height=75 HREF="http://www.woofie.com/webtvad.html" valign=bottom insetselection><IMG SRC="http://www.woofie.com/images/bws.gif" WIDTH=394 HEIGHT=71 BORDER=0></td>
+		<td colspan=2 style="position:absolute; top:313; left: 166" height=75 HREF="http://www.woofie.com/webtvad.html" valign=bottom insetselection><IMG SRC="http://www.woofie.com/images/bws.gif" WIDTH=394 HEIGHT=71 BORDER=0></td>
 				       
 	</tr>
 
@@ -759,7 +759,7 @@ credits="credits.html" vspace=0 hspace=0>
 		<td width=166 height=3 valign=bottom></td><td width=57></td><td width=337></td>
 	</tr>
 	<tr>
-		<td valign=bottom><IMG SRC="images/empty.gif" BORDER=0></td><td></td><td></td>
+		<td valign=bottom><IMG SRC="/ROMCache/Spacer.gif" BORDER=0></td><td></td><td></td>
 	</tr>
 	
 </table>
