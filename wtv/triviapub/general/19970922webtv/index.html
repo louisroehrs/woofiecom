@@ -1,374 +1,138 @@
 <html>
 
-
   <head>
     <link rel="stylesheet" href="../../../wtvstyles.css">
-
     <title>Trivial Task!</title>
 
-
     <bgsound src="../../sounds/triviarules.mid" loop=true>
-
   </head>
-
   <body
-
 
     background=../../images/background.jpg
 
-
     valign=top hspace=0 bgcolor=#000000 text=#FFFFFF>
-
-
-
-
     <script language="JavaScript">
 
 
+      function SetCookie (name, value)  {
 
-
-      function SetCookie (name, value)
-
-      {
-
-      var argv = SetCookie.arguments;
-
-
-
-      var argc = SetCookie.arguments.length;
-
-
-
-      var expires = (argc > 2) ? argv[2] : null;
-
-
-
-      var path = (argc > 3) ? argv[3] : null;
-
-
-
-      var domain = (argc > 4) ? argv[4] : null;
-
-
-
-      var secure = (argc > 5) ? argv[5] : false;
-
-
-
-      document.cookie = name + "=" + escape (value) +
-
-
-
-      ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
-
-
-
-      ((path == null) ? "" : ("; path=" + path)) +
-
-
-
-      ((domain == null) ? "" : ("; domain=" + domain)) +
-
-
-
-      ((secure == true) ? "; secure" : "");
-
-
-
+        var argv = SetCookie.arguments;
+        var argc = SetCookie.arguments.length;
+        var expires = (argc > 2) ? argv[2] : null;
+        var path = (argc > 3) ? argv[3] : null;
+        var domain = (argc > 4) ? argv[4] : null;
+        var secure = (argc > 5) ? argv[5] : false;
+        document.cookie = name + "=" + escape (value) +
+          ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
+          ((path == null) ? "" : ("; path=" + path)) +
+          ((domain == null) ? "" : ("; domain=" + domain)) +
+          ((secure == true) ? "; secure" : "");
       }
 
 
-
-
-
-      function GetCookieVal (offset)
-
-
-      {
-
-
-      var endstr = document.cookie.indexOf (";", offset);
-
-
-
-      if (endstr == -1)
-
-
-      endstr = document.cookie.length;
-
-
-      return unescape(document.cookie.substring(offset, endstr));
-
-
-
+      function GetCookieVal (offset) {
+        var endstr = document.cookie.indexOf (";", offset);
+        if (endstr == -1)
+          endstr = document.cookie.length;
+        return unescape(document.cookie.substring(offset, endstr));
       }
 
+      function GetCookie (name) {
+        var arg = name + "=";
+        var alen = arg.length;
+        var clen = document.cookie.length;
+        var i = 0;
 
+        while (i < clen) {
+          var j = i + alen;
+          if (document.cookie.substring(i, j) == arg)
+            return GetCookieVal (j);
 
+          i = document.cookie.indexOf(" ", i) + 1;
 
+          if (i == 0)
+            break;
+        }
 
-      function GetCookie (name)
-
-
-      {
-
-
-      var arg = name + "=";
-
-
-      var alen = arg.length;
-
-
-      var clen = document.cookie.length;
-
-
-      var i = 0;
-
-
-
-
-
-
-
-      while (i < clen) {
-
-
-
-      var j = i + alen;
-
-
-
-      if (document.cookie.substring(i, j) == arg)
-
-
-
-      return GetCookieVal (j);
-
-
-
-
-
-
-
-      i = document.cookie.indexOf(" ", i) + 1;
-
-
-
-      if (i == 0)
-
-
-
-      break;
-
-
-
+        return null;
       }
-
-
-      return null;
-
-
-
-      }
-
-
-
-
 
       function AddToAccum (sCookieName, sPoints) {
+        var expdate = new Date ();
+        expdate.setTime (expdate.getTime() + (24 * 60 * 60 * 1000));
 
+        var sAccum = GetCookie(sCookieName);
 
+        if (sAccum == null) {
+          sAccum = eval(sPoints);
+        } else {
+          sAccum = eval(sAccum) + eval(sPoints);
+        }
 
-
-
-
-      var expdate = new Date ();
-
-
-
-      expdate.setTime (expdate.getTime() + (24 * 60 * 60 * 1000));
-
-
-
-
-
-
-      var sAccum = GetCookie(sCookieName);
-
-
-
-
-
-
-      if (sAccum == null) {
-
-
-      sAccum = eval(sPoints);
-
-
-      } else {
-
-
-      sAccum = eval(sAccum) + eval(sPoints);
-
-
+        SetCookie (sCookieName, sAccum, expdate, "/");
       }
-
-
-
-
-
-      SetCookie (sCookieName, sAccum, expdate, "/");
-
-
-
-
-
-      }
-
-
-
-
 
       function SetCookieMacro (sCookieName, sValue) {
-
-
-
-
-
-
-
-      var expdate = new Date ();
-
-
-
-      expdate.setTime (expdate.getTime() + (7 * 24 * 60 * 60 * 1000));
-
-
-
-
-
-
-
-      SetCookie (sCookieName, sValue, expdate, "/");
-
-
-
-
-
-
-
+        var expdate = new Date ();
+        expdate.setTime (expdate.getTime() + (7 * 24 * 60 * 60 * 1000));
+        SetCookie (sCookieName, sValue, expdate, "/");
       }
 
-
-
-
-
-
       SetCookieMacro("generalPOINTS", 0);
-
-
       SetCookieMacro("generalQON", 1);
-
-
       SetCookieMacro("WRONGANSWER", "B");
-
-
-
-
 
     </script>
 
-
-
-
-
     <table width=100%>
-
-
-
       <tr height=140>
-
-        <td width=104 height=140 align=center valign=top>
-
+        <td width=104 height=140 align=left valign=top>
           <IMG width=104 height=87 src=/ROMCache/WebTVLogoJewel.gif>
-
         </td>
-
-        <td width=144 height=140>
-
+        <td width=232 height=140>
           <IMG width=144 height=140 src=/wtv/ROMCache/spacer.gif>
-
         </td>
-
-        <td width=196> <font size=+3>WebTV 101<br></font><font size=-1>Test your network knowledge!</font></td>
-
-
+        <td width=224> <font size=+3>WebTV 101<br></font><font size=-1>Test your network knowledge!</font></td>
 
       </tr>
 
-
-
       <tr>
 
+        <td valign=top><center>
+            <img src=/wtv/ROMCache/spacer.gif width=100 height=92><BR>
+            <a selected href="general1.html"><IMG SRC="../../images/0202_tt_play.gif" WIDTH=93 HEIGHT=36 BORDER=0></a>
+          </center>
+        </td>
 
-
-        <td valign=top width=100><center>
-          <img src=/ROMCache/spacer.gif width=100 height=92><BR>
-          <a selected href="general1.html"><IMG SRC="../../images/0202_tt_play.gif" WIDTH=93 HEIGHT=36 BORDER=0></a>
-        </center>
-      </td>
-
-
-      <td width=432 colspan=2>
-
-
-
+        <td colspan=2>
         <P>
 
-
-
         <font size=+0>
-
         <table>
-
-          <tr><td valign=top><li></td><td>There are 10 questions in this game.</td></tr>
-
-          <tr><td valign=top><li></td><td>Win points for correct responses.</td></tr>
-
-          <tr><td valign=top><li></td><td>Lose points for incorrect responses.</td></tr>
-
-          <tr><td valign=top><li></td><td>You can try again or move to the next question after answering incorrectly.</td></tr>
-
-          <tr><td valign=top><li></td><td>1000 points is a perfect score!</td></tr>
-
+          <tr><td width=30 align=right valign=top><li></td><td>There are 10 questions in this game.</td></tr>
+          <tr><td width=30 align=right valign=top><li></td><td>Win points for correct responses.</td></tr>
+          <tr><td width=30 align=right valign=top><li></td><td>Lose points for incorrect responses.</td></tr>
+          <tr><td width=30 align=right valign=top><li></td><td>You can try again or move to the next question after answering incorrectly.</td></tr>
+          <tr><td width=30 align=right valign=top><li></td><td>1000 points is a perfect score!</td></tr>
         </table>
-
         </font>
 
-
-
         <link href="general1.html" rel=next>
-
         <br>
-
         <br>
-
         <br>
-
-
 
       </td>
-
-
 
     </tr>
 
-
-
   </table>
+  <footerborder></footerborder>
+  <footer>
+    <div class=footerstatus>WebTV Trivia Task</div><div class=audiostatus><div class="audiogreen"></div></div>
+  </footer>
 
-
+</body>
 
 </html>
 
