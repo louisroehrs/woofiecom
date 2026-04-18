@@ -3,6 +3,7 @@
 <title>WebTV MatchMate</title>
 
 <head>
+<link rel="stylesheet" href="../wtvstyles.css">
 
 
 <SCRIPT Language="JavaScript">
@@ -78,15 +79,15 @@
 	}
 	
 	function RenderSidebar() {	
-		document.write("<IMG width=14 height=24 src=/ROMCache/Spacer.gif align=absmiddle><FONT SIZE=4 COLOR=#FFFFFF><STRONG><shadow>Player One</shadow></STRONG></FONT><SUB>&nbsp;</SUB><BR>");
+		document.write("<IMG width=14 height=24 src=/ROMCache/Spacer.gif align=absmiddle><FONT SIZE=4 COLOR=#FFFFFF><STRONGs><shadow>Player One</shadow></STRONG></FONT><SUB>&nbsp;</SUB><BR>");
 		this.players[0].render();
 
 		if (this.players.length == 2) {
-			document.write("<IMG width=8 height=23 src=/ROMCache/Spacer.gif><BR>");
-			document.write("<IMG width=14 height=24 src=/ROMCache/Spacer.gif align=absmiddle><FONT SIZE=4 COLOR=#FFFFFF><STRONG><shadow>Player Two</shadow></STRONG></FONT><SUB>&nbsp;</SUB><BR>");			
+			document.write("<IMG width=8 height=4 src=/ROMCache/Spacer.gif><BR>");
+			document.write("<IMG width=14 height=25 src=/ROMCache/Spacer.gif align=absmiddle><FONT SIZE=4 COLOR=#FFFFFF><STRONsG><shadow>Player Two</shadow></STRONG></FONT><SUB>&nbsp;</SUB><BR>");			
 			this.players[1].render();
 		} else {
-			document.write("<IMG width=8 height=72 src=/ROMCache/Spacer.gif><BR>");
+			document.write("<IMG width=8 height=70 src=/ROMCache/Spacer.gif><BR>");
 		}
 	}	
 	
@@ -121,7 +122,7 @@
 	function Prender() { // Does need to be in its own table...Indicator is the Current Player Arrow
 
 		document.write("<IMG width=14 height=3 src=/ROMCache/Spacer.gif><table  border=0 cellpadding=0 cellspacing=0 cellborder=0>");
-		document.write("<tr><td abswidth=14></td><td abswidth=138 absheight=22 bgcolor=000000 valign=bottom align=center><FONT SIZE=2> "+this.name + "</FONT></td></tr></table><br>");
+		document.write("<tr><td width=14></td><td width=138 height=22 bgcolor=000000 valign=bottom align=center><FONT SIZE=3> "+this.name + "</FONT></td></tr></table><br>");
 	}
 	
 	function PassQueryToPage(pageName) {
@@ -130,6 +131,7 @@
 		bigwoofie = pageName + "?" + window.location.search;
 		window.location = bigwoofie;
 	}
+
 
 	function Redirect(sURL) {
 	  window.location=sURL;
@@ -140,7 +142,7 @@
  <BGSOUND SRC="sounds/susallem.mid" AUTOSTART=TRUE LOOP=INFINITE>
 
 <body fontsize=medium background=images/full_bg1.gif
-      valign=top   bgcolor=#009933 text=#FFFFFF credits="credits.html"
+      valign=top bgcolor=#009933 text=#FFFFFF credits="credits.html"
 	  onload="mam.startRules()"  vspace=0 hspace=0>
 	<display noscroll nosend showwhencomplete >
 
@@ -148,44 +150,45 @@
 
 <table width=100% border=0 cellpadding=0 cellspacing=0 cellborder=0>
 	<tr>
-		<td absheight=384 abswidth=166 valign=top>
+		<td height=384 width=166 valign=top>
 			<IMG width=8 height=6 src=/ROMCache/Spacer.gif><BR>
 			<IMG width=6 height=80 src=/ROMCache/Spacer.gif><a href="wtv-home:/home"><IMG width=104 height=80 src=/ROMCache/WebTVLogoJewel.gif></a><BR>
-			<IMG width=8 height=61 src=/ROMCache/Spacer.gif><BR>
+			<IMG width=8 height=56 src=/ROMCache/Spacer.gif><BR>
 <SCRIPT Language="JavaScript">mam.renderSidebar();</SCRIPT>
 			<center>
-			<IMG width=8 height=34 src=/ROMCache/Spacer.gif><BR>
+			<IMG width=8 height=20 src=/ROMCache/Spacer.gif><BR>
 			<IMG width=8 height=7 src=/ROMCache/Spacer.gif><BR>
 			<A selected HREF="javascript:PassQueryToPage('rules2.html')"><IMG SRC="images/button_more_info.gif" WIDTH=139 HEIGHT=30 BORDER=0 ALT=""></A><BR>
-			<IMG width=8 height=7 src=/ROMCache/Spacer.gif><BR>
 
+			<IMG width=8 height=7 src=/ROMCache/Spacer.gif><BR>
  			<A HREF="javascript:PassQueryToPage('game.html')"><IMG SRC="images/button_play.gif" WIDTH=139 HEIGHT=30 BORDER=0 ALT=""></A><BR>
+
 
 			</center>
 		</td>
-		<td abswidth=394 valign=top align=left>
+		<td width=394 valign=top align=left>
 			<TABLE border=0 cellpadding=0 cellspacing=0 cellborder=0>
 				<TR>
-				<TD absheight=141 abswidth=202 valign=top>
+				<TD height=141 width=202 valign=top>
 					<IMG width=8 height=58 src=/ROMCache/Spacer.gif><BR>
 					<IMG width=100 height=27 src=/ROMCache/Spacer.gif><IMG SRC="images/title_rules.gif" WIDTH=102 HEIGHT=27 BORDER=0>
 				</TD>
-				<TD abswidth=70></TD>		
-				<TD abswidth=119>
+				<TD width=70></TD>		
+				<TD width=119>
 					<IMG SRC="images/chester_rules.gif" WIDTH=119 HEIGHT=141 BORDER=0>
 				</TD>
 				</TR>
 			</TABLE>
 			<TABLE border=0 cellpadding=0 cellspacing=0 cellborder=0>
 				<TR>
-				<TD absheight=172 abswidth=10></TD>
-				<TD abswidth=360><FONT SIZE=4 COLOR=#FFFFFF><STRONG><shadow>
+				<TD height=172 width=10></TD>
+				<TD width=360><FONT SIZE=4 COLOR=#FFFFFF><STRONG><shadow>
 				<UL>
 				<LI>The object of the game is to find matches in Mumples.
 				<LI>Matches do not have to be exact duplicates. For instance, a smiling cat matches a frowning cat, a pointy hat matches a curly hat.
 				</UL>
 				</shadow></STRONG></FONT></TD>
-				<TD abswidth=20 valign=top></TD>
+				<TD width=20 valign=top></TD>
 				</TR>
 			</TABLE>
 			<TABLE border=0 cellpadding=0 cellspacing=0 cellborder=0><TR><TD HREF="http://www.woofie.com/webtvad.html" insetselection><IMG SRC="http://www.woofie.com/images/bws.gif" WIDTH=394 HEIGHT=71 BORDER=0></TD></TR></TABLE>
@@ -193,6 +196,11 @@
   </tr>
 
 </table>
+<footerborder></footerborder>
+<footer>
+  <div class=footerstatus>WebTV MatchMate</div><div class=audiostatus><div class="audiogreen"></div></div>
+</footer>
+
 </form>
 </html>
 

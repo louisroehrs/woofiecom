@@ -4,8 +4,12 @@
 <META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">
 
 <title>Building Game...</title>
+<link rel="stylesheet" href="../wtvstyles.css">
+<style>
 
+</style>      
 	<script language="JavaScript">
+
 	debug=0;
 // OBJECTS
 // CELL Object
@@ -446,9 +450,9 @@
 	function Prender() { // overlapping arrow
 
 		document.write("<table cellpadding=0 cellspacing=0 cellborder=0>");
-		document.write("<tr><td colspan=2 valign=center></td><td colspan=3 absheight=83 name=woofie34  background=images/player" + this.id + "_bg_onnew.gif valign=bottom align=left><img width=30 height=80 src=images/spacer.gif name=player" + this.id + "go><img width=5 height=80 src=images/spacer.gif><img src=" + this.pict + " name=play" + this.id + "pict width=80 height=80></td><td abswidth=3></td></tr>");
-		document.write("<tr><td abswidth=11></td><td abswidth=3 bgcolor=000000></td><td abswidth=3 bgcolor=000000></td><td absheight=21 bgcolor=000000 align=left valign=bottom><FONT SIZE=2>"+this.name + "</FONT></td><td bgcolor=000000 abswidth=15 valign=bottom><img width=15 height=20 src=images/spacer.gif  name=player" +this.id+"score></td><td abswidth=3 bgcolor=000000></td></tr>");
-		document.write("<tr><td absheight=2 abswidth=11></td><td abswidth=3></td><td abswidth=3></td><td abswidth=117></td><td abswidth=15></td><td abswidth=3></td></tr></table><br>");
+		document.write("<tr><td colspan=2 valign=center></td><td colspan=3 height=83 name=woofie34  background=images/player" + this.id + "_bg_onnew.gif valign=bottom align=left><img width=30 height=80 src=images/spacer.gif name=player" + this.id + "go><img width=5 height=80 src=images/spacer.gif><img src=" + this.pict + " name=play" + this.id + "pict width=80 height=80></td><td width=3></td></tr>");
+		document.write("<tr><td width=11></td><td width=3 bgcolor=000000></td><td width=3 bgcolor=000000></td><td height=21 bgcolor=000000 align=left valign=bottom><FONT SIZE=2>"+this.name + "</FONT></td><td bgcolor=000000 width=15 valign=bottom><img width=15 height=20 src=images/spacer.gif  name=player" +this.id+"score></td><td width=3 bgcolor=000000></td></tr>");
+		document.write("<tr><td height=2 width=11></td><td width=3></td><td width=3></td><td width=117></td><td width=15></td><td width=3></td></tr></table><br>");
 	}
 	
 		
@@ -701,8 +705,8 @@
 <!-- nosend -->
 <body  style="overflow:hidden;" fontsize=medium background="images/strip_bg_game.gif" bgcolor=#3eb469 gradangle=90 gradcolor=#005165 text=#ffffff link=#dddd00 valign=top 
 credits="credits.html" vspace=0 hspace=0>
-	<display noscroll nosave skipback showwhencomplete >
 
+<!--  
 	<EMBED SRC="sounds/newbell3.mid" HIDDEN=TRUE 
 	VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="bell"
 	MASTERSOUND>
@@ -712,14 +716,14 @@ credits="credits.html" vspace=0 hspace=0>
 	<EMBED SRC="sounds/applause.mp2" HIDDEN=TRUE 
 	VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="applause"
 	MASTERSOUND>
-
+-->
 	<form name="gameboard" >
-<table width=100% border=0 cellpadding=0 cellspacing=0 cellborder=0>
+<table width=100% border=0 cellpadding=0 cellspacing=0 cellborder=>
 
 	<tr>
-		<td colspan=2 absheight=88 valign=top><IMG width=6 height=80 src=/ROMCache/Spacer.gif><a href="wtv-home:/home"><IMG width=104 height=80 src=/ROMCache/WebTVLogoJewel.gif></a><IMG width=5 height=4 src=/ROMCache/Spacer.gif><IMG SRC="images/mm_logo_sm.jpg" WIDTH=94 HEIGHT=88 BORDER=0></td>
+		<td colspan=2 height=88 valign=top><IMG width=6 height=80 src=/ROMCache/Spacer.gif><a href="wtv-home:/home"><IMG width=104 height=80 src=/ROMCache/WebTVLogoJewel.gif></a><IMG width=5 height=4 src=/ROMCache/Spacer.gif><IMG SRC="images/mm_logo_sm.jpg" WIDTH=94 HEIGHT=88 BORDER=0></td>
 
-		<td rowspan=2 valign=top align=left absheight=310>
+		<td rowspan=2 valign=top align=left height=310>
 		          
 			<IMG width=8 height=15 src=/ROMCache/Spacer.gif><BR>
 			<SCRIPT Language="JavaScript">mam.board.render();</SCRIPT>
@@ -728,7 +732,7 @@ credits="credits.html" vspace=0 hspace=0>
 		</td>
 	</tr>
 	<tr>
-		<td abswidth=166 absheight=221 valign=top>
+		<td width=166 height=221 valign=top>
 		<IMG width=8 height=3 src=/ROMCache/Spacer.gif><BR>
 
 		<SCRIPT Language="JavaScript">mam.renderSidebar();</SCRIPT>
@@ -747,18 +751,22 @@ credits="credits.html" vspace=0 hspace=0>
 
 			</CENTER>
 			</td>
-		<td colspan=2 absheight=75 HREF="http://www.woofie.com/webtvad.html" valign=bottom insetselection><IMG SRC="http://www.woofie.com/images/bws.gif" WIDTH=394 HEIGHT=71 BORDER=0></td>
+		<td colspan=2 height=75 HREF="http://www.woofie.com/webtvad.html" valign=bottom insetselection><IMG SRC="http://www.woofie.com/images/bws.gif" WIDTH=394 HEIGHT=71 BORDER=0></td>
 				       
 	</tr>
 
 	<tr>
-		<td abswidth=166 absheight=3 valign=bottom></td><td abswidth=57></td><td abswidth=337></td>
+		<td width=166 height=3 valign=bottom></td><td width=57></td><td width=337></td>
 	</tr>
 	<tr>
 		<td valign=bottom><IMG SRC="images/empty.gif" BORDER=0></td><td></td><td></td>
 	</tr>
 	
 </table>
+  <footerborder></footerborder>
+  <footer>
+    <div class=footerstatus>WebTV MatchMate</div><div class=audiostatus><div class="audiogreen"></div></div>
+  </footer>
 
 </form>  
 </body>

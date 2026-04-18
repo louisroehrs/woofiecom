@@ -1,9 +1,9 @@
 <html>
 <head>
 
-<title>WebTV MatchMate</title>
+  <title>WebTV MatchMate</title>
+    <link rel="stylesheet" href="../wtvstyles.css">	
 <SCRIPT Language="JavaScript">
-
 
 	mam = new game("mam");
 
@@ -151,8 +151,8 @@
 	function Prender() { // Does need to be in its own table...Indicator is the Current Player Arrow
 
 		document.write("<table border=0 cellpadding=0 cellspacing=0 cellborder=0>");
-		document.write("<tr><td abswidth=13></td><td abswidth=125 absheight=83 background=images/player" + this.id + "_bg_on.gif valign=bottom align=center><img src=/ROMCache/spacer.gif name=play" + this.id + "pict width=80 height=80></td></tr>");
-		document.write("<tr><td colspan=2 absheight=21 bgcolor=000000 align=center valign=bottom><FONT SIZE=2>"+this.name + "</FONT></td></tr></table><br>");
+		document.write("<tr><td width=13></td><td width=125 height=83 background=images/player" + this.id + "_bg_on.gif valign=bottom align=center><img src=/ROMCache/spacer.gif name=play" + this.id + "pict width=80 height=80></td></tr>");
+		document.write("<tr><td colspan=2 height=21 bgcolor=000000 align=center valign=bottom><FONT SIZE=2>"+this.name + "</FONT></td></tr></table><br>");
 	}
 	
 	function Psetimage (imageName,loc) {
@@ -197,7 +197,7 @@
 <form action="game.html" method=get name=form1>
 <table width=100% border=0 cellpadding=0 cellspacing=0 cellborder=0>
 	<tr>
-		<td absheight=382 abswidth=166 valign=top>
+		<td height=382 width=166 valign=top>
 			<IMG width=8 height=6 src=/ROMCache/Spacer.gif><BR>
 			<IMG width=6 height=80 src=/ROMCache/Spacer.gif><a href="wtv-home:/home"><IMG width=104 height=80 src=/ROMCache/WebTVLogoJewel.gif></a><BR>
 			<center>
@@ -207,21 +207,21 @@
 		</SCRIPT>
 						
 			<IMG width=8 height=7 src=/ROMCache/Spacer.gif><BR>
- 			<A HREF="index.html"><IMG SRC="images/button_play_again.gif" WIDTH=139 HEIGHT=30 BORDER=0 ALT=""></A><BR>
+ 			<A HREF="index.html"><IMG SRC="images/button_play.gif" WIDTH=139 HEIGHT=30 BORDER=0 ALT=""></A><BR>
 			<IMG width=8 height=7 src=/ROMCache/Spacer.gif><BR>
 
-			<A HREF="wtv-home:/home"><IMG SRC="images/button_quit.gif" WIDTH=139 HEIGHT=30 BORDER=0 ALT=""></A><BR>
+<!--			<A HREF="wtv-home:/home"><IMG SRC="images/button_quit.gif" WIDTH=139 HEIGHT=30 BORDER=0 ALT=""></A><BR> -->
 			</center>
 		</td>
-		<td abswidth=394 valign=top align=left>
+		<td width=394 valign=top align=left>
 		<table width=100% border=0 cellpadding=0 cellspacing=0 cellborder=0>
 			<tr>
-				<td colspan=2 absheight=104 valign=top>
+				<td colspan=2 height=104 valign=top>
 
 				<table width=100% border=0 cellpadding=0 cellspacing=0 cellborder=0>
 				<tr>
-				<td abswidth=100 absheight=90></td>
-				<td abswidth=294 valign=bottom><FONT SIZE="3" Color=ffff00><STRONG><textarea name="playerpick" rows=1 cols=20 border=0 usestyle bgcolor=000000 noselect></textarea></STRONG></FONT></td>
+				<td width=100 height=90></td>
+				<td width=294 valign=bottom><FONT SIZE="3" Color=ffff00><STRONG><textarea name="playerpick" rows=1 cols=20 border=0 usestyle bgcolor=000000 noselect></textarea></STRONG></FONT></td>
 				</tr>
 				</table>
 
@@ -229,28 +229,28 @@
 				</td>
 			</tr>	
 			<tr>
-				<td abswidth=168 absheight=209><IMG SRC="images/choose_ani.gif" WIDTH=168 HEIGHT=202 BORDER=0></td>
+				<td width=168 height=209><IMG SRC="images/choose_ani.gif" WIDTH=168 HEIGHT=202 BORDER=0></td>
 				<td valign=middle align=center>
 					 <table border=0 cellpadding=0 cellspacing=0 cellborder=0>
 					 <tr>
-					    <td abswidth=10></td>
-						<td absheight=90 abswidth=90 bgcolor=#F27516>
+					    <td width=10></td>
+						<td height=90 width=90 bgcolor=#F27516>
 							<SCRIPT Language="JavaScript">
 								document.write("<A name='link0' selected HREF=\"javascript:mam.pickCharacter('" + mam.playerpicts[0]+"',0)\"><IMG SRC=" + mam.playerpicts[0]+" name='pict0' WIDTH=90 HEIGHT=90 BORDER=0></A>");
 							</SCRIPT> 
 						</td>
-						<td abswidth=10></td>
-						<td abswidth=90 bgcolor=#F3d00c>
+						<td width=10></td>
+						<td width=90 bgcolor=#F3d00c>
 							<SCRIPT Language="JavaScript">
 								document.write("<A name='link1' HREF=\"javascript:mam.pickCharacter('" + mam.playerpicts[1]+"',1)\"><IMG SRC=" + mam.playerpicts[1]+" name='pict1' WIDTH=90 HEIGHT=90 BORDER=0></A>");
 							</SCRIPT> 
 						</td>
-						<td abswidth=10></td>
+						<td width=10></td>
 					</tr>
-					<tr><td absheight=10></td><td></td><td></td><td></td><td></td></tr>
+					<tr><td height=10></td><td></td><td></td><td></td><td></td></tr>
 		  			<tr>
-						<td abswidth=10></td>
-						<td absheight=90 bgcolor=#F3d00c>
+						<td width=10></td>
+						<td height=90 bgcolor=#F3d00c>
 							<SCRIPT Language="JavaScript">
 								document.write("<A name='link2' HREF=\"javascript:mam.pickCharacter('" + mam.playerpicts[2]+"',2)\"><IMG SRC=" + mam.playerpicts[2]+" name='pict2' WIDTH=90 HEIGHT=90 BORDER=0></A>");
 							</SCRIPT> 
@@ -261,13 +261,13 @@
 								document.write("<A name='link3' HREF=\"javascript:mam.pickCharacter('" + mam.playerpicts[3]+"',3)\"><IMG SRC=" + mam.playerpicts[3]+" name='pict3' WIDTH=90 HEIGHT=90 BORDER=0></A>");
 							</SCRIPT>
 						</td>
-						<td abswidth=10></td>
+						<td width=10></td>
 					</tr>
 					</table>
 				</td>
 			</tr>
 		</table>
-		<TABLE border=0 cellpadding=0 cellspacing=0 cellborder=0><TR><TD HREF="http://www.woofie.com/webtvad.html" absWIDTH=394 absHEIGHT=71 insetselection><IMG SRC="http://www.woofie.com/images/bws.gif" WIDTH=394 HEIGHT=71 BORDER=0></TD></TR></TABLE>
+		<TABLE border=0 cellpadding=0 cellspacing=0 cellborder=0><TR><TD HREF="http://www.woofie.com/webtvad.html" WIDTH=394 HEIGHT=71 insetselection><IMG SRC="http://www.woofie.com/images/bws.gif" WIDTH=394 HEIGHT=71 BORDER=0></TD></TR></TABLE>
 
 	</td>
 	</tr>
@@ -277,6 +277,11 @@
 </form>
 	<SCRIPT Language="JavaScript">
 		StartUp();
-	</SCRIPT> 
+	</SCRIPT>
+    <footerborder/>
+<footer>
+  <div class=footerstatus>WebTV MatchMate</div><div class=audiostatus><div class="audiogreen"></div></div>
+</footer>
+
 </body>
 </html>
