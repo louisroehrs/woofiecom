@@ -577,9 +577,10 @@
 	}
 
 	function PlaySound(sound) {
-
-		window.location = "sounds/" + sound;
-	}
+  console.log("play  " + sound);
+    const audioP = document.getElementById(sound);
+    audioP.play()
+  }
 	
 	function splitString(mystring, delimiter) {
 		var woofie = new Array();
@@ -706,7 +707,11 @@
 <body  style="overflow:hidden;" fontsize=medium background="images/strip_bg_game.gif" bgcolor=#3eb469 gradangle=90 gradcolor=#005165 text=#ffffff link=#dddd00 valign=top 
 credits="credits.html" vspace=0 hspace=0>
 
-<!--  
+  <audio id="newbell3.mid"><source src="../audio/newbell3.mp3" type="audio/mpeg"/></audio> 
+  <audio id="buzz.mid"><source src="../audio/buzz.mp3" type="audio/mpeg"  /></audio>
+  <audio id="applaude.mp2"><source src="../audio/applause.mp2" type="audio/mpeg"  /></audio> 
+
+  <!--
 	<EMBED SRC="sounds/newbell3.mid" HIDDEN=TRUE 
 	VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="bell"
 	MASTERSOUND>
