@@ -1,39 +1,46 @@
 <html>
-<head>
-<title>WebTV Space Race</title>
-<script src="../../ruffle/ruffle.js"></script>
-<script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.22.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.4.0"></script>
-
-  <script>
-    window.RufflePlayer = window.RufflePlayer || {};
-    window.RufflePlayer.config = {
-    "autoplay": "on", 
-    "splashScreen": false, 
-    "unmuteOverlay":"hidden",
-    };
-
-  </script>
-
-</head>
-<bgsound src='../arcade/wtvspl2.mid' LOOP=false>
- <midi-player
-    src="background.mid"
-    sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
-    autoplay
-    loop
-    style="display:none;">
-  </midi-player>
-<body bgcolor=000000 vspace=0 hspace=0 align=center style="overflow:hidden">
-<display noscroll skipback nostatus showwhencomplete>
-<SCRIPT LANGUAGE="JavaScript">
-var userAgent = navigator.appName + " " + navigator.appVersion;
-
-if (userAgent.indexOf("Plus") > 0 ) {
-  	document.write("<embed src='../arcade/Wtv.spl' quality=high width=560 height=420 loop=false>"); 
-} else {   
-	document.write("<embed src='../arcade/Cwtv.spl' quality=high width=560 height=420 loop=false>"); 
-}
-</SCRIPT>
-</center>
-</body>
+  <head>
+      <link rel="stylesheet" href="../wtvstyles.css">	
+      <title>WebTV Space Race</title>
+      <script src="../../ruffle/ruffle.js"></script>
+      <script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.22.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.4.0"></script>
+      
+      <script>
+        window.RufflePlayer = window.RufflePlayer || {};
+        window.RufflePlayer.config = {
+          "autoplay": "on", 
+          "splashScreen": false, 
+          "unmuteOverlay":"hidden",
+        };
+        
+      </script>
+      
+  </head>
+  <bgsound src='../arcade/wtvspl2.mid' LOOP=false>
+    <midi-player
+      src="background.mid"
+      sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
+      autoplay
+      loop
+      style="display:none;">
+    </midi-player>
+    <body bgcolor=000000 vspace=0 hspace=0 style="overflow:hidden">
+      <display noscroll skipback nostatus showwhencomplete>
+        <center>
+          <SCRIPT LANGUAGE="JavaScript">
+            var userAgent = navigator.appName + " " + navigator.appVersion;
+            
+            if (userAgent.indexOf("Plus") > 0 ) {
+  	          document.write("<embed src='../arcade/Wtv.spl' quality=high width=560 height=420 loop=false>"); 
+            } else {   
+	            document.write("<embed src='../arcade/Cwtv.spl' quality=high width=560 height=420 loop=false>"); 
+            }
+            </SCRIPT>
+        </center>
+        <footerborder></footerborder>
+        <footer>
+          <div class=footerstatus>WebTV SpaceRace</div><div class=audiostatus><div class="audiogreen"></div></div>
+        </footer>
+        
+    </body>
 </html>
