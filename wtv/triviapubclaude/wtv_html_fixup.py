@@ -109,7 +109,10 @@ def step_spacerace_trivial_task(content):
 
 def step_button_click(content):
     return content.replace('href="javascript:CheckAndRedirect(','onclick="CheckAndRedirect(')
-    
+
+def step_rom_cache(content):
+    return content.replace('src=/ROMCache/Spacer.gif','src=/wtv/ROMCache/spacer.gif')
+
 def step_main_table_measurements(content):
     content = re.sub(r'<table cellpadding=0 cellspacing=0>[^<]*<tr height=200>','<table cellpadding=0 cellspacing=0 width=100%>\n<tr height=90>',content)
     content = content.replace('<td colspan=2 width=195 height=120>','<td colspan=3 width=195 height=90>')
@@ -256,7 +259,8 @@ TRANSFORMS = [
     ('score row',     step_score_row),
     ('main_table_measurements', step_main_table_measurements),
     ('step_spacerace_trivial_task',step_spacerace_trivial_task),
-    ('step_button_click',step_button_click)
+    ('step_button_click',step_button_click),
+    ('step_rom_cache',step_rom_cache)
 ]
 
 

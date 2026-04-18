@@ -1,0 +1,12 @@
+cd 19970922webtv
+python ../../../triviapubclaude/wtv_html_fixup.py 
+cd ../19970929college/
+python ../../../triviapubclaude/wtv_html_fixup.py 
+cd ../19971006cars
+python ../../../triviapubclaude/wtv_html_fixup.py 
+cd ../19971013baseball/
+python ../../../triviapubclaude/wtv_html_fixup.py 
+cd ../19971110music/
+python ../../../triviapubclaude/wtv_html_fixup.py 
+cd ../19971222holiday/
+python ../../../triviapubclaude/wtv_html_fixup.py 
