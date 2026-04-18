@@ -31,6 +31,10 @@ shadow {
     text-shadow: 1.5px 1.5px 3px black;
 }
 
+a {
+  text-decoration:none!important;
+}
+
 footerborder {
     position: fixed;
     top: 384px;

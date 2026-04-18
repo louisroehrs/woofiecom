@@ -1,516 +1,523 @@
 <html>
-<head>
-<title>Trivial Task</title>
-<bgsound src="../../sounds/triviagame.mid">
-</head>
-<body hspace=0 background="../../images/background.jpg" bgcolor=#000000 text=#FFFFFF>
+  <head>
+    <link rel="stylesheet" href="../../../wtvstyles.css">
+    <title>Trivial Task</title>
+    <bgsound src="../../sounds/triviagame.mid">
+  </head>
+  <body hspace=0 background="../../images/background.jpg" bgcolor=#000000 text=#FFFFFF>
+    <!--
+    <EMBED SRC="../../sounds/applause.MP2" HIDDEN=TRUE CONTROLS=console
+    VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="right"
+    MASTERSOUND>
+    <EMBED SRC="../../sounds/buzzer.aif" HIDDEN=TRUE CONTROLS=console
+    VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="wrong"
+    MASTERSOUND>
+    -->
 
-<EMBED SRC="../../sounds/applause.MP2" HIDDEN=TRUE CONTROLS=console 
- VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="right" 
- MASTERSOUND>
+    <script language="JavaScript">
 
-<EMBED SRC="../../sounds/buzzer.aif" HIDDEN=TRUE CONTROLS=console
- VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="wrong"
- MASTERSOUND>            
+      var bCheckCS=false;
 
-<script language="JavaScript">
+      function SetCookie (name, value)
+      {
+      var argv = SetCookie.arguments;
+      var argc = SetCookie.arguments.length;
+      var expires = (argc > 2) ? argv[2] : null;
+      var path = (argc > 3) ? argv[3] : null;
+      var domain = (argc > 4) ? argv[4] : null;
+      var secure = (argc > 5) ? argv[5] : false;
+      document.cookie = name + "=" + escape (value) +
+      ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
+      ((path == null) ? "" : ("; path=" + path)) +
+      ((domain == null) ? "" : ("; domain=" + domain)) +
+      ((secure == true) ? "; secure" : "");
+      }
 
-var bCheckCS=false;
-
-function SetCookie (name, value)
-{
-   var argv = SetCookie.arguments;
-   var argc = SetCookie.arguments.length;
-   var expires = (argc > 2) ? argv[2] : null;
-   var path = (argc > 3) ? argv[3] : null;
-   var domain = (argc > 4) ? argv[4] : null;
-   var secure = (argc > 5) ? argv[5] : false;
-   document.cookie = name + "=" + escape (value) +
-         ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
-         ((path == null) ? "" : ("; path=" + path)) +
-         ((domain == null) ? "" : ("; domain=" + domain)) +
-         ((secure == true) ? "; secure" : "");
-}
-
-function GetCookieVal (offset)
-{
-   var endstr = document.cookie.indexOf (";", offset);
-   if (endstr == -1)
+      function GetCookieVal (offset)
+      {
+      var endstr = document.cookie.indexOf (";", offset);
+      if (endstr == -1)
       endstr = document.cookie.length;
-   return unescape(document.cookie.substring(offset, endstr));
-}
+      return unescape(document.cookie.substring(offset, endstr));
+      }
 
-function GetCookie (name)
-{
-   var arg = name + "=";
-   var alen = arg.length;
-   var clen = document.cookie.length;
-   var i = 0;
+      function GetCookie (name)
+      {
+      var arg = name + "=";
+      var alen = arg.length;
+      var clen = document.cookie.length;
+      var i = 0;
 
-   while (i < clen) {
+      while (i < clen) {
       var j = i + alen;
       if (document.cookie.substring(i, j) == arg)
-         return GetCookieVal (j);
+      return GetCookieVal (j);
 
       i = document.cookie.indexOf(" ", i) + 1;
       if (i == 0)
-         break;
-   }
-   return null;
-}
+      break;
+      }
+      return null;
+      }
 
-function AddToAccum (sCookieName, sPoints) {
+      function AddToAccum (sCookieName, sPoints) {
 
-  var expdate = new Date ();
-  expdate.setTime (expdate.getTime() + (24 * 60 * 60 * 1000));
+      var expdate = new Date ();
+      expdate.setTime (expdate.getTime() + (24 * 60 * 60 * 1000));
 
-  var sAccum = GetCookie(sCookieName);
+      var sAccum = GetCookie(sCookieName);
 
-  //alert("b "+sCookieName+" "+sAccum);
+      //alert("b "+sCookieName+" "+sAccum);
 
-  if (sAccum == null) {
-    sAccum = eval(sPoints);
-  } else { 
-    sAccum = eval(sAccum) + eval(sPoints); 
-  }
+      if (sAccum == null) {
+      sAccum = eval(sPoints);
+      } else {
+      sAccum = eval(sAccum) + eval(sPoints);
+      }
 
-  //alert("a "+sCookieName+" "+sAccum);
+      //alert("a "+sCookieName+" "+sAccum);
 
-  SetCookie (sCookieName, sAccum, expdate, "/");
+      SetCookie (sCookieName, sAccum, expdate, "/");
 
-  return (sAccum);
+      return (sAccum);
 
-}
+      }
 
-function SetCookieMacro (sCookieName, sValue) {
+      function SetCookieMacro (sCookieName, sValue) {
 
-  var expdate = new Date ();
-  expdate.setTime (expdate.getTime() + (7 * 24 * 60 * 60 * 1000));
+      var expdate = new Date ();
+      expdate.setTime (expdate.getTime() + (7 * 24 * 60 * 60 * 1000));
 
-  SetCookie (sCookieName, sValue, expdate, "/");
+      SetCookie (sCookieName, sValue, expdate, "/");
 
-}   
+      }
 
-function PlayWrong() {
+      function PlayWrong() {
 
-  if (document.wrong == null) {
-//    alert("Please wait for a moment while the sound files load.");
-//    history.go(0);
-    return;
-  } else {
-    document.wrong.play(false);  
-  } 
+      if (document.wrong == null) {
+      //    alert("Please wait for a moment while the sound files load.");
+      //    history.go(0);
+      return;
+      } else {
+      document.wrong.play(false);
+      }
 
-}
+      }
 
-function PlayRight() {
+      function PlayRight() {
 
-  if (document.right == null) {
-//    alert("Please wait for a moment while the sound files load.");
-//    history.go(0);
-    return;
-  } else {
-    document.right.play(false);
-  }
+      if (document.right == null) {
+      //    alert("Please wait for a moment while the sound files load.");
+      //    history.go(0);
+      return;
+      } else {
+      document.right.play(false);
+      }
 
-}
+      }
 
-function GetDigit(iScore, iDigit) {
+      function GetDigit(iScore, iDigit) {
 
-  while (iScore.length < 4) {
-    iScore = "0" + iScore;
-  }
+      while (iScore.length < 4) {
+      iScore = "0" + iScore;
+      }
 
-  //alert("before"+iScore+" "+iScore.length);
-  var sDigit = iScore.charAt(iDigit); 
-  //alert("after"+sDigit);
-  return(sDigit);
- 
-} 
+      //alert("before"+iScore+" "+iScore.length);
+      var sDigit = iScore.charAt(iDigit);
+      //alert("after"+sDigit);
+      return(sDigit);
 
-function FormMessageImageURL(sMessage) {
+      }
 
-  if (sMessage != "spacer") {
-    return("../../images/"+sMessage+".gif");
-  } else {
-    return("/ROMCache/spacer.gif");
-  }
-}
+      function FormMessageImageURL(sMessage) {
 
-function FormDigitImageURL(iDigit) {
+      if (sMessage != "spacer") {
+      return("../../images/"+sMessage+".gif");
+      } else {
+      return("/ROMCache/spacer.gif");
+      }
+      }
 
-  return("../../images/"+iDigit+".GIF");
+      function FormDigitImageURL(iDigit) {
 
-}
+      return("../../images/"+iDigit+".GIF");
 
-function SetScoreImages(sUserScore) {
+      }
 
-  if (eval(sUserScore) < 0) {
-    document.scorem.src  = "../../images/minus.gif";  
-	sUserScoreMod = sUserScore.substring(1,sUserScore.length);
-  } else {
-    document.scorem.src  = "/ROMCache/spacer.gif";  
-	sUserScoreMod = sUserScore;
-  }
+      function SetScoreImages(sUserScore) {
 
-  document.score0.src = FormDigitImageURL(GetDigit(sUserScoreMod, 0)); 
-  document.score1.src = FormDigitImageURL(GetDigit(sUserScoreMod, 1)); 
-  document.score2.src = FormDigitImageURL(GetDigit(sUserScoreMod, 2)); 
-  document.score3.src = FormDigitImageURL(GetDigit(sUserScoreMod, 3)); 
+      if (eval(sUserScore) < 0) {
+      document.scorem.src  = "../../images/minus.gif";
+      sUserScoreMod = sUserScore.substring(1,sUserScore.length);
+      } else {
+      document.scorem.src  = "/ROMCache/spacer.gif";
+      sUserScoreMod = sUserScore;
+      }
 
-} 
+      document.score0.src = FormDigitImageURL(GetDigit(sUserScoreMod, 0));
+      document.score1.src = FormDigitImageURL(GetDigit(sUserScoreMod, 1));
+      document.score2.src = FormDigitImageURL(GetDigit(sUserScoreMod, 2));
+      document.score3.src = FormDigitImageURL(GetDigit(sUserScoreMod, 3));
 
-function loadDigitImage(iDigit) {
+      }
 
-  var image = new Image();
-  image.src = FormDigitImageURL(iDigit);
+      function loadDigitImage(iDigit) {
 
-}
+      var image = new Image();
+      image.src = FormDigitImageURL(iDigit);
 
-function loadMessageImage(sMessage) {
+      }
 
-  var image = new Image();
-  image.src = FormMessageImageURL(sMessage);
+      function loadMessageImage(sMessage) {
 
-}
+      var image = new Image();
+      image.src = FormMessageImageURL(sMessage);
 
-function LoadImages() {
+      }
 
-  loadDigitImage(0);
-  loadDigitImage(1);
-  loadDigitImage(2);
-  loadDigitImage(3);    
-  loadDigitImage(4);    
-  loadDigitImage(5);    
-  loadDigitImage(6);    
-  loadDigitImage(7);    
-  loadDigitImage(8);    
-  loadDigitImage(9);    
-  loadMessageImage("sorry");
+      function LoadImages() {
 
-}
+      loadDigitImage(0);
+      loadDigitImage(1);
+      loadDigitImage(2);
+      loadDigitImage(3);
+      loadDigitImage(4);
+      loadDigitImage(5);
+      loadDigitImage(6);
+      loadDigitImage(7);
+      loadDigitImage(8);
+      loadDigitImage(9);
+      loadMessageImage("sorry");
 
-function SetMessageImage(sWrongAnswer) {
+      }
 
-  if (sWrongAnswer == null) 
-    sWrongAnswer=GetCookie("WRONGANSWER");
-   
-  if (sWrongAnswer == "T") {
-    document.message.src = FormMessageImageURL("sorry"); 
-    SetCookieMacro("WRONGANSWER", "B");
-  } else if (sWrongAnswer == "F") {
-    document.message.src = FormMessageImageURL("right"); 
-    SetCookieMacro("WRONGANSWER", "B");
-  } else {
-    document.message.src = FormMessageImageURL("spacer"); 
-    SetCookieMacro("WRONGANSWER", "B");
-  }       
+      function SetMessageImage(sWrongAnswer) {
 
-}
+      if (sWrongAnswer == null)
+      sWrongAnswer=GetCookie("WRONGANSWER");
 
-function CheckQuestionOn(sCategory, sCategoryQuestionNumber) {
+      if (sWrongAnswer == "T") {
+      document.message.src = FormMessageImageURL("sorry");
+      SetCookieMacro("WRONGANSWER", "B");
+      } else if (sWrongAnswer == "F") {
+      document.message.src = FormMessageImageURL("right");
+      SetCookieMacro("WRONGANSWER", "B");
+      } else {
+      document.message.src = FormMessageImageURL("spacer");
+      SetCookieMacro("WRONGANSWER", "B");
+      }
 
-  var sQuestionOn = GetCookie(sCategory+"QON");
-  if (sQuestionOn == null) {
-    sQuestionOn = 1;
-    SetCookieMacro(sCategory+"QON", sQuestionOn);
-  }
+      }
 
-  if (eval(sQuestionOn) != eval(sCategoryQuestionNumber)) {
-    RedirectToQuestion(sCategory, sQuestionOn);
-  }
+      function CheckQuestionOn(sCategory, sCategoryQuestionNumber) {
 
-}  
+      var sQuestionOn = GetCookie(sCategory+"QON");
+      if (sQuestionOn == null) {
+      sQuestionOn = 1;
+      SetCookieMacro(sCategory+"QON", sQuestionOn);
+      }
 
-function ReloadPage() {
-  window.location.reload();
-}
+      if (eval(sQuestionOn) != eval(sCategoryQuestionNumber)) {
+      RedirectToQuestion(sCategory, sQuestionOn);
+      }
 
-function Redirect(sURL) {
-  window.location=sURL;
-}
+      }
 
-function RedirectToQuestion (sCategory, sQuestion) {
-  Redirect(sCategory+sQuestion+".html");
-}
+      function ReloadPage() {
+      window.location.reload();
+      }
 
-function RedirectToNextQuestion (sCategory, sCurrQuestion) {
+      function Redirect(sURL) {
+      window.location=sURL;
+      }
 
-  var sNextQuestion = eval(eval(sCurrQuestion) + 1);
-  SetCookieMacro(sCategory+"QON", sNextQuestion); 
+      function RedirectToQuestion (sCategory, sQuestion) {
+      Redirect(sCategory+sQuestion+".html");
+      }
 
-  RedirectToQuestion(sCategory, sNextQuestion);
+      function RedirectToNextQuestion (sCategory, sCurrQuestion) {
 
-}
+      var sNextQuestion = eval(eval(sCurrQuestion) + 1);
+      SetCookieMacro(sCategory+"QON", sNextQuestion);
 
-function CheckAndRedirect (sSubmittedAnswer, sCorrectAnswer, sCategory,
-			   sPointsPossible,  sCategoryQuestionOn) {
+      RedirectToQuestion(sCategory, sNextQuestion);
 
-  if (bCheckCS)
-	return;
-  bCheckCS = true;
+      }
 
-  SetMessageImage("B");
+      function CheckAndRedirect (sSubmittedAnswer, sCorrectAnswer, sCategory,
+      sPointsPossible,  sCategoryQuestionOn) {
 
-  if (eval(sSubmittedAnswer) == eval(sCorrectAnswer)) {
+      if (bCheckCS)
+      return;
+      bCheckCS = true;
 
-    PlayRight();
+      SetMessageImage("B");
 
-    var sUserScore = "" + AddToAccum(sCategory+"POINTS", sPointsPossible);
+      if (eval(sSubmittedAnswer) == eval(sCorrectAnswer)) {
 
-    SetCookieMacro("WRONGANSWER", "B");
+      PlayRight();
 
-    SetScoreImages(sUserScore); 
+      var sUserScore = "" + AddToAccum(sCategory+"POINTS", sPointsPossible);
 
-    RedirectToNextQuestion(sCategory, sCategoryQuestionOn);
+      SetCookieMacro("WRONGANSWER", "B");
 
-  } else {
+      SetScoreImages(sUserScore);
 
-    PlayWrong();
+      RedirectToNextQuestion(sCategory, sCategoryQuestionOn);
 
-    var sWrongPts = eval(eval(-1)*eval(sPointsPossible));
-    var sUserScore = "" + AddToAccum(sCategory+"POINTS", sWrongPts);
+      } else {
 
-    SetCookieMacro("WRONGANSWER", "T");
+      PlayWrong();
 
-    SetScoreImages(sUserScore); 
-    SetMessageImage();
-    bCheckCS=false;
-  }
+      var sWrongPts = eval(eval(-1)*eval(sPointsPossible));
+      var sUserScore = "" + AddToAccum(sCategory+"POINTS", sWrongPts);
 
-//  alert("after Check UserScore: "+sUserScore);
+      SetCookieMacro("WRONGANSWER", "T");
 
-}
+      SetScoreImages(sUserScore);
+      SetMessageImage();
+      bCheckCS=false;
+      }
 
-CheckQuestionOn('general', 1);
+      //  alert("after Check UserScore: "+sUserScore);
 
-</SCRIPT>
+      }
 
-<form>
+      CheckQuestionOn('general', 1);
 
-<!--MAIN TABLE-->
+    </SCRIPT>
 
-<table cellpadding=0 cellspacing=0>
-  <tr absheight=200>
+    <form>
 
-<!-- WebTV Jewel Cell -->
+      <!--MAIN TABLE-->
 
-     <td abswidth=115 absheight=120>
-        <IMG width=104 height=87 src=file://ROMCache/WebTVLogoJewel.gif>
-     </td>
+      <table cellpadding=0 cellspacing=0 width=100%>
+        <tr height=90>
 
-<!-- TT Logo Spacer Cell -->
+          <!-- WebTV Jewel Cell -->
 
-     <td colspan=2 abswidth=195 absheight=120>
-        <IMG width=104 height=87 src=file://ROMCache/Spacer.gif>
-     </td>
+          <td width=115 height=120 align=center valign=top>
+            <IMG width=104 height=87 src=/ROMCache/WebTVLogoJewel.gif>
+          </td>
 
-<!-- TT Question # and Worth -->
+          <!-- TT Logo Spacer Cell -->
 
-     <td abswidth=235 absheight=120 valign=top>
-       <font color=#FFFFFF size=+2><br>
-         Question
+          <td colspan=3 width=195 height=90>
+            <IMG width=104 height=87 src=/ROMCache/Spacer.gif>
+          </td>
 
-         <SCRIPT LANGAUGE="JAVASCRIPT">
-           var asNumbers = new Array("One", "Two",   "Three", "Four", "Five",
-                                     "Six", "Seven", "Eight", "Nine", "Ten"); 
-           document.write(asNumbers[eval(eval(1)-1)]);
-         </SCRIPT>
+          <!-- TT Question # and Worth -->
 
-       </font>
-	   <br>    
-       <font color=#ED970E size=+2>
-         Worth: 50
-       </font>     
-     </td>
-  </tr>
+          <td width=235 height=120 valign=top>
+            <font color=#FFFFFF size=+2><br>
+            Question
 
-  <tr>
-  
-<!-- Message Panel -->
+            <SCRIPT LANGAUGE="JAVASCRIPT">
+              var asNumbers = new Array("One", "Two",   "Three", "Four", "Five",
+              "Six", "Seven", "Eight", "Nine", "Ten");
+              document.write(asNumbers[eval(eval(1)-1)]);
+            </SCRIPT>
 
-   <td rowspan=3 abswidth=108 align=left> 
+            </font>
+            <br>
+            <font color=#ED970E size=+2>
+            Worth: 50
+            </font>
+          </td>
+        </tr>
 
-     <IMG src=file://ROMCache/Spacer.gif name=message width=108 height=108>
+        <tr>
 
-   </td>
+          <!-- Message Panel -->
 
-<!-- Question -->
+          <td rowspan=3 width=108 align=left>
 
-   <td colspan=3 absheight=85>
+            <IMG src=/ROMCache/Spacer.gif name=message width=108 height=108>
 
-     <font size=+1>
-	   What sexy songstress’ life story hit the silverscreen with What's Love Got to do With it?
-     </font>
+          </td>
 
-   </td> 
- </tr>
+          <td rowspan=3 width=10 align=left>
+            <IMG src=/ROMCache/Spacer.gif name=message width=10 height=108>
+          </td>
+          <!-- Question Text -->
 
- <tr>
-   <td colspan=3 absheight=110> 
+          <td colspan=3 height=85>
 
-<!-- // Answer Section -->
+            <font size=+1>
+            What sexy songstressï¿½ life story hit the silverscreen with What's Love Got to do With it?
+            </font>
 
-     <table cellpadding=0 cellspacing=0 width=100%> 
-       <tr>
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan=3 height=110>
+
+            <!-- // Answer Section -->
+
+            <table cellpadding=0 cellspacing=0 width=100%>
+              <tr>
 
                 <td>
 
-          <center><a nocolor>
-             <table cellpadding=0 cellspacing=0 
-					background="../../images/button.gif" 
-					href="javascript:CheckAndRedirect(1,
-					3,'general',
-					50,1)" nocolor>
+                  <center><a nocolor>
+                    <table cellpadding=0 cellspacing=0
+                      background="../../images/button.gif"
+                      href="javascript:CheckAndRedirect(1,
+                      3,'general',
+                      50,1)" nocolor>
 
-               <tr>
-                 <td abswidth=135 absheight=110>
-                   <center>
-                     <font color=#FFFFFF>
-					<!-- 
-                       <a href="javascript:CheckAndRedirect(1,
-                         3,'general',
-	  				     50,1)" nocolor>
-                   --> 
-  					       Madonna
-			  	    <!-- 
-                       </a>
-					   -->
-                    
-                     </font>
-                   </center>
-                 </td>
-               </tr>
+                      <tr>
+                        <td width=135 height=110>
+                          <center>
+                            <font color=#FFFFFF>
+                            <!--
+                            <a href="javascript:CheckAndRedirect(1,
+                            3,'general',
+                            50,1)" nocolor>
+                            -->
+                            Madonna
+                            <!--
+                            </a>
+                            -->
 
-             </table>
+                            </font>
+                          </center>
+                        </td>
+                      </tr>
 
-          </a></center>
+                    </table>
 
-      </td>
-        <td>
+                    </a></center>
 
-          <center><a nocolor>
-             <table cellpadding=0 cellspacing=0 
-					background="../../images/button.gif" 
-					href="javascript:CheckAndRedirect(2,
-					3,'general',
-					50,1)" nocolor>
+                  </td>
+                  <td>
 
-               <tr>
-                 <td abswidth=135 absheight=110>
-                   <center>
-                     <font color=#FFFFFF>
-					<!-- 
-                       <a href="javascript:CheckAndRedirect(2,
-                         3,'general',
-	  				     50,1)" nocolor>
-                   --> 
-  					       Cyndi<br>Lauper
-			  	    <!-- 
-                       </a>
-					   -->
-                    
-                     </font>
-                   </center>
-                 </td>
-               </tr>
+                    <center><a nocolor>
+                      <table cellpadding=0 cellspacing=0
+                        background="../../images/button.gif"
+                        href="javascript:CheckAndRedirect(2,
+                        3,'general',
+                        50,1)" nocolor>
 
-             </table>
+                        <tr>
+                          <td width=135 height=110>
+                            <center>
+                              <font color=#FFFFFF>
+                              <!--
+                              <a href="javascript:CheckAndRedirect(2,
+                              3,'general',
+                              50,1)" nocolor>
+                              -->
+                              Cyndi<br>Lauper
+                              <!--
+                              </a>
+                              -->
 
-          </a></center>
+                              </font>
+                            </center>
+                          </td>
+                        </tr>
 
-      </td>
-        <td>
+                      </table>
 
-          <center><a nocolor>
-             <table cellpadding=0 cellspacing=0 
-					background="../../images/button.gif" 
-					href="javascript:CheckAndRedirect(3,
-					3,'general',
-					50,1)" nocolor>
+                      </a></center>
 
-               <tr>
-                 <td abswidth=135 absheight=110>
-                   <center>
-                     <font color=#FFFFFF>
-					<!-- 
-                       <a href="javascript:CheckAndRedirect(3,
-                         3,'general',
-	  				     50,1)" nocolor>
-                   --> 
-  					       Tina<br>Turner
-			  	    <!-- 
-                       </a>
-					   -->
-                    
-                     </font>
-                   </center>
-                 </td>
-               </tr>
+                    </td>
+                    <td>
 
-             </table>
+                      <center><a nocolor>
+                        <table cellpadding=0 cellspacing=0
+                          background="../../images/button.gif"
+                          href="javascript:CheckAndRedirect(3,
+                          3,'general',
+                          50,1)" nocolor>
 
-          </a></center>
+                          <tr>
+                            <td width=135 height=110>
+                              <center>
+                                <font color=#FFFFFF>
+                                <!--
+                                <a href="javascript:CheckAndRedirect(3,
+                                3,'general',
+                                50,1)" nocolor>
+                                -->
+                                Tina<br>Turner
+                                <!--
+                                </a>
+                                -->
 
-      </td>
+                                </font>
+                              </center>
+                            </td>
+                          </tr>
+
+                        </table>
+
+                        </a></center>
+
+                      </td>
 
 
-       </tr>
+                    </tr>
 
-     </table>
+                  </table>
 
-  </td>
- </tr>
+                </td>
+              </tr>
 
-<!-- //SCORE&NEXT ROW -->
+              <!-- //SCORE&NEXT ROW -->
 
- <tr>
+              <tr>
+                <td colspan=3>
+                  <!-- //SCORE CELL -->
+                  <table width=100%>
+                    <tr>
+                      <td valign=absmiddle align=center><font size=+2>Score:</font></td>
 
-<!-- //SCORE CELL -->
+                      <td valign=absmiddle>
+                        <img width=33 height=53 src=/ROMCache/spacer.gif name=scorem>
+                        <img width=33 height=53 src=/ROMCache/spacer.gif name=score0>
+                        <img width=33 height=53 src=/ROMCache/spacer.gif name=score1>
+                        <img width=33 height=53 src=/ROMCache/spacer.gif name=score2>
+                        <img width=33 height=53 src=/ROMCache/spacer.gif name=score3>
+                      </td>
 
-  <td align=left abswidth=137 valign=center align=right>
-    <font size=+2 color=#FFFFFF>
-	   Score:
-	</font>
-  </td>
+                      <!-- // NEXT ARROW -->
 
-  <td valign=top abswidth=215>
-    <img width=33 height=53 src=/ROMCache/spacer.gif name=scorem>
-    <img width=33 height=53 src=/ROMCache/spacer.gif name=score0>
-    <img width=33 height=53 src=/ROMCache/spacer.gif name=score1>
-    <img width=33 height=53 src=/ROMCache/spacer.gif name=score2>
-    <img width=33 height=53 src=/ROMCache/spacer.gif name=score3>
-  </td>
+                      <td valign=absmiddle align=center>
+                        <a href="javascript:RedirectToNextQuestion('general', 1)">
+                        <img width=84 height=51 src="../../images/arrow.gif">
+                        </a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+                <!-- // SCORE&NEXT -->
+              </tr>
 
-<!-- // NEXT ARROW -->
+              <!-- // MAIN TABLE -->
 
-  <td align=right abswidth=84>
-    <a href="javascript:RedirectToNextQuestion('general',
-											  1)">
+            </table>
 
-      <img width=84 height=51 src="../../images/arrow.gif">
-    </a>
-  </td>
+            <SCRIPT LANGAUGE="JAVASCRIPT">
 
-<!-- // SCORE&NEXT --> 
+              var sUserScore = GetCookie("generalPOINTS");
+              if (sUserScore == null)
+              sUserScore = "0";
 
- </tr>
+              //alert("In Main");
+              SetScoreImages(sUserScore);
+              SetMessageImage();
+              LoadImages();
+            </SCRIPT>
+            <footerborder></footerborder>
+            <footer>
+              <div class=footerstatus>WebTV Trivial Task</div><div class=audiostatus><div class="audiogreen"></div>
+            </div>
+          </footer>
 
-<!-- // MAIN TABLE -->
 
-</table>
 
-<SCRIPT LANGAUGE="JAVASCRIPT">
-
-  var sUserScore = GetCookie("generalPOINTS");
-  if (sUserScore == null)
-    sUserScore = "0";
-
-  //alert("In Main");
-  SetScoreImages(sUserScore);
-  SetMessageImage();
-  LoadImages();
-</SCRIPT>
-
-</body></html>
-                    
+        </body></html>
+                            
