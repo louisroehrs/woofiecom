@@ -108,7 +108,7 @@ def step_spacerace_trivial_task(content):
     return content.replace("WebTV SpaceRace","WebTV Trivial Task")
 
 def step_button_click(content):
-    return content.replace("href="javascript:CheckAndRedirect(","onclick="CheckAndRedirect(")
+    return content.replace('href="javascript:CheckAndRedirect(','onclick="CheckAndRedirect(')
     
 def step_main_table_measurements(content):
     content = re.sub(r'<table cellpadding=0 cellspacing=0>[^<]*<tr height=200>','<table cellpadding=0 cellspacing=0 width=100%>\n<tr height=90>',content)
