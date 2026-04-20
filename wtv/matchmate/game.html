@@ -9,7 +9,7 @@
 
 </style>      
 	<script language="JavaScript">
-
+    lastAudio = null;
 	debug=0;
 // OBJECTS
 // CELL Object
@@ -292,7 +292,7 @@
 
 		wincommand = parameter;
 
-		window.setTimeout(WinPage(),5000);
+		window.setTimeout(WinPage,5000);
 	}
 	
 	function WinPage() {
@@ -577,9 +577,10 @@
 	}
 
 	function PlaySound(sound) {
-  console.log("play  " + sound);
-    const audioP = document.getElementById(sound);
-    audioP.play()
+    if (lastAudio) lastAudio.pause();
+    lastAudio = document.getElementById(sound);
+    lastAudio.currentTime = 0;
+    lastAudio.play()
   }
 	
 	function splitString(mystring, delimiter) {
@@ -745,7 +746,7 @@ credits="credits.html" vspace=0 hspace=0>
 
 			</CENTER>
 			</td>
-		<td colspan=2 style="position:absolute; top:313; left: 166" height=75 HREF="http://www.woofie.com/webtvad.html" valign=bottom insetselection><IMG SRC="http://www.woofie.com/images/bws.gif" WIDTH=394 HEIGHT=71 BORDER=0></td>
+		<td colspan=2 style="position:absolute; top:313; left: 166" height=75><a HREF="credits.html" valign=bottom insetselection><IMG SRC="http://www.woofie.com/images/bws.gif" WIDTH=394 HEIGHT=71 BORDER=0></td>
 				       
 	</tr>
 
