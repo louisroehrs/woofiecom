@@ -7,25 +7,33 @@ body {
     margin: 0px;
 }
 
-input {
-    border: 0px;
-    background-color: white;
-    color: white;
-    font-size:20px;
+
+input[type=text] {
+    appearance:none;
+    color: black;
+    border: none;
+    font-weight: normal;
+    font-size:14px;
+    line-height:0.8;
     text-align:center;
+    height:20px;
+    box-shadow:none;
+    outline:none;
+    background:grey;
+    border:5px solid grey;;
+    
 }
 
 
 textarea {
-    padding-top:45px;
-    padding-bottom:50px;
     appearance:none;
-    color: yellow;
+    color: black;
     background-color:transparent;
-    font-size: 20px;
+    font-size: 18px;
     height:60px;
     border:none;
     overflow:hidden;
+    resize: none;
 }
 
 shadow {

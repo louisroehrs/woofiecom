@@ -1,134 +1,134 @@
 <html>
 
-<title>WebTV Crossword</title>
+  <title>WebTV Crossword</title>
 
-<body background=images/cw.jpg 
-      valign=top bgcolor=#000000 text=#FFFFFF>
+  <body background=images/cw.jpg
+    valign=top bgcolor=#000000 text=#FFFFFF>
 
-<script language="JavaScript">
+    <script language="JavaScript">
 
-function SetCookie (name, value)
-{
-   var argv = SetCookie.arguments;
-   var argc = SetCookie.arguments.length;
-   var expires = (argc > 2) ? argv[2] : null;
-   var path = (argc > 3) ? argv[3] : null;
-   var domain = (argc > 4) ? argv[4] : null;
-   var secure = (argc > 5) ? argv[5] : false;
-   document.cookie = name + "=" + escape (value) +
-         ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
-         ((path == null) ? "" : ("; path=" + path)) +
-         ((domain == null) ? "" : ("; domain=" + domain)) +
-         ((secure == true) ? "; secure" : "");
-}
+      function SetCookie (name, value)
+      {
+      var argv = SetCookie.arguments;
+      var argc = SetCookie.arguments.length;
+      var expires = (argc > 2) ? argv[2] : null;
+      var path = (argc > 3) ? argv[3] : null;
+      var domain = (argc > 4) ? argv[4] : null;
+      var secure = (argc > 5) ? argv[5] : false;
+      document.cookie = name + "=" + escape (value) +
+      ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
+      ((path == null) ? "" : ("; path=" + path)) +
+      ((domain == null) ? "" : ("; domain=" + domain)) +
+      ((secure == true) ? "; secure" : "");
+      }
 
-function GetCookieVal (offset)
-{
-   var endstr = document.cookie.indexOf (";", offset);
-   if (endstr == -1)
+      function GetCookieVal (offset)
+      {
+      var endstr = document.cookie.indexOf (";", offset);
+      if (endstr == -1)
       endstr = document.cookie.length;
-   return unescape(document.cookie.substring(offset, endstr));
-}
+      return unescape(document.cookie.substring(offset, endstr));
+      }
 
-function GetCookie (name)
-{
-   var arg = name + "=";
-   var alen = arg.length;
-   var clen = document.cookie.length;
-   var i = 0;
+      function GetCookie (name)
+      {
+      var arg = name + "=";
+      var alen = arg.length;
+      var clen = document.cookie.length;
+      var i = 0;
 
-   while (i < clen) {
+      while (i < clen) {
       var j = i + alen;
       if (document.cookie.substring(i, j) == arg)
-         return GetCookieVal (j);
+      return GetCookieVal (j);
 
       i = document.cookie.indexOf(" ", i) + 1;
       if (i == 0)
-         break;
-   }
-   return null;
-}
+      break;
+      }
+      return null;
+      }
 
-function AddToAccum (sCookieName, sPoints) {
+      function AddToAccum (sCookieName, sPoints) {
 
-  var expdate = new Date ();
-  expdate.setTime (expdate.getTime() + (24 * 60 * 60 * 1000));
+      var expdate = new Date ();
+      expdate.setTime (expdate.getTime() + (24 * 60 * 60 * 1000));
 
-  var sAccum = GetCookie(sCookieName);
+      var sAccum = GetCookie(sCookieName);
 
-  if (sAccum == null) {
-    sAccum = eval(sPoints);
-  } else { 
-    sAccum = eval(sAccum) + eval(sPoints); 
-  }
+      if (sAccum == null) {
+      sAccum = eval(sPoints);
+      } else {
+      sAccum = eval(sAccum) + eval(sPoints);
+      }
 
-  SetCookie (sCookieName, sAccum, expdate, "/");
+      SetCookie (sCookieName, sAccum, expdate, "/");
 
-}
+      }
 
-function SetCookieMacro (sCookieName, sValue) {
+      function SetCookieMacro (sCookieName, sValue) {
 
-  var expdate = new Date ();
-  expdate.setTime (expdate.getTime() + (7 * 24 * 60 * 60 * 1000));
+      var expdate = new Date ();
+      expdate.setTime (expdate.getTime() + (7 * 24 * 60 * 60 * 1000));
 
-  SetCookie (sCookieName, sValue, expdate, "/");
+      SetCookie (sCookieName, sValue, expdate, "/");
 
-}
+      }
 
-function Redirect(sURL) {
-  window.location=sURL;
-} 
+      function Redirect(sURL) {
+      window.location=sURL;
+      }
 
-</script>
+    </script>
 
-<table width=100%>
-   
-  <tr absheight=120>
-    <td absheight=120 rowspan=4 valign=top> 
-      <a href="">
-        <IMG width=104 height=87 src=/ROMCache/WebTVLogoJewel.gif>
-      </a>
-    </td>
-    <td absheight=105> 
-      <IMG width=104 height=105 src=/ROMCache/Spacer.gif>
-    </td>
-  </tr>
+    <table width=100%>
 
-  <tr>
+      <tr height=120>
+        <td height=120 rowspan=4 valign=top>
+          <a href="">
+          <IMG width=104 height=87 src=/ROMCache/WebTVLogoJewel.gif>
+          </a>
+        </td>
+        <td height=105>
+          <IMG width=104 height=105 src=/wtv/ROMCache/spacer.gif>
+        </td>
+      </tr>
 
-    <td>
+      <tr>
 
-<font size=+2>
-<P>
-How to Play
-</font>
-<P>
-<P>
-<UL>
-<LI>There are no numbers in the WebTV Crossword. The clues for each word are
-directly to the left of the puzzle. You will see the clues changing as you
-navigate through the puzzle using the "up" and "down" arrows on your
-keyboard or remote control.
+        <td>
 
-<LI>To enter a word simply type the letters into the appropriate squares.
+          <font size=+2>
+          <P>
+          How to Play
+          </font>
+          <P>
+          <P>
+          <UL>
+          <LI>There are no numbers in the WebTV Crossword. The clues for each word are
+          directly to the left of the puzzle. You will see the clues changing as you
+          navigate through the puzzle using the "up" and "down" arrows on your
+          keyboard or remote control.
 
-<form>
-<P><P>
-<table width=100%>
- <tr>
-  <td align=left>
-  <a href="javascript:Redirect('index2.html')"><img src="images/cw.gif"></a>
-  </td>
-  <td align=right>
-  <a selected href="play.html"><img src="images/play.gif"></a>
-  </td>
-</table>
-</form>
+          <LI>To enter a word simply type the letters into the appropriate squares.
 
-   </td>
+          <form>
+            <P><P>
+            <table width=100%>
+              <tr>
+                <td align=left>
+                  <a href="javascript:Redirect('index2.html')"><img src="images/cw.gif"></a>
+                </td>
+                <td align=right>
+                  <a selected href="play.html"><img src="images/play.gif"></a>
+                </td>
+              </table>
+            </form>
 
-  </tr>
+          </td>
 
-</table>
-  
-</html>
+        </tr>
+
+      </table>
+
+    </html>

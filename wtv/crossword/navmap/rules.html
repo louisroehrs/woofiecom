@@ -1,107 +1,115 @@
 <html>
-<head>
-<title>WebTV Crossword</title>
+  <head>
+    <link rel="stylesheet" href="../../wtvstyles.css">
+    <title>WebTV Crossword</title>
 
-<SCRIPT Language="JavaScript">
-	
-	function getURLvar(Name) {
-		var search = Name + "="
-		var incoming = window.location.search
-		if (incoming.length > 0) { // if there are any search parameters
-			offset = incoming.indexOf(search) 
-			if (offset != -1) { // if parameter exists 
-				offset += search.length 
-				// set index of beginning of value
-				end = incoming.indexOf("&", offset) 
-				// set index of end of cookie value
-				if (end == -1) 
-					end = incoming.length
-				value = unescape(incoming.substring(offset, end))
-				if (value == "") {
-					return null
-				} else {
-					return value
-				}
-			}
-			else return null
-		}
-		else return null
-	}
+    <SCRIPT Language="JavaScript">
 
-	function PassQueryToPage(pageName) {
-		var chosengame = getURLvar("game")
-		var mysearch = window.location.search
-//	alert (mysearch)
-		var modifier = "N"
-		if (mysearch != "") {
-			modifier= "&"
-			if (mysearch.charAt(0) != "?")
-				mysearch = "?"+ mysearch;    
-		}
-		else
-		{
-			modifier = "?"
-			mysearch = ""
-		} 
-		var bigwoofie = pageName +  mysearch  + modifier 
-		bigwoofie = bigwoofie + "game=" + chosengame +"&"
-		
-		bigwoofie = bigwoofie +"the=end" 
-		window.location = bigwoofie
-	}
+      function getURLvar(Name) {
+        var search = Name + "="
+        var incoming = window.location.search
+        if (incoming.length > 0) { // if there are any search parameters
+          offset = incoming.indexOf(search)
+          if (offset != -1) { // if parameter exists
+            offset += search.length
+            // set index of beginning of value
+            end = incoming.indexOf("&", offset)
+            // set index of end of cookie value
+            if (end == -1)
+              end = incoming.length
+            value = unescape(incoming.substring(offset, end))
+            if (value == "") {
+              return null
+            } else {
+              return value
+            }
+          }
+          else return null
+        }
+        else return null
+      }
+      
+      function PassQueryToPage(pageName) {
+        var chosengame = getURLvar("game")
+        var mysearch = window.location.search
+        //	alert (mysearch)
+        var modifier = "N"
+        if (mysearch != "") {
+          modifier= "&"
+          if (mysearch.charAt(0) != "?")
+            mysearch = "?"+ mysearch;
+        }
+        else
+        {
+          modifier = "?"
+          mysearch = ""
+        }
+        var bigwoofie = pageName +  mysearch  + modifier
+        bigwoofie = bigwoofie + "game=" + chosengame +"&"
+        
+        bigwoofie = bigwoofie +"the=end"
+        window.location = bigwoofie
+      }
+      
+      function Redirect(sURL) {
+        window.location=sURL;
+      }
+      function RedirectToGame() {
+        sURL=getURLvar("game")
+        gameURL = "../../crosswordpub/" + sURL;
+        window.location= gameURL;
+      }
+      
+    </SCRIPT>
+  </head>
+  <body  style="overflow:hidden;" background=../images/cw.jpg hspace=4 vspace=4 valign=top bgcolor=#000000 text=#FFFFFF vlink=#FFFF00 link=#FFFF55 fontsize=medium >
+    <display noscroll>
+      <table width=100% border=0>
+        
+        <tr height=110>
+          <td height=120 width=110 valign=top>
+            <a href="wtv-home:/home"><IMG width=104 height=80 src=/ROMCache/WebTVLogoJewel.gif></a>
+          </td>
+          <td width=424 colspan=2 valign=bottom align=right>
+            <IMG width=17 height=40 src=/wtv/ROMCache/spacer.gif  align=right><FONT size=6><STRONG>Tips</STRONG></font>
+          </td>
+        </tr>
+        
+        
+        <tr>
+          <td>
+            <table width=100%>
+              <tr>
+                <td height=90 valign=bottom align=left>
+                  <a selected href="javascript:RedirectToGame();"><IMG SRC="../images/0202_cw_play.gif" WIDTH=97 HEIGHT=36 BORDER=0></a>
+                </td>
+            </table>
+          </td>
+          
+          <td width=2> <BR>&nbsp;</td>
+          
+          <td>
+            <IMG width=15 height=300 src=/wtv/ROMCache/spacer.gif  align=right>
+            <BR>
+            <font size=4>
+              <UL>
+                <LI>You can check your work anytime by selecting the 'Correct' button. All of
+                  your incorrect responses will be erased.<BR><IMG width=15 height=12 src=/wtv/ROMCache/spacer.gif>
+                  
+                <LI>You can save your game by selecting the 'Save' button. To resume your
+                  game, return to the WebTV Crossword.<BR><IMG width=15 height=12 src=/wtv/ROMCache/spacer.gif>
+                <LI>Press the 'Home' button on your keyboard or remote control to quit the WebTV Crossword.
+              </UL>
+              <BR><BR>
+          </td>
+        </tr>
+      </table>
+      <footerborder></footerborder>
+      <footer>
+        <div class=footerstatus>WebTV Crossword</div><div class=audiostatus><div class="audiogreen"></div>
+        </div>
+      </footer>
+      
 
-function Redirect(sURL) {
-  window.location=sURL;
-} 
-function RedirectToGame() {
- sURL=getURLvar("game")
-	gameURL = "http://ed.webtv.net/~tpark/new/crosswordpub/" + sURL;
-  window.location= gameURL;
-} 
-
-	</SCRIPT>
-</head>
-<body  style="overflow:hidden;" background=http://ed.webtv.net/~tpark/new/crossword/images/cw.jpg hspace=4 vspace=4 valign=top bgcolor=#000000 text=#FFFFFF vlink=#FFFF00 link=#FFFF55 fontsize=medium >
-<display noscroll>
-<table width=100% border=0>
-   
-  <tr absheight=110>
-    <td absheight=120 abswidth=110 valign=top> 
-      <a href="wtv-home:/home"><IMG width=104 height=80 src=/ROMCache/WebTVLogoJewel.gif></a>
-    </td>
-     <td abswidth=424 colspan=2 valign=bottom align=right>
-      <IMG width=17 height=40 src=/ROMCache/Spacer.gif  align=right><FONT size=6><STRONG>Tips</STRONG></font>
-    </td>
-  </tr>
-
-
- <tr>
-    <td>
-		<table width=100%>
-		 <tr>
-		  <td absheight=90 valign=bottom align=left>
-		  <a selected href="javascript:RedirectToGame();"><IMG SRC="../images/0202_cw_play.gif" WIDTH=97 HEIGHT=36 BORDER=0></a>
-		  </td>
-		</table>
-   	</td>
-
-		<td abswidth=2> <BR>&nbsp;</td>
-
-    <td>
-<IMG width=15 height=300 src=/ROMCache/Spacer.gif  align=right>
-<BR>
-<font size=4>
-<UL>
-<LI>You can check your work anytime by selecting the 'Correct' button. All of
-your incorrect responses will be erased.<BR><IMG width=15 height=12 src=/ROMCache/Spacer.gif>
-
-<LI>You can save your game by selecting the 'Save' button. To resume your
-game, return to the WebTV Crossword.<BR><IMG width=15 height=12 src=/ROMCache/Spacer.gif>
-<LI>Press the 'Home' button on your keyboard or remote control to quit the WebTV Crossword.
-</UL>
-<BR><BR>
-   </td>
-  </tr>
-</table>
   </body>
 </html>

@@ -22,12 +22,12 @@ import glob
 import os
 import re
 
-STYLESHEET_LINK = '<link rel="stylesheet" href="../../../wtvstyles.css">'
+STYLESHEET_LINK = '<link rel="stylesheet" href="../../wtvstyles.css">'
 
 FOOTER_BLOCK = (
     '      <footerborder></footerborder>\n'
     '      <footer>\n'
-    '        <div class=footerstatus>WebTV SpaceRace</div>'
+    '        <div class=footerstatus>WebTV Crossword</div>'
     '<div class=audiostatus><div class="audiogreen"></div>\n'
     '        </div>\n'
     '      </footer>'
@@ -39,9 +39,11 @@ FOOTER_BLOCK = (
 # ---------------------------------------------------------------------------
 
 def step_stylesheet(content):
+    if "../../wtvstyles.css" in content:
+        return content
     if STYLESHEET_LINK in content:
         return content
-    return re.sub(r'(<head>)', r'\1\n    ' + STYLESHEET_LINK, content, flags=re.IGNORECASE)
+    return re.sub(r'(<html>)', r'\1\n<head>    ' + STYLESHEET_LINK + r'\n</head>', content, flags=re.IGNORECASE)
 
 
 def step_footer(content):
