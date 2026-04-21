@@ -17,7 +17,7 @@
     </script>
     
 <script language="JavaScript">
-	
+   var lastAudio = null;	
 // OBJECTS
 // CELL Object
 
@@ -207,19 +207,19 @@
 
 		if ((this.x == this.game.board.kWidth-1) && (this.y == this.game.board.kHeight-1)) {
 			if (this.game.board.cleared()) {
-//				PlaySound("sounds/newbell3.mid");
+				PlaySound("newbell3.mid");
 				window.status = "You win!";
 				this.game.win();
 			}
 			else {
-				PlaySound("sounds/buzz.mid")
+				PlaySound("buzz.mid")
 				window.status = "Select 'Continue' to try another path.";
 			}
 			return;
 		}
 		if (this.lastMove()) {
 			window.status = "Select 'Continue' to try another path."
-			PlaySound("sounds/buzz.mid");
+			PlaySound("buzz.mid");
 //			document.images["logo"].src = "images/bluecover.gif"
 		} 
 		this.game.previousCell = this;
@@ -276,9 +276,9 @@
 	}
 	
 	function Win() {
-		PlaySound("sounds/applause.mp2");
+		PlaySound("applause.mp2");
 		wincommand = "flyout.html";
-		window.setTimeout(NextPage(),8000);
+		window.setTimeout(NextPage,3000);
 	}
 
 	function Lose() {
@@ -483,10 +483,12 @@
 		if (debug) alert("Quit");
 	}
 
-	function PlaySound(sound) {
-
-		window.location=sound;
-	}
+ 	function PlaySound(sound) {
+    if (lastAudio) lastAudio.pause();
+    lastAudio = document.getElementById(sound);
+    lastAudio.currentTime = 0;
+    lastAudio.play()
+  }
 
 	function splitString(mystring, delimiter) {
 		var woofie = new Array()
@@ -698,7 +700,7 @@
 					<td colspan=3 bgcolor=0d1428 height=2 width=100%></td>
 				</tr>
 				<tr>
-					<td colspan=3 width=100% bgcolor=1b2851 align=center><IMG SRC="http://www.woofie.com/images/bws.gif" WIDTH=394 HEIGHT=71 BORDER=0 usemap=woofie></td>
+					<td colspan=3 width=100% bgcolor=1b2851 align=center><a href="credits.html"><IMG SRC="http://www.woofie.com/images/bws.gif" WIDTH=394 HEIGHT=71 BORDER=0 usemap=woofie></a></td>
 				</tr>
 					 
 			</table>
@@ -706,15 +708,6 @@
 	</TR>
 </TABLE>
 <BR><BR><BR><BR><BR><BR>
-	<EMBED SRC="sounds/newbell3.mid" HIDDEN=TRUE CONTROLS=console
-	VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="bell"
-	MASTERSOUND>
-	<EMBED SRC="sounds/buzz.mid" HIDDEN=TRUE CONTROLS=console
-	VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="buzzer"
-	MASTERSOUND> 
-	<EMBED SRC="sounds/applause.mp2" HIDDEN=TRUE CONTROLS=console
-	VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="applause"
-	MASTERSOUND>
 	<IMG SRC="images/part0glow.gif" WIDTH=1 HEIGHT=1 BORDER=0><IMG SRC="images/part10.gif" WIDTH=1 HEIGHT=1 BORDER=0><IMG SRC="images/part11glow.gif" WIDTH=1 HEIGHT=1 BORDER=0>
 <IMG SRC="images/part12glow.gif" WIDTH=1 HEIGHT=1 BORDER=0><IMG SRC="images/part13glow.gif" WIDTH=1 HEIGHT=1 BORDER=0><IMG SRC="images/part14glow.gif" WIDTH=1 HEIGHT=1 BORDER=0>
 <IMG SRC="images/part15glow.gif" WIDTH=1 HEIGHT=1 BORDER=0><IMG SRC="images/part1glow.gif" WIDTH=1 HEIGHT=1 BORDER=0><IMG SRC="images/part2glow.gif" WIDTH=1 HEIGHT=1 BORDER=0>
@@ -732,6 +725,9 @@
   <footer>
     <div class=footerstatus>WebTV SpaceRace</div><div class=audiostatus><div class="audiogreen"></div></div>
   </footer>
+  <audio id="newbell3.mid"><source src="../audio/newbell3.mp3" type="audio/mpeg"/></audio> 
+  <audio id="buzz.mid"><source src="../audio/buzz.mp3" type="audio/mpeg"  /></audio>
+  <audio id="applause.mp2"><source src="../audio/applause.mp2" type="audio/mpeg"  /></audio> 
 
 </body>
 </html>
