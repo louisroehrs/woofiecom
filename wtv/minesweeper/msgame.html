@@ -20,6 +20,7 @@
       kOtherFormElements = 14;
 
 
+      lastAudio = null;
       kTotalBombs = 0;
       kUncovered = 0;
 
@@ -120,16 +121,14 @@
         }
         
       }
-      
+
       function PlaySound(sound) {
-        
-        if (sound == null) {
-          return;
-        } else {
-//          window.location = "sounds/" + sound;
-        }
+        if (lastAudio) lastAudio.pause();
+        lastAudio = document.getElementById(sound);
+        lastAudio.currentTime = 0;
+        lastAudio.play()
       }
-      
+
       function CountAdjacentBombs(x,y) {
         
         var xm1 = 0;
@@ -665,6 +664,12 @@
           <div class=footerstatus>WebTV MineSweeper</div><div class=audiostatus><div class="audiogreen"></div>
           </div>
         </footer>
+
+        <audio id="newbell3.mid"><source src="../audio/newbell3.mp3" type="audio/mpeg"/></audio> 
+        <audio id="buzz.mid"><source src="../audio/buzz.mp3" type="audio/mpeg"  /></audio>
+        <audio id="applause.MP2"><source src="sounds/applause.MP2" type="audio/mpeg"  /></audio>
+        <audio id="door.MP2"><source src="sounds/door.MP2" type="audio/mpeg"  /></audio> 
+
   </body>
 </html>
 
