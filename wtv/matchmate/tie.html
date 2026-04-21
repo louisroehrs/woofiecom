@@ -3,10 +3,10 @@
 <title>WebTV MatchMate</title>
 
 <head>
-
-
-<SCRIPT Language="JavaScript">
-
+  <link rel="stylesheet" href="../wtvstyles.css">	
+  
+  <SCRIPT Language="JavaScript">
+    
 	mam = new game("mam");
 
 	function woof(stuff) {
@@ -113,8 +113,8 @@
 	function Prender() { // Does need to be in its own table...Indicator is the Current Player Arrow
 
 		document.write("<table border=0 cellpadding=0 cellspacing=0 cellborder=0>");
-		document.write("<tr><td abswidth=13></td><td abswidth=125 absheight=83 background=images/player" + this.id + "_bg_on.gif valign=bottom align=center><img src=" + this.pict + " width=80 height=80></td></tr>");
-		document.write("<tr><td colspan=2 absheight=21 bgcolor=000000 align=center valign=bottom><FONT SIZE=2>"+this.name + "</FONT></td></tr></table><br>");
+		document.write("<tr><td width=13></td><td width=125 height=83 background=images/player" + this.id + "_bg_on.gif valign=bottom align=center><img src=" + this.pict + " width=80 height=80></td></tr>");
+		document.write("<tr><td colspan=2 height=21 bgcolor=000000 align=center valign=bottom><FONT SIZE=2>"+this.name + "</FONT></td></tr></table><br>");
 	}
 	
 	function PassQueryToPage(pageName) {
@@ -142,9 +142,9 @@
 
 <table width=100% border=0 cellpadding=0 cellspacing=0 cellborder=0>
 	<tr>
-		<td absheight=384 abswidth=166 valign=top>
+		<td height=384 width=166 valign=top>
 			<IMG width=8 height=6 src=/ROMCache/Spacer.gif><BR>
-			<IMG width=6 height=80 src=/ROMCache/Spacer.gif><a href="wtv-home:/home"><IMG width=104 height=80 src=/ROMCache/WebTVLogoJewel.gif></a><BR>
+			<IMG width=6 height=80 src=/ROMCache/Spacer.gif><a href="../arcade/arcade.html?wtv-home:/home"><IMG width=104 height=80 src=/ROMCache/WebTVLogoJewel.gif></a><BR>
 			<IMG width=8 height=6 src=/ROMCache/Spacer.gif><BR>
 			<center>
 <SCRIPT Language="JavaScript">mam.renderSidebar();</SCRIPT>
@@ -158,38 +158,43 @@
 
 			</center>
 		</td>
-		<td abswidth=394 valign=top align=left>
+		<td width=394 valign=top align=left>
 			<TABLE border=0 cellpadding=0 cellspacing=0 cellborder=0>
 				<TR>
-				<TD absheight=90 abswidth=302 valign=top>
+				<TD height=90 width=302 valign=top>
 					<IMG width=8 height=58 src=/ROMCache/Spacer.gif><BR>
 					<IMG width=100 height=27 src=/ROMCache/Spacer.gif><IMG SRC="images/title_tied.gif" WIDTH=187 HEIGHT=27 BORDER=0>
 				</TD>
-				<TD abswidth=30></TD>		
+				<TD width=30></TD>		
 
 				</TR>
 			</TABLE>
 			<TABLE border=0 cellpadding=0 cellspacing=0 cellborder=0>
 				<TR>
-				<TD absheight=223 abswidth=5></TD>
-				<TD abswidth=234><FONT SIZE=4 COLOR=#FFFFFF><STRONG><shadow>
+				<TD height=223 width=5></TD>
+				<TD width=234><FONT SIZE=4 COLOR=#FFFFFF><STRONG><shadow>
 				<BR><BR><BR>
 				<UL>
 				<LI>You each found the same number of matches.
 				<LI>Select 'Play Again' to play again.
 				</UL></STRONG>
 				</td>
-				<TD abswidth=119>
+				<TD width=119>
 					<IMG SRC="images/chester_rules.gif" WIDTH=119 HEIGHT=141 BORDER=0>
 				</TD>
-				<TD abswidth=20 valign=top></TD>
+				<TD width=20 valign=top></TD>
 				</TR>
 			</TABLE>
-			<TABLE border=0 cellpadding=0 cellspacing=0 cellborder=0><TR><TD HREF="http://www.woofie.com/webtvad.html" insetselection><IMG SRC="http://www.woofie.com/images/bws.gif" WIDTH=394 HEIGHT=71 BORDER=0></TD></TR></TABLE>
+			<TABLE border=0 cellpadding=0 cellspacing=0 cellborder=0><TR><TD><a HREF="credits.html" insetselection><IMG SRC="http://www.woofie.com/images/bws.gif" WIDTH=394 HEIGHT=71 BORDER=0></TD></TR></TABLE>
 		</td>
   </tr>
 
 </table>
 </form>
+  <footerborder></footerborder>
+  <footer>
+    <div class=footerstatus>WebTV MatchMate</div><div class=audiostatus><div class="audiogreen"></div></div>
+  </footer>
+
 </html>
 
