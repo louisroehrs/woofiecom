@@ -34,6 +34,7 @@ textarea {
     border:none;
     overflow:hidden;
     resize: none;
+    user-select:none;
 }
 
 shadow {

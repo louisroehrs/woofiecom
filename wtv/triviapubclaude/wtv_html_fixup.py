@@ -121,6 +121,8 @@ def step_main_table_measurements(content):
     content = content.replace('<!-- Question -->','<td rowspan=3 width=10 align=left>\n<IMG src=/ROMCache/Spacer.gif name=message width=10 height=108>\n</td>\n<!-- Question Text -->')
     return content
 
+def step_textarea_disable(content):
+    return re.sub(r'<textarea noselect','<textarea disabled noselect',content, re.IGNORECASE);
 
 def step_score_row(content):
     """Replace the three-cell score/next row with a nested-table version."""
@@ -250,7 +252,7 @@ def reindent(content):
 # Process a single file
 # ---------------------------------------------------------------------------
 
-TRANSFORMS = [
+TRANSFORMSALL = [
     ('stylesheet',    step_stylesheet),
     ('footer',        step_footer),
     ('absheight',     step_absheight),
@@ -262,9 +264,13 @@ TRANSFORMS = [
     ('main_table_measurements', step_main_table_measurements),
     ('step_spacerace_trivial_task',step_spacerace_trivial_task),
     ('step_button_click',step_button_click),
-    ('step_rom_cache',step_rom_cache)
+    ('step_rom_cache',step_rom_cache),
+    ('step_textarea_disable',step_textarea_disable),
 ]
 
+TRANSFORMS = [
+    ('step_textarea_disable',step_textarea_disable)
+]
 
 def process_file(path):
     with open(path, encoding='utf-8', errors='replace') as f:
