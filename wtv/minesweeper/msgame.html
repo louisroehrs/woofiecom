@@ -340,6 +340,8 @@
           PlaySound("door.MP2");
           RevealMap();
           sGameState = "lost";
+          window.setTimeout("window.location.href='lose.html';", 5000)
+
           return;
         }
         
@@ -421,7 +423,7 @@
             iMinutesLeft = 0;
             iSecondsLeft = 0;
             sGameState = "lost";
-//            window.location = "lose.html";
+            window.setTimeout("window.location.href='lose.html';", 5000)
             RevealMap();
             PlaySound("door.MP2");
             return("false");
