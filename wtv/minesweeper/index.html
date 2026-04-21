@@ -1,64 +1,86 @@
 <html>
-<title>WebTV MineSweeper</title>
-<bgsound src="sounds/var8.mid" LOOP=TRUE> 
-<body fontsize=medium background="images/BACK.JPG" bgcolor=191919 text=#E6E6E6 hspace=0 vspace=0>
+  <head>
+      <link rel="stylesheet" href="../wtvstyles.css">	
+  </head>
+  
+  <title>WebTV MineSweeper</title>
+  <bgsound src="sounds/var8.mid" LOOP=TRUE>
+  <body fontsize=medium background="images/BACK.JPG" bgcolor=191919 text=#E6E6E6 hspace=0 vspace=0 style="margin:0;padding:0;">
 
-   <display noscroll>
+    <display noscroll>
 
-      <table cellpadding=0 cellspacing=0 border=0 width=100% valign=top>
-        <tr>
-	      <td abswidth=162 absheight=313 valign=top>
-			<IMG width=8 height=6 src=/ROMCache/Spacer.gif><BR>
-			<IMG width=6 height=80 src=/ROMCache/Spacer.gif><a href="wtv-home:/home"><IMG width=20 height=80 src=/ROMCache/Spacer.gif><IMG width=104 height=80 src=/ROMCache/WebTVLogoJewel.gif><IMG width=28 height=80 src=/ROMCache/Spacer.gif></a>
-		  <center>
-  			<IMG width=6 height=111 src=/ROMCache/Spacer.gif><A HREF="index.html"><IMG width=4 height=111 src=/ROMCache/Spacer.gif><IMG SRC="images/LOGO.GIF" WIDTH=137 HEIGHT=111 BORDER=0><IMG width=11 height=111 src=/ROMCache/Spacer.gif></A><BR>
-  			<img src="/ROMCache/Spacer.gif" border=0 width=12 height=35><BR>
-    		<A HREF="index2.html"><IMG SRC="images/0217_ms_bigtips.gif" WIDTH=142 HEIGHT=35 BORDER=0></A><BR>
-			<img src="/ROMCache/Spacer.gif" border=0 width=12 height=7><BR>
-			<A selected HREF="play.html"><IMG SRC="images/0217_ms_bigplay.gif" WIDTH=142 HEIGHT=36 BORDER=0></A>
-				    </center>	
-			</td>
-			<td abswidth=4></td>
-	      <td abswidth=394 valign=top align=center>
-		   <img src="/ROMCache/spacer.gif" width=5 height=20><br> 
-		<font size=6><b>How to Play</b></font><br><BR>
-		   <img src="/ROMCache/spacer.gif" border=0 width=5 height=10><BR>
+    <table cellpadding=0 cellspacing=0 border=0 width=100% valign=top>
+      <tr>
+        <td width=260 valign=top>
+          <center>
+          <IMG width=4 height=4 src=/wtv/ROMCache/spacer.gif><br>
+          <a href="../arcade/arcade.html?wtv-home:/home">
+            <IMG width=104 height=80 src=/ROMCache/WebTVLogoJewel.gif>
+          </a>
+          <br>
+          <IMG width=6 height=4 src=/wtv/ROMCache/spacer.gif>
+          <br>
+            <A HREF="index.html">
+              <IMG SRC="images/LOGO.GIF" WIDTH=137 HEIGHT=111 BORDER=0>
+            </A>
+            <BR>
+            <img src="/wtv/ROMCache/Spacer.gif" border=0 width=12 height=36>
+            <BR>
+            <A HREF="index2.html"><IMG SRC="images/0217_ms_bigtips.gif" WIDTH=142 HEIGHT=35 BORDER=0></A>
+            <BR>
+            <img src="/wtv/ROMCache/Spacer.gif" border=0 width=12 height=7>
+            <BR>
+            <A selected HREF="play.html"><IMG SRC="images/0217_ms_bigplay.gif" WIDTH=142 HEIGHT=36 BORDER=0></A>
+          </center>
+        </td>
+        <td width=0>&nbsp;</td>
+        <td valign=top align=center>
+          <img src="/wtv/ROMCache/spacer.gif" width=5 height=20><br>
+          <font size=6><b>How to Play</b></font><br><BR>
+          <img src="/wtv/ROMCache/spacer.gif" border=0 width=5 height=10><BR>
 
-  		
-		
- 		<table>
-         	  <tr><td abswidth=5></td><td valign=top><li></td><td>The object of the game is to uncover all the squares in the Minesweeper grid that don't contain mines.</td><td abswidth=5></td></tr>
-         	  <tr><td abswidth=5></td><td valign=top><li></td><td>Uncover squares by clicking on them.</td><td abswidth=5></td></tr>
-	       	  <tr><td abswidth=5></td><td valign=top><li></td><td>Squares contain either a number (0-8) or a mine.</td><td abswidth=5></td></tr>
- 	 	  	  <tr><td abswidth=5></td><td valign=top><li></td><td>If you click on a square that contains a mine, the entire playing field is revealed and the game is over.</td><td abswidth=5></td></tr>
- 	 	  	  <tr><td abswidth=5></td><td valign=top><li></td><td>If you reveal a number, the game continues.</td><td abswidth=5></td></tr>
-        </table>  
-	
- 		</font>
 
-   	      </td>
-			               
-		</tr>
-		
-	    <tr> 
-		  <td absheight=71></td>
-			<td></td>
-		   <td>
-<!-- 		   		<INSERT AD template="insetad.tmpl" width=394 HEIGHT=71> -->
+          <shadow>
+          <table>
+            <tr><td width=5></td><td valign=top><li></td><td>The object of the game is to uncover all the squares in the Minesweeper grid that don't contain mines.</td><td width=5></td></tr>
+            <tr><td width=5></td><td valign=top><li></td><td>Uncover squares by clicking on them.</td><td width=5></td></tr>
+            <tr><td width=5></td><td valign=top><li></td><td>Squares contain either a number (0-8) or a mine.</td><td width=5></td></tr>
+            <tr><td width=5></td><td valign=top><li></td><td>If you click on a square that contains a mine, the entire playing field is revealed and the game is over.</td><td width=5></td></tr>
+            <tr><td width=5></td><td valign=top><li></td><td>If you reveal a number, the game continues.</td><td width=5></td></tr>
+          </table>
+          </shadow>
+          </font>
 
-		   
-		  	<table cellpadding=0 cellspacing=0 border=0 href="http://www.woofie.com/webtvad.html" abswidth=394 absheight=71 insetselection nocolor>
- 				<tr>
-					<td>
-	 					<img src="http://www.woofie.com/images/bws.gif" height=71 width=394>
-					</td>
-				</tr>
-			</table>
-		
-		  </td>
-		</tr>	      
-        </table>
-    </form>
+        </td>
+
+      </tr>
+
+      <tr>
+        <td height=71></td>
+        <td></td>
+        <td>
+          <!-- 		   		<INSERT AD template="insetad.tmpl" width=394 HEIGHT=71> -->
+
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><a href="http://www.woofie.com/webtvad.html" width=394 height=71 insetselection nocolor>
+                <img src="http://www.woofie.com/images/bws.gif" height=71 width=394></a>
+              </td>
+            </tr>
+          </table>
+
+        </td>
+      </tr>
+    </table>
+  </form>
+  <footerborder></footerborder>
+  <footer>
+    <div class=footerstatus>WebTV MineSweeper</div><div class=audiostatus><div class="audiogreen"></div>
+  </div>
+</footer>
+
+
 
 
 </body>

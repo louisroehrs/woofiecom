@@ -1,32 +1,40 @@
 <html>
-<META HTTP-EQUIV="Refresh" CONTENT="10; URL=index.html">
-<head>
-  <script src="../../ruffle/ruffle.js"></script>
-  <script>
+  <META HTTP-EQUIV="Refresh" CONTENT="10; URL=index.html">
+  <head>
+    <link rel="stylesheet" href="../../../wtvstyles.css">
+    <script src="../../ruffle/ruffle.js"></script>
+      <script>
 
-    function Next() {
-	    window.location = "index.html";
-    }
+      function Next() {
+      window.location = "index.html";
+      }
 
-    window.RufflePlayer = window.RufflePlayer || {};
-    window.RufflePlayer.config = {
-    "autoplay": "on", 
-    "splashScreen": false, 
-    "unmuteOverlay":"hidden",
-    };
+      window.RufflePlayer = window.RufflePlayer || {};
+      window.RufflePlayer.config = {
+      "autoplay": "on",
+      "splashScreen": false,
+      "unmuteOverlay":"hidden",
+      };
 
-  </script>
+    </script>
 
 
-</head>
+  </head>
 
-<body  style="overflow:hidden;"  fontsize=medium bgcolor=000000 vspace=0 hspace=0 text=505050>
-<display nostatus noscroll hideoptions>
-<bgsound src=sounds/chase2e.mid loop=false>
+  <body  style="overflow:hidden;"  fontsize=medium bgcolor=000000 vspace=0 hspace=0 text=505050>
+    <display nostatus noscroll hideoptions>
+    <bgsound src=sounds/chase2e.mid loop=false>
 
-<center>
-<embed src=flash/Mine.spl quality=high width=560 height=420 loop=false>
-</center>
+    <center>
+      <embed src=flash/Mine.spl quality=high width=560 height=420 loop=false>
+    </center>
+    <footerborder></footerborder>
+    <footer>
+      <div class=footerstatus>WebTV Trivial Task</div><div class=audiostatus><div class="audiogreen"></div>
+    </div>
+  </footer>
+
+
 
 </body>
 </html>

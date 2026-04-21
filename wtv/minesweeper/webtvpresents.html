@@ -1,36 +1,44 @@
 <html>
-<head>
-<title>WebTV Minesweeper</title>
+  <head>
+    <link rel="stylesheet" href="../../../wtvstyles.css">
+    <title>WebTV Minesweeper</title>
 
-  <script src="../../ruffle/ruffle.js"></script>
-  <script>
-    window.RufflePlayer = window.RufflePlayer || {};
-    window.RufflePlayer.config = {
-    "autoplay": "on", 
-    "splashScreen": false, 
-    "unmuteOverlay":"hidden",
-    };
+    <script src="../../ruffle/ruffle.js"></script>
+      <script>
+      window.RufflePlayer = window.RufflePlayer || {};
+      window.RufflePlayer.config = {
+      "autoplay": "on",
+      "splashScreen": false,
+      "unmuteOverlay":"hidden",
+      };
 
-  </script>
+    </script>
 
-</head>
-<body style="overflow:hidden;" bgcolor=000000 vspace=0 hspace=0>
-<bgsound src=../arcade/wtvspl2.mid LOOP=false>
+  </head>
+  <body style="overflow:hidden;" bgcolor=000000 vspace=0 hspace=0>
+    <bgsound src=../arcade/wtvspl2.mid LOOP=false>
 
 
- 
-<center>
-<SCRIPT LANGUAGE="JavaScript">
 
-var userAgent=navigator.appName + " " + navigator.appVersion;
+    <center>
+      <SCRIPT LANGUAGE="JavaScript">
 
-if (userAgent.indexOf("Plus") >0 ) {
-  	document.write("<display nostatus noscroll><embed src=../arcade/Wtv.spl quality=high width=560 height=420 loop=false>"); 
-} else {   
-	document.write("<display noscroll><embed src=../arcade/Cwtv.spl quality=high width=560 height=420 loop=false>"); 
-}
+        var userAgent=navigator.appName + " " + navigator.appVersion;
 
-</SCRIPT>
-</center>
+        if (userAgent.indexOf("Plus") >0 ) {
+        document.write("<display nostatus noscroll><embed src=../arcade/Wtv.spl quality=high width=560 height=420 loop=false>");
+        } else {
+        document.write("<display noscroll><embed src=../arcade/Cwtv.spl quality=high width=560 height=420 loop=false>");
+        }
+
+      </SCRIPT>
+    </center>
+    <footerborder></footerborder>
+    <footer>
+      <div class=footerstatus>WebTV Trivial Task</div><div class=audiostatus><div class="audiogreen"></div>
+    </div>
+  </footer>
+
+
 </body>
 </html>
