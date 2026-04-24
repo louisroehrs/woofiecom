@@ -151,7 +151,7 @@
 	function Prender() { // Does need to be in its own table...Indicator is the Current Player Arrow
 
 		document.write("<table border=0 cellpadding=0 cellspacing=0 cellborder=0>");
-		document.write("<tr><td width=13></td><td width=125 height=83 background=images/player" + this.id + "_bg_on.gif valign=bottom align=center><img src=/ROMCache/spacer.gif name=play" + this.id + "pict width=80 height=80></td></tr>");
+		document.write("<tr><td width=13></td><td width=125 height=83 background=images/player" + this.id + "_bg_on.gif valign=bottom align=center><img src=/wtv/ROMCache/spacer.gif name=play" + this.id + "pict width=80 height=80></td></tr>");
 		document.write("<tr><td colspan=2 height=21 bgcolor=000000 align=center valign=bottom><FONT SIZE=2>"+this.name + "</FONT></td></tr></table><br>");
 	}
 	
@@ -160,7 +160,7 @@
 		this.imageName = imageName;
 		leftimage = "play" + this.id + "pict";
 		document.images[leftimage].src = this.imageName;
-		document.images[loc].src = "/wtv/RomCache/spacer.gif";
+		document.images[loc].src = "/wtv/ROMCache/spacer.gif";
 	}
 	
 	function PassQueryToPage(pageName) {

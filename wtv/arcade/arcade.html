@@ -17,21 +17,13 @@
   <script src="../../ruffle/ruffle.js"></script>
 	<SCRIPT Language="JavaScript">
 
-  window.RufflePlayer = window.RufflePlayer || {}
-  window.RufflePlayer.config = {
-          "autoplay" : "off",
-          "splashScreen": false, 
-          "unmuteOverlay":"hidden",
-          "allowScriptAccess":false,
-          "unmuteOverlay":"hidden",
-          "frameRate":9
-  };
-
-
   var currentGame=0
 	
 	games = new Array("matchmate","spacerace","wordfind", "triviatask", "minesweeper", "crossword")
-	urls = new Array(
+	
+
+
+  urls = new Array(
           "../matchmate/index.html",
 					"../aspacerace/index.html",
 					"../wordfind/index.html",
@@ -62,7 +54,8 @@
     );
     
 	logos = new Array()
-	
+
+
 	function Start() {
 		LoadImages()
 		document.images["game"].src = games[0] + ".gif"
@@ -99,7 +92,6 @@
     window.setTimeout(PlayFlyin,duration);
     window.setTimeout(stopAudio,duration);
     window.setTimeout(stopVideo,duration);
-    
   }
 
   function PlayFlyin() {
@@ -127,34 +119,41 @@
   }
 
   function ResumeBG() {
-		PauseSound(document.teen)
+//		PauseSound(document.teen)
 	}
 
   function GoForward() {
-    const audioP = document.getElementById("audiobutton");
-    audioP.currentTime = 0;
-    audioP.play();  
 		currentGame++
 		if (currentGame >= games.length) currentGame=0
 		document.images["game"].src = games[currentGame] + ".gif"
 
-		document.myform.current.value = currentGame +1 
+    document.myform.current.value = currentGame +1
+    const audioP = document.getElementById("audiobutton");
+    audioP.currentTime = 0;
+    audioP.play();  
 //		setTimeout("GoForward()",3000)
 	}
 
 	function GoBackward() {
-    const audioP = document.getElementById("audiobutton");
-    audioP.currentTime = 0;
-    audioP.play();  
-
 		currentGame--
 		if (currentGame < 0 ) currentGame= games.length -1 
 		document.images["game"].src = games[currentGame] + ".gif"
-
 		document.myform.current.value = currentGame +1
 
+    const audioP = document.getElementById("audiobutton");
+    audioP.currentTime = 0;
+    audioP.play();  
 	}
 	
+  window.RufflePlayer = window.RufflePlayer || {}
+  window.RufflePlayer.config = {
+          "autoplay" : "off",
+          "splashScreen": false, 
+          "unmuteOverlay":"hidden",
+          "allowScriptAccess":false,
+          "unmuteOverlay":"hidden",
+          "frameRate":9
+  };
 
 	</SCRIPT>
 
@@ -240,10 +239,10 @@
           <audio id="wtvaudio"><source src="../audio/wtvspl2.mp3" type="audio/mpeg"  /></audio>
           <audio id="flyinaudiomatchmate"><source src="../audio/littsong.mp3#t=1" type="audio/mpeg"  /></audio>
           <audio id="flyinaudiospacerace"><source src="../audio/Tasmin Archer - Sleeping Satellite_second.mp3#t=9" type="audio/mpeg"  /></audio>
-          <audio id="flyinaudiowordfind"><source src="../audio/1NewLang.mp3" type="audio/mpeg"  /></audio>
-          <audio id="flyinaudiotriviatask"><source src="none" type="audio/mpeg"  /></audio>
+          <audio id="flyinaudiowordfind"><source src="../audio/1Newlang.mp3" type="audio/mpeg"  /></audio>
+          <audio id="flyinaudiotriviatask"><source src="../audio/none.m4a" type="audio/mpeg"  /></audio>
           <audio id="flyinaudiominesweeper"><source src="../audio/chase2.mp3" type="audio/mpeg"  /></audio>
-          <audio id="flyinaudiocrossword"><source src="none" type="audio/mpeg"  /></audio>
+          <audio id="flyinaudiocrossword"><source src="../audio/none.m4a" type="audio/mpeg"  /></audio>
               
         </div> 
 
