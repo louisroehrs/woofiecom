@@ -13,11 +13,11 @@ input[type=text] {
     color: black;
     border: none;
     font-weight: normal;
-    font-size:24px;
+    font-size:18px;
     line-height:0.8;
     text-align:center;
-    height:24px;
-    width: 24px;
+    height:22px;
+    width: 22px;
     box-shadow:none;
     outline:none;
     background:grey;
