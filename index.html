@@ -72,9 +72,7 @@ if ( (navigator.appName != "Microsoft Internet Explorer") && (navigator.appVersi
 }
 
 /* Weird Al Modal */
-
-/* Weird Al Modal */
-#weirdalBtn2 {
+#weirdalBtn {
   display: block;
   width: 100%;
   padding: 14px 20px;
@@ -85,7 +83,7 @@ if ( (navigator.appName != "Microsoft Internet Explorer") && (navigator.appVersi
   font-weight: bold;
   text-align: center;
   border: 3px solid #000066;
-  border-radius: 6px;
+  border-radius: 0px;
   cursor: pointer;
   letter-spacing: 0.5px;
   xtext-shadow: 1px 1px 3px #000;
@@ -94,7 +92,7 @@ if ( (navigator.appName != "Microsoft Internet Explorer") && (navigator.appVersi
   box-sizing: border-box;
   margin: 0;
 }
-#weirdalBtn2:hover {
+#weirdalBtn:hover {
   background: linear-gradient(135deg, #aaaaff 50%, #888 50%, #aaaaff 50%);
 }
 
@@ -235,8 +233,8 @@ if ( (navigator.appName != "Microsoft Internet Explorer") && (navigator.appVersi
 <!-- Weird Al Yankovic story button -->
 <TR>
   <TD COLSPAN="2" style="padding:0;">
-    <div xid="weirdalBtnWrap">
-      <button id="weirdalBtn2" onclick="document.getElementById('weirdalOverlay').style.display='block'">
+    <div id="weirdalBtnWrap">
+      <button id="weirdalBtn" onclick="document.getElementById('weirdalOverlay').style.display='block'">
         &#127928; See How This Site Inspired Weird Al Yankovic's "White &amp; Nerdy" &mdash; Click to Learn More!
       </button>
     </div>
