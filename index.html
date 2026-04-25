@@ -72,33 +72,41 @@ if ( (navigator.appName != "Microsoft Internet Explorer") && (navigator.appVersi
 }
 
 /* Weird Al Modal */
-#weirdalBtn {
+
+/* Weird Al Modal */
+#weirdalBtn2 {
   display: block;
   width: 100%;
   padding: 14px 20px;
-  background: linear-gradient(135deg, #cc0000 25%, #ff6600 50%, #cc9900 70%);
-  color: #fff;
+  background: #fff;
+  color: #006;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 17px;
   font-weight: bold;
   text-align: center;
-  border: 3px solid #fff;
+  border: 3px solid #000066;
   border-radius: 6px;
   cursor: pointer;
   letter-spacing: 0.5px;
-  text-shadow: 1px 1px 3px #000;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+  xtext-shadow: 1px 1px 3px #000;
+  xbox-shadow: 0 4px 14px rgba(0,0,0,0.5);
   animation: weirdalPulse 2.5s ease-in-out infinite;
   box-sizing: border-box;
   margin: 0;
 }
-#weirdalBtn:hover {
-  background: linear-gradient(135deg, #ff6600 0%, #ffcc00 50%, #cc0000 100%);
+#weirdalBtn2:hover {
+  background: linear-gradient(135deg, #aaaaff 50%, #888 50%, #aaaaff 50%);
 }
-@keyframes weirdalPulse {
+
+@keyframes xweirdalPulse {
   0%   { box-shadow: 0 4px 14px rgba(255,102,0,0.5); }
   50%  { box-shadow: 0 4px 28px rgba(255,204,0,0.9); }
   100% { box-shadow: 0 4px 14px rgba(255,102,0,0.5); }
+}
+@keyframes weirdalPulse {
+  0%   { box-shadow: 0 4px 14px #fff; }
+  50%  { box-shadow: 0 4px 28px #006; }
+  100% { box-shadow: 0 4px 14px #fff; }
 }
 
 /* Modal overlay */
@@ -112,8 +120,9 @@ if ( (navigator.appName != "Microsoft Internet Explorer") && (navigator.appVersi
   overflow-y: auto;
 }
 #weirdalModal {
-  background: #0a0a2e;
-  border: 3px solid #ffcc00;
+    background: #eee;
+    xbackground: 0a0a2e;
+  border: 7px solid #000066;
   border-radius: 10px;
   max-width: 720px;
   margin: 40px auto;
@@ -121,32 +130,33 @@ if ( (navigator.appName != "Microsoft Internet Explorer") && (navigator.appVersi
   position: relative;
   color: #f0f0f0;
   font-family: Arial, Helvetica, sans-serif;
-  box-shadow: 0 0 60px rgba(255,204,0,0.4);
+  box-shadow: 0 0 60px #000066;
+  xbox-shadow: 0 0 60px rgba(255,204,0,0.4);
 }
 #weirdalModal h2 {
-  color: #ffcc00;
+  color: #006;
   font-size: 22px;
   margin: 0 0 6px 0;
   text-align: center;
 }
 #weirdalModal .subtitle {
-  color: #ff9900;
-  font-size: 13px;
+  color: red;
+  font-size: 14px;
   text-align: center;
   margin-bottom: 18px;
   font-style: italic;
 }
 #weirdalModal p {
-  font-size: 14px;
-  line-height: 1.7;
-  color: #8de;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #006;
   margin: 0 0 14px 0;
 }
 
 #weirdalModal .highlight2 {
-  color: #ffcc00;
+  color: #006;
   font-weight: bold;
-  background-color: black;
+  background-color: #ddf;
 }
 
 #weirdalModal .video-wrap {
@@ -154,7 +164,7 @@ if ( (navigator.appName != "Microsoft Internet Explorer") && (navigator.appVersi
   padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
-  border: 2px solid #ffcc00;
+  border: 2px solid #006;
   border-radius: 6px;
   margin: 20px 0 10px 0;
 }
@@ -167,8 +177,8 @@ if ( (navigator.appName != "Microsoft Internet Explorer") && (navigator.appVersi
 #weirdalClose {
     position: absolute;
   top: 12px; right: 16px;
-  background: #ffcc00;
-  color: #000;
+  background: #006;
+  color: #fff;
   border: none;
   border-radius: 50%;
   width: 30px; height: 30px;
@@ -225,9 +235,9 @@ if ( (navigator.appName != "Microsoft Internet Explorer") && (navigator.appVersi
 <!-- Weird Al Yankovic story button -->
 <TR>
   <TD COLSPAN="2" style="padding:0;">
-    <div id="weirdalBtnWrap">
-      <button id="weirdalBtn" onclick="document.getElementById('weirdalOverlay').style.display='block'">
-        &#127928; This Site Inspired Weird Al Yankovic's "White &amp; Nerdy" &mdash; Click to Find Out!
+    <div xid="weirdalBtnWrap">
+      <button id="weirdalBtn2" onclick="document.getElementById('weirdalOverlay').style.display='block'">
+        &#127928; See How This Site Inspired Weird Al Yankovic's "White &amp; Nerdy" &mdash; Click to Learn More!
       </button>
     </div>
   </TD>
@@ -545,6 +555,10 @@ setTimeout(function() {
       before the platforms existed to describe it, inspiring one of the most beloved comedy music videos
       of the 2000s &mdash; juxtaposed to the original simply by building woofie.com back when domains were free.
     </p>
+    <p>
+      Keep an eye out for foofie.com in the video &mdash; the domain that could have been woofie.com.
+    </p>
+
     <p>Can you guess which facts were the same and which were inferred from the resume?</p>
     <div class="video-wrap">
       <iframe
@@ -554,9 +568,6 @@ setTimeout(function() {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
       </iframe>
     </div>
-    <p style="text-align:center;font-size:12px;color:#999;margin-top:8px;">
-      Keep an eye out for foofie.com in the video &mdash; the domain that could have been woofie.com.
-    </p>
   </div>
 </div>
 <!-- end Weird Al modal -->
