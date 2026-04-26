@@ -48,7 +48,7 @@ def step_stylesheet(content):
 def step_scaler(content):
     if "scaler.js" in content:
         return content
-    return re.sub(r'<link rel="stylesheet" href="../../../wtvstyles.css">',r'    <link rel="stylesheet" href="../../../wtvstyles.css">\n    <script src="../../../scaler.js"></script>\n    <META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">',content, flags=re.IGNORECASE)
+    return re.sub(r'<link rel="stylesheet" href="../../wtvstyles.css">',r'    <link rel="stylesheet" href="../../wtvstyles.css">\n    <script src="../../../scaler.js"></script>\n    <META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">',content, flags=re.IGNORECASE)
 
 def step_correct_scaler_dir(content):
     if "../../../scaler.js" in content:
@@ -314,7 +314,17 @@ TRANSFORMSALL = [
 ]
 
 TRANSFORMS = [
+    ('stylesheet',    step_stylesheet),
+    ('footer',        step_footer),
+    ('absheight',     step_absheight),
+    ('abswidth',      step_abswidth),
+    ('logo cell',     step_logo_cell),
+    ('rom_cache',step_rom_cache),
+    ('scaler',step_scaler),
+    ('trivia_js', step_trivia_js),
     ('dumb_quotes', step_dumb_quotes),
+    ('home_logo_link', step_home_logo_link),
+    ('correct_scaler_dir',step_correct_scaler_dir),
 ]
 
 def process_file(path):

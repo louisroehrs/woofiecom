@@ -43,7 +43,19 @@
 		  
       //  ************** Changable settings from HERE
 
-  	  inpuzzle = new Array("++++++++++++","++++++++++++","t++++++++d++","+h+++leado++","++e+e+++eg++","+v++htonr+++","+i++t+++a+++","+e++++++u+++","+w+++++++o++","never+++++y+","++++changesf","+++++++++++i");
+  	  inpuzzle = new Array(
+        "++++++++++++",
+        "++++++++++++",
+        "t++++++++d++",
+        "+h+++leado++",
+        "++e+e+++eg++",
+        "+v++htonr+++",
+        "+i++t+++a+++",
+        "+e++++++u+++",
+        "+w+++++++o++",
+        "never+++++y+",
+        "++++changesf",
+        "+++++++++++i");
 
       sPuzzleWords = new Array("the","view","never","changes","if","you","are","not","the","lead","dog");
 	    iTotalWords = "11";
@@ -80,7 +92,7 @@
 		    abWordFound[i] = "false";
 	    
 
-	    kOtherFormElements = 2;
+	    kOtherFormElements = 3;
 	    DisplayStatus(iPointsSelected);
 	    sLetterLookup = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -450,7 +462,7 @@
 
 		    letter = GetCell(x,y);
 
-		    document.write("<td abswidth=20 width=20 absheight=20 height=20 bgcolor=666666 align=center valign=bottom>");
+		    document.write("<td width=20 height=20 bgcolor=666666 align=center valign=bottom>");
 		    document.write("  <a selected href=\"javascript:SelectEndpoint("+x+","+y+")\"><img src="+sImagePath+letter+"OFF.JPG></a>");
 		    document.write("</td>");
       }
@@ -563,137 +575,131 @@
     </script>     
 
   </head>
-  <body background="../images/BACK.JPG" bgcolor=191919 text=#FFFFFF valign=top hspace=0>
+  <body background="../images/back200.jpg" bgcolor=191919 text=#FFFFFF valign=top hspace=0>
     <display noscroll>
-      
-	        <table abswidth=174 cellpadding=0 cellspacing=0 border=0 width=100% valign=top>
-	          <tr>
-	            
-			        <td abswidth=174 align=center> <img src="/ROMCache/spacer.gif" width=5 height=1><A nocolor href=""><img src="../images/LOGO.GIF"></a>
-		            <br>
-	            </td>
+	    <table cellpadding=0 cellspacing=0 border=0 width=100% valign=top>
+	      <tr>
+	        
+			    <td width=190 align=center> <img src="/wtv/ROMCache/spacer.gif" width=5 height=10><BR><A nocolor href="..navmap/index.html"><img src="../images/LOGO.GIF"></a>
+		        <br>
+	        </td>
 
-			        <td abswidth=370 rowspan=5 valign=top align=center>       
-			          <center>             
-			            <SCRIPT LANGAUGE="Javascript">
-				            BuildPuzzle();
-			              RenderPuzzle();
-			            </SCRIPT>
-				        </center>
-			        </td>
+			    <td width=370 rowspan=5 valign=top align=center>
+            <img src="/wtv/ROMCache/spacer.gif" height=20><br>
+			      <SCRIPT LANGAUGE="Javascript">
+				      BuildPuzzle();
+			        RenderPuzzle();
+			      </SCRIPT>
+			    </td>
+			    
+		    </tr>
+	      <tr> <!-- Wordfind Title -->         
+			    <td align=center>             
+			      <center>
+              <img src="/wtv/ROMCache/spacer.gif" width=5 height=10><BR>
+		   	      <font size="+2" color=#FFFFFF>
+
+	 		          Theme:<BR>
+
+			          <SCRIPT LANGAUGE="Javascript">
+	 		            document.write(sGameTitle);
+			          </SCRIPT>
+
+		   	      </font>
 			        
-		        </tr>
+	          </center>
+			    </td>
+			  </tr>
 
+			  <tr> <!-- Words Left -->
+	        <td valign=top align=center>
+			      <center>
+              <img src="/wtv/ROMCache/spacer.gif" width=5 height=10><BR>
+			        <table cellspacing=0 cellpadding=0 border=0>
+                <tr>
+	                <td align=left valign=center>
+	                  <img border=0 width=13 height=26 src="/ROMCache/spacer.gif" name="twords"><img border=0 width=13 height=26 src="/ROMCache/spacer.gif" name="owords"><img border=0 width=6  height=26 src="/ROMCache/spacer.gif">
+	                  
+			            </td>
+                  <td align=right valign=center><font size=3 color=#FFFFFF>Words Remain </font></td>
+	              </tr>
+	            </table>
+	          </center>
+	        </td> 
+	      </tr>
+        
+	      <tr>
+	        <td>
+	          <center>
+	            <a nocolor><img width=26 height=53 src="../images/4.gif" name="minutes"><img width=14 height=53 src="../images/COLON.GIF" name="Colon"><img width=26 height=53 src="../images/1.gif" name="tenstime"><img width=26 height=53 src="../images/5.gif" name="onestime"></a>	   
+	          </center>
+	        </td>
+	      </tr>
 
-	          <tr> <!-- Wordfind Title -->         
-			        <td align=center>             
-			          <center>                   
-
-		   	          <font size="+3">
-
-	 		              Theme:<BR>
-
-			              <SCRIPT LANGAUGE="Javascript">
-	 		                document.write(sGameTitle);
-			              </SCRIPT>
-
-		   	          </font>
-			            
-	              </center>
-			        </td>
-			      </tr>
-
-			      <tr> <!-- Words Left -->
-	            <td valign=top align=center>
-			          <center>
-			            <table cellspacing=0 cellpadding=0 border=0>
-			              <tr>
-			                <td align=left valign=center>
-				                <img border=0 width=13 height=26 src="/ROMCache/spacer.gif" name="twords"><img border=0 width=13 height=26 src="/ROMCache/spacer.gif" name="owords"><img border=0 width=6  height=26 src="/ROMCache/spacer.gif">
-			                  
-			                </td>
-                      <td align=right valign=center><font size=3 color=#FFFFFF>Words Remain </font></td>
-			              </tr>
-			            </table>
-			          </center>
-			        </td> 
-			      </tr>
-
-			      
-			      <tr>
-			        <td>
-			          <center>
-				          <a nocolor><img width=26 height=53 src="../images/4.gif" name="minutes"><img width=14 height=53 src="../images/COLON.GIF" name="Colon"><img width=26 height=53 src="../images/1.gif" name="tenstime"><img width=26 height=53 src="../images/5.gif" name="onestime"></a>	   
-			          </center>
-	            </td>
-			      </tr>
-
-		        <tr> <!-- Control Buttons -->
-
-			        <td>
-			          <font color=ffaa44>
-	                <shadow>
-		                
-	                  <table border=0 width=100%>
-
-                      <tr> 
-
-				                <td><img src="/ROMCache/spacer.gif" width=2 height=5></td>
-
-				                <td>
-		                      <A name="hint" HREF="javascript:ShowHint()"><IMG SRC="../images/HINT.GIF"></A>
-		         	          </td>
-				                <td>
-		                      <A name="solve" HREF="javascript:SolvePuzzle()"><IMG SRC="../images/SOLVE.GIF"></A>	  
-				                </td>
-				              </tr>
-				              
-				              <tr>
-
-  				              <td><img src="/ROMCache/spacer.gif" width=2 height=5></td>
-				                <td><A name="restart" HREF=""><IMG SRC="../images/RESTART.GIF"></A></td>
-				                <td><A name="quit" HREF="javascript:Quit()"><IMG SRC="../images/QUIT.GIF"></A>	  
-					              </td>
-				              </tr>
-			              </table>
-
-			            </shadow>
-	              </font>
-	              
-			        </td>
-			      </tr>
-			      <tr>
-			        <td colspan=2>
-				        <image src="/ROMCache/spacer.gif" border=1 height=14 width=5>
-              </td>
-            </tr>
-			      <tr>
-			        <td abswidth=170>&nbsp;</td>
-			        <td abswidth=374 colspan=2 align=right>
-			          <INSERT AD width=394 height=71>
-			        </td>
-			      </tr>
-			      
-	        </table>
+	      <tr> <!-- Control Buttons -->
+	        <td align=center>
+	          <font color=ffaa44>
+	            <shadow>
           
-
-	        <script language="Javascript">
-
-	          Highlight1LengthWords();
-	          UpdateWordsLeft();
-	          window.setTimeout("CallbackTimeLeft()", 5000);
+	              
+	              <table border=0 width=80% cellpadding=0 cellspacing=5>
+                  
+                  <tr> 
+                    
+	                  <td colspan=2><img src="/wtv/ROMCache/spacer.gif" width=0 height=25></td>
+                  </tr>
+                  <tr>
+                    
+	                  <td align=center>
+	                    <A name="hint" HREF="javascript:ShowHint()"><IMG SRC="../images/HINT.GIF"></A>
+	                  </td>
+	                  <td align=center>
+	                    <A name="solve" HREF="javascript:SolvePuzzle()"><IMG SRC="../images/SOLVE.GIF"></A>	  
+	                  </td>
+	                </tr>
+	                <tr>
+	                  <td align=center><A name="restart" HREF=""><IMG SRC="../images/RESTART.GIF"></A></td>
+	                  <td align=center><A name="quit" HREF="javascript:Quit()"><IMG SRC="../images/QUIT.GIF"></A></td>
+	                </tr>
+	              </table>
+                
+			        </shadow>
+	          </font>
 	          
-	        </script>
-  <footerborder></footerborder>
-  <footer>
-    <div class=footerstatus>WebTV Crossword</div><div class=audiostatus><div class="audiogreen"></div>
-  </div>
-</footer>
-        <audio id="var6.mid" loop><source src="../../audio/var6.mp3" type="audio/mpeg"/></audio> 
-        <audio id="newbell3.mid"><source src="../../audio/newbell3.mp3" type="audio/mpeg"/></audio> 
-        <audio id="buzz.mid"><source src="../../audio/buzz.mp3" type="audio/mpeg"  /></audio>
-        <audio id="applause.MP2"><source src="../sounds/applause.MP2" type="audio/mpeg"  /></audio>
-
+			    </td>
+	      </tr>
+	      <tr>
+	        <td colspan=2>
+	          <image src="/wtv/ROMCache/spacer.gif" height=1 width=5>
+          </td>
+        </tr>
+	      <tr>
+	        <td></td>
+	        <td  align=right>
+	          <INSERT AD width=394 height=71>
+	        </td>
+	      </tr>
+	      
+	    </table>
+      
+      
+	    <script language="Javascript">
+        
+	      Highlight1LengthWords();
+	      UpdateWordsLeft();
+	      window.setTimeout("CallbackTimeLeft()", 5000);
+	      
+      </script>
+      <footerborder></footerborder>
+      <footer>
+        <div class=footerstatus>WebTV Crossword</div><div class=audiostatus><div class="audiogreen"></div>
+        </div>
+      </footer>
+      <audio id="var6.mid" loop><source src="../../audio/var6.mp3" type="audio/mpeg"/></audio> 
+      <audio id="newbell3.mid"><source src="../../audio/newbell3.mp3" type="audio/mpeg"/></audio> 
+      <audio id="buzz.mid"><source src="../../audio/buzz.mp3" type="audio/mpeg"  /></audio>
+      <audio id="applause.MP2"><source src="../sounds/applause.MP2" type="audio/mpeg"  /></audio>
+      
   </body>
 </html>
 

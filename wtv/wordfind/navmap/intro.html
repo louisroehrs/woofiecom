@@ -1,169 +1,142 @@
 <html>
-<head>
-<title>WebTV Word Finder</title>
+  <head>
+    <link rel="stylesheet" href="../../wtvstyles.css">
+    <script src="../../scaler.js"></script>
+    <META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">
 
-<SCRIPT Language="JavaScript">
-	
-	function getURLvar(Name) {
-		var search = Name + "="
-		var incoming = window.location.search
-		if (incoming.length > 0) { // if there are any search parameters
-			offset = incoming.indexOf(search) 
-			if (offset != -1) { // if parameter exists 
-				offset += search.length 
-				// set index of beginning of value
-				end = incoming.indexOf("&", offset) 
-				// set index of end of cookie value
-				if (end == -1) 
-					end = incoming.length
-				value = unescape(incoming.substring(offset, end))
-				if (value == "") {
-					return null
-				} else {
-					return value
-				}
-			}
-			else return null
-		}
-		else return null
-	}
+    <style>
+      body {
+          background-repeat: repeat;
+      }
+    </style>
 
-	function PassQueryToPage(pageName) {
-		var chosengame = getURLvar("game")
-		var mysearch = window.location.search
-//	alert (mysearch)
-		var modifier = "N"
-		if (mysearch != "") {
-			modifier= "&"
-			if (mysearch.charAt(0) != "?")
-				mysearch = "?"+ mysearch;    
-		}
-		else
-		{
-			modifier = "?"
-			mysearch = ""
-		} 
-		var bigwoofie = pageName +  mysearch  + modifier 
-		bigwoofie = bigwoofie + "game=" + chosengame +"&"
-		
-		bigwoofie = bigwoofie +"the=end" 
-		window.location = bigwoofie
-	}
+    <title>WebTV Word Finder</title>
 
-function Redirect(sURL) {
-  window.location=sURL;
-} 
-function RedirectToGame() {
- 	sURL=getURLvar("game")
-	gameURL = "../" + sURL;
-	alert(window.location.search);
-	alert(gameURL);
-  window.location= gameURL;
-} 
+    <SCRIPT Language="JavaScript">
 
-	</SCRIPT>
+      function getURLvar(Name) {
+        var search = Name + "="
+        var incoming = window.location.search
+        if (incoming.length > 0) { // if there are any search parameters
+          offset = incoming.indexOf(search)
+          if (offset != -1) { // if parameter exists
+            offset += search.length
+            // set index of beginning of value
+            end = incoming.indexOf("&", offset)
+            // set index of end of cookie value
+            if (end == -1)
+              end = incoming.length
+            value = unescape(incoming.substring(offset, end))
+            if (value == "") {
+              return null
+            } else {
+              return value
+            }
+          }
+          else return null
+        }
+        else return null
+      }
+
+      function PassQueryToPage(pageName) {
+        var chosengame = getURLvar("game")
+        var mysearch = window.location.search
+        //	alert (mysearch)
+        var modifier = "N"
+        if (mysearch != "") {
+          modifier= "&"
+          if (mysearch.charAt(0) != "?")
+            mysearch = "?"+ mysearch;
+        }
+        else
+        {
+          modifier = "?"
+          mysearch = ""
+        }
+        var bigwoofie = pageName +  mysearch  + modifier
+        bigwoofie = bigwoofie + "game=" + chosengame +"&"
+
+        bigwoofie = bigwoofie +"the=end"
+        window.location = bigwoofie
+      }
+
+      function Redirect(sURL) {
+        window.location=sURL;
+      }
+      function RedirectToGame() {
+        sURL=getURLvar("game")
+        gameURL = "../" + sURL;
+        window.location= gameURL;
+      }
+
+    </SCRIPT>
 
 
-</head>
+  </head>
 
-<bgsound src="sounds/kidstheme8.mid" LOOP=TRUE> 
-<!-- <body fontsize=medium background="../images/back100.jpg" bgcolor=191919 text=#FFFFFF hspace=0 vspace=0>
+  <bgsound src="sounds/kidstheme8.mid" LOOP=TRUE>
+    <body fontsize=medium background="../images/back100.jpg" bgcolor=191919 text=#FFFFFF hspace=0 vspace=0>
 
-   <display noscroll>
+      <display noscroll>
 
-<table width=100% border=0 cellpadding=0 cellspacing=0>
-	<tr><td height=5></td> <td></td> <td></td> <td></td> </tr>
-	<tr>
-		<td height=308 !bgcolor=53001b width=120 valign=top>
-			<IMG width=8 height=6 src=/ROMCache/Spacer.gif><BR>
-			<IMG width=12 height=80 src=/ROMCache/Spacer.gif><a href="wtv-home:/home"><IMG width=104 height=80 src=/ROMCache/WebTVLogoJewel.gif></a>
-			<img src="/ROMCache/Spacer.gif" border=0 width=90 height=120><BR>
-			<CENTER>
-			<a href="javascript:PassQueryToPage('rules.tmpl')"><IMG SRC="../images/0209_wf_tips.gif" WIDTH=93 HEIGHT=36 BORDER=0></A><BR>
-			<IMG width=8 height=7 src=/ROMCache/Spacer.gif><BR>
-		    <a selected href="javascript:RedirectToGame();"><IMG SRC="../images/0209_wf_play.gif" WIDTH=93 HEIGHT=36 BORDER=0></A>
-			</CENTER>
-		  </td>
-		  <td width=19></td>
-		<td width=380 valign=top  align=left>
-		 	<table border=0 cellpadding=0 cellspacing=0>
-				<tr>
-					<td width=160 height=90 align=left valign=top><IMG width=8 height=6 src=/ROMCache/Spacer.gif><BR><IMG SRC="../images/LOGO.GIF" WIDTH=157 HEIGHT=81 BORDER=0></td>
-					<td width=220 align=right valign=bottom><img src="/ROMCache/Spacer.gif" width=1 height=25 align=left><font size=5><B>How To Play</B></font></td>
-				<!-- 	<td width=18><img src="/ROMCache/Spacer.gif" width=18 height=12></td> -->
-				</tr>
-				<tr>
-					<td height=20></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</table>
-	
-	  		<font>
-		
+        <table width=100% border=0 cellpadding=0 cellspacing=0>
+          <tr><td height=5></td> <td></td> <td></td> <td></td> </tr>
+          <tr>
+            <td height=308 !bgcolor=53001b width=120 valign=top>
+              <IMG width=8 height=6 src=/wtv/ROMCache/spacer.gif><BR>
+              <IMG width=12 height=80 src=/wtv/ROMCache/spacer.gif><a href="wtv-home:/home"><IMG width=104 height=80 src=/ROMCache/WebTVLogoJewel.gif></a>
+              <img src="/wtv/ROMCache/spacer.gif" border=0 width=90 height=120><BR>
+              <CENTER>
+<!--                <a href="javascript:PassQueryToPage('rules.html')"><IMG SRC="../images/0209_wf_tips.gif" WIDTH=93 HEIGHT=36 BORDER=0></A><BR> -->
+                <IMG width=8 height=7 src=/wtv/ROMCache/spacer.gif><BR>
+                <a selected href="javascript:RedirectToGame();"><IMG SRC="../images/0209_wf_play.gif" WIDTH=93 HEIGHT=36 BORDER=0></A>
+              </CENTER>
+            </td>
+            <td width=19></td>
+            <td width=380 valign=top  align=left>
+              <table border=0 cellpadding=0 cellspacing=0>
+                <tr>
+                  <td width=160 height=90 align=left valign=top><IMG width=8 height=6 src=/wtv/ROMCache/spacer.gif><BR><IMG SRC="../images/LOGO.GIF" WIDTH=157 HEIGHT=81 BORDER=0></td>
+                  <td width=220 align=right valign=bottom><img src="/wtv/ROMCache/Spacer.gif" width=1 height=25 align=left><font size=5><B>How To Play</B></font></td>
+                  <!-- 	<td width=18><img src="/ROMCache/Spacer.gif" width=18 height=12></td> -->
+                </tr>
+                <tr>
+                  <td height=20></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </table>
 
-			
-		
-	 		</font>
-	
-   	      </td>
-		  <td width=35><img src="/ROMCache/Spacer.gif" border=0 width=15></td>
-            
-		</tr>
-		<tr>
-		  	<td></td>
-			<td></td>
-		  	<td colspan=2 height=71><insert ad template="insetad.tmpl" width=394 height=71></td>
-		</tr>
+              <font>
+          <table>
+            <TR><TD valign=top><li></TD><TD valign=top>Words can be found horizontally, vertically, diagonally, backwards and forwards.</TD></TR>
+            <TR><TD valign=top><li></TD><TD valign=top>Twenty seconds will be added to the wordfind clock for each correct word you find.</TD></TR>
+            <TR><TD valign=top><li></TD><TD valign=top>Clicking on "Hint" will briefly highlight a letter within a word you have not yet found. Five seconds will be deducted from the wordfind clock each time you click on "Hint."</TD></TR>
+  <TR><TD valign=top><li></TD><TD valign=top>If you are stumped click on "Solve" and the solution to the puzzle will be revealed.
+</TD></TR>
+          </table>
+              </font>
 
-	</table>
+            </td>
+            <td width=35><img src="/wtv/ROMCache/spacer.gif" border=0 width=15></td>
 
-</body>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td colspan=2 height=71><insert ad template="insetad.tmpl" width=394 height=71></td>
+          </tr>
 
-==== -->
+        </table>
+        <footerborder></footerborder>
+        <footer>
+          <div class=footerstatus>WebTV Wordfind</div><div class=audiostatus><div class="audiogreen"></div>
+          </div>
+        </footer>
 
-<body fontsize=medium background="../images/back166.gif" bgcolor=464474 text=#FFFFFF valign=top hspace=0 vspace=0>
-   <display noscroll>
-      
-	  <table cellpadding=0 cellspacing=0 border=0 width=100%>
-	    <tr>
-	      
-		   <td width=166 height=384 bgcolor=53001b height=313 rowspan=2 align=center valign=top>
-			<IMG width=8 height=6 src=/ROMCache/Spacer.gif><BR>
-			<a href="wtv-home:/home"><IMG width=20 height=80 src=/ROMCache/Spacer.gif><IMG width=104 height=80 src=/ROMCache/WebTVLogoJewel.gif><IMG width=28 height=80 src=/ROMCache/Spacer.gif></a><BR>
-		 	<IMG width=8 height=7 src=/ROMCache/Spacer.gif><BR>
-  			<A HREF="index.tmpl"><IMG SRC="../images/LOGO.GIF" WIDTH=150 HEIGHT=74 BORDER=0></A><BR>
-  			<img src="/ROMCache/Spacer.gif" border=0 width=12 height=135><BR>
 
-<!--      		<A HREF="javascript:PickGameAndGoTo('index2.tmpl');"><IMG SRC="../images/rules2.gif" WIDTH=142 HEIGHT=34 BORDER=0></A><BR> -->
-			<img src="/ROMCache/Spacer.gif" border=0 width=12 height=7><BR>
-			<A selected HREF="javascript:PickGameAndGoTo('play.tmpl');"><IMG SRC="../images/play2.gif" WIDTH=142 HEIGHT=34 BORDER=0></A>
-				    
-				     	  			
-	      </td>
 
-		  <td width=9 height=313 bgcolor=464664 gradcolor=2e2c4a gradangle=90></td>       
-
-		  <td width=385 valign=middle bgcolor=2e2c4a align=center>
-		  <FONT SIZE=6>How to Play</FONT>   <BR><BR><BR>    
-			<table border=0 cellspacing=0 cellpadding=0>
-	     		<TR><TD valign=top></TD><TD valign=top>The object of this game is to find a famous phrase hidden in the wordfind grid.</TD></TR>
-	 	 	  	<TR><TD valign=top></TD><TD valign=top>Each phrase winds through the wordfind like a snake.</TD></TR>
-			  	<TR><TD valign=top></TD><TD valign=top>To select a word simply click on the word's first and last letter. Then, look for the next word in the phrase. It always begins in a square adjacent to the last letter of the word you just found.</TD></TR>
-	         	<TR><TD valign=top></TD><TD valign=top>Good Luck!</TD></TR>
-			</table>			    
-			</td>
-			</tr>
-			<tr>
-			<td height=71 valign=top colspan=2 align=right>
-			<!-- 	<img src="../images/COLON.GIF" width=374 height=71> -->
-			 <INSERT AD width=394 height=71 template=insetad.tmpl> 
-			</td>
-		</tr>
-			      
-	</table>
-
-</body>
+    </body>
 
 
 </html>
