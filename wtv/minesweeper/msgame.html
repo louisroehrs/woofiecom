@@ -1,6 +1,14 @@
 <html>
   <head>
     <link rel="stylesheet" href="../wtvstyles.css">
+    <script src="../scaler.js"></script>
+    <META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">
+    <style>
+      body {
+          background-repeat: repeat;
+      }
+    </style>
+
     <title>Building game...</title>
 
     <style>
@@ -21,6 +29,7 @@
 
 
       lastAudio = null;
+      backgroundAudio = null;
       kTotalBombs = 0;
       kUncovered = 0;
 
@@ -66,6 +75,7 @@
 
         sGameState="inplay";
         window.setTimeout("CallbackTimeLeft()", 5000);
+        PlaySound("var6.mid");
       }
 
       function CreateCell(x,y) {
@@ -583,7 +593,7 @@
 
   </head>
   <body  style="overflow:hidden;" fontsize=medium background="images/BACK.JPG" bgcolor=191919 text=668866 hspace=0 vspace=0  style="margin:0;padding:0;">
-<!--    <bgsound src="sounds/var6.mid" LOOP=TRUE> -->
+
     <display noscroll>
     <!--
     <EMBED SRC="sounds/door.MP2" HIDDEN=TRUE
@@ -641,7 +651,7 @@
                 
               </SCRIPT>
               <BR>
-              <img src="/wtv/ROMCache/spacer.gif" border=0 width=5 height=2><br>
+              <img src="/wtv/ROMCache/spacer.gif" border=0 width=5 height=3><br>
               
               <table cellpadding=0 cellspacing=0 border=0 width=394 height=71 insetselection nocolor>
                 <tr>
@@ -651,7 +661,6 @@
                 </tr>
               </table>
               
-              <!-- 		<INSERT AD template="insetad.html" width=394 HEIGHT=71> -->
             </td>
             
           </tr>
@@ -667,6 +676,7 @@
           </div>
         </footer>
 
+        <audio id="var6.mid" loop><source src="../audio/var6.mp3" type="audio/mpeg"/></audio> 
         <audio id="newbell3.mid"><source src="../audio/newbell3.mp3" type="audio/mpeg"/></audio> 
         <audio id="buzz.mid"><source src="../audio/buzz.mp3" type="audio/mpeg"  /></audio>
         <audio id="applause.MP2"><source src="sounds/applause.MP2" type="audio/mpeg"  /></audio>
