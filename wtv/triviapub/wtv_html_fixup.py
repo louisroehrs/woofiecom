@@ -86,7 +86,7 @@ def step_absheight(content):
 def step_home_logo_link(content):
     if "arcade/aracade.html" in content:
         return content
-    return content.replace('<IMG width=104 height=87 src=/ROMCache/WebTVLogoJewel.gif>','<a href="../../../arcade/arcade.html"><IMG width=104 height=87 src=/ROMCache/WebTVLogoJewel.gif></a>',content)
+    return content.replace('<IMG width=104 height=87 src=/ROMCache/WebTVLogoJewel.gif>','<a href="../../../arcade/arcade.html"><IMG width=104 height=87 src=/ROMCache/WebTVLogoJewel.gif></a>')
 
 def step_abswidth(content):
     return re.sub(r'abswidth', 'width', content, flags=re.IGNORECASE)
