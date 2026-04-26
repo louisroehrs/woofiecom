@@ -3,6 +3,10 @@
 
   <title>WebTV MatchMate</title>
     <link rel="stylesheet" href="../wtvstyles.css">	
+
+    <script src="../scaler.js"></script>
+    <META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">
+
 <SCRIPT Language="JavaScript">
 
 	mam = new game("mam");
@@ -33,7 +37,7 @@
 	
 	function StartUp() {
 		document.form1.playerpick.value = mam.players[0].name + ", pick a player!";
-		window.status= mam.players[0].name + ", pick a player!";
+		setStatus(mam.players[0].name + ", pick a player!");
 	}
 
 // GAME Object  new game(theme elements)
@@ -66,12 +70,12 @@
 		next = this.currentPlayer.id +1;
 		if ( next < 2) {
 			this.currentPlayer = this.players[this.currentPlayer.id +1];
-			document.form1.playerpick.value = mam.players[this.currentPlayer.id].name + ", pick a player!";
-			window.status= mam.players[this.currentPlayer.id].name + ", pick a player!";
+			document.form1.playerpick.value = this.currentPlayer.name + ", pick a player!";
+			setStatus(this.currentPlayer.name + ", pick a player!");
 		}
 		else {
 			document.form1.playerpick.value = "Building the village!";
-			window.status= "Building the village!";
+      setStatus("Building the village!");
 			setTimeout("GoNextPage()",1000);
 		}
 	}		
@@ -118,7 +122,7 @@
 
 	function RenderSidebar() {	
 		this.players[0].render();
-		document.write("<IMG width=8 height=2 src=/wtv/ROMCache/spacer.gif><BR>");
+		document.write("<IMG width=8 height=2 src=/wtv/ROMCache/spacer.gif><br>");
 		this.players[1].render();
 	}	
 
@@ -152,7 +156,7 @@
 
 		document.write("<table border=0 cellpadding=0 cellspacing=0 cellborder=0>");
 		document.write("<tr><td width=13></td><td width=125 height=83 background=images/player" + this.id + "_bg_on.gif valign=bottom align=center><img src=/wtv/ROMCache/spacer.gif name=play" + this.id + "pict width=80 height=80></td></tr>");
-		document.write("<tr><td colspan=2 height=21 bgcolor=000000 align=center valign=bottom><FONT SIZE=2>"+this.name + "</FONT></td></tr></table><br>");
+		document.write("<tr><td colspan=2 height=21 bgcolor=000000 align=center valign=bottom><FONT SIZE=2>"+this.name + "</FONT></td></tr></table>");
 	}
 	
 	function Psetimage (imageName,loc) {
@@ -275,13 +279,13 @@
 </table>
 
 </form>
-	<SCRIPT Language="JavaScript">
-		StartUp();
-	</SCRIPT>
     <footerborder/>
 <footer>
   <div class=footerstatus>WebTV MatchMate</div><div class=audiostatus><div class="audiogreen"></div></div>
 </footer>
+	<SCRIPT Language="JavaScript">
+		StartUp();
+	</SCRIPT>
 
 </body>
 </html>

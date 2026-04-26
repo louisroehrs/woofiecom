@@ -4,6 +4,9 @@
 
 <head>
   <link rel="stylesheet" href="../wtvstyles.css">	
+
+    <script src="../scaler.js"></script>
+    <META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">
   
   <SCRIPT Language="JavaScript">
     
@@ -76,14 +79,14 @@
 	
 	function RenderSidebar() {	
 		this.players[0].render();
-		document.write("<IMG width=8 height=2 src=/ROMCache/Spacer.gif><BR>");
+		document.write("<IMG width=8 height=2 src=/ROMCache/Spacer.gif><br>");
 		this.players[1].render();
 	}	
 	
 
-		function StartRules() {
-			window.status= this.status;
-		}
+  function StartRules() {
+	  setStatus(this.status);
+	}
 		
 // PLAYER Object
 
@@ -114,7 +117,7 @@
 
 		document.write("<table border=0 cellpadding=0 cellspacing=0 cellborder=0>");
 		document.write("<tr><td width=13></td><td width=125 height=83 background=images/player" + this.id + "_bg_on.gif valign=bottom align=center><img src=" + this.pict + " width=80 height=80></td></tr>");
-		document.write("<tr><td colspan=2 height=21 bgcolor=000000 align=center valign=bottom><FONT SIZE=2>"+this.name + "</FONT></td></tr></table><br>");
+		document.write("<tr><td colspan=2 height=21 bgcolor=000000 align=center valign=bottom><FONT SIZE=2>"+this.name + "</FONT></td></tr></table>");
 	}
 	
 	function PassQueryToPage(pageName) {

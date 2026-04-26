@@ -5,7 +5,12 @@
 
 <title>Building Game...</title>
 <link rel="stylesheet" href="../wtvstyles.css">
+
+    <script src="../scaler.js"></script>
+    <META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">
+
 <style>
+  body { background-repeat: repeat }
 
 </style>      
 	<script language="JavaScript">
@@ -82,7 +87,7 @@
 				this.game.pointsSelected = 1;
 				this.game.firstCell = this;
 				name1 =  this.game.currentPlayer.name;
-				window.status= name1 +"'s Turn: Try to Match This!";
+				setStatus(name1 +"'s Turn: Try to Match This!");
 			}
 			else {  // Picking next item
 				if (this.game.secondCell != null);
@@ -99,7 +104,7 @@
 					this.uncover();
 					this.matched = true;
 					this.game.secondCell.matched = true;
-					window.status="Found a Match! Go again! Pick First Item.";
+					setStatus("Found a Match! Go again! Pick First Item.");
 					PlaySound("newbell3.mid");
 					this.game.pointsSelected = 0;  // restart matching series.
 					this.game.score();
@@ -111,7 +116,7 @@
 				
 					this.uncover();
 					name1 =  this.game.currentPlayer.name;
-					window.status= name1 +"'s Turn: Try to Match This!";
+					setStatus( name1 +"'s Turn: Try to Match This!");
 				}
 
 			}
@@ -132,7 +137,7 @@
 					this.matched = true;					// Matched
 					this.game.firstCell.matched = true;
 					this.game.secondCell= this;
-					window.status="Found a Match! Go again! Pick First Item."
+					setStatus("Found a Match! Go again! Pick First Item.")
 					PlaySound("newbell3.mid");
 					this.game.score();
 //					this.game.waitmatchflip = 0;
@@ -147,7 +152,7 @@
 					this.game.BadMatchID = window.setTimeout(this.game.name + ".coverunmatched()", 4000);
 					pickfirst ="";
 					if (this.game.players.length == 1) { picksecond=" Pick First Item."; }
-					window.status="Sorry, No Match Found..." + pickfirst;
+					setStatus("Sorry, No Match Found..." + pickfirst);
 					PlaySound("buzz.mid");
 				}
 			}
@@ -159,7 +164,7 @@
 				this.game.firstCell = this;
 				this.uncover();
 				name1 =  this.game.currentPlayer.name;
-				window.status=  name1+"'s Turn: Pick Second Item.";
+				setStatus(name1+"'s Turn: Pick Second Item.");
 
 			}
 
@@ -234,7 +239,7 @@
 
 	function Solve() {
 		if ((this.players.length == 1) && (this.state == "inplay")) {
-			window.status = "You must find all the matches first.";
+			setStatus("You must find all the matches first.");
 			return;
 		}
 		
@@ -242,12 +247,12 @@
 		if (answer == this.puzzletext) {
 			name1 = this.currentPlayer.name;
 			if (name1.indexOf("&") && name1.indexOf(";")) {
-				window.status=  name1.substring(0, name1.indexOf("&")) + " " +name1.substring(name1.indexOf(";")+1,name1.length) +" has saved the town!";
+				setStatus( name1.substring(0, name1.indexOf("&")) + " " +name1.substring(name1.indexOf(";")+1,name1.length) +" has saved the town!");
 	
 				this.currentPlayer.score += 5;
 				this.win();
 			} else {
-				window.status = "Nope, that is not the magic word";
+				setStatus("Nope, that is not the magic word");
 				this.currentPlayer.score -= 5;
 	
 			}
@@ -271,7 +276,7 @@
 	function Win() {
 		var dudes=0;
 		PlaySound("applause.mp2");
-		window.status= "";
+		setSatus=( "");
 		dudes = this.players.length;
 		
 		var parameter = "win.html?";
@@ -348,7 +353,7 @@
 		}
 		name1 = this.currentPlayer.name;
 		
-		window.status=  name1 +"'s Turn: Pick First Item.";
+		setStatus(name1 +"'s Turn: Pick First Item.");
 
 		this.board.clear();
 	}
@@ -361,7 +366,7 @@
 			this.currentPlayer = this.players[nextID];
 			imagename = "player" + nextID + "go";
 			name1 = this.currentPlayer.name;
-			window.status=  name1 +"'s Turn: Pick First Item.";
+			setStatus( name1 +"'s Turn: Pick First Item.");
 			document.images[imagename].src = "images/arrownew.gif";
 		}
 	}
@@ -452,7 +457,7 @@
 		document.write("<table cellpadding=0 cellspacing=0 cellborder=0>");
 		document.write("<tr><td colspan=2 valign=center></td><td colspan=3 height=83 name=woofie34  background=images/player" + this.id + "_bg_onnew.gif valign=bottom align=left><img width=30 height=80 src=images/spacer.gif name=player" + this.id + "go><img width=5 height=80 src=images/spacer.gif><img src=" + this.pict + " name=play" + this.id + "pict width=80 height=80></td><td width=3></td></tr>");
 		document.write("<tr><td width=11></td><td width=3 bgcolor=000000></td><td width=3 bgcolor=000000></td><td height=21 bgcolor=000000 align=left valign=bottom><FONT SIZE=2>"+this.name + "</FONT></td><td bgcolor=000000 width=15 valign=bottom><img width=15 height=20 src=images/spacer.gif  name=player" +this.id+"score></td><td width=3 bgcolor=000000></td></tr>");
-		document.write("<tr><td height=2 width=11></td><td width=3></td><td width=3></td><td width=117></td><td width=15></td><td width=3></td></tr></table><br>");
+		document.write("<tr><td height=2 width=11></td><td width=3></td><td width=3></td><td width=117></td><td width=15></td><td width=3></td></tr></table>");
 	}
 	
 		
@@ -722,31 +727,27 @@ credits="credits.html" vspace=0 hspace=0>
 		          
 			<IMG width=8 height=15 src=/wtv/ROMCache/spacer.gif><BR>
 			<SCRIPT Language="JavaScript">mam.board.render();</SCRIPT>
-			<BR><IMG width=8 height=10 src=/wtv/ROMCache/spacer.gif>
+			<IMG width=8 height=6 src=/wtv/ROMCache/spacer.gif>
 			
 		</td>
 	</tr>
 	<tr>
 		<td width=166 height=221 valign=top>
-		<IMG width=8 height=3 src=/wtv/ROMCache/spacer.gif><BR>
+  		<IMG width=8 height=3 src=/wtv/ROMCache/spacer.gif><BR>
 
-		<SCRIPT Language="JavaScript">mam.renderSidebar();</SCRIPT>
-		
+	  	<SCRIPT Language="JavaScript">mam.renderSidebar();</SCRIPT>
 			<IMG width=8 height=5 src=/wtv/ROMCache/spacer.gif><BR>
-
-			
 		</td>
  	</tr>
 	
 	<tr> 
 		<td valign=top>	<CENTER>
-<!--			<A HREF=""><IMG SRC="images/button_play_again.gif" WIDTH=139 HEIGHT=30 BORDER=0 ALT=""></A><BR> -->
-			<IMG width=8 height=2 src=/wtv/ROMCache/spacer.gif><BR>
+			<IMG width=8 height=30 src=/wtv/ROMCache/spacer.gif><BR>
 			<A HREF="../arcade/arcade.html?wtv-home:/home" !HREF="javascript:mam.tie();"><IMG SRC="images/button_quit.gif" WIDTH=139 HEIGHT=30 BORDER=0 ALT=""></A><BR>
 
 			</CENTER>
 			</td>
-		<td colspan=2 style="position:absolute; top:313; left: 166" height=75><a HREF="credits.html" valign=bottom insetselection><IMG SRC="http://www.woofie.com/images/bws.gif" WIDTH=394 HEIGHT=71 BORDER=0></td>
+		<td colspan=2  height=75><a HREF="credits.html" valign=bottom insetselection><IMG SRC="http://www.woofie.com/images/bws.gif" WIDTH=394 HEIGHT=71 BORDER=0></td>
 				       
 	</tr>
 
