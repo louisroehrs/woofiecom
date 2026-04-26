@@ -314,7 +314,7 @@ TRANSFORMSALL = [
 ]
 
 TRANSFORMS = [
-    ('correct_scaler_dir',step_correct_scaler_dir),
+    ('dumb_quotes', step_dumb_quotes),
 ]
 
 def process_file(path):
