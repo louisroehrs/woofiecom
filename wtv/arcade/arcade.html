@@ -1,238 +1,229 @@
 <HTML>
   <HEAD>
-      <link rel="stylesheet" href="../wtvstyles.css">	
-      <META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">
+    <link rel="stylesheet" href="../wtvstyles.css">	
+    <META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <TITLE>WebTV Arcade</TITLE>
+    <script src="../scaler.js"></script>
+    <script src="../../ruffle/ruffle.js"></script>
+	  <SCRIPT Language="JavaScript">
 
-	<TITLE>WebTV Arcade</TITLE>
-  <style>
-    #flyin {
-      background-color:black;
-    }
-    ruffle-player {
-        width:560px;
-        height:420px;
-    }
-  </style>
+      var currentGame=0
+	    
+	    games = new Array("matchmate","spacerace","wordfind", "triviatask", "minesweeper", "crossword")
+      
+      urls = new Array(
+        "../matchmate/index.html",
+			  "../aspacerace/index.html",
+			  "../wordfind/index.html",
+			  "../trivia/navmap/index.html",
+			  "../minesweeper/index.html",
+			  "../crossword/navmap/index.html")
+      
+      flyinFlash = new Array(
+        "../matchmate/flash/jestorlink.spl",
+        "../aspacerace/flash/flyintologo2.spl",
+        "../wordfind/flash/wordfind.spl",
+        "none",
+        "../minesweeper/flash/Mine.spl",
+        "none"
+      );
+      
+      flyinAudio = new Array(
+        "audio/littsong.mp3",
+        "audio/Tasmin Archer - Sleeping Satellite_second.mp3#t=9",
+        "audio/1NewLang.mp3",
+        "none",
+        "audio/chase2.mp3",
+        "none"
+      );
+      
+      gameTitles = new Array(
+        "MatchMate","SpaceRace","WordFinder","Trivia Task","Minesweeper","Crossword"
+      );
+      
+	    logos = new Array()
+      
+      
+	    function Start() {
+		    LoadImages()
+		    document.images["game"].src = games[0] + ".gif"
+		    document.myform.total.value = games.length
+		    document.myform.current.value = 1
+	    }
+	    
+	    function LoadImages() {
+		    for (i=0; i< games.length; i++) {
+			    woofie = new Image()
+			    logos[i]= woofie
+			    logos[i].src = games[i] + ".gif"
+			    
+		    }
+	    }
+	    
+      function Next() {
+  	    window.location = urls[ currentGame] ;
+      }
+      
+      function GoPlay() {
+        const arcade = document.getElementById("arcade");
+        const wtvpresentsvideo = document.getElementById("wtvpresentsvideo");
+        const wtvpresentsdiv = document.getElementById("wtvpresents");
+        const audioP = document.getElementById("wtvaudio")
+        const footerTitle= document.getElementById("footerstatus");
+        footerTitle.innerText = "WebTV " + gameTitles[currentGame];
+        wtvpresentsdiv.style.display = "block";
+        wtvpresentsvideo.play();
+        arcade.style.display="none";
+        audioP.play();
+        duration = 3000;
+        stopAudio = () => audioP.pause();
+        stopVideo = () => wtvpresents.pause();
+        window.setTimeout(PlayFlyin,duration);
+        window.setTimeout(stopAudio,duration);
+        window.setTimeout(stopVideo,duration);
+      }
 
-  <script src="../../ruffle/ruffle.js"></script>
-	<SCRIPT Language="JavaScript">
-
-  var currentGame=0
-	
-	games = new Array("matchmate","spacerace","wordfind", "triviatask", "minesweeper", "crossword")
-	
-
-
-  urls = new Array(
-          "../matchmate/index.html",
-					"../aspacerace/index.html",
-					"../wordfind/index.html",
-					"../trivia/navmap/index.html",
-					"../minesweeper/index.html",
-					"../crossword/navmap/index.html")
-
-  flyinFlash = new Array(
-             "../matchmate/flash/jestorlink.spl",
-             "../aspacerace/flash/flyintologo2.spl",
-             "../wordfind/flash/wordfind.spl",
-             "none",
-             "../minesweeper/flash/Mine.spl",
-             "none"
-             );
-  
-  flyinAudio = new Array(
-             "audio/littsong.mp3",
-             "audio/Tasmin Archer - Sleeping Satellite_second.mp3#t=9",
-             "audio/1NewLang.mp3",
-             "none",
-             "audio/chase2.mp3",
-             "none"
-             );
-
-    gameTitles = new Array(
-      "MatchMate","SpaceRace","WordFinder","Trivia Task","Minesweeper","Crossword"
-    );
-    
-	logos = new Array()
-
-
-	function Start() {
-		LoadImages()
-		document.images["game"].src = games[0] + ".gif"
-		document.myform.total.value = games.length
-		document.myform.current.value = 1
-	}
-	
-	function LoadImages() {
-		for (i=0; i< games.length; i++) {
-			woofie = new Image()
-			logos[i]= woofie
-			logos[i].src = games[i] + ".gif"
-			
-		}
-	}
-	
-  function Next() {
-  	window.location = urls[ currentGame] ;
-  }
-  
-  function GoPlay() {
-    const arcade = document.getElementById("arcade");
-    const wtvpresents = document.getElementById("wtvpresentsvideo");
-    const audioP = document.getElementById("wtvaudio")
-    const footerTitle= document.getElementById("footerstatus");
-    footerTitle.innerText = "WebTV " + gameTitles[currentGame];
-    
-    wtvpresents.play();
-    arcade.style.display="none";
-    audioP.play();
-    duration = 3000;
-    stopAudio = () => audioP.pause();
-    stopVideo = () => wtvpresents.pause();
-    window.setTimeout(PlayFlyin,duration);
-    window.setTimeout(stopAudio,duration);
-    window.setTimeout(stopVideo,duration);
-  }
-
-  function PlayFlyin() {
-    arcade.style.display="none";
-    if (flyinFlash[currentGame] =="none") {
-      Next()
-      return;
-    }
-    const wtvpresents = document.getElementById("wtvpresents");
-    wtvpresents.style.display="none";
-    const flyin = document.getElementById("flyin");
-    const audioP = document.getElementById("flyinaudio" + games[currentGame]);
-    window.RufflePlayer = window.RufflePlayer || {};
-    window.RufflePlayer.config = {
-      "autoplay" : "on",
-      "splashScreen": false, 
-      "unmuteOverlay":"hidden",
-      "allowScriptAccess":true, // true loads next page, false, stays on page.,
-    };
-    const ruffle = window.RufflePlayer.newest();
-    const player = ruffle.createPlayer();
-    flyin.appendChild(player);
-    player.ruffle().load(flyinFlash[currentGame]);
-    audioP.play();
-  }
-
-  function ResumeBG() {
-//		PauseSound(document.teen)
-	}
-
-  function GoForward() {
-		currentGame++
-		if (currentGame >= games.length) currentGame=0
-		document.images["game"].src = games[currentGame] + ".gif"
-
-    document.myform.current.value = currentGame +1
-    const audioP = document.getElementById("audiobutton");
-    audioP.currentTime = 0;
-    audioP.play();  
-//		setTimeout("GoForward()",3000)
-	}
-
-	function GoBackward() {
-		currentGame--
-		if (currentGame < 0 ) currentGame= games.length -1 
-		document.images["game"].src = games[currentGame] + ".gif"
-		document.myform.current.value = currentGame +1
-
-    const audioP = document.getElementById("audiobutton");
-    audioP.currentTime = 0;
-    audioP.play();  
-	}
-	
-  window.RufflePlayer = window.RufflePlayer || {}
-  window.RufflePlayer.config = {
-          "autoplay" : "off",
+      function PlayFlyin() {
+        arcade.style.display="none";
+        if (flyinFlash[currentGame] =="none") {
+          Next()
+          return;
+        }
+        const wtvpresents = document.getElementById("wtvpresents");
+        const flyin = document.getElementById("flyin");
+        flyin.style.display="block";
+        wtvpresents.style.display="none";
+        const audioP = document.getElementById("flyinaudio" + games[currentGame]);
+        window.RufflePlayer = window.RufflePlayer || {};
+        window.RufflePlayer.config = {
+          "autoplay" : "on",
           "splashScreen": false, 
           "unmuteOverlay":"hidden",
-          "allowScriptAccess":false,
-          "unmuteOverlay":"hidden",
-          "frameRate":9
-  };
+          "allowScriptAccess":true, // true loads next page, false, stays on page.,
+        };
+        const ruffle = window.RufflePlayer.newest();
+        const player = ruffle.createPlayer();
+        flyin.appendChild(player);
+        player.ruffle().load(flyinFlash[currentGame]);
+        audioP.play();
+      }
 
-	</SCRIPT>
+      function ResumeBG() {
+        //		PauseSound(document.teen)
+	    }
+
+      function GoForward() {
+		    currentGame++
+		    if (currentGame >= games.length) currentGame=0
+		    document.images["game"].src = games[currentGame] + ".gif"
+
+        document.myform.current.value = currentGame +1
+        const audioP = document.getElementById("audiobutton");
+        audioP.currentTime = 0;
+        audioP.play();  
+        //		setTimeout("GoForward()",3000)
+	    }
+
+	    function GoBackward() {
+		    currentGame--
+		    if (currentGame < 0 ) currentGame= games.length -1 
+		    document.images["game"].src = games[currentGame] + ".gif"
+		    document.myform.current.value = currentGame +1
+
+        const audioP = document.getElementById("audiobutton");
+        audioP.currentTime = 0;
+        audioP.play();  
+	    }
+	    
+      window.RufflePlayer = window.RufflePlayer || {}
+      window.RufflePlayer.config = {
+        "autoplay" : "off",
+        "splashScreen": false, 
+        "unmuteOverlay":"hidden",
+        "allowScriptAccess":false,
+        "unmuteOverlay":"hidden",
+        "frameRate":9
+      };
+
+	  </SCRIPT>
 
 
-</HEAD>
-<!-- <bgsound src="http://www.woofie.com/wtv/arcade/crazy.zip" autostart=true play=true loop=false> --> 
-    <BODY background="webtvarcadesm.jpg" marginheight=0 marginwidth=0 hspace=0 vspace=0 text=cccc00 credits="http://www.woofie.com/webtv.html" onLoad="Start()" align=left fontsize=medium>
-      <display showwhencomplete>
-        <div id="arcade">
-
-<form name=myform>
-<TABLE ALIGN="LEFT" VALIGN="TOP" WIDTH="100%" border=0 cellpadding=0 cellspacing=0>
-<TR>
-	<TD height=85><IMG SRC="spacer.gif" WIDTH=10 HEIGHT=85 BORDER=0></TD>
-	<TD></TD>
-	<TD></TD>
-	<TD></TD>
-	<TD></TD>
-	<TD ></TD>
-	<TD></TD>
-	<TD></TD>
-	<TD></TD>
-</TR>
-<TR>
-	<TD height=163></TD>
-	<TD></TD>
-	<TD colspan=5 ALIGN="CENTER" VALIGN="MIDDLE"><A HREF="javascript:GoPlay()"><IMG SRC="spacer.gif" name="game" WIDTH=137 HEIGHT=111 BORDER=0></A></TD>
-	<TD></TD>
-	<TD></TD>
-</TR>
-<TR>
-	<TD height=22><IMG SRC="spacer.gif" WIDTH=1 HEIGHT=1 BORDER=0></TD>
-	<TD><IMG SRC="spacer.gif" WIDTH=1 HEIGHT=1 BORDER=0></TD>
-	<TD><IMG SRC="spacer.gif" WIDTH=1 HEIGHT=1 BORDER=0></TD>
-	<TD><IMG SRC="spacer.gif" WIDTH=1 HEIGHT=1 BORDER=0></TD>
-	<TD></TD>
-	<TD></TD>
-	<TD></TD>
-	<TD></TD>
-	<TD></TD>
-</TR>
-<TR>
-	<TD height=50 width=98><IMG SRC="spacer.gif" WIDTH=98 HEIGHT=55 BORDER=0></TD>
-	<TD width=71><A HREF='javascript:GoBackward()'><IMG SRC="spacer.gif" WIDTH=71 HEIGHT=55 BORDER=0></A></TD>
-	<TD width=28 ><IMG SRC="spacer.gif" WIDTH=28 HEIGHT=50 BORDER=0></TD>
-	<TD width=43  ALIGN="CENTER" VALIGN="MIDDLE"><FONT COLOR=cccc00 SIZE="4"><input noselect bgcolor=000000 type=text usestyle border=0 value=1 size=2 name=current style="all:unset;"></FONT></TD>
-	<TD width=70 ><IMG SRC="spacer.gif" WIDTH=70 HEIGHT=20 BORDER=0></TD>
-	<TD width=41  ALIGN="CENTER" VALIGN="MIDDLE"><FONT ColoR=cccc00 SIZE="4"><input noselect bgcolor=000000 type=text usestyle border=0 value=1 size=2 name=total style="all:unset;"></FONT></TD>
-	<TD width=28 ><IMG SRC="spacer.gif" WIDTH=28 HEIGHT=50 BORDER=0></TD>
-	<TD width=72 ><A HREF='javascript:GoForward()'><IMG SRC="spacer.gif" WIDTH=72 HEIGHT=55 BORDER=0></A></TD>
-	<TD width=78></TD>
-
-</TR>
-<TR>
-	<TD height=40><IMG SRC="spacer.gif" WIDTH=1 HEIGHT=1 BORDER=0></TD>
-  <TD></TD>
-	<TD colspan=5 align=center><A HREF="javascript:GoPlay()"><IMG SRC="spacer.gif" name="game" WIDTH=180 HEIGHT=111 BORDER=0><IMG SRC="spacer.gif" WIDTH=1 HEIGHT=1 BORDER=0></A></TD>
-	<TD></TD>
-	<TD></TD>
-</TR>
-<TR>
-	<TD></TD>
-	<TD></TD>
-	<TD></TD>
-	<TD></TD>
-	<TD></TD>
-	<TD></TD>
-	<TD></TD>
-	<TD><IMG SRC="spacer.gif" WIDTH=1 HEIGHT=1 BORDER=0></TD>
-	<TD><IMG SRC="spacer.gif" WIDTH=1 HEIGHT=1 BORDER=0></TD>
-
-</TR> 
-</TABLE>
-</form>
+  </HEAD>
+  <!-- <bgsound src="http://www.woofie.com/wtv/arcade/crazy.zip" autostart=true play=true loop=false> --> 
+  <BODY background="webtvarcade.tif" marginheight=0 marginwidth=0 hspace=0 vspace=0 text=cccc00 credits="http://www.woofie.com/webtv.html" onLoad="Start()" align=left fontsize=medium>
+    <display showwhencomplete>
+        <div id="flyin">
         </div>
         <div id="wtvpresents">
           <embed id="wtvpresentsvideo" allowScriptAccess="false" src='../arcade/Cwtv.spl' quality=high width=560 height=420 loop=false>
         </div>
-        <div id="flyin">
+        <div id="arcade">
+
+          <form name=myform>
+            <TABLE ALIGN="LEFT" VALIGN="TOP" WIDTH="100%" border=0 cellpadding=0 cellspacing=0>
+              <TR>
+	              <TD><IMG SRC="spacer.gif" WIDTH=10 HEIGHT=65 BORDER=0></TD>
+	              <TD></TD>
+	              <TD></TD>
+	              <TD></TD>
+	              <TD></TD>
+	              <TD ></TD>
+	              <TD></TD>
+	              <TD></TD>
+	              <TD></TD>
+              </TR>
+              <TR>
+	              <TD height=163></TD>
+	              <TD></TD>
+	              <TD colspan=5 ALIGN="CENTER" VALIGN="MIDDLE"><A HREF="javascript:GoPlay()"><IMG SRC="spacer.gif" name="game" WIDTH=137 HEIGHT=111 BORDER=0></A></TD>
+	              <TD></TD>
+	              <TD></TD>
+              </TR>
+              <TR>
+	              <TD height=22><IMG SRC="spacer.gif" WIDTH=1 HEIGHT=1 BORDER=0></TD>
+	              <TD><IMG SRC="spacer.gif" WIDTH=1 HEIGHT=1 BORDER=0></TD>
+	              <TD><IMG SRC="spacer.gif" WIDTH=1 HEIGHT=1 BORDER=0></TD>
+	              <TD><IMG SRC="spacer.gif" WIDTH=1 HEIGHT=1 BORDER=0></TD>
+	              <TD></TD>
+	              <TD></TD>
+	              <TD></TD>
+	              <TD></TD>
+	              <TD></TD>
+              </TR>
+              <TR>
+	              <TD height=50 width=98><IMG SRC="spacer.gif" WIDTH=98 HEIGHT=55 BORDER=0></TD>
+	              <TD width=71><A HREF='javascript:GoBackward()'><IMG SRC="spacer.gif" WIDTH=71 HEIGHT=55 BORDER=0></A></TD>
+	              <TD width=38 ><IMG SRC="spacer.gif" WIDTH=38 HEIGHT=50 BORDER=0></TD>
+	              <TD width=43  ALIGN="CENTER" VALIGN="MIDDLE"><FONT COLOR=cccc00 SIZE="4"><input noselect bgcolor=000000 type=text usestyle border=0 value=1 size=2 name=current style="all:unset;"></FONT></TD>
+	              <TD width=76 ><IMG SRC="spacer.gif" WIDTH=76 HEIGHT=20 BORDER=0></TD>
+	              <TD width=41  ALIGN="CENTER" VALIGN="MIDDLE"><FONT ColoR=cccc00 SIZE="4"><input noselect bgcolor=000000 type=text usestyle border=0 value=1 size=2 name=total style="all:unset;"></FONT></TD>
+	              <TD width=28 ><IMG SRC="spacer.gif" WIDTH=28 HEIGHT=50 BORDER=0></TD>
+	              <TD width=72 ><A HREF='javascript:GoForward()'><IMG SRC="spacer.gif" WIDTH=72 HEIGHT=55 BORDER=0></A></TD>
+	              <TD width=78></TD>
+
+              </TR>
+              <TR>
+	              <TD height=40><IMG SRC="spacer.gif" WIDTH=1 HEIGHT=1 BORDER=0></TD>
+                <TD></TD>
+	              <TD colspan=5 align=center><A HREF="javascript:GoPlay()"><IMG SRC="spacer.gif" name="game" WIDTH=180 HEIGHT=111 BORDER=0><IMG SRC="spacer.gif" WIDTH=1 HEIGHT=1 BORDER=0></A></TD>
+	              <TD></TD>
+	              <TD></TD>
+              </TR>
+              <TR>
+	              <TD></TD>
+	              <TD></TD>
+	              <TD></TD>
+	              <TD></TD>
+	              <TD></TD>
+	              <TD></TD>
+	              <TD></TD>
+	              <TD><IMG SRC="spacer.gif" WIDTH=1 HEIGHT=20 BORDER=0></TD>
+	              <TD><IMG SRC="spacer.gif" WIDTH=1 HEIGHT=1 BORDER=0></TD>
+
+              </TR> 
+            </TABLE>
+          </form>
         </div>
         <div>
           <audio id="audiobutton"><source src="../audio/cellobonk.m4a" type="audio/mpeg"/></audio>
@@ -243,20 +234,20 @@
           <audio id="flyinaudiotriviatask"><source src="../audio/none.m4a" type="audio/mpeg"  /></audio>
           <audio id="flyinaudiominesweeper"><source src="../audio/chase2.mp3" type="audio/mpeg"  /></audio>
           <audio id="flyinaudiocrossword"><source src="../audio/none.m4a" type="audio/mpeg"  /></audio>
-              
+          
         </div> 
 
-<SCRIPT Language="JavaScript">
-		document.images["game"].src = games[currentGame] + ".gif"
-		document.myform.total.value = games.length
-		document.myform.current.value = 1
+        <SCRIPT Language="JavaScript">
+		      document.images["game"].src = games[currentGame] + ".gif"
+		      document.myform.total.value = games.length
+		      document.myform.current.value = 1
 
-	</SCRIPT>
+	      </SCRIPT>
 
-  <footerborder></footerborder>
-  <footer>
-    <div id="footerstatus" class=footerstatus>WebTV Arcade</div><div class=audiostatus><div class="audiogreen"></div></div>
-  </footer>
-
-</BODY>
+        <footerborder></footerborder>
+        <footer>
+          <div id="footerstatus" class=footerstatus>WebTV Arcade</div><div class=audiostatus><div class="audiogreen"></div></div>
+        </footer>
+      </display>
+    </BODY>
 </HTML>

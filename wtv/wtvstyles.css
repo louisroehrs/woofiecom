@@ -1,3 +1,11 @@
+html {
+    background-color:black;
+    display:flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center;    /* Center horizontally */
+    justify-content: center; /* Center vertically */                      
+
+}
 
 body {
     overflow: hidden;
@@ -5,6 +13,11 @@ body {
     font-size: 20px;
     padding:0px;
     margin: 0px;
+    width: 560;
+    background-color: black;
+    background-repeat: no-repeat;
+    display:none;
+    height:100vh;
 }
 
 input {
@@ -14,7 +27,6 @@ input {
     font-size:20px;
     text-align:center;
 }
-
 
 textarea {
     padding-top:45px;
@@ -39,7 +51,7 @@ a {
 footerborder {
     position: fixed;
     top: 384px;
-    left:0px;
+    left:calc(50% - 280px);
     width:560px;
     background:linear-gradient(to right, #9e9e9e, #313131);
     height: 2px;
@@ -49,7 +61,7 @@ footerborder {
 footer {
     position: fixed;
     top: 386px;
-    left:0px;
+    left:calc(50% - 280px);
     width:540px;
     background:  linear-gradient(to right, #8a8a8a, #393939);
     height: 24px;
@@ -82,4 +94,13 @@ footer {
     height:0px;
     width:90%;
     border:1px solid green;
+}
+
+#flyin, #wtvpresents {
+    background-color:black;
+    display:none;
+}
+ruffle-player {
+    width:560px;
+    height:420px;
 }
