@@ -83,6 +83,10 @@ def step_dumb_quotes(content):
 def step_absheight(content):
     return re.sub(r'absheight', 'height', content, flags=re.IGNORECASE)
 
+def step_home_logo_link(content):
+    if "arcade/aracade.html" in content:
+        return content
+    return content.replace('<IMG width=104 height=87 src=/ROMCache/WebTVLogoJewel.gif>','<a href="../../../arcade/arcade.html"><IMG width=104 height=87 src=/ROMCache/WebTVLogoJewel.gif></a>',content)
 
 def step_abswidth(content):
     return re.sub(r'abswidth', 'width', content, flags=re.IGNORECASE)
@@ -294,14 +298,11 @@ TRANSFORMSALL = [
     ('isolate_check_question',step_isolate_check_question),
     ('trivia_js', step_trivia_js),
     ('dumb_quotes', step_dumb_quotes),
+    ('home_logo_link', step_home_logo_link),
 ]
 
 TRANSFORMS = [
-    ('scaler',step_scaler),
-    ('sound_files', step_sound_files),
-    ('isolate_check_question',step_isolate_check_question),
-    ('trivia_js', step_trivia_js),
-    ('dumb_quotes', step_dumb_quotes),
+    ('home_logo_link', step_home_logo_link),
 ]
 
 def process_file(path):
