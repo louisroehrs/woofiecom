@@ -222,7 +222,7 @@ function CheckAndRedirect (sSubmittedAnswer, sCorrectAnswer, sCategory,
     var sUserScore = "" + AddToAccum(sCategory+"POINTS", sPointsPossible);
     SetCookieMacro("WRONGANSWER", "B");
     SetScoreImages(sUserScore);
-    RedirectToNextQuestion(sCategory, sCategoryQuestionOn);
+    window.setTimeout(()=>RedirectToNextQuestion(sCategory, sCategoryQuestionOn),3000);
   } else {
     PlayWrong();
     var sWrongPts = eval(eval(-1)*eval(sPointsPossible));
@@ -238,5 +238,6 @@ function CheckAndRedirect (sSubmittedAnswer, sCorrectAnswer, sCategory,
 }
 
 thisQuestion = parseInt( window.location.pathname.substr(window.location.pathname.lastIndexOf("general")).replace('general','').replace('.html',''))
+
 CheckOnRightQuestion('general', thisQuestion);
 
