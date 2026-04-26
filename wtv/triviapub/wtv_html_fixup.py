@@ -302,7 +302,7 @@ TRANSFORMSALL = [
 ]
 
 TRANSFORMS = [
-    ('home_logo_link', step_home_logo_link),
+    ('scaler',step_scaler),
 ]
 
 def process_file(path):
