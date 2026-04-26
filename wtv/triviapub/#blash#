@@ -1,0 +1,12 @@
+cd 19970922webtv/
+python3 ../../wtv_html_fixup.py 
+cd ../19971006cars
+python3 ../../wtv_html_fixup.py 
+cd ../19971110music
+python3 ../../wtv_html_fixup.py 
+cd ../19970929college
+python3 ../../wtv_html_fixup.py 
+cd ../19971013baseball
+python3 ../../wtv_html_fixup.py 
+cd ../19971222holiday
+python3 ../../wtv_html_fixup.py 

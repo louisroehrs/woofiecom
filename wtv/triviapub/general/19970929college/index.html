@@ -2,80 +2,82 @@
 
   <head>
     <link rel="stylesheet" href="../../../wtvstyles.css">
-    <title>Trivial Task!</title>
+    <script src="../../../scaler.js"></script>
+      <META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">
+      <title>Trivial Task!</title>
 
-    <bgsound src="../../sounds/triviarules.mid" loop=true>
-  </head>
-  <body
+      <bgsound src="../../sounds/triviarules.mid" loop=true>
+      </head>
+      <body
 
-    background=../../images/background.jpg
+      background=../../images/background.jpg
 
-    valign=top hspace=0 bgcolor=#000000 text=#FFFFFF>
-    <script language="JavaScript">
+      valign=top hspace=0 bgcolor=#000000 text=#FFFFFF>
+      <script language="JavaScript">
 
 
       function SetCookie (name, value)  {
 
-        var argv = SetCookie.arguments;
-        var argc = SetCookie.arguments.length;
-        var expires = (argc > 2) ? argv[2] : null;
-        var path = (argc > 3) ? argv[3] : null;
-        var domain = (argc > 4) ? argv[4] : null;
-        var secure = (argc > 5) ? argv[5] : false;
-        document.cookie = name + "=" + escape (value) +
-          ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
-          ((path == null) ? "" : ("; path=" + path)) +
-          ((domain == null) ? "" : ("; domain=" + domain)) +
-          ((secure == true) ? "; secure" : "");
+      var argv = SetCookie.arguments;
+      var argc = SetCookie.arguments.length;
+      var expires = (argc > 2) ? argv[2] : null;
+      var path = (argc > 3) ? argv[3] : null;
+      var domain = (argc > 4) ? argv[4] : null;
+      var secure = (argc > 5) ? argv[5] : false;
+      document.cookie = name + "=" + escape (value) +
+      ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
+      ((path == null) ? "" : ("; path=" + path)) +
+      ((domain == null) ? "" : ("; domain=" + domain)) +
+      ((secure == true) ? "; secure" : "");
       }
 
 
       function GetCookieVal (offset) {
-        var endstr = document.cookie.indexOf (";", offset);
-        if (endstr == -1)
-          endstr = document.cookie.length;
-        return unescape(document.cookie.substring(offset, endstr));
+      var endstr = document.cookie.indexOf (";", offset);
+      if (endstr == -1)
+      endstr = document.cookie.length;
+      return unescape(document.cookie.substring(offset, endstr));
       }
 
       function GetCookie (name) {
-        var arg = name + "=";
-        var alen = arg.length;
-        var clen = document.cookie.length;
-        var i = 0;
+      var arg = name + "=";
+      var alen = arg.length;
+      var clen = document.cookie.length;
+      var i = 0;
 
-        while (i < clen) {
-          var j = i + alen;
-          if (document.cookie.substring(i, j) == arg)
-            return GetCookieVal (j);
+      while (i < clen) {
+      var j = i + alen;
+      if (document.cookie.substring(i, j) == arg)
+      return GetCookieVal (j);
 
-          i = document.cookie.indexOf(" ", i) + 1;
+      i = document.cookie.indexOf(" ", i) + 1;
 
-          if (i == 0)
-            break;
-        }
+      if (i == 0)
+      break;
+      }
 
-        return null;
+      return null;
       }
 
       function AddToAccum (sCookieName, sPoints) {
-        var expdate = new Date ();
-        expdate.setTime (expdate.getTime() + (24 * 60 * 60 * 1000));
+      var expdate = new Date ();
+      expdate.setTime (expdate.getTime() + (24 * 60 * 60 * 1000));
 
-        var sAccum = GetCookie(sCookieName);
+      var sAccum = GetCookie(sCookieName);
 
-        if (sAccum == null) {
-          sAccum = eval(sPoints);
-        } else {
-          sAccum = eval(sAccum) + eval(sPoints);
-        }
+      if (sAccum == null) {
+      sAccum = eval(sPoints);
+      } else {
+      sAccum = eval(sAccum) + eval(sPoints);
+      }
 
-        SetCookie (sCookieName, sAccum, expdate, "/");
+      SetCookie (sCookieName, sAccum, expdate, "/");
       }
 
       function SetCookieMacro (sCookieName, sValue) {
-        var expdate = new Date ();
-        expdate.setTime (expdate.getTime() + (7 * 24 * 60 * 60 * 1000));
-        SetCookie (sCookieName, sValue, expdate, "/");
+      var expdate = new Date ();
+      expdate.setTime (expdate.getTime() + (7 * 24 * 60 * 60 * 1000));
+      SetCookie (sCookieName, sValue, expdate, "/");
       }
 
       SetCookieMacro("generalPOINTS", 0);
@@ -99,12 +101,12 @@
       <tr>
 
         <td valign=top><center>
-            <img src=/wtv/ROMCache/spacer.gif width=100 height=92><BR>
-            <a selected href="general1.html"><IMG SRC="../../images/0202_tt_play.gif" WIDTH=93 HEIGHT=36 BORDER=0></a>
-          </center>
-        </td>
+          <img src=/wtv/ROMCache/spacer.gif width=100 height=92><BR>
+          <a selected href="general1.html"><IMG SRC="../../images/0202_tt_play.gif" WIDTH=93 HEIGHT=36 BORDER=0></a>
+        </center>
+      </td>
 
-        <td colspan=2>
+      <td colspan=2>
         <P>
 
         <font size=+0>
@@ -113,27 +115,30 @@
           <tr><td width=30 align=right valign=top><li></td><td>Win points for correct responses.</td></tr>
           <tr><td width=30 align=right valign=top><li></td><td>Lose points for incorrect responses.</td></tr>
           <tr><td width=30 align=right valign=top><li></td><td>You can try again or move to the next question after
-              answering incorrectly.</td></tr>
-          <tr><td width=30 align=right valign=top><li></td><td>1000 points is a perfect score!</td></tr>
-        </table>
-        </font>
+            answering incorrectly.</td></tr>
+            <tr><td width=30 align=right valign=top><li></td><td>1000 points is a perfect score!</td></tr>
+          </table>
+          </font>
 
-        <link href="general1.html" rel=next>
-        <br>
-        <br>
-        <br>
+          <link href="general1.html" rel=next>
+          <br>
+          <br>
+          <br>
 
-      </td>
+        </td>
 
-    </tr>
+      </tr>
 
-  </table>
-  <footerborder></footerborder>
-  <footer>
-    <div class=footerstatus>WebTV Trivia Task</div><div class=audiostatus><div class="audiogreen"></div></div>
-  </footer>
+    </table>
+    <footerborder></footerborder>
+    <footer>
+      <div class=footerstatus>WebTV Trivia Task</div><div class=audiostatus><div class="audiogreen"></div></div>
+    </footer>
+    <audio id="newbell3.mid"><source src="../../../audio/newbell3.mp3" type="audio/mpeg"/></audio>
+    <audio id="buzz.mid"><source src="../../../audio/buzz.mp3" type="audio/mpeg"  /></audio>
+    <audio id="applause.mp2"><source src="../../../audio/applause.mp2" type="audio/mpeg"  /></audio>
 
-</body>
+  </body>
 
 </html>
 

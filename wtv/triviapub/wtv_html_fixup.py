@@ -46,9 +46,27 @@ def step_stylesheet(content):
     return re.sub(r'(<html>)', r'\1\n<head>    ' + STYLESHEET_LINK + r'\n</head>', content, flags=re.IGNORECASE)
 
 def step_scaler(content):
-    return re.sub(r'<link rel="stylesheet" href="../../wtvstyles.css">',r'    <link rel="stylesheet" href="../../wtvstyles.css">\n    <script src="../../scaler.js"></script>\n    <META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">',content, flasgs=re.IGNORECASE)
+    if "scaler.js" in content:
+        return content
+    return re.sub(r'<link rel="stylesheet" href="../../../wtvstyles.css">',r'    <link rel="stylesheet" href="../../../wtvstyles.css">\n    <script src="../../../scaler.js"></script>\n    <META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">',content, flags=re.IGNORECASE)
 
-	
+def step_isolate_check_question(content):
+    if "CheckOnRightQuestion" in content:
+        return content
+    return re.sub(r'CheckQuestionOn', '</script>\nCheckOnRightQuestion',content)
+
+def step_trivia_js(content):
+    if "trivia.js" in content:
+        return content
+    return re.sub(r'<script language="JavaScript">[\s\S]*?(<\/SCRIPT>)','<script src="../../script/trivia.js"></script>',content)
+
+
+def step_sound_files(content) :
+    if "<audio" in content:
+        return content
+    return re.sub(r'</footer>',r'</footer>\n<audio id="newbell3.mid"><source src="../../../audio/newbell3.mp3" type="audio/mpeg"/></audio>\n<audio id="buzz.mid"><source src="../../../audio/buzz.mp3" type="audio/mpeg"  /></audio>\n<audio id="applause.mp2"><source src="../../../audio/applause.mp2" type="audio/mpeg"  /></audio>',content,flags=re.IGNORECASE)
+
+    
 def step_footer(content):
     if re.search(r'<footer>', content, re.IGNORECASE):
         return content
@@ -59,6 +77,8 @@ def step_footer(content):
         flags=re.IGNORECASE,
     )
 
+def step_dumb_quotes(content):
+    return content.replace('�',"'")
 
 def step_absheight(content):
     return re.sub(r'absheight', 'height', content, flags=re.IGNORECASE)
@@ -257,7 +277,6 @@ def reindent(content):
 
 TRANSFORMSALL = [
     ('stylesheet',    step_stylesheet),
-    ('scaler',        step_scaler),
     ('footer',        step_footer),
     ('absheight',     step_absheight),
     ('abswidth',      step_abswidth),
@@ -266,14 +285,23 @@ TRANSFORMSALL = [
     ('file://',       step_file_protocol),
     ('score row',     step_score_row),
     ('main_table_measurements', step_main_table_measurements),
-    ('step_spacerace_trivial_task',step_spacerace_trivial_task),
-    ('step_button_click',step_button_click),
-    ('step_rom_cache',step_rom_cache),
-    ('step_textarea_disable',step_textarea_disable),
+    ('spacerace_trivial_task',step_spacerace_trivial_task),
+    ('button_click',step_button_click),
+    ('rom_cache',step_rom_cache),
+    ('textarea_disable',step_textarea_disable),
+    ('sound_files', step_sound_files),
+    ('scaler',step_scaler),
+    ('isolate_check_question',step_isolate_check_question),
+    ('trivia_js', step_trivia_js),
+    ('dumb_quotes', step_dumb_quotes),
 ]
 
 TRANSFORMS = [
-    ('step_textarea_disable',step_textarea_disable)
+    ('scaler',step_scaler),
+    ('sound_files', step_sound_files),
+    ('isolate_check_question',step_isolate_check_question),
+    ('trivia_js', step_trivia_js),
+    ('dumb_quotes', step_dumb_quotes),
 ]
 
 def process_file(path):
