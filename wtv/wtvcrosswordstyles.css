@@ -1,3 +1,10 @@
+html {
+    background-color:black;
+    display:flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center;    /* Center horizontally */
+    justify-content: center; /* Center vertically */                      
+}
 
 body {
     overflow: hidden;
@@ -55,10 +62,20 @@ footerborder {
 }
 
 
+footerborder {
+    position: fixed;
+    top: 384px;
+    left:calc(50% - 280px);
+    width:560px;
+    background:linear-gradient(to right, #9e9e9e, #313131);
+    height: 2px;
+}
+
+
 footer {
     position: fixed;
     top: 386px;
-    left:0px;
+    left:calc(50% - 280px);
     width:540px;
     background:  linear-gradient(to right, #8a8a8a, #393939);
     height: 24px;

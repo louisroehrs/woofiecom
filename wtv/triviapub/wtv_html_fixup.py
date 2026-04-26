@@ -50,6 +50,16 @@ def step_scaler(content):
         return content
     return re.sub(r'<link rel="stylesheet" href="../../../wtvstyles.css">',r'    <link rel="stylesheet" href="../../../wtvstyles.css">\n    <script src="../../../scaler.js"></script>\n    <META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">',content, flags=re.IGNORECASE)
 
+def step_correct_scaler_dir(content):
+    if "../../../scaler.js" in content:
+        return re.sub(r'../../../scaler.js', '../../scaler.js',content)
+    return content
+
+def step_scaler_cw(content):
+    if "scaler.js" in content:
+        return content
+    return re.sub(r'<link rel="stylesheet" href="../../wtvcrosswordstyles.css">',r'    <link rel="stylesheet" href="../../wtvcrosswordstyles.css">\n    <script src="../../../scaler.js"></script>\n    <META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">',content, flags=re.IGNORECASE)
+
 def step_isolate_check_question(content):
     if "CheckOnRightQuestion" in content:
         return content
@@ -295,14 +305,16 @@ TRANSFORMSALL = [
     ('textarea_disable',step_textarea_disable),
     ('sound_files', step_sound_files),
     ('scaler',step_scaler),
+    ('scaler_crossword',step_scaler_cw),
     ('isolate_check_question',step_isolate_check_question),
     ('trivia_js', step_trivia_js),
     ('dumb_quotes', step_dumb_quotes),
     ('home_logo_link', step_home_logo_link),
+    ('correct_scaler_dir',step_correct_scaler_dir),
 ]
 
 TRANSFORMS = [
-    ('scaler',step_scaler),
+    ('correct_scaler_dir',step_correct_scaler_dir),
 ]
 
 def process_file(path):

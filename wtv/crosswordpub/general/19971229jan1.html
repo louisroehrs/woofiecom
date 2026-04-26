@@ -3,450 +3,452 @@
 <html>
   <head>
     <link rel="stylesheet" href="../../wtvcrosswordstyles.css">
-  </head>
-  <title>
-  WebTV Crossword
-  </title>
-  <bgsound src="../sounds/jollygooba1.mid" LOOP=TRUE>
-  <body fontsize=medium  background="../images/BACK.JPG" bgcolor=191919 text=668866
-    hspace=0>
+    <script src="../../scaler.js"></script>
+      <META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">
+      </head>
+      <title>
+      WebTV Crossword
+      </title>
+      <bgsound src="../sounds/jollygooba1.mid" LOOP=TRUE>
+      <body fontsize=medium  background="../images/BACK.JPG" bgcolor=191919 text=668866
+      hspace=0>
 
-    <display noscroll>
-    <form name="crossword">
+      <display noscroll>
+      <form name="crossword">
       <script language="JavaScript">
 
-        sPuzzleName = "19971229jan1";
-
-        aasAcross = new Array(
-        new Array("Michael Crichton's latest","__ Drop Dead, a Sebastian Barth mystery","","","",""),new Array("","","","","",""),new Array("Reason to read","","","","",""),new Array("The __ for Red October","Writing tablet","","","",""),new Array("Bestseller turned horror movie","","","","",""),new Array("__ Kill a Mockingbird","The Man in the __ Mask, Alexandre Dumas classic","","","",""),new Array("Stephen __, author ","","","","",""),new Array("__ Grisham, author","","","","",""),new Array("Freud wrote about it","","","","",""),new Array("Writing tools","","","","",""),new Array("Location of Shakespearean cliffs","","","","",""),new Array("The Autobiography of __ Frank","__ Morrison, author","","","",""),new Array("Schoolbooks do this","","","","","")
-        );
-
-        asPuzzle = "AIRFRAME++DEWU++I++Y+S+E+AT++C+ESCAPE+RHUNT++T+L+PADO++IT+E+O+A+RR+TO+IRON+K+O+KING+Y++C++B++D++++JOHN+EG+EGO++A+A+++O+++PENCILS+SDOVER++K+E++KO+I+ANNE+TONITEACH++T++J+M";
-
-        aasDown = new Array(
-        new Array("Writer","Waiting for __","","","",""),new Array("","","","","",""),new Array("Crimson __","The House on __ Gombito, travel compilation","","","",""),new Array("Book genre","","","","",""),new Array("TV host with book club","","","","",""),new Array("","","","","",""),new Array("Book genre","","","","",""),new Array("Outer book cover","","","","",""),new Array("Hosting 1997 book awards","","","","",""),new Array("Home of Heidi","","","","",""),new Array("Seven Spiritual Laws of Success author, to friends","Controversial athlete and author","","","",""),new Array("","","","","",""),new Array("The Lion, the Witch and the __","Read quickly","","","","")
-        );
-
-        kWidth  = 13;
-        kHeight = 13;
-
-        kOtherFormElements = 0;
+      sPuzzleName = "19971229jan1";
+
+      aasAcross = new Array(
+      new Array("Michael Crichton's latest","__ Drop Dead, a Sebastian Barth mystery","","","",""),new Array("","","","","",""),new Array("Reason to read","","","","",""),new Array("The __ for Red October","Writing tablet","","","",""),new Array("Bestseller turned horror movie","","","","",""),new Array("__ Kill a Mockingbird","The Man in the __ Mask, Alexandre Dumas classic","","","",""),new Array("Stephen __, author ","","","","",""),new Array("__ Grisham, author","","","","",""),new Array("Freud wrote about it","","","","",""),new Array("Writing tools","","","","",""),new Array("Location of Shakespearean cliffs","","","","",""),new Array("The Autobiography of __ Frank","__ Morrison, author","","","",""),new Array("Schoolbooks do this","","","","","")
+      );
+
+      asPuzzle = "AIRFRAME++DEWU++I++Y+S+E+AT++C+ESCAPE+RHUNT++T+L+PADO++IT+E+O+A+RR+TO+IRON+K+O+KING+Y++C++B++D++++JOHN+EG+EGO++A+A+++O+++PENCILS+SDOVER++K+E++KO+I+ANNE+TONITEACH++T++J+M";
+
+      aasDown = new Array(
+      new Array("Writer","Waiting for __","","","",""),new Array("","","","","",""),new Array("Crimson __","The House on __ Gombito, travel compilation","","","",""),new Array("Book genre","","","","",""),new Array("TV host with book club","","","","",""),new Array("","","","","",""),new Array("Book genre","","","","",""),new Array("Outer book cover","","","","",""),new Array("Hosting 1997 book awards","","","","",""),new Array("Home of Heidi","","","","",""),new Array("Seven Spiritual Laws of Success author, to friends","Controversial athlete and author","","","",""),new Array("","","","","",""),new Array("The Lion, the Witch and the __","Read quickly","","","","")
+      );
+
+      kWidth  = 13;
+      kHeight = 13;
+
+      kOtherFormElements = 0;
 
-        function FindAcrossClue(x,y) {
-
-        var cWordOn = -1;
-        var cx;
-
-        // Check for no clue.
-        var xm1  = eval(eval(x)-1);
-        var xp1  = eval(eval(x)+1);
-
-        var pxm1;
-        if (xm1 >= 0) {
-        pxm1 = GetCell(xm1, y);
-        } else {
-        pxm1 = "+";
-        }
-
-        var pxp1;
-        if (xp1 < kWidth) {
-        pxp1 = GetCell(xp1, y);
-        } else {
-        pxp1 = "+";
-        }
-
-        var px = GetCell(x,y);
-        if (pxm1 == "+" && px != "+" && pxp1 == "+" ) {
-        // No clue, return " "
-        return(" ");
-        }
-
-        for (cx=0; cx <= x; cx++) {
-
-        var xm1  = eval(eval(cx)-1);
-        var xp1  = eval(eval(cx)+1);
-
-        var pxm1;
-        if (xm1 >= 0) {
-        pxm1 = GetCell(xm1, y);
-        } else {
-        pxm1 = "+";
-        }
+      function FindAcrossClue(x,y) {
+
+      var cWordOn = -1;
+      var cx;
+
+      // Check for no clue.
+      var xm1  = eval(eval(x)-1);
+      var xp1  = eval(eval(x)+1);
+
+      var pxm1;
+      if (xm1 >= 0) {
+      pxm1 = GetCell(xm1, y);
+      } else {
+      pxm1 = "+";
+      }
+
+      var pxp1;
+      if (xp1 < kWidth) {
+      pxp1 = GetCell(xp1, y);
+      } else {
+      pxp1 = "+";
+      }
+
+      var px = GetCell(x,y);
+      if (pxm1 == "+" && px != "+" && pxp1 == "+" ) {
+      // No clue, return " "
+      return(" ");
+      }
+
+      for (cx=0; cx <= x; cx++) {
+
+      var xm1  = eval(eval(cx)-1);
+      var xp1  = eval(eval(cx)+1);
+
+      var pxm1;
+      if (xm1 >= 0) {
+      pxm1 = GetCell(xm1, y);
+      } else {
+      pxm1 = "+";
+      }
 
-        var pxp1;
-        if (xp1 < kWidth) {
-        pxp1 = GetCell(xp1, y);
-        } else {
-        pxp1 = "+";
-        }
+      var pxp1;
+      if (xp1 < kWidth) {
+      pxp1 = GetCell(xp1, y);
+      } else {
+      pxp1 = "+";
+      }
 
-        var px = GetCell(cx,y);
+      var px = GetCell(cx,y);
 
-        if (pxm1 == "+" && px != "+" && pxp1 != "+") {
-        cWordOn++;
-        }
+      if (pxm1 == "+" && px != "+" && pxp1 != "+") {
+      cWordOn++;
+      }
 
-        }
+      }
 
-        if (aasAcross[y][cWordOn] != null) {
-        return(aasAcross[y][cWordOn]);
-        } else {
-        return(" ");
-        }
+      if (aasAcross[y][cWordOn] != null) {
+      return(aasAcross[y][cWordOn]);
+      } else {
+      return(" ");
+      }
 
-        }
+      }
 
-        function FindDownClue(x,y) {
+      function FindDownClue(x,y) {
 
-        var cWordOn = -1;
-        var cy;
+      var cWordOn = -1;
+      var cy;
 
-        // Check for no clue.
-        var ym1  = eval(eval(y)-1);
-        var yp1  = eval(eval(y)+1);
+      // Check for no clue.
+      var ym1  = eval(eval(y)-1);
+      var yp1  = eval(eval(y)+1);
 
-        var pym1;
-        if (ym1 >= 0) {
-        pym1 = GetCell(x, ym1);
-        } else {
-        pym1 = "+";
-        }
+      var pym1;
+      if (ym1 >= 0) {
+      pym1 = GetCell(x, ym1);
+      } else {
+      pym1 = "+";
+      }
 
-        var pyp1;
-        if (yp1 < kWidth) {
-        pyp1 = GetCell(x, yp1);
-        } else {
-        pyp1 = "+";
-        }
+      var pyp1;
+      if (yp1 < kWidth) {
+      pyp1 = GetCell(x, yp1);
+      } else {
+      pyp1 = "+";
+      }
 
-        var py = GetCell(x,y);
-        if (pym1 == "+" && py != "+" && pyp1 == "+" ) {
-        // No clue, return " "
-        return(" ");
-        }
+      var py = GetCell(x,y);
+      if (pym1 == "+" && py != "+" && pyp1 == "+" ) {
+      // No clue, return " "
+      return(" ");
+      }
 
-        for (cy=0; cy <= y; cy++) {
+      for (cy=0; cy <= y; cy++) {
 
-        var ym1  = eval(eval(cy)-1);
-        var yp1  = eval(eval(cy)+1);
+      var ym1  = eval(eval(cy)-1);
+      var yp1  = eval(eval(cy)+1);
 
-        var pym1;
-        if (ym1 >= 0) {
-        pym1 = GetCell(x, ym1);
-        } else {
-        pym1 = "+";
-        }
+      var pym1;
+      if (ym1 >= 0) {
+      pym1 = GetCell(x, ym1);
+      } else {
+      pym1 = "+";
+      }
 
-        var pyp1;
-        if (yp1 < kHeight) {
-        pyp1 = GetCell(x, yp1);
-        } else {
-        pyp1 = "+";
-        }
+      var pyp1;
+      if (yp1 < kHeight) {
+      pyp1 = GetCell(x, yp1);
+      } else {
+      pyp1 = "+";
+      }
 
-        var py = GetCell(x,cy);
-        if (pym1 == "+" && py != "+" && pyp1 != "+" ) {
-        cWordOn++;
-        }
+      var py = GetCell(x,cy);
+      if (pym1 == "+" && py != "+" && pyp1 != "+" ) {
+      cWordOn++;
+      }
 
-        }
+      }
 
-        if (aasDown[x][cWordOn] != null) {
-        return(aasDown[x][cWordOn]);
-        } else {
-        return(" ");
-        }
+      if (aasDown[x][cWordOn] != null) {
+      return(aasDown[x][cWordOn]);
+      } else {
+      return(" ");
+      }
 
-        }
+      }
 
-        function show_clue(x, y) {
+      function show_clue(x, y) {
 
-        document.crossword.across.value =  FindAcrossClue(x,y);
-        document.crossword.down.value = FindDownClue(x,y);
+      document.crossword.across.value =  FindAcrossClue(x,y);
+      document.crossword.down.value = FindDownClue(x,y);
 
-        }
+      }
 
-        function GetCell(x,y) {
+      function GetCell(x,y) {
 
-        return (asPuzzle.charAt(y*kWidth+x));
+      return (asPuzzle.charAt(y*kWidth+x));
 
-        }
+      }
 
-        function SolvePuzzle() {
+      function SolvePuzzle() {
 
-        var sy=0;
-        var sx=0;
+      var sy=0;
+      var sx=0;
 
-        for (sy=0; sy < kHeight; sy++) {
-        for (sx=0; sx < kWidth; sx++) {
-        document.crossword.elements[eval(sx+sy*kHeight+kOtherFormElements)].value = GetCell(sx,sy);
-        }
-        }
+      for (sy=0; sy < kHeight; sy++) {
+      for (sx=0; sx < kWidth; sx++) {
+      document.crossword.elements[eval(sx+sy*kHeight+kOtherFormElements)].value = GetCell(sx,sy);
+      }
+      }
 
-        }
+      }
 
-        function PlaySound(sound) {
+      function PlaySound(sound) {
 
-        if (sound == null) {
-        return;
-        } else {
-        sound.play(false);
-        }
+      if (sound == null) {
+      return;
+      } else {
+      sound.play(false);
+      }
 
-        }
+      }
 
-        function CorrectPuzzle() {
+      function CorrectPuzzle() {
 
-        var cy=0;
-        var cx=0;
-        var bCorrect="t";
+      var cy=0;
+      var cx=0;
+      var bCorrect="t";
 
-        for (cy=0; cy < kHeight; cy++) {
-        for (cx=0; cx < kWidth; cx++) {
-        if (document.crossword.elements[eval(cx+cy*kHeight+kOtherFormElements)].value != GetCell(cx,cy)) {
-        document.crossword.elements[eval(cx+cy*kHeight+kOtherFormElements)].value = "";
-        bCorrect="f";
-        }
-        }
-        }
+      for (cy=0; cy < kHeight; cy++) {
+      for (cx=0; cx < kWidth; cx++) {
+      if (document.crossword.elements[eval(cx+cy*kHeight+kOtherFormElements)].value != GetCell(cx,cy)) {
+      document.crossword.elements[eval(cx+cy*kHeight+kOtherFormElements)].value = "";
+      bCorrect="f";
+      }
+      }
+      }
 
 
-        if (bCorrect == "t") {
-        PlaySound(document.applause);
-        }
+      if (bCorrect == "t") {
+      PlaySound(document.applause);
+      }
 
-        }
+      }
 
-        function RenderCell(x, y) {
+      function RenderCell(x, y) {
 
-        if (GetCell(x,y) == '+') {
-        document.write("<td width=20 bgcolor=000000 align=left valign=top>");
-        document.write("  <img src=/wtv/ROMCache/spacer.gif width=20 height=20>");
-        document.write("  <input type=hidden name=sel"+eval(x+y*kWidth)+" value=\"+\">");
-        document.write("</td>");
-        } else {
-        document.write("<td width=20 height=20 bgcolor=666666 align=center valign=bottom>");
-        document.write("  <input type=text name=sel"+eval(x+y*kWidth)+" bgcolor=666666 maxlength=1 autocaps size=1 width=20 border=0 onChange=\"CaseSet(this)\" onFocus=\"show_clue("+x+","+y+")\">");
-        document.write("</td>");
-        }
+      if (GetCell(x,y) == '+') {
+      document.write("<td width=20 bgcolor=000000 align=left valign=top>");
+      document.write("  <img src=/wtv/ROMCache/spacer.gif width=20 height=20>");
+      document.write("  <input type=hidden name=sel"+eval(x+y*kWidth)+" value=\"+\">");
+      document.write("</td>");
+      } else {
+      document.write("<td width=20 height=20 bgcolor=666666 align=center valign=bottom>");
+      document.write("  <input type=text name=sel"+eval(x+y*kWidth)+" bgcolor=666666 maxlength=1 autocaps size=1 width=20 border=0 onChange=\"CaseSet(this)\" onFocus=\"show_clue("+x+","+y+")\">");
+      document.write("</td>");
+      }
 
-        }
+      }
 
-        function RenderRow(y) {
+      function RenderRow(y) {
 
-        document.write("<tr>");
+      document.write("<tr>");
 
-        var x=0;
+      var x=0;
 
-        for (x=0; x < kWidth; x++) {
-        RenderCell(x,y);
-        }
+      for (x=0; x < kWidth; x++) {
+      RenderCell(x,y);
+      }
 
-        document.write("</tr>");
+      document.write("</tr>");
 
-        }
+      }
 
-        function RenderPuzzle() {
+      function RenderPuzzle() {
 
-        document.write("<table border=0 cellspacing=3 cellpadding=0 bgcolor=222222>");
+      document.write("<table border=0 cellspacing=3 cellpadding=0 bgcolor=222222>");
 
-        var y=0;
+      var y=0;
 
-        for (y=0; y < kHeight; y++) {
-        RenderRow(y);
-        }
+      for (y=0; y < kHeight; y++) {
+      RenderRow(y);
+      }
 
-        document.write("</table>");
+      document.write("</table>");
 
-        }
+      }
 
-        function CaseSet(j) {
-        for (var i = 0; i < j.value.length;  i++) {
-        var c = j.value.charAt(i);
-        if (c >= 'a' && c <= 'z') {
-        j.value = j.value.toUpperCase();
-        }
-        }
-        }
+      function CaseSet(j) {
+      for (var i = 0; i < j.value.length;  i++) {
+      var c = j.value.charAt(i);
+      if (c >= 'a' && c <= 'z') {
+      j.value = j.value.toUpperCase();
+      }
+      }
+      }
 
-        function SetCookie (name, value) {
+      function SetCookie (name, value) {
 
-        var argv = SetCookie.arguments;
-        var argc = SetCookie.arguments.length;
-        var expires = (argc > 2) ? argv[2] : null;
-        var path = (argc > 3) ? argv[3] : null;
-        var domain = (argc > 4) ? argv[4] : null;
-        var secure = (argc > 5) ? argv[5] : false;
-        document.cookie = name + "=" + escape (value) +
-        ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
-        ((path == null) ? "" : ("; path=" + path)) +
-        ((domain == null) ? "" : ("; domain=" + domain)) +
-        ((secure == true) ? "; secure" : "");
+      var argv = SetCookie.arguments;
+      var argc = SetCookie.arguments.length;
+      var expires = (argc > 2) ? argv[2] : null;
+      var path = (argc > 3) ? argv[3] : null;
+      var domain = (argc > 4) ? argv[4] : null;
+      var secure = (argc > 5) ? argv[5] : false;
+      document.cookie = name + "=" + escape (value) +
+      ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
+      ((path == null) ? "" : ("; path=" + path)) +
+      ((domain == null) ? "" : ("; domain=" + domain)) +
+      ((secure == true) ? "; secure" : "");
 
-        }
+      }
 
-        function GetCookieVal (offset) {
+      function GetCookieVal (offset) {
 
-        var endstr = document.cookie.indexOf (";", offset);
-        if (endstr == -1)
-        endstr = document.cookie.length;
-        return unescape(document.cookie.substring(offset, endstr));
+      var endstr = document.cookie.indexOf (";", offset);
+      if (endstr == -1)
+      endstr = document.cookie.length;
+      return unescape(document.cookie.substring(offset, endstr));
 
-        }
+      }
 
-        function GetCookie (name) {
+      function GetCookie (name) {
 
-        var arg = name + "=";
-        var alen = arg.length;
-        var clen = document.cookie.length;
-        var i = 0;
+      var arg = name + "=";
+      var alen = arg.length;
+      var clen = document.cookie.length;
+      var i = 0;
 
-        while (i < clen) {
-        var j = i + alen;
-        if (document.cookie.substring(i, j) == arg)
-        return GetCookieVal (j);
+      while (i < clen) {
+      var j = i + alen;
+      if (document.cookie.substring(i, j) == arg)
+      return GetCookieVal (j);
 
-        i = document.cookie.indexOf(" ", i) + 1;
-        if (i == 0)
-        break;
-        }
+      i = document.cookie.indexOf(" ", i) + 1;
+      if (i == 0)
+      break;
+      }
 
-        return null;
+      return null;
 
-        }
+      }
 
-        function SetCookieMacro (sCookieName, sValue) {
+      function SetCookieMacro (sCookieName, sValue) {
 
-        var expdate = new Date ();
-        // Save Cookie for 56 days (8 weeks).
-        expdate.setTime (expdate.getTime() + (56 * 24 * 60 * 60 * 1000));
+      var expdate = new Date ();
+      // Save Cookie for 56 days (8 weeks).
+      expdate.setTime (expdate.getTime() + (56 * 24 * 60 * 60 * 1000));
 
-        SetCookie (sCookieName, sValue, expdate, "/");
+      SetCookie (sCookieName, sValue, expdate, "/");
 
-        }
+      }
 
-        function SaveGame() {
+      function SaveGame() {
 
-        sGameCookie = "";
+      sGameCookie = "";
 
-        for (gy=0; gy < kHeight; gy++) {
-        for (gx=0; gx < kWidth; gx++) {
-        if (document.crossword.elements[eval(gx+gy*kHeight+kOtherFormElements)].value != "") {
-        sGameCookie += document.crossword.elements[eval(gx+gy*kHeight+kOtherFormElements)].value;
-        } else {
-        sGameCookie += "+";
-        }
-        }
-        }
+      for (gy=0; gy < kHeight; gy++) {
+      for (gx=0; gx < kWidth; gx++) {
+      if (document.crossword.elements[eval(gx+gy*kHeight+kOtherFormElements)].value != "") {
+      sGameCookie += document.crossword.elements[eval(gx+gy*kHeight+kOtherFormElements)].value;
+      } else {
+      sGameCookie += "+";
+      }
+      }
+      }
 
-        SetCookieMacro("sgcw"+sPuzzleName, sGameCookie);
-        //alert("sGameCookie: "+sGameCookie);
-        }
+      SetCookieMacro("sgcw"+sPuzzleName, sGameCookie);
+      //alert("sGameCookie: "+sGameCookie);
+      }
 
-        function LoadGame() {
+      function LoadGame() {
 
-        sGameCookie = GetCookie("sgcw"+sPuzzleName);
+      sGameCookie = GetCookie("sgcw"+sPuzzleName);
 
-        if (sGameCookie == null)
-        return;
+      if (sGameCookie == null)
+      return;
 
-        for (ly=0; ly < kHeight; ly++) {
-        for (lx=0; lx < kWidth; lx++) {
-        if (sGameCookie.charAt(lx+ly*kHeight) != "+") {
-        document.crossword.elements[eval(lx+ly*kHeight+kOtherFormElements)].value = sGameCookie.charAt(lx+ly*kHeight);
-        }
-        }
-        }
+      for (ly=0; ly < kHeight; ly++) {
+      for (lx=0; lx < kWidth; lx++) {
+      if (sGameCookie.charAt(lx+ly*kHeight) != "+") {
+      document.crossword.elements[eval(lx+ly*kHeight+kOtherFormElements)].value = sGameCookie.charAt(lx+ly*kHeight);
+      }
+      }
+      }
 
-        }
+      }
 
-        function Quit() {
+      function Quit() {
 
 
-        }
+      }
 
-      </script>
+    </script>
 
-      <EMBED SRC="../sounds/applause.MP2" HIDDEN=TRUE CONTROLS=console
-      VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="applause"
-      MASTERSOUND>
+    <EMBED SRC="../sounds/applause.MP2" HIDDEN=TRUE CONTROLS=console
+    VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="applause"
+    MASTERSOUND>
 
-      <table cellpadding=0 cellspacing=0 border=0 width=100% valign=top>
-        <tr>
+    <table cellpadding=0 cellspacing=0 border=0 width=100% valign=top>
+      <tr>
 
-          <td align=center width=181 valign=top>
-            <a href="../../arcade/arcade.html"><img src="/ROMCache/WebTVLogoJewel.gif" width=84 height=65 align=left></a>      
-            <img src="../images/LOGO.GIF" width=97 height=74>
-          </td>
+        <td align=center width=181 valign=top>
+          <a href="../../arcade/arcade.html"><img src="/ROMCache/WebTVLogoJewel.gif" width=84 height=65 align=left></a>
+          <img src="../images/LOGO.GIF" width=97 height=74>
+        </td>
 
-          <td rowspan=5 valign=center align=center width=363>
-            <center>
-              <SCRIPT LANGAUGE="Javascript">
-                RenderPuzzle();
-              </SCRIPT>
-            </center>
-          </td>
+        <td rowspan=5 valign=center align=center width=363>
+          <center>
+            <SCRIPT LANGAUGE="Javascript">
+              RenderPuzzle();
+            </SCRIPT>
+          </center>
+        </td>
 
-        </tr>
+      </tr>
 
-        <tr> <!-- Spacer Field -->
-          <td>
-            <img src="/wtv/ROMCache/spacer.gif" width=20 height=15>
-          </td>
-        </tr>
+      <tr> <!-- Spacer Field -->
+        <td>
+          <img src="/wtv/ROMCache/spacer.gif" width=20 height=15>
+        </td>
+      </tr>
 
-        <tr> <!-- Across Field -->
-          <td valign=top align=center>
-            <table cellspacing=0 cellpadding=0 border=0 width=100% border=0>
-              <tr> <!-- Spacer Between Logo And Across -->
-                <td>
-                  <center><font size=+1 effect=emboss color=080808><b>Across</b></font></center>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <center>
-                    <font color=080808>
-                    <textarea disabled noselect bgcolor=#91751A align=center name="across" rows=3
-                    value="" usestyle border=0 cols=17>
-                    </textarea>
-                    </font>
-                  </center>
-                </td>
-              </tr>
-            </table>
-            <img src="/wtv/ROMCache/spacer.gif" width=20 height=5>
-          </td>
-        </tr>
+      <tr> <!-- Across Field -->
+        <td valign=top align=center>
+          <table cellspacing=0 cellpadding=0 border=0 width=100% border=0>
+            <tr> <!-- Spacer Between Logo And Across -->
+              <td>
+                <center><font size=+1 effect=emboss color=080808><b>Across</b></font></center>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <center>
+                  <font color=080808>
+                  <textarea disabled noselect bgcolor=#91751A align=center name="across" rows=3
+                  value="" usestyle border=0 cols=17>
+                  </textarea>
+                  </font>
+                </center>
+              </td>
+            </tr>
+          </table>
+          <img src="/wtv/ROMCache/spacer.gif" width=20 height=5>
+        </td>
+      </tr>
 
-        <tr> <!--Down Field -->
-          <td valign=top align=center>
+      <tr> <!--Down Field -->
+        <td valign=top align=center>
 
-            <table cellspacing=1 cellpadding=0 width=100% border=0>
-              <tr>
-                <td>
-                  <center><font size=+1 effect=emboss color=080808><b>Down</b></font></center>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <center>
-                    <font color=080808>
-                    <textarea disabled noselect bgcolor=#91751A type=text name="down"
-                    rows=3 value="" usestyle border=0 cols=17>
-                    </textarea>
-                    </font>
-                  </center>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
+          <table cellspacing=1 cellpadding=0 width=100% border=0>
+            <tr>
+              <td>
+                <center><font size=+1 effect=emboss color=080808><b>Down</b></font></center>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <center>
+                  <font color=080808>
+                  <textarea disabled noselect bgcolor=#91751A type=text name="down"
+                  rows=3 value="" usestyle border=0 cols=17>
+                  </textarea>
+                  </font>
+                </center>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
 
-        <tr> <!-- Control Buttons -->
+      <tr> <!-- Control Buttons -->
 
-          <td>
-            <table border=0 width=100%>
+        <td>
+          <table border=0 width=100%>
             <tr>
               <td valign=top>
                 &nbsp;<A insetselection HREF="javascript:CorrectPuzzle()"><IMG SRC="../images/CORRECT.GIF"></A>
