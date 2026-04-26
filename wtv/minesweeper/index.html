@@ -83,13 +83,24 @@
   </form>
   <footerborder></footerborder>
   <footer>
-    <div class=footerstatus>WebTV MineSweeper</div><div class=audiostatus><div class="audiogreen"></div>
-  </div>
-</footer>
+    <div class=footerstatus>WebTV MineSweeper</div>
+    <div class=audiostatus><div class="audiogreen"></div></div>
+  </footer>
 
 
+  
+  <audio id="var6.mid" loop><source src="../audio/var6.mp3" type="audio/mpeg"/></audio> 
+  <script>
 
+    function playAudio() {
+      console.log("hi");
+      audio = document.getElementById('var6.mid');
+      audio.currentTime = 0;
+      audio.play();
+    }
 
+  </script>
+      
 </body>
 </html>
 
