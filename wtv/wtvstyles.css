@@ -4,7 +4,6 @@ html {
     flex-direction: column; /* Stack elements vertically */
     align-items: center;    /* Center horizontally */
     justify-content: center; /* Center vertically */                      
-
 }
 
 body {
@@ -16,8 +15,12 @@ body {
     width: 560;
     background-color: black;
     background-repeat: no-repeat;
-    display:none;
     height:100vh;
+    
+}
+
+.arcadebody {
+    display: none;
 }
 
 input {
