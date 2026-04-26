@@ -16,11 +16,11 @@ body {
     background-color: black;
     background-repeat: no-repeat;
     height:100vh;
-    
+    display: none;    
 }
 
 .arcadebody {
-    display: none;
+
 }
 
 input {

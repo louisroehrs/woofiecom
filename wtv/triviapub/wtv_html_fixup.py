@@ -45,7 +45,10 @@ def step_stylesheet(content):
         return content
     return re.sub(r'(<html>)', r'\1\n<head>    ' + STYLESHEET_LINK + r'\n</head>', content, flags=re.IGNORECASE)
 
+def step_scaler(content):
+    return re.sub(r'<link rel="stylesheet" href="../../wtvstyles.css">',r'    <link rel="stylesheet" href="../../wtvstyles.css">\n    <script src="../../scaler.js"></script>\n    <META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">',content, flasgs=re.IGNORECASE)
 
+	
 def step_footer(content):
     if re.search(r'<footer>', content, re.IGNORECASE):
         return content
@@ -254,6 +257,7 @@ def reindent(content):
 
 TRANSFORMSALL = [
     ('stylesheet',    step_stylesheet),
+    ('scaler',        step_scaler),
     ('footer',        step_footer),
     ('absheight',     step_absheight),
     ('abswidth',      step_abswidth),
