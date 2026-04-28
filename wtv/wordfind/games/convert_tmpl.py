@@ -19,19 +19,26 @@ import sys
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 SRC_DIR    = SCRIPT_DIR
-OUT_DIR    = os.path.join(SCRIPT_DIR, , '..', 'wordfindpub', 'moregames')
+OUT_DIR    = os.path.join(SCRIPT_DIR, '..', '..', 'wordfindpub', 'general','games')
 
 HEAD_BLOCK = """\
-  <head>
-    <link rel="stylesheet" href="../../wtvstyles.css">
-    <script src="../../scaler.js"></script>
+    <link rel="stylesheet" href="../../../wtvstyles.css">
+    <script src="../../../scaler.js"></script>
     <META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">
-  </head>
 """
+
+FOOTER_BLOCK = (
+    '      <footerborder></footerborder>\n'
+    '      <footer>\n'
+    '        <div class=footerstatus>WebTV Wordfinder</div>'
+    '<div class=audiostatus><div class="audiogreen"></div>\n'
+    '        </div>\n'
+    '      </footer>'
+)
 
 # Markers for the protected region (content kept byte-for-byte)
 PROTECT_START = '//  ************** Changable settings from HERE'
-PROTECT_END   = 'LoadImages();'
+PROTECT_END   = '//  ************** Changable settings to HERE'
 
 
 def insert_head_block(content):
@@ -73,6 +80,72 @@ def fix_double_braces_outside_protected(content):
     return before + protected + after
 
 
+def insert_script_ref(content):
+    """Insert <script src="../../../wordfind/script/wordfind.js"></script>
+    immediately before the closing </head> tag."""
+    tag = '<script src="../../../wordfind/script/wordfind.js"></script>\n'
+    return re.sub(r'(</head>)', tag + r'\1', content, count=1, flags=re.IGNORECASE)
+
+
+def strip_common_javascript(content):
+    """
+    Within the <script> block that follows <title>Loading Game...</title>,
+    remove all JS outside the protected settings region:
+      - Remove everything between <script language="JavaScript"> and
+        '//  ************** Changable settings from HERE'
+      - Keep everything from PROTECT_START through PROTECT_END (inclusive)
+      - Remove everything from after PROTECT_END through the closing </script>
+    The </script> and </head> tags themselves are preserved.
+    """
+    SCRIPT_OPEN  = '<script language="JavaScript">'
+    SCRIPT_CLOSE = '</script>'
+    TITLE_MARKER = '<title>Loading Game...</title>'
+
+    title_pos = content.lower().find(TITLE_MARKER.lower())
+    if title_pos == -1:
+        return content
+
+    script_open_pos = content.lower().find(SCRIPT_OPEN.lower(), title_pos)
+    if script_open_pos == -1:
+        return content
+
+    script_content_start = script_open_pos + len(SCRIPT_OPEN)
+
+    # Find </head> to bound our search for the closing </script>
+    head_close_pos = content.lower().find('</head>', script_content_start)
+    if head_close_pos == -1:
+        return content
+
+    # The closing </script> is the last one before </head>
+    script_close_pos = content.lower().rfind(SCRIPT_CLOSE.lower(), script_content_start, head_close_pos)
+    if script_close_pos == -1:
+        return content
+
+    script_body = content[script_content_start:script_close_pos]
+
+    protect_start_idx = script_body.find(PROTECT_START)
+    protect_end_idx   = script_body.find(PROTECT_END)
+    if protect_start_idx == -1 or protect_end_idx == -1:
+        return content
+
+    protect_end_pos = protect_end_idx + len(PROTECT_END)
+    protected = script_body[protect_start_idx:protect_end_pos]
+
+    closing_tag = content[script_close_pos:script_close_pos + len(SCRIPT_CLOSE)]
+    new_script = SCRIPT_OPEN + '\n\n' + protected + '\n\n' + closing_tag
+
+    return content[:script_open_pos] + new_script + content[script_close_pos + len(SCRIPT_CLOSE):]
+
+def insert_footer(content):
+    if re.search(r'<footer>', content, re.IGNORECASE):
+        return content
+    return re.sub(
+        r'(\s*</body>)',
+        '\n' + FOOTER_BLOCK + r'\n\n  \1',
+        content,
+        flags=re.IGNORECASE,
+    )
+
 def replace_insert_ad(content):
     """
     Replace bare <INSERT AD width=W height=H> tags with:
@@ -90,7 +163,7 @@ def replace_insert_ad(content):
         return (
             f'<!-- {full_tag} -->\n'
             f'             <center>\n'
-            f'               <img src="/ROMCache/spacer.gif" border=1'
+            f'               <img src="/wtv/ROMCache/spacer.gif" border=1'
             f' width={width} height={height}>\n'
             f'             </center>'
         )
@@ -144,7 +217,7 @@ def fix_background(content):
     def replacer(m):
         tag = re.sub(
             r'background=["\']?[^\s"\'>]+["\']?',
-            'background="../../wordfind/images/BACK.JPG"',
+            'background="../../../wordfind/images/back200.jpg"',
             m.group(0),
             flags=re.IGNORECASE
         )
@@ -163,15 +236,54 @@ def fix_background(content):
     return re.sub(r'<body\b[^>]*>', replacer, content, flags=re.IGNORECASE | re.DOTALL)
 
 
+def fix_abs_dimensions(content):
+    """Replace WebTV-specific abswidth/absheight attributes with standard width/height."""
+    content = re.sub(r'\babswidth\b', 'width', content, flags=re.IGNORECASE)
+    content = re.sub(r'\babsheight\b', 'height', content, flags=re.IGNORECASE)
+    return content
+
+
+def remove_bgcolor_53001b(content):
+    """Remove all occurrences of bgcolor=53001b (any case, with or without quotes)."""
+    return re.sub(r'\s*bgcolor=["\']?53001b["\']?', '', content, flags=re.IGNORECASE)
+
+
+def fix_romcache_paths(content):
+    """Replace /ROMCache/Spacer.gif (any case) with /wtv/ROMCache/spacer.gif."""
+    return re.sub(
+        r'/ROMCache/Spacer\.gif',
+        '/wtv/ROMCache/spacer.gif',
+        content,
+        flags=re.IGNORECASE
+    )
+
+
+def comment_out_embeds(content):
+    """Wrap all <EMBED ...> tags in HTML comments."""
+    return re.sub(
+        r'(<EMBED\b[^>]*>)',
+        r'<!-- \1 -->',
+        content,
+        flags=re.IGNORECASE | re.DOTALL
+    )
+
+
 def convert(src_path, dst_path):
     with open(src_path, 'r', encoding='latin-1') as f:
         content = f.read()
 
+    content = strip_common_javascript(content)
     content = insert_head_block(content)
+    content = insert_script_ref(content)
     content = fix_double_braces_outside_protected(content)
     content = replace_insert_ad(content)
     content = fix_image_paths(content)
     content = fix_background(content)
+    content = fix_abs_dimensions(content)
+    content = remove_bgcolor_53001b(content)
+    content = fix_romcache_paths(content)
+    content = comment_out_embeds(content)
+    content = insert_footer(content)
 
     os.makedirs(os.path.dirname(dst_path), exist_ok=True)
     with open(dst_path, 'w', encoding='latin-1') as f:
@@ -183,10 +295,10 @@ def convert(src_path, dst_path):
 def main():
     os.makedirs(OUT_DIR, exist_ok=True)
 
-    pattern = re.compile(r'^(wf|wordfind)[^/]*\.tmpl$', re.IGNORECASE)
-
+#    pattern = re.compile(r'^(wf|wordfind)[^/]*\.tmpl$', re.IGNORECASE)
+    pattern = re.compile(r'^[^/]*\.tmpl$', re.IGNORECASE)
     candidates = sorted(f for f in os.listdir(SRC_DIR) if pattern.match(f))
-    print SRC_DIR
+
     if not candidates:
         print('No matching .tmpl files found.')
         sys.exit(1)

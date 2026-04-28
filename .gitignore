@@ -8,4 +8,5 @@ melinda.html
 .DS_Store
 **/#*.*#
 wtv/private/**/*
+__pycache__
 
