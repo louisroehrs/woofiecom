@@ -263,7 +263,7 @@
 	    
 	    sGameState = "won";
 	    PlaySound(document.applause);
-	    window.location="../win.tmpl";
+	    window.location="../../wordfind/win.html";
 			
 	  }
 
@@ -274,7 +274,7 @@
 	  if (eval(iWordsLeft) >= 10) {
 	    document.twords.src = sImagePath+GetDigit(iWordsLeft, 0)+".gif";         
 	      } else {
-		    document.twords.src = "/ROMCache/spacer.gif";
+		    document.twords.src = "/wtv/ROMCache/spacer.gif";
 		  }
 			   
 	      document.owords.src = sImagePath+GetDigit(iWordsLeft, 1)+".gif";         
@@ -406,7 +406,7 @@
 		}
 
 		function Quit() {
-			window.location="wtv-home:/home";
+			window.location="../arcade/arcade.html?wtv-home:/home";
 		}
 
 		function SolvePuzzle() {

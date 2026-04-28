@@ -252,7 +252,7 @@ def remove_bgcolor_464664(content):
     return re.sub(r'\s*bgcolor=["\']?464664["\']?', '', content, flags=re.IGNORECASE)
 
 def change_table_widths(content):
-    """Remove all occurrences of bgcolor=464664 (any case, with or without quotes)."""
+    """Change table width from 166 to 220"""
     return re.sub(r'\<td width=166','<td width=220', content, flags=re.IGNORECASE)
 
 def remove_spacer(content):
@@ -277,6 +277,13 @@ def comment_out_embeds(content):
         flags=re.IGNORECASE | re.DOTALL
     )
 
+def add_ad(content):
+
+    return content.replace('<INSERT AD sponsor=GAMES width=394 height=71 template=insetad.tmpl>','<a href="credits.html"><IMG SRC="http://www.woofie.com/images/bws.gif" WIDTH=394 HEIGHT=71 BORDER=0 usemap=woofie></a>')
+
+
+def replace_home_link(content):
+    return content.replace('href="wtv-home:/home"','href="../arcade/arcade.html?wtv-home:/home"')
 
 def convert(src_path, dst_path):
     with open(src_path, 'r', encoding='latin-1') as f:
@@ -290,14 +297,16 @@ def convert(src_path, dst_path):
     content = fix_image_paths(content)
     content = fix_background(content)
     content = fix_abs_dimensions(content)
-    content = remove_bgcolor_53001b(content)
-    content = remove_bgcolor_464664(content)
-    content = remove_spacer(content)
-    content = change_table_widths(content)
+#    content = remove_bgcolor_53001b(content)
+#    content = remove_bgcolor_464664(content)
+#    content = remove_spacer(content)
+ #   content = change_table_widths(content)
     content = fix_romcache_paths(content)
     content = comment_out_embeds(content)
     content = insert_footer(content)
-
+    content = replace_home_link(content)
+    content = add_ad(content)
+    
     os.makedirs(os.path.dirname(dst_path), exist_ok=True)
     with open(dst_path, 'w', encoding='latin-1') as f:
         f.write(content)
