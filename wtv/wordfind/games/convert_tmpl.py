@@ -255,8 +255,8 @@ def change_table_widths(content):
     """Change table width from 166 to 220"""
     return re.sub(r'\<td width=166','<td width=220', content, flags=re.IGNORECASE)
 
-def remove_spacer(content):
-    return content.replace('<IMG width=8 height=7 src=/ROMCache/Spacer.gif><BR>','')
+def resize_spacer(content):
+    return content.replace('<IMG width=8 height=7 src=/ROMCache/Spacer.gif><BR>','<IMG width=8 height=3 src=/ROMCache/spacer.gif><BR>')
 
 def fix_romcache_paths(content):
     """Replace /ROMCache/Spacer.gif (any case) with /wtv/ROMCache/spacer.gif."""
@@ -283,7 +283,7 @@ def add_ad(content):
 
 
 def replace_home_link(content):
-    return content.replace('href="wtv-home:/home"','href="../arcade/arcade.html?wtv-home:/home"')
+    return re.sub(r'href="wtv-home:/home"',r'href="../../arcade/arcade.html?wtv-home:/home"', content, flags=re.IGNORECASE | re.DOTALL)
 
 def convert(src_path, dst_path):
     with open(src_path, 'r', encoding='latin-1') as f:
@@ -299,7 +299,7 @@ def convert(src_path, dst_path):
     content = fix_abs_dimensions(content)
 #    content = remove_bgcolor_53001b(content)
 #    content = remove_bgcolor_464664(content)
-#    content = remove_spacer(content)
+    content = resize_spacer(content)
  #   content = change_table_widths(content)
     content = fix_romcache_paths(content)
     content = comment_out_embeds(content)
