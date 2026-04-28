@@ -19,11 +19,11 @@ import sys
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 SRC_DIR    = SCRIPT_DIR
-OUT_DIR    = os.path.join(SCRIPT_DIR, '..', '..', 'wordfindpub', 'general','games')
+OUT_DIR    = os.path.join(SCRIPT_DIR, '..', '..', 'wordfindpub', 'general')
 
 HEAD_BLOCK = """\
-    <link rel="stylesheet" href="../../../wtvstyles.css">
-    <script src="../../../scaler.js"></script>
+    <link rel="stylesheet" href="../../wtvstyles.css">
+    <script src="../../scaler.js"></script>
     <META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">
 """
 
@@ -81,9 +81,9 @@ def fix_double_braces_outside_protected(content):
 
 
 def insert_script_ref(content):
-    """Insert <script src="../../../wordfind/script/wordfind.js"></script>
+    """Insert <script src="../../wordfind/script/wordfind.js"></script>
     immediately before the closing </head> tag."""
-    tag = '<script src="../../../wordfind/script/wordfind.js"></script>\n'
+    tag = '<script src="../../wordfind/script/wordfind.js"></script>\n'
     return re.sub(r'(</head>)', tag + r'\1', content, count=1, flags=re.IGNORECASE)
 
 
@@ -201,10 +201,10 @@ def fix_image_paths(content):
         body_tag = body_match.group(1)
         placeholder = '\x00BODYTAG\x00'
         content = content[:body_match.start()] + placeholder + content[body_match.end():]
-        content = re.sub(r'(?<!\.\./wordfind/)(?<!\.\.)images/', '../../wordfind/images/', content)
+        content = re.sub(r'(?<!\.\./wordfind/)(?<!\.\.)images/', '../wordfind/images/', content)
         content = content.replace(placeholder, body_tag)
     else:
-        content = re.sub(r'(?<!\.\./wordfind/)(?<!\.\.)images/', '../../wordfind/images/', content)
+        content = re.sub(r'(?<!\.\./wordfind/)(?<!\.\.)images/', '../wordfind/images/', content)
     return content
 
 
@@ -217,7 +217,7 @@ def fix_background(content):
     def replacer(m):
         tag = re.sub(
             r'background=["\']?[^\s"\'>]+["\']?',
-            'background="../../../wordfind/images/back200.jpg"',
+            'background="../../wordfind/images/back200.jpg"',
             m.group(0),
             flags=re.IGNORECASE
         )
@@ -247,6 +247,16 @@ def remove_bgcolor_53001b(content):
     """Remove all occurrences of bgcolor=53001b (any case, with or without quotes)."""
     return re.sub(r'\s*bgcolor=["\']?53001b["\']?', '', content, flags=re.IGNORECASE)
 
+def remove_bgcolor_464664(content):
+    """Remove all occurrences of bgcolor=464664 (any case, with or without quotes)."""
+    return re.sub(r'\s*bgcolor=["\']?464664["\']?', '', content, flags=re.IGNORECASE)
+
+def change_table_widths(content):
+    """Remove all occurrences of bgcolor=464664 (any case, with or without quotes)."""
+    return re.sub(r'\<td width=166','<td width=220', content, flags=re.IGNORECASE)
+
+def remove_spacer(content):
+    return content.replace('<IMG width=8 height=7 src=/ROMCache/Spacer.gif><BR>','')
 
 def fix_romcache_paths(content):
     """Replace /ROMCache/Spacer.gif (any case) with /wtv/ROMCache/spacer.gif."""
@@ -281,6 +291,9 @@ def convert(src_path, dst_path):
     content = fix_background(content)
     content = fix_abs_dimensions(content)
     content = remove_bgcolor_53001b(content)
+    content = remove_bgcolor_464664(content)
+    content = remove_spacer(content)
+    content = change_table_widths(content)
     content = fix_romcache_paths(content)
     content = comment_out_embeds(content)
     content = insert_footer(content)

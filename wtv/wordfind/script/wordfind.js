@@ -1,25 +1,25 @@
 
-gamecount=30;
-           function PickGameAndPlay() {{
+  gamecount=30;
+
+  function PickGameAndPlay() {
 		a = Math.random() * gamecount;
 		a = Math.floor(a);
-		URL =   a + ".tmpl";
+		URL =   a + ".html";
 		window.location = URL;
 	}
 
-	function GetCell(x,y) {{
-		var xstartGetCell = x;
-		var xstopGetCell  = x+1; 
+	function GetCell(x,y) {
+		var xstartGetCell = parseInt(x);
+		var xstopGetCell  = parseInt(x)+1; 
 		woofie="st:" + xstartGetCell + " stp:" + xstopGetCell
-	//	alert(woofie);
-		return (puzzle[y].substring(xstartGetCell, xstopGetCell));
+		console.log(woofie);
+		return (puzzle[parseInt(y)].substring(xstartGetCell, xstopGetCell));
 	}
 
-	function DisplayStatus(iPointsSelected) {{
-
-		if (iPointsSelected == 0) {{
+	function DisplayStatus(iPointsSelected) {
+		if (iPointsSelected == 0) {
 			status = "Select the first letter of the word.";
-		} else {{
+		} else {
 			status = "Select the last letter of the word.";
 		}
 	}
@@ -27,9 +27,9 @@ gamecount=30;
 	sGameState="inplay";
 	iMinutesLeft = 4;
 	iSecondsLeft = 15;
-	kOtherFormElements = 22;
+	kOtherFormElements = 21;
 	kHintLength = 3000; // 1.5sec
-	var sImagePath = "../images/";
+	var sImagePath = "../../wordfind/images/";
 	LoadImages();
 	
 
@@ -46,21 +46,21 @@ gamecount=30;
 	DisplayStatus(iPointsSelected);
 	sLetterLookup = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	
-	function RandomLetter() {{
+	function RandomLetter() {
 		iLetterASCII = Math.round(Math.random()*25);
 		return(sLetterLookup.charAt(iLetterASCII));
 	}
 
-	function BuildPuzzle() {{
+	function BuildPuzzle() {
 
 		puzzle = new Array(kHeight);
 	
-		for (y=0; y < kHeight; y++) {{
+		for (y=0; y < kHeight; y++) {
 			puzzle[y] = "";
-				for (x=0; x < kWidth; x++) {{
-					if (GetInCell(x,y) == "+") {{
+				for (x=0; x < kWidth; x++) {
+					if (GetInCell(x,y) == "+") {
 						puzzle[y] = puzzle[y] + RandomLetter();
-					} else {{
+					} else {
 						puzzle[y] = puzzle[y] + GetInCell(x,y);
 				}			
 			}
@@ -68,9 +68,9 @@ gamecount=30;
 
 	}
 
-	function CheckSelection(iStartX, iStartY, iStopX, iStopY) {{
+	function CheckSelection(iStartX, iStartY, iStopX, iStopY) {
 		var i=0;
-		for (i=0; i < iTotalWords; i++) {{
+		for (i=0; i < iTotalWords; i++) {
 	      if (iStartX == eval(aStartX[i]) &&
 				iStartY == eval(aStartY[i]) &&
 				iStopX == eval(aStopX[i]) &&
@@ -78,7 +78,7 @@ gamecount=30;
 		      	iStopX == eval(aStartX[i]) &&
 				iStopY == eval(aStartY[i]) &&
 				iStartX == eval(aStopX[i]) &&
-				iStartY == eval(aStopY[i])) {{
+				iStartY == eval(aStopY[i])) {
 
 				return (i);
 			}
@@ -88,20 +88,20 @@ gamecount=30;
 		
 	}
 	
-	function StartLevel() {{
+	function StartLevel() {
 		sGameState="inplay";
 	}
 
-	function ComputeSlope(fDiff) {{
+	function ComputeSlope(fDiff) {
                  
 		var fSlope;
 	
-		if (fDiff == 0) {{
+		if (fDiff == 0) {
 			fSlope = 0;
-	 	} else {{
-			if (fDiff < 0) {{
+	 	} else {
+			if (fDiff < 0) {
 	 			fSlope = -1;
-			} else {{
+			} else {
 				fSlope = 1;
 			}
 		}   
@@ -109,12 +109,12 @@ gamecount=30;
 		return(fSlope); 
 	}
 
-	function pos(x,y)  {{
-		var position = x + (y * kWidth) +  kOtherFormElements;
+	function pos(x,y)  {
+		var position = parseInt(x) + (parseInt(y) * kWidth) +  kOtherFormElements;
 		return (position);
 	}
 	
-	function HintLetter(iStartX, iStartY, iStopX, iStopY, iLetter, bSelected, sSaveImg) {{
+	function HintLetter(iStartX, iStartY, iStopX, iStopY, iLetter, bSelected, sSaveImg) {
 		var fxDiff = iStopX - iStartX;
 		var fyDiff = iStopY - iStartY;
 
@@ -124,18 +124,18 @@ gamecount=30;
 		var iCurrX = iStartX + iLetter * fxSlope;  
 		var iCurrY = iStartY + iLetter * fySlope;  
 		var position = pos(iCurrX,iCurrY);
-		if (bSelected == "true") {{
+		if (bSelected == "true") {
 			var sSaveImag = document.images[position].src;
 			document.images[position].src = sImagePath + GetCell(iCurrX, iCurrY)+"ONN.JPG";
 
 			return (sSaveImag);
-		} else {{
+		} else {
 			document.images[position].src = sSaveImg;
 		}
 		return (sSaveImg);
 	}
 
-	function HighlightSelection(iStartX, iStartY, iStopX, iStopY) {{
+	function HighlightSelection(iStartX, iStartY, iStopX, iStopY) {
 		var position = 0;
 		var fxDiff = iStopX - iStartX;
 		var fyDiff = iStopY - iStartY;
@@ -146,7 +146,7 @@ gamecount=30;
 		iCurrX = iStartX;
 		iCurrY = iStartY;
 
-		while ( (iCurrX != iStopX) || (iCurrY != iStopY) ) {{
+		while ( (iCurrX != iStopX) || (iCurrY != iStopY) ) {
 		position = pos(iCurrX,iCurrY);
 
 //	   alert("first"+GetCell(iCurrX, iCurrY)+"ONN.JPG");
@@ -162,18 +162,18 @@ gamecount=30;
 	    
 		}
 
-        function PlaySound(sound) {{
+        function PlaySound(sound) {
 
-          if (sound == null) {{  
+          if (sound == null) {  
             return;
-          } else {{
+          } else {
             sound.play(false);
           }
 
         }
-	function SelectEndpoint(x,y) {{
+	function SelectEndpoint(x,y) {
 
-		if (sGameState == "preplay") {{
+		if (sGameState == "preplay") {
 			StartLevel();
 		}
 
@@ -184,7 +184,7 @@ gamecount=30;
 
 
 
-		if (iPointsSelected == 0) {{
+		if (iPointsSelected == 0) {
 			iStartX = x;
 			iStartY = y;
 			iPointsSelected = 1;
@@ -198,7 +198,7 @@ gamecount=30;
 
 		iStopX = x;
 		iStopY = y;
-		if ((iStopX == iStartX) && (iStopY == iStartY)) {{
+		if ((iStopX == iStartX) && (iStopY == iStartY)) {
 			iPointsSelected = 0;
 			DisplayStatus(iPointsSelected);
 			HintLetter(iStopX, iStopY, iStopX, iStopY, 0, "false", sSelectEndOld);
@@ -207,7 +207,7 @@ gamecount=30;
 		// alert("before check seleciton");
 		iWordSelected = CheckSelection(iStartX, iStartY, iStopX, iStopY);
 		// alert(iWordSelected);
-		if ((iWordSelected != -1) && (abWordFound[iWordSelected] != "true")) {{
+		if ((iWordSelected != -1) && (abWordFound[iWordSelected] != "true")) {
 			abWordFound[iWordSelected] = "true";
 			// alert(10);
 			HighlightSelection(iStartX, iStartY, iStopX, iStopY);
@@ -217,7 +217,7 @@ gamecount=30;
 			UpdateWordsLeft();
 
 			PlaySound(document.bell);
-		} else {{
+		} else {
 
 			HintLetter(iStartX, iStartY, iStopX, iStopY, 0, "false", sSelectEndOld);
 
@@ -230,11 +230,11 @@ gamecount=30;
 
 
 
-	function GetDigit(iNumber, iDigit) {{
+	function GetDigit(iNumber, iDigit) {
 
 	  iNumber = "" + iNumber;  // Convert to "String" if it isn't already...
 
-	  while (iNumber.length < 2) {{
+	  while (iNumber.length < 2) {
 	    iNumber = "0" + iNumber;
 	  }
 
@@ -245,21 +245,21 @@ gamecount=30;
        
 			
 
-	function GetInCell(x, y) {{
+	function GetInCell(x, y) {
 		var end = x+1;
 		letter = inpuzzle[y].substring(x, end)
 		return (letter.toUpperCase());
 	}
 
-	function ComputeWordsLeft() {{
+	function ComputeWordsLeft() {
 
 	  iWordsLeft = 0;
-	  for (i=0; i < iTotalWords; i++) {{
+	  for (i=0; i < iTotalWords; i++) {
 	     if (abWordFound[i] == "false")
 	       iWordsLeft++;
 	  }
 
-	  if (eval(iWordsLeft) == 0) {{
+	  if (eval(iWordsLeft) == 0) {
 	    
 	    sGameState = "won";
 	    PlaySound(document.applause);
@@ -269,11 +269,11 @@ gamecount=30;
 
 	}
 
-	function UpdateWordsLeft() {{
+	function UpdateWordsLeft() {
 
-	  if (eval(iWordsLeft) >= 10) {{
+	  if (eval(iWordsLeft) >= 10) {
 	    document.twords.src = sImagePath+GetDigit(iWordsLeft, 0)+".gif";         
-	      } else {{
+	      } else {
 		    document.twords.src = "/ROMCache/spacer.gif";
 		  }
 			   
@@ -282,7 +282,7 @@ gamecount=30;
 	}
 
 
-	function LoadImages() {{
+	function LoadImages() {
 
 		image0 = new Image();
 		image0.src = sImagePath + "0.gif";
@@ -368,7 +368,7 @@ gamecount=30;
 	}
 
 
-	function RenderCell(x, y) {{ 
+	function RenderCell(x, y) { 
 
 		letter = GetCell(x,y);
 
@@ -377,11 +377,11 @@ gamecount=30;
 		document.write("</td>");
 }
 
-	    function RenderRow(y) {{
+	    function RenderRow(y) {
 
 	  document.write("<tr>");
 
-	  for (x=0; x < kWidth; x++) {{
+	  for (x=0; x < kWidth; x++) {
 	     RenderCell(x,y);
 	  }
 
@@ -389,11 +389,11 @@ gamecount=30;
 
 	}
 
-	function RenderPuzzle() {{
+	function RenderPuzzle() {
 	 
 	  document.write("<table border=0 cellspacing=3 cellpadding=0 bgcolor=222222>");
 
-	  for (y=0; y < kHeight; y++) {{
+	  for (y=0; y < kHeight; y++) {
 	     RenderRow(y);
 	  }
 
@@ -401,17 +401,17 @@ gamecount=30;
 
 	     }
 
-		function Restart() {{
+		function Restart() {
 		  location.reload();
 		}
 
-		function Quit() {{
+		function Quit() {
 			window.location="wtv-home:/home";
 		}
 
-		function SolvePuzzle() {{
+		function SolvePuzzle() {
 
-		  for (i=0; i < iTotalWords; i++) {{
+		  for (i=0; i < iTotalWords; i++) {
 		  
 		     var startx = eval(aStartX[i]);
 		     var starty = eval(aStartY[i]);
@@ -429,11 +429,11 @@ gamecount=30;
 
 		}
 
-		function Highlight1LengthWords() {{
+		function Highlight1LengthWords() {
 
-		  for (i=0; i < iTotalWords; i++) {{
+		  for (i=0; i < iTotalWords; i++) {
 		     var startx = aStartX[i];
-			 if (aLength[i] == 1) {{
+			 if (aLength[i] == 1) {
                HighlightSelection(eval(aStartX[i]), eval(aStartY[i]), eval(aStopX[i]), eval(aStopY[i]));
                abWordFound[i] = "true";
              }
@@ -441,7 +441,7 @@ gamecount=30;
 
 		}
 
-		function ShowHint() {{
+		function ShowHint() {
 			var iHintAnswer=0;
 			var iHintLetter=0;
 		  // Find Answer to Hint
@@ -449,7 +449,30 @@ gamecount=30;
 		  if (sGameState != "inplay")
 		    return;
 
-		  for (iHintAnswer=0;(abWordFound[iHintAnswer] != "false") && (iHintAnswer < iTotalWords); iHintAnswer++ ) {{ }
+      for (iHintAnswer=0; 
+		       (abWordFound[eval(iHintAnswer)] != "false") && 
+		       (iHintAnswer < iTotalWords); 
+		       iHintAnswer++) { }
+      
+		  if (iHintAnswer == iTotalWords)
+		    return;
+
+		  // Find Letter to Hint
+
+		  iHintLetter = Math.round(Math.random()*(
+					     eval(aLength[eval(iHintAnswer)])-1
+							 )
+					  );
+				     
+		  // Invert Letter
+
+		
+		  PlaySound(document.swoosh);
+		  sHintOld = HintLetter(aStartX[iHintAnswer], aStartY[iHintAnswer], 
+			     aStopX[iHintAnswer], aStopY[iHintAnswer], iHintLetter, "true", "");
+
+
+		  for (iHintAnswer=0;(abWordFound[iHintAnswer] != "false") && (iHintAnswer < iTotalWords); iHintAnswer++ ) { }
 
 
 		  if (iHintAnswer == iTotalWords)

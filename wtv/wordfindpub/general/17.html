@@ -1,6 +1,6 @@
 <html>
-    <link rel="stylesheet" href="../../../wtvstyles.css">
-    <script src="../../../scaler.js"></script>
+    <link rel="stylesheet" href="../../wtvstyles.css">
+    <script src="../../scaler.js"></script>
     <META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">
 
 <head>
@@ -9,17 +9,17 @@
 
 //  ************** Changable settings from HERE
 
-	inpuzzle = new Array("ginsburg++t+s","++++++++++h+o","rehnquist+o+u","++++++++++m+t","oconnor+++a+e","++++++++++s+r","k++++++++++++","e+breyer+++++","n++++++++++++","n+++++scalia+","e++++++++++++","d+++++stevens","y++++++++++++");
+	inpuzzle = new Array("l+++++++++r+w","+i++ebony+e+i","++f+++++++d+r","t++e++++++b+e","+i+++n++++o+d","++m+++e+++o++","p++e+++w++k++","+e+++g++s++++","++o+++e++w+++","+++p+++o++e++","++++l+++r++e+","+++++e+++g++k","++++++++++e++");
 
-	sPuzzleWords = new Array("ginsburg","souter","thomas","scalia","stevens","rehnquist","oconnor","kennedy","breyer");
-	iTotalWords = "9";
-	sGameTitle = "Supreme Justices"; 
+	sPuzzleWords = new Array("life","time","people","ebony","redbook","newsweek","wired","george");
+	iTotalWords = "8";
+	sGameTitle = "Magazines"; 
 		
-	aStartX = new Array("0","12","10","6","6","0","0","0","2");
-	aStartY = new Array("0","0","0","9","11","2","4","6","7");
-	aStopX  = new Array("7","12","10","11","12","8","6","0","7");
-	aStopY  = new Array("0","5","5","9","11","2","4","12","7");
-	aLength = new Array("8","6","6","6","7","9","7","7","6");
+	aStartX = new Array("0","0","0","4","10","5","12","5");
+	aStartY = new Array("0","3","6","1","0","4","0","7");
+	aStopX  = new Array("3","3","5","8","10","12","12","10");
+	aStopY  = new Array("3","6","11","1","6","11","4","12");
+	aLength = new Array("4","4","6","5","7","8","5","6");
 
 	kWidth  = 13;
 	kHeight = 13;    
@@ -29,9 +29,9 @@
 
 </script>     
 
-<script src="../../../wordfind/script/wordfind.js"></script>
+<script src="../../wordfind/script/wordfind.js"></script>
 </head>
-<body style="background-repeat: repeat;" fontsize=medium background="../../../wordfind/images/back200.jpg" bgcolor=464474 text=#FFFFFF valign=top hspace=0 vspace=0>
+<body style="background-repeat: repeat;" fontsize=medium background="../../wordfind/images/back200.jpg" bgcolor=464474 text=#FFFFFF valign=top hspace=0 vspace=0>
    <display noscroll>
       
       <!-- <EMBED SRC="../sounds/newbell3.mid" HIDDEN=TRUE CONTROLS=console
@@ -45,13 +45,13 @@
 	  <table cellpadding=0 cellspacing=0 border=0 width=100%>
 	    <tr>
 	      
-		   <td width=180 height=384 height=313 rowspan=2 align=center valign=top>
+		   <td width=220 height=384 height=313 rowspan=2 align=center valign=top>
 			<IMG width=8 height=6 src=/wtv/ROMCache/spacer.gif><BR>
 			<a href="wtv-home:/home"><IMG width=20 height=80 src=/wtv/ROMCache/spacer.gif><IMG width=104 height=80 src=/ROMCache/WebTVLogoJewel.gif><IMG width=28 height=80 src=/wtv/ROMCache/spacer.gif></a><BR>
-		 	<IMG width=8 height=7 src=/wtv/ROMCache/spacer.gif><BR>
-  			<A HREF="../index.html"><IMG SRC="../../../wordfind/images/LOGO.GIF" WIDTH=150 HEIGHT=74 BORDER=0></A><BR>
+		 	
+  			<A HREF="../index.tmpl"><IMG SRC="../../wordfind/images/LOGO.GIF" WIDTH=150 HEIGHT=74 BORDER=0></A><BR>
 			<img src="/wtv/ROMCache/spacer.gif" width=2 height=4><BR>
-			<IMG SRC="../../../wordfind/images/hr.gif" WIDTH=100% HEIGHT=6 BORDER=0><BR>
+			<IMG SRC="../../wordfind/images/hr.gif" WIDTH=100% HEIGHT=6 BORDER=0><BR>
 			<IMG width=8 height=12 src=/wtv/ROMCache/spacer.gif><BR>
 			<SCRIPT LANGAUGE="Javascript">
 	 		     document.write("<font size='+2'>" + sGameTitle + "</font>");
@@ -60,20 +60,20 @@
 			<img src="/wtv/ROMCache/spacer.gif" width=2 height=8><BR>
 			<img border=0 width=11 height=22 src="/wtv/ROMCache/spacer.gif" name="twords" ALIGN="TEXTTOP"><img border=0 width=11 height=22 align="TEXTTOP" src="/wtv/ROMCache/spacer.gif" name="owords"><font size=3 color=#FFFFFF>&nbsp;Words Remain</font><BR>
 			<img src="/wtv/ROMCache/spacer.gif" width=2 height=6><BR>
-			<IMG SRC="../../../wordfind/images/hr.gif" WIDTH=100% HEIGHT=6 BORDER=0><BR>
+			<IMG SRC="../../wordfind/images/hr.gif" WIDTH=100% HEIGHT=6 BORDER=0><BR>
 			<img src="/wtv/ROMCache/spacer.gif" width=2 height=8><BR>
-     		<A HREF="javascript:ShowHint();"><IMG SRC="../../../wordfind/images/hint2.gif" WIDTH=142 HEIGHT=24 BORDER=0></A><BR>
+     		<A HREF="javascript:ShowHint();"><IMG SRC="../../wordfind/images/hint2.gif" WIDTH=142 HEIGHT=24 BORDER=0></A><BR>
 			<img src="/wtv/ROMCache/spacer.gif" width=12 height=7><BR>
-			<A HREF="javascript:SolvePuzzle();"><IMG SRC="../../../wordfind/images/solve2.gif" WIDTH=142 HEIGHT=24 BORDER=0></A><BR>
+			<A HREF="javascript:SolvePuzzle();"><IMG SRC="../../wordfind/images/solve2.gif" WIDTH=142 HEIGHT=24 BORDER=0></A><BR>
 			<img src="/wtv/ROMCache/spacer.gif" border=0 width=2 height=7><BR>
-     		<A HREF="javascript:PickGameAndPlay()"><IMG SRC="../../../wordfind/images/newgame2.gif" WIDTH=142 HEIGHT=24 BORDER=0></A><BR>
+     		<A HREF="javascript:PickGameAndPlay()"><IMG SRC="../../wordfind/images/newgame2.gif" WIDTH=142 HEIGHT=24 BORDER=0></A><BR>
 			<img src="/wtv/ROMCache/spacer.gif" border=0 width=12 height=7><BR>
-			<A HREF="wtv-home:/home"><IMG SRC="../../../wordfind/images/quit2.gif" WIDTH=142 HEIGHT=24 BORDER=0></A><BR>
+			<A HREF="wtv-home:/home"><IMG SRC="../../wordfind/images/quit2.gif" WIDTH=142 HEIGHT=24 BORDER=0></A><BR>
 			
 			
 	      </td>
 
-		  <td width=9 height=313 bgcolor=464664 gradcolor=2e2c4a gradangle=90></td>       
+		  <td width=9 height=313 gradcolor=2e2c4a gradangle=90></td>       
 
 		  <td width=385 valign=middle bgcolor=2e2c4a align=center>       
 			    <center>
@@ -88,7 +88,7 @@
 			</tr>
 			<tr>
 			<td height=71 valign=top colspan=2 align=right>
-			<!-- 	<img src="../../../wordfind/images/COLON.GIF" width=374 height=71> -->
+			<!-- 	<img src="../../wordfind/images/COLON.GIF" width=374 height=71> -->
 			 <INSERT AD sponsor=GAMES width=394 height=71 template=insetad.tmpl> 
 			</td>
 		</tr>
