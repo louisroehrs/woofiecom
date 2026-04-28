@@ -6,8 +6,7 @@
       <title>Trivial Task!</title>
       <bgsound src="../../sounds/triviarules.mid">
       </head>
-      <body
-      valign=top hspace=0 bgcolor=#000000 text=#FFFFFF>
+      <body background="../../images/background.jpg" valign=top hspace=0 bgcolor=#000000 text=#FFFFFF>
 
       <script language="JavaScript">
 
@@ -218,16 +217,35 @@
     <table cellspacing=0 cellpadding=0 width=100%>
 
       <tr>
-        <td>
-          <IMG src="/ROMCache/spacer.gif" width=40 height=30>
+        <td width=115 height=120 align=center valign=top>
+          <a href="../../../arcade/arcade.html"><IMG width=104 height=87 src=/ROMCache/WebTVLogoJewel.gif></a>
         </td>
+
+      <!-- TT Logo Spacer Cell -->
+
+        <td >
+              <IMG src=/wtv/ROMCache/spacer.gif name=message width=1 height=150>
+        </td>
+
       </tr>
 
-      <tr height=30>
-        <td width=372>
+      <tr>
+        <td></td>
+        <td>
+          <center>
+            <font face="Futura" color=#ED970E size=+5>
+              PLAY AGAIN
+            </font>
+          </center>
+        </td>
+      </tr>
+      
+      <tr height=50>
+        <td></td>
+        <td width=445>
 
           <center>
-            <font color=#ED970E size=+5>
+            <font color=#ED970E size=+3>
             You scored
             <script langauge="Javascript">
               var sUserPoints = GetCookie("generalPOINTS");
@@ -241,9 +259,10 @@
       </tr>
 
       <tr>
+        <td></td>
         <td>
           <center>
-            <SCRIPT LANGAUGE="JAVASCRIPT">
+<!--            <SCRIPT LANGAUGE="JAVASCRIPT">
 
               var sUserPoints = GetCookie("generalPOINTS");
               if (eval(sUserPoints) == 1000) {
@@ -252,15 +271,15 @@
               document.write("<img width=200 src=\"../../images/TRYAGAIN.GIF\">");
               }
 
-            </SCRIPT>
+            </SCRIPT> -->
           </center>
         </td>
       </tr>
       <tr>
-        <td width=112 height=180>
+        <td width=112 height=145>
           <center>
             <a nocolor href="index.html">
-            <img src="../../images/playagain.gif">
+            <img src="../../images/0202_tt_playagain.gif">
             </a>
           </center>
         </td>

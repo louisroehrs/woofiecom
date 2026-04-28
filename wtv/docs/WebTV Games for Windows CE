@@ -1,0 +1,170 @@
+ Developing Games for the Windows CE version of the WebTV Internet Receiver
+
+Jack Palevich
+
+WebTV Confidential. These specifications are subject to change without
+notice.
+
+Draft 2. April 21, 1998
+
+Introduction
+
+Future versions of the WebTV Internet receiver will be based upon the
+Microsoft Windows CE operating system. This provides a golden opportunity
+for third-party game developers. They can develop games using Windows CE and
+deliver them to a large audience. This has many advantages:
+
+   * The game can be developed using the Microsoft Visual Studio development
+     tools.
+   * The developer can leverage their existing knowledge of the Microsoft
+     Win32 API.
+   * The developer can reuse code developed for other Microsoft Win32 and
+     Microsoft Windows CE platforms.
+
+The WebTV Hardware
+
+The first WebTV Internet receiver capable of running Windows CE will be the
+WebTV Plus 5320. This box has the following features:
+
+        CPU                           Graphics Capabilities
+
+           * 167 MHz QED 5230 64-bit     * 512 x 384 x 16 bpp YUYV
+             MIPS CPU                    * 512 x 384 x 8 bpp indexed
+           * 32K caches (16K               RGB
+             instruction, 16K data)      * Graphics acceleration in
+           * ON-chip floating point        custom silicon
+             unit (>50 Mflops)           * Flicker elimination in
+                                           hardware
+        Memory                           * Scanline compositing and
+                                           image decompression
+           * 8MB high-speed SDRAM          on-the-fly
+           * 4MB mask ROM                * Write-back mode for
+                                           extremely complex screens
+        Mass Storage                       (video games)
+                                         * Anti-aliased text
+           * 1.08GB internal IDE hard    * 8-bit Alpha value on a
+             drive                         per-pixel basis
+           * Low power consumption       * Cel scaling in hardware
+           * 4500 RPM, 12 msec seek      * Cel rotation in hardware
+             time                        * Composite and S Video
+                                           output.
+        Input
+                                      Television Tuner and Video
+           * IR Keyboard with 4-key   Input
+             rollover and key
+             down/key up events.         * Cable‹ready tuner with
+           * IR Remote with 1-key          integrated EIAJ stereo
+             rollover and key-down         and sound MPX decoder
+             and auto-repeat events.     * IR "shooter" controls
+                                           VCR¹s BS tuner or
+        Modem                              external BS tuner for BS
+                                           compatibility
+           * 56 Kbps software modem.     * Real-time manipulation of
+                                           video from tuner via
+                                           graphics engine
+                                         * Video capture in
+                                           full-res, half-res, and
+                                           quarter-res in hardware
+                                           on tuner video input
+                                         * Composite and S-Video
+                                           input for connecting
+                                           VCRs, video cameras,
+                                           digital cameras, etc.
+
+                                      Audio Hardware
+
+                                         * 44 kHz 16 bpp stereo.
+
+The WebTV Client Software
+
+Windows CE is a scalable operating system. It can be configured for each
+application. Announced applications include the Handheld PC, the Palm-sized
+PC, and the Auto PC. WebTV will use the portions of Windows CE that are most
+appropriate for an internet terminal. These include:
+
+   * The Windows CE operating system.
+   * A VFAT-compatible file system.
+   * A subset of the DirectX 6.0 APIs, including DirectDraw, DirectSound,
+     DirectPlay, DirectShow, DirectInput, and Direct3D.
+   * Winsock networking API.
+   * HTML display capabilities.
+
+The following features will not be a part of the Windows CE for WebTV:
+
+   * The ability to sync with a Windows desktop.
+   * The Windows GDI graphics.
+   * The Explorer desktop.
+
+The WebTV Service
+
+The WebTV service provides the following features that assist the game
+developer:
+
+   * Automated nightly downloads of game code and data.
+   * A clean simple UI that allows users to subscribe to games.
+   * A clean simple UI that allows users to launch games.
+   * Automated nightly uploads of game usage statistics and game crash logs.
+   * Backs up and restores users' saved games.
+
+The WebTV Game Development Kit
+
+[Note: This kit should be available by 9/1/98]
+
+This kit includes:
+
+   * A list of third party development software to acquire.
+   * Instructions explaining how to configure your development PC.
+   * The necessary software libraries to create WebTV applications.
+   * The source to a sample game (Doom).
+
+Development System Hardware Requirements
+
+In order to develop a game for WebTV you need the following:
+
+   * A personal computer running Windows 95 / 98 / NT with 128Mb of RAM and
+     4Gb of hard disk.
+   * A signed NDA with WebTV.
+   * A WebTV Plus 5230 Internet receiver.
+   * A special parallel port cable to connect your WebTV Plus Internet
+     receiver to your PC.
+
+How to Get Started
+
+Developers can get started without any need to wait for WebTV. Just develop
+your game to fit the following requirements, and it will probably work quite
+well on WebTV:
+
+   * Use up to 4Mb of RAM. (Including code, data, and screen buffers.)
+   * 512 x 384 x 16 bpp screen graphics.
+   * DirectX 5.0 APIs.
+   * MPEG for compressed video.
+   * MP2 compressed audio.
+   * Use up to 16M bytes of read-only disk file storage. (For the
+     application and data).
+   * Use up to 32M bytes of read-write scratch-file disk file storage.
+   * Use up to 50K bytes of persistent storage (for saved games). This
+     storage will be backed up by the WebTV Service.
+
+Differences between a WebTV and a Personal Computer:
+
+   * WebTV has a lower resolution screen (the TV).
+   * WebTV has a larger physical screen (the TV).
+   * WebTV has less RAM.
+   * WebTV has less hard disk.
+   * WebTV has no CD-ROM or floppy.
+   * WebTV has no mouse.
+   * WebTV has relatively few configurations.
+   * Automatic installation of software.
+   * 100% of users are connected to the WebTV network.
+
+Differences between a WebTV and a Video Game Console:
+
+   * WebTV has a faster processor.
+   * WebTV has more RAM.
+   * WebTV has a hard disk.
+   * WebTV does not have a CD-ROM Drive.
+   * Most WebTV users have a keyboard.
+   * Many WebTV users have a printer.
+   * WebTV does not have a joystick.
+   * WebTV may have multiple hardware configurations.
+   * 100% of users are connected to the WebTV network.
