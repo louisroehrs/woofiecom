@@ -1,0 +1,185 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../wtvstyles.css">
+    <script src="../scaler.js"></script>
+    <META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">
+
+<title>
+  WebTV Wordfind
+</title>
+<style>
+  body {
+      background-repeat: repeat;
+  }
+</style>
+
+<SCRIPT Language="JavaScript">
+	
+	function getURLvar(Name) {
+		var search = Name + "="
+		var incoming = window.location.search
+		if (incoming.length > 0) { // if there are any search parameters
+			offset = incoming.indexOf(search) 
+			if (offset != -1) { // if parameter exists 
+				offset += search.length 
+				// set index of beginning of value
+				end = incoming.indexOf("&", offset) 
+				// set index of end of cookie value
+				if (end == -1) 
+					end = incoming.length
+				value = unescape(incoming.substring(offset, end))
+				if (value == "") {
+					return null
+				} else {
+					return value
+				}
+			}
+			else return null
+		}
+		else return null
+	}
+
+	function PassQueryToPage(pageName) {
+		var chosengame = getURLvar("game")
+		var mysearch = window.location.search
+//	alert (mysearch)
+		var modifier = "N"
+		if (mysearch != "") {
+			modifier= "&"
+			if (mysearch.charAt(0) != "?")
+				mysearch = "?"+ mysearch;    
+		}
+		else
+		{
+			modifier = "?"
+			mysearch = ""
+		} 
+		var bigwoofie = pageName +  mysearch  + modifier 
+		bigwoofie = bigwoofie + "game=" + chosengame +"&"
+		
+		bigwoofie = bigwoofie +"the=end" 
+		window.location = bigwoofie
+	}
+
+function Redirect(sURL) {
+  window.location=sURL;
+} 
+function RedirectToGame() {
+ 	sURL=getURLvar("game")
+	gameURL = "../wordfinderpub/" + sURL;
+	
+  window.location= gameURL;
+} 
+
+	</SCRIPT>
+
+
+</head>
+
+<bgsound src="sounds/kidstheme8.mid" LOOP=TRUE> 
+<body fontsize=medium background="images/BACK.JPG" bgcolor=191919 text=#E6E6E6 hspace=0>
+
+   <display noscroll>
+
+      <table cellpadding=0 cellspacing=0 border=0 width=100% valign=top>
+            <tr>
+              
+	      <td abswidth=179 align=center valign=top>
+		  
+                  <img src="images/LOGO.GIF">
+              </td>
+
+	      <td abswidth=365 rowspan=4 valign=top align=center><BR>
+		<font size=+3>How to Play</font><BR>
+
+  		<font color=#E6E6E6>
+		
+
+ 		<table>
+		  <tr><td>&nbsp;</td></tr>
+         	  <tr><td valign=top><li></td><td>The object of this game is to find a famous phrase hidden in the wordfind grid.</td></tr>
+ 	 	  <tr><td valign=top><li></td><td>Each phrase winds through the wordfind like a snake.</td></tr>
+		  <tr><td valign=top><li></td><td>To select a word simply click on the word's first and last letter. Then, look for the next word in the phrase. It always begins in a square adjacent to the last letter of the word you just found.</td></tr>
+         	  <tr><td valign=top><li></td><td>Words can be found in any sequence. It is OK if you find the last word in the phrase before you find the first.</td></tr>
+ 	        </table>  
+	<!-- Selecting "hint" will briefly highlight a letter within a word you have not yet found. -->
+ 		</font>
+<!-- o The object of this game is to find a famous phrase hidden in the wordfind grid.
+
+o Each phrase winds through the wordfind like a snake. 
+
+o To select a word simply click on the word's first and last letter. Then, look for the next word in the phrase. It always begins in a square adjacent to the last letter of the word you just found.
+
+o Clicking on "Hint" will briefly highlight a letter within a word you have not yet found.
+ Five seconds will be deducted from the wordfind clock each time you click on "Hint."
+
+
+o Words can be found horizontally, vertically, diagonally, backwards and forwards
+   
+o Twenty seconds will be added to the wordfind clock for each correct word you find. 
+
+o Clicking on "Hint" will briefly highlight a letter within a word you have not yet found.
+ Five seconds will be deducted from the wordfind clock each time you click on "Hint."
+
+o If you are stumped click on "Solve" and the puzzle's solution will be revealed. -->
+
+   	      </td>
+			               
+		    </tr>
+
+   			<tr> <!-- LevelOn -->
+              		  <td>	
+			    
+			  </td> 
+			</tr>
+			
+			<tr>
+			   <td>
+			   
+               </td>
+			</tr>
+
+		    <tr> <!-- Control Buttons -->
+
+			  <td>
+			  <font color=ffaa44>
+                   
+              <table border=0 width=100%>
+				<tr>
+				  <td colspan=2>
+				    <center>
+		    		    <a href="javascript:PassQueryToPage('rules.html')"><IMG SRC="images/PLAY.GIF"></A>
+		    		    <A HREF="navmap/index.html"><IMG SRC="images/PLAY.GIF"></A>
+				    </center>			   
+				  </td>
+				</tr>
+			  </table>
+
+			
+              </font>
+            
+			  </td>
+			</tr>
+			<tr>
+			  <td colspan=2>
+     			     <center>
+		               <img src="/wtv/ROMCache/spacer.gif" border=0 width=468 height=8>
+			     </center>
+			  </td>
+			</tr>
+
+			<tr>
+			  <td colspan=2>
+     			     <center>
+				<INSERT AD WIDTH=394 HEIGHT=71>
+			     </center>
+			  </td>
+			</tr>
+               		      
+        </table>
+    </form>
+
+
+</body>
+</html>
+

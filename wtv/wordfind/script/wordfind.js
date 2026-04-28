@@ -18,9 +18,9 @@
 
 	function DisplayStatus(iPointsSelected) {
 		if (iPointsSelected == 0) {
-			status = "Select the first letter of the word.";
+			setStatus("Select the first letter of the word.");
 		} else {
-			status = "Select the last letter of the word.";
+			setStatus("Select the last letter of the word.");
 		}
 	}
 
@@ -43,7 +43,7 @@
 	for (i=0; i < iTotalWords; i++)
 		abWordFound[i] = "false";
 	
-	DisplayStatus(iPointsSelected);
+//	DisplayStatus(iPointsSelected);
 	sLetterLookup = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	
 	function RandomLetter() {
@@ -364,7 +364,7 @@
 	  imageYON.src = sImagePath+"YONN.JPG";
 	  imageZON = new Image();
 	  imageZON.src = sImagePath+"ZONN.JPG";
-		status="WebTV WordFinder";
+		window.setTimeout(()=>setStatus("Select the first letter of the word."),200);
 	}
 
 
@@ -500,6 +500,4 @@
 		  sCommand = "HintLetter(" + eval(aStartX[iHintAnswer]) + "," + eval(aStartY[iHintAnswer]) + "," + eval(aStopX[iHintAnswer]) + "," + eval(aStopY[iHintAnswer]) + "," + iHintLetter + ",\"false\",\"" + sHintOld + "\")";
 	  window.setTimeout(sCommand, kHintLength);
 
-		 
-	
 		}
