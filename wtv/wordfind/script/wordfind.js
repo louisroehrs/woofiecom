@@ -27,7 +27,7 @@
 	sGameState="inplay";
 	iMinutesLeft = 4;
 	iSecondsLeft = 15;
-	kOtherFormElements = 21;
+	kOtherFormElements = 22;
 	kHintLength = 3000; // 1.5sec
 	var sImagePath = "../../wordfind/images/";
 	LoadImages();
