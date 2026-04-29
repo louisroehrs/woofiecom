@@ -464,7 +464,7 @@ function ComputeWordsLeft() {
 		  // Invert Letter
 
 		
-		  PlaySound(document.swoosh);
+		  PlaySound("swoosh.mp2");
 		  sHintOld = HintLetter(aStartX[iHintAnswer], aStartY[iHintAnswer], 
 			     aStopX[iHintAnswer], aStopY[iHintAnswer], iHintLetter, "true", "");
 
@@ -484,7 +484,8 @@ function ComputeWordsLeft() {
 
 
 		
-		  //  PlaySound(document.swoosh);
+		  PlaySound("swoosh.mp2");
+
 		  var a1 = eval(aStartX[iHintAnswer]);
 		  var a2 = eval(aStartY[iHintAnswer]);
 		  var a3 = eval(aStopX[iHintAnswer]);

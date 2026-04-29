@@ -31,6 +31,7 @@ FOOTER_BLOCK = (
     '      <audio id="newbell3.mid"><source src="../../audio/newbell3.mp3" type="audio/mpeg"/></audio> '
     '      <audio id="buzz.mid"><source src="../../audio/buzz.mp3" type="audio/mpeg"  /></audio> '
     '      <audio id="applause.mp2"><source src="../../audio/applause.mp2" type="audio/mpeg"  /></audio> '
+    '      <audio id="swoosh.mp2"><source src="../../audio/sfx_swooshing.mp3" type="audio/mpeg"  /></audio> '
     '      <footerborder></footerborder>\n'
     '      <footer>\n'
     '        <div class=footerstatus>WebTV Wordfinder</div>'
