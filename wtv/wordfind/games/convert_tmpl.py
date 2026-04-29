@@ -28,6 +28,9 @@ HEAD_BLOCK = """\
 """
 
 FOOTER_BLOCK = (
+    '      <audio id="newbell3.mid"><source src="../../audio/newbell3.mp3" type="audio/mpeg"/></audio> '
+    '      <audio id="buzz.mid"><source src="../../audio/buzz.mp3" type="audio/mpeg"  /></audio> '
+    '      <audio id="applause.mp2"><source src="../../audio/applause.mp2" type="audio/mpeg"  /></audio> '
     '      <footerborder></footerborder>\n'
     '      <footer>\n'
     '        <div class=footerstatus>WebTV Wordfinder</div>'
@@ -51,7 +54,7 @@ def insert_head_block(content):
     return content[:pos] + '\n' + HEAD_BLOCK + content[pos:]
 
 def words_left(content):
-    return content.replace('<img border=0 width=11 height=22 src="/ROMCache/spacer.gif" name="twords" ALIGN="TEXTTOP"><img border=0 width=11 height=22 align="TEXTTOP" src="/ROMCache/spacer.gif" name="owords"><font size=3 color=#FFFFFF>&nbsp;Words Remain</font><BR>','<div style="padding:0; margin:0; display:flex; align-items:center;justify-content:center;width:100%;"><img border=0 width=11 height=22 src="/wtv/ROMCache/spacer.gif" name="twords"><img border=0 width=11 height=22  src="/wtv/ROMCache/spacer.gif" name="owords"><font size=3 color=#FFFFFF>&nbsp;Words Remain</font></div>')
+    return content.replace('<img border=0 width=11 height=22 src="/ROMCache/spacer.gif" name="twords" ALIGN="TEXTTOP"><img border=0 width=11 height=22 align="TEXTTOP" src="/ROMCache/spacer.gif" name="owords"><font size=3 color=#FFFFFF>&nbsp;Words Remain</font><BR>','<div style="padding:0; margin:0; display:flex; align-items:center;justify-content:center;width:100%;"><img border=0 width=11 height=22 src="/ROMCache/spacer.gif" name="twords"><img border=0 width=11 height=22  src="/ROMCache/spacer.gif" name="owords"><font size=3 color=#FFFFFF>&nbsp;Words Remain</font></div>')
 
 
 

@@ -161,15 +161,15 @@
 	    
 		}
 
-        function PlaySound(sound) {
+  var lastAudio = null;
 
-          if (sound == null) {  
-            return;
-          } else {
-            sound.play(false);
-          }
+	function PlaySound(sound) {
+    if (lastAudio) lastAudio.pause();
+    lastAudio = document.getElementById(sound);
+    lastAudio.currentTime = 0;
+    lastAudio.play()
+  }
 
-        }
 	function SelectEndpoint(x,y) {
 
 		if (sGameState == "preplay") {
@@ -215,12 +215,12 @@
 
 			UpdateWordsLeft();
 
-			PlaySound(document.bell);
+			PlaySound("newbell3.mid");
 		} else {
 
 			HintLetter(iStartX, iStartY, iStopX, iStopY, 0, "false", sSelectEndOld);
 
-			PlaySound(document.buzzer);
+			PlaySound("buzz.mid");
 		} 
 		iPointsSelected = 0;
 		DisplayStatus(iPointsSelected);
@@ -250,8 +250,8 @@
 		return (letter.toUpperCase());
 	}
 
-	function ComputeWordsLeft() {
 
+function ComputeWordsLeft() {
 	  iWordsLeft = 0;
 	  for (i=0; i < iTotalWords; i++) {
 	     if (abWordFound[i] == "false")
@@ -259,13 +259,11 @@
 	  }
 
 	  if (eval(iWordsLeft) == 0) {
-	    
 	    sGameState = "won";
-	    PlaySound(document.applause);
+  		PlaySound("applause.mp2");
 	    window.location="../../wordfind/win.html";
 			
 	  }
-
 	}
 
 	function UpdateWordsLeft() {
