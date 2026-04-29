@@ -50,6 +50,11 @@ def insert_head_block(content):
     pos = match.end()
     return content[:pos] + '\n' + HEAD_BLOCK + content[pos:]
 
+def words_left(content):
+    return content.replace('<img border=0 width=11 height=22 src="/ROMCache/spacer.gif" name="twords" ALIGN="TEXTTOP"><img border=0 width=11 height=22 align="TEXTTOP" src="/ROMCache/spacer.gif" name="owords"><font size=3 color=#FFFFFF>&nbsp;Words Remain</font><BR>','<div style="padding:0; margin:0; display:flex; align-items:center;justify-content:center;width:100%;"><img border=0 width=11 height=22 src="/wtv/ROMCache/spacer.gif" name="twords"><img border=0 width=11 height=22  src="/wtv/ROMCache/spacer.gif" name="owords"><font size=3 color=#FFFFFF>&nbsp;Words Remain</font></div>')
+
+
+
 
 def fix_double_braces_outside_protected(content):
     """
@@ -57,27 +62,27 @@ def fix_double_braces_outside_protected(content):
     The protected region runs from PROTECT_START through the first occurrence
     of PROTECT_END after it.
     """
-    start_idx = content.find(PROTECT_START)
-    if start_idx == -1:
+#    start_idx = content.find(PROTECT_START)
+#    if start_idx == -1:
         # No protected region found — safe to replace everywhere
-        return content.replace('{{', '{')
+    return content.replace('{{', '{')
 
-    # Find PROTECT_END starting from PROTECT_START
-    end_search_start = start_idx + len(PROTECT_START)
-    end_idx = content.find(PROTECT_END, end_search_start)
-    if end_idx == -1:
-        # No end marker — protect everything from start to end of file
-        before = content[:start_idx].replace('{{', '{')
-        return before + content[start_idx:]
+#    # Find PROTECT_END starting from PROTECT_START
+#    end_search_start = start_idx + len(PROTECT_START)
+#    end_idx = content.find(PROTECT_END, end_search_start)
+#    if end_idx == -1:
+#        # No end marker — protect everything from start to end of file
+#        before = content[:start_idx].replace('{{', '{')
+#        return before + content[start_idx:]
 
     # end_idx points to the start of PROTECT_END string; include it fully
-    protect_end_pos = end_idx + len(PROTECT_END)
+#    protect_end_pos = end_idx + len(PROTECT_END)
 
-    before    = content[:start_idx].replace('{{', '{')
-    protected = content[start_idx:protect_end_pos]          # untouched
-    after     = content[protect_end_pos:].replace('{{', '{')
+#    before    = content[:start_idx].replace('{{', '{')
+#    protected = content[start_idx:protect_end_pos]          # untouched
+#    after     = content[protect_end_pos:].replace('{{', '{')
 
-    return before + protected + after
+#    return before + protected + after
 
 
 def insert_script_ref(content):
@@ -291,6 +296,7 @@ def convert(src_path, dst_path):
 
     content = strip_common_javascript(content)
     content = insert_head_block(content)
+    content = words_left(content)
     content = insert_script_ref(content)
     content = fix_double_braces_outside_protected(content)
     content = replace_insert_ad(content)

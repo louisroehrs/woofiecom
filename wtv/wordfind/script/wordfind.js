@@ -31,7 +31,6 @@
 	kHintLength = 3000; // 1.5sec
 	var sImagePath = "../../wordfind/images/";
 	LoadImages();
-	
 
 	iPointsSelected = 0;
 	iStartX = 0;  iStopX = 0;

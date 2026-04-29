@@ -3,24 +3,24 @@
 <title>Loading Game...</title>
 <script language="JavaScript">
 
-gamecount=30;
-           function PickGameAndPlay() {{
+  gamecount=30;
+  function PickGameAndPlay() {{
 		a = Math.random() * gamecount;
 		a = Math.floor(a);
 		URL =   a + ".tmpl";
 		window.location = URL;
 	}
-
-	function GetCell(x,y) {{
+                              
+	function GetCell(x,y) {
 		var xstartGetCell = x;
 		var xstopGetCell  = x+1; 
 		woofie="st:" + xstartGetCell + " stp:" + xstopGetCell
-	//	alert(woofie);
+	  //	alert(woofie);
 		return (puzzle[y].substring(xstartGetCell, xstopGetCell));
 	}
-
-	function DisplayStatus(iPointsSelected) {{
-
+                              
+  function DisplayStatus(iPointsSelected) {
+                                
 		if (iPointsSelected == 0) {{
 			status = "Select the first letter of the word.";
 		} else {{
