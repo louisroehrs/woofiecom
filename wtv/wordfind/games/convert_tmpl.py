@@ -145,6 +145,9 @@ def strip_common_javascript(content):
 
     return content[:script_open_pos] + new_script + content[script_close_pos + len(SCRIPT_CLOSE):]
 
+def wordfind_logo_link(content):
+    return content.replace('../index.tmpl','../../wordfind/index.html');
+    
 def insert_footer(content):
     if re.search(r'<footer>', content, re.IGNORECASE):
         return content
@@ -316,6 +319,7 @@ def convert(src_path, dst_path):
     content = insert_footer(content)
     content = replace_home_link(content)
     content = add_ad(content)
+    content = wordfind_logo_link(content)
     
     os.makedirs(os.path.dirname(dst_path), exist_ok=True)
     with open(dst_path, 'w', encoding='latin-1') as f:
