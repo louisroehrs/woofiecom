@@ -16,6 +16,5 @@ function setStatus(text) {
   document.getElementsByClassName("footerstatus")[0].textContent = text;
 }
 
-
 window.addEventListener('load',setZoom);
 window.addEventListener('resize', setZoom);
