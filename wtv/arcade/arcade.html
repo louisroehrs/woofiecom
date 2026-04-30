@@ -3,10 +3,10 @@
     <link rel="stylesheet" href="../wtvstyles.css">	
     <META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'; img-src 'self''unsafe-inline'; script-src 'self' 'unsafe-inline'; child-src 'self' 'unsafe-inline'; object-src 'self' 'unsafe-inline'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'; img-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' or 'wasm-unsafe-eval' ; child-src 'self' 'unsafe-inline' 'unsafe-eval'; object-src 'self' 'unsafe-inline'">
 	  <TITLE>WebTV Arcade</TITLE>
     <script src="../scaler.js"></script>
-    <script src="../../ruffle/ruffle.js" defer=true></script>
+    <script src="../../ruffle/ruffle.js" ></script>
 
 	  <SCRIPT Language="JavaScript">
 
@@ -153,7 +153,7 @@
 
   </HEAD>
   <!-- <bgsound src="http://www.woofie.com/wtv/arcade/crazy.zip" autostart=true play=true loop=false> --> 
-    <BODY class="arcadebody" background="webtvarcade.tif" marginheight=0 marginwidth=0 hspace=0 vspace=0 text=cccc00 credits="http://www.woofie.com/webtv.html" onLoad="Start()" align=left fontsize=medium>
+    <BODY class="arcadebody" background="webtvarcade.png" marginheight=0 marginwidth=0 hspace=0 vspace=0 text=cccc00 credits="http://www.woofie.com/webtv.html" onLoad="Start()" align=left fontsize=medium>
       <display>
         <div id="flyin">
         </div>

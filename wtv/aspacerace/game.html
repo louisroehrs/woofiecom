@@ -191,9 +191,8 @@
 	}
 
 
-
 	function SelectCell() {
-		
+
 		if (this.game.state != "inplay")
 			return;
 
@@ -202,7 +201,7 @@
 			
 		if (!this.properMove()) 
 			return;
-	
+
 		this.uncover();
 
 		if ((this.x == this.game.board.kWidth-1) && (this.y == this.game.board.kHeight-1)) {
@@ -217,7 +216,12 @@
 			}
 			return;
 		}
-		if (this.lastMove()) {
+
+    if (!lastAudio) {
+      PlaySound("trav_wtv.mid");
+    }
+
+    if (this.lastMove()) {
 			window.status = "Select 'Continue' to try another path."
 			PlaySound("buzz.mid");
 //			document.images["logo"].src = "images/bluecover.gif"
@@ -727,7 +731,8 @@
   </footer>
   <audio id="newbell3.mid"><source src="../audio/newbell3.mp3" type="audio/mpeg"/></audio> 
   <audio id="buzz.mid"><source src="../audio/buzz.mp3" type="audio/mpeg"  /></audio>
-  <audio id="applause.mp2"><source src="../audio/applause.mp2" type="audio/mpeg"  /></audio> 
+  <audio id="applause.mp2"><source src="../audio/applause.mp2" type="audio/mpeg"  /></audio>
+  <audio id="trav_wtv.mid"><source src="../audio/trav_wtv.mp3" type="audio/mpeg"  /></audio> 
 
 </body>
 </html>

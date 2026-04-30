@@ -178,15 +178,15 @@
 
       }
 
-      function PlaySound(sound) {
 
-      if (sound == null) {
-      return;
-      } else {
-      sound.play(false);
+      lastAudio = null;
+     	function PlaySound(sound) {
+        if (lastAudio) lastAudio.pause();
+        lastAudio = document.getElementById(sound);
+        lastAudio.currentTime = 0;
+        lastAudio.play()
       }
 
-      }
 
       function CorrectPuzzle() {
 

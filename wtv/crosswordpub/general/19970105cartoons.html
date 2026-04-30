@@ -187,14 +187,12 @@
 
       }
 
-      function PlaySound(sound) {
-
-      if (sound == null) {
-      return;
-      } else {
-      sound.play(false);
-      }
-
+      lastAudio = null;
+     	function PlaySound(sound) {
+        if (lastAudio) lastAudio.pause();
+        lastAudio = document.getElementById(sound);
+        lastAudio.currentTime = 0;
+        lastAudio.play()
       }
 
       function CorrectPuzzle() {
@@ -214,7 +212,7 @@
 
 
       if (bCorrect == "t") {
-      PlaySound(document.applause);
+      PlaySound("applause.mp2");
       }
 
       }
@@ -369,9 +367,6 @@
 
     </script>
 
-    <EMBED SRC="../sounds/applause.MP2" HIDDEN=TRUE CONTROLS=console
-    VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="applause"
-    MASTERSOUND>
 
     <table cellpadding=0 cellspacing=0 border=0 width=100% valign=top>
       <tr>
@@ -486,8 +481,6 @@
     <div class=footerstatus>WebTV Crossword</div><div class=audiostatus><div class="audiogreen"></div>
   </div>
 </footer>
-
-
 
 </body>
 

@@ -1,0 +1,9 @@
+
+      lastAudio = null;
+     	function PlaySound(sound) {
+        if (lastAudio) lastAudio.pause();
+        lastAudio = document.getElementById(sound);
+        lastAudio.currentTime = 0;
+        lastAudio.play()
+      }
+
