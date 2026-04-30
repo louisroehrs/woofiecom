@@ -76,10 +76,12 @@ function SetCookieMacro (sCookieName, sValue) {
 }
 
 function PlayWrong() {
-  document.getElementById("buzz.mid").play()
+  document.getElementById("buzz.mid").currentTime = 0;
+  document.getElementById("buzz.mid").play();
 }
 
 function PlayRight() {
+  document.getElementById("newbell3.mid").currentTime = 0;
   document.getElementById("newbell3.mid").play()
 }
 

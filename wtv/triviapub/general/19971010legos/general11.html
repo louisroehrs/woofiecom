@@ -1,0 +1,321 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../../../wtvstyles.css">
+    <script src="../../../scaler.js"></script>
+      <META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">
+      <title>Trivial Task!</title>
+      <bgsound src="../../sounds/triviarules.mid">
+      </head>
+      <body background="../../images/background.jpg" valign=top hspace=0 bgcolor=#000000 text=#FFFFFF>
+
+      <script language="JavaScript">
+
+      function SetCookie (name, value)
+      {
+      var argv = SetCookie.arguments;
+
+      var argc = SetCookie.arguments.length;
+
+      var expires = (argc > 2) ? argv[2] : null;
+
+      var path = (argc > 3) ? argv[3] : null;
+
+      var domain = (argc > 4) ? argv[4] : null;
+
+      var secure = (argc > 5) ? argv[5] : false;
+
+      document.cookie = name + "=" + escape (value) +
+
+      ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
+
+      ((path == null) ? "" : ("; path=" + path)) +
+
+      ((domain == null) ? "" : ("; domain=" + domain)) +
+
+      ((secure == true) ? "; secure" : "");
+
+      }
+
+      function GetCookieVal (offset)
+      {
+      var endstr = document.cookie.indexOf (";", offset);
+
+      if (endstr == -1)
+      endstr = document.cookie.length;
+      return unescape(document.cookie.substring(offset, endstr));
+
+      }
+
+      function GetCookie (name)
+      {
+      var arg = name + "=";
+      var alen = arg.length;
+      var clen = document.cookie.length;
+      var i = 0;
+
+
+
+      while (i < clen) {
+
+      var j = i + alen;
+
+      if (document.cookie.substring(i, j) == arg)
+
+      return GetCookieVal (j);
+
+
+
+      i = document.cookie.indexOf(" ", i) + 1;
+
+      if (i == 0)
+
+      break;
+
+      }
+      return null;
+
+      }
+
+      function AddToAccum (sCookieName, sPoints) {
+
+
+      var expdate = new Date ();
+
+      expdate.setTime (expdate.getTime() + (24 * 60 * 60 * 1000));
+
+
+      var sAccum = GetCookie(sCookieName);
+
+
+      if (sAccum == null) {
+      sAccum = eval(sPoints);
+      } else {
+      sAccum = eval(sAccum) + eval(sPoints);
+      }
+
+      SetCookie (sCookieName, sAccum, expdate, "/");
+
+      }
+
+      function SetCookieMacro (sCookieName, sValue) {
+
+
+      var expdate = new Date ();
+
+      expdate.setTime (expdate.getTime() + (7 * 24 * 60 * 60 * 1000));
+
+
+      SetCookie (sCookieName, sValue, expdate, "/");
+
+
+      }
+
+      function ComputeLevel(sUserPoints) {
+
+      var sPercentile = eval(sUserPoints)/eval(1000);
+
+      if (eval(sPercentile) == eval(1.0)) {
+      return("fame");
+      }
+
+      if (eval(sPercentile) >= eval(0.75)) {
+      return("star");
+      }
+
+      if (eval(sPercentile) > eval(0.55)) {
+      return("pro");
+      }
+
+      return("rookie");
+
+      }
+
+      function WriteBigGraphic(sUserPoints) {
+
+      var sGraphic = ComputeLevel(sUserPoints);
+      document.write("<IMG src=../../images/"+sGraphic+".gif>");
+
+      }
+
+      function DisplayHallOfFame() {
+
+      if (ComputeLevel(sUserPoints) == "fame") {
+      document.write("<font size=+1 color=#ED970E>");
+      } else {
+      document.write("<font size=+1 color=#FFFFFF>");
+      }
+
+      document.write("Hall of Famer: ");
+      document.write("A Perfect Score of 1000!   ");
+      document.write("</font>");
+
+      }
+
+      function DisplayRookie() {
+
+      if (ComputeLevel(sUserPoints) == "rookie") {
+      document.write("<font size=+1 color=#ED970E>");
+      } else {
+      document.write("<font size=+1 color=#FFFFFF>");
+      }
+      document.write("Rookie:");
+
+      document.write("Less than "+eval(0.55*1000)+" Points.   ");
+      document.write("</font>");
+
+      }
+
+      function DisplayPro() {
+
+
+      if (ComputeLevel(sUserPoints) == "pro") {
+      document.write("<font size=+1 color=#ED970E>");
+      } else {
+      document.write("<font size=+1 color=#FFFFFF>");
+      }
+      document.write("Pro: ");
+      document.write(eval(0.55*1000) + " - " + eval(0.75*1000)+" Points.   ");
+      document.write("</font>");
+
+      }
+
+      function DisplayAllStar() {
+
+
+      if (ComputeLevel(sUserPoints) == "star") {
+      document.write("<font size=+1 color=#ED970E>");
+      } else {
+      document.write("<font size=+1 color=#FFFFFF>");
+      }
+
+      document.write("All Star: ");
+
+      document.write(eval(0.75*1000) + " - " + eval(eval(1.00*1000)-1)+" Points.   ");
+      document.write("</font>");
+
+      }
+
+      function DisplayRanking() {
+
+      if (ComputeLevel(sUserPoints) == "rookie") {
+      document.write("<font size=+1>Keep on trying</font><P>");
+      document.write("<font size=+5>Rookie</font>");
+      } else if (ComputeLevel(sUserPoints) == "pro") {
+      document.write("<font size=+1>Shoot for the stars</font><P>");
+      document.write("<font size=+5>Pro</font>");
+      } else if (ComputeLevel(sUserPoints) == "fame") {
+      document.write("<font size=+1>A perfect score.  You are enshrined as a Trivial Task</font><P>");
+      document.write("<font size=+5>Hall of Famer</font>");
+      } else if (ComputeLevel(sUserPoints) == "star") {
+      document.write("<font size=+1>Tell all your friends.  You're an</font><P>");
+      document.write("<font size=+5>All-Star</font>");
+      }
+
+      }
+
+    </script>
+    <table cellspacing=0 cellpadding=0 width=100%>
+
+      <tr>
+        <td width=115 height=120 align=center valign=top>
+          <a href="../../../arcade/arcade.html"><IMG width=104 height=87 src=/ROMCache/WebTVLogoJewel.gif></a>
+        </td>
+
+      <!-- TT Logo Spacer Cell -->
+
+        <td >
+              <IMG src=/wtv/ROMCache/spacer.gif name=message width=1 height=150>
+        </td>
+
+      </tr>
+
+      <tr>
+        <td></td>
+        <td>
+          <center>
+            <font face="Futura" color=#ED970E size=+5>
+              PLAY AGAIN
+            </font>
+          </center>
+        </td>
+      </tr>
+      
+      <tr height=50>
+        <td></td>
+        <td width=445>
+
+          <center>
+            <font color=#ED970E size=+3>
+            You scored
+            <script langauge="Javascript">
+              var sUserPoints = GetCookie("generalPOINTS");
+              document.write(sUserPoints+" points!<P>");
+            </script>
+            </font>
+          </center>
+
+        </td>
+
+      </tr>
+
+      <tr>
+        <td></td>
+        <td>
+          <center>
+<!--            <SCRIPT LANGAUGE="JAVASCRIPT">
+
+              var sUserPoints = GetCookie("generalPOINTS");
+              if (eval(sUserPoints) == 1000) {
+              document.write("<img width=200 src=\"../../images/ALLSTAR.GIF\">");
+              } else {
+              document.write("<img width=200 src=\"../../images/TRYAGAIN.GIF\">");
+              }
+
+            </SCRIPT> -->
+          </center>
+        </td>
+      </tr>
+      <tr>
+        <td width=112 height=145>
+          <center>
+            <a nocolor href="index.html">
+            <img src="../../images/0202_tt_playagain.gif">
+            </a>
+          </center>
+        </td>
+      </tr>
+
+      <!--
+      <td colspan=2>
+      <table width=100%>
+
+      <SCRIPT LANGUAGE="Javascript">
+      var sUserPoints = GetCookie("generalPOINTS");
+      WriteBigGraphic(sUserPoints);
+      </SCRIPT>
+
+      <br>
+
+
+      <SCRIPT LANGAUGE="JAVASCRIPT">
+      var sUserPoints = GetCookie("generalPOINTS");
+      DisplayHallOfFame(sUserPoints);
+      DisplayAllStar(sUserPoints);
+      DisplayPro(sUserPoints);
+      DisplayRookie(sUserPoints);
+      </SCRIPT>
+
+      <P>
+      <P>
+      </table>
+      </td>
+      -->
+
+    </table>
+    <footerborder></footerborder>
+    <footer>
+      <div class=footerstatus>WebTV Trivial Task</div><div class=audiostatus><div class="audiogreen"></div></div>
+    </footer>
+
+  </body>
+</html>
