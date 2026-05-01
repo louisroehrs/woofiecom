@@ -17,7 +17,8 @@
     </script>
     
 <script language="JavaScript">
-   var lastAudio = null;	
+  var lastAudio = null;
+  var bgAudio = null;
 // OBJECTS
 // CELL Object
 
@@ -217,8 +218,8 @@
 			return;
 		}
 
-    if (!lastAudio) {
-      PlaySound("trav_wtv.mid");
+    if (!bgAudio) {
+      PlayBGSound("trav_wtv.mid");
     }
 
     if (this.lastMove()) {
@@ -486,6 +487,15 @@
 	function Quit() {
 		if (debug) alert("Quit");
 	}
+
+
+ 	function PlayBGSound(sound) {
+    if (!bgAudio) {
+      bgAudio = document.getElementById(sound);
+      bgAudio.currentTime = 0;
+      bgAudio.play()
+    }
+  }
 
  	function PlaySound(sound) {
     if (lastAudio) lastAudio.pause();

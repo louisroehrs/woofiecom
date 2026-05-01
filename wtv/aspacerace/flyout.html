@@ -11,18 +11,68 @@
     <script>
       window.RufflePlayer = window.RufflePlayer || {};
       window.RufflePlayer.config = {
-        "autoplay": "on", 
+        "autoplay": "off", 
         "splashScreen": false, 
         "unmuteOverlay":"hidden",
       };
+
+      function launch() {
+        document.getElementById("endtitle").style.opacity = 0.0;
+        myAudio = document.getElementById("undr_wtv.mid");
+        myAudio.currentTime = 0;
+        myAudio.play();
+        myFlyout = document.getElementById("flyoutvideo");
+        myFlyout.play();
+      }
+
       
     </script>
+    <style>
+      @font-face {
+          font-family: 'led';
+          src: url('../fonts/digital-7-font/Digital7-rg1mL.ttf') format('truetype'),
+          font-weight: normal;
+          font-style: normal;
+      }
+      
+      .slides {
+          position:relative;
+      }
+      
+      #endtitle, #flyoutdiv {
+          position: absolute;
+          top:0;
+          left:0;
+          width:450px;
+          height:311px;
+      }
 
+      #endtitle {
+          background-color:black;
+          transition: opacity 1s;
+          display:flex;
+          justify-content: center;
+          align-items: center;
+      }
+
+      #launcher {
+          font-family: 'led', Tahoma;
+          padding:15px;
+          border-radius:0px;
+          background-color:#151d41;
+          color: white;;
+          border:2px solid #404873;
+          font-size: 30px;
+          text-align:center;
+          text-shadow: 1px 1px black; 
+      }
+      
+    </style>
   </head>
   <bgsound src="http://www.woofie.com/wtv/midi/webtv/undr_wtv.mid" loop=true>
     <body fontsize=medium background=images/backgrounddark.jpg valign=top  bgcolor=#1b2851  text=#eeeeee credits="credits.html" noscroll vspace=0 hspace=0 marginheight=0 marginwidth=0>
 	    <display noscroll nosend showwhencomplete>
-        
+          
         <CENTER>
           <table width=560 border=0 cellpadding=0 cellspacing=0 cellborder=0>
 	          <tr>
@@ -45,12 +95,13 @@
 			          </CENTER>
 		          </td>
 		          <TD bgcolor=101010 transparency=75 width=450 valign=top>
-		            
+		            <div class="slides">
+                <div id="flyoutdiv">
 			          <table cellpadding=0 cellspacing=0 border=0 width=450  valign=top>
 				          <tr>
 					          <td width=1 bgcolor=0d1428></td>
 					          <td height=311 width=449>
-                      <embed src="flash/flyout.spl" loop=false  width=100% height=100% autostart=true></embed>
+                      <embed id="flyoutvideo" src="flash/flyout.spl" loop=false  width=100% height=100% autostart=false></embed>
                     </td>
 			            </tr>
 				          <tr>
@@ -62,7 +113,11 @@
 				          </tr>
 					        
 			          </table>
-                
+                </div>
+                <div id="endtitle">
+                  <div id="launcher">Click to Launch</div>
+                </div>
+                </div>
 		          </td>
             </tr>
 		        
@@ -78,7 +133,10 @@
       <footer>
         <div class=footerstatus>WebTV SpaceRace</div><div class=audiostatus><div class="audiogreen"></div></div>
       </footer>
-
-
+      <script>
+        
+        document.getElementById("launcher").addEventListener("click",launch);
+      </script>
+      <audio id="undr_wtv.mid"><source src="../audio/undr_wtv.mp3" type="audio/mpeg"  /></audio> 
     </body>
 </html>
