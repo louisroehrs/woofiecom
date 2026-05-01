@@ -128,9 +128,53 @@ function FindDownClue(x,y) {
 
 }
 
+function ClearHighlights() {
+  var cy, cx;
+  for (cy = 0; cy < kHeight; cy++) {
+    for (cx = 0; cx < kWidth; cx++) {
+      if (GetCell(cx, cy) != '+') {
+        document.crossword.elements[cx + cy * kWidth + kOtherFormElements].style.backgroundColor = '';
+      }
+    }
+  }
+}
+
+function HighlightWord(x, y) {
+  var cx, cy;
+
+  // Find across word bounds and highlight
+  var acrossLeft = x;
+  while (acrossLeft > 0 && GetCell(acrossLeft - 1, y) != '+') acrossLeft--;
+  var acrossRight = x;
+  while (acrossRight < kWidth - 1 && GetCell(acrossRight + 1, y) != '+') acrossRight++;
+
+  if (acrossRight > acrossLeft) {
+    for (cx = acrossLeft; cx <= acrossRight; cx++) {
+      document.crossword.elements[cx + y * kWidth + kOtherFormElements].style.backgroundColor = '#8888ff';
+    }
+  }
+
+  // Find down word bounds and highlight
+  var downTop = y;
+  while (downTop > 0 && GetCell(x, downTop - 1) != '+') downTop--;
+  var downBottom = y;
+  while (downBottom < kHeight - 1 && GetCell(x, downBottom + 1) != '+') downBottom++;
+
+  if (downBottom > downTop) {
+    for (cy = downTop; cy <= downBottom; cy++) {
+      document.crossword.elements[x + cy * kWidth + kOtherFormElements].style.backgroundColor = '#88ff88';
+    }
+  }
+
+  // The focused cell gets a distinct highlight
+  document.crossword.elements[x + y * kWidth + kOtherFormElements].style.backgroundColor = '#ffff00';
+}
+
 function show_clue(x, y, click) {
   document.crossword.across.value =  FindAcrossClue(x,y);
   document.crossword.down.value = FindDownClue(x,y);
+  ClearHighlights();
+  HighlightWord(x, y);
   if (click) {
     PlaySound("jollygooba1.mp3");
   }
