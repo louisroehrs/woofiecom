@@ -1,0 +1,170 @@
+<!-- v4 - 08/21/97 -->
+
+<html>
+  <head>
+    <link rel="stylesheet" href="../../wtvcrosswordstyles.css">
+    <script src="../../scaler.js"></script>
+    <script src="../../crossword/script/crossword.js"></script>
+      <META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">
+      </head>
+      <title>
+      WebTV Crossword
+      </title>
+      <body style="height: 420px; width: 560px; " fontsize=medium  background="../images/BACK.JPG" bgcolor=191919 text=668866
+      hspace=0>
+
+      <display noscroll>
+      <form name="crossword">
+      <script language="JavaScript">
+
+      sPuzzleName = "19971208holiday2";
+
+      aasAcross = new Array(
+      new Array("Consume","Holiday haul","","","",""),new Array("He knows if __'ve been good or bad","","","","",""),new Array("Common financial state after the holidays","__ Tell it On the Mountain","","","",""),new Array("Eight-day celebration ","","","","",""),new Array("Vehicle for dashing through snow","","","","",""),new Array("Holiday gift","","","","",""),new Array("...And __ Towards Men...","","","","",""),new Array("","","","","",""),new Array("Seasonal alms collector","","","","",""),new Array("","","","","",""),new Array("Holiday gift","","","","",""),new Array("Seasonal grog","Holiday gift","","","",""),new Array("I'm dreaming of a __ Christmas","","","","","")
+      );
+
+      asPuzzle = "EAT+PRESENTS+L++W++S++YOU+V+DEBT+T+++GOE+R+A+HANUKA+SLEIGH+G+++R+++I+++B+K++PCW+D+GOODWILL+I+E+++W+A++U+SALVATIONARMYE+++++E+Z++S+M+U+B++GAME+AEGGNOG++++VCRN+H+W+WHITE+E";
+
+      aasDown = new Array(
+      new Array("Santa helpers","Maji","","","",""),new Array("","","","","",""),new Array("It's the tops during Hanukkah","Likely response of fruit cake-recipient","","","",""),new Array("__ Wish You a Merry Christmas","","","","",""),new Array("Transport for gifts","Fit to be tied?","","","",""),new Array("","","","","",""),new Array("Dicken's antagonist (initials)","Merry Christmas, Mr. Lawrence star ","","","",""),new Array("It puts a price on happiness (hopefully)","","","","",""),new Array("Cultural festival that starts Dec. 26","","","","",""),new Array("A __'s resolution (abbr.)","","","","",""),new Array("Joy __ the World","T'was the night before","","","",""),new Array("Visions that dance in one's head ","","","","",""),new Array("We three kings of Orient __","","","","","")
+      );
+
+      kWidth  = 13;
+      kHeight = 13;
+
+      kOtherFormElements = 0;
+
+    </script>
+
+    <EMBED SRC="../sounds/applause.MP2" HIDDEN=TRUE CONTROLS=console
+    VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="applause"
+    MASTERSOUND>
+
+    <table cellpadding=0 cellspacing=0 border=0 width=560 valign=top>
+      <tr>
+
+        <td align=center valign=top>
+          <a href="../../arcade/arcade.html"><img src="/ROMCache/WebTVLogoJewel.gif" width=84 height=65 align=left></a>
+          <img src="../images/LOGO.GIF" width=97 height=74>
+        </td>
+
+        <td rowspan=5 valign=center align=center width=363>
+          <center>
+            <SCRIPT language="Javascript">
+              RenderPuzzle();
+            </SCRIPT>
+          </center>
+        </td>
+
+      </tr>
+
+      <tr> <!-- Spacer Field -->
+        <td>
+          <img src="/wtv/ROMCache/spacer.gif" width=20 height=15>
+        </td>
+      </tr>
+
+      <tr> <!-- Across Field -->
+        <td valign=top align=center>
+          <table cellspacing=0 cellpadding=0 border=0 width=100% border=0>
+            <tr> <!-- Spacer Between Logo And Across -->
+              <td>
+                <center><font size=+1 effect=emboss color=080808><b>Across</b></font></center>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <center>
+                  <font color=080808>
+                  <textarea disabled noselect bgcolor=#91751A align=center name="across" rows=3
+                  value="" usestyle border=0 cols=17>
+                  </textarea>
+                  </font>
+                </center>
+              </td>
+            </tr>
+          </table>
+          <img src="/wtv/ROMCache/spacer.gif" width=20 height=5>
+        </td>
+      </tr>
+
+      <tr> <!--Down Field -->
+        <td valign=top align=center>
+
+          <table cellspacing=1 cellpadding=0 width=100% border=0>
+            <tr>
+              <td>
+                <center><font size=+1 effect=emboss color=080808><b>Down</b></font></center>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <center>
+                  <font color=080808>
+                  <textarea disabled noselect bgcolor=#91751A type=text name="down"
+                  rows=3 value="" usestyle border=0 cols=17>
+                  </textarea>
+                  </font>
+                </center>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr> <!-- Control Buttons -->
+
+        <td>
+
+          <table border=0 width=100%%>
+            <tr>
+              <td valign=top>
+                <A insetselection HREF="javascript:CorrectPuzzle()"><IMG SRC="../images/CORRECT.GIF"></A>
+              </td>
+              <td valign=top>
+                <A insetselection HREF="javascript:SolvePuzzle()"><IMG SRC="../images/SOLVE.GIF"></A>
+              </td>
+            </tr>
+            <tr>
+              <td colspan=2>
+                <center>
+                  <A insetselection HREF="javascript:SaveGame()"><IMG SRC="../images/SAVE.GIF"></A>
+                </center>
+              </td>
+              <!--
+              <td>
+              <A HREF="wtv-home:/home">
+              <IMG SRC="../images/QUIT.GIF">
+              </A>
+              </td>
+              -->
+            </tr>
+            <!--AD ROW-->
+
+          </table>
+
+        </td>
+      </tr>
+
+    </table>
+  </form>
+  <footerborder></footerborder>
+  <footer>
+    <div class=footerstatus>WebTV Crossword</div><div class=audiostatus><div class="audiogreen"></div>
+  </div>
+</footer>
+
+
+
+  <audio id="applause.mp2"><source src="../../audio/applause.mp2" type="audio/mpeg"  /></audio>
+  <audio id="jollygooba1.mp3"><source src="../../audio/jollygooba1.mp3" type="audio/mpeg"  /></audio>
+</body>
+
+<script language="Javascript">
+
+  LoadGame();
+  show_clue(0,0);
+
+</script>
+
+</html>
