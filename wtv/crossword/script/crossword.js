@@ -150,7 +150,7 @@ function HighlightWord(x, y) {
 
   if (acrossRight > acrossLeft) {
     for (cx = acrossLeft; cx <= acrossRight; cx++) {
-      document.crossword.elements[cx + y * kWidth + kOtherFormElements].style.backgroundColor = '#8888ff';
+      document.crossword.elements[cx + y * kWidth + kOtherFormElements].style.backgroundColor = '#eeeeee';
     }
   }
 
@@ -162,7 +162,7 @@ function HighlightWord(x, y) {
 
   if (downBottom > downTop) {
     for (cy = downTop; cy <= downBottom; cy++) {
-      document.crossword.elements[x + cy * kWidth + kOtherFormElements].style.backgroundColor = '#88ff88';
+      document.crossword.elements[x + cy * kWidth + kOtherFormElements].style.backgroundColor = '#eeeeee';
     }
   }
 
