@@ -1,0 +1,719 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../../wtvstyles.css">
+    <script src="../../scaler.js"></script>
+    <META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">
+  </head>
+
+<title>
+  WebTV WordFind
+</title>
+
+<body style="background-repeat: repeat;" background="../../wordfind/images/BACK.JPG" bgcolor=191919 text=#FFFFFF valign=top hspace=0>
+   <display noscroll>
+      <script language="JavaScript">
+
+	  function GetCell(x, y) {
+	    return (puzzle[y].substring(x, x+1));
+	  }
+
+      function DisplayStatus(iPointsSelected) {
+
+	  if (eval(iPointsSelected) == 0) {
+	    status = 'Select the first letter of the word.';
+	  } else {
+	    status = 'Select the last letter of the word.';
+	  }
+
+      }
+		
+//  ************** Changable settings from HERE
+
+  inpuzzle = new Array(
+	  "+THEC++++++",
+      "++++OSPENT+",
+	  "++++LR++++W",
+	  "++++D+E+++A",
+  	  "++++E++V++S",
+	  "++++S+++E+A",
+	  "++++T++++IS",
+	  "++++WINTERU",
+	  "OCSICNARFNM",
+	  "+++++++++AM",
+	  "+++++++++SE",
+	  "++++++++NIR"
+					  );
+
+     sPuzzleWords = new Array("THE", "COLDEST", "WINTER", "I", "EVER", 
+							  "SPENT", "WAS", "A", "SUMMER", "IN", "SAN",
+							  "FRANCISCO");
+	 iTotalWords = "11";
+	 sGameTitle = "Quote"; 
+		
+	 aStartX = new Array("1", "4", "4", "9", "8", "5", "10", "10", "10", "9", "9");
+	 aStartY = new Array("0", "0", "7", "6", "5", "1", "2",  "5",  "6",  "10", "9");
+	 aStopX  = new Array("3", "4", "9", "9", "5", "9", "10", "10", "10", "8", "6");
+	 aStopY  = new Array("0", "6", "7", "6", "2", "1", "4",  "5",  "10", "10");
+	 aLength = new Array("3", "7", "6", "1", "4", "5", "3",  "1",  "6",  "2");
+
+	 kWidth  = 11;
+	 kHeight = 12;    
+
+	iMinutesLeft = 4;
+	iSecondsLeft = 15;
+
+	kHintLength = 1500; // 1.5sec
+	      LoadImages();
+	
+	  iPointsSelected = 0;
+		  iStartX = 0;  iStopX = 0;
+		  iStaryY = 0;  iStopY = 0;
+
+		  sGameState = "inplay";                
+		  iWordsLeft  = iTotalWords;
+		  
+		  abWordFound = new Array(iTotalWords);
+		  for (i=0; i < iTotalWords; i++)
+		     abWordFound[i] = "false";
+		
+		  kOtherFormElements = 2;
+	  DisplayStatus(iPointsSelected);
+		  sLetterLookup = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+	function RandomLetter() {
+
+	   iLetterASCII = Math.round(Math.random()*25);
+		   return(sLetterLookup.charAt(iLetterASCII));
+
+		}
+
+	function BuildPuzzle() {
+
+	  puzzle = new Array(kHeight);
+
+	  for (y=0; y < kHeight; y++) {
+	     puzzle[y] = "";
+			 for (x=0; x < kWidth; x++) {
+		if (GetInCell(x,y) == "+") {
+		  puzzle[y] = puzzle[y] + RandomLetter();
+				} else {
+				  puzzle[y] = puzzle[y] + GetInCell(x,y);
+				}
+			    
+			 }
+		  }
+
+	}
+
+	function CheckSelection(iStartX, iStartY, iStopX, iStopY) {
+
+	   for (i=0; i < iTotalWords; i++) {
+	      if (eval(iStartX) == eval(aStartX[i]) &&
+				  eval(iStartY) == eval(aStartY[i]) &&
+				  eval(iStopX) == eval(aStopX[i]) &&
+				  eval(iStopY) == eval(aStopY[i]) ||
+		      eval(iStopX) == eval(aStartX[i]) &&
+				  eval(iStopY) == eval(aStartY[i]) &&
+				  eval(iStartX) == eval(aStopX[i]) &&
+				  eval(iStartY) == eval(aStopY[i])) {
+
+				return (i);
+			  }
+	
+		   }
+
+		   return (-1);
+
+		}
+
+                function ComputeSlope(fDiff) {
+                 
+                  var fSlope;
+
+                  if (fDiff == 0) {
+                    fSlope = 0;
+                  } else {
+                    if (fDiff < 0) {
+                      fSlope = -1;
+                    } else {
+                     fSlope = 1;
+                    }
+                  }   
+
+                  return(fSlope); 
+
+                }
+
+		function HintLetter(iStartX, iStartY, iStopX, iStopY, iLetter, bSelected, sSaveImg) {
+	  var fxDiff = eval(eval(iStopX) - eval(iStartX));
+	var 	  fyDiff = eval(eval(iStopY) - eval(iStartY));
+
+         var fySlope = ComputeSlope(fyDiff);
+         var fxSlope = ComputeSlope(fxDiff);
+
+		  var iCurrX = eval(eval(iStartX)+eval(iLetter)*eval(fxSlope));  
+		  var iCurrY = eval(eval(iStartY)+eval(iLetter)*eval(fySlope));  
+
+		  if (bSelected == "true") {
+            var sSaveImg = document.images[eval(iCurrX)+eval(iCurrY*kWidth)+eval(kOtherFormElements)].src;
+		    document.images[eval(iCurrX)+eval(iCurrY*kWidth)+eval(kOtherFormElements)].src = "../../wordfind/images/"+GetCell(iCurrX, iCurrY)+"ON.JPG";
+			return (sSaveImg);
+	      } else {
+		    document.images[eval(iCurrX)+eval(iCurrY*kWidth)+eval(kOtherFormElements)].src = sSaveImg;
+		  }
+
+		}
+
+	function HighlightSelection(iStartX, iStartY, iStopX, iStopY) {
+
+	  var fxDiff = eval(iStopX - iStartX);
+ 	  var fyDiff = eval(iStopY - iStartY);
+
+          var fxSlope = ComputeSlope(fxDiff);
+          var fySlope = ComputeSlope(fyDiff);
+
+	  iCurrX = iStartX;  iCurrY = iStartY;
+
+	  while ( (iCurrX != iStopX) || (iCurrY != iStopY) ) {
+	  
+		   alert("first"+GetCell(iCurrX, iCurrY)+"ON.JPG");
+		    document.images[eval(iCurrX)+eval(iCurrY*kWidth)+eval(kOtherFormElements)].src = "../../wordfind/images/"+GetCell(iCurrX, iCurrY)+"ON.JPG";
+	    
+		    iCurrX = eval(eval(iCurrX) + eval(fxSlope));
+			iCurrY = eval(eval(iCurrY) + eval(fySlope));
+				      
+	  }
+
+		  alert("2nd"+GetCell(iCurrX, iCurrY)+"ON.JPG");
+	      document.images[eval(iCurrX)+eval(iCurrY*kWidth)+eval(kOtherFormElements)].src = "../../wordfind/images/"+GetCell(iCurrX, iCurrY)+"ON.JPG";
+	    
+		}
+
+        function PlaySound(sound) {
+
+          if (sound == null) {  
+            return;
+          } else {
+            sound.play(false);
+          }
+
+        }
+	    function SelectEndpoint(x,y) {
+
+		  if (sGameState != "inplay")
+		    return;
+
+		  if (iPointsSelected == 0) {
+	    iStartX = x; iStartY = y;
+		    iPointsSelected = 1;
+			DisplayStatus(iPointsSelected);
+			sSelectEndOld = HintLetter(x, y, x, y, 0, "true", "");
+			return;
+		  }
+
+	  iStopX = x; iStopY = y;
+	  if (iStopX == iStartX && iStopY == iStartY) {
+            iPointsSelected = 0;
+	    DisplayStatus(iPointsSelected);
+            HintLetter(iStopX, iStopY, iStopX, iStopY, 0, "false", sSelectEndOld);
+            return;
+          }
+
+	  iWordSelected = CheckSelection(iStartX, iStartY, iStopX, iStopY);
+	  if (eval(iWordSelected) != -1 && abWordFound[eval(iWordSelected)] != "true") {
+	    abWordFound[eval(iWordSelected)] = "true";
+	    HighlightSelection(iStartX, iStartY, iStopX, iStopY);
+	    ComputeWordsLeft();
+            UpdateWordsLeft();
+	    DecrementTimeLeft(-20);
+  	    PlaySound(document.bell);
+	  } else {
+	    HintLetter(iStartX, iStartY, iStopX, iStopY, 0, "false", sSelectEndOld);
+	    DecrementTimeLeft(5);
+  	    PlaySound(document.buzzer);
+	  } 
+
+		  iPointsSelected = 0;
+		  DisplayStatus(iPointsSelected);
+		
+		}
+
+		function DecrementTimeLeft(iSeconds) {
+
+	  if (sGameState != "inplay")
+	    return ("false");
+
+	  iSecondsLeft = eval(eval(iSecondsLeft) - eval(iSeconds));
+
+	  while (iSecondsLeft >= 60) {
+            iSecondsLeft -= 60;
+            iMinutesLeft = eval(eval(iMinutesLeft) + 1);
+          }
+
+	  if (iSecondsLeft < 0) {
+
+	    iMinutesLeft = eval(eval(iMinutesLeft) - 1);
+
+			if (iMinutesLeft < 0) {
+	    
+			  iMinutesLeft = 0;
+			  iSecondsLeft = 0;     
+			  sGameState = "lost";
+		          window.location="lose.tmpl";
+			  return("false");
+			  
+			} else {
+	      
+			  iSecondsLeft = eval(eval(iSecondsLeft) + 60);
+	
+			}
+
+		  }
+
+	  UpdateTimeLeft();
+	      return("true");
+
+		}
+
+		function CallbackTimeLeft() {
+ 
+	  if (DecrementTimeLeft(5) == "true") {  
+		window.setTimeout("CallbackTimeLeft()", 5000);
+	      } 
+
+		}
+
+	function GetDigit(iNumber, iDigit) {
+
+	  iNumber = "" + iNumber;  // Convert to "String" if it isn't already...
+
+	  while (iNumber.length < 2) {
+	    iNumber = "0" + iNumber;
+	  }
+
+		  return(iNumber.charAt(iDigit));
+
+		}
+
+       
+			
+
+		function GetInCell(x, y) {
+	 
+		  return (inpuzzle[y].substring(x, x+1));
+
+	}
+
+	function ComputeWordsLeft() {
+
+	  iWordsLeft = 0;
+	  for (i=0; i < iTotalWords; i++) {
+	     if (abWordFound[eval(i)] == "false")
+	       iWordsLeft++;
+	  }
+
+	  if (eval(iWordsLeft) == 0) {
+	    
+	    sGameState = "won";
+	    PlaySound(document.applause);
+	    window.location="win.tmpl";
+			
+	  }
+
+	}
+
+	function UpdateWordsLeft() {
+
+	  if (eval(iWordsLeft) >= 10) {
+	    document.twords.src = "../../wordfind/images/"+GetDigit(iWordsLeft, 0)+".gif";         
+	      } else {
+		    document.twords.src = "/ROMCache/spacer.gif";
+		  }
+			   
+	      document.owords.src = "../../wordfind/images/"+GetDigit(iWordsLeft, 1)+".gif";         
+
+	}
+
+    function LoadDigitImage(iDigit) {
+
+	  var image = new Image();
+	  image.src = "../../wordfind/images/"+iDigit+".gif";
+
+	}  
+
+		function LoadImages() {
+
+		  image0 = new Image();
+	  image0.src = "../../wordfind/images/0.gif";
+
+		  image1 = new Image();
+	  image1.src = "../../wordfind/images/1.gif";
+
+	      image2 = new Image();
+	  image2.src = "../../wordfind/images/2.gif";
+
+		  image3 = new Image();
+	  image3.src = "../../wordfind/images/3.gif";
+
+		  image4 = new Image();
+	  image4.src = "../../wordfind/images/4.gif";
+
+		  image5 = new Image();
+	  image5.src = "../../wordfind/images/5.gif";
+
+	      image6 = new Image();
+	  image6.src = "../../wordfind/images/6.gif";
+
+		  image7 = new Image();
+	  image7.src = "../../wordfind/images/7.gif";
+
+	      image8 = new Image();
+	  image8.src = "../../wordfind/images/8.gif";
+
+	  imageAON = new Image();
+	  imageAON.src = "../../wordfind/images/AON.JPG";
+	  imageBON = new Image();
+	  imageBON.src = "../../wordfind/images/BON.JPG";
+	  imageCON = new Image();
+	  imageCON.src = "../../wordfind/images/CON.JPG";
+	  imageDON = new Image();
+	  imageDON.src = "../../wordfind/images/DON.JPG";
+	  imageEON = new Image();
+	  imageEON.src = "../../wordfind/images/EON.JPG";
+	  imageFON = new Image();
+	  imageFON.src = "../../wordfind/images/FON.JPG";
+	  imageGON = new Image();
+	  imageGON.src = "../../wordfind/images/GON.JPG";
+	  imageHON = new Image();
+	  imageHON.src = "../../wordfind/images/HON.JPG";
+	  imageION = new Image();
+	  imageION.src = "../../wordfind/images/ION.JPG";
+	  imageJON = new Image();
+	  imageJON.src = "../../wordfind/images/JON.JPG";
+	  imageKON = new Image();
+	  imageKON.src = "../../wordfind/images/KON.JPG";
+	  imageLON = new Image();
+	  imageLON.src = "../../wordfind/images/LON.JPG";
+	  imageMON = new Image();
+	  imageMON.src = "../../wordfind/images/MON.JPG";
+	  imageNON = new Image();
+	  imageNON.src = "../../wordfind/images/NON.JPG";
+	  imageOON = new Image();
+	  imageOON.src = "../../wordfind/images/OON.JPG";
+	  imagePON = new Image();
+	  imagePON.src = "../../wordfind/images/PON.JPG";
+	  imageQON = new Image();
+	  imageQON.src = "../../wordfind/images/QON.JPG";
+	  imageRON = new Image();
+	  imageRON.src = "../../wordfind/images/RON.JPG";
+	  imageSON = new Image();
+	  imageSON.src = "../../wordfind/images/SON.JPG";
+	  imageTON = new Image();
+	  imageTON.src = "../../wordfind/images/TON.JPG";
+	  imageUON = new Image();
+	  imageUON.src = "../../wordfind/images/UON.JPG";
+	  imageVON = new Image();
+	  imageVON.src = "../../wordfind/images/VON.JPG";
+	  imageWON = new Image();
+	  imageWON.src = "../../wordfind/images/WON.JPG";
+	  imageXON = new Image();
+	  imageXON.src = "../../wordfind/images/XON.JPG";
+	  imageYON = new Image();
+	  imageYON.src = "../../wordfind/images/YON.JPG";
+	  imageZON = new Image();
+	  imageZON.src = "../../wordfind/images/ZON.JPG";
+			   
+	}
+
+	function UpdateTimeLeft() { 
+          document.tenstime.src="../../wordfind/images/"+GetDigit(iSecondsLeft,0)+".gif";
+          document.onestime.src="../../wordfind/images/"+GetDigit(iSecondsLeft,1)+".gif";
+          document.minutes.src="../../wordfind/images/"+iMinutesLeft+".gif";
+        }
+
+        function RenderCell(x, y) { 
+
+	  letter = GetCell(x,y);
+
+	  document.write("<td abswidth=20 width=20 absheight=20 height=20 bgcolor=666666 align=center valign=bottom>");
+	  document.write("  <a selected href=\"javascript:SelectEndpoint("+x+","+y+")\"><img src=../../wordfind/images/"+letter+"OFF.JPG></a>");
+	  document.write("</td>");
+
+	}
+
+	    function RenderRow(y) {
+
+	  document.write("<tr>");
+
+	  for (x=0; x < kWidth; x++) {
+	     RenderCell(x,y);
+	  }
+
+	  document.write("</tr>");
+
+	}
+
+	function RenderPuzzle() {
+	 
+	  document.write("<table border=0 cellspacing=3 cellpadding=0 bgcolor=222222>");
+
+	  for (y=0; y < kHeight; y++) {
+	     RenderRow(y);
+	  }
+
+ 	       document.write("</table>");
+
+	     }
+
+		function Restart() {
+
+		  location.reload();
+
+		}
+
+		function Quit() {
+
+		  alert("Quit");
+
+		}
+
+		function SolvePuzzle() {
+
+		  for (i=0; i < iTotalWords; i++) {
+		  
+		     var startx = eval(aStartX[i]);
+		     var starty = eval(aStartY[i]);
+		     var stopx  = eval(aStopX[i]);
+		     var stopy  = eval(aStopY[i]);      
+		  
+		     abWordFound[i] = "true";
+		     HighlightSelection(startx,starty,stopx,stopy);
+		     
+		  }
+
+		  sGameState = "solved";
+		  iWordsLeft = 0;
+		  UpdateWordsLeft();
+
+		}
+
+		function Highlight1LengthWords() {
+
+		  for (i=0; i < iTotalWords; i++) {
+		     var startx = eval(aStartX[i]);
+			 if (aLength[i] == 1) {
+               HighlightSelection(aStartX[i], aStartY[i], aStopX[i], aStopY[i]);
+               abWordFound[i] = "true";
+             }
+          }
+
+		}
+
+		function ShowHint() {
+
+		  // Find Answer to Hint
+
+		  if (sGameState != "inplay")
+		    return;
+
+		  for (iHintAnswer=0; 
+		       (abWordFound[eval(iHintAnswer)] != "false") && 
+		       (iHintAnswer < iTotalWords); 
+		       iHintAnswer++) { }
+
+		  if (iHintAnswer == iTotalWords)
+		    return;
+
+		  // Find Letter to Hint
+
+		  iHintLetter = Math.round(Math.random()*(
+					     eval(aLength[eval(iHintAnswer)])-1
+							 )
+					  );
+				     
+		  // Invert Letter
+
+		
+		  PlaySound(document.swoosh);
+		  sHintOld = HintLetter(aStartX[iHintAnswer], aStartY[iHintAnswer], 
+			     aStopX[iHintAnswer], aStopY[iHintAnswer], iHintLetter, "true", "");
+
+		  // Set Timer to Reinvert.
+	  
+		  sCommand = "HintLetter("+aStartX[iHintAnswer]+","+aStartY[iHintAnswer]+","+aStopX[iHintAnswer]+","+aStopY[iHintAnswer]+","+iHintLetter+",\"false\",\""+sHintOld+"\")";
+	  window.setTimeout(sCommand, kHintLength);
+
+		  DecrementTimeLeft(5);
+		  UpdateTimeLeft();
+		 
+	
+		}
+
+      </script>     
+      
+      <EMBED SRC="sounds/bell.aiff" HIDDEN=TRUE CONTROLS=console
+       VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="bell"
+       MASTERSOUND> 
+
+      <EMBED SRC="sounds/buzzer.aiff" HIDDEN=TRUE CONTROLS=console
+       VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="buzzer"
+       MASTERSOUND> 
+
+	    <table abswidth=174 cellpadding=0 cellspacing=0 border=0 width=100% valign=top>
+	    <tr>
+	      
+			  <td abswidth=174 align=center> <A nocolor href="">
+         <img src="/ROMCache/spacer.gif" width=5 height=1>
+		 <img src="../../wordfind/images/LOGO.GIF">
+</a>
+		 <br>
+	      </td>
+
+			  <td abswidth=370 rowspan=5 valign=top align=center>       
+			    <center>             
+			<SCRIPT LANGAUGE="Javascript">
+				  BuildPuzzle();
+			  RenderPuzzle();
+			</SCRIPT>
+				</center>
+			  </td>
+			       
+		    </tr>
+
+
+	    <tr> <!-- Wordfind Title -->         
+			  <td align=center>             
+			    <center>                   
+
+		   	<font size="+3">
+
+	 		   Theme:
+
+			   <SCRIPT LANGAUGE="Javascript">
+	 		     document.write(sGameTitle);
+			   </SCRIPT>
+
+		   	</font>
+			
+	</center>
+			  </td>
+			</tr>
+
+			<tr> <!-- Words Left -->
+	      <td valign=top align=center>
+			    <center>
+			      <table cellspacing=0 cellpadding=0 border=0>
+			        <tr>
+			          <td align=left valign=center>
+				     <img border=0 width=13 height=26 src="/ROMCache/spacer.gif" name="twords">
+				     <img border=0 width=13 height=26 src="/ROMCache/spacer.gif" name="owords">
+	     			     <img border=0 width=6  height=26 src="/ROMCache/spacer.gif">
+			
+			          </td>
+                                  <td align=right valign=center>
+				    <font size=3 color=#FFFFFF>
+			    	       Words Remain
+			    	    </font>
+			          </td>
+			        </tr>
+			      </table>
+			    </center>
+			  </td> 
+			</tr>
+
+			
+			<tr>
+			   <td>
+			   <center>
+				<a nocolor>
+				  <img width=26 height=53 src="../../wordfind/images/4.gif" name="minutes">
+				  <img width=14 height=53 src="../../wordfind/images/COLON.GIF" name="Colon">
+				  <img width=26 height=53 src="../../wordfind/images/1.gif" name="tenstime">
+				  <img width=26 height=53 src="../../wordfind/images/5.gif" name="onestime">
+						</a>	   
+			   </center>
+	       </td>
+			</tr>
+
+		    <tr> <!-- Control Buttons -->
+
+			  <td>
+			  <font color=ffaa44>
+	      <shadow>
+		  
+	      <table border=0 width=100%>
+
+<tr> 
+
+				  <td>
+				    <img src="/ROMCache/spacer.gif" width=2 height=5>
+			   	  </td>
+
+				  <td>
+		    <A name="hint" HREF="javascript:ShowHint()">
+		       <IMG SRC="../../wordfind/images/HINT.GIF">
+                    </A>
+		         	  </td>
+				  <td>
+		     <A name="solve" HREF="javascript:SolvePuzzle()">
+		       <IMG SRC="../../wordfind/images/SOLVE.GIF">
+                    </A>	  
+				  </td>
+				</tr>
+				
+				<tr>
+
+  				  <td>
+				    <img src="/ROMCache/spacer.gif" width=2 height=5>
+			   	  </td>
+
+				  <td>
+   		    <A name="restart" HREF="javascript:Restart()">
+		       <IMG SRC="../../wordfind/images/RESTART.GIF">
+                    </A>	  
+		
+		  			   
+				  </td>
+				  <td>
+
+ 		    <A name="quit" HREF="javascript:Quit()">
+		       <IMG SRC="../../wordfind/images/QUIT.GIF">
+                    </A>	  
+		
+		  	  </td>
+				</tr>
+			  </table>
+
+			  </shadow>
+	      </font>
+	    
+			  </td>
+			</tr>
+			<tr>
+			  <td colspan=2>
+				   <image src="/ROMCache/spacer.gif" border=1 height=14 width=5>
+              </td>
+            </tr>
+			<tr>
+			  <td abswidth=170>&nbsp;</td>
+			  <td abswidth=374 colspan=2 align=right>
+			       <!-- <INSERT AD width=394 height=71> -->
+             <center>
+               <img src="/ROMCache/spacer.gif" border=1 width=394 height=71>
+             </center>
+			  </td>
+			</tr>
+			      
+	</table>
+  
+
+	<script language="Javascript">
+
+	  Highlight1LengthWords();
+	  UpdateWordsLeft();
+	  window.setTimeout("CallbackTimeLeft()", 5000);
+	
+	</script>
+
+</body>
+</html>

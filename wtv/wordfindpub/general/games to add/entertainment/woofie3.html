@@ -1,0 +1,630 @@
+<html>
+<head>
+  <link rel="stylesheet" href="../wtvstyles.css">
+    <script src="../../scaler.js"></script>
+    <META NAME="Author" CONTENT="(C) 1997 Louis F. Roehrs">
+
+  <title>Loading Game...jj</title>
+<script language="JavaScript">
+
+	function GetCell(x,y) {{
+		var xstartGetCell = x;
+		var xstopGetCell  = x+1; 
+		woofie="st:" + xstartGetCell + " stp:" + xstopGetCell
+	//	alert(woofie);
+		return (puzzle[y].substring(xstartGetCell, xstopGetCell));
+	}
+
+	function DisplayStatus(iPointsSelected) {{
+
+		if (iPointsSelected == 0) {{
+			status = "Select the first letter of the word.";
+		} else {{
+			status = "Select the last letter of the word.";
+		}
+	}
+		
+//  ************** Changable settings from HERE
+
+	inpuzzle = new Array("++++++++++++","++++++++++++","t++++++++d++","+h+++leado++","++e+e+++eg++","+v++htonr+++","+i++t+++a+++","+e++++++u+++","+w+++++++o++","never+++++y+","++++changesf","+++++++++++i");
+
+	sPuzzleWords = new Array("the","view","never","changes","if","you","are","not","the","lead","dog");
+	iTotalWords = "11";
+	sGameTitle = "Top Dog"; 
+		
+	aStartX = new Array("0","1","0","4","11","10","8","7","4","5","9");
+	aStartY = new Array("2","5","9","10","11","9","6","5","6","3","2");
+	aStopX  = new Array("2","1","4","10","11","8","8","5","4","8","9");
+	aStopY  = new Array("4","8","9","10","10","7","4","5","4","3","4");
+	aLength = new Array("3","4","5","7","2","3","3","3","3","4","3");
+
+	kWidth  = 12;
+	kHeight = 12;    
+
+
+//  ************** Changable settings to HERE
+	sGameState="preplay";
+	iMinutesLeft = 4;
+	iSecondsLeft = 15;
+	kOtherFormElements = 17;
+	kHintLength = 1500; // 1.5sec
+	var sImagePath = "../images/";
+	LoadImages();
+	
+
+	iPointsSelected = 0;
+	iStartX = 0;  iStopX = 0;
+	iStaryY = 0;  iStopY = 0;
+              
+	iWordsLeft  = iTotalWords;
+		  
+	abWordFound = new Array(iTotalWords);
+	for (i=0; i < iTotalWords; i++)
+		abWordFound[i] = "false";
+	
+	DisplayStatus(iPointsSelected);
+	sLetterLookup = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	
+	function RandomLetter() {{
+		iLetterASCII = Math.round(Math.random()*25);
+		return(sLetterLookup.charAt(iLetterASCII));
+	}
+
+	function BuildPuzzle() {{
+
+		puzzle = new Array(kHeight);
+	
+		for (y=0; y < kHeight; y++) {{
+			puzzle[y] = "";
+				for (x=0; x < kWidth; x++) {{
+					if (GetInCell(x,y) == "+") {{
+						puzzle[y] = puzzle[y] + RandomLetter();
+					} else {{
+						puzzle[y] = puzzle[y] + GetInCell(x,y);
+				}			
+			}
+		}
+
+	}
+
+	function CheckSelection(iStartX, iStartY, iStopX, iStopY) {{
+		var i=0;
+		for (i=0; i < iTotalWords; i++) {{
+	      if (iStartX == eval(aStartX[i]) &&
+				iStartY == eval(aStartY[i]) &&
+				iStopX == eval(aStopX[i]) &&
+				iStopY == eval(aStopY[i]) ||
+		      	iStopX == eval(aStartX[i]) &&
+				iStopY == eval(aStartY[i]) &&
+				iStartX == eval(aStopX[i]) &&
+				iStartY == eval(aStopY[i])) {{
+
+				return (i);
+			}
+	
+		}
+		return (-1);
+		
+	}
+	
+	function StartLevel() {{
+		sGameState="inplay";
+		window.setTimeout("CallbackTimeLeft()", 5000);
+	}
+
+	function ComputeSlope(fDiff) {{
+                 
+		var fSlope;
+	
+		if (fDiff == 0) {{
+			fSlope = 0;
+	 	} else {{
+			if (fDiff < 0) {{
+	 			fSlope = -1;
+			} else {{
+				fSlope = 1;
+			}
+		}   
+	
+		return(fSlope); 
+	}
+
+	function pos(x,y)  {{
+		var position = x + (y * kWidth) +  kOtherFormElements;
+		return (position);
+	}
+	
+	function HintLetter(iStartX, iStartY, iStopX, iStopY, iLetter, bSelected, sSaveImg) {{
+		var fxDiff = iStopX - iStartX;
+		var fyDiff = iStopY - iStartY;
+
+		var fySlope = ComputeSlope(fyDiff);
+		var fxSlope = ComputeSlope(fxDiff);
+
+		var iCurrX = iStartX + iLetter * fxSlope;  
+		var iCurrY = iStartY + iLetter * fySlope;  
+		var position = pos(iCurrX,iCurrY);
+		if (bSelected == "true") {{
+
+			var sSaveImg = document.images[position].src;
+			document.images[position].src = sImagePath + GetCell(iCurrX, iCurrY)+"ONN.JPG";
+			return (sSaveImg);
+		} else {{
+			document.images[position].src = sSaveImg;
+		}
+		return (sSaveImg);
+	}
+
+	function HighlightSelection(iStartX, iStartY, iStopX, iStopY) {{
+		var position = 0;
+		var fxDiff = iStopX - iStartX;
+		var fyDiff = iStopY - iStartY;
+
+		var fxSlope = ComputeSlope(fxDiff);
+		var fySlope = ComputeSlope(fyDiff);
+
+		iCurrX = iStartX;
+		iCurrY = iStartY;
+
+		while ( (iCurrX != iStopX) || (iCurrY != iStopY) ) {{
+		position = pos(iCurrX,iCurrY);
+
+//	   alert("first"+GetCell(iCurrX, iCurrY)+"ONN.JPG");
+		document.images[ position ].src = sImagePath+GetCell(iCurrX, iCurrY)+"ONN.JPG";
+	    
+		iCurrX = iCurrX + fxSlope;
+		iCurrY = iCurrY + fySlope;
+				      
+	}
+		position = pos(iCurrX,iCurrY);
+//		  alert("2nd"+GetCell(iCurrX, iCurrY)+"ONN.JPG");
+	      document.images[position].src = sImagePath+GetCell(iCurrX, iCurrY)+"ONN.JPG";
+	    
+		}
+
+        function PlaySound(sound) {{
+
+          if (sound == null) {{  
+            return;
+          } else {{
+            sound.play(false);
+          }
+
+        }
+	function SelectEndpoint(x,y) {{
+
+		if (sGameState == "preplay") {{
+			StartLevel();
+		}
+
+		if (sGameState != "inplay")
+			return;
+			
+		// alert("game inplay");
+
+
+
+		if (iPointsSelected == 0) {{
+			iStartX = x;
+			iStartY = y;
+			iPointsSelected = 1;
+			// alert("first point");
+			DisplayStatus(iPointsSelected);
+			// alert("display status ok");
+			sSelectEndOld = HintLetter(x, y, x, y, 0, "true", "");
+			// alert("hint letters ok");
+			return;
+		}
+
+		iStopX = x;
+		iStopY = y;
+		if ((iStopX == iStartX) && (iStopY == iStartY)) {{
+			iPointsSelected = 0;
+			DisplayStatus(iPointsSelected);
+			HintLetter(iStopX, iStopY, iStopX, iStopY, 0, "false", sSelectEndOld);
+			return;
+		}
+		// alert("before check seleciton");
+		iWordSelected = CheckSelection(iStartX, iStartY, iStopX, iStopY);
+		// alert(iWordSelected);
+		if ((iWordSelected != -1) && (abWordFound[iWordSelected] != "true")) {{
+			abWordFound[iWordSelected] = "true";
+			// alert(10);
+			HighlightSelection(iStartX, iStartY, iStopX, iStopY);
+			
+			ComputeWordsLeft();
+
+			UpdateWordsLeft();
+
+			DecrementTimeLeft(-20);
+
+			PlaySound(document.bell);
+		} else {{
+
+			HintLetter(iStartX, iStartY, iStopX, iStopY, 0, "false", sSelectEndOld);
+
+			DecrementTimeLeft(5);
+
+			PlaySound(document.buzzer);
+		} 
+		iPointsSelected = 0;
+		DisplayStatus(iPointsSelected);
+
+	}
+
+	function DecrementTimeLeft(iSeconds) {{
+
+	  if (sGameState != "inplay")
+	    return ("false");
+
+	  iSecondsLeft = iSecondsLeft - iSeconds;
+
+	  while (iSecondsLeft >= 60) {{
+            iSecondsLeft -= 60;
+            iMinutesLeft = iMinutesLeft + 1;
+          }
+
+	  if (iSecondsLeft < 0) {{
+
+	    iMinutesLeft = iMinutesLeft - 1;
+
+			if (iMinutesLeft < 0) {{
+	    
+			  iMinutesLeft = 0;
+			  iSecondsLeft = 0;     
+			  sGameState = "lost";
+		          window.location="../lose.tmpl";
+			  return("false");
+			  
+			} else {{
+	      
+			  iSecondsLeft = iSecondsLeft + 60;
+	
+			}
+
+		  }
+
+	  UpdateTimeLeft();
+	      return("true");
+
+		}
+
+		function CallbackTimeLeft() {{
+ 
+	  if (DecrementTimeLeft(5) == "true") {{  
+		window.setTimeout("CallbackTimeLeft()", 5000);
+	      } 
+
+		}
+
+	function GetDigit(iNumber, iDigit) {{
+
+	  iNumber = "" + iNumber;  // Convert to "String" if it isn't already...
+
+	  while (iNumber.length < 2) {{
+	    iNumber = "0" + iNumber;
+	  }
+
+		  return(iNumber.charAt(iDigit));
+
+		}
+
+       
+			
+
+	function GetInCell(x, y) {{
+		var end = x+1;
+		letter = inpuzzle[y].substring(x, end)
+		return (letter.toUpperCase());
+	}
+
+	function ComputeWordsLeft() {{
+
+	  iWordsLeft = 0;
+	  for (i=0; i < iTotalWords; i++) {{
+	     if (abWordFound[i] == "false")
+	       iWordsLeft++;
+	  }
+
+	  if (eval(iWordsLeft) == 0) {{
+	    
+	    sGameState = "won";
+	    PlaySound(document.applause);
+	    window.location="../win.tmpl";
+			
+	  }
+
+	}
+
+	function UpdateWordsLeft() {{
+
+	  if (eval(iWordsLeft) >= 10) {{
+	    document.twords.src = sImagePath+GetDigit(iWordsLeft, 0)+".gif";         
+	      } else {{
+		    document.twords.src = "/ROMCache/spacer.gif";
+		  }
+			   
+	      document.owords.src = sImagePath+GetDigit(iWordsLeft, 1)+".gif";         
+
+	}
+
+    function LoadDigitImage(iDigit) {{
+
+	  var image = new Image();
+	  image.src = sImagePath+iDigit+".gif";
+
+	}  
+
+	function LoadImages() {{
+
+		image0 = new Image();
+		image0.src = sImagePath + "0.gif";
+
+
+		  image1 = new Image();
+	  image1.src = sImagePath+"1.gif";
+
+	      image2 = new Image();
+	  image2.src = sImagePath+"2.gif";
+
+		  image3 = new Image();
+	  image3.src = sImagePath+"3.gif";
+
+		  image4 = new Image();
+	  image4.src = sImagePath+"4.gif";
+
+		  image5 = new Image();
+	  image5.src = sImagePath+"5.gif";
+
+	      image6 = new Image();
+	  image6.src = sImagePath+"6.gif";
+
+		  image7 = new Image();
+	  image7.src = sImagePath+"7.gif";
+
+	      image8 = new Image();
+	  image8.src = sImagePath+"8.gif";
+
+	  imageAON = new Image();
+	  imageAON.src = sImagePath+"AONN.JPG";
+	  imageBON = new Image();
+	  imageBON.src = sImagePath+"BONN.JPG";
+	  imageCON = new Image();
+	  imageCON.src = sImagePath+"CONN.JPG";
+	  imageDON = new Image();
+	  imageDON.src = sImagePath+"DONN.JPG";
+	  imageEON = new Image();
+	  imageEON.src = sImagePath+"EONN.JPG";
+	  imageFON = new Image();
+	  imageFON.src = sImagePath+"FONN.JPG";
+	  imageGON = new Image();
+	  imageGON.src = sImagePath+"GONN.JPG";
+	  imageHON = new Image();
+	  imageHON.src = sImagePath+"HONN.JPG";
+	  imageION = new Image();
+	  imageION.src = sImagePath+"IONN.JPG";
+	  imageJON = new Image();
+	  imageJON.src = sImagePath+"JONN.JPG";
+	  imageKON = new Image();
+	  imageKON.src = sImagePath+"KONN.JPG";
+	  imageLON = new Image();
+	  imageLON.src = sImagePath+"LONN.JPG";
+	  imageMON = new Image();
+	  imageMON.src = sImagePath+"MONN.JPG";
+	  imageNON = new Image();
+	  imageNON.src = sImagePath+"NONN.JPG";
+	  imageOON = new Image();
+	  imageOON.src = sImagePath+"OONN.JPG";
+	  imagePON = new Image();
+	  imagePON.src = sImagePath+"PONN.JPG";
+	  imageQON = new Image();
+	  imageQON.src = sImagePath+"QONN.JPG";
+	  imageRON = new Image();
+	  imageRON.src = sImagePath+"RONN.JPG";
+	  imageSON = new Image();
+	  imageSON.src = sImagePath+"SONN.JPG";
+	  imageTON = new Image();
+	  imageTON.src = sImagePath+"TONN.JPG";
+	  imageUON = new Image();
+	  imageUON.src = sImagePath+"UONN.JPG";
+	  imageVON = new Image();
+	  imageVON.src = sImagePath+"VONN.JPG";
+	  imageWON = new Image();
+	  imageWON.src = sImagePath+"WONN.JPG";
+	  imageXON = new Image();
+	  imageXON.src = sImagePath+"XONN.JPG";
+	  imageYON = new Image();
+	  imageYON.src = sImagePath+"YONN.JPG";
+	  imageZON = new Image();
+	  imageZON.src = sImagePath+"ZONN.JPG";
+		status="WebTV WordFinder";
+	}
+
+	function UpdateTimeLeft() {{ 
+          document.tenstime.src=sImagePath+GetDigit(iSecondsLeft,0)+".gif";
+          document.onestime.src=sImagePath+GetDigit(iSecondsLeft,1)+".gif";
+          document.minutes.src=sImagePath+iMinutesLeft+".gif";
+        }
+
+	function RenderCell(x, y) {{ 
+
+		letter = GetCell(x,y);
+
+		document.write("<td abswidth=20 width=20 absheight=20 height=20 bgcolor=666666 align=center valign=bottom>");
+		document.write("  <a selected href=\"javascript:SelectEndpoint("+x+","+y+")\"><img src="+sImagePath+letter+"OFF.JPG></a>");
+		document.write("</td>");
+}
+
+	    function RenderRow(y) {{
+
+	  document.write("<tr>");
+
+	  for (x=0; x < kWidth; x++) {{
+	     RenderCell(x,y);
+	  }
+
+	  document.write("</tr>");
+
+	}
+
+	function RenderPuzzle() {{
+	 
+	  document.write("<table border=0 cellspacing=3 cellpadding=0 bgcolor=222222>");
+
+	  for (y=0; y < kHeight; y++) {{
+	     RenderRow(y);
+	  }
+
+ 	       document.write("</table>");
+
+	     }
+
+		function Restart() {{
+		  location.reload();
+		}
+
+		function Quit() {{
+			window.location="wtv-home:/home";
+		}
+
+		function SolvePuzzle() {{
+
+		  for (i=0; i < iTotalWords; i++) {{
+		  
+		     var startx = eval(aStartX[i]);
+		     var starty = eval(aStartY[i]);
+		     var stopx  = eval(aStopX[i]);
+		     var stopy  = eval(aStopY[i]);      
+		  
+		     abWordFound[i] = "true";
+		     HighlightSelection(startx,starty,stopx,stopy);
+		     
+		  }
+
+		  sGameState = "solved";
+		  iWordsLeft = 0;
+		  UpdateWordsLeft();
+
+		}
+
+		function Highlight1LengthWords() {{
+
+		  for (i=0; i < iTotalWords; i++) {{
+		     var startx = aStartX[i];
+			 if (aLength[i] == 1) {{
+               HighlightSelection(eval(aStartX[i]), eval(aStartY[i]), eval(aStopX[i]), eval(aStopY[i]));
+               abWordFound[i] = "true";
+             }
+          }
+
+		}
+
+		function ShowHint() {{
+			var iHintAnswer=0;
+			var iHintLetter=0;
+		  // Find Answer to Hint
+
+		  if (sGameState != "inplay")
+		    return;
+
+		  for (iHintAnswer=0;(abWordFound[iHintAnswer] != "false") && (iHintAnswer < iTotalWords); iHintAnswer++ ) {{ }
+
+		  if (iHintAnswer == iTotalWords)
+		    return;
+
+		  // Find Letter to Hint
+
+		  iHintLetter = Math.round(Math.random()*(aLength[iHintAnswer]-1));
+				     
+		  // Invert Letter
+
+		
+		  //  PlaySound(document.swoosh);
+		  sHintOld = HintLetter(eval(aStartX[iHintAnswer]), eval(aStartY[iHintAnswer]),eval(aStopX[iHintAnswer]),eval(aStopY[iHintAnswer]), iHintLetter, "true", "");
+
+		  // Set Timer to Reinvert.
+	  
+		  sCommand = "HintLetter(" + eval(aStartX[iHintAnswer]) + "," + eval(aStartY[iHintAnswer]) + "," + eval(aStopX[iHintAnswer]) + "," + eval(aStopY[iHintAnswer]) + "," + iHintLetter + ",\"false\",\"" + sHintOld + "\")";
+	  window.setTimeout(sCommand, kHintLength);
+
+		  DecrementTimeLeft(5);
+		  UpdateTimeLeft();
+		 
+	
+		}
+
+      </script>     
+
+</head>
+<body fontsize=medium background="../images/back166.gif" bgcolor=464474 text=#FFFFFF valign=top hspace=0 vspace=0>
+   <display noscroll>
+      
+      <EMBED SRC="../sounds/bell.aiff" HIDDEN=TRUE CONTROLS=console
+       VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="bell"
+       MASTERSOUND> 
+
+      <EMBED SRC="../sounds/buzzer.aiff" HIDDEN=TRUE CONTROLS=console
+       VOLUME=100 LOOP=FALSE AUTOSTART=FALSE NAME="buzzer"
+       MASTERSOUND> 
+
+	  <table cellpadding=0 cellspacing=0 border=0 width=100%>
+	    <tr>
+	      
+		   <td abswidth=166 absheight=384 bgcolor=53001b absheight=313 rowspan=2 align=center valign=top>
+		   <img src="/ROMCache/spacer.gif" width=5 height=8><BR>
+		   <A nocolor href=""><img src="../images/LOGO.GIF"></a><br>
+		   <img src="/ROMCache/spacer.gif" width=5 height=8><BR>
+
+			<SCRIPT LANGAUGE="Javascript">
+	 		     document.write("<font size='+2'>Theme:<BR>" + sGameTitle + "</font>");
+			</SCRIPT>
+			<BR>
+			<img src="/ROMCache/spacer.gif" width=2 height=10><BR>
+			<img border=0 width=11 height=22 src="/ROMCache/spacer.gif" name="twords" ALIGN="TEXTTOP"><img border=0 width=11 height=22 align="TEXTTOP" src="/ROMCache/spacer.gif" name="owords"><font size=3 color=#FFFFFF>&nbsp;Words Remain</font><BR>
+			<img src="/ROMCache/spacer.gif" width=2 height=10><BR>
+			<a nocolor><img width=24 height=45 src="../images/4.gif" name="minutes"><img width=14 height=45 src="../images/COLON.GIF" name="Colon"><img width=24 height=45 src="../images/1.gif" name="tenstime"><img width=24 height=45 src="../images/5.gif" name="onestime"></a><BR>
+			<img src="/ROMCache/spacer.gif" width=2 height=10><BR>
+		    <!-- <A name="hint" HREF="javascript:ShowHint()"><IMG SRC="../images/HINT.GIF"></A> --><BR><A name="solve" HREF="javascript:SolvePuzzle()"><IMG SRC="../images/SOLVE.GIF"></A><BR>
+			<img src="/ROMCache/spacer.gif" width=2 height=7><BR>
+			<A name="restart" HREF=""><IMG SRC="../images/RESTART.GIF"></A><BR>
+			<img src="/ROMCache/spacer.gif" width=2 height=7><BR>
+			<A name="quit" HREF="javascript:Quit()"><IMG SRC="../images/QUIT.GIF"></A><BR>	  		     	  			
+			
+			
+	      </td>
+
+		  <td abswidth=9 absheight=313 bgcolor=464664 gradcolor=2e2c4a gradangle=90></td>       
+
+		  <td abswidth=385 valign=middle bgcolor=2e2c4a align=center>       
+			    <center>
+				       
+			<SCRIPT LANGAUGE="Javascript">
+				  BuildPuzzle();
+			  	  RenderPuzzle();
+			</SCRIPT>
+			
+			</center>
+			</td>
+			</tr>
+			<tr>
+			<td absheight=71 valign=top colspan=2 align=right>
+			<!-- 	<img src="../images/COLON.GIF" width=374 height=71> -->
+			 <INSERT AD width=394 height=71> 
+			</td>
+		</tr>
+			      
+	</table>
+  
+
+	<script language="Javascript">
+
+	  Highlight1LengthWords();
+	  UpdateWordsLeft();
+
+	
+	</script>
+
+</body>
+</html>
+
+
