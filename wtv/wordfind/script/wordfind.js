@@ -464,7 +464,6 @@ function ComputeWordsLeft() {
 		  // Invert Letter
 
 		
-		  PlaySound("swoosh.mp2");
 		  sHintOld = HintLetter(aStartX[iHintAnswer], aStartY[iHintAnswer], 
 			     aStopX[iHintAnswer], aStopY[iHintAnswer], iHintLetter, "true", "");
 
