@@ -29,7 +29,7 @@ def convert(src_path, dst_path):
 
 
     content= remove_bgsound(content)
-    content= add_audio(content):
+    content= add_audio(content)
 
     os.makedirs(os.path.dirname(dst_path), exist_ok=True)
     with open(dst_path, 'w', encoding='latin-1') as f:
