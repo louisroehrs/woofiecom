@@ -1,0 +1,265 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<HEAD>
+  <META NAME="author" Content="Louis Roehrs   Big Woofie Studios http://www.woofie.com">
+  <TITLE>Big Woofie Studios &mdash; Flash Player</TITLE>
+
+  <script src="ruffle/ruffle.js"></script>
+  <script>
+    window.RufflePlayer = window.RufflePlayer || {};
+    window.RufflePlayer.config = {
+      "autoplay": "on",
+      "splashScreen": false,
+      "unmuteOverlay": "hidden",
+    };
+  </script>
+
+  <link rel="stylesheet" id="page" href="woofie.css" type="text/css">
+  <script language=Javascript src="theme.js"></script>
+
+  <style>
+    #playerWrap {
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 200px;
+    }
+    #ruffleContainer {
+      width: 480px;
+      height: 360px;
+      background: #000;
+    }
+    #ruffleContainer ruffle-player {
+      width: 100%;
+      height: 100%;
+    }
+    #flashSelect {
+      width: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      padding: 4px;
+      border: 2px solid #000066;
+      background: #fff;
+      color: #000066;
+      box-sizing: border-box;
+    }
+    #loadBtn {
+      display: block;
+      width: 100%;
+      margin-top: 6px;
+      padding: 8px;
+      background: #000066;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      box-sizing: border-box;
+      letter-spacing: 0.5px;
+    }
+    #loadBtn:hover { background: #0000aa; }
+    #statusMsg {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      color: #666;
+      margin-top: 4px;
+      min-height: 16px;
+    }
+  </style>
+</HEAD>
+
+<BODY TEXT="#000066" BGCOLOR="#808080" LINK="#0000FF" VLINK="#000099" ALINK="#0000FF">
+
+<CENTER>
+
+<!-- begin title block -->
+<TABLE BORDER="0" CELLPADDING="4" CELLSPACING="7" WIDTH="98%" HEIGHT="35">
+<TR>
+  <TD COLSPAN="2" BGCOLOR="#000066" class=title>
+    <TABLE BORDER="0" WIDTH="100%">
+      <TR>
+        <TD WIDTH="10%" class=title>
+          <IMG SRC="images/redpawprint.gif" align=bottom WIDTH="33" HEIGHT="23" BORDER="0" HSPACE="7">
+        </td>
+        <TD class=title>Big Woofie Studios &mdash; Flash Player</TD>
+      </TR>
+    </TABLE>
+  </TD>
+</TR>
+
+<TR>
+  <!-- left column: selector + controls -->
+  <TD WIDTH="35%" VALIGN="TOP" class=column>
+    <TABLE BORDER="0" CELLSPACING="0" WIDTH="100%">
+
+      <TR>
+        <TD class=panelheader>&nbsp;Select a Flash File</TD>
+      </TR>
+      <TR>
+        <TD class=paneldata style="padding:8px;">
+          <select id="flashSelect" size="20">
+            <option value="flash/Woofie2.swf">flash/Woofie2.swf</option>
+            <option value="wtv/aspacerace/flash/flyintologo.spl">wtv/aspacerace/flash/flyintologo.spl</option>
+            <option value="wtv/aspacerace/flash/flyintologo2.spl">wtv/aspacerace/flash/flyintologo2.spl</option>
+            <option value="wtv/aspacerace/flash/flyout.spl">wtv/aspacerace/flash/flyout.spl</option>
+            <option value="wtv/aspacerace/flash/flyout1.spl">wtv/aspacerace/flash/flyout1.spl</option>
+            <option value="wtv/aspacerace/flash/flyoutcredits.spl">wtv/aspacerace/flash/flyoutcredits.spl</option>
+            <option value="wtv/aspacerace/flash/lose.spl">wtv/aspacerace/flash/lose.spl</option>
+            <option value="wtv/aspacerace/flash/lose1.spl">wtv/aspacerace/flash/lose1.spl</option>
+            <option value="wtv/aspacerace/flash/lose2.spl">wtv/aspacerace/flash/lose2.spl</option>
+            <option value="wtv/aspacerace/flash/oxygen.spl">wtv/aspacerace/flash/oxygen.spl</option>
+            <option value="wtv/aspacerace/flash/oxygentank.spl">wtv/aspacerace/flash/oxygentank.spl</option>
+            <option value="wtv/aspacerace/flash/oxygentank2.spl">wtv/aspacerace/flash/oxygentank2.spl</option>
+            <option value="wtv/aspacerace/flash/oxytank2act.spl">wtv/aspacerace/flash/oxytank2act.spl</option>
+            <option value="wtv/aspacerace/images/oxygentank2.spl">wtv/aspacerace/images/oxygentank2.spl</option>
+            <option value="wtv/aspaceraceserver/Don/SpaceRaceIntro.spl">wtv/aspaceraceserver/Don/SpaceRaceIntro.spl</option>
+            <option value="wtv/aspaceraceserver/Don/spaceRaceIntroSound.spl">wtv/aspaceraceserver/Don/spaceRaceIntroSound.spl</option>
+            <option value="wtv/aspaceraceserver/flash/flyintologo.spl">wtv/aspaceraceserver/flash/flyintologo.spl</option>
+            <option value="wtv/aspaceraceserver/flash/flyintologo2.spl">wtv/aspaceraceserver/flash/flyintologo2.spl</option>
+            <option value="wtv/aspaceraceserver/flash/flyout.spl">wtv/aspaceraceserver/flash/flyout.spl</option>
+            <option value="wtv/aspaceraceserver/flash/flyout1.spl">wtv/aspaceraceserver/flash/flyout1.spl</option>
+            <option value="wtv/aspaceraceserver/flash/flyoutcredits.spl">wtv/aspaceraceserver/flash/flyoutcredits.spl</option>
+            <option value="wtv/aspaceraceserver/flash/lose.spl">wtv/aspaceraceserver/flash/lose.spl</option>
+            <option value="wtv/aspaceraceserver/flash/lose1.spl">wtv/aspaceraceserver/flash/lose1.spl</option>
+            <option value="wtv/aspaceraceserver/flash/lose2.spl">wtv/aspaceraceserver/flash/lose2.spl</option>
+            <option value="wtv/aspaceraceserver/flash/oxygen.spl">wtv/aspaceraceserver/flash/oxygen.spl</option>
+            <option value="wtv/aspaceraceserver/flash/oxygentank.spl">wtv/aspaceraceserver/flash/oxygentank.spl</option>
+            <option value="wtv/aspaceraceserver/flash/oxygentank2.spl">wtv/aspaceraceserver/flash/oxygentank2.spl</option>
+            <option value="wtv/aspaceraceserver/flash/oxytank2act.spl">wtv/aspaceraceserver/flash/oxytank2act.spl</option>
+            <option value="wtv/aspaceraceserver/flash/spaceracerules.spl">wtv/aspaceraceserver/flash/spaceracerules.spl</option>
+            <option value="wtv/aspaceraceserver/flash/spacerules.spl">wtv/aspaceraceserver/flash/spacerules.spl</option>
+            <option value="wtv/aspaceraceserver/images/oxygentank2.spl">wtv/aspaceraceserver/images/oxygentank2.spl</option>
+            <option value="wtv/arcade/Cwtv.spl">wtv/arcade/Cwtv.spl</option>
+            <option value="wtv/arcade/Cwtvold.spl">wtv/arcade/Cwtvold.spl</option>
+            <option value="wtv/arcade/WebtvPresents.spl">wtv/arcade/WebtvPresents.spl</option>
+            <option value="wtv/arcade/Wtv.spl">wtv/arcade/Wtv.spl</option>
+            <option value="wtv/arcade/Wtvold.spl">wtv/arcade/Wtvold.spl</option>
+            <option value="wtv/don/flash/Cwtv.spl">wtv/don/flash/Cwtv.spl</option>
+            <option value="wtv/don/flash/Mine.spl">wtv/don/flash/Mine.spl</option>
+            <option value="wtv/don/flash/WF.spl">wtv/don/flash/WF.spl</option>
+            <option value="wtv/don/flash/Wtv.spl">wtv/don/flash/Wtv.spl</option>
+            <option value="wtv/flash/1214_7holidaytv_mp.spl">wtv/flash/1214_7holidaytv_mp.spl</option>
+            <option value="wtv/flash/1219_olympic_hp.spl">wtv/flash/1219_olympic_hp.spl</option>
+            <option value="wtv/flash/bulletin3.spl">wtv/flash/bulletin3.spl</option>
+            <option value="wtv/flash/Circles.spl">wtv/flash/Circles.spl</option>
+            <option value="wtv/flash/ship3.spl">wtv/flash/ship3.spl</option>
+            <option value="wtv/flash/toptenshows.spl">wtv/flash/toptenshows.spl</option>
+            <option value="wtv/flash/Webtv.spl">wtv/flash/Webtv.spl</option>
+            <option value="wtv/flash/Webtvintro4.spl">wtv/flash/Webtvintro4.spl</option>
+            <option value="wtv/flash/webtvnomask.spl">wtv/flash/webtvnomask.spl</option>
+            <option value="wtv/flash/WhatsOnWebTV.spl">wtv/flash/WhatsOnWebTV.spl</option>
+            <option value="wtv/flash/wordfindflyin.spl">wtv/flash/wordfindflyin.spl</option>
+            <option value="wtv/goofystuff/dynamic/SpotlightBaseball30.spl">wtv/goofystuff/dynamic/SpotlightBaseball30.spl</option>
+            <option value="wtv/liberate/arcade/Cwtv.spl">liberate/arcade/Cwtv.spl</option>
+            <option value="wtv/liberate/arcade/Cwtvold.spl">liberate/arcade/Cwtvold.spl</option>
+            <option value="wtv/liberate/arcade/WebtvPresents.spl">liberate/arcade/WebtvPresents.spl</option>
+            <option value="wtv/liberate/arcade/Wtv.spl">liberate/arcade/Wtv.spl</option>
+            <option value="wtv/liberate/arcade/Wtvold.spl">liberate/arcade/Wtvold.spl</option>
+            <option value="wtv/matchmate/flash/3Jestor.spl">wtv/matchmate/flash/3Jestor.spl</option>
+            <option value="wtv/matchmate/flash/4Jestor.spl">wtv/matchmate/flash/4Jestor.spl</option>
+            <option value="wtv/matchmate/flash/4Jestor0.spl">wtv/matchmate/flash/4Jestor0.spl</option>
+            <option value="wtv/matchmate/flash/Jestor.spl">wtv/matchmate/flash/Jestor.spl</option>
+            <option value="wtv/matchmate/flash/jestorlink.spl">wtv/matchmate/flash/jestorlink.spl</option>
+            <option value="wtv/minesweeper/flash/Mine.spl">wtv/minesweeper/flash/Mine.spl</option>
+            <option value="wtv/minesweeper/flash/Mineold.spl">wtv/minesweeper/flash/Mineold.spl</option>
+            <option value="wtv/minesweeper/flash/tryagain.spl">wtv/minesweeper/flash/tryagain.spl</option>
+            <option value="wtv/minesweeper/flash/Webtv.spl">wtv/minesweeper/flash/Webtv.spl</option>
+            <option value="wtv/minesweeper/flash/WebtvToMine.spl">wtv/minesweeper/flash/WebtvToMine.spl</option>
+            <option value="wtv/minesweeper/flash/youwin.spl">wtv/minesweeper/flash/youwin.spl</option>
+            <option value="wtv/prototypes/makeamatch/flash/king.spl">wtv/prototypes/makeamatch/flash/king.spl</option>
+            <option value="wtv/prototypes/matchmatens/flash/3Jestor.spl">wtv/prototypes/matchmatens/flash/3Jestor.spl</option>
+            <option value="wtv/prototypes/matchmatens/flash/4Jestor.spl">wtv/prototypes/matchmatens/flash/4Jestor.spl</option>
+            <option value="wtv/prototypes/matchmatens/flash/4Jestor1.spl">wtv/prototypes/matchmatens/flash/4Jestor1.spl</option>
+            <option value="wtv/prototypes/matchmatens/flash/Jestor.spl">wtv/prototypes/matchmatens/flash/Jestor.spl</option>
+            <option value="wtv/prototypes/matchmatens/flash/jestorlink.spl">wtv/prototypes/matchmatens/flash/jestorlink.spl</option>
+            <option value="wtv/prototypes/matchmateold/flash/king.spl">wtv/prototypes/matchmateold/flash/king.spl</option>
+            <option value="wtv/prototypes/matchmateold/flash/newwizard.spl">wtv/prototypes/matchmateold/flash/newwizard.spl</option>
+            <option value="wtv/prototypes/matchmateold/flash/wizard.spl">wtv/prototypes/matchmateold/flash/wizard.spl</option>
+            <option value="wtv/prototypes/matchmateold/flash/wizardplain.spl">wtv/prototypes/matchmateold/flash/wizardplain.spl</option>
+            <option value="wtv/prototypes/presents/Mine.spl">wtv/prototypes/presents/Mine.spl</option>
+            <option value="wtv/prototypes/presents/Webtv.spl">wtv/prototypes/presents/Webtv.spl</option>
+            <option value="wtv/prototypes/presents/WebtvToMine.spl">wtv/prototypes/presents/WebtvToMine.spl</option>
+            <option value="wtv/prototypes/test/soundtest1.spl">wtv/prototypes/test/soundtest1.spl</option>
+            <option value="wtv/spacerace/Don/SpaceRaceIntro.spl">wtv/spacerace/Don/SpaceRaceIntro.spl</option>
+            <option value="wtv/spacerace/Don/spaceRaceIntroSound.spl">wtv/spacerace/Don/spaceRaceIntroSound.spl</option>
+            <option value="wtv/spacerace/flash/oxygen.spl">wtv/spacerace/flash/oxygen.spl</option>
+            <option value="wtv/spacerace/flash/spaceracerules.spl">wtv/spacerace/flash/spaceracerules.spl</option>
+            <option value="wtv/spacerace/flash/spacerules.spl">wtv/spacerace/flash/spacerules.spl</option>
+            <option value="wtv/trivia/flash/playagain.spl">wtv/trivia/flash/playagain.spl</option>
+            <option value="wtv/triviapub/flash/playagain.spl">wtv/triviapub/flash/playagain.spl</option>
+            <option value="wtv/wordfind/flash/WF.spl">wtv/wordfind/flash/WF.spl</option>
+            <option value="wtv/wordfind/flash/wordfind.spl">wtv/wordfind/flash/wordfind.spl</option>
+            <option value="wtv/wordfind/flash/wordfindflyin.spl">wtv/wordfind/flash/wordfindflyin.spl</option>
+            <option value="wtv/wordfind/flash/youwin.spl">wtv/wordfind/flash/youwin.spl</option>
+          </select>
+          <button id="loadBtn" onclick="loadSelected()">&#9654; Load &amp; Play</button>
+          <div id="statusMsg"></div>
+        </TD>
+      </TR>
+
+    </TABLE>
+  </TD>
+
+  <!-- right column: player -->
+  <TD VALIGN="TOP" class=column>
+    <TABLE BORDER="0" CELLSPACING="0" WIDTH="100%">
+      <TR>
+        <TD class=panelheader>&nbsp;Player</TD>
+      </TR>
+      <TR>
+        <TD ALIGN="CENTER" BGCOLOR="#000000" style="padding:8px;">
+          <div id="playerWrap">
+            <div id="ruffleContainer"></div>
+          </div>
+        </TD>
+      </TR>
+      <TR>
+        <TD class=paneldata style="font-size:12px; padding:6px 8px;" id="nowPlaying">
+          Select a file from the list and click Load &amp; Play.
+        </TD>
+      </TR>
+    </TABLE>
+  </TD>
+
+</TR>
+</TABLE>
+
+</CENTER>
+
+<script>
+var rufflePlayer = null;
+
+function loadSelected() {
+  var sel = document.getElementById('flashSelect');
+  var url = sel.value;
+  if (!url) return;
+
+  var statusMsg = document.getElementById('statusMsg');
+  var nowPlaying = document.getElementById('nowPlaying');
+  var container = document.getElementById('ruffleContainer');
+
+  // Remove existing player
+  container.innerHTML = '';
+
+  var ruffle = window.RufflePlayer.newest();
+  rufflePlayer = ruffle.createPlayer();
+  rufflePlayer.style.width = '480px';
+  rufflePlayer.style.height = '360px';
+  container.appendChild(rufflePlayer);
+
+  rufflePlayer.load({ url: url, autoplay: 'on' });
+
+  statusMsg.textContent = '';
+  nowPlaying.textContent = 'Now playing: ' + url;
+}
+
+// Load on double-click in the list too
+document.getElementById('flashSelect').addEventListener('dblclick', loadSelected);
+</script>
+
+</BODY>
+</HTML>
