@@ -259,6 +259,33 @@ function loadSelected() {
 
 // Load on double-click in the list too
 document.getElementById('flashSelect').addEventListener('dblclick', loadSelected);
+
+// Auto-load from ?file= URL parameter
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var fileParam = params.get('file');
+  if (!fileParam) return;
+
+  var sel = document.getElementById('flashSelect');
+  // Try to match an existing option
+  for (var i = 0; i < sel.options.length; i++) {
+    if (sel.options[i].value === fileParam) {
+      sel.selectedIndex = i;
+      loadSelected();
+      return;
+    }
+  }
+  // Not in the list — load it directly anyway
+  var container = document.getElementById('ruffleContainer');
+  container.innerHTML = '';
+  var ruffle = window.RufflePlayer.newest();
+  rufflePlayer = ruffle.createPlayer();
+  rufflePlayer.style.width = '480px';
+  rufflePlayer.style.height = '360px';
+  container.appendChild(rufflePlayer);
+  rufflePlayer.load({ url: fileParam, autoplay: 'on' });
+  document.getElementById('nowPlaying').textContent = 'Now playing: ' + fileParam;
+})();
 </script>
 
 </BODY>
