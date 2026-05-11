@@ -47,6 +47,24 @@ a {
   text-decoration:none!important;
 }
 
+@keyframes goldPulse {
+    0%, 100% { box-shadow: 0 0 4px 1px rgba(255, 215, 0, 0.5); outline-color: gold; }
+    50%       { box-shadow: 0 0 10px 4px rgba(255, 215, 0, 0.9); outline-color: #ffe566; }
+}
+
+a:hover, input:focus, textarea:focus {
+  display:block;
+  width: calc(100% - 10px);
+  height: calc(100% - 100px);
+  margin: 0 auto;
+  animation: goldPulse 1.6s ease-in-out infinite;
+  outline: 2px solid gold;
+}
+
+a:hover + br, input:focus + br, textarea:focus +br {
+  display:none;
+}
+  
 footerborder {
     position: fixed;
     top: 384px;
